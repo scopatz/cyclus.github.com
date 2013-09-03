@@ -149,11 +149,11 @@
 </tr>
 <tr class="field-even field"><th class="field-name">Title:</th><td class="field-body">Resource Tracking and Interfaces Re-Re-Redo</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Last-Modified:</th><td class="field-body">2013-08-08</td>
+<tr class="field-odd field"><th class="field-name">Last-Modified:</th><td class="field-body">2013-09-03</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Author:</th><td class="field-body">Robert Carlsen &lt;<a class="reference external" href="mailto:rwcarlsen&#37;&#52;&#48;gmail&#46;com">rwcarlsen<span>&#64;</span>gmail<span>&#46;</span>com</a>&gt;</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Status:</th><td class="field-body">Draft</td>
+<tr class="field-odd field"><th class="field-name">Status:</th><td class="field-body">Accepted</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">Standards Track</td>
 </tr>
@@ -547,19 +547,19 @@ or other places.</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="k">namespace</span> <span class="n">cyclus</span> <span class="p">{</span>
 
 <span class="k">typedef</span> <span class="kt">int</span> <span class="n">Iso</span><span class="p">;</span>
+<span class="k">typedef</span> <span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">Iso</span><span class="p">,</span> <span class="kt">double</span><span class="o">&gt;</span> <span class="n">CompMap</span><span class="p">;</span>
 
 <span class="c1">// Represents an immutable nuclear material composition</span>
 <span class="k">class</span> <span class="nc">Composition</span> <span class="p">{</span>
  <span class="nl">public:</span>
   <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">Composition</span><span class="o">&gt;</span> <span class="n">Ptr</span><span class="p">;</span>
-  <span class="k">typedef</span> <span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">Iso</span><span class="p">,</span> <span class="kt">double</span><span class="o">&gt;</span> <span class="n">Vect</span><span class="p">;</span>
 
-  <span class="k">static</span> <span class="n">Ptr</span> <span class="nf">CreateAtom</span><span class="p">(</span><span class="n">Vect</span> <span class="n">v</span><span class="p">);</span>
-  <span class="k">static</span> <span class="n">Ptr</span> <span class="nf">CreateMass</span><span class="p">(</span><span class="n">Vect</span> <span class="n">v</span><span class="p">);</span>
+  <span class="k">static</span> <span class="n">Ptr</span> <span class="nf">CreateAtom</span><span class="p">(</span><span class="n">CompMap</span> <span class="n">v</span><span class="p">);</span>
+  <span class="k">static</span> <span class="n">Ptr</span> <span class="nf">CreateMass</span><span class="p">(</span><span class="n">CompMap</span> <span class="n">v</span><span class="p">);</span>
 
   <span class="kt">int</span> <span class="nf">id</span><span class="p">();</span>
-  <span class="k">const</span> <span class="n">Vect</span><span class="o">&amp;</span> <span class="n">atom_vect</span><span class="p">();</span>
-  <span class="k">const</span> <span class="n">Vect</span><span class="o">&amp;</span> <span class="n">mass_vect</span><span class="p">();</span>
+  <span class="k">const</span> <span class="n">CompMap</span><span class="o">&amp;</span> <span class="n">atom_vect</span><span class="p">();</span>
+  <span class="k">const</span> <span class="n">CompMap</span><span class="o">&amp;</span> <span class="n">mass_vect</span><span class="p">();</span>
 
   <span class="n">Ptr</span> <span class="nf">Decay</span><span class="p">(</span><span class="kt">int</span> <span class="n">delta</span><span class="p">);</span>
 
@@ -576,32 +576,32 @@ or other places.</p>
 <p>The excellent floating point calculation handling and thresholding
 functionality introduced by &#64;katyhuff will be preserved. The current
 (pre-proposal) Material::Diff and Material::ApplyThreshold methods will become
-public functions that operate on Composition::Vect types.  Other common
+public functions that operate on CompMap types.  Other common
 composition manipulation functions will live here.  They will operate on
-Composition::Vect&#8217;s because Composition&#8217;s themselves are immutable.  Resource
+CompMap&#8217;s because Composition&#8217;s themselves are immutable.  Resource
 and Composition classes will use these methods where appropriate instead of
 their own, internal versions. This namespace is intended to grow organically as
 needed.</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="k">namespace</span> <span class="n">cyclus</span> <span class="p">{</span>
 <span class="k">namespace</span> <span class="n">compmath</span> <span class="p">{</span>
 
-<span class="n">Composition</span><span class="o">::</span><span class="n">Vect</span> <span class="n">Add</span><span class="p">(</span><span class="k">const</span> <span class="n">Composition</span><span class="o">::</span><span class="n">Vect</span><span class="o">&amp;</span> <span class="n">v1</span><span class="p">,</span> <span class="kt">double</span> <span class="n">qty1</span><span class="p">,</span>
-                      <span class="k">const</span> <span class="n">Composition</span><span class="o">::</span><span class="n">Vect</span><span class="o">&amp;</span> <span class="n">v2</span><span class="p">,</span> <span class="kt">double</span> <span class="n">qty2</span><span class="p">);</span>
+<span class="n">CompMap</span> <span class="n">Add</span><span class="p">(</span><span class="k">const</span> <span class="n">CompMap</span><span class="o">&amp;</span> <span class="n">v1</span><span class="p">,</span> <span class="kt">double</span> <span class="n">qty1</span><span class="p">,</span>
+                      <span class="k">const</span> <span class="n">CompMap</span><span class="o">&amp;</span> <span class="n">v2</span><span class="p">,</span> <span class="kt">double</span> <span class="n">qty2</span><span class="p">);</span>
 
 <span class="c1">/// previously Material::Diff</span>
-<span class="n">Composition</span><span class="o">::</span><span class="n">Vect</span> <span class="n">Sub</span><span class="p">(</span><span class="k">const</span> <span class="n">Composition</span><span class="o">::</span><span class="n">Vect</span><span class="o">&amp;</span> <span class="n">v1</span><span class="p">,</span> <span class="kt">double</span> <span class="n">qty1</span><span class="p">,</span>
-                       <span class="k">const</span> <span class="n">Composition</span><span class="o">::</span><span class="n">Vect</span><span class="o">&amp;</span> <span class="n">v2</span><span class="p">,</span> <span class="kt">double</span> <span class="n">qty2</span><span class="p">);</span>
+<span class="n">CompMap</span> <span class="nf">Sub</span><span class="p">(</span><span class="k">const</span> <span class="n">CompMap</span><span class="o">&amp;</span> <span class="n">v1</span><span class="p">,</span> <span class="kt">double</span> <span class="n">qty1</span><span class="p">,</span>
+                       <span class="k">const</span> <span class="n">CompMap</span><span class="o">&amp;</span> <span class="n">v2</span><span class="p">,</span> <span class="kt">double</span> <span class="n">qty2</span><span class="p">);</span>
 
-<span class="kt">void</span> <span class="nf">ApplyThreshold</span><span class="p">(</span><span class="n">Composition</span><span class="o">::</span><span class="n">Vect</span><span class="o">*</span> <span class="n">v</span><span class="p">,</span> <span class="kt">double</span> <span class="n">threshold</span><span class="p">);</span>
+<span class="kt">void</span> <span class="nf">ApplyThreshold</span><span class="p">(</span><span class="n">CompMap</span><span class="o">*</span> <span class="n">v</span><span class="p">,</span> <span class="kt">double</span> <span class="n">threshold</span><span class="p">);</span>
 
-<span class="kt">void</span> <span class="nf">Normalize</span><span class="p">(</span><span class="n">cyclus</span><span class="o">::</span><span class="n">Composition</span><span class="o">::</span><span class="n">Vect</span><span class="o">*</span> <span class="n">v</span><span class="p">,</span> <span class="kt">double</span> <span class="n">val</span><span class="p">);</span>
+<span class="kt">void</span> <span class="nf">Normalize</span><span class="p">(</span><span class="n">cyclus</span><span class="o">::</span><span class="n">CompMap</span><span class="o">*</span> <span class="n">v</span><span class="p">,</span> <span class="kt">double</span> <span class="n">val</span><span class="p">);</span>
 
-<span class="kt">bool</span> <span class="nf">ValidIsos</span><span class="p">(</span><span class="k">const</span> <span class="n">Composition</span><span class="o">::</span><span class="n">Vect</span><span class="o">&amp;</span> <span class="n">v</span><span class="p">);</span>
+<span class="kt">bool</span> <span class="nf">ValidIsos</span><span class="p">(</span><span class="k">const</span> <span class="n">CompMap</span><span class="o">&amp;</span> <span class="n">v</span><span class="p">);</span>
 
-<span class="kt">bool</span> <span class="nf">AllPositive</span><span class="p">(</span><span class="k">const</span> <span class="n">Composition</span><span class="o">::</span><span class="n">Vect</span><span class="o">&amp;</span> <span class="n">v</span><span class="p">);</span>
+<span class="kt">bool</span> <span class="nf">AllPositive</span><span class="p">(</span><span class="k">const</span> <span class="n">CompMap</span><span class="o">&amp;</span> <span class="n">v</span><span class="p">);</span>
 
-<span class="kt">bool</span> <span class="nf">AlmostEq</span><span class="p">(</span><span class="k">const</span> <span class="n">Composition</span><span class="o">::</span><span class="n">Vect</span><span class="o">&amp;</span> <span class="n">v1</span><span class="p">,</span>
-              <span class="k">const</span> <span class="n">Composition</span><span class="o">::</span><span class="n">Vect</span><span class="o">&amp;</span> <span class="n">v2</span><span class="p">,</span>
+<span class="kt">bool</span> <span class="nf">AlmostEq</span><span class="p">(</span><span class="k">const</span> <span class="n">CompMap</span><span class="o">&amp;</span> <span class="n">v1</span><span class="p">,</span>
+              <span class="k">const</span> <span class="n">CompMap</span><span class="o">&amp;</span> <span class="n">v2</span><span class="p">,</span>
               <span class="kt">double</span> <span class="n">threshold</span><span class="p">);</span>
 
 <span class="p">}</span> <span class="c1">// namespace compmath</span>
