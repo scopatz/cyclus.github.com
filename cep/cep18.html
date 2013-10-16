@@ -1,4 +1,6 @@
 
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -82,15 +84,7 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#specification-implementation">Specification &amp; Implementation</a><ul>
-<li><a class="reference internal" href="#constituent-classes-and-containers">Constituent Classes and Containers</a><ul>
-<li><a class="reference internal" href="#request">Request</a></li>
-<li><a class="reference internal" href="#requestresponse">RequestResponse</a></li>
-<li><a class="reference internal" href="#request-constraints">Request Constraints</a></li>
-<li><a class="reference internal" href="#responseconstraint">ResponseConstraint</a></li>
-<li><a class="reference internal" href="#requestportfolio">RequestPortfolio</a></li>
-<li><a class="reference internal" href="#responseportfolio">ResponsePortfolio</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#constituent-classes-and-containers">Constituent Classes and Containers</a></li>
 <li><a class="reference internal" href="#rfb-procedure">RFB Procedure</a><ul>
 <li><a class="reference internal" href="#input">Input</a></li>
 <li><a class="reference internal" href="#output">Output</a></li>
@@ -195,7 +189,7 @@ encompass an information gathering procedure, providing generic information to
 any market exchange solution procedure. The final phase is modular in that any
 algorithm can be used to solve the exchange. This modular phase takes the place
 of the current implementation of MarketModels. The procedure is informed by
-agent-based supply chain modeling literature <a class="reference internal" href="#julka-agent-based-2002" id="id1">[1]</a> with
+agent-based supply chain modeling literature <a class="reference internal" href="#julka-agent-based-2002">[1]</a> with
 modifications as required for our nuclear-engineering domain specific
 information.</p>
 </div>
@@ -266,7 +260,7 @@ and regions each with specific, defined agency.</p>
 <p>Supply-demand determination at any given time step occurs in nominally three
 steps, or <strong>phases</strong>, and the associated terminology is taken from previous
 supply chain agent-based modeling work
-<a class="reference internal" href="#julka-agent-based-2002" id="id2">[1]</a>. Importantly, this information-gathering step is
+<a class="reference internal" href="#julka-agent-based-2002">[1]</a>. Importantly, this information-gathering step is
 agnostic as to the actual matching algorithm used, it is concerned only with
 querying the current status of supply and demand and facility preference thereof
 in the simulation.</p>
@@ -382,7 +376,7 @@ preferences among possible suppliers based on the supplier&#8217;s quality of
 product. Because this agency is encapsulated for each agent, it is possible to
 define strategies that can be attached or detached to the agents at
 run-time. Such strategies are an example of the Strategy design pattern
-<a class="reference internal" href="#vlissides-design-1995" id="id3">[2]</a>.</p>
+<a class="reference internal" href="#vlissides-design-1995">[2]</a>.</p>
 </div>
 <div class="section" id="institutional-agency">
 <h4>Institutional Agency<a class="headerlink" href="#institutional-agency" title="Permalink to this headline">¶</a></h4>
@@ -449,218 +443,22 @@ described. Because the phases utilize new classes and containers, those are
 described first.</p>
 <div class="section" id="constituent-classes-and-containers">
 <h3>Constituent Classes and Containers<a class="headerlink" href="#constituent-classes-and-containers" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="request">
-<h4>Request<a class="headerlink" href="#request" title="Permalink to this headline">¶</a></h4>
-<p>A Request encapsulates the information required to analyze commodity requests
-from facilities in a dynamic manner. A facility may have more than one Request
-associated with it at any given time step.</p>
-<ol class="arabic simple">
-<li>A commodity</li>
-<li>A target resource, i.e., its quantity and quality.</li>
-<li>A preference for that resource/commodity pairing</li>
-<li>A requester</li>
-</ol>
-<div class="highlight-c++"><div class="highlight"><pre><span class="c1">/// A Request encapsulates all the information required to communicate the</span>
-<span class="c1">/// needs of an agent in the Dynamic Resource Exchange, including the</span>
-<span class="c1">/// commodity it needs as well as a resource specification for that commodity</span>
-<span class="k">class</span> <span class="nc">Request</span> <span class="p">{</span>
- <span class="k">public</span><span class="o">:</span>
-  <span class="c1">/// @return the commodity associated with this request</span>
-  <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">commodity</span><span class="p">();</span>
-
-  <span class="c1">/// @return the target resource for this request</span>
-  <span class="n">cyclus</span><span class="o">::</span><span class="n">Material</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">target</span><span class="p">();</span>
-
-  <span class="c1">/// @return the preference value for this request</span>
-  <span class="kt">double</span> <span class="n">preference</span><span class="p">();</span>
-
-  <span class="c1">/// @return the model requesting the resource</span>
-  <span class="n">cyclus</span><span class="o">::</span><span class="n">FacilityModel</span><span class="o">*</span> <span class="n">requester</span><span class="p">();</span>
-<span class="p">};</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="requestresponse">
-<h4>RequestResponse<a class="headerlink" href="#requestresponse" title="Permalink to this headline">¶</a></h4>
-<p>A RequestResponse encapsulates the information required to analyze responses to
-requests for a commodity, and includes:</p>
-<ol class="arabic simple">
-<li>A reference request</li>
-<li>A response resource, i.e., its quantity and quality.</li>
-<li>A responder</li>
-</ol>
-<div class="highlight-c++"><div class="highlight"><pre><span class="c1">/// A RequestResponse encapsulates all the information required to</span>
-<span class="c1">/// communicate a response to a request for a resource, including the</span>
-<span class="c1">/// resource response and the responder.</span>
-<span class="k">class</span> <span class="nc">RequestResponse</span> <span class="p">{</span>
- <span class="k">public</span><span class="o">:</span>
-  <span class="c1">/// @return the request this response is associated with</span>
-  <span class="n">cyclus</span><span class="o">::</span><span class="n">Request</span><span class="o">&amp;</span> <span class="n">request</span><span class="p">();</span>
-
-  <span class="c1">/// @return the target resource for this request</span>
-  <span class="n">cyclus</span><span class="o">::</span><span class="n">Material</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">response</span><span class="p">();</span>
-
-  <span class="c1">/// @return the model responding to the request</span>
-  <span class="n">cyclus</span><span class="o">::</span><span class="n">FacilityModel</span><span class="o">*</span> <span class="n">responder</span><span class="p">();</span>
-<span class="p">};</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="request-constraints">
-<h4>Request Constraints<a class="headerlink" href="#request-constraints" title="Permalink to this headline">¶</a></h4>
-<p>Request constraints provides an ability to determine constraints on a facility&#8217;s
-series of requests. Some constraints may require conversion functions which
-convert a given resource specification into a measurable value related to a
-constraint. At present, two types of request constraints are provided, given the
-available use cases.</p>
-<p>First, a CapacityConstraint, which is comprised of:</p>
-<ol class="arabic simple">
-<li>A conversion function, which takes as an argument a concrete resource</li>
-<li>A constraining value</li>
-<li>The set of requests associated with the constraint, which may be a subset of
-the total requests provided by the facility.</li>
-</ol>
-<p>Repositories in Cyclus provide a use case for this feature. In general,
-repositories could request many different commodities, e.g., &#8220;Used LWR Fuel&#8221;,
-&#8220;Separated TRU&#8221;, &#8220;Recycled Uranium&#8221;, etc. There is a limit, though, on what can
-be accepted at any given timer period, be it of total quantity, heat load, or
-some other metric.</p>
-<div class="highlight-c++"><div class="highlight"><pre><span class="k">typedef</span> <span class="kt">double</span> <span class="p">(</span><span class="o">*</span><span class="n">Converter</span><span class="p">)(</span><span class="n">cyclus</span><span class="o">::</span><span class="n">Material</span><span class="o">::</span><span class="n">Ptr</span><span class="p">)</span>
-
-<span class="c1">/// A CapacityConstraint provides an ability to determine an agent&#39;s</span>
-<span class="c1">/// constraints on resource allocation given a capacity.</span>
-<span class="k">class</span> <span class="nc">CapacityConstraint</span> <span class="p">{</span>
- <span class="k">public</span><span class="o">:</span>
-  <span class="c1">/// @return a pointer to a conversion function that converts a request</span>
-  <span class="c1">/// into the units of this constraint</span>
-  <span class="n">Converter</span> <span class="n">CapacityConverter</span><span class="p">();</span>
-
-  <span class="c1">/// @return the capacity associated with this constraint</span>
-  <span class="kt">double</span> <span class="n">capacity</span><span class="p">();</span>
-
-  <span class="c1">/// @brief add a request that&#39;s associated with this constraint</span>
-  <span class="kt">void</span> <span class="n">AddRequest</span><span class="p">(</span><span class="n">Request</span><span class="o">&amp;</span><span class="p">);</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<p>Second, an ExclusiveConstraint, which is comprised of:</p>
-<ol class="arabic simple">
-<li>The set of requests which must be satisfied exclusively</li>
-</ol>
-<p>The notion of an exclusivity constraint allows for requests to require that they
-are met by only one supplier and a single commodity. This capability allows one
-to model the notion of reactor fuel assemblies for instance, in addition to any
-other quantized-based order. A single assembly generally comes from a single
-supplier. In the case of a light water reactor, it is generally either UOX or
-MOX, but not a mixture of the two.</p>
-<div class="highlight-c++"><div class="highlight"><pre><span class="c1">/// A ExclusiveConstraint provides an ability to determine an agent&#39;s</span>
-<span class="c1">/// constraints on resource allocation given exclusivity among requested</span>
-<span class="c1">/// resources, i.e., if some resource is provided, it cannot accept other</span>
-<span class="c1">/// resources. An example is a reactor that could take MOX or UOX, but can</span>
-<span class="c1">/// not take both.</span>
-<span class="k">class</span> <span class="nc">ExclusiveConstraint</span> <span class="p">{</span>
- <span class="k">public</span><span class="o">:</span>
-  <span class="c1">/// @brief add a request that&#39;s associated with this constraint</span>
-  <span class="kt">void</span> <span class="n">AddRequest</span><span class="p">(</span><span class="n">Request</span><span class="o">&amp;</span><span class="p">);</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="responseconstraint">
-<h4>ResponseConstraint<a class="headerlink" href="#responseconstraint" title="Permalink to this headline">¶</a></h4>
-<p>A ResponseConstraint provides an ability to determine constraints on a
-facility&#8217;s ability to supply resources. A constraint is generally associated
-with a single commodity, and there may be one or more constraints associated
-with a commodity. An example is an enrichment facility which has a process
-constraint, i.e., it can only process a certain SWU amount per time step, and an
-inventory constraint, i.e., it can only process orders up to its amount of
-natural uranium on hand. A ResponseConstraint is very similar to the previously
-described CapacityConstraint and has the following members:</p>
-<ol class="arabic simple">
-<li>A constraining value</li>
-<li>A conversion function, whose function signature is</li>
-<li>The set of responses associated with the constraint.</li>
-</ol>
-<div class="highlight-c++"><div class="highlight"><pre><span class="k">typedef</span> <span class="kt">double</span> <span class="p">(</span><span class="o">*</span><span class="n">Converter</span><span class="p">)(</span><span class="n">cyclus</span><span class="o">::</span><span class="n">Material</span><span class="o">::</span><span class="n">Ptr</span><span class="p">)</span>
-
-<span class="c1">/// A ResponseConstraint provides an ability to determine an agent&#39;s</span>
-<span class="c1">/// constraints on resource allocation given a capacity.</span>
-<span class="k">class</span> <span class="nc">ResponseConstraint</span> <span class="p">{</span>
- <span class="k">public</span><span class="o">:</span>
-  <span class="c1">/// @return a pointer to a conversion function that converts a response</span>
-  <span class="c1">/// into the units of this constraint</span>
-  <span class="n">Converter</span> <span class="n">ResponseConverter</span><span class="p">();</span>
-
-  <span class="c1">/// @return the capacity associated with this constraint</span>
-  <span class="kt">double</span> <span class="n">capacity</span><span class="p">();</span>
-
-  <span class="c1">/// @brief add a response that&#39;s associated with this constraint</span>
-  <span class="kt">void</span> <span class="n">AddResponse</span><span class="p">(</span><span class="n">Response</span><span class="o">&amp;</span><span class="p">);</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="requestportfolio">
-<h4>RequestPortfolio<a class="headerlink" href="#requestportfolio" title="Permalink to this headline">¶</a></h4>
-<p>A request portfolio is a container for information related to an agent&#8217;s set of
-requests for the given timestep, having the following members:</p>
-<ol class="arabic simple">
-<li>A requester</li>
-<li>A set of Requests</li>
-<li>A set of CapacityConstraints</li>
-<li>A set of ExclusiveConstraints</li>
-</ol>
-<div class="highlight-c++"><div class="highlight"><pre><span class="c1">/// A RequestPortfolio contains all the information corresponding to a</span>
-<span class="c1">/// requester of resources in the exchange</span>
-<span class="k">struct</span> <span class="n">RequestPortfolio</span> <span class="p">{</span>
- <span class="k">public</span><span class="o">:</span>
-  <span class="c1">/// @return the model associated with the portfolio</span>
-  <span class="n">cyclus</span><span class="o">::</span><span class="n">FacilityModel</span><span class="o">*</span> <span class="n">requester</span><span class="p">;</span>
-
-  <span class="c1">/// @return the set of requests in the portfolio</span>
-  <span class="n">std</span><span class="o">::</span><span class="n">set</span><span class="o">&lt;</span><span class="n">Request</span><span class="o">&gt;</span> <span class="n">requests</span><span class="p">;</span>
-
-  <span class="c1">/// @return the set of constraints over the requests based on request</span>
-  <span class="c1">/// capacity</span>
-  <span class="n">std</span><span class="o">::</span><span class="n">set</span><span class="o">&lt;</span><span class="n">CapacityConstraint</span><span class="o">&gt;</span> <span class="n">cap_constraints</span><span class="p">;</span>
-
-  <span class="c1">/// @return the set of constraints over the requests based on request</span>
-  <span class="c1">/// exclusivity</span>
-  <span class="n">std</span><span class="o">::</span><span class="n">set</span><span class="o">&lt;</span><span class="n">ExclusiveConstraint</span><span class="o">&gt;</span> <span class="n">excl_constraints</span><span class="p">;</span>
-<span class="p">};</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="responseportfolio">
-<h4>ResponsePortfolio<a class="headerlink" href="#responseportfolio" title="Permalink to this headline">¶</a></h4>
-<p>A response portfolio is a container for information related to an agent&#8217;s set of
-responses for the given timestep. A response portfolio is provided for each
-commodity an agent offers and has the following members:</p>
-<ol class="arabic simple">
-<li>A responder</li>
-<li>The commodity associated with the responses</li>
-<li>A set of Responses</li>
-<li>A set of ResponseConstraints</li>
-</ol>
-<div class="highlight-c++"><div class="highlight"><pre><span class="c1">/// A ResponsePortfolio contains all the information corresponding to a</span>
-<span class="c1">/// responder of resources in the exchange</span>
-<span class="k">struct</span> <span class="n">ResponsePortfolio</span> <span class="p">{</span>
- <span class="k">public</span><span class="o">:</span>
-  <span class="c1">/// @return the model associated with the portfolio</span>
-  <span class="n">cyclus</span><span class="o">::</span><span class="n">FacilityModel</span><span class="o">*</span> <span class="n">responder</span><span class="p">;</span>
-
-  <span class="c1">/// @return the commodity associated with the portfolio</span>
-  <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">commodity</span><span class="p">();</span>
-
-  <span class="c1">/// @return the set of responses in the portfolio</span>
-  <span class="n">std</span><span class="o">::</span><span class="n">set</span><span class="o">&lt;</span><span class="n">Response</span><span class="o">&gt;</span> <span class="n">responses</span><span class="p">;</span>
-
-  <span class="c1">/// @return the set of constraints over the responses</span>
-  <span class="n">std</span><span class="o">::</span><span class="n">set</span><span class="o">&lt;</span><span class="n">ResponseConstraint</span><span class="o">&gt;</span> <span class="n">constraints</span><span class="p">;</span>
-<span class="p">};</span>
-</pre></div>
-</div>
-</div>
+<p>The major new datastructures required for this proposal are:</p>
+<ul class="simple">
+<li>Bids</li>
+<li>BidPortfolios</li>
+<li>CapacityConstraints</li>
+<li>Requests</li>
+<li>RequestPortfolios</li>
+</ul>
+<p>Reference implementation (in /src) and tests (in /tests) for each can be found
+in the <a class="reference external" href="https://github.com/gidden/cyclus/tree/cep18">CEP18 branch</a>.</p>
+<p>A template approach has been taken, delineating, for instance, a material
+request, <tt class="docutils literal"><span class="pre">Request&lt;Material&gt;</span></tt>, from a GenericResource request,
+<tt class="docutils literal"><span class="pre">Request&lt;GenericResource&gt;</span></tt>. The current behavior (i.e., only using parent
+classes and dynamic casting to derived classes) can be invoked by templating on
+the <tt class="docutils literal"><span class="pre">Resource</span></tt> type, i.e., <tt class="docutils literal"><span class="pre">Request&lt;Resource&gt;</span></tt>. See the <a class="reference external" href="https://github.com/gidden/cyclus/blob/cep18/tests/capacity_constraint_tests.cc">capacity constraint
+tests</a> for an example of this range of behavior.</p>
 </div>
 <div class="section" id="rfb-procedure">
 <h3>RFB Procedure<a class="headerlink" href="#rfb-procedure" title="Permalink to this headline">¶</a></h3>
@@ -807,8 +605,8 @@ requests</li>
     </div>
     <div class="footer">
         &copy; Copyright 2012, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Sep 29, 2013.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+      Last updated on Oct 16, 2013.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>
 </html>
