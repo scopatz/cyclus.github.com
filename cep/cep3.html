@@ -1,0 +1,261 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>CEP 3 - Cyclus Release Procedure &mdash; Cyclus Home</title>
+    
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Cyclus Home" href="../index.html" />
+    <link rel="up" title="Cyclus Enhancement Proposals" href="cep0.html" />
+    <link rel="next" title="CEP 17 - Resource Tracking and Interfaces Re-Re-Redo" href="cep17.html" />
+    <link rel="prev" title="CEP 2 - Separation of Concerns in the Cyclus Ecosystem" href="cep2.html" />
+   
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-12222727-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+  </head>
+  <body>
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+  <a href="http://cyclus.github.com">
+    <img src="../_static/logo1.png"/>
+  </a>
+</div>
+
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="cep17.html" title="CEP 17 - Resource Tracking and Interfaces Re-Re-Redo"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="cep2.html" title="CEP 2 - Separation of Concerns in the Cyclus Ecosystem"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Cyclus Home</a> &raquo;</li>
+          <li><a href="cep0.html" accesskey="U">Cyclus Enhancement Proposals</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">CEP 3 - Cyclus Release Procedure</a><ul>
+<li><a class="reference internal" href="#abstract">Abstract</a></li>
+<li><a class="reference internal" href="#the-cyclus-ecosystem">The Cyclus Ecosystem</a></li>
+<li><a class="reference internal" href="#release-candidates-branches">Release Candidates &amp; Branches</a></li>
+<li><a class="reference internal" href="#project-checklist">Project Checklist</a></li>
+<li><a class="reference internal" href="#document-history">Document History</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="cep2.html"
+                        title="previous chapter">CEP 2 - Separation of Concerns in the <em>Cyclus</em> Ecosystem</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="cep17.html"
+                        title="next chapter">CEP 17 - Resource Tracking and Interfaces Re-Re-Redo</a></p>
+  <h3>Useful Pages</h3>
+    <li><a href="http://cyclus.github.com/basics/glossary.html">Glossary</a></li>
+    <li><a href="http://cyclus.github.com/basics/roadmap.html">Roadmap</a></li>
+    <li><a href="https://github.com/cyclus">Source Code</a></li>
+    <li><a href="http://cnergdata.engr.wisc.edu/cyclus/core/docs/">Cyclus Core Documentation</a></li>
+    
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <h3>Acknowledgements</h3>
+    Support for this research has included funding received from:
+    <img src=/_images/neup_logo_large.jpg width=170px>
+    <img src=/_images/AnlLogo.png height=100px>
+    <img src=/_images/USNRC.gif height=100px>
+    <img src=/_images/nsf_logo.jpg height=100px>
+    <img src=/_images/crest.png height=100px>
+
+    
+
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="cep-3-cyclus-release-procedure">
+<h1>CEP 3 - Cyclus Release Procedure<a class="headerlink" href="#cep-3-cyclus-release-procedure" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">CEP:</th><td class="field-body">3</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Title:</th><td class="field-body">Cyclus Release Procedure</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Last-Modified:</th><td class="field-body">2013-10-25</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Author:</th><td class="field-body">Anthony Scopatz</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Status:</th><td class="field-body">Draft</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">Process</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Created:</th><td class="field-body">2013-10-25</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="abstract">
+<h2>Abstract<a class="headerlink" href="#abstract" title="Permalink to this headline">¶</a></h2>
+<p>The purpose of this document is to act as a guideline and checklist for how
+to release the cyclus core code base and the supported projects in the ecosystem.</p>
+</div>
+<div class="section" id="the-cyclus-ecosystem">
+<h2>The Cyclus Ecosystem<a class="headerlink" href="#the-cyclus-ecosystem" title="Permalink to this headline">¶</a></h2>
+<p>The very first thing to do when preparing for an upcoming release is to elect
+a release manager.  This person has the special responsibility of making sure
+all of the following tasks are implemented.  Therefore, their judgment for the
+placement of issues and code stability must be adhered to.</p>
+<p>The cyclus ecosystem has a few projects which are all released together.
+(This may change in the future a development diverges and the core becomes more
+stable.)  The projects that are under the release manager&#8217;s purview are:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/cyclus/cyclus">Cyclus</a></li>
+<li><a class="reference external" href="https://github.com/cyclus/cycamore">Cycamore</a></li>
+<li><a class="reference external" href="https://github.com/cyclus/cycstub">Cycstub</a> - copy the files from cyclus core&#8217;s <tt class="docutils literal"><span class="pre">stub/</span></tt> dir into the
+cycstub&#8217;s <tt class="docutils literal"><span class="pre">src/</span></tt> dir.</li>
+</ul>
+<p>The projects which are not yet under the release managers purview are:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/cyclus/cyclist2">Cyclist</a></li>
+<li><a class="reference external" href="https://github.com/cyclus/ciclus">CIclus</a></li>
+</ul>
+</div>
+<div class="section" id="release-candidates-branches">
+<h2>Release Candidates &amp; Branches<a class="headerlink" href="#release-candidates-branches" title="Permalink to this headline">¶</a></h2>
+<p>All projects should have a release candidate (&#8216;-rc1&#8217;) that comes out 2 - 5 days
+prior to the scheduled release.  During this time, no changes should occur to
+a special release branch (&#8216;vX.X.X-release&#8217;).</p>
+<p>The release branches are there so that development can continue on the
+develop branch while the release candidates (rc) are out and under review.
+This is because otherwise any new developments would have to wait until
+post-release to be merged into develop to prevent them from accidentally
+getting released early.</p>
+<p>As such, these &#8216;vX.X.X-release&#8217; branches should only exist while there are
+release candidates out.  They are akin to a temporary second level of staging
+to be used to keep master clean and safe.  As such, everything that is in this
+branch should also be part of develop.  Graphically,</p>
+<div class="figure align-center">
+<img src="../_images/cep-0003-1.svg" /><p class="caption"><strong>Figure 1:</strong> Branch hierarchy under release.</p>
+</div>
+<p>Every time a new release candidate comes out is when vX.X.X-release gets merged
+into master.  When the actual release happens, the release branch is deleted.</p>
+<p>If you have a new fix that needs to be in the next release candidate, you make a
+topical branch and then pull request it into the release branch.  After this has
+been accepted, you merge topical with develop as well.</p>
+<p>The release branch must be quiet and untouched for 2 - 5 days prior to the full
+release.</p>
+</div>
+<div class="section" id="project-checklist">
+<h2>Project Checklist<a class="headerlink" href="#project-checklist" title="Permalink to this headline">¶</a></h2>
+<p>When releasing a cyclus project, make sure to do the following items in order.</p>
+<ol class="arabic simple">
+<li>Review <strong>ALL</strong> issues in the issue tracker, reassigning or closing them as needed.</li>
+<li>Ensure that all issues in this release&#8217;s milestone have been closed.  Moving issues
+to the next release&#8217;s milestone is a perfectly valid strategy for completing this
+milestone.</li>
+<li>Write and commit the release notes.</li>
+<li>Bump the version and commit the change.</li>
+<li>Merge or rebase the branch:<ul>
+<li>If this is the first release candidate, create a release branch called
+&#8216;vX.X.X-release&#8217; off of develop.  Merge the release branch into master.</li>
+<li>If this is the second or later release candidate, merge or rebase the
+release branch into master.</li>
+<li>If this is a full release, merge or rebase the release branch into
+the master branch.  Then delete the release candidate branch.</li>
+</ul>
+</li>
+<li>Create a tag in the version control system whose name matches that of the release.</li>
+<li>Push the tags upstream</li>
+<li>Update release information on the website.</li>
+</ol>
+</div>
+<div class="section" id="document-history">
+<h2>Document History<a class="headerlink" href="#document-history" title="Permalink to this headline">¶</a></h2>
+<p>This document is released under the CC-BY 3.0 license.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="cep17.html" title="CEP 17 - Resource Tracking and Interfaces Re-Re-Redo"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="cep2.html" title="CEP 2 - Separation of Concerns in the Cyclus Ecosystem"
+             >previous</a> |</li>
+        <li><a href="../index.html">Cyclus Home</a> &raquo;</li>
+          <li><a href="cep0.html" >Cyclus Enhancement Proposals</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, University of Wisconsin Computational Nuclear Engineering Research Group.
+      Last updated on Oct 25, 2013.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
