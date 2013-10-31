@@ -85,30 +85,15 @@
 </li>
 <li><a class="reference internal" href="#specification-implementation">Specification &amp; Implementation</a><ul>
 <li><a class="reference internal" href="#constituent-classes-and-containers">Constituent Classes and Containers</a></li>
-<li><a class="reference internal" href="#rfb-procedure">RFB Procedure</a><ul>
-<li><a class="reference internal" href="#input">Input</a></li>
-<li><a class="reference internal" href="#output">Output</a></li>
-<li><a class="reference internal" href="#comments">Comments</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#rrfb-procedure">RRFB Procedure</a><ul>
-<li><a class="reference internal" href="#id4">Input</a></li>
-<li><a class="reference internal" href="#id5">Output</a></li>
-<li><a class="reference internal" href="#id6">Comments</a></li>
+<li><a class="reference internal" href="#resource-exchange">Resource Exchange</a><ul>
+<li><a class="reference internal" href="#rfb-phase">RFB Phase</a></li>
+<li><a class="reference internal" href="#rrfb-phase">RRFB Phase</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#pa-procedure">PA Procedure</a><ul>
-<li><a class="reference internal" href="#id7">Input</a></li>
-<li><a class="reference internal" href="#id8">Output</a></li>
-<li><a class="reference internal" href="#unknown">Unknown</a></li>
+<li><a class="reference internal" href="#marketalgorithm">MarketAlgorithm</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#marketalgorithm">MarketAlgorithm</a><ul>
-<li><a class="reference internal" href="#id9">Input</a></li>
-<li><a class="reference internal" href="#id10">Output</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#marketexecution">MarketExecution</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#backwards-compatibility">Backwards Compatibility</a></li>
@@ -168,7 +153,7 @@
 </tr>
 <tr class="field-even field"><th class="field-name">Title:</th><td class="field-body">Dynamic Resource Exchange Procedure</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Last-Modified:</th><td class="field-body">2013-09-27</td>
+<tr class="field-odd field"><th class="field-name">Last-Modified:</th><td class="field-body">2013-10-31</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Author:</th><td class="field-body">Matthew Gidden</td>
 </tr>
@@ -460,94 +445,85 @@ classes and dynamic casting to derived classes) can be invoked by templating on
 the <tt class="docutils literal"><span class="pre">Resource</span></tt> type, i.e., <tt class="docutils literal"><span class="pre">Request&lt;Resource&gt;</span></tt>. See the <a class="reference external" href="https://github.com/gidden/cyclus/blob/cep18/tests/capacity_constraint_tests.cc">capacity constraint
 tests</a> for an example of this range of behavior.</p>
 </div>
-<div class="section" id="rfb-procedure">
-<h3>RFB Procedure<a class="headerlink" href="#rfb-procedure" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="input">
-<h4>Input<a class="headerlink" href="#input" title="Permalink to this headline">¶</a></h4>
-<p>The set of facilities requesting/demanding one or more commodities at the given
-time step.</p>
+<div class="section" id="resource-exchange">
+<h3>Resource Exchange<a class="headerlink" href="#resource-exchange" title="Permalink to this headline">¶</a></h3>
+<p>The resource exchange is implemented through coordination of two classes, the
+ResourceExchange and the ExchangeContext, both of which are implemented with
+tests in the <a class="reference external" href="https://github.com/gidden/cyclus/tree/cep18">CEP18 branch</a>.</p>
+<p>The ExchangeContext retains the current state of the exchange, including
+information regarding the players (i.e., requesters and suppliers) as well as
+information regarding requests and bids. The ResourceExchange initiates the
+phase order and updates the context state. As currently envisioned, an exchange
+and context&#8217;s lifetime is the single resolution of the exchange at a given
+time. The exchange is populated with traders as known by the wider simulation
+context. Both the ExchangeContext and ResourceExchange are templated on the
+Resource being exchanged, as was the case above. An overview of the exchange
+implementation follows, noting the state updates of the context at each phase.</p>
+<div class="section" id="rfb-phase">
+<h4>RFB Phase<a class="headerlink" href="#rfb-phase" title="Permalink to this headline">¶</a></h4>
+<p>Note that the ExchangeContext has no state at the beginning of the phases.</p>
+<p>ResourceExchange operations:</p>
+<ul class="simple">
+<li>Queries each Trader registered with the simulation Context, asking for
+RequestPortfolios</li>
+</ul>
+<p>ExchangeContext state at end of phase:</p>
+<ul class="simple">
+<li>Requesters</li>
+<li>Requests</li>
+<li>RequestPortfolio</li>
+</ul>
 </div>
-<div class="section" id="output">
-<h4>Output<a class="headerlink" href="#output" title="Permalink to this headline">¶</a></h4>
-<p>A Set of RequestPortfolios.</p>
-</div>
-<div class="section" id="comments">
-<h4>Comments<a class="headerlink" href="#comments" title="Permalink to this headline">¶</a></h4>
-<p>There are multiple strategies that could be taken to determine the input
-list. As a first approach, a naive strategy will be taken that queries each
-facility that is registered as a requester to determine demand at each time
-step.</p>
-</div>
-</div>
-<div class="section" id="rrfb-procedure">
-<h3>RRFB Procedure<a class="headerlink" href="#rrfb-procedure" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="id4">
-<h4>Input<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
-<p>The set of facilities supplying one or more commodities and the set of requests
-for commodities at the given time step.</p>
-</div>
-<div class="section" id="id5">
-<h4>Output<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
-<p>A set of ResponsePortfolios.</p>
-</div>
-<div class="section" id="id6">
-<h4>Comments<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
-<p>As with the the RFB procedure, many strategies exist to construct the input
-set. A similar approach will be taken that queries all registered suppliers.</p>
+<div class="section" id="rrfb-phase">
+<h4>RRFB Phase<a class="headerlink" href="#rrfb-phase" title="Permalink to this headline">¶</a></h4>
+<p>ResourceExchange operations:</p>
+<ul class="simple">
+<li>Queries each Trader registered with the simulation Context, asking for
+BidPorftolios</li>
+<li>The ExchangeContext is given to each trader in order to determine all Requests
+for a specific commodity</li>
+</ul>
+<p>ExchangeContext state at end of phase:</p>
+<ul class="simple">
+<li>Bidders</li>
+<li>BidPortfolios</li>
+<li>Default preferences for each Bid-Request pair (provided in the original Request)</li>
+</ul>
 </div>
 </div>
 <div class="section" id="pa-procedure">
 <h3>PA Procedure<a class="headerlink" href="#pa-procedure" title="Permalink to this headline">¶</a></h3>
-<p>At the beginning of the Preference Assignment procedure, possible connections
-between supplier and consumer facilities are known. It is useful to think of
-these connections as arcs on a graph, where each arc represents a request that
-could be met by a supplier. The RequestPortfolios associated with a facility
-represent nodes in this graph with constraints associated with one or more of
-the arcs. The ResponsePortfolios represent supplier nodes with constraints over
-all incoming request arcs.</p>
-<div class="section" id="id7">
-<h4>Input<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
-<p>The set of ResponsePortfolios, providing the arcs on the supply-demand graph.</p>
+<p>ResourceExchange operations:</p>
+<ul class="simple">
+<li>For each Requester and each parent in the Model child-parent tree of that
+Requester, preferences are allowed to be perturbed, which looks nominally like:</li>
+</ul>
+<div class="highlight-c++"><div class="highlight"><pre><span class="c1">/// @brief allows a trader and its parents to adjust any preferences in the</span>
+<span class="c1">/// system</span>
+<span class="kt">void</span> <span class="nf">DoAdjustment</span><span class="p">(</span><span class="n">Trader</span><span class="o">*</span> <span class="n">t</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">typename</span> <span class="n">PrefMap</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">type</span><span class="o">&amp;</span> <span class="n">prefs</span> <span class="o">=</span> <span class="n">ex_ctx_</span><span class="p">.</span><span class="n">Prefs</span><span class="p">(</span><span class="n">t</span><span class="p">);</span>
+  <span class="n">Model</span><span class="o">*</span> <span class="n">m</span> <span class="o">=</span> <span class="k">dynamic_cast</span><span class="o">&lt;</span><span class="n">Model</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">t</span><span class="p">);</span>
+  <span class="k">while</span> <span class="p">(</span><span class="n">m</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">cyclus</span><span class="o">::</span><span class="n">AdjustPrefs</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">prefs</span><span class="p">);</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">m</span><span class="o">-&gt;</span><span class="n">parent</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
 </div>
-<div class="section" id="id8">
-<h4>Output<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h4>
-<p>Requester-based preferences for each supply-demand pair, with possible
-modifications made by the managers of the requester.</p>
-</div>
-<div class="section" id="unknown">
-<h4>Unknown<a class="headerlink" href="#unknown" title="Permalink to this headline">¶</a></h4>
-<p>The interaction of the manager perturbation of the the requester preferences
-does not have many well-defined used cases. The primary use case to date is
-regional preference modeling. The primary question concerning this algorithm is
-the timing of the perturbation. Two choices exist:</p>
-<ol class="arabic simple">
-<li>Apply perturbations immediately after the requester assigns a preference.</li>
-<li>Apply perturbations after all managed requesters assign their preferences.</li>
-</ol>
-<p>The second approach allows decision making given the aggregate of possible
-connections, i.e., it provides more information. However, its implementation
-will be more complicated and is perhaps unnecessary if a use case is not known.</p>
-</div>
-</div>
+<p>For full implementation details, please see the <a class="reference external" href="https://github.com/gidden/cyclus/tree/cep18">CEP18 branch</a>.</p>
+<p>ExchangeContext state at end of phase:</p>
+<ul class="simple">
+<li>Possibly perturbed preferences for each Bid-Request pair</li>
+</ul>
 <div class="section" id="marketalgorithm">
-<h3>MarketAlgorithm<a class="headerlink" href="#marketalgorithm" title="Permalink to this headline">¶</a></h3>
+<h4>MarketAlgorithm<a class="headerlink" href="#marketalgorithm" title="Permalink to this headline">¶</a></h4>
 <p>The MarketAlgorithm is a virtual base class for possible algorithms to solve the
 supply-demand matching algorithm.</p>
-<div class="section" id="id9">
-<h4>Input<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h4>
-<p>The set of ResponsePortfolios with associated preferences.</p>
+<p>The input for the algorithm is the full set of Requests, Bids, preferences, and
+CapacityConstraints.</p>
+<p>The output for the algorithm is Request-Bid pairs such that CapacityConstraints
+are not exceeded.</p>
 </div>
-<div class="section" id="id10">
-<h4>Output<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h4>
-<p>The set of chosen supply-demand pairs to execute.</p>
-</div>
-</div>
-<div class="section" id="marketexecution">
-<h3>MarketExecution<a class="headerlink" href="#marketexecution" title="Permalink to this headline">¶</a></h3>
-<p>The final step of the market resolution phase, the execution of the market
-provides suppliers with the full list of requests to be met. Suppliers are then
-asked to return a resource for each of the provided requests. Requesters are
-then notified of all orders that have been filled.</p>
 </div>
 </div>
 <div class="section" id="backwards-compatibility">
@@ -571,13 +547,13 @@ requests</li>
 <p id="bibtex-bibliography-cep/cep18-0"><table class="docutils citation" frame="void" id="julka-agent-based-2002" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> <span class="last"><span><span><span><span><span><span><span>N.</span><span>&nbsp;</span></span><span>Julka</span></span><span>, </span><span><span><span>R.</span><span>&nbsp;</span></span><span>Srinivasan</span></span></span><span>, and </span><span><span><span>I.</span><span>&nbsp;</span></span><span>Karimi</span></span></span><span>.</span></span><span> </span><span><span>Agent-based supply chain management-1: framework</span><span>.</span></span></span><span> </span><span><span><em><span>Computers &amp; Chemical Engineering</span></em><span>, </span><span><span><span>26</span><span><span>(</span><span>12</span><span>)</span></span><span>:</span></span><span>1755–1769</span></span></span><span>, </span><span>2002</span><span>.</span></span></span></td></tr>
+<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> N.&nbsp;Julka, R.&nbsp;Srinivasan, and I.&nbsp;Karimi. Agent-based supply chain management-1: framework. <em>Computers &amp; Chemical Engineering</em>, 26(12):1755–1769, 2002.</td></tr>
 </tbody>
 </table>
 <table class="docutils citation" frame="void" id="vlissides-design-1995" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id3">[2]</a></td><td><span class="first last"><span><span><span><span><span><span><span>John</span><span> </span></span><span>Vlissides</span></span><span>, </span><span><span><span>R</span><span>&nbsp;</span></span><span>Helm</span></span><span>, </span><span><span><span>R</span><span>&nbsp;</span></span><span>Johnson</span></span></span><span>, and </span><span><span><span>E</span><span>&nbsp;</span></span><span>Gamma</span></span></span><span>.</span></span><span> </span><span><span>Design patterns: elements of reusable object-oriented software</span><span>.</span></span></span><span> </span><span><em><span>Reading: Addison-Wesley</span></em><span>, </span><span>1995</span><span>.</span></span></span></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id3">[2]</a></td><td>John Vlissides, R&nbsp;Helm, R&nbsp;Johnson, and E&nbsp;Gamma. Design patterns: elements of reusable object-oriented software. <em>Reading: Addison-Wesley</em>, 1995.</td></tr>
 </tbody>
 </table>
 </p>
@@ -605,7 +581,7 @@ requests</li>
     </div>
     <div class="footer">
         &copy; Copyright 2012, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Oct 25, 2013.
+      Last updated on Oct 31, 2013.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>
