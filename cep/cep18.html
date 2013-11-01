@@ -89,9 +89,11 @@
 <li><a class="reference internal" href="#rfb-phase">RFB Phase</a></li>
 <li><a class="reference internal" href="#rrfb-phase">RRFB Phase</a></li>
 <li><a class="reference internal" href="#pa-procedure">PA Procedure</a></li>
-<li><a class="reference internal" href="#marketalgorithm">MarketAlgorithm</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#exchangegraph">ExchangeGraph</a></li>
+<li><a class="reference internal" href="#exchangetranslator">ExchangeTranslator</a></li>
+<li><a class="reference internal" href="#exchangesolver">ExchangeSolver</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#backwards-compatibility">Backwards Compatibility</a></li>
@@ -406,15 +408,20 @@ transport, for example.</p>
 </div>
 <div class="section" id="market-resolution">
 <h3>Market Resolution<a class="headerlink" href="#market-resolution" title="Permalink to this headline">¶</a></h3>
-<p>Upon completion of the information gathering step, the market resolution
-function will be called. The current &#8220;null market&#8221; behavior is defined as a
-&#8220;greedy matching&#8221; algorithm. Such an algorithm as currently implemented naively
-matches consumers with suppliers without particular regard for preference of
-commodity or resource. Accordingly, a similar algorithm will be implemented that
-greedily matches supplier and requester based on the requester&#8217;s highest
-preference, accounting for multiple commodity markets and associated production
-capacities. The matching algorithm used by a market is modular, and replaces the
-notion of the MarketModel.</p>
+<p>Upon completion of the information gathering step, all information regarding the
+exchange is known. Importantly, proposed resource qualities, constraining values
+based on the resource quality, and other data such as preferences and/or costs
+are known. Given these static values, the exchange can be translated to a graph
+with supplier/consumer nodes, arcs defined by bids, supplier and consumer
+constraints on those arcs, and consumer-based preferences for those arcs.</p>
+<p>The exchange is responsible for translating its gathered information into such a
+graph formulation, and various solvers can solve the material flow along the
+arcs of that graph. The solutions are then provided to the exchange for
+back-translation into resource-specific request-bid pairs. Given such pairings,
+the exchange executes the trades.</p>
+<p>It is important to note that a generic solver interface is defined and provided
+a resource exchange graph. Different subclasses can define solution algorithms
+given the graph.</p>
 </div>
 </div>
 <div class="section" id="specification-implementation">
@@ -513,14 +520,54 @@ Requester, preferences are allowed to be perturbed, which looks nominally like:<
 <li>Possibly perturbed preferences for each Bid-Request pair</li>
 </ul>
 </div>
-<div class="section" id="marketalgorithm">
-<h4>MarketAlgorithm<a class="headerlink" href="#marketalgorithm" title="Permalink to this headline">¶</a></h4>
-<p>The MarketAlgorithm is a virtual base class for possible algorithms to solve the
-supply-demand matching algorithm.</p>
-<p>The input for the algorithm is the full set of Requests, Bids, preferences, and
-CapacityConstraints.</p>
-<p>The output for the algorithm is Request-Bid pairs such that CapacityConstraints
-are not exceeded.</p>
+</div>
+<div class="section" id="exchangegraph">
+<h3>ExchangeGraph<a class="headerlink" href="#exchangegraph" title="Permalink to this headline">¶</a></h3>
+<p>An ExchangeGraph is a graph representation of a resource exchange. It provides a
+resource-free representation of the exchange, i.e., the quality-specific
+constraint and preference values are &#8220;baked in&#8221;. By the nature of the
+supplier/requester setup, the graph is bipartite, thus there is a notion of U
+(left) and V (right) nodes, and arcs strictly connect a U node to a V
+node. Constraints are defined along arcs, where each u-v node pair is associated
+with a constraining value. Preferences are also defined along arcs.</p>
+</div>
+<div class="section" id="exchangetranslator">
+<h3>ExchangeTranslator<a class="headerlink" href="#exchangetranslator" title="Permalink to this headline">¶</a></h3>
+<p>The ExchangeTranslator is an object responsible for translating a given
+ExchangeContext into an ExchangeGraph, and has a pretty simple interface:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="k">template</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span>
+<span class="k">struct</span> <span class="n">ExchangePair</span> <span class="p">{</span>
+   <span class="n">Request</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">Ptr</span> <span class="n">r</span><span class="p">;</span> <span class="c1">// request</span>
+   <span class="n">Bid</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">Ptr</span> <span class="n">b</span><span class="p">;</span> <span class="c1">// bid</span>
+   <span class="kt">double</span> <span class="n">p</span><span class="p">;</span> <span class="c1">// percent of bid to give</span>
+<span class="p">}</span>
+
+<span class="k">template</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span>
+<span class="k">class</span> <span class="nc">ExchangeTranslator</span> <span class="p">{</span>
+ <span class="nl">public:</span>
+  <span class="n">ExchangeGraph</span> <span class="n">ToGraph</span><span class="p">(</span><span class="k">const</span> <span class="n">ExchangeContext</span><span class="o">&amp;</span> <span class="n">ec</span><span class="p">)</span> <span class="p">{</span>
+   <span class="cm">/* do translation */</span>
+  <span class="p">};</span>
+
+  <span class="n">std</span><span class="o">::</span><span class="n">set</span><span class="o">&lt;</span> <span class="n">ExchangePair</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">&gt;</span>
+    <span class="n">FromGraph</span><span class="p">(</span><span class="k">const</span> <span class="n">ExchangeGraph</span><span class="o">&amp;</span> <span class="n">eg</span><span class="p">)</span> <span class="p">{</span>
+     <span class="cm">/* do back-translation */</span>
+  <span class="p">};</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="exchangesolver">
+<h3>ExchangeSolver<a class="headerlink" href="#exchangesolver" title="Permalink to this headline">¶</a></h3>
+<p>The ExchangeSolver is a virtual interface for solvers of a resource exchange. A
+constrained ExchangeGraph is provided as input, and a solution ExchangeGraph is
+provided as output, which satisfies the provided constraints. It too, has a
+pretty simple interface</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="k">class</span> <span class="nc">ExchangeSolver</span> <span class="p">{</span>
+ <span class="nl">public:</span>
+  <span class="k">virtual</span> <span class="kt">void</span> <span class="n">Solve</span><span class="p">(</span><span class="k">const</span> <span class="n">ExchangeGraph</span><span class="o">&amp;</span> <span class="n">g</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
 </div>
 </div>
 </div>
@@ -579,7 +626,7 @@ requests</li>
     </div>
     <div class="footer">
         &copy; Copyright 2012, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Oct 31, 2013.
+      Last updated on Nov 01, 2013.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>
