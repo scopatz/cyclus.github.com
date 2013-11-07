@@ -513,7 +513,7 @@ Requester, preferences are allowed to be perturbed, which looks nominally like:<
 </ul>
 <div class="highlight-c++"><div class="highlight"><pre><span class="c1">/// @brief allows a trader and its parents to adjust any preferences in the</span>
 <span class="c1">/// system</span>
-<span class="kt">void</span> <span class="nf">DoAdjustment</span><span class="p">(</span><span class="n">Trader</span><span class="o">*</span> <span class="n">t</span><span class="p">)</span> <span class="p">{</span>
+<span class="kt">void</span> <span class="n">DoAdjustment</span><span class="p">(</span><span class="n">Trader</span><span class="o">*</span> <span class="n">t</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">typename</span> <span class="n">PrefMap</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">type</span><span class="o">&amp;</span> <span class="n">prefs</span> <span class="o">=</span> <span class="n">ex_ctx_</span><span class="p">.</span><span class="n">Prefs</span><span class="p">(</span><span class="n">t</span><span class="p">);</span>
   <span class="n">Model</span><span class="o">*</span> <span class="n">m</span> <span class="o">=</span> <span class="k">dynamic_cast</span><span class="o">&lt;</span><span class="n">Model</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">t</span><span class="p">);</span>
   <span class="k">while</span> <span class="p">(</span><span class="n">m</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
@@ -553,7 +553,7 @@ ExchangeContext into an ExchangeGraph, and has a pretty simple interface:</p>
 
 <span class="k">template</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span>
 <span class="k">class</span> <span class="nc">ExchangeTranslator</span> <span class="p">{</span>
- <span class="nl">public:</span>
+ <span class="k">public</span><span class="o">:</span>
   <span class="n">ExchangeGraph</span> <span class="n">ToGraph</span><span class="p">(</span><span class="k">const</span> <span class="n">ExchangeContext</span><span class="o">&amp;</span> <span class="n">ec</span><span class="p">)</span> <span class="p">{</span>
    <span class="cm">/* do translation */</span>
   <span class="p">};</span>
@@ -573,7 +573,7 @@ constrained ExchangeGraph is provided as input, and a solution ExchangeGraph is
 provided as output, which satisfies the provided constraints. It too, has a
 pretty simple interface</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="k">class</span> <span class="nc">ExchangeSolver</span> <span class="p">{</span>
- <span class="nl">public:</span>
+ <span class="k">public</span><span class="o">:</span>
   <span class="k">virtual</span> <span class="kt">void</span> <span class="n">Solve</span><span class="p">(</span><span class="k">const</span> <span class="n">ExchangeGraph</span><span class="o">&amp;</span> <span class="n">g</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 <span class="p">};</span>
 </pre></div>
@@ -601,13 +601,13 @@ requests</li>
 <p id="bibtex-bibliography-cep/cep18-0"><table class="docutils citation" frame="void" id="julka-agent-based-2002" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> <span class="last"><span><span><span><span><span><span><span>N.</span><span>&nbsp;</span></span><span>Julka</span></span><span>, </span><span><span><span>R.</span><span>&nbsp;</span></span><span>Srinivasan</span></span></span><span>, and </span><span><span><span>I.</span><span>&nbsp;</span></span><span>Karimi</span></span></span><span>.</span></span><span> </span><span><span>Agent-based supply chain management-1: framework</span><span>.</span></span></span><span> </span><span><span><em><span>Computers &amp; Chemical Engineering</span></em><span>, </span><span><span><span>26</span><span><span>(</span><span>12</span><span>)</span></span><span>:</span></span><span>1755–1769</span></span></span><span>, </span><span>2002</span><span>.</span></span></span></td></tr>
+<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> N.&nbsp;Julka, R.&nbsp;Srinivasan, and I.&nbsp;Karimi. Agent-based supply chain management-1: framework. <em>Computers &amp; Chemical Engineering</em>, 26(12):1755–1769, 2002.</td></tr>
 </tbody>
 </table>
 <table class="docutils citation" frame="void" id="vlissides-design-1995" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id3">[2]</a></td><td><span class="first last"><span><span><span><span><span><span><span>John</span><span> </span></span><span>Vlissides</span></span><span>, </span><span><span><span>R</span><span>&nbsp;</span></span><span>Helm</span></span><span>, </span><span><span><span>R</span><span>&nbsp;</span></span><span>Johnson</span></span></span><span>, and </span><span><span><span>E</span><span>&nbsp;</span></span><span>Gamma</span></span></span><span>.</span></span><span> </span><span><span>Design patterns: elements of reusable object-oriented software</span><span>.</span></span></span><span> </span><span><em><span>Reading: Addison-Wesley</span></em><span>, </span><span>1995</span><span>.</span></span></span></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id3">[2]</a></td><td>John Vlissides, R&nbsp;Helm, R&nbsp;Johnson, and E&nbsp;Gamma. Design patterns: elements of reusable object-oriented software. <em>Reading: Addison-Wesley</em>, 1995.</td></tr>
 </tbody>
 </table>
 </p>
@@ -638,7 +638,7 @@ requests</li>
     </div>
     <div class="footer">
         &copy; Copyright 2012, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Nov 07, 2013.
+      Last updated on Nov 04, 2013.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>

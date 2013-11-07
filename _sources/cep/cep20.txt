@@ -1,0 +1,132 @@
+CEP 20 - Entity Instantiation and Simulation Entry
+**************************************************
+
+:CEP: 20
+:Title: Entity Instantiation and Simulation Deployment
+:Last-Modified: 2013-10-18
+:Author: Matthew Gidden
+:Status: Draft
+:Type: Informational
+:Created: 2013-10-18
+
+Introduction
+============
+
+Cyclus is programmed in an object-oriented language and uses instances of
+classes as agents within a simulation. There is a difference, though, between an
+class instance that has been instantiated in the Cyclus program and an agent
+that has been deployed in the simulation. More specifically, the calling of an
+object's constructor or desctructor is conceptually different from an agent's
+entrance to or exit from (respectively) the simulation. This CEP attempts to
+provide an overview of these differences and inform Cyclus new developers how
+entities are instantiated and deployed in a Cyclus simulation.
+
+Motivation
+==========
+
+Through the Cyclus development process, there has been some fluidity with
+respect to this topic. We have appeared to reach an equilibrium, and the current
+state deserves some more in-depth, over-arching documentation than exists for
+individual classes and methods.
+
+Class/Agent Instantiation
+=========================
+
+Agent models, i.e., regions, institutions, and facilities, in Cyclus are
+represented as objects in an inheritance hierarchy. Each specific type of agent
+inherits from a base Model class, e.g.:
+
+.. code-block:: c++
+
+    class Model {
+    
+      // model public and private members
+
+    }
+
+    class FacilityModel : public Model {
+    
+      // facility model public and private members
+
+    }
+
+    class RegionModel : public Model {
+
+      // region model public and private members
+
+    }
+
+Similarly, each custom module inherits from the appropriate agent model class,
+e.g.:
+
+.. code-block:: c++
+
+    class MyFacility : public FacilityModel {
+    
+      // myfacility model public and private members
+
+    }
+
+At the beginning of a Cyclus run, one of each agent type (as defined by an input
+file) is constructed (i.e., the constructor is called). Because the object has
+not entered the simulation, simulation-specific paramteres are not set in an
+agent's constructor.
+
+The input file is then queried to determine what input-specific parameters
+should be associated with the given agent object. Input for an agent model is
+two-tiered in the input file, and the method calls match this paradigm. For
+instance, XML input for a model could look something like:
+
+.. code-block:: xml
+
+  <facility>
+    <name>some_facility_name</name>
+    <!-- Model and FacilityModel specific input -->
+    <model>
+      <MyFacModel>
+        <!-- MyFacModel specific input -->
+      </MyFacModel>
+    </model>
+  </facility>
+
+The corresponding methods calls look something like:
+
+.. code-block:: c++
+
+      Model* model = ConstructModuleInstance(model_name); // i.e., "MyFacModel"
+      model->InitCoreMembers(core_model_level_input); // at the <facility> level
+      model->InitModuleMembers(custom_model_level_input); // at the <MyFacModel> level
+
+At this point, Cyclus has a fully **instantiated** object of each agent type in
+a simulation, but has done nothing yet with that object in the simulation.
+
+Agent Deployment
+================
+
+Agents in a Cyclus **enter** a simulation through the process of
+**deployment**. Deployment is separate from initialization, and requires that an
+agent be initialized first. Deployment is invoked via a ``Deploy`` method. When
+the ``Deploy`` method exits, the entity has officially been introduced into the
+simulation. For example, entity information is recorded in the simulation output
+during this step.
+
+The means by which agents are deployed is a function of the type of
+agent. Regions are deployed directly after being initialized. Regions are then
+responsible for deploying their constituent institutions. 
+
+Facilities are markedly different from regions and institutions, because myriad
+deployments occur during a simulation whereas regions and institutions are only
+deployed once at the beginning of the simulation. Accordingly, the `Prototype
+Design Pattern`_ is used, which affects facility deployment.
+
+Facilities as Prototypes
+------------------------
+
+
+
+Document History
+================
+
+This document is released under the CC-BY 3.0 license.
+
+.. _Prototype Design Pattern: http://en.wikipedia.org/wiki/Prototype_pattern

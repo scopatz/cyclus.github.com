@@ -1,0 +1,264 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>CEP 20 - Entity Instantiation and Simulation Entry &mdash; Cyclus Home</title>
+    
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Cyclus Home" href="../index.html" />
+   
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-12222727-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+  </head>
+  <body>
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+  <a href="http://cyclus.github.com">
+    <img src="../_static/logo1.png"/>
+  </a>
+</div>
+
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li><a href="../index.html">Cyclus Home</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">CEP 20 - Entity Instantiation and Simulation Entry</a><ul>
+<li><a class="reference internal" href="#introduction">Introduction</a></li>
+<li><a class="reference internal" href="#motivation">Motivation</a></li>
+<li><a class="reference internal" href="#class-agent-instantiation">Class/Agent Instantiation</a></li>
+<li><a class="reference internal" href="#agent-deployment">Agent Deployment</a><ul>
+<li><a class="reference internal" href="#facilities-as-prototypes">Facilities as Prototypes</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#document-history">Document History</a></li>
+</ul>
+</li>
+</ul>
+
+  <h3>Useful Pages</h3>
+    <li><a href="http://cyclus.github.com/basics/glossary.html">Glossary</a></li>
+    <li><a href="http://cyclus.github.com/basics/roadmap.html">Roadmap</a></li>
+    <li><a href="https://github.com/cyclus">Source Code</a></li>
+    <li><a href="http://cnergdata.engr.wisc.edu/cyclus/core/docs/">Cyclus Core Documentation</a></li>
+    
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <h3>Acknowledgements</h3>
+    Support for this research has included funding received from:
+    <img src=/_images/neup_logo_large.jpg width=170px>
+    <img src=/_images/AnlLogo.png height=100px>
+    <img src=/_images/USNRC.gif height=100px>
+    <img src=/_images/nsf_logo.jpg height=100px>
+    <img src=/_images/crest.png height=100px>
+
+    
+
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="cep-20-entity-instantiation-and-simulation-entry">
+<h1>CEP 20 - Entity Instantiation and Simulation Entry<a class="headerlink" href="#cep-20-entity-instantiation-and-simulation-entry" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">CEP:</th><td class="field-body">20</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Title:</th><td class="field-body">Entity Instantiation and Simulation Deployment</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Last-Modified:</th><td class="field-body">2013-10-18</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Author:</th><td class="field-body">Matthew Gidden</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Status:</th><td class="field-body">Draft</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">Informational</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Created:</th><td class="field-body">2013-10-18</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>Cyclus is programmed in an object-oriented language and uses instances of
+classes as agents within a simulation. There is a difference, though, between an
+class instance that has been instantiated in the Cyclus program and an agent
+that has been deployed in the simulation. More specifically, the calling of an
+object&#8217;s constructor or desctructor is conceptually different from an agent&#8217;s
+entrance to or exit from (respectively) the simulation. This CEP attempts to
+provide an overview of these differences and inform Cyclus new developers how
+entities are instantiated and deployed in a Cyclus simulation.</p>
+</div>
+<div class="section" id="motivation">
+<h2>Motivation<a class="headerlink" href="#motivation" title="Permalink to this headline">¶</a></h2>
+<p>Through the Cyclus development process, there has been some fluidity with
+respect to this topic. We have appeared to reach an equilibrium, and the current
+state deserves some more in-depth, over-arching documentation than exists for
+individual classes and methods.</p>
+</div>
+<div class="section" id="class-agent-instantiation">
+<h2>Class/Agent Instantiation<a class="headerlink" href="#class-agent-instantiation" title="Permalink to this headline">¶</a></h2>
+<p>Agent models, i.e., regions, institutions, and facilities, in Cyclus are
+represented as objects in an inheritance hierarchy. Each specific type of agent
+inherits from a base Model class, e.g.:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Model</span> <span class="p">{</span>
+
+  <span class="c1">// model public and private members</span>
+
+<span class="p">}</span>
+
+<span class="k">class</span> <span class="nc">FacilityModel</span> <span class="o">:</span> <span class="k">public</span> <span class="n">Model</span> <span class="p">{</span>
+
+  <span class="c1">// facility model public and private members</span>
+
+<span class="p">}</span>
+
+<span class="k">class</span> <span class="nc">RegionModel</span> <span class="o">:</span> <span class="k">public</span> <span class="n">Model</span> <span class="p">{</span>
+
+  <span class="c1">// region model public and private members</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Similarly, each custom module inherits from the appropriate agent model class,
+e.g.:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="k">class</span> <span class="nc">MyFacility</span> <span class="o">:</span> <span class="k">public</span> <span class="n">FacilityModel</span> <span class="p">{</span>
+
+  <span class="c1">// myfacility model public and private members</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>At the beginning of a Cyclus run, one of each agent type (as defined by an input
+file) is constructed (i.e., the constructor is called). Because the object has
+not entered the simulation, simulation-specific paramteres are not set in an
+agent&#8217;s constructor.</p>
+<p>The input file is then queried to determine what input-specific parameters
+should be associated with the given agent object. Input for an agent model is
+two-tiered in the input file, and the method calls match this paradigm. For
+instance, XML input for a model could look something like:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;facility&gt;</span>
+  <span class="nt">&lt;name&gt;</span>some_facility_name<span class="nt">&lt;/name&gt;</span>
+  <span class="c">&lt;!-- Model and FacilityModel specific input --&gt;</span>
+  <span class="nt">&lt;model&gt;</span>
+    <span class="nt">&lt;MyFacModel&gt;</span>
+      <span class="c">&lt;!-- MyFacModel specific input --&gt;</span>
+    <span class="nt">&lt;/MyFacModel&gt;</span>
+  <span class="nt">&lt;/model&gt;</span>
+<span class="nt">&lt;/facility&gt;</span>
+</pre></div>
+</div>
+<p>The corresponding methods calls look something like:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="n">Model</span><span class="o">*</span> <span class="n">model</span> <span class="o">=</span> <span class="n">ConstructModuleInstance</span><span class="p">(</span><span class="n">model_name</span><span class="p">);</span> <span class="c1">// i.e., &quot;MyFacModel&quot;</span>
+<span class="n">model</span><span class="o">-&gt;</span><span class="n">InitCoreMembers</span><span class="p">(</span><span class="n">core_model_level_input</span><span class="p">);</span> <span class="c1">// at the &lt;facility&gt; level</span>
+<span class="n">model</span><span class="o">-&gt;</span><span class="n">InitModuleMembers</span><span class="p">(</span><span class="n">custom_model_level_input</span><span class="p">);</span> <span class="c1">// at the &lt;MyFacModel&gt; level</span>
+</pre></div>
+</div>
+<p>At this point, Cyclus has a fully <strong>instantiated</strong> object of each agent type in
+a simulation, but has done nothing yet with that object in the simulation.</p>
+</div>
+<div class="section" id="agent-deployment">
+<h2>Agent Deployment<a class="headerlink" href="#agent-deployment" title="Permalink to this headline">¶</a></h2>
+<p>Agents in a Cyclus <strong>enter</strong> a simulation through the process of
+<strong>deployment</strong>. Deployment is separate from initialization, and requires that an
+agent be initialized first. Deployment is invoked via a <tt class="docutils literal"><span class="pre">Deploy</span></tt> method. When
+the <tt class="docutils literal"><span class="pre">Deploy</span></tt> method exits, the entity has officially been introduced into the
+simulation. For example, entity information is recorded in the simulation output
+during this step.</p>
+<p>The means by which agents are deployed is a function of the type of
+agent. Regions are deployed directly after being initialized. Regions are then
+responsible for deploying their constituent institutions.</p>
+<p>Facilities are markedly different from regions and institutions, because myriad
+deployments occur during a simulation whereas regions and institutions are only
+deployed once at the beginning of the simulation. Accordingly, the <a class="reference external" href="http://en.wikipedia.org/wiki/Prototype_pattern">Prototype
+Design Pattern</a> is used, which affects facility deployment.</p>
+<div class="section" id="facilities-as-prototypes">
+<h3>Facilities as Prototypes<a class="headerlink" href="#facilities-as-prototypes" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="document-history">
+<h2>Document History<a class="headerlink" href="#document-history" title="Permalink to this headline">¶</a></h2>
+<p>This document is released under the CC-BY 3.0 license.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li><a href="../index.html">Cyclus Home</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, University of Wisconsin Computational Nuclear Engineering Research Group.
+      Last updated on Nov 04, 2013.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
