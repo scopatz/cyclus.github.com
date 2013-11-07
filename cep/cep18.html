@@ -28,6 +28,7 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="Cyclus Home" href="../index.html" />
     <link rel="up" title="Cyclus Enhancement Proposals" href="cep0.html" />
+    <link rel="next" title="CEP 19 - Cyclus Input Procedure Updates" href="cep19.html" />
     <link rel="prev" title="CEP 17 - Resource Tracking and Interfaces Re-Re-Redo" href="cep17.html" />
    
 <script type="text/javascript">
@@ -60,6 +61,9 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
+          <a href="cep19.html" title="CEP 19 - Cyclus Input Procedure Updates"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
           <a href="cep17.html" title="CEP 17 - Resource Tracking and Interfaces Re-Re-Redo"
              accesskey="P">previous</a> |</li>
         <li><a href="../index.html">Cyclus Home</a> &raquo;</li>
@@ -85,30 +89,15 @@
 </li>
 <li><a class="reference internal" href="#specification-implementation">Specification &amp; Implementation</a><ul>
 <li><a class="reference internal" href="#constituent-classes-and-containers">Constituent Classes and Containers</a></li>
-<li><a class="reference internal" href="#rfb-procedure">RFB Procedure</a><ul>
-<li><a class="reference internal" href="#input">Input</a></li>
-<li><a class="reference internal" href="#output">Output</a></li>
-<li><a class="reference internal" href="#comments">Comments</a></li>
+<li><a class="reference internal" href="#resource-exchange">Resource Exchange</a><ul>
+<li><a class="reference internal" href="#rfb-phase">RFB Phase</a></li>
+<li><a class="reference internal" href="#rrfb-phase">RRFB Phase</a></li>
+<li><a class="reference internal" href="#pa-procedure">PA Procedure</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#rrfb-procedure">RRFB Procedure</a><ul>
-<li><a class="reference internal" href="#id4">Input</a></li>
-<li><a class="reference internal" href="#id5">Output</a></li>
-<li><a class="reference internal" href="#id6">Comments</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#pa-procedure">PA Procedure</a><ul>
-<li><a class="reference internal" href="#id7">Input</a></li>
-<li><a class="reference internal" href="#id8">Output</a></li>
-<li><a class="reference internal" href="#unknown">Unknown</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#marketalgorithm">MarketAlgorithm</a><ul>
-<li><a class="reference internal" href="#id9">Input</a></li>
-<li><a class="reference internal" href="#id10">Output</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#marketexecution">MarketExecution</a></li>
+<li><a class="reference internal" href="#exchangegraph">ExchangeGraph</a></li>
+<li><a class="reference internal" href="#exchangetranslator">ExchangeTranslator</a></li>
+<li><a class="reference internal" href="#exchangesolver">ExchangeSolver</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#backwards-compatibility">Backwards Compatibility</a></li>
@@ -121,6 +110,9 @@
   <h4>Previous topic</h4>
   <p class="topless"><a href="cep17.html"
                         title="previous chapter">CEP 17 - Resource Tracking and Interfaces Re-Re-Redo</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="cep19.html"
+                        title="next chapter">CEP 19 - Cyclus Input Procedure Updates</a></p>
   <h3>Useful Pages</h3>
     <li><a href="http://cyclus.github.com/basics/glossary.html">Glossary</a></li>
     <li><a href="http://cyclus.github.com/basics/roadmap.html">Roadmap</a></li>
@@ -168,7 +160,7 @@
 </tr>
 <tr class="field-even field"><th class="field-name">Title:</th><td class="field-body">Dynamic Resource Exchange Procedure</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Last-Modified:</th><td class="field-body">2013-09-27</td>
+<tr class="field-odd field"><th class="field-name">Last-Modified:</th><td class="field-body">2013-11-04</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Author:</th><td class="field-body">Matthew Gidden</td>
 </tr>
@@ -246,15 +238,16 @@ mechanism, again muddying the concerns associated with the resource exchange.</p
 <p>The proposed refactor addresses each of the issues provided in the previous
 section. The notion of market models is redefined, separating the collection of
 supply-demand information from the algorithm used to match suppliers with
-consumers. The information gathering framework is structured and core-based. It
-is top-down in the sense that it queries facilities for their supply and demand
-rather than requiring facility-based notifications. Accordingly, concerns are
-appropriately separated: the information is gathered by the core at the
-beginning of the resolve step, allowing facilities to inform a given market
-algorithm; market algorithms determine the set of offers and requests to be
-matched; and the core sends out resolved transactions. Message passing to and
-from markets is addressed by the framework, providing facilities, institutions,
-and regions each with specific, defined agency.</p>
+consumers. The information gathering framework is structured and handled by the
+Cyclus core (i.e., not adjustable by model developers). It is top-down in the
+sense that it queries facilities for their supply and demand rather than
+requiring facility-based notifications. Accordingly, concerns are appropriately
+separated: the information is gathered by the core at the beginning of the
+resolve step, allowing facilities to inform a given market algorithm; market
+algorithms determine the set of offers and requests to be matched; and the core
+sends out resolved transactions. Message passing to and from markets is
+addressed by the framework, providing facilities, institutions, and regions each
+with specific, defined agency.</p>
 <div class="section" id="supply-demand-framework">
 <h3>Supply-Demand Framework<a class="headerlink" href="#supply-demand-framework" title="Permalink to this headline">¶</a></h3>
 <p>Supply-demand determination at any given time step occurs in nominally three
@@ -349,7 +342,7 @@ effectively eliminating that arc.</p>
 <p>It should be noted that these preferences are requester based. This choice is
 based on the current simulation design notion of requesters having a preference
 over possible inputs. It is possible that in the future, one would like to model
-the notion of supplier preference (i.e., moreso than the implicit nature
+the notion of supplier preference (i.e., more so than the implicit nature
 currently provided by allowing suppliers to set the transaction quality and
 whether to respond to the transaction at all). One suggestion may be to allow
 suppliers to also have a supply preference, and to use the average of them in
@@ -413,9 +406,9 @@ allows fuel cycle simulation developers to model relatively complex interactions
 at a regional level, such as tariffs and sanctions. Constraints to cross-border
 trading can also be applied. For example, a region could place constraints on
 the total amount of a given commodity type that is able to flow into it or out
-of it into a different region. Such constraints could applied not only to bulk
-quantities of a commodity, but also to the quality of each commodity. Such a
-mechanism could be used to model interdiction of highly-enriched uranium
+of it into a different region. Such constraints could be applied not only to
+bulk quantities of a commodity, but also to the quality of each commodity. Such
+a mechanism could be used to model interdiction of highly-enriched uranium
 transport, for example.</p>
 <div align="center" class="align-center"><img src="../_images/cep-0018-2.svg" /></div>
 <p><strong>Figure 4:</strong> Information Gathering Phase Order.</p>
@@ -423,15 +416,20 @@ transport, for example.</p>
 </div>
 <div class="section" id="market-resolution">
 <h3>Market Resolution<a class="headerlink" href="#market-resolution" title="Permalink to this headline">¶</a></h3>
-<p>Upon completion of the information gathering step, the market resolution
-function will be called. The current &#8220;null market&#8221; behavior is defined as a
-&#8220;greedy matching&#8221; algorithm. Such an algorithm as currently implemented naively
-matches consumers with suppliers without particular regard for preference of
-commodity or resource. Accordingly, a similar algorithm will be implemented that
-greedily matches supplier and requester based on the requester&#8217;s highest
-preference, accounting for multiple commodity markets and associated production
-capacities. The matching algorithm used by a market is modular, and replaces the
-notion of the MarketModel.</p>
+<p>Upon completion of the information gathering step, all information regarding the
+exchange is known. Importantly, proposed resource qualities, constraining values
+based on the resource quality, and other data such as preferences and/or costs
+are known. Given these static values, the exchange can be translated to a graph
+with supplier/consumer nodes, arcs defined by bids, supplier and consumer
+constraints on those arcs, and consumer-based preferences for those arcs.</p>
+<p>The exchange is responsible for translating its gathered information into such a
+graph formulation, and various solvers can solve the material flow along the
+arcs of that graph. The solutions are then provided to the exchange for
+back-translation into resource-specific request-bid pairs. Given such pairings,
+the exchange executes the trades.</p>
+<p>It is important to note that a generic solver interface is defined and its
+constructor is provided a resource exchange graph. Different subclasses can
+define solution algorithms given the graph.</p>
 </div>
 </div>
 <div class="section" id="specification-implementation">
@@ -443,7 +441,7 @@ described. Because the phases utilize new classes and containers, those are
 described first.</p>
 <div class="section" id="constituent-classes-and-containers">
 <h3>Constituent Classes and Containers<a class="headerlink" href="#constituent-classes-and-containers" title="Permalink to this headline">¶</a></h3>
-<p>The major new datastructures required for this proposal are:</p>
+<p>The major new data structures required for this proposal are:</p>
 <ul class="simple">
 <li>Bids</li>
 <li>BidPortfolios</li>
@@ -460,94 +458,126 @@ classes and dynamic casting to derived classes) can be invoked by templating on
 the <tt class="docutils literal"><span class="pre">Resource</span></tt> type, i.e., <tt class="docutils literal"><span class="pre">Request&lt;Resource&gt;</span></tt>. See the <a class="reference external" href="https://github.com/gidden/cyclus/blob/cep18/tests/capacity_constraint_tests.cc">capacity constraint
 tests</a> for an example of this range of behavior.</p>
 </div>
-<div class="section" id="rfb-procedure">
-<h3>RFB Procedure<a class="headerlink" href="#rfb-procedure" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="input">
-<h4>Input<a class="headerlink" href="#input" title="Permalink to this headline">¶</a></h4>
-<p>The set of facilities requesting/demanding one or more commodities at the given
-time step.</p>
+<div class="section" id="resource-exchange">
+<h3>Resource Exchange<a class="headerlink" href="#resource-exchange" title="Permalink to this headline">¶</a></h3>
+<p>The resource exchange is implemented through coordination of two classes, the
+ResourceExchange and the ExchangeContext, both of which are implemented with
+tests in the <a class="reference external" href="https://github.com/gidden/cyclus/tree/cep18">CEP18 branch</a>.</p>
+<p>The ExchangeContext retains the current state of the exchange, including
+information regarding the players (i.e., requesters and suppliers) as well as
+information regarding requests and bids. The ResourceExchange initiates the
+various phases and updates the context state. As currently envisioned, an
+exchange and context&#8217;s lifetime is the single resolution of the exchange at a
+given time. The exchange is populated with traders as known by the wider
+simulation context. Both the ExchangeContext and ResourceExchange are templated
+on the Resource being exchanged, as was the case above. An overview of the
+exchange implementation follows, noting the state updates of the context at each
+phase.</p>
+<div class="section" id="rfb-phase">
+<h4>RFB Phase<a class="headerlink" href="#rfb-phase" title="Permalink to this headline">¶</a></h4>
+<p>Note that the ExchangeContext has no state at the beginning of the phases.</p>
+<p>ResourceExchange operations:</p>
+<ul class="simple">
+<li>Queries each Trader registered with the simulation Context, asking for
+RequestPortfolios</li>
+</ul>
+<p>ExchangeContext state at end of phase:</p>
+<ul class="simple">
+<li>Requesters</li>
+<li>Requests</li>
+<li>RequestPortfolio</li>
+</ul>
 </div>
-<div class="section" id="output">
-<h4>Output<a class="headerlink" href="#output" title="Permalink to this headline">¶</a></h4>
-<p>A Set of RequestPortfolios.</p>
-</div>
-<div class="section" id="comments">
-<h4>Comments<a class="headerlink" href="#comments" title="Permalink to this headline">¶</a></h4>
-<p>There are multiple strategies that could be taken to determine the input
-list. As a first approach, a naive strategy will be taken that queries each
-facility that is registered as a requester to determine demand at each time
-step.</p>
-</div>
-</div>
-<div class="section" id="rrfb-procedure">
-<h3>RRFB Procedure<a class="headerlink" href="#rrfb-procedure" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="id4">
-<h4>Input<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
-<p>The set of facilities supplying one or more commodities and the set of requests
-for commodities at the given time step.</p>
-</div>
-<div class="section" id="id5">
-<h4>Output<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
-<p>A set of ResponsePortfolios.</p>
-</div>
-<div class="section" id="id6">
-<h4>Comments<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
-<p>As with the the RFB procedure, many strategies exist to construct the input
-set. A similar approach will be taken that queries all registered suppliers.</p>
-</div>
+<div class="section" id="rrfb-phase">
+<h4>RRFB Phase<a class="headerlink" href="#rrfb-phase" title="Permalink to this headline">¶</a></h4>
+<p>ResourceExchange operations:</p>
+<ul class="simple">
+<li>Queries each Trader registered with the simulation Context, asking for
+BidPorftolios</li>
+<li>The ExchangeContext is given to each trader in order to determine all Requests
+for a specific commodity</li>
+</ul>
+<p>ExchangeContext state at end of phase:</p>
+<ul class="simple">
+<li>Bidders</li>
+<li>BidPortfolios</li>
+<li>Default preferences for each Bid-Request pair (provided in the original Request)</li>
+</ul>
 </div>
 <div class="section" id="pa-procedure">
-<h3>PA Procedure<a class="headerlink" href="#pa-procedure" title="Permalink to this headline">¶</a></h3>
-<p>At the beginning of the Preference Assignment procedure, possible connections
-between supplier and consumer facilities are known. It is useful to think of
-these connections as arcs on a graph, where each arc represents a request that
-could be met by a supplier. The RequestPortfolios associated with a facility
-represent nodes in this graph with constraints associated with one or more of
-the arcs. The ResponsePortfolios represent supplier nodes with constraints over
-all incoming request arcs.</p>
-<div class="section" id="id7">
-<h4>Input<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
-<p>The set of ResponsePortfolios, providing the arcs on the supply-demand graph.</p>
+<h4>PA Procedure<a class="headerlink" href="#pa-procedure" title="Permalink to this headline">¶</a></h4>
+<p>ResourceExchange operations:</p>
+<ul class="simple">
+<li>For each Requester and each parent in the Model child-parent tree of that
+Requester, preferences are allowed to be perturbed, which looks nominally like:</li>
+</ul>
+<div class="highlight-c++"><div class="highlight"><pre><span class="c1">/// @brief allows a trader and its parents to adjust any preferences in the</span>
+<span class="c1">/// system</span>
+<span class="kt">void</span> <span class="nf">DoAdjustment</span><span class="p">(</span><span class="n">Trader</span><span class="o">*</span> <span class="n">t</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">typename</span> <span class="n">PrefMap</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">type</span><span class="o">&amp;</span> <span class="n">prefs</span> <span class="o">=</span> <span class="n">ex_ctx_</span><span class="p">.</span><span class="n">Prefs</span><span class="p">(</span><span class="n">t</span><span class="p">);</span>
+  <span class="n">Model</span><span class="o">*</span> <span class="n">m</span> <span class="o">=</span> <span class="k">dynamic_cast</span><span class="o">&lt;</span><span class="n">Model</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">t</span><span class="p">);</span>
+  <span class="k">while</span> <span class="p">(</span><span class="n">m</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">cyclus</span><span class="o">::</span><span class="n">AdjustPrefs</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">prefs</span><span class="p">);</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">m</span><span class="o">-&gt;</span><span class="n">parent</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
 </div>
-<div class="section" id="id8">
-<h4>Output<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h4>
-<p>Requester-based preferences for each supply-demand pair, with possible
-modifications made by the managers of the requester.</p>
-</div>
-<div class="section" id="unknown">
-<h4>Unknown<a class="headerlink" href="#unknown" title="Permalink to this headline">¶</a></h4>
-<p>The interaction of the manager perturbation of the the requester preferences
-does not have many well-defined used cases. The primary use case to date is
-regional preference modeling. The primary question concerning this algorithm is
-the timing of the perturbation. Two choices exist:</p>
-<ol class="arabic simple">
-<li>Apply perturbations immediately after the requester assigns a preference.</li>
-<li>Apply perturbations after all managed requesters assign their preferences.</li>
-</ol>
-<p>The second approach allows decision making given the aggregate of possible
-connections, i.e., it provides more information. However, its implementation
-will be more complicated and is perhaps unnecessary if a use case is not known.</p>
+<p>For full implementation details, please see the <a class="reference external" href="https://github.com/gidden/cyclus/tree/cep18">CEP18 branch</a>.</p>
+<p>ExchangeContext state at end of phase:</p>
+<ul class="simple">
+<li>Possibly perturbed preferences for each Bid-Request pair</li>
+</ul>
 </div>
 </div>
-<div class="section" id="marketalgorithm">
-<h3>MarketAlgorithm<a class="headerlink" href="#marketalgorithm" title="Permalink to this headline">¶</a></h3>
-<p>The MarketAlgorithm is a virtual base class for possible algorithms to solve the
-supply-demand matching algorithm.</p>
-<div class="section" id="id9">
-<h4>Input<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h4>
-<p>The set of ResponsePortfolios with associated preferences.</p>
+<div class="section" id="exchangegraph">
+<h3>ExchangeGraph<a class="headerlink" href="#exchangegraph" title="Permalink to this headline">¶</a></h3>
+<p>An ExchangeGraph is a graph representation of a resource exchange. It provides a
+resource-free representation of the exchange, i.e., the quality-specific
+constraint and preference values are &#8220;baked in&#8221;. By the nature of the
+supplier/requester setup, the graph is bipartite, thus there is a notion of U
+(left) and V (right) nodes, and arcs strictly connect a U node to a V
+node. Constraints are defined along arcs, where each u-v node pair is associated
+with a constraining value. Preferences are also defined along arcs.</p>
 </div>
-<div class="section" id="id10">
-<h4>Output<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h4>
-<p>The set of chosen supply-demand pairs to execute.</p>
+<div class="section" id="exchangetranslator">
+<h3>ExchangeTranslator<a class="headerlink" href="#exchangetranslator" title="Permalink to this headline">¶</a></h3>
+<p>The ExchangeTranslator is an object responsible for translating a given
+ExchangeContext into an ExchangeGraph, and has a pretty simple interface:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="k">template</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span>
+<span class="k">struct</span> <span class="n">ExchangePair</span> <span class="p">{</span>
+   <span class="n">Request</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">Ptr</span> <span class="n">r</span><span class="p">;</span> <span class="c1">// request</span>
+   <span class="n">Bid</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">Ptr</span> <span class="n">b</span><span class="p">;</span> <span class="c1">// bid</span>
+   <span class="kt">double</span> <span class="n">p</span><span class="p">;</span> <span class="c1">// percent of bid to give</span>
+<span class="p">}</span>
+
+<span class="k">template</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span>
+<span class="k">class</span> <span class="nc">ExchangeTranslator</span> <span class="p">{</span>
+ <span class="nl">public:</span>
+  <span class="n">ExchangeGraph</span> <span class="n">ToGraph</span><span class="p">(</span><span class="k">const</span> <span class="n">ExchangeContext</span><span class="o">&amp;</span> <span class="n">ec</span><span class="p">)</span> <span class="p">{</span>
+   <span class="cm">/* do translation */</span>
+  <span class="p">};</span>
+
+  <span class="n">std</span><span class="o">::</span><span class="n">set</span><span class="o">&lt;</span> <span class="n">ExchangePair</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">&gt;</span>
+    <span class="n">FromGraph</span><span class="p">(</span><span class="k">const</span> <span class="n">ExchangeGraph</span><span class="o">&amp;</span> <span class="n">eg</span><span class="p">)</span> <span class="p">{</span>
+     <span class="cm">/* do back-translation */</span>
+  <span class="p">};</span>
+<span class="p">};</span>
+</pre></div>
 </div>
 </div>
-<div class="section" id="marketexecution">
-<h3>MarketExecution<a class="headerlink" href="#marketexecution" title="Permalink to this headline">¶</a></h3>
-<p>The final step of the market resolution phase, the execution of the market
-provides suppliers with the full list of requests to be met. Suppliers are then
-asked to return a resource for each of the provided requests. Requesters are
-then notified of all orders that have been filled.</p>
+<div class="section" id="exchangesolver">
+<h3>ExchangeSolver<a class="headerlink" href="#exchangesolver" title="Permalink to this headline">¶</a></h3>
+<p>The ExchangeSolver is a virtual interface for solvers of a resource exchange. A
+constrained ExchangeGraph is provided as input, and a solution ExchangeGraph is
+provided as output, which satisfies the provided constraints. It too, has a
+pretty simple interface</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="k">class</span> <span class="nc">ExchangeSolver</span> <span class="p">{</span>
+ <span class="nl">public:</span>
+  <span class="k">virtual</span> <span class="kt">void</span> <span class="n">Solve</span><span class="p">(</span><span class="k">const</span> <span class="n">ExchangeGraph</span><span class="o">&amp;</span> <span class="n">g</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="backwards-compatibility">
@@ -597,6 +627,9 @@ requests</li>
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
+          <a href="cep19.html" title="CEP 19 - Cyclus Input Procedure Updates"
+             >next</a> |</li>
+        <li class="right" >
           <a href="cep17.html" title="CEP 17 - Resource Tracking and Interfaces Re-Re-Redo"
              >previous</a> |</li>
         <li><a href="../index.html">Cyclus Home</a> &raquo;</li>
@@ -605,7 +638,7 @@ requests</li>
     </div>
     <div class="footer">
         &copy; Copyright 2012, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Oct 25, 2013.
+      Last updated on Nov 07, 2013.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>

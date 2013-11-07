@@ -3,7 +3,7 @@ CEP 18 - Dynamic Resource Exchange Procedure
 
 :CEP: 18
 :Title: Dynamic Resource Exchange Procedure
-:Last-Modified: 2013-09-27
+:Last-Modified: 2013-11-04
 :Author: Matthew Gidden
 :Status: Draft
 :Type: Standards Track
@@ -81,15 +81,16 @@ Rationale
 The proposed refactor addresses each of the issues provided in the previous
 section. The notion of market models is redefined, separating the collection of
 supply-demand information from the algorithm used to match suppliers with
-consumers. The information gathering framework is structured and core-based. It
-is top-down in the sense that it queries facilities for their supply and demand
-rather than requiring facility-based notifications. Accordingly, concerns are
-appropriately separated: the information is gathered by the core at the
-beginning of the resolve step, allowing facilities to inform a given market
-algorithm; market algorithms determine the set of offers and requests to be
-matched; and the core sends out resolved transactions. Message passing to and
-from markets is addressed by the framework, providing facilities, institutions,
-and regions each with specific, defined agency.
+consumers. The information gathering framework is structured and handled by the
+Cyclus core (i.e., not adjustable by model developers). It is top-down in the
+sense that it queries facilities for their supply and demand rather than
+requiring facility-based notifications. Accordingly, concerns are appropriately
+separated: the information is gathered by the core at the beginning of the
+resolve step, allowing facilities to inform a given market algorithm; market
+algorithms determine the set of offers and requests to be matched; and the core
+sends out resolved transactions. Message passing to and from markets is
+addressed by the framework, providing facilities, institutions, and regions each
+with specific, defined agency.
 
 Supply-Demand Framework
 -----------------------
@@ -202,7 +203,7 @@ effectively eliminating that arc.
 It should be noted that these preferences are requester based. This choice is
 based on the current simulation design notion of requesters having a preference
 over possible inputs. It is possible that in the future, one would like to model
-the notion of supplier preference (i.e., moreso than the implicit nature
+the notion of supplier preference (i.e., more so than the implicit nature
 currently provided by allowing suppliers to set the transaction quality and
 whether to respond to the transaction at all). One suggestion may be to allow
 suppliers to also have a supply preference, and to use the average of them in
@@ -276,9 +277,9 @@ allows fuel cycle simulation developers to model relatively complex interactions
 at a regional level, such as tariffs and sanctions. Constraints to cross-border
 trading can also be applied. For example, a region could place constraints on
 the total amount of a given commodity type that is able to flow into it or out
-of it into a different region. Such constraints could applied not only to bulk
-quantities of a commodity, but also to the quality of each commodity. Such a
-mechanism could be used to model interdiction of highly-enriched uranium
+of it into a different region. Such constraints could be applied not only to
+bulk quantities of a commodity, but also to the quality of each commodity. Such
+a mechanism could be used to model interdiction of highly-enriched uranium
 transport, for example.
 
 .. image:: cep-0018-2.svg
@@ -320,15 +321,22 @@ transport, for example.
 Market Resolution
 -----------------
 
-Upon completion of the information gathering step, the market resolution
-function will be called. The current "null market" behavior is defined as a
-"greedy matching" algorithm. Such an algorithm as currently implemented naively
-matches consumers with suppliers without particular regard for preference of
-commodity or resource. Accordingly, a similar algorithm will be implemented that
-greedily matches supplier and requester based on the requester's highest
-preference, accounting for multiple commodity markets and associated production
-capacities. The matching algorithm used by a market is modular, and replaces the
-notion of the MarketModel.
+Upon completion of the information gathering step, all information regarding the
+exchange is known. Importantly, proposed resource qualities, constraining values
+based on the resource quality, and other data such as preferences and/or costs
+are known. Given these static values, the exchange can be translated to a graph
+with supplier/consumer nodes, arcs defined by bids, supplier and consumer
+constraints on those arcs, and consumer-based preferences for those arcs.
+
+The exchange is responsible for translating its gathered information into such a
+graph formulation, and various solvers can solve the material flow along the
+arcs of that graph. The solutions are then provided to the exchange for
+back-translation into resource-specific request-bid pairs. Given such pairings,
+the exchange executes the trades.
+
+It is important to note that a generic solver interface is defined and its
+constructor is provided a resource exchange graph. Different subclasses can
+define solution algorithms given the graph.
 
 Specification \& Implementation
 ===============================
@@ -342,7 +350,7 @@ described first.
 Constituent Classes and Containers
 ----------------------------------
 
-The major new datastructures required for this proposal are:
+The major new data structures required for this proposal are:
 
 * Bids
 * BidPortfolios
@@ -360,109 +368,136 @@ classes and dynamic casting to derived classes) can be invoked by templating on
 the ``Resource`` type, i.e., ``Request<Resource>``. See the `capacity constraint
 tests`_ for an example of this range of behavior.
 
-RFB Procedure
--------------
+Resource Exchange
+-----------------
 
-Input 
-++++++
+The resource exchange is implemented through coordination of two classes, the
+ResourceExchange and the ExchangeContext, both of which are implemented with
+tests in the `CEP18 branch`_.
 
-The set of facilities requesting/demanding one or more commodities at the given
-time step.
+The ExchangeContext retains the current state of the exchange, including
+information regarding the players (i.e., requesters and suppliers) as well as
+information regarding requests and bids. The ResourceExchange initiates the
+various phases and updates the context state. As currently envisioned, an
+exchange and context's lifetime is the single resolution of the exchange at a
+given time. The exchange is populated with traders as known by the wider
+simulation context. Both the ExchangeContext and ResourceExchange are templated
+on the Resource being exchanged, as was the case above. An overview of the
+exchange implementation follows, noting the state updates of the context at each
+phase.
 
-Output
-+++++++
+RFB Phase
++++++++++
 
-A Set of RequestPortfolios.
+Note that the ExchangeContext has no state at the beginning of the phases.
 
-Comments
-++++++++
+ResourceExchange operations:
 
-There are multiple strategies that could be taken to determine the input
-list. As a first approach, a naive strategy will be taken that queries each
-facility that is registered as a requester to determine demand at each time
-step.
+* Queries each Trader registered with the simulation Context, asking for
+  RequestPortfolios
 
-RRFB Procedure
---------------
+ExchangeContext state at end of phase:
 
-Input 
-++++++
+* Requesters
+* Requests
+* RequestPortfolio
 
-The set of facilities supplying one or more commodities and the set of requests
-for commodities at the given time step.
+RRFB Phase
+++++++++++
 
-Output
-+++++++
+ResourceExchange operations:
 
-A set of ResponsePortfolios.
+* Queries each Trader registered with the simulation Context, asking for
+  BidPorftolios
+* The ExchangeContext is given to each trader in order to determine all Requests
+  for a specific commodity
 
-Comments
-++++++++
+ExchangeContext state at end of phase:
 
-As with the the RFB procedure, many strategies exist to construct the input
-set. A similar approach will be taken that queries all registered suppliers.
+* Bidders
+* BidPortfolios
+* Default preferences for each Bid-Request pair (provided in the original Request)
 
 PA Procedure
-------------
+++++++++++++
 
-At the beginning of the Preference Assignment procedure, possible connections
-between supplier and consumer facilities are known. It is useful to think of
-these connections as arcs on a graph, where each arc represents a request that
-could be met by a supplier. The RequestPortfolios associated with a facility
-represent nodes in this graph with constraints associated with one or more of
-the arcs. The ResponsePortfolios represent supplier nodes with constraints over
-all incoming request arcs.
+ResourceExchange operations:
 
-Input 
-++++++
+* For each Requester and each parent in the Model child-parent tree of that
+  Requester, preferences are allowed to be perturbed, which looks nominally like:
 
-The set of ResponsePortfolios, providing the arcs on the supply-demand graph.
+.. code-block:: c++
 
-Output
-+++++++
+  /// @brief allows a trader and its parents to adjust any preferences in the
+  /// system
+  void DoAdjustment(Trader* t) {
+    typename PrefMap<T>::type& prefs = ex_ctx_.Prefs(t);
+    Model* m = dynamic_cast<Model*>(t);
+    while (m != NULL) {
+      cyclus::AdjustPrefs(m, prefs);
+      m = m->parent();
+    }
+  };
 
-Requester-based preferences for each supply-demand pair, with possible
-modifications made by the managers of the requester.
+For full implementation details, please see the `CEP18 branch`_.
 
-Unknown
-+++++++
+ExchangeContext state at end of phase:
 
-The interaction of the manager perturbation of the the requester preferences
-does not have many well-defined used cases. The primary use case to date is
-regional preference modeling. The primary question concerning this algorithm is
-the timing of the perturbation. Two choices exist:
+* Possibly perturbed preferences for each Bid-Request pair
 
-1. Apply perturbations immediately after the requester assigns a preference.
+ExchangeGraph
+-------------
 
-2. Apply perturbations after all managed requesters assign their preferences.
+An ExchangeGraph is a graph representation of a resource exchange. It provides a
+resource-free representation of the exchange, i.e., the quality-specific
+constraint and preference values are "baked in". By the nature of the
+supplier/requester setup, the graph is bipartite, thus there is a notion of U
+(left) and V (right) nodes, and arcs strictly connect a U node to a V
+node. Constraints are defined along arcs, where each u-v node pair is associated
+with a constraining value. Preferences are also defined along arcs.
 
-The second approach allows decision making given the aggregate of possible
-connections, i.e., it provides more information. However, its implementation
-will be more complicated and is perhaps unnecessary if a use case is not known.
+ExchangeTranslator
+------------------
 
-MarketAlgorithm
----------------
+The ExchangeTranslator is an object responsible for translating a given
+ExchangeContext into an ExchangeGraph, and has a pretty simple interface: 
 
-The MarketAlgorithm is a virtual base class for possible algorithms to solve the
-supply-demand matching algorithm. 
+.. code-block:: c++
 
-Input
-+++++
+    template<T>
+    struct ExchangePair {
+       Request<T>::Ptr r; // request
+       Bid<T>::Ptr b; // bid
+       double p; // percent of bid to give
+    }
 
-The set of ResponsePortfolios with associated preferences.
+    template<T>
+    class ExchangeTranslator {
+     public:
+      ExchangeGraph ToGraph(const ExchangeContext& ec) {
+       /* do translation */
+      };
 
-Output
-++++++
+      std::set< ExchangePair<T> >  
+        FromGraph(const ExchangeGraph& eg) {
+         /* do back-translation */
+      };
+    };
 
-The set of chosen supply-demand pairs to execute.
+ExchangeSolver
+--------------
 
-MarketExecution
----------------
+The ExchangeSolver is a virtual interface for solvers of a resource exchange. A
+constrained ExchangeGraph is provided as input, and a solution ExchangeGraph is
+provided as output, which satisfies the provided constraints. It too, has a
+pretty simple interface
 
-The final step of the market resolution phase, the execution of the market
-provides suppliers with the full list of requests to be met. Suppliers are then
-asked to return a resource for each of the provided requests. Requesters are
-then notified of all orders that have been filled.
+.. code-block:: c++
+
+    class ExchangeSolver {
+     public:
+      virtual void Solve(const ExchangeGraph& g) = 0;
+    };
 
 Backwards Compatibility
 =======================
