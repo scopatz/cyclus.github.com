@@ -213,17 +213,17 @@ milestone.</li>
 <li>Write and commit the release notes.</li>
 <li>Review the current state of documentation and make approriate updates.</li>
 <li>Bump the version (in code, documentation, etc.) and commit the change.</li>
-<li>Tag the branch with a name that matches that of the release:<ul>
+<li>If this is a release candidate, tag the release branch with a name that matches
+that of the release:<ul>
 <li>If this is the first release candidate, create a release branch called
 &#8216;vX.X.X-release&#8217; off of develop.  Tag this branch with the name &#8216;X.X.X-rc1&#8217;.</li>
 <li>If this is the second or later release candidate, tag the release branch
 with the name &#8216;X.X.X-rcX&#8217;.</li>
-<li>If this is the full and final release, tag this branch with the name
-&#8216;X.X.X&#8217;.</li>
 </ul>
 </li>
-<li>If this is a full release, merge or rebase the release branch into the
-master branch.  Then delete the release branch.</li>
+<li>If this is the full and final release (and not a release candidate),
+merge the release branch into the master branch.  Next, tag the master branch
+with the name &#8216;X.X.X&#8217;.  Finally, delete the release branch.</li>
 <li>Push the tags upstream</li>
 <li>Update release information on the website.</li>
 </ol>
