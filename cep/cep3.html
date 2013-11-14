@@ -137,7 +137,7 @@
 </tr>
 <tr class="field-even field"><th class="field-name">Title:</th><td class="field-body">Cyclus Release Procedure</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Last-Modified:</th><td class="field-body">2013-10-25</td>
+<tr class="field-odd field"><th class="field-name">Last-Modified:</th><td class="field-body">2013-11-14</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Author:</th><td class="field-body">Anthony Scopatz</td>
 </tr>
@@ -180,23 +180,25 @@ cycstub&#8217;s <tt class="docutils literal"><span class="pre">src/</span></tt> 
 <p>All projects should have a release candidate (&#8216;-rc1&#8217;) that comes out 2 - 5 days
 prior to the scheduled release.  During this time, no changes should occur to
 a special release branch (&#8216;vX.X.X-release&#8217;).</p>
-<p>The release branches are there so that development can continue on the
+<p>The release branch is there so that development can continue on the
 develop branch while the release candidates (rc) are out and under review.
 This is because otherwise any new developments would have to wait until
 post-release to be merged into develop to prevent them from accidentally
 getting released early.</p>
-<p>As such, these &#8216;vX.X.X-release&#8217; branches should only exist while there are
+<p>As such, the &#8216;vX.X.X-release&#8217; branch should only exist while there are
 release candidates out.  They are akin to a temporary second level of staging
 to be used to keep master clean and safe.  As such, everything that is in this
 branch should also be part of develop.  Graphically,</p>
 <div class="figure align-center">
 <img src="../_images/cep-0003-1.svg" /><p class="caption"><strong>Figure 1:</strong> Branch hierarchy under release.</p>
 </div>
-<p>Every time a new release candidate comes out is when vX.X.X-release gets merged
-into master.  When the actual release happens, the release branch is deleted.</p>
-<p>If you have a new fix that needs to be in the next release candidate, you make a
-topical branch and then pull request it into the release branch.  After this has
-been accepted, the topical branch should be merged with develop as well.</p>
+<p>Every time a new release candidate comes out the vX.X.X-release should be
+tagged with the name &#8216;X.X.X-rcX&#8217;.  There should be a 2 - 5 day period of time
+in between release candidates.  When the full and final release happens, the
+&#8216;vX.X.X-release&#8217; branch is merged into master and then deleted.</p>
+<p>If you have a new fix that needs to be in the next release candidate, you should
+make a topical branch and then pull request it into the release branch.  After this
+has been accepted, the topical branch should be merged with develop as well.</p>
 <p>The release branch must be quiet and untouched for 2 - 5 days prior to the full
 release.</p>
 </div>
@@ -211,16 +213,17 @@ milestone.</li>
 <li>Write and commit the release notes.</li>
 <li>Review the current state of documentation and make approriate updates.</li>
 <li>Bump the version (in code, documentation, etc.) and commit the change.</li>
-<li>Merge or rebase the branch:<ul>
+<li>Tag the branch with a name that matches that of the release:<ul>
 <li>If this is the first release candidate, create a release branch called
-&#8216;vX.X.X-release&#8217; off of develop.  Merge the release branch into master.</li>
-<li>If this is the second or later release candidate, merge or rebase the
-release branch into master.</li>
-<li>If this is a full release, merge or rebase the release branch into
-the master branch.  Then delete the release candidate branch.</li>
+&#8216;vX.X.X-release&#8217; off of develop.  Tag this branch with the name &#8216;X.X.X-rc1&#8217;.</li>
+<li>If this is the second or later release candidate, tag the release branch
+with the name &#8216;X.X.X-rcX&#8217;.</li>
+<li>If this is the full and final release, tag this branch with the name
+&#8216;X.X.X&#8217;.</li>
 </ul>
 </li>
-<li>Create a tag in the version control system whose name matches that of the release.</li>
+<li>If this is a full release, merge or rebase the release branch into the
+master branch.  Then delete the release branch.</li>
 <li>Push the tags upstream</li>
 <li>Update release information on the website.</li>
 </ol>
@@ -255,7 +258,7 @@ the master branch.  Then delete the release candidate branch.</li>
     </div>
     <div class="footer">
         &copy; Copyright 2012, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Nov 13, 2013.
+      Last updated on Nov 14, 2013.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>
