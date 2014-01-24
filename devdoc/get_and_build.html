@@ -28,7 +28,7 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="Cyclus Home" href="../index.html" />
     <link rel="up" title="Cyclus Developer Guide" href="main.html" />
-    <link rel="next" title="Installing Dependencies on Windows" href="dependencies_windows.html" />
+    <link rel="next" title="The Cyclus Environment" href="cyclus_env.html" />
     <link rel="prev" title="Cyclus Developer Guide" href="main.html" />
    
 <script type="text/javascript">
@@ -61,7 +61,7 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="dependencies_windows.html" title="Installing Dependencies on Windows"
+          <a href="cyclus_env.html" title="The Cyclus Environment"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="main.html" title="Cyclus Developer Guide"
@@ -75,16 +75,11 @@
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Getting and Building Cyclus</a><ul>
-<li><a class="reference internal" href="#getting-cyclus-as-a-first-time-user">Getting Cyclus as a First-Time User</a></li>
 <li><a class="reference internal" href="#the-cyclus-library-suite">The Cyclus Library Suite</a><ul>
-<li><a class="reference internal" href="#additional-information">Additional Information</a><ul>
+<li><a class="reference internal" href="#supported-systems">Supported Systems</a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li><a class="reference internal" href="#acquiring-source-code">Acquiring Source Code</a><ul>
-<li><a class="reference internal" href="#using-git">Using Git</a></li>
-<li><a class="reference internal" href="#getting-the-code">Getting the Code</a></li>
+<li><a class="reference internal" href="#unfamiliar-with-git-and-github">Unfamiliar with git and Github?</a><ul>
 <li><a class="reference internal" href="#help-with-git-and-github">Help with Git and GitHub</a></li>
 </ul>
 </li>
@@ -97,8 +92,8 @@
   <p class="topless"><a href="main.html"
                         title="previous chapter">Cyclus Developer Guide</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="dependencies_windows.html"
-                        title="next chapter">Installing Dependencies on Windows</a></p>
+  <p class="topless"><a href="cyclus_env.html"
+                        title="next chapter">The Cyclus Environment</a></p>
   <h3>Useful Pages</h3>
     <li><a href="http://cyclus.github.com/basics/glossary.html">Glossary</a></li>
     <li><a href="http://cyclus.github.com/basics/roadmap.html">Roadmap</a></li>
@@ -138,84 +133,39 @@
             
   <div class="section" id="getting-and-building-cyclus">
 <h1>Getting and Building Cyclus<a class="headerlink" href="#getting-and-building-cyclus" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="getting-cyclus-as-a-first-time-user">
-<h2>Getting Cyclus as a First-Time User<a class="headerlink" href="#getting-cyclus-as-a-first-time-user" title="Permalink to this headline">¶</a></h2>
-<p>The dev team recognizes that first-time users, especially those not
-familiar with building C++ libraries, will find the following process
-to be difficult. For those looking to try out Cyclus without the
-building headaches, please download our VirtualBox
-<a class="reference external" href="http://cnergdata.engr.wisc.edu/cyclus/virtual-box/current/cyclus_user_environment.ova">image</a>.</p>
-<p>A log of changes to the VM can be found
-<a class="reference external" href="http://cnergdata.engr.wisc.edu/cyclus/virtual-box/change_log.rst">here</a>.</p>
-<p>This is a <a class="reference external" href="http://en.wikipedia.org/wiki/Open_Virtualization_Format">.ova</a>
-file, so it can be used with any virtual image software that supports
-such formats. Take caution, the user provided on the image has root
-access.</p>
-<p>User information:</p>
-<ul class="simple">
-<li>username: cyclus-user</li>
-<li>password: cyclus (note the previous password was <strong>cyclus-user</strong>, see change log for details)</li>
-</ul>
-</div>
 <div class="section" id="the-cyclus-library-suite">
 <h2>The Cyclus Library Suite<a class="headerlink" href="#the-cyclus-library-suite" title="Permalink to this headline">¶</a></h2>
-<p><em>Cyclus</em> is composed of a number of libraries:</p>
+<p><em>Cyclus</em> is composed of two libraries:</p>
 <blockquote>
 <div><ul class="simple">
-<li><a class="reference external" href="https://github.com/cyclus/cyclopts">cyclopts</a> (optimization)</li>
-<li><a class="reference external" href="https://github.com/cyclus/cyclus">cyclus core</a> (basic functionality)</li>
-<li><a class="reference external" href="https://github.com/cyclus/cycamore">cycamore</a> (a module repository)</li>
+<li>Cyclus Core, comprising core library functionality</li>
+<li>Cycamore, a module repository</li>
 </ul>
 </div></blockquote>
-<p>Some key points about installing <em>Cyclus</em>:</p>
+<p>Installation information is provided in the readmes of each repository, and the
+core must be installed before cycamore. Accordingly, installation steps are as
+follows:</p>
 <blockquote>
-<div><ul class="simple">
-<li>each library must be installed in the above order (cyclopts, cyclus,
-cycamore)</li>
-<li>the source code must be obtained through git via the links above</li>
-<li>installation instructions are provided in the readmes (which are rendered as
-the landing page) for each of the of the above libraries</li>
-</ul>
+<div><ol class="arabic simple">
+<li>Visit the <a class="reference external" href="https://github.com/cyclus/cyclus">Cyclus repo</a> and follow the
+installation instructions on the main page (README.rst)</li>
+<li>Visit the <a class="reference external" href="https://github.com/cyclus/cycamore">Cycamore readme</a> and
+follow the installation instructions on the main page (README.rst)</li>
+</ol>
 </div></blockquote>
-<div class="section" id="additional-information">
-<h3>Additional Information<a class="headerlink" href="#additional-information" title="Permalink to this headline">¶</a></h3>
-<p>Please note that the <strong>dev</strong> version of each of the above
-libraries must be used. The build system will complain (saying it
-cannot find the library) if only the normal (release) libraries are
-installed.</p>
-<p>An overview of some of the dependency installations
-can be found on the following pages:</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="dependencies_windows.html">Installing Dependencies on Windows</a></li>
-</ul>
-</div>
-</div>
-</div>
-<div class="section" id="acquiring-source-code">
-<h2>Acquiring Source Code<a class="headerlink" href="#acquiring-source-code" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="using-git">
-<h3>Using Git<a class="headerlink" href="#using-git" title="Permalink to this headline">¶</a></h3>
-<p>The build process for each library is the same. The first step is to
-download the source code for each library.</p>
-<p>Most systems will come with git fully installed; however, some developers may
-require the following git libraries if they are not already installed:</p>
+<div class="section" id="supported-systems">
+<h3>Supported Systems<a class="headerlink" href="#supported-systems" title="Permalink to this headline">¶</a></h3>
+<p>Currently, two specific systems are supported</p>
 <blockquote>
 <div><ul class="simple">
-<li>git-core</li>
-<li>git-gui</li>
-<li>git-doc</li>
+<li>Linux 64-bit (Ubuntu 12+ recommended)</li>
+<li>MacOSX 8 64-bit</li>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="getting-the-code">
-<h3>Getting the Code<a class="headerlink" href="#getting-the-code" title="Permalink to this headline">¶</a></h3>
-<p>The source code of each library can be found at the <a class="reference external" href="https://github.com/cyclus">*Cyclus*
-repository</a>, hosted on <em>Github</em>. Anyone may
-check out the code. Although you do not have to register with <em>Github</em> to
-download and edit the code, if you desire your work to be integrated into the
-cyclus mainline of development <em>you must fork the cyclus core repository into
-your own github account and submit &#8216;Pull Requests&#8217;</em>.</p>
+</div>
+<div class="section" id="unfamiliar-with-git-and-github">
+<h2>Unfamiliar with git and Github?<a class="headerlink" href="#unfamiliar-with-git-and-github" title="Permalink to this headline">¶</a></h2>
 <p>For the Git uninitiated, one must perform the following steps to acquire <em>Cyclus</em>:</p>
 <blockquote>
 <div><ol class="arabic simple">
@@ -230,7 +180,8 @@ your own github account and submit &#8216;Pull Requests&#8217;</em>.</p>
 <li>develop &#8211; the lastest working copy that passes all tests</li>
 </ul>
 </div></blockquote>
-</div>
+<p>The above branches are synchronized with each other, and should be used in tandem
+(i.e., use master (Cyclus) with master (Cycamore) or develop with develop only).</p>
 <div class="section" id="help-with-git-and-github">
 <h3>Help with Git and GitHub<a class="headerlink" href="#help-with-git-and-github" title="Permalink to this headline">¶</a></h3>
 <p>If you are unfamiliar with Git, here are some resources:</p>
@@ -254,7 +205,9 @@ submit a github <em>Pull Request</em>.  Visit <a class="reference external" href
 </div>
 <div class="section" id="contact-us">
 <h2>Contact Us<a class="headerlink" href="#contact-us" title="Permalink to this headline">¶</a></h2>
-<p>If you have further comments or questions about the build process, please don&#8217;t hesitate to email or join the Cyclus users list, which will allow you to contact the community of users and developers of Cyclus.</p>
+<p>If you have further comments or questions about the build process, please don&#8217;t
+hesitate to email or join the Cyclus users list, which will allow you to contact
+the community of users and developers of Cyclus.</p>
 <ul class="simple">
 <li>Email the Users&#8217; list: <a class="reference external" href="mailto:cyclus-users&#37;&#52;&#48;groups&#46;google&#46;com">cyclus-users<span>&#64;</span>groups<span>&#46;</span>google<span>&#46;</span>com</a></li>
 <li>Join the Users&#8217; list: <a class="reference external" href="https://groups.google.com/forum/?fromgroups#!forum/cyclus-users">https://groups.google.com/forum/?fromgroups#!forum/cyclus-users</a></li>
@@ -275,7 +228,7 @@ submit a github <em>Pull Request</em>.  Visit <a class="reference external" href
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="dependencies_windows.html" title="Installing Dependencies on Windows"
+          <a href="cyclus_env.html" title="The Cyclus Environment"
              >next</a> |</li>
         <li class="right" >
           <a href="main.html" title="Cyclus Developer Guide"
@@ -286,7 +239,7 @@ submit a github <em>Pull Request</em>.  Visit <a class="reference external" href
     </div>
     <div class="footer">
         &copy; Copyright 2012, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Nov 14, 2013.
+      Last updated on Jan 24, 2014.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>
