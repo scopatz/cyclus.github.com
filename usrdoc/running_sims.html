@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.1',
+        VERSION:     '(0.4-rc1)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -29,7 +29,7 @@
     <link rel="top" title="Cyclus Home" href="../index.html" />
     <link rel="up" title="Cyclus User Guide" href="main.html" />
     <link rel="next" title="Cyclus Developer Guide" href="../devdoc/main.html" />
-    <link rel="prev" title="Examples" href="input_specs/examples/examples.html" />
+    <link rel="prev" title="Cyclus User Guide" href="main.html" />
    
 <script type="text/javascript">
 
@@ -64,7 +64,7 @@
           <a href="../devdoc/main.html" title="Cyclus Developer Guide"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="input_specs/examples/examples.html" title="Examples"
+          <a href="main.html" title="Cyclus User Guide"
              accesskey="P">previous</a> |</li>
         <li><a href="../index.html">Cyclus Home</a> &raquo;</li>
           <li><a href="main.html" accesskey="U">Cyclus User Guide</a> &raquo;</li> 
@@ -84,8 +84,8 @@
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="input_specs/examples/examples.html"
-                        title="previous chapter">Examples</a></p>
+  <p class="topless"><a href="main.html"
+                        title="previous chapter">Cyclus User Guide</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="../devdoc/main.html"
                         title="next chapter">Cyclus Developer Guide</a></p>
@@ -132,36 +132,50 @@
 <div class="section" id="cyclus-command-line-usage">
 <h2>Cyclus Command Line Usage<a class="headerlink" href="#cyclus-command-line-usage" title="Permalink to this headline">¶</a></h2>
 <p>To run a simulation you must use the <cite>cyclus</cite> command line utility:</p>
-<div class="highlight-python"><pre>./path/to/cyclus [options] [input-file]</pre>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>./path/to/cyclus <span class="o">[</span>options<span class="o">]</span> <span class="o">[</span>input-file<span class="o">]</span>
+</pre></div>
 </div>
-<p><strong>options</strong>:</p>
-<blockquote>
-<div><ul class="simple">
-<li><cite>-v[level]</cite> where level is one of:<ul>
-<li><cite>LEV_ERROR</cite> (least verbose and the default if no verbosity is specified)</li>
-<li><cite>LEV_WARN</cite></li>
-<li><cite>LEV_INFO[1, 2, 3, 4, 5]</cite></li>
-<li><cite>LEV_DEBUG[1, 2, 3, 4]</cite></li>
-<li><cite>LEV_DEBUG5</cite> (most verbose)</li>
-</ul>
-</li>
-</ul>
-<p>Note  that level can be specified as a number. Zero corresponds to
-<cite>LEV_ERROR</cite>, and 11 corresponds to <cite>LEV_DEBUG5</cite>.</p>
-</div></blockquote>
-<p><strong>input file</strong>:</p>
-<blockquote>
-<div>The absolute or relative path (including the input file name itself) to the
-input file to be run.</div></blockquote>
+<p>For more information, please refer to the help:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>cyclus -h
+Cyclus usage requires an input file.
+Usage:   cyclus <span class="o">[</span>path/to/input/filename<span class="o">]</span>
+
+Allowed options:
+  -h <span class="o">[</span> --help <span class="o">]</span>            produce <span class="nb">help </span>message
+  --include                print the cyclus include directory
+  --version                print cyclus core and dependency versions and quit
+  --schema                 dump the cyclus master schema including all
+                           installed module schemas
+  --module-schema arg      dump the schema <span class="k">for </span>the named module
+  --schema-path arg        manually specify the path to the cyclus master
+                           schema
+  --flat-schema            use the flat master simulation schema
+  --no-model               only print log entries from cyclus core code
+  --no-mem                 exclude memory log statement from logger output
+  -v <span class="o">[</span> --verb <span class="o">]</span> arg        output log verbosity. Can be text:
+
+                              LEV_ERROR <span class="o">(</span>least verbose, default<span class="o">)</span>, LEV_WARN,
+                              LEV_INFO1 <span class="o">(</span>through 5<span class="o">)</span>, and LEV_DEBUG1 <span class="o">(</span>through
+                           5<span class="o">)</span>.
+
+                           Or an integer:
+
+                              0 <span class="o">(</span>LEV_ERROR equiv<span class="o">)</span> through 11 <span class="o">(</span>LEV_DEBUG5 equiv<span class="o">)</span>
+
+  -o <span class="o">[</span> --output-path <span class="o">]</span> arg output path
+  --input-file arg         input file
+</pre></div>
+</div>
 <div class="section" id="examples">
 <h3>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python"><pre>./cyclus ./path/to/myinput.xml
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>cyclus ./path/to/myinput.xml
 
-./cyclus -v LEV_DEBUG5 myinput.xml
+<span class="nv">$ </span>cyclus -v LEV_DEBUG5 myinput.xml
 
-./cyclus -v LEV_INFO3 myinput.xml
+<span class="nv">$ </span>cyclus -v LEV_INFO3 myinput.xml
 
-./cyclus -v 4 myinput.xml</pre>
+<span class="nv">$ </span>cyclus -v 4 myinput.xml
+</pre></div>
 </div>
 </div>
 </div>
@@ -183,15 +197,15 @@ input file to be run.</div></blockquote>
           <a href="../devdoc/main.html" title="Cyclus Developer Guide"
              >next</a> |</li>
         <li class="right" >
-          <a href="input_specs/examples/examples.html" title="Examples"
+          <a href="main.html" title="Cyclus User Guide"
              >previous</a> |</li>
         <li><a href="../index.html">Cyclus Home</a> &raquo;</li>
           <li><a href="main.html" >Cyclus User Guide</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2012, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Feb 03, 2014.
+        &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
+      Last updated on Feb 13, 2014.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>

@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.1',
+        VERSION:     '(0.4-rc1)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -28,7 +28,7 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="Cyclus Home" href="../index.html" />
     <link rel="up" title="Cyclus Developer Guide" href="main.html" />
-    <link rel="next" title="Developing Models For Cyclus" href="make-models/main.html" />
+    <link rel="next" title="Writing Tests for Modules" href="testing.html" />
     <link rel="prev" title="The Cyclus Fuel Cycle Simulator Roadmap" href="../basics/roadmap.html" />
    
 <script type="text/javascript">
@@ -61,7 +61,7 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="make-models/main.html" title="Developing Models For Cyclus"
+          <a href="testing.html" title="Writing Tests for Modules"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="../basics/roadmap.html" title="The Cyclus Fuel Cycle Simulator Roadmap"
@@ -89,8 +89,8 @@
   <p class="topless"><a href="../basics/roadmap.html"
                         title="previous chapter">The <em>Cyclus</em> Fuel Cycle Simulator Roadmap</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="make-models/main.html"
-                        title="next chapter">Developing Models For Cyclus</a></p>
+  <p class="topless"><a href="testing.html"
+                        title="next chapter">Writing Tests for Modules</a></p>
   <h3>Useful Pages</h3>
     <li><a href="http://cyclus.github.com/basics/glossary.html">Glossary</a></li>
     <li><a href="http://cyclus.github.com/basics/roadmap.html">Roadmap</a></li>
@@ -135,14 +135,11 @@
 The core <em>Cyclus</em> project repository is located at
 <a class="reference external" href="http://github.com/cyclus/cyclus">http://github.com/cyclus/cyclus</a>. Additional projects found at
 <a class="reference external" href="http://github.com/cyclus">http://github.com/cyclus</a> include :</p>
-<blockquote>
-<div><ul class="simple">
+<ul class="simple">
 <li>Cycamore, the cyclus additional modules repository</li>
-<li>Cyclopts, the cyclus optimization library</li>
 <li>Cycic, the cyclus input controller</li>
 <li>and more to come.</li>
 </ul>
-</div></blockquote>
 <p>Although you do not have to register with github to
 download and edit the code, if you desire your work to be integrated into the
 cyclus mainline of development <em>you must fork the cyclus core repository into
@@ -156,8 +153,7 @@ to solve.</p>
 <p>You&#8217;ll first need to fork your repository and create a branch for the topic you&#8217;d
 like you solve. As you do your development, push only to your own fork. Make a
 pull request to the upstream repository (usually the &#8220;develop&#8221; branch) only after:</p>
-<blockquote>
-<div><ul class="simple">
+<ul class="simple">
 <li>You have pulled the latest changes from the upstream repository.</li>
 <li>You have completed a logical set of changes.</li>
 <li>Cyclus compiles with no errors.</li>
@@ -165,7 +161,6 @@ pull request to the upstream repository (usually the &#8220;develop&#8221; branc
 <li>Cyclus input files run as expected.</li>
 <li>Your code has been reviewed by another developer.</li>
 </ul>
-</div></blockquote>
 <p>Code from the &#8220;develop&#8221; branch generally must pass even more rigorous checks
 before being integrated into the &#8220;master&#8221; branch. Hotfixes would be a
 possible exception to this.</p>
@@ -317,7 +312,7 @@ git merge --no-ff remote_name/branch_name -m "A message""</pre>
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="make-models/main.html" title="Developing Models For Cyclus"
+          <a href="testing.html" title="Writing Tests for Modules"
              >next</a> |</li>
         <li class="right" >
           <a href="../basics/roadmap.html" title="The Cyclus Fuel Cycle Simulator Roadmap"
@@ -327,8 +322,8 @@ git merge --no-ff remote_name/branch_name -m "A message""</pre>
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2012, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Feb 03, 2014.
+        &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
+      Last updated on Feb 13, 2014.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>

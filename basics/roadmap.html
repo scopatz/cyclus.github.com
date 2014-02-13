@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.1',
+        VERSION:     '(0.4-rc1)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -72,23 +72,6 @@
     </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">The <em>Cyclus</em> Fuel Cycle Simulator Roadmap</a><ul>
-<li><a class="reference internal" href="#research-areas">Research Areas</a></li>
-<li><a class="reference internal" href="#active-projects-contributors">Active Projects/Contributors</a></li>
-<li><a class="reference internal" href="#potential-research-ideas">Potential Research Ideas</a><ul>
-<li><a class="reference internal" href="#market-model-ideas">Market Model Ideas</a></li>
-<li><a class="reference internal" href="#region-model-ideas">Region Model Ideas</a></li>
-<li><a class="reference internal" href="#institution-model-ideas">Institution Model Ideas</a></li>
-<li><a class="reference internal" href="#facility-model-ideas">Facility Model Ideas</a></li>
-<li><a class="reference internal" href="#full-simulation-scale-contributions">Full Simulation Scale Contributions</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
   <h4>Previous topic</h4>
   <p class="topless"><a href="../devdoc/output_usecases.html"
                         title="previous chapter">Use Cases for Cyclus Output Data</a></p>
@@ -135,129 +118,33 @@
             
   <div class="section" id="the-cyclus-fuel-cycle-simulator-roadmap">
 <h1>The <em>Cyclus</em> Fuel Cycle Simulator Roadmap<a class="headerlink" href="#the-cyclus-fuel-cycle-simulator-roadmap" title="Permalink to this headline">¶</a></h1>
-<p>It is expected that external development contributing to the expansion
-of the Fuel Cycle Simulator will grow in creative, unpredictable ways
-in answer to the needs of the developers.  Moreover, particular use
-cases and specific user interests are likely to drive the need for new
-capability.</p>
-<p>To help direct and inspire development in support of current and anticipated
-use cases, the current <em>Cyclus</em> development team has identified areas of
-essential research areas as well as potential research ideas.</p>
-<div class="section" id="research-areas">
-<h2>Research Areas<a class="headerlink" href="#research-areas" title="Permalink to this headline">¶</a></h2>
-<p>A number of research areas related to <em>Cyclus</em> have already been
-identified, but others are certainly possible:</p>
-<blockquote>
-<div><ol class="arabic simple">
-<li><em>Cyclus</em> core infrastructure development</li>
-<li>Market model development</li>
-<li>Region model development and deployment scenarios</li>
-<li>Reactor model development</li>
-<li>Separations model development</li>
-<li>Geologic repository &amp; waste form modeling</li>
-<li>Graphical interfaces for input and visualization</li>
-<li>Social science to determine important metrics and measures</li>
-<li>Optimization and sensitivity infrastructure</li>
-<li>Transportation</li>
-<li>Non-proliferation analysis</li>
-</ol>
-</div></blockquote>
-</div>
-<div class="section" id="active-projects-contributors">
-<h2>Active Projects/Contributors<a class="headerlink" href="#active-projects-contributors" title="Permalink to this headline">¶</a></h2>
-<ul>
-<li><ol class="first upperalpha simple" start="21">
-<li>Wisconsin-Madison:</li>
-</ol>
-<blockquote>
-<div><ul class="simple">
-<li><a class="reference external" href="http://github.com/cyclus/cyclus">Cyclus</a> core infrastructure</li>
-<li><a class="reference external" href="http://github.com/cyclus/cycamore">Cycamore</a> base module package</li>
-<li><a class="reference external" href="http://github.com/katyhuff/cyder">Cyder</a> geologic repository modeling</li>
-<li><a class="reference external" href="http://github.com/cyclus/cyclopts">Cyclopts</a> optimization interface library</li>
+<p>The following is the current development roadmap for the core team.</p>
+<ul class="simple">
+<li>Input Paradigm Refactor - February 21, 2014 - Robert C. &amp; Anthony</li>
+<li>Sanity Check Solvers - Feb 21, 2014 - Matt</li>
+<li>Basic Metrics - March 1, 2014 - Arrielle &amp; Olzhas</li>
+<li>Proof of Principle conda / batlab builder - March 1 - Zach &amp; Anthony</li>
+<li>Cyclus Restart Capability - March 15, 2014 - Robert C.</li>
+<li>Model Transition to New Paradigm, CEP2 Completion - March 15, 2014 - Anthony &amp; Matt</li>
+<li>Spring Break Sprint Week &#64; UW (unless we find somewhere better),
+discuss high level APIs for resource exchange - March 15-23rd - All UW + Others(?)</li>
+<li>Linear Programming Solvers - April 1, 2014 - Matt</li>
+<li>More Sophisticated Metrics - April 1, 2014 - Arrielle &amp; Olzhas</li>
+<li>Integration of conda / batlab builder with Polyphemus - April 1 - Zach &amp; Anthony</li>
+<li>Proof of Closed Cycles - April 8th, 2014 - Robert C.</li>
+<li>Weekend Sprint - April 18-20(?) - All UW</li>
+<li>Quarterly Reports Due - April 20th, 2014 - Anthony</li>
+<li>v0.5 release - April 30th - Anthony</li>
+<li>Integer Programming Solvers - May 1, 2014 - Matt</li>
+<li>Model &amp; Metric Co-development - May 1, 2014 - Arrielle &amp; Olzhas</li>
+<li>Proof of Transition Calculation w/ Potential Optimization Super Power - May 8, 2014 - Robert C. &amp; Anthony</li>
+<li>Medium Fidelity Models (time permitting) - May 8, 2014 - Anthony</li>
+<li>Integration &amp; Regression Testing - May 8, 2014 - Matt, Arrielle, and Olzhas</li>
+<li>Documentation/Release Sprint Week - May 8-15, 2014 - All UW</li>
+<li>Cyclus 1.0-rc1 - May 15, 2014</li>
+<li>Continued Documentation Cleanup - June 1, 2014</li>
+<li>Cyclus 1.0 - June 1, 2014</li>
 </ul>
-</div></blockquote>
-</li>
-<li><ol class="first upperalpha simple" start="21">
-<li>Texas at Austin</li>
-</ol>
-<blockquote>
-<div><ul class="simple">
-<li><a class="reference external" href="http://github.com/cyclus/cycic">Cycic</a> input control</li>
-</ul>
-</div></blockquote>
-</li>
-<li><ol class="first upperalpha simple" start="21">
-<li>Utah</li>
-</ol>
-<blockquote>
-<div><ul class="simple">
-<li><a class="reference external" href="http://github.com/cyclus/cyclist">Cyclist</a> output visualization</li>
-</ul>
-</div></blockquote>
-</li>
-</ul>
-</div>
-<div class="section" id="potential-research-ideas">
-<h2>Potential Research Ideas<a class="headerlink" href="#potential-research-ideas" title="Permalink to this headline">¶</a></h2>
-<p>In support of fuel cycle options analysis, modules representing specific
-technologies and fuel cycles will contribute significantly to the usefulness of
-the cyclus <a class="reference internal" href="ecosystem.html"><em>ecosystem</em></a>. Some specific concepts that have been identified as
-potentially versatile models for anticipated fuel cycle modeling goals include a
-number of creative Market, Region, Institution, and Facility Models.</p>
-<div class="section" id="market-model-ideas">
-<h3>Market Model Ideas<a class="headerlink" href="#market-model-ideas" title="Permalink to this headline">¶</a></h3>
-<p>Potential <strong>Markets</strong> that can be expected to be useful in some anticipated
-use cases include contract markets, markets encapsulating fundamental commodity
-market theories, markets employing political affinity to make resolution
-decisions, markets supporting multipass material routing, and markets that
-enable shadow fuel cycles for nuclear proliferation modeling.</p>
-</div>
-<div class="section" id="region-model-ideas">
-<h3>Region Model Ideas<a class="headerlink" href="#region-model-ideas" title="Permalink to this headline">¶</a></h3>
-<p>Potential <strong>Regions</strong> include those supporting political affinity models of
-international trade behavior, tax structures, creative growth patterns, political
-instabilities capable of causing technology interruption, and international fuel
-takeback agreeemnts.</p>
-</div>
-<div class="section" id="institution-model-ideas">
-<h3>Institution Model Ideas<a class="headerlink" href="#institution-model-ideas" title="Permalink to this headline">¶</a></h3>
-<p>Potentially compelling <strong>Institutions</strong> might support capacity dispatch logistics
-similar to public utility commision behavior or define nuclear growth in the
-presence of the growth of nonnuclear energy market share.</p>
-</div>
-<div class="section" id="facility-model-ideas">
-<h3>Facility Model Ideas<a class="headerlink" href="#facility-model-ideas" title="Permalink to this headline">¶</a></h3>
-<p>Myriad potential <strong>Facilities</strong> would support the broad <a class="reference internal" href="ecosystem.html"><em>ecosystem</em></a>
-of models useful for fuel cycle options analysis. Facility models are the
-technical building blocks of Cyclus simulations, and are expected to provide the
-modular representation of essential nuclear, chemical, and industrial processes
-in fuel cycles of all kinds. Potential fuel cycle technologies of import include</p>
-<blockquote>
-<div><ul class="simple">
-<li>advanced reactors</li>
-<li>separations stoichiometry process modules</li>
-<li>transportation modules</li>
-<li>uranium resource models</li>
-<li>nefarious shadow material diversion processes</li>
-<li>random facility disruption</li>
-</ul>
-</div></blockquote>
-</div>
-<div class="section" id="full-simulation-scale-contributions">
-<h3>Full Simulation Scale Contributions<a class="headerlink" href="#full-simulation-scale-contributions" title="Permalink to this headline">¶</a></h3>
-<p>Additional simulation-level features envisioned to become useful in the near
-term for optimization, economic, and strategic use cases include :</p>
-<blockquote>
-<div><ul class="simple">
-<li>external multi-variable optimization demonstration</li>
-<li>objective functions for assessing overall simulation performance (e.g. economic)</li>
-<li>investigation of impact of varying module fidelity</li>
-<li>implementations of relevant simulation use cases, benchmarking cases, etc.</li>
-</ul>
-</div></blockquote>
-</div>
-</div>
 </div>
 
 
@@ -283,8 +170,8 @@ term for optimization, economic, and strategic use cases include :</p>
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2012, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Feb 03, 2014.
+        &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
+      Last updated on Feb 13, 2014.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>

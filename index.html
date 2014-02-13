@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '0.1',
+        VERSION:     '(0.4-rc1)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -122,15 +122,17 @@
             
   <div class="section" id="cyclus">
 <h1><em>Cyclus</em><a class="headerlink" href="#cyclus" title="Permalink to this headline">¶</a></h1>
-<p><em>Cyclus</em> is a next-generation nuclear <a class="reference internal" href="basics/fcs_background.html"><em>fuel cycle simulator</em></a> environment, providing flexibility to users
+<div style="text-align:center;">
+<h2><a href="https://github.com/cyclus/cyclus/releases/tag/0.4">
+v0.4 has been released!</a></h2><br><br></div><p><em>Cyclus</em> is a next-generation nuclear <a class="reference internal" href="basics/fcs_background.html"><em>fuel cycle simulator</em></a> environment, providing flexibility to users
 and developers through an agent-based approach.</p>
 <p>A principal goal of <em>Cyclus</em> is to present a
 low barrier to adoption by new users and developers in order to
-encourage them to join a vibrant community in an <a class="reference internal" href="basics/ecosystem.html"><em>expanding ecosystem</em></a>.</p>
-<p>Interested developers are welcome and encouraged to contribute but may
-experience code instability in the early experimental stages of
-the project. For inspiration and a notion of current research directions,
-please consult our <a class="reference internal" href="basics/roadmap.html"><em>development roadmap</em></a>.</p>
+encourage them to join a vibrant community in an
+<a class="reference internal" href="basics/ecosystem.html"><em>expanding ecosystem</em></a>.</p>
+<p>Users and developers are always welcome and encouraged to use or contribute
+to the cyclus project. For inspiration and current research directions,
+please consult the <a class="reference internal" href="basics/roadmap.html"><em>development roadmap</em></a>.</p>
 <div class="section" id="important-features">
 <h2>Important Features<a class="headerlink" href="#important-features" title="Permalink to this headline">¶</a></h2>
 <ul>
@@ -146,9 +148,9 @@ please consult our <a class="reference internal" href="basics/roadmap.html"><em>
 <li><dl class="first docutils">
 <dt>Software Development Principles</dt>
 <dd><ul class="first last simple">
-<li>low barrier/rapid payback to adoption</li>
-<li>minimal inherent technology assumptions</li>
-<li>commonly used/available free software infrastructure</li>
+<li>Free and open source development licensing</li>
+<li>commonly used free software infrastructure</li>
+<li>engagement with users, developers, and the fuel cycle community</li>
 </ul>
 </dd>
 </dl>
@@ -158,40 +160,30 @@ please consult our <a class="reference internal" href="basics/roadmap.html"><em>
 <dd><ul class="first last">
 <li><p class="first">common physics infrastructure</p>
 </li>
-<li><dl class="first docutils">
-<dt>different user interface layer for different user audiences, with varying levels of both input control and output exploration</dt>
-<dd><ul class="first last simple">
+<li><p class="first">different user interface layer for different user audiences,
+with varying levels of both input control and output exploration</p>
+<blockquote>
+<div><ul class="simple">
 <li>varying levels of input control</li>
 <li>varying levels of output exploration</li>
 </ul>
-</dd>
-</dl>
+</div></blockquote>
 </li>
 </ul>
 </dd>
 </dl>
 </li>
 </ul>
-<p>The <em>Cyclus</em> modeling paradigm will let users reconﬁgure the basic
-building blocks of a simulation without changing the software. The
-foundation of a simulation will be a commodity broker that collects
-offers and requests from a set of facilities and matches them
-according to some algorithm. The user will be able to select which
-type of algorithm is used for each broker and for each facility by
-selecting an appropriate plug-in module for each and configuring it
-with a particular set of parameters defined by that module. Changing
-the parameters of a module will change the performance with a fixed
-algorithm defining the behavior, while selecting a different module
-will completely change its behavior.</p>
+<p>The <em>Cyclus</em> modeling paradigm lets users reconfigure the basic
+building blocks of a simulation without changing the software.</p>
 </div>
 <div class="section" id="learn-more">
 <h2>Learn More<a class="headerlink" href="#learn-more" title="Permalink to this headline">¶</a></h2>
-<p>The <em>Cyclus</em> project repository is located at
-<a class="reference external" href="http://github.com/cyclus/cyclus">http://github.com/cyclus/cyclus</a>.</p>
-<p>Although you do not have to register with github to
-download and edit the code, if you desire your work to be integrated into the
-cyclus mainline of development <em>you must fork the cyclus core repository into
-your own github account and submit &#8216;Pull Requests&#8217;</em>.</p>
+<p>The <em>Cyclus</em> project repository is located at <a class="reference external" href="http://github.com/cyclus/cyclus">http://github.com/cyclus/cyclus</a>.</p>
+<p>Although you do not have to register with github to download and edit the code,
+if you desire your work to be integrated into the cyclus mainline of development
+you must fork the cyclus core repository into your own github account and submit
+patches via pull Requests.</p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="basics/main.html">Cyclus Fundamentals</a></li>
@@ -206,22 +198,22 @@ for <a class="reference internal" href="devdoc/get_and_build.html"><em>getting a
 <div class="section" id="contact-us">
 <h2>Contact Us<a class="headerlink" href="#contact-us" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>Users&#8217; list: <a class="reference external" href="mailto:cyclus-users&#37;&#52;&#48;groups&#46;google&#46;com">cyclus-users<span>&#64;</span>groups<span>&#46;</span>google<span>&#46;</span>com</a></li>
-<li>Developers&#8217; list: <a class="reference external" href="mailto:cyclus-dev&#37;&#52;&#48;groups&#46;google&#46;com">cyclus-dev<span>&#64;</span>groups<span>&#46;</span>google<span>&#46;</span>com</a></li>
-<li>Project PI Paul Wilson: <a class="reference external" href="mailto:wilsonp&#37;&#52;&#48;engr&#46;wisc&#46;edu">wilsonp<span>&#64;</span>engr<span>&#46;</span>wisc<span>&#46;</span>edu</a></li>
+<li><a class="reference external" href="https://groups.google.com/forum/#!forum/cyclus-users">Users&#8217; mailing list</a></li>
+<li><a class="reference external" href="https://groups.google.com/forum/#!forum/cyclus-dev">Developer&#8217;s&#8216; mailing list</a></li>
+<li>Project PI, Paul Wilson: wilsonp AT engr.wisc.edu</li>
+<li>Project Lead, Anthony Scopatz:  scopatz AT gmail.com</li>
 </ul>
 </div>
 <div class="section" id="acknowledgments">
 <h2>Acknowledgments<a class="headerlink" href="#acknowledgments" title="Permalink to this headline">¶</a></h2>
-<dl class="docutils">
-<dt>Support for this research has included funding received from:</dt>
-<dd><img alt="_images/neup_logo_large.jpg" class="first" src="_images/neup_logo_large.jpg" style="height: 100px;" />
+<p>Support for this research has included funding received from:</p>
+<div class="image-band container">
+<img alt="_images/neup_logo_large.jpg" src="_images/neup_logo_large.jpg" style="height: 100px;" />
 <img alt="_images/AnlLogo.png" src="_images/AnlLogo.png" style="height: 100px;" />
 <img alt="_images/USNRC.gif" src="_images/USNRC.gif" style="height: 100px;" />
 <img alt="_images/nsf_logo.jpg" src="_images/nsf_logo.jpg" style="height: 100px;" />
-<img alt="_images/crest.png" class="last" src="_images/crest.png" style="height: 100px;" />
-</dd>
-</dl>
+<img alt="_images/crest.png" src="_images/crest.png" style="height: 100px;" />
+</div>
 </div>
 </div>
 
@@ -244,8 +236,8 @@ for <a class="reference internal" href="devdoc/get_and_build.html"><em>getting a
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2012, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Feb 03, 2014.
+        &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
+      Last updated on Feb 13, 2014.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>
