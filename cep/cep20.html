@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '(0.4-105-g7ba6c6a)',
+        VERSION:     '(0.4-55-g597b94f)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -164,7 +164,9 @@ the simulation could produce unexpected behavior, e.g., an entity could
 enter/exit in the middle of a time step. Furthermore, modules were developed
 specifically taking advantage of this behavior (i.e., the ordering of
 ticks/tocks) in order to guarantee that entities that were constructed during
-the Tick phase also received a Tick in that phase.</p>
+the Tick phase also received a Tick in that phase. Furthermore, this imposed a
+requirement on Regions and Institutions that they pass Ticks and Tocks along to
+their children in a trickle-down-like manner.</p>
 <p>Accordingly, there is a need to standardize what can/should be expected to occur
 in each phase of a given time step. Guarantees should be given to module
 developers that if an entity enters a simulation, that it will experience the
@@ -181,7 +183,7 @@ simultaneously at the end of the time step. This situation can be thought of as
 an event-based time advance mechanism, i.e., one that steps from event to event,
 that executes all events simultaneously that were supposed to have occurred in
 the time step.</p>
-<p>Two key types of events happen in a <em>Cyclus</em> simulation:</p>
+<p>Two key types of events happen in a <em>Cyclus</em> simulation (at present):</p>
 <ul class="simple">
 <li>the exchange of resources</li>
 <li>agent entry into and exit from the simulation</li>
@@ -218,6 +220,8 @@ within-phase execution</em>. This invariant allows for:</p>
 <li>a more cognitively simple process</li>
 <li>paralellization</li>
 </ul>
+<p>Any future addition of phases in the timestep execution stack neccessarily
+guarantee the two invariants described above.</p>
 </div>
 <div class="section" id="specification-implementation">
 <h2>Specification &amp; Implementation<a class="headerlink" href="#specification-implementation" title="Permalink to this headline">¶</a></h2>
@@ -315,7 +319,7 @@ redesigned to incorporate the new execution stack.</p>
     </div>
     <div class="footer">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Feb 20, 2014.
+      Last updated on Feb 21, 2014.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>
