@@ -147,6 +147,13 @@
 </table>
 <div class="section" id="abstract">
 <h2>Abstract<a class="headerlink" href="#abstract" title="Permalink to this headline">¶</a></h2>
+<p>An update to the time step execution stack is proposed. A timestep will now
+progress through phases, including a building phase, a tick phase, a resource
+exchange phase, a tock phase, and a decommissioning phase. Phases are grouped in
+two categories: kernel phases and agent phases. Kernel phases have required or
+guaranteed actions that occur during them, and include the build, exchange, and
+decommission phases. Agent phases include the Tick and Tock phases, and allow
+agents to inspect simulation state and update their own state.</p>
 </div>
 <div class="section" id="motivation">
 <h2>Motivation<a class="headerlink" href="#motivation" title="Permalink to this headline">¶</a></h2>
@@ -201,12 +208,23 @@ that exists in a given time step should be included in the resource exchange,
 or, equivalently, experience the entire time step execution stack</em>.</p>
 <p>This leads to the following ordering, or <em>phases</em>, of time step execution:</p>
 <ul class="simple">
-<li>agents enter simulation (Deployment Phase)</li>
-<li>agents respond to current simulation state (PreExchange Phase)</li>
+<li>agents enter simulation (Building Phase)</li>
+<li>agents respond to current simulation state (Tick Phase)</li>
 <li>resource exchange execution (Exchange Phase)</li>
-<li>agents respond to current simulation state (PostExchange Phase)</li>
+<li>agents respond to current simulation state (Tock Phase)</li>
 <li>agents leave simulation (Decommissioning Phase)</li>
 </ul>
+<p>The Building, Exchange, and Decommissioning phases each include critical,
+core-based events, and will be called <em>Kernel</em> phases. The Tick and Tock phases
+do not include core-based events, and instead let agents react to previous
+core-based events and inspect core simulation state. Furthermore, they are
+periods in which agents can update their own state and are accordingly
+considered <em>Agent</em> phases. In general, Agent phases <em>must</em> bracket <em>critical</em>
+Kernel phases, of which only the Exchange Phase exists for now. If another
+critical core phase is added in the future it must provide a similar invariant,
+i.e., that it is bracketed by Agent phases. For example, if a new phase is added
+before Exchange, then the time execution stack would follow as: Building, Tick,
+<em>New Kernel Phase</em>, <em>New Agent Phase</em>, Exchange, Tock, Decommission.</p>
 <p>Technically, whether agent entry occurs simultaneously with agent exit or not
 does not matter from a simulation-mechanics point of view, because the two
 phases have a direct ordering. It will, however, from the point of view of
@@ -221,7 +239,7 @@ within-phase execution</em>. This invariant allows for:</p>
 <li>paralellization</li>
 </ul>
 <p>Any future addition of phases in the timestep execution stack neccessarily
-guarantee the two invariants described above.</p>
+guarantee the three invariants described above.</p>
 </div>
 <div class="section" id="specification-implementation">
 <h2>Specification &amp; Implementation<a class="headerlink" href="#specification-implementation" title="Permalink to this headline">¶</a></h2>
@@ -319,7 +337,7 @@ redesigned to incorporate the new execution stack.</p>
     </div>
     <div class="footer">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Feb 21, 2014.
+      Last updated on Feb 24, 2014.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>
