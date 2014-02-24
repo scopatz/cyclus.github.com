@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '(0.4-55-g597b94f)',
+        VERSION:     '(0.4-138-g8677132)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -79,6 +79,10 @@
 <li><a class="reference internal" href="#the-cyclus-ecosystem">The Cyclus Ecosystem</a></li>
 <li><a class="reference internal" href="#release-candidates-branches">Release Candidates &amp; Branches</a></li>
 <li><a class="reference internal" href="#project-checklist">Project Checklist</a></li>
+<li><a class="reference internal" href="#maintainence-tasks">Maintainence Tasks</a><ul>
+<li><a class="reference internal" href="#cyclus">Cyclus</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#document-history">Document History</a></li>
 </ul>
 </li>
@@ -211,6 +215,7 @@ release.</p>
 <li>Ensure that all issues in this release&#8217;s milestone have been closed.  Moving issues
 to the next release&#8217;s milestone is a perfectly valid strategy for completing this
 milestone.</li>
+<li>Perform maintainence tasks for this project, see below.</li>
 <li>Write and commit the release notes.</li>
 <li>Review the current state of documentation and make approriate updates.</li>
 <li>Bump the version (in code, documentation, etc.) and commit the change.</li>
@@ -228,6 +233,24 @@ with the name &#8216;X.X.X&#8217;.  Finally, delete the release branch.</li>
 <li>Push the tags upstream</li>
 <li>Update release information on the website.</li>
 </ol>
+</div>
+<div class="section" id="maintainence-tasks">
+<h2>Maintainence Tasks<a class="headerlink" href="#maintainence-tasks" title="Permalink to this headline">¶</a></h2>
+<p>Each project may have associate maintenance tasks which may need to be performed at
+least as often as every micro release.</p>
+<div class="section" id="cyclus">
+<h3>Cyclus<a class="headerlink" href="#cyclus" title="Permalink to this headline">¶</a></h3>
+<p><strong>Update Pyne:</strong>  PyNE source code is included and shipped as part of cyclus. As pyne
+evolves, we&#8217;ll want to have our version evolve as well. Here are the steps to do so.
+These assume that in your HOME dir there are both the pyne and cyclus repos.  Remember
+to check in the changes afterwards.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd</span> ~/pyne
+<span class="nv">$ </span>./amalgamate.py -s pyne.cc -i pyne.h -f license.txt cpp/pyne.* cpp/extra_types.h <span class="se">\</span>
+  cpp/h5wrap.h cpp/nucname.* cpp/rxname.*
+<span class="nv">$ </span>cp pyne.* ~/cyclus/src
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="document-history">
 <h2>Document History<a class="headerlink" href="#document-history" title="Permalink to this headline">¶</a></h2>
