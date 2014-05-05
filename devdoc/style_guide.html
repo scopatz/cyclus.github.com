@@ -1,6 +1,4 @@
 
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -17,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '(0.4-79-g89981d5)',
+        VERSION:     '(0.4.3-406-gc8b3cc5)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -118,7 +116,12 @@
             
   <div class="section" id="style-guidelines-for-developers">
 <h1>Style Guidelines for Developers<a class="headerlink" href="#style-guidelines-for-developers" title="Permalink to this headline">¶</a></h1>
-<p><em>Cyclus</em> uses the <a class="reference external" href="http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml">Google C++ Style Guide</a>.</p>
+<p><em>Cyclus</em> uses the <a class="reference external" href="http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml">Google C++ Style Guide</a> and <a class="reference external" href="http://google-styleguide.googlecode.com/svn/trunk/pyguide.html">Google Python Style Guide</a>.
+In order to ensure compliance with these styles, we recommend the <a class="reference external" href="http://astyle.sourceforge.net">Artistic Style</a> tool
+with the following <a class="reference external" href="http://github.com/cyclus/cyclus/blob/master/misc/.astylerc">settings</a> located in cyclus repo. However, be wary of applying
+this tool blindly because it has some <a class="reference external" href="https://sourceforge.net/p/astyle/bugs/">limits and bugs</a>.
+<a class="reference external" href="http://google-styleguide.googlecode.com/svn/trunk/cpplint/">Cpplint</a> and <a class="reference external" href="http://www.pylint.org/">Pylint</a> are other helpful tools to check your code for style and syntax errors.
+Unfortunately, these tools may also suffer false positives and false negatives.</p>
 </div>
 
 
@@ -145,8 +148,8 @@
     </div>
     <div class="footer">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Feb 24, 2014.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+      Last updated on May 05, 2014.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

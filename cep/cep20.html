@@ -1,6 +1,4 @@
 
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -17,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '(0.4-79-g89981d5)',
+        VERSION:     '(0.4.3-406-gc8b3cc5)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -28,6 +26,7 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="Cyclus Home" href="../index.html" />
     <link rel="up" title="Cyclus Enhancement Proposals" href="cep0.html" />
+    <link rel="next" title="CEP 21 - Agent Identification and Discovery" href="cep21.html" />
     <link rel="prev" title="CEP 19 - Cyclus Input Procedure Updates" href="cep19.html" />
    
 <script type="text/javascript">
@@ -60,6 +59,9 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
+          <a href="cep21.html" title="CEP 21 - Agent Identification and Discovery"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
           <a href="cep19.html" title="CEP 19 - Cyclus Input Procedure Updates"
              accesskey="P">previous</a> |</li>
         <li><a href="../index.html">Cyclus Home</a> &raquo;</li>
@@ -85,6 +87,9 @@
   <h4>Previous topic</h4>
   <p class="topless"><a href="cep19.html"
                         title="previous chapter">CEP 19 - Cyclus Input Procedure Updates</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="cep21.html"
+                        title="next chapter">CEP 21 - Agent Identification and Discovery</a></p>
   <h3>Useful Pages</h3>
     <li><a href="http://cyclus.github.com/basics/glossary.html">Glossary</a></li>
     <li><a href="http://cyclus.github.com/basics/roadmap.html">Roadmap</a></li>
@@ -182,7 +187,7 @@ simulation, that it will experience an entire time step on the time it leaves.</
 </div>
 <div class="section" id="rationale">
 <h2>Rationale<a class="headerlink" href="#rationale" title="Permalink to this headline">¶</a></h2>
-<p>By Law&#8217;s definition <a class="reference internal" href="#law-1999-sma-554952">[1]</a>, a <em>Cyclus</em> simulation is,
+<p>By Law&#8217;s definition <a class="reference internal" href="#law-1999-sma-554952" id="id1">[LK99]</a>, a <em>Cyclus</em> simulation is,
 broadly, a dynamic, discrete-event simulation that uses a fixed-increment time
 advance mechanism. In general, fixed-increment time advance scenarios assume a
 time step (dt), and assume that all events that would happen during a time occur
@@ -309,7 +314,7 @@ redesigned to incorporate the new execution stack.</p>
 <p id="bibtex-bibliography-cep/cep20-0"><table class="docutils citation" frame="void" id="law-1999-sma-554952" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td><span class="first last"><span><span><span><span><span><span><span>Averill</span><span>&nbsp;</span><span>M.</span></span><span> </span></span><span>Law</span></span><span> and </span><span><span><span><span>David</span><span>&nbsp;</span><span>M.</span></span><span> </span></span><span>Kelton</span></span></span><span>.</span></span><span> </span><span><em><span>Simulation Modeling and Analysis</span></em><span>.</span></span></span><span> </span><span><span><span>McGraw-Hill Higher Education</span><span>, </span><span><span>3rd</span><span> </span><span>edition</span></span></span><span>, </span><span>1999</span><span>.</span></span></span></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id1">[LK99]</a></td><td>Averill&nbsp;M. Law and David&nbsp;M. Kelton. <em>Simulation Modeling and Analysis</em>. McGraw-Hill Higher Education, 3rd edition, 1999.</td></tr>
 </tbody>
 </table>
 </p>
@@ -329,6 +334,9 @@ redesigned to incorporate the new execution stack.</p>
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
+          <a href="cep21.html" title="CEP 21 - Agent Identification and Discovery"
+             >next</a> |</li>
+        <li class="right" >
           <a href="cep19.html" title="CEP 19 - Cyclus Input Procedure Updates"
              >previous</a> |</li>
         <li><a href="../index.html">Cyclus Home</a> &raquo;</li>
@@ -337,8 +345,8 @@ redesigned to incorporate the new execution stack.</p>
     </div>
     <div class="footer">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Feb 24, 2014.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+      Last updated on May 05, 2014.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

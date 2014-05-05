@@ -26,7 +26,7 @@ Index
 
     PA - 1 - CEP Purpose and Guidelines - Scopatz <cep1>
     PA - 2 - Separation of Concerns in the Cyclus Ecosystem - Scopatz <cep2>
-    PD - 3 - Release Procedure - Scopatz <cep3>
+    PA - 3 - Release Procedure - Scopatz <cep3>
 
 *Standard CEPs*
 
@@ -36,7 +36,8 @@ Index
     SA - 17 - Resource Tracking and Interfaces Re-Re-Redo - Carlsen <cep17>
     SA - 18 - Dynamic Resource Exchange Procedure - Gidden <cep18>
     SW - 19 - Cyclus Input Procedure Updates - Flanagan <cep19>
-    SD - 20 - Time Step Execution Stack - Gidden <cep20>
+    SA - 20 - Time Step Execution Stack - Gidden <cep20>
+    SD - 21 - Module Identification and Discovery - Carlsen <cep21>
 
 Key
 ---

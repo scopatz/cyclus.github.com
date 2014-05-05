@@ -1,0 +1,244 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>CEP 21 - Agent Identification and Discovery &mdash; Cyclus Home</title>
+    
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '(0.4.3-406-gc8b3cc5)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Cyclus Home" href="../index.html" />
+    <link rel="up" title="Cyclus Enhancement Proposals" href="cep0.html" />
+    <link rel="prev" title="CEP 20 - Time Step Execution Stack" href="cep20.html" />
+   
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-12222727-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+  </head>
+  <body>
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+  <a href="http://cyclus.github.com">
+    <img src="../_static/logo1.png"/>
+  </a>
+</div>
+
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="cep20.html" title="CEP 20 - Time Step Execution Stack"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Cyclus Home</a> &raquo;</li>
+          <li><a href="cep0.html" accesskey="U">Cyclus Enhancement Proposals</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">CEP 21 - Agent Identification and Discovery</a><ul>
+<li><a class="reference internal" href="#abstract">Abstract</a></li>
+<li><a class="reference internal" href="#agent-spec">Agent Spec</a></li>
+<li><a class="reference internal" href="#module-discovery">Module Discovery</a></li>
+<li><a class="reference internal" href="#conventions">Conventions</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="cep20.html"
+                        title="previous chapter">CEP 20 - Time Step Execution Stack</a></p>
+  <h3>Useful Pages</h3>
+    <li><a href="http://cyclus.github.com/basics/glossary.html">Glossary</a></li>
+    <li><a href="http://cyclus.github.com/basics/roadmap.html">Roadmap</a></li>
+    <li><a href="https://github.com/cyclus">Source Code</a></li>
+    <li><a href="http://fuelcycle.org/cyclus/api/">Cyclus Core Documentation</a></li>
+    <li><a href="http://fuelcycle.org/cycamore/api/">Cycamore Documentation</a></li>
+    
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <h3>Acknowledgements</h3>
+    Support for this research has included funding received from:
+    <img src=/_images/neup_logo_large.jpg width=170px>
+    <img src=/_images/AnlLogo.png height=100px>
+    <img src=/_images/USNRC.gif height=100px>
+    <img src=/_images/nsf_logo.jpg height=100px>
+    <img src=/_images/crest.png height=100px>
+
+    
+
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="cep-21-agent-identification-and-discovery">
+<h1>CEP 21 - Agent Identification and Discovery<a class="headerlink" href="#cep-21-agent-identification-and-discovery" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">CEP:</th><td class="field-body">21</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Title:</th><td class="field-body">Agent Identification and Distribution</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Last-Modified:</th><td class="field-body">2014-05-05</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Author:</th><td class="field-body">Robert Carlsen &lt;<a class="reference external" href="mailto:rwcarlsen&#37;&#52;&#48;gmail&#46;com">rwcarlsen<span>&#64;</span>gmail<span>&#46;</span>com</a>&gt;</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Status:</th><td class="field-body">Draft</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">Standards Track</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Created:</th><td class="field-body">Robert Carlsen</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="abstract">
+<h2>Abstract<a class="headerlink" href="#abstract" title="Permalink to this headline">¶</a></h2>
+<p>Cyclus is designed to have plugin modules that can be easily distributed and
+installed.  A &#8220;module&#8221; is a shared library containing one or more compiled
+Cyclus agents.  Agents within mouldes must be uniquely identifiable and
+discoverable by both users managing their Cyclus installation and by the
+Cyclus kernel itself.  A user wishing to use certain modules must install them
+in a desired location and then identify specific agents in them to Cyclus.
+This CEP explains where modules can/should be installed and how Cyclus finds
+and identifies agents in them.</p>
+</div>
+<div class="section" id="agent-spec">
+<h2>Agent Spec<a class="headerlink" href="#agent-spec" title="Permalink to this headline">¶</a></h2>
+<p>Agents will be uniquely identified by 3 components together referred to as an
+&#8220;agent spec&#8221;:</p>
+<ol class="arabic">
+<li><p class="first">path (optional): e.g. <tt class="docutils literal"><span class="pre">my/module/path</span></tt></p>
+<p>A slash-delimited, valid filesystem path relative to CYCLUS_PATH (see
+Module Discovery below).</p>
+</li>
+<li><p class="first">library (optional): e.g. <tt class="docutils literal"><span class="pre">MyModule</span></tt></p>
+<p>Name of the compiled shared object library file without the &#8220;lib&#8221; prefix
+and without the file extension. If empty, is expanded to the agent class.
+The example above would correspond to a library file named &#8220;libMyModule.so&#8221;
+(linux), &#8220;libMyModule.dylib&#8221; (darwin), etc.</p>
+</li>
+<li><p class="first">agent class (required): e.g. <tt class="docutils literal"><span class="pre">MyAgent</span></tt></p>
+<p>The name of the agent&#8217;s c++ class as compiled into the shared library file.</p>
+</li>
+</ol>
+<p>An agent spec also has a single-string form composed of the three components
+separated by colons:</p>
+<div class="highlight-python"><div class="highlight"><pre>[path]:[library]:[agent-class]
+
+e.g. &quot;my/module/path:MyModule:MyAgent&quot;
+</pre></div>
+</div>
+<p>Example linux agent specs with corresponding filepath expansions:</p>
+<div class="highlight-python"><div class="highlight"><pre>my/path:MyModule:MyAgent -&gt; my/path/libMyModule.so
+:MyModule:MyAgent        -&gt; libMyModule.so
+my/path::MyAgent         -&gt; my/path/libMyAgent.so
+::MyAgent                -&gt; libMyAgent.so
+</pre></div>
+</div>
+</div>
+<div class="section" id="module-discovery">
+<h2>Module Discovery<a class="headerlink" href="#module-discovery" title="Permalink to this headline">¶</a></h2>
+<p>When running a simulation, Cyclus will search the following candidate
+directories (in order) for each given agent spec:</p>
+<ol class="arabic simple">
+<li>Each colon-separated directory in the CYCLUS_PATH environment variable.</li>
+<li>The default cyclus module install directory: <tt class="docutils literal"><span class="pre">[install-dir]/lib/cyclus</span></tt>.</li>
+</ol>
+<p>Cyclus will check for the library by building consecutive paths with the
+following composition:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="n">candidate</span><span class="o">-</span><span class="nb">dir</span><span class="p">]</span><span class="o">/</span><span class="p">[</span><span class="n">path</span><span class="p">]</span><span class="o">/</span><span class="n">lib</span><span class="p">[</span><span class="n">library</span><span class="p">][</span><span class="n">extension</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Cyclus uses the first matching shared library file found and assumes the
+specified agent class exists inside it.</p>
+</div>
+<div class="section" id="conventions">
+<h2>Conventions<a class="headerlink" href="#conventions" title="Permalink to this headline">¶</a></h2>
+<p>The path should consist of only alpha-numeric characters, slashes,
+underscores, and dashes. <strong>No</strong> spaces.  If there are resource files that must
+be installed with the shared library file, the library and resources should be
+placed in their own directory.</p>
+<p>The shared library name should consist of only alpha-numeric characters,
+slashes, underscores.  <strong>No</strong> spaces. If the shared library only has a
+single agent in it, the library should be the same as the agent class.  For
+example, if my agent was named <tt class="docutils literal"><span class="pre">MyAgent</span></tt>, then the library file should be
+named <tt class="docutils literal"><span class="pre">libMyAgent.so</span></tt> on a linux system.  This allows the defaults to
+prevent stuttering in the agent&#8217;s module spec.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="cep20.html" title="CEP 20 - Time Step Execution Stack"
+             >previous</a> |</li>
+        <li><a href="../index.html">Cyclus Home</a> &raquo;</li>
+          <li><a href="cep0.html" >Cyclus Enhancement Proposals</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
+      Last updated on May 05, 2014.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>
