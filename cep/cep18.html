@@ -1,4 +1,6 @@
 
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -15,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '(0.4.3-406-gc8b3cc5)',
+        VERSION:     '(0.4.3-433-gdf86f75)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -180,7 +182,7 @@ encompass an information gathering procedure, providing generic information to
 any market exchange solution procedure. The final phase is modular in that any
 algorithm can be used to solve the exchange. This modular phase takes the place
 of the current implementation of MarketModels. The procedure is informed by
-agent-based supply chain modeling literature <a class="reference internal" href="#julka-agent-based-2002" id="id1">[JSK02]</a> with
+agent-based supply chain modeling literature <a class="reference internal" href="#julka-agent-based-2002">[1]</a> with
 modifications as required for our nuclear-engineering domain specific
 information.</p>
 </div>
@@ -252,7 +254,7 @@ with specific, defined agency.</p>
 <p>Supply-demand determination at any given time step occurs in nominally three
 steps, or <strong>phases</strong>, and the associated terminology is taken from previous
 supply chain agent-based modeling work
-<a class="reference internal" href="#julka-agent-based-2002" id="id2">[JSK02]</a>. Importantly, this information-gathering step is
+<a class="reference internal" href="#julka-agent-based-2002">[1]</a>. Importantly, this information-gathering step is
 agnostic as to the actual matching algorithm used, it is concerned only with
 querying the current status of supply and demand and facility preference thereof
 in the simulation.</p>
@@ -274,17 +276,17 @@ material, including depleted uranium from enrichment or reprocessed uranium from
 separations. Accordingly, it could demand both commodities as long as it
 provides a corresponding constraint with respect to total consumption.</p>
 <p>At the completion of the RFB phase, the market exchange will have a set of
-consumption portfolios, <span class="math">P</span>, for each requester in the exchange, shown as
+consumption portfolios, <img class="math" src="../_images/math/4b4cade9ca8a2c8311fafcf040bc5b15ca507f52.png" alt="P"/>, for each requester in the exchange, shown as
 the orange box in Figure 1. Each portfolio consists of a set of requests,
-<span class="math">R</span>, a cardinal preferential ordering over the requests, <span class="math">\alpha_R</span>,
-and possibly a set of constraints over the requests, <span class="math">c_R</span>. A constraint
+<img class="math" src="../_images/math/eff43e84f8a3bcf7b6965f0a3248bc4d3a9d0cd4.png" alt="R"/>, a cardinal preferential ordering over the requests, <img class="math" src="../_images/math/3ce42873cf3766138e2490e916a5bdc4911a08ba.png" alt="\alpha_R"/>,
+and possibly a set of constraints over the requests, <img class="math" src="../_images/math/fcb3a9a1e7b7b5f458af255c5b7e7ec810525422.png" alt="c_R"/>. A constraint
 can be associated with more than one request. Take the previous example of MOX
 and UOX for an LWR. Each is a separate request, but a constraint may be
 concerned with the combination of the two. Another example is a repository that
 may request many commodities, but has a radiotoxicity constraint over any
 commodities it receives for a given time step.</p>
-<p>A request consists of a quantity, <span class="math">q_r</span>, and a target isotopic vector,
-<span class="math">I_r</span>. Consumers are allowed to offer the null set of isotopics as their
+<p>A request consists of a quantity, <img class="math" src="../_images/math/da9f2cdd3358820c840b33109f88769f39ea7061.png" alt="q_r"/>, and a target isotopic vector,
+<img class="math" src="../_images/math/2d7deef62e3de6c78101448f721784bfea9a4400.png" alt="I_r"/>. Consumers are allowed to offer the null set of isotopics as their
 profile, effectively providing no information. In general, a requester may have
 more than one request (nodes in Figure 1) per commodity. A prime example is a
 reactor that chooses to requests fuel assemblies, of which they request many.</p>
@@ -368,7 +370,7 @@ preferences among possible suppliers based on the supplier&#8217;s quality of
 product. Because this agency is encapsulated for each agent, it is possible to
 define strategies that can be attached or detached to the agents at
 run-time. Such strategies are an example of the Strategy design pattern
-<a class="reference internal" href="#vlissides-design-1995" id="id3">[VHJG95]</a>.</p>
+<a class="reference internal" href="#vlissides-design-1995">[2]</a>.</p>
 </div>
 <div class="section" id="institutional-agency">
 <h4>Institutional Agency<a class="headerlink" href="#institutional-agency" title="Permalink to this headline">¶</a></h4>
@@ -600,13 +602,13 @@ requests</li>
 <p id="bibtex-bibliography-cep/cep18-0"><table class="docutils citation" frame="void" id="julka-agent-based-2002" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[JSK02]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> N.&nbsp;Julka, R.&nbsp;Srinivasan, and I.&nbsp;Karimi. Agent-based supply chain management-1: framework. <em>Computers &amp; Chemical Engineering</em>, 26(12):1755–1769, 2002. <a class="reference external" href="http://www.sciencedirect.com/science/article/pii/S0098135402001503">URL: http://www.sciencedirect.com/science/article/pii/S0098135402001503</a>.</td></tr>
+<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> <span class="last"><span><span><span><span><span><span><span>N.</span><span>&nbsp;</span></span><span>Julka</span></span><span>, </span><span><span><span>R.</span><span>&nbsp;</span></span><span>Srinivasan</span></span></span><span>, and </span><span><span><span>I.</span><span>&nbsp;</span></span><span>Karimi</span></span></span><span>.</span></span><span> </span><span><span>Agent-based supply chain management-1: framework</span><span>.</span></span></span><span> </span><span><span><em><span>Computers &amp; Chemical Engineering</span></em><span>, </span><span><span><span>26</span><span><span>(</span><span>12</span><span>)</span></span><span>:</span></span><span>1755–1769</span></span></span><span>, </span><span>2002</span><span>.</span></span></span></td></tr>
 </tbody>
 </table>
 <table class="docutils citation" frame="void" id="vlissides-design-1995" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id3">[VHJG95]</a></td><td>John Vlissides, R&nbsp;Helm, R&nbsp;Johnson, and E&nbsp;Gamma. Design patterns: elements of reusable object-oriented software. <em>Reading: Addison-Wesley</em>, 1995.</td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id3">[2]</a></td><td><span class="first last"><span><span><span><span><span><span><span>John</span><span> </span></span><span>Vlissides</span></span><span>, </span><span><span><span>R</span><span>&nbsp;</span></span><span>Helm</span></span><span>, </span><span><span><span>R</span><span>&nbsp;</span></span><span>Johnson</span></span></span><span>, and </span><span><span><span>E</span><span>&nbsp;</span></span><span>Gamma</span></span></span><span>.</span></span><span> </span><span><span>Design patterns: elements of reusable object-oriented software</span><span>.</span></span></span><span> </span><span><em><span>Reading: Addison-Wesley</span></em><span>, </span><span>1995</span><span>.</span></span></span></td></tr>
 </tbody>
 </table>
 </p>
@@ -637,8 +639,8 @@ requests</li>
     </div>
     <div class="footer">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on May 05, 2014.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Last updated on May 07, 2014.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>
 </html>
