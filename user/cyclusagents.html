@@ -1,0 +1,665 @@
+
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Cyclus Archetypes &mdash; Home</title>
+    
+    <link rel="stylesheet" href="../_static/cyclus.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '(1.0.0-rc3-59-g7a5d0ac)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../_static/cloud.js"></script>
+    <link rel="shortcut icon" href="../_static/big_c.ico"/>
+    <link rel="top" title="Home" href="../index.html" />
+    <link rel="up" title="Cyclus User Guide" href="main.html" />
+    <link rel="next" title="Cycamore Archetypes" href="cycamoreagents.html" />
+    <link rel="prev" title="Running Simulations" href="running_sims.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1"><script type="text/javascript">
+var ga_enabled = !$.cookie('disable-ga');
+if(ga_enabled){
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-12222727-2']);
+  _gaq.push(['_setCookiePath', '/']);
+  _gaq.push(['_setDetectFlash', false]);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+}
+</script>
+  </head>
+  <body>
+    <div class="relbar-top">
+        
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="cycamoreagents.html" title="Cycamore Archetypes"
+             accesskey="N">next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="running_sims.html" title="Running Simulations"
+             accesskey="P">previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">Home</a> &raquo;</li>
+
+          <li><a href="main.html" accesskey="U"><span style="font-variant:small-caps;">Cyclus</span> User Guide</a> &raquo;</li> 
+      </ul>
+    </div>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="cyclus-archetypes">
+<h1><span style="font-variant:small-caps;">Cyclus</span> Archetypes<a class="headerlink" href="#cyclus-archetypes" title="Permalink to this headline">¶</a></h1>
+<p>This is a collection of archetypes found in the <tt class="docutils literal"><span class="pre">agents</span></tt> module that comes with
+<span style="font-variant:small-caps;">Cyclus</span> itself.</p>
+<div class="section" id="agents-source">
+<h2>:agents:<strong>Source</strong><a class="headerlink" href="#agents-source" title="Permalink to this headline">¶</a></h2>
+<p>A minimum implementation source facility that provides a commodity with a given capacity</p>
+<p><strong>State Variables:</strong></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">commod:</th><td class="field-body"><p class="first"><em>std::string</em></p>
+<p>source commodity</p>
+<p>commodity that the source facility supplies</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">recipe_name:</th><td class="field-body"><p class="first"><em>std::string</em></p>
+<p>commodity recipe name</p>
+<p>recipe name for source facility&#8217;s commodity</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">capacity:</th><td class="field-body"><p class="first"><em>double</em></p>
+<p>source capacity</p>
+<p class="last">amount of commodity that can be supplied at each time step</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Schema:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;interleave&gt;</span>
+<span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;commod&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/element&gt;</span>
+<span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;recipe_name&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/element&gt;</span>
+<span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;capacity&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;double&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/element&gt;</span>
+<span class="nt">&lt;/interleave&gt;</span>
+</pre></div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="agents-sink">
+<h2>:agents:<strong>Sink</strong><a class="headerlink" href="#agents-sink" title="Permalink to this headline">¶</a></h2>
+<p>A minimum implementation sink facility that accepts specified amounts of commodities from other agents</p>
+<p><strong>State Variables:</strong></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">in_commods:</th><td class="field-body"><p class="first"><em>std::vector&lt;std::string&gt;</em></p>
+<p>input commodities</p>
+<p>commodities that the sink facility accepts</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">capacity:</th><td class="field-body"><p class="first"><em>double</em></p>
+<p>sink capacity</p>
+<p>capacity the sink facility can accept at each time step</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">max_inv_size:</th><td class="field-body"><p class="first"><em>double</em>, default=1e+299</p>
+<p>sink maximum inventory size</p>
+<p>total maximum inventory size of sink facility</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">inventory:</th><td class="field-body"><p class="first"><em>cyclus::toolkit::ResourceBuff</em></p>
+<table class="last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">capacity:</th><td class="field-body">max_inv_size</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Schema:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;interleave&gt;</span>
+<span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;in_commods&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;oneOrMore&gt;</span>
+        <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;val&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/element&gt;</span>
+    <span class="nt">&lt;/oneOrMore&gt;</span>
+<span class="nt">&lt;/element&gt;</span>
+<span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;capacity&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;double&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/element&gt;</span>
+<span class="nt">&lt;optional&gt;</span>
+    <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;max_inv_size&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;double&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/element&gt;</span>
+<span class="nt">&lt;/optional&gt;</span>
+<span class="nt">&lt;/interleave&gt;</span>
+</pre></div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="agents-nullregion">
+<h2>:agents:<strong>NullRegion</strong><a class="headerlink" href="#agents-nullregion" title="Permalink to this headline">¶</a></h2>
+<p>A region that owns the simulation&#8217;s institutions but exhibits null behavior. No parameters are given when using the null region.</p>
+<p><strong>Schema:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;text/&gt;</span>
+</pre></div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="agents-nullinst">
+<h2>:agents:<strong>NullInst</strong><a class="headerlink" href="#agents-nullinst" title="Permalink to this headline">¶</a></h2>
+<p>An instition that owns facilities in the simulation but exhibits null behavior. No parameters are given when using the null institution.</p>
+<p><strong>Schema:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;text/&gt;</span>
+</pre></div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="agents-kfacility">
+<h2>:agents:<strong>KFacility</strong><a class="headerlink" href="#agents-kfacility" title="Permalink to this headline">¶</a></h2>
+<p>A facility designed for integration tests that both provides and consumes commodities. It changes its request and offer amounts based on a power law with respect to time.</p>
+<p><strong>State Variables:</strong></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">in_commod:</th><td class="field-body"><p class="first"><em>std::string</em></p>
+<p>input commodity</p>
+<p>commodity that the k-facility consumes</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">out_commod:</th><td class="field-body"><p class="first"><em>std::string</em></p>
+<p>output commodity</p>
+<p>commodity that the k-facility supplies</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">recipe_name:</th><td class="field-body"><p class="first"><em>std::string</em>, shape=[50]</p>
+<p>in-commodity recipe name</p>
+<p>recipe name for the k-facility&#8217;s in-commodity</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">in_capacity:</th><td class="field-body"><p class="first"><em>double</em></p>
+<p>input commodity capacity</p>
+<p>number of commodity units that can be taken at each time step (infinite capacity can be represented by a very large number</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">out_capacity:</th><td class="field-body"><p class="first"><em>double</em></p>
+<p>output commodity capacity</p>
+<p>number of commodity units that can be supplied at each time step (infinite capacity can be represented by a very large number</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">current_capacity:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first"><em>double</em>, default=0</p>
+<p>current output capacity</p>
+<p>number of output commodity units that can be supplied at the current time step (infinite capacity can be represented by a very large number</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">max_inv_size:</th><td class="field-body"><p class="first"><em>double</em>, default=1e+299</p>
+<p>k-facility maximum inventory size</p>
+<p>total maximum inventory size of the k-facility</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">inventory:</th><td class="field-body"><p class="first"><em>cyclus::toolkit::ResourceBuff</em></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">capacity:</th><td class="field-body">max_inv_size</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">k_factor_in:</th><td class="field-body"><p class="first"><em>double</em></p>
+<p>input k-factor</p>
+<p>conversion factor that governs the behavior of the k-facility&#8217;s input commodity capacity</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">k_factor_out:</th><td class="field-body"><p class="first"><em>double</em></p>
+<p>output k-factor</p>
+<p class="last">conversion factor that governs the behavior of the k-facility&#8217;s output commodity capacity</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Schema:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;interleave&gt;</span>
+<span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;in_commod&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/element&gt;</span>
+<span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;out_commod&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/element&gt;</span>
+<span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;recipe_name&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/element&gt;</span>
+<span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;in_capacity&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;double&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/element&gt;</span>
+<span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;out_capacity&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;double&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/element&gt;</span>
+<span class="nt">&lt;optional&gt;</span>
+    <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;current_capacity&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;double&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/element&gt;</span>
+<span class="nt">&lt;/optional&gt;</span>
+<span class="nt">&lt;optional&gt;</span>
+    <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;max_inv_size&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;double&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/element&gt;</span>
+<span class="nt">&lt;/optional&gt;</span>
+<span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;k_factor_in&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;double&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/element&gt;</span>
+<span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;k_factor_out&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;double&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/element&gt;</span>
+<span class="nt">&lt;/interleave&gt;</span>
+</pre></div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="agents-predator">
+<h2>:agents:<strong>Predator</strong><a class="headerlink" href="#agents-predator" title="Permalink to this headline">¶</a></h2>
+<p>A facility that represents predators in the Lotka-Volterra integration tests</p>
+<p><strong>State Variables:</strong></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">commod:</th><td class="field-body"><p class="first"><em>std::string</em></p>
+<p>predator commodity</p>
+<p>commodity that the predator supplies</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">prey:</th><td class="field-body"><p class="first"><em>std::string</em></p>
+<p>predator&#8217;s prey</p>
+<p>prey that the predator hunts</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">full:</th><td class="field-body"><p class="first"><em>double</em>, default=1</p>
+<p>feast size</p>
+<p>how many units of prey a predator consumes until it is satisfied</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">hunt_cap:</th><td class="field-body"><p class="first"><em>double</em>, default=1</p>
+<p>hunting yield</p>
+<p>how many units of prey a predator can catch during a hunt</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">hunt_freq:</th><td class="field-body"><p class="first"><em>int</em>, default=1</p>
+<p>hunting frequency</p>
+<p>how often a predator needs to hunt</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">success:</th><td class="field-body"><p class="first"><em>double</em>, default=1</p>
+<p>hunting success fraction</p>
+<p>fraction of hunting success on a scale from 0 to 1</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">nchildren:</th><td class="field-body"><p class="first"><em>double</em>, default=1</p>
+<p>number of children</p>
+<p>number of predator children born at each birthing instance</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">age:</th><td class="field-body"><p class="first"><em>int</em>, default=0</p>
+<p>predator age</p>
+<p>age of predator at beginning of simulation</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">lifespan:</th><td class="field-body"><p class="first"><em>int</em>, default=1</p>
+<p>predator lifespan</p>
+<p>how long a predator lives</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">dead:</th><td class="field-body"><p class="first"><em>bool</em>, default=0</p>
+<p>dead?</p>
+<p>flag for whether predator is currently dead</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">hunt_factor:</th><td class="field-body"><p class="first"><em>bool</em>, default=0</p>
+<p>hunting success factor</p>
+<p>whether or not to base hunting success on relative predator/prey populations</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">birth_and_death:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first"><em>bool</em>, default=0</p>
+<p>simultaneous birth and death?</p>
+<p>whether or not simultaneous birth and and death are allowed (i.e., can a facility give birth and die in the same time step?)</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">consumed:</th><td class="field-body"><p class="first"><em>double</em>, default=0</p>
+<p>prey consumed</p>
+<p class="last">how many units of prey consumed per time step</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Schema:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;interleave&gt;</span>
+<span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;commod&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/element&gt;</span>
+<span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;prey&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/element&gt;</span>
+<span class="nt">&lt;optional&gt;</span>
+    <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;full&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;double&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/element&gt;</span>
+<span class="nt">&lt;/optional&gt;</span>
+<span class="nt">&lt;optional&gt;</span>
+    <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;hunt_cap&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;double&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/element&gt;</span>
+<span class="nt">&lt;/optional&gt;</span>
+<span class="nt">&lt;optional&gt;</span>
+    <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;hunt_freq&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;int&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/element&gt;</span>
+<span class="nt">&lt;/optional&gt;</span>
+<span class="nt">&lt;optional&gt;</span>
+    <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;success&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;double&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/element&gt;</span>
+<span class="nt">&lt;/optional&gt;</span>
+<span class="nt">&lt;optional&gt;</span>
+    <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;nchildren&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;double&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/element&gt;</span>
+<span class="nt">&lt;/optional&gt;</span>
+<span class="nt">&lt;optional&gt;</span>
+    <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;age&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;int&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/element&gt;</span>
+<span class="nt">&lt;/optional&gt;</span>
+<span class="nt">&lt;optional&gt;</span>
+    <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;lifespan&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;int&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/element&gt;</span>
+<span class="nt">&lt;/optional&gt;</span>
+<span class="nt">&lt;optional&gt;</span>
+    <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;dead&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;boolean&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/element&gt;</span>
+<span class="nt">&lt;/optional&gt;</span>
+<span class="nt">&lt;optional&gt;</span>
+    <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;hunt_factor&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;boolean&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/element&gt;</span>
+<span class="nt">&lt;/optional&gt;</span>
+<span class="nt">&lt;optional&gt;</span>
+    <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;birth_and_death&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;boolean&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/element&gt;</span>
+<span class="nt">&lt;/optional&gt;</span>
+<span class="nt">&lt;optional&gt;</span>
+    <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;consumed&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;double&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/element&gt;</span>
+<span class="nt">&lt;/optional&gt;</span>
+<span class="nt">&lt;/interleave&gt;</span>
+</pre></div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="agents-prey">
+<h2>:agents:<strong>Prey</strong><a class="headerlink" href="#agents-prey" title="Permalink to this headline">¶</a></h2>
+<p>A facility that represents prey in the Lotka-Volterra integration tests</p>
+<p><strong>State Variables:</strong></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">commod:</th><td class="field-body"><p class="first"><em>std::string</em></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">birth_freq:</th><td class="field-body"><p class="first"><em>int</em>, default=1</p>
+<p>birth frequency</p>
+<p>number of time steps between birth of children</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">nchildren:</th><td class="field-body"><p class="first"><em>int</em>, default=1</p>
+<p>number of children</p>
+<p>number of children born at each birthing instance</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">age:</th><td class="field-body"><p class="first"><em>int</em>, default=0</p>
+<p>prey age</p>
+<p>age of prey at start of simulation</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">dead:</th><td class="field-body"><p class="first"><em>bool</em>, default=0</p>
+<p>dead?</p>
+<p>flag for whether prey is currently dead</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">birth_and_death:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first"><em>bool</em>, default=1</p>
+<p>simultaneous birth and death?</p>
+<p class="last">whether or not simultaneous birth and and death are allowed (i.e., can a facility give birth and die in the same time step?)</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Schema:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;interleave&gt;</span>
+<span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;commod&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/element&gt;</span>
+<span class="nt">&lt;optional&gt;</span>
+    <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;birth_freq&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;int&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/element&gt;</span>
+<span class="nt">&lt;/optional&gt;</span>
+<span class="nt">&lt;optional&gt;</span>
+    <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;nchildren&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;int&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/element&gt;</span>
+<span class="nt">&lt;/optional&gt;</span>
+<span class="nt">&lt;optional&gt;</span>
+    <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;age&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;int&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/element&gt;</span>
+<span class="nt">&lt;/optional&gt;</span>
+<span class="nt">&lt;optional&gt;</span>
+    <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;dead&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;boolean&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/element&gt;</span>
+<span class="nt">&lt;/optional&gt;</span>
+<span class="nt">&lt;optional&gt;</span>
+    <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;birth_and_death&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;boolean&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/element&gt;</span>
+<span class="nt">&lt;/optional&gt;</span>
+<span class="nt">&lt;/interleave&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="../index.html" title="index">
+          <img class="logo" src="../_static/big_c.png" alt="Logo"/>
+        </a></p><div class="sphinxlocaltoc">
+    <h3><a href="../index.html">Page contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#"><span style="font-variant:small-caps;">Cyclus</span> Archetypes</a><ul>
+<li><a class="reference internal" href="#agents-source">:agents:<strong>Source</strong></a></li>
+<li><a class="reference internal" href="#agents-sink">:agents:<strong>Sink</strong></a></li>
+<li><a class="reference internal" href="#agents-nullregion">:agents:<strong>NullRegion</strong></a></li>
+<li><a class="reference internal" href="#agents-nullinst">:agents:<strong>NullInst</strong></a></li>
+<li><a class="reference internal" href="#agents-kfacility">:agents:<strong>KFacility</strong></a></li>
+<li><a class="reference internal" href="#agents-predator">:agents:<strong>Predator</strong></a></li>
+<li><a class="reference internal" href="#agents-prey">:agents:<strong>Prey</strong></a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div class="sphinxprev">
+    <h4>Previous page</h4>
+    <p class="topless"><a href="running_sims.html"
+                          title="Previous page">&larr; Running Simulations</a></p>
+  </div>
+  <div class="sphinxnext">
+    <h4>Next page</h4>
+    <p class="topless"><a href="cycamoreagents.html"
+                          title="Next page">&rarr; Cycamore Archetypes</a></p>
+  </div>
+  <div class="sphinxlocaltoc">
+  <h3>Useful Pages</h3>
+    <ul><li><ul>
+    <li><a href="http://fuelcycle.org/user/main.html">User Guide</a></li>
+    <li><a href="http://fuelcycle.org/module/main.html">Archetype Developer Guide</a></li>
+    <li><a href="http://fuelcycle.org/cyclus/api/">Cyclus API Documentation</a></li>
+    <li><a href="http://fuelcycle.org/cycamore/api/">Cycamore API Documentation</a></li>
+    <li><a href="http://fuelcycle.org/basics/glossary.html">Glossary</a></li>
+    <li><a href="mailto:cyclus-users+subscribe@googlegroups.com?subject=Subscribe&body=Send this message to subscribe to the list">Join</a> the 
+      <a href="https://groups.google.com/forum/#!forum/cyclus-users" target="_blank"><span style="font-variant:small-caps">Cyclus</span> Users</a> mailing list.
+    <li><a href="mailto:cyclus-dev+subscribe@googlegroups.com?subject=Subscribe&body=Send this message to subscribe to the list">Join</a> the 
+      <a href="https://groups.google.com/forum/#!forum/cyclus-users" target="_blank"><span style="font-variant:small-caps">Cyclus</span> Developers</a> mailing list.
+    </ul></li></ul>
+  </div>
+    
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <h3>Get Cyclus</h3>
+    <br>
+    Current version: <b>1.0.0</b>
+    <br><br>
+    Install:
+    <div class="highlight-bash" style="width:97.5%"><div class="highlight"><pre><span class="nv">$ </span>conda install cyclus cycamore</pre></div></div>
+    Get the Source:
+    <ul><li><ul>
+          <li><a href="https://github.com/cyclus/cyclus">Cyclus</a></li>
+          <li><a href="https://github.com/cyclus/cycamore">Cycamore</a></li>
+    </ul></li></ul>
+    <h3>Acknowledgements</h3>
+    The Cyclus project has received support from:
+    <br />
+    <a href="http://www.neup.gov" target="_blank"><img src="../_static/neup_logo_large.png" width=170px></a>
+    <br />
+    <br />
+
+    In addition, some of the students working on Cyclus have received support from:
+    <br />
+    <a href="http://www.anl.gov" target="_blank"><img src="../_static/AnlLogo.png" height=100px></a>
+    <a href="http://www.nrc.gov" target="_blank"><img src="../_static/USNRC.png" height=100px></a>
+    <br />
+    <a href="http://www.neup.gov" target="_blank"><img src="../_static/neup_logo_large.png" width=170px></a>
+    <br />
+    <a href="http://www.nsf.gov" target="_blank"><img src="../_static/nsf_logo.png" height=100px></a>
+    <a href="http://www.wisc.edu" target="_blank"><img src="../_static/crest.png" height=100px></a>
+
+    
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="relbar-bottom">
+        
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="cycamoreagents.html" title="Cycamore Archetypes"
+             >next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="running_sims.html" title="Running Simulations"
+             >previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">Home</a> &raquo;</li>
+
+          <li><a href="main.html" ><span style="font-variant:small-caps;">Cyclus</span> User Guide</a> &raquo;</li> 
+      </ul>
+    </div>
+    </div>
+
+    <div class="footer">
+        &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
+      Last updated on May 30, 2014.
+    </div><script type="text/javascript">
+    if(ga_enabled){
+        document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");
+        document.write("Click <button title=\"set cookie to disable analytics for this site\" class=\"link\" onclick=\"$.cookie('disable-ga', 'true', {expires: 3650, path: '/'}); window.location.reload(); return false; \">here</button> to disable analytics for this site.");
+        document.write("</div>");
+    }else{
+        document.write("<div class=\"footer\">Google Analytics has been disabled. ");
+        document.write("Click <button title=\"set cookie to re-enable analytics for this site\" class=\"link\" onclick=\"$.cookie('disable-ga', null, {path: '/'}); window.location.reload(); return false; \">here</button> to re-enable analytics for this site.");
+    };
+</script>
+    <!-- cloud_sptheme 1.4 -->
+  </body>
+</html>

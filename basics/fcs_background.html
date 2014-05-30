@@ -1,6 +1,7 @@
 
 
 
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -9,15 +10,16 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Fuel Cycle Simulators &mdash; Cyclus Home</title>
+    <title>Nuclear Fuel Cycle Simulators &mdash; Home</title>
     
-    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/cyclus.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '(0.4.3-433-gdf86f75)',
+        VERSION:     '(1.0.0-rc3-59-g7a5d0ac)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -26,34 +28,32 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="Cyclus Home" href="../index.html" />
-    <link rel="up" title="Cyclus Fundamentals" href="main.html" />
-    <link rel="next" title="The Cyclus Fuel Cycle Simulator Roadmap" href="roadmap.html" />
-    <link rel="prev" title="Introduction to the Cyclus Fuel Cycle Simulator" href="introduction.html" />
-   
-<script type="text/javascript">
-
+    <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../_static/cloud.js"></script>
+    <link rel="shortcut icon" href="../_static/big_c.ico"/>
+    <link rel="top" title="Home" href="../index.html" />
+    <link rel="up" title="Cyclus Introduction" href="main.html" />
+    <link rel="next" title="The Cyclus Community &amp; Ecosystem" href="ecosystem.html" />
+    <link rel="prev" title="Software Process &amp; Architecture" href="sw_dev.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1"><script type="text/javascript">
+var ga_enabled = !$.cookie('disable-ga');
+if(ga_enabled){
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-12222727-2']);
+  _gaq.push(['_setCookiePath', '/']);
+  _gaq.push(['_setDetectFlash', false]);
   _gaq.push(['_trackPageview']);
-
   (function() {
     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
-
+}
 </script>
-
   </head>
   <body>
-<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
-  <a href="http://cyclus.github.com">
-    <img src="../_static/logo1.png"/>
-  </a>
-</div>
-
-
+    <div class="relbar-top">
+        
     <div class="related">
       <h3>Navigation</h3>
       <ul>
@@ -61,117 +61,71 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="roadmap.html" title="The Cyclus Fuel Cycle Simulator Roadmap"
-             accesskey="N">next</a> |</li>
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
         <li class="right" >
-          <a href="introduction.html" title="Introduction to the Cyclus Fuel Cycle Simulator"
-             accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">Cyclus Home</a> &raquo;</li>
-          <li><a href="main.html" accesskey="U">Cyclus Fundamentals</a> &raquo;</li> 
+          <a href="ecosystem.html" title="The Cyclus Community &amp; Ecosystem"
+             accesskey="N">next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="sw_dev.html" title="Software Process &amp; Architecture"
+             accesskey="P">previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">Home</a> &raquo;</li>
+
+          <li><a href="main.html" accesskey="U"><span style="font-variant:small-caps;">Cyclus</span> Introduction</a> &raquo;</li> 
       </ul>
     </div>
-      <div class="sphinxsidebar">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Fuel Cycle Simulators</a><ul>
-<li><a class="reference internal" href="#history-of-systems-analysis-tools">History of Systems Analysis Tools</a></li>
-</ul>
-</li>
-</ul>
-
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="introduction.html"
-                        title="previous chapter">Introduction to the <em>Cyclus</em> Fuel Cycle Simulator</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="roadmap.html"
-                        title="next chapter">The <em>Cyclus</em> Fuel Cycle Simulator Roadmap</a></p>
-  <h3>Useful Pages</h3>
-    <li><a href="http://cyclus.github.com/basics/glossary.html">Glossary</a></li>
-    <li><a href="http://cyclus.github.com/basics/roadmap.html">Roadmap</a></li>
-    <li><a href="https://github.com/cyclus">Source Code</a></li>
-    <li><a href="http://fuelcycle.org/cyclus/api/">Cyclus Core Documentation</a></li>
-    <li><a href="http://fuelcycle.org/cycamore/api/">Cycamore Documentation</a></li>
-    
-<div id="searchbox" style="display: none">
-  <h3>Quick search</h3>
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-    <h3>Acknowledgements</h3>
-    Support for this research has included funding received from:
-    <img src=/_images/neup_logo_large.jpg width=170px>
-    <img src=/_images/AnlLogo.png height=100px>
-    <img src=/_images/USNRC.gif height=100px>
-    <img src=/_images/nsf_logo.jpg height=100px>
-    <img src=/_images/crest.png height=100px>
-
-    
-
-        </div>
-      </div>
+    </div>
+  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="fuel-cycle-simulators">
-<h1>Fuel Cycle Simulators<a class="headerlink" href="#fuel-cycle-simulators" title="Permalink to this headline">¶</a></h1>
-<p>A nuclear fuel cycle simulator is a tool used to explore the impacts
-of alternative nuclear fuel cycle choices, when considered as a full
-system at a national or international level.  Fundamentally, a nuclear
-fuel cycle simulator tracks the flow of materials through the nuclear
-fuel cycle, accounting for processes such as enrichment,
-transmutation, decay, and partition of isotopes.  From these material
-flows, and information about the operation history of the associated
-facilities, various metrics can be assessed for different nuclear fuel
-cycle designs.  As such, economic, environmental and security metrics
-can compared to support decision making on research, development and
-deployment decisions for future fuel cycle facilities.</p>
-<p>Fuel cycle simulators provide insights into important trends as
-nuclear fuel cycles undergo technological transitions in an uncertain
-socio-political environment.  As such, while it is important to
-achieve an overall conservation of mass, there is typically a
-trade-off between the accuracy of specific isotopic compositions and
-the speed of calculation, given the inherent uncertainty of making
-predictions in unknown socio-political futures.  Therefore, the
-physics models used for each individual process in the fuel cycle are
-generally low-order approximations based on higher order analysis.</p>
+  <div class="section" id="nuclear-fuel-cycle-simulators">
+<h1>Nuclear Fuel Cycle Simulators<a class="headerlink" href="#nuclear-fuel-cycle-simulators" title="Permalink to this headline">¶</a></h1>
+<p>A nuclear <a class="reference internal" href="glossary.html#term-fuel-cycle-simulator"><em class="xref std std-term">fuel cycle simulator</em></a> is a tool used to explore the impacts of
+alternative nuclear fuel cycle choices when considered as a full system at a
+national or international level.  Fundamentally, these simulators track the
+flow of materials through the nuclear fuel cycle, accounting for processes
+such as enrichment, transmutation, decay, and partition of isotopes.  From the
+material flows and information about the operation history of the associated
+facilities, various metrics can be assessed for different nuclear fuel cycle
+designs.  As such, economic, environmental and security metrics resulting from
+different fuel cycles can be compared to support decision making on research,
+development and deployment decisions for future fuel cycle facilities.</p>
+<p>Fuel cycle simulators provide insights into important trends as nuclear fuel
+cycles undergo technological transitions in an uncertain socio-political
+environment.  While it is important to achieve an overall conservation of
+mass, there is typically a trade-off between the accuracy of specific isotopic
+compositions and the speed of calculation. Given the inherent uncertainty of
+making predictions in unknown socio-political futures, the physics models used
+for each individual process in the fuel cycle are generally low-order
+approximations based on a higher order analysis.</p>
 <p>Fuel cycle simulators are not designed to provide detailed simulations
-of specific facilities; neither high-fidelity predictive simulation nor
+of specific facilities: neither high-fidelity predictive simulation nor
 virtual reality environments.</p>
-<div class="section" id="history-of-systems-analysis-tools">
-<h2>History of Systems Analysis Tools<a class="headerlink" href="#history-of-systems-analysis-tools" title="Permalink to this headline">¶</a></h2>
-<p>Historically, a variety of systems analysis tools have been developed
-to study nuclear fuel cycles.  One category of tools has been derived
-from detailed facility models, arranged in complex coupling schemes,
-and validated with detailed measurements from real systems.  While
-these tools offer a much more rigorous treatment of the physics, and
-more confidence in specific results, they often require much more time
-and expertise in the analyst to compute the results, and may offer
-more precision in the physics than is warranted given the
-socio-political uncertainty.  The other main category of tools is
-typically derived from simplified systems models, with physics detail
-and complexity added where necessary to improve the fidelity of
-results, but preferring rapid computation to excessive precision.</p>
-<p>Regardless of the development path, these systems analysis tools have
-inherent assumptions, limitations in their underlying software
-infrastructure, and constraints on the variety of nuclear fuel cycle
-options that can be assessed.  Comparing the results from different
-tools, often in order to generate confidence in them all, can be
-challenging and frequently requires oversimplified problems that
-preclude the use of the advanced features of any one tool.</p>
-<p>That said, there are a number of tools that are currently used around
-the world to support systems decision on nuclear fuel cycle options:</p>
+<div class="section" id="history-of-nuclear-fuel-cycle-simulators">
+<h2>History of Nuclear Fuel Cycle Simulators<a class="headerlink" href="#history-of-nuclear-fuel-cycle-simulators" title="Permalink to this headline">¶</a></h2>
+<p>A variety of simulators have been developed to study nuclear fuel cycles in
+two categories.  One category models detailed facilities arranged in complex
+coupling schemes that are validated with measurements from real systems.
+While these tools offer a much more rigorous treatment of the physics, they
+often require an experienced analyst to compute the results and may offer more
+precision in the physics than is warranted given the socio-political
+uncertainty.  The other category of tools is typically derived from simplified
+systems models, with physics detail and complexity added where necessary to
+improve the fidelity of results, but preferring rapid computation to
+precision.</p>
+<p>Regardless of the development path, these simulators have inherent
+assumptions, limitations in their underlying software infrastructure, and
+constraints on the variety of nuclear fuel cycle options that can be assessed.
+Comparing the results from different tools, often in order to generate
+confidence in them all, can be challenging and frequently requires
+oversimplified problems that preclude the use of the advanced features of any
+one tool.</p>
+<p>There are a number of tools currently used around the world to support systems
+decisions on nuclear fuel cycle options:</p>
 <ul class="simple">
 <li>VISION</li>
 <li>DANESS</li>
@@ -187,8 +141,94 @@ the world to support systems decision on nuclear fuel cycle options:</p>
           </div>
         </div>
       </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="../index.html" title="index">
+          <img class="logo" src="../_static/big_c.png" alt="Logo"/>
+        </a></p><div class="sphinxlocaltoc">
+    <h3><a href="../index.html">Page contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Nuclear Fuel Cycle Simulators</a><ul>
+<li><a class="reference internal" href="#history-of-nuclear-fuel-cycle-simulators">History of Nuclear Fuel Cycle Simulators</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div class="sphinxprev">
+    <h4>Previous page</h4>
+    <p class="topless"><a href="sw_dev.html"
+                          title="Previous page">&larr; Software Process &amp; Architecture</a></p>
+  </div>
+  <div class="sphinxnext">
+    <h4>Next page</h4>
+    <p class="topless"><a href="ecosystem.html"
+                          title="Next page">&rarr; The <span style="font-variant:small-caps;">Cyclus</span> Community &amp; Ecosystem</a></p>
+  </div>
+  <div class="sphinxlocaltoc">
+  <h3>Useful Pages</h3>
+    <ul><li><ul>
+    <li><a href="http://fuelcycle.org/user/main.html">User Guide</a></li>
+    <li><a href="http://fuelcycle.org/module/main.html">Archetype Developer Guide</a></li>
+    <li><a href="http://fuelcycle.org/cyclus/api/">Cyclus API Documentation</a></li>
+    <li><a href="http://fuelcycle.org/cycamore/api/">Cycamore API Documentation</a></li>
+    <li><a href="http://fuelcycle.org/basics/glossary.html">Glossary</a></li>
+    <li><a href="mailto:cyclus-users+subscribe@googlegroups.com?subject=Subscribe&body=Send this message to subscribe to the list">Join</a> the 
+      <a href="https://groups.google.com/forum/#!forum/cyclus-users" target="_blank"><span style="font-variant:small-caps">Cyclus</span> Users</a> mailing list.
+    <li><a href="mailto:cyclus-dev+subscribe@googlegroups.com?subject=Subscribe&body=Send this message to subscribe to the list">Join</a> the 
+      <a href="https://groups.google.com/forum/#!forum/cyclus-users" target="_blank"><span style="font-variant:small-caps">Cyclus</span> Developers</a> mailing list.
+    </ul></li></ul>
+  </div>
+    
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <h3>Get Cyclus</h3>
+    <br>
+    Current version: <b>1.0.0</b>
+    <br><br>
+    Install:
+    <div class="highlight-bash" style="width:97.5%"><div class="highlight"><pre><span class="nv">$ </span>conda install cyclus cycamore</pre></div></div>
+    Get the Source:
+    <ul><li><ul>
+          <li><a href="https://github.com/cyclus/cyclus">Cyclus</a></li>
+          <li><a href="https://github.com/cyclus/cycamore">Cycamore</a></li>
+    </ul></li></ul>
+    <h3>Acknowledgements</h3>
+    The Cyclus project has received support from:
+    <br />
+    <a href="http://www.neup.gov" target="_blank"><img src="../_static/neup_logo_large.png" width=170px></a>
+    <br />
+    <br />
+
+    In addition, some of the students working on Cyclus have received support from:
+    <br />
+    <a href="http://www.anl.gov" target="_blank"><img src="../_static/AnlLogo.png" height=100px></a>
+    <a href="http://www.nrc.gov" target="_blank"><img src="../_static/USNRC.png" height=100px></a>
+    <br />
+    <a href="http://www.neup.gov" target="_blank"><img src="../_static/neup_logo_large.png" width=170px></a>
+    <br />
+    <a href="http://www.nsf.gov" target="_blank"><img src="../_static/nsf_logo.png" height=100px></a>
+    <a href="http://www.wisc.edu" target="_blank"><img src="../_static/crest.png" height=100px></a>
+
+    
+
+        </div>
+      </div>
       <div class="clearer"></div>
     </div>
+    <div class="relbar-bottom">
+        
     <div class="related">
       <h3>Navigation</h3>
       <ul>
@@ -196,19 +236,34 @@ the world to support systems decision on nuclear fuel cycle options:</p>
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="roadmap.html" title="The Cyclus Fuel Cycle Simulator Roadmap"
-             >next</a> |</li>
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
         <li class="right" >
-          <a href="introduction.html" title="Introduction to the Cyclus Fuel Cycle Simulator"
-             >previous</a> |</li>
-        <li><a href="../index.html">Cyclus Home</a> &raquo;</li>
-          <li><a href="main.html" >Cyclus Fundamentals</a> &raquo;</li> 
+          <a href="ecosystem.html" title="The Cyclus Community &amp; Ecosystem"
+             >next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="sw_dev.html" title="Software Process &amp; Architecture"
+             >previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">Home</a> &raquo;</li>
+
+          <li><a href="main.html" ><span style="font-variant:small-caps;">Cyclus</span> Introduction</a> &raquo;</li> 
       </ul>
     </div>
+    </div>
+
     <div class="footer">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on May 07, 2014.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
-    </div>
+      Last updated on May 30, 2014.
+    </div><script type="text/javascript">
+    if(ga_enabled){
+        document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");
+        document.write("Click <button title=\"set cookie to disable analytics for this site\" class=\"link\" onclick=\"$.cookie('disable-ga', 'true', {expires: 3650, path: '/'}); window.location.reload(); return false; \">here</button> to disable analytics for this site.");
+        document.write("</div>");
+    }else{
+        document.write("<div class=\"footer\">Google Analytics has been disabled. ");
+        document.write("Click <button title=\"set cookie to re-enable analytics for this site\" class=\"link\" onclick=\"$.cookie('disable-ga', null, {path: '/'}); window.location.reload(); return false; \">here</button> to re-enable analytics for this site.");
+    };
+</script>
+    <!-- cloud_sptheme 1.4 -->
   </body>
 </html>

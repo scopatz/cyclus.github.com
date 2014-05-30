@@ -1,0 +1,296 @@
+
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Archetype Identification and Discovery &mdash; Home</title>
+    
+    <link rel="stylesheet" href="../_static/cyclus.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '(1.0.0-rc3-59-g7a5d0ac)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../_static/cloud.js"></script>
+    <link rel="shortcut icon" href="../_static/big_c.ico"/>
+    <link rel="top" title="Home" href="../index.html" />
+    <link rel="up" title="Cyclus User Guide" href="main.html" />
+    <link rel="next" title="Simulation Schema" href="sim_schema.html" />
+    <link rel="prev" title="Recipe - Recipe Definition (optional, may appear multiple times)" href="input_specs/recipe.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1"><script type="text/javascript">
+var ga_enabled = !$.cookie('disable-ga');
+if(ga_enabled){
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-12222727-2']);
+  _gaq.push(['_setCookiePath', '/']);
+  _gaq.push(['_setDetectFlash', false]);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+}
+</script>
+  </head>
+  <body>
+    <div class="relbar-top">
+        
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="sim_schema.html" title="Simulation Schema"
+             accesskey="N">next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="input_specs/recipe.html" title="Recipe - Recipe Definition (optional, may appear multiple times)"
+             accesskey="P">previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">Home</a> &raquo;</li>
+
+          <li><a href="main.html" accesskey="U"><span style="font-variant:small-caps;">Cyclus</span> User Guide</a> &raquo;</li> 
+      </ul>
+    </div>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="archetype-identification-and-discovery">
+<h1>Archetype Identification and Discovery<a class="headerlink" href="#archetype-identification-and-discovery" title="Permalink to this headline">¶</a></h1>
+<p><span style="font-variant:small-caps;">Cyclus</span> <a class="reference internal" href="../basics/glossary.html#term-archetype"><em class="xref std std-term">archetypes</em></a> are uniquely identified by a 3-part
+specification that includes:</p>
+<ul class="simple">
+<li>a slash separated path</li>
+<li>a library name</li>
+<li>a name</li>
+</ul>
+<p>The agents available for running simulations depend on which agent libraries
+have been installed on your system.  <span style="font-variant:small-caps;">Cyclus</span> ships with a default library
+named &#8220;agents&#8221; containing a few simple archetypes</p>
+<ul class="simple">
+<li>Source</li>
+<li>Sink</li>
+<li>NullInst</li>
+<li>KFacility</li>
+<li>...and others...</li>
+</ul>
+<p>All archetypes used in a simulation must be defined in the <tt class="docutils literal"><span class="pre">archetypes</span></tt>
+section in the input file:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;simulation&gt;</span>
+...
+
+  <span class="nt">&lt;archetypes&gt;</span>
+    <span class="nt">&lt;spec&gt;</span>
+      <span class="nt">&lt;path&gt;&lt;/path&gt;</span>
+      <span class="nt">&lt;lib&gt;</span>agents<span class="nt">&lt;/lib&gt;</span>
+      <span class="nt">&lt;name&gt;</span>KFacility<span class="nt">&lt;/name&gt;</span>
+      <span class="nt">&lt;alias&gt;</span>myfac1<span class="nt">&lt;alias&gt;</span>
+    <span class="nt">&lt;/spec&gt;</span>
+
+    <span class="nt">&lt;spec&gt;</span>
+      ...
+    <span class="nt">&lt;/spec&gt;</span>
+    ...
+  <span class="nt">&lt;/archetypes&gt;</span>
+</pre></div>
+</div>
+<p>The <tt class="docutils literal"><span class="pre">path</span></tt> tag can be omitted if it is empty (as in the case of <span style="font-variant:small-caps;">Cyclus</span>&#8216;
+default agents library).  If the <tt class="docutils literal"><span class="pre">lib</span></tt> tag is omitted, it defaults to the
+value of the <tt class="docutils literal"><span class="pre">name</span></tt> tag. The <tt class="docutils literal"><span class="pre">alias</span></tt> tag may also be omitted, in which case
+it defaults to the value in the <tt class="docutils literal"><span class="pre">name</span></tt> tag.  If multiple archetypes have the
+same name, then aliases <em>must</em> be specified - no two aliases may have the same
+value (including defaults).  The values of the aliases are referenced later in
+the input file when defining facility prototypes, institutions, and regions.</p>
+<p>Archetype specifications also have a single-string form where the three parts
+are separated by colons.  This form is used in places such as in the database
+and on the command line. For example, to print out the schema for an agent
+archetype on the command line (note the starting colon indicating an empty
+path):</p>
+<div class="highlight-bash"><div class="highlight"><pre>cyclus --agent-schema :agents:KFacility
+</pre></div>
+</div>
+<p>For more details, you can read <a class="reference internal" href="../cep/cep21.html"><em>CEP 21 - Agent Identification and Discovery</em></a></p>
+<div class="section" id="cyclus-path">
+<h2><span style="font-variant:small-caps;">Cyclus</span> Path<a class="headerlink" href="#cyclus-path" title="Permalink to this headline">¶</a></h2>
+<p>When running a simulation, <span style="font-variant:small-caps;">Cyclus</span> searches your system for the archetypes
+specified in the input file.  In addition to searching a few default install
+directories, it is possible to manually specify other directories for <span style="font-variant:small-caps;">Cyclus</span>
+to search by adding them as colon-separated entries to the CYCLUS_PATH
+environment variable.  For example:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nb">export </span><span class="nv">CYCLUS_PATH</span><span class="o">=</span>my/agent/lib/dir:/my/other/agent/dir
+</pre></div>
+</div>
+<p>Directories specified in your <tt class="docutils literal"><span class="pre">CYCLUS_PATH</span></tt> are searched <em>before</em> <span style="font-variant:small-caps;">Cyclus</span>&#8216;
+default search directories. <tt class="docutils literal"><span class="pre">CYCLUS_PATH</span></tt> directories mark the <em>starting
+points</em> for archetype specifications.  This meaning that the path portion of an
+agent specification is appended to the CYCLUS_PATH directories.  For example
+using the above defined <tt class="docutils literal"><span class="pre">CYCLUS_PATH</span></tt>, <span style="font-variant:small-caps;">Cyclus</span> would search for:</p>
+<div class="highlight-python"><pre>my/path:myagentlib:MyAgent</pre>
+</div>
+<p>In the following directories in order:</p>
+<ul class="simple">
+<li>my/agent/lib/dir/agent/path/</li>
+<li>/my/other/agent/dir/agent/path/</li>
+<li>[default-locations]/agent/path/</li>
+</ul>
+<p>For more details, you can read <a class="reference internal" href="../cep/cep21.html"><em>CEP 21 - Agent Identification and Discovery</em></a></p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="../index.html" title="index">
+          <img class="logo" src="../_static/big_c.png" alt="Logo"/>
+        </a></p><div class="sphinxlocaltoc">
+    <h3><a href="../index.html">Page contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Archetype Identification and Discovery</a><ul>
+<li><a class="reference internal" href="#cyclus-path"><span style="font-variant:small-caps;">Cyclus</span> Path</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div class="sphinxprev">
+    <h4>Previous page</h4>
+    <p class="topless"><a href="input_specs/recipe.html"
+                          title="Previous page">&larr; <tt class="docutils literal"><span class="pre">Recipe</span></tt> - Recipe Definition (optional, may appear multiple times)</a></p>
+  </div>
+  <div class="sphinxnext">
+    <h4>Next page</h4>
+    <p class="topless"><a href="sim_schema.html"
+                          title="Next page">&rarr; Simulation Schema</a></p>
+  </div>
+  <div class="sphinxlocaltoc">
+  <h3>Useful Pages</h3>
+    <ul><li><ul>
+    <li><a href="http://fuelcycle.org/user/main.html">User Guide</a></li>
+    <li><a href="http://fuelcycle.org/module/main.html">Archetype Developer Guide</a></li>
+    <li><a href="http://fuelcycle.org/cyclus/api/">Cyclus API Documentation</a></li>
+    <li><a href="http://fuelcycle.org/cycamore/api/">Cycamore API Documentation</a></li>
+    <li><a href="http://fuelcycle.org/basics/glossary.html">Glossary</a></li>
+    <li><a href="mailto:cyclus-users+subscribe@googlegroups.com?subject=Subscribe&body=Send this message to subscribe to the list">Join</a> the 
+      <a href="https://groups.google.com/forum/#!forum/cyclus-users" target="_blank"><span style="font-variant:small-caps">Cyclus</span> Users</a> mailing list.
+    <li><a href="mailto:cyclus-dev+subscribe@googlegroups.com?subject=Subscribe&body=Send this message to subscribe to the list">Join</a> the 
+      <a href="https://groups.google.com/forum/#!forum/cyclus-users" target="_blank"><span style="font-variant:small-caps">Cyclus</span> Developers</a> mailing list.
+    </ul></li></ul>
+  </div>
+    
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <h3>Get Cyclus</h3>
+    <br>
+    Current version: <b>1.0.0</b>
+    <br><br>
+    Install:
+    <div class="highlight-bash" style="width:97.5%"><div class="highlight"><pre><span class="nv">$ </span>conda install cyclus cycamore</pre></div></div>
+    Get the Source:
+    <ul><li><ul>
+          <li><a href="https://github.com/cyclus/cyclus">Cyclus</a></li>
+          <li><a href="https://github.com/cyclus/cycamore">Cycamore</a></li>
+    </ul></li></ul>
+    <h3>Acknowledgements</h3>
+    The Cyclus project has received support from:
+    <br />
+    <a href="http://www.neup.gov" target="_blank"><img src="../_static/neup_logo_large.png" width=170px></a>
+    <br />
+    <br />
+
+    In addition, some of the students working on Cyclus have received support from:
+    <br />
+    <a href="http://www.anl.gov" target="_blank"><img src="../_static/AnlLogo.png" height=100px></a>
+    <a href="http://www.nrc.gov" target="_blank"><img src="../_static/USNRC.png" height=100px></a>
+    <br />
+    <a href="http://www.neup.gov" target="_blank"><img src="../_static/neup_logo_large.png" width=170px></a>
+    <br />
+    <a href="http://www.nsf.gov" target="_blank"><img src="../_static/nsf_logo.png" height=100px></a>
+    <a href="http://www.wisc.edu" target="_blank"><img src="../_static/crest.png" height=100px></a>
+
+    
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="relbar-bottom">
+        
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="sim_schema.html" title="Simulation Schema"
+             >next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="input_specs/recipe.html" title="Recipe - Recipe Definition (optional, may appear multiple times)"
+             >previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">Home</a> &raquo;</li>
+
+          <li><a href="main.html" ><span style="font-variant:small-caps;">Cyclus</span> User Guide</a> &raquo;</li> 
+      </ul>
+    </div>
+    </div>
+
+    <div class="footer">
+        &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
+      Last updated on May 30, 2014.
+    </div><script type="text/javascript">
+    if(ga_enabled){
+        document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");
+        document.write("Click <button title=\"set cookie to disable analytics for this site\" class=\"link\" onclick=\"$.cookie('disable-ga', 'true', {expires: 3650, path: '/'}); window.location.reload(); return false; \">here</button> to disable analytics for this site.");
+        document.write("</div>");
+    }else{
+        document.write("<div class=\"footer\">Google Analytics has been disabled. ");
+        document.write("Click <button title=\"set cookie to re-enable analytics for this site\" class=\"link\" onclick=\"$.cookie('disable-ga', null, {path: '/'}); window.location.reload(); return false; \">here</button> to re-enable analytics for this site.");
+    };
+</script>
+    <!-- cloud_sptheme 1.4 -->
+  </body>
+</html>

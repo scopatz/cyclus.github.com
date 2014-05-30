@@ -1,6 +1,7 @@
 
 
 
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -9,15 +10,16 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>CEP 18 - Dynamic Resource Exchange Procedure &mdash; Cyclus Home</title>
+    <title>CEP 18 - Dynamic Resource Exchange Procedure &mdash; Home</title>
     
-    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/cyclus.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '(0.4.3-433-gdf86f75)',
+        VERSION:     '(1.0.0-rc3-59-g7a5d0ac)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -26,34 +28,32 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="Cyclus Home" href="../index.html" />
+    <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../_static/cloud.js"></script>
+    <link rel="shortcut icon" href="../_static/big_c.ico"/>
+    <link rel="top" title="Home" href="../index.html" />
     <link rel="up" title="Cyclus Enhancement Proposals" href="cep0.html" />
     <link rel="next" title="CEP 19 - Cyclus Input Procedure Updates" href="cep19.html" />
-    <link rel="prev" title="CEP 17 - Resource Tracking and Interfaces Re-Re-Redo" href="cep17.html" />
-   
-<script type="text/javascript">
-
+    <link rel="prev" title="CEP 17 - Resource Tracking and Interfaces Re-Re-Redo" href="cep17.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1"><script type="text/javascript">
+var ga_enabled = !$.cookie('disable-ga');
+if(ga_enabled){
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-12222727-2']);
+  _gaq.push(['_setCookiePath', '/']);
+  _gaq.push(['_setDetectFlash', false]);
   _gaq.push(['_trackPageview']);
-
   (function() {
     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
-
+}
 </script>
-
   </head>
   <body>
-<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
-  <a href="http://cyclus.github.com">
-    <img src="../_static/logo1.png"/>
-  </a>
-</div>
-
-
+    <div class="relbar-top">
+        
     <div class="related">
       <h3>Navigation</h3>
       <ul>
@@ -61,90 +61,21 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
           <a href="cep19.html" title="CEP 19 - Cyclus Input Procedure Updates"
-             accesskey="N">next</a> |</li>
+             accesskey="N">next</a> &nbsp; &nbsp;</li>
         <li class="right" >
           <a href="cep17.html" title="CEP 17 - Resource Tracking and Interfaces Re-Re-Redo"
-             accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">Cyclus Home</a> &raquo;</li>
-          <li><a href="cep0.html" accesskey="U">Cyclus Enhancement Proposals</a> &raquo;</li> 
+             accesskey="P">previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">Home</a> &raquo;</li>
+
+          <li><a href="cep0.html" accesskey="U"><span style="font-variant:small-caps;">Cyclus</span> Enhancement Proposals</a> &raquo;</li> 
       </ul>
     </div>
-      <div class="sphinxsidebar">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">CEP 18 - Dynamic Resource Exchange Procedure</a><ul>
-<li><a class="reference internal" href="#abstract">Abstract</a></li>
-<li><a class="reference internal" href="#motivation">Motivation</a></li>
-<li><a class="reference internal" href="#rationale">Rationale</a><ul>
-<li><a class="reference internal" href="#supply-demand-framework">Supply-Demand Framework</a><ul>
-<li><a class="reference internal" href="#facility-agency">Facility Agency</a></li>
-<li><a class="reference internal" href="#institutional-agency">Institutional Agency</a></li>
-<li><a class="reference internal" href="#regional-agency">Regional Agency</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#market-resolution">Market Resolution</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#specification-implementation">Specification &amp; Implementation</a><ul>
-<li><a class="reference internal" href="#constituent-classes-and-containers">Constituent Classes and Containers</a></li>
-<li><a class="reference internal" href="#resource-exchange">Resource Exchange</a><ul>
-<li><a class="reference internal" href="#rfb-phase">RFB Phase</a></li>
-<li><a class="reference internal" href="#rrfb-phase">RRFB Phase</a></li>
-<li><a class="reference internal" href="#pa-procedure">PA Procedure</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#exchangegraph">ExchangeGraph</a></li>
-<li><a class="reference internal" href="#exchangetranslator">ExchangeTranslator</a></li>
-<li><a class="reference internal" href="#exchangesolver">ExchangeSolver</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#backwards-compatibility">Backwards Compatibility</a></li>
-<li><a class="reference internal" href="#document-history">Document History</a></li>
-<li><a class="reference internal" href="#references-and-footnotes">References and Footnotes</a></li>
-</ul>
-</li>
-</ul>
-
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="cep17.html"
-                        title="previous chapter">CEP 17 - Resource Tracking and Interfaces Re-Re-Redo</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="cep19.html"
-                        title="next chapter">CEP 19 - Cyclus Input Procedure Updates</a></p>
-  <h3>Useful Pages</h3>
-    <li><a href="http://cyclus.github.com/basics/glossary.html">Glossary</a></li>
-    <li><a href="http://cyclus.github.com/basics/roadmap.html">Roadmap</a></li>
-    <li><a href="https://github.com/cyclus">Source Code</a></li>
-    <li><a href="http://fuelcycle.org/cyclus/api/">Cyclus Core Documentation</a></li>
-    <li><a href="http://fuelcycle.org/cycamore/api/">Cycamore Documentation</a></li>
-    
-<div id="searchbox" style="display: none">
-  <h3>Quick search</h3>
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-    <h3>Acknowledgements</h3>
-    Support for this research has included funding received from:
-    <img src=/_images/neup_logo_large.jpg width=170px>
-    <img src=/_images/AnlLogo.png height=100px>
-    <img src=/_images/USNRC.gif height=100px>
-    <img src=/_images/nsf_logo.jpg height=100px>
-    <img src=/_images/crest.png height=100px>
-
-    
-
-        </div>
-      </div>
+    </div>
+  
 
     <div class="document">
       <div class="documentwrapper">
@@ -188,7 +119,7 @@ information.</p>
 </div>
 <div class="section" id="motivation">
 <h2>Motivation<a class="headerlink" href="#motivation" title="Permalink to this headline">¶</a></h2>
-<p>The current implementation of Markets in Cyclus includes a base MarketModel
+<p>The current implementation of Markets in <span style="font-variant:small-caps;">Cyclus</span> includes a base MarketModel
 class which is intended to be derived from by concrete, dynamically loaded,
 user-defined classes. Markets are assigned specific commodities, i.e., there is
 no communication across demand for multiple commodities. Markets act in the
@@ -197,8 +128,8 @@ before the <strong>tock</strong> for each timestep.</p>
 <p>Markets are communicated with through Messages. Communication to Markets utilize
 the Transaction class to define whether the communication is an <strong>offer</strong> or
 <strong>request</strong> for the Market&#8217;s commodity. Communication is initialized by
-Facilities, but there is no Cyclus core support for this operation. Individual
-derived Facilities (e.g., the SinkFacility and SourceFacility in Cycamore)
+Facilities, but there is no <span style="font-variant:small-caps;">Cyclus</span> core support for this operation. Individual
+derived Facilities (e.g., the Sink and Source in Cycamore)
 define this functionality during their <strong>HandleTick</strong> functions. This
 interaction is invoked during the tick phase in the current facility invocations
 purely by practice. There is no requirement for such behavior; for example, one
@@ -212,7 +143,7 @@ Communicator class interface, which requires the <strong>ReceieveMessage</strong
 be defined by the market. The Resolve function then invokes the derived-class
 algorithm to determine matches for the given set of offers and requests.</p>
 <p>This class structure and interaction has worked well for a proof-of-prototype
-use of Cyclus to model simple, once-through fuel cycles. However, an extension
+use of <span style="font-variant:small-caps;">Cyclus</span> to model simple, once-through fuel cycles. However, an extension
 or refactor is necessary to model more complicated fuel cycles for a number of
 reasons. First, there is no support for facilities that can offer or request
 resources across multiple commodities if a capacity is included. The current
@@ -222,7 +153,7 @@ reasons, is that the Transaction class is ambiguous with respect to proposed
 offers, requests, and matched offers and requests. This ambiguity can be
 addressed during a refactor to provide clarity to future developers. Third,
 there is no defined structure to the market-facility interaction. This
-interaction is the core purpose of Cyclus&#8217; Dynamic Resource Exchange concern,
+interaction is the core purpose of <span style="font-variant:small-caps;">Cyclus</span>&#8216; Dynamic Resource Exchange concern,
 but users and developers are required to define their own interactions (e.g.,
 sending offers during the tick phase). The original conception of the tick-tock
 paradigm was to define a notion of time before the resource exchange (i.e., a
@@ -240,7 +171,7 @@ mechanism, again muddying the concerns associated with the resource exchange.</p
 section. The notion of market models is redefined, separating the collection of
 supply-demand information from the algorithm used to match suppliers with
 consumers. The information gathering framework is structured and handled by the
-Cyclus core (i.e., not adjustable by model developers). It is top-down in the
+<span style="font-variant:small-caps;">Cyclus</span> core (i.e., not adjustable by model developers). It is top-down in the
 sense that it queries facilities for their supply and demand rather than
 requiring facility-based notifications. Accordingly, concerns are appropriately
 separated: the information is gathered by the core at the beginning of the
@@ -355,13 +286,13 @@ much more rigor and thought as to its validity and implementation.</p>
 <a class="reference internal image-reference" href="../_images/cep-0018-5.png"><img alt="../_images/cep-0018-5.png" class="align-center" src="../_images/cep-0018-5.png" style="width: 328.5px; height: 271.0px;" /></a>
 <p><strong>Figure 3:</strong> A supplier-consumer pair with request isotopics, response
 isotopics, and an associated preference.</p>
-<p>Institutions and Regions in Cyclus are provided in order to add granularity to
+<p>Institutions and Regions in <span style="font-variant:small-caps;">Cyclus</span> are provided in order to add granularity to
 the levels of relational modeling available to a user or developer. Both types
-of agents or models in Cyclus can possibly be allowed to affect preferences
+of agents or models in <span style="font-variant:small-caps;">Cyclus</span> can possibly be allowed to affect preferences
 during the PA phase. A slightly longer discussion is included below.</p>
 <div class="section" id="facility-agency">
 <h4>Facility Agency<a class="headerlink" href="#facility-agency" title="Permalink to this headline">¶</a></h4>
-<p>Facilities in Cyclus are abstracted to either consumers or suppliers of
+<p>Facilities in <span style="font-variant:small-caps;">Cyclus</span> are abstracted to either consumers or suppliers of
 commodities, and some may be both. Supplier agents are provided agency by being
 able to communicate to the market-resolution mechanism a variety of production
 capacity constraints in second phase of the information gathering
@@ -374,7 +305,7 @@ run-time. Such strategies are an example of the Strategy design pattern
 </div>
 <div class="section" id="institutional-agency">
 <h4>Institutional Agency<a class="headerlink" href="#institutional-agency" title="Permalink to this headline">¶</a></h4>
-<p>Institutions in Cyclus manage a set of facilities. Facility management is
+<p>Institutions in <span style="font-variant:small-caps;">Cyclus</span> manage a set of facilities. Facility management is
 nominally split into two main categories: the commissioning and decommissioning
 of facilities and supply-demand association. The goal of including a notion of
 institutions is to allow an increased level of detail when investigating
@@ -602,13 +533,13 @@ requests</li>
 <p id="bibtex-bibliography-cep/cep18-0"><table class="docutils citation" frame="void" id="julka-agent-based-2002" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> <span class="last"><span><span><span><span><span><span><span>N.</span><span>&nbsp;</span></span><span>Julka</span></span><span>, </span><span><span><span>R.</span><span>&nbsp;</span></span><span>Srinivasan</span></span></span><span>, and </span><span><span><span>I.</span><span>&nbsp;</span></span><span>Karimi</span></span></span><span>.</span></span><span> </span><span><span>Agent-based supply chain management-1: framework</span><span>.</span></span></span><span> </span><span><span><em><span>Computers &amp; Chemical Engineering</span></em><span>, </span><span><span><span>26</span><span><span>(</span><span>12</span><span>)</span></span><span>:</span></span><span>1755–1769</span></span></span><span>, </span><span>2002</span><span>.</span></span></span></td></tr>
+<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> N.&nbsp;Julka, R.&nbsp;Srinivasan, and I.&nbsp;Karimi. Agent-based supply chain management-1: framework. <em>Computers &amp; Chemical Engineering</em>, 26(12):1755–1769, 2002.</td></tr>
 </tbody>
 </table>
 <table class="docutils citation" frame="void" id="vlissides-design-1995" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id3">[2]</a></td><td><span class="first last"><span><span><span><span><span><span><span>John</span><span> </span></span><span>Vlissides</span></span><span>, </span><span><span><span>R</span><span>&nbsp;</span></span><span>Helm</span></span><span>, </span><span><span><span>R</span><span>&nbsp;</span></span><span>Johnson</span></span></span><span>, and </span><span><span><span>E</span><span>&nbsp;</span></span><span>Gamma</span></span></span><span>.</span></span><span> </span><span><span>Design patterns: elements of reusable object-oriented software</span><span>.</span></span></span><span> </span><span><em><span>Reading: Addison-Wesley</span></em><span>, </span><span>1995</span><span>.</span></span></span></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id3">[2]</a></td><td>John Vlissides, R&nbsp;Helm, R&nbsp;Johnson, and E&nbsp;Gamma. Design patterns: elements of reusable object-oriented software. <em>Reading: Addison-Wesley</em>, 1995.</td></tr>
 </tbody>
 </table>
 </p>
@@ -619,8 +550,121 @@ requests</li>
           </div>
         </div>
       </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="../index.html" title="index">
+          <img class="logo" src="../_static/big_c.png" alt="Logo"/>
+        </a></p><div class="sphinxlocaltoc">
+    <h3><a href="../index.html">Page contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">CEP 18 - Dynamic Resource Exchange Procedure</a><ul>
+<li><a class="reference internal" href="#abstract">Abstract</a></li>
+<li><a class="reference internal" href="#motivation">Motivation</a></li>
+<li><a class="reference internal" href="#rationale">Rationale</a><ul>
+<li><a class="reference internal" href="#supply-demand-framework">Supply-Demand Framework</a><ul>
+<li><a class="reference internal" href="#facility-agency">Facility Agency</a></li>
+<li><a class="reference internal" href="#institutional-agency">Institutional Agency</a></li>
+<li><a class="reference internal" href="#regional-agency">Regional Agency</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#market-resolution">Market Resolution</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#specification-implementation">Specification &amp; Implementation</a><ul>
+<li><a class="reference internal" href="#constituent-classes-and-containers">Constituent Classes and Containers</a></li>
+<li><a class="reference internal" href="#resource-exchange">Resource Exchange</a><ul>
+<li><a class="reference internal" href="#rfb-phase">RFB Phase</a></li>
+<li><a class="reference internal" href="#rrfb-phase">RRFB Phase</a></li>
+<li><a class="reference internal" href="#pa-procedure">PA Procedure</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#exchangegraph">ExchangeGraph</a></li>
+<li><a class="reference internal" href="#exchangetranslator">ExchangeTranslator</a></li>
+<li><a class="reference internal" href="#exchangesolver">ExchangeSolver</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#backwards-compatibility">Backwards Compatibility</a></li>
+<li><a class="reference internal" href="#document-history">Document History</a></li>
+<li><a class="reference internal" href="#references-and-footnotes">References and Footnotes</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div class="sphinxprev">
+    <h4>Previous page</h4>
+    <p class="topless"><a href="cep17.html"
+                          title="Previous page">&larr; CEP 17 - Resource Tracking and Interfaces Re-Re-Redo</a></p>
+  </div>
+  <div class="sphinxnext">
+    <h4>Next page</h4>
+    <p class="topless"><a href="cep19.html"
+                          title="Next page">&rarr; CEP 19 - <span style="font-variant:small-caps;">Cyclus</span> Input Procedure Updates</a></p>
+  </div>
+  <div class="sphinxlocaltoc">
+  <h3>Useful Pages</h3>
+    <ul><li><ul>
+    <li><a href="http://fuelcycle.org/user/main.html">User Guide</a></li>
+    <li><a href="http://fuelcycle.org/module/main.html">Archetype Developer Guide</a></li>
+    <li><a href="http://fuelcycle.org/cyclus/api/">Cyclus API Documentation</a></li>
+    <li><a href="http://fuelcycle.org/cycamore/api/">Cycamore API Documentation</a></li>
+    <li><a href="http://fuelcycle.org/basics/glossary.html">Glossary</a></li>
+    <li><a href="mailto:cyclus-users+subscribe@googlegroups.com?subject=Subscribe&body=Send this message to subscribe to the list">Join</a> the 
+      <a href="https://groups.google.com/forum/#!forum/cyclus-users" target="_blank"><span style="font-variant:small-caps">Cyclus</span> Users</a> mailing list.
+    <li><a href="mailto:cyclus-dev+subscribe@googlegroups.com?subject=Subscribe&body=Send this message to subscribe to the list">Join</a> the 
+      <a href="https://groups.google.com/forum/#!forum/cyclus-users" target="_blank"><span style="font-variant:small-caps">Cyclus</span> Developers</a> mailing list.
+    </ul></li></ul>
+  </div>
+    
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <h3>Get Cyclus</h3>
+    <br>
+    Current version: <b>1.0.0</b>
+    <br><br>
+    Install:
+    <div class="highlight-bash" style="width:97.5%"><div class="highlight"><pre><span class="nv">$ </span>conda install cyclus cycamore</pre></div></div>
+    Get the Source:
+    <ul><li><ul>
+          <li><a href="https://github.com/cyclus/cyclus">Cyclus</a></li>
+          <li><a href="https://github.com/cyclus/cycamore">Cycamore</a></li>
+    </ul></li></ul>
+    <h3>Acknowledgements</h3>
+    The Cyclus project has received support from:
+    <br />
+    <a href="http://www.neup.gov" target="_blank"><img src="../_static/neup_logo_large.png" width=170px></a>
+    <br />
+    <br />
+
+    In addition, some of the students working on Cyclus have received support from:
+    <br />
+    <a href="http://www.anl.gov" target="_blank"><img src="../_static/AnlLogo.png" height=100px></a>
+    <a href="http://www.nrc.gov" target="_blank"><img src="../_static/USNRC.png" height=100px></a>
+    <br />
+    <a href="http://www.neup.gov" target="_blank"><img src="../_static/neup_logo_large.png" width=170px></a>
+    <br />
+    <a href="http://www.nsf.gov" target="_blank"><img src="../_static/nsf_logo.png" height=100px></a>
+    <a href="http://www.wisc.edu" target="_blank"><img src="../_static/crest.png" height=100px></a>
+
+    
+
+        </div>
+      </div>
       <div class="clearer"></div>
     </div>
+    <div class="relbar-bottom">
+        
     <div class="related">
       <h3>Navigation</h3>
       <ul>
@@ -628,19 +672,34 @@ requests</li>
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
           <a href="cep19.html" title="CEP 19 - Cyclus Input Procedure Updates"
-             >next</a> |</li>
+             >next</a> &nbsp; &nbsp;</li>
         <li class="right" >
           <a href="cep17.html" title="CEP 17 - Resource Tracking and Interfaces Re-Re-Redo"
-             >previous</a> |</li>
-        <li><a href="../index.html">Cyclus Home</a> &raquo;</li>
-          <li><a href="cep0.html" >Cyclus Enhancement Proposals</a> &raquo;</li> 
+             >previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">Home</a> &raquo;</li>
+
+          <li><a href="cep0.html" ><span style="font-variant:small-caps;">Cyclus</span> Enhancement Proposals</a> &raquo;</li> 
       </ul>
     </div>
+    </div>
+
     <div class="footer">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on May 07, 2014.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
-    </div>
+      Last updated on May 30, 2014.
+    </div><script type="text/javascript">
+    if(ga_enabled){
+        document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");
+        document.write("Click <button title=\"set cookie to disable analytics for this site\" class=\"link\" onclick=\"$.cookie('disable-ga', 'true', {expires: 3650, path: '/'}); window.location.reload(); return false; \">here</button> to disable analytics for this site.");
+        document.write("</div>");
+    }else{
+        document.write("<div class=\"footer\">Google Analytics has been disabled. ");
+        document.write("Click <button title=\"set cookie to re-enable analytics for this site\" class=\"link\" onclick=\"$.cookie('disable-ga', null, {path: '/'}); window.location.reload(); return false; \">here</button> to re-enable analytics for this site.");
+    };
+</script>
+    <!-- cloud_sptheme 1.4 -->
   </body>
 </html>

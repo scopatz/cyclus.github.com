@@ -1,0 +1,491 @@
+
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Understanding the Database &mdash; Home</title>
+    
+    <link rel="stylesheet" href="../_static/cyclus.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '(1.0.0-rc3-59-g7a5d0ac)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../_static/cloud.js"></script>
+    <link rel="shortcut icon" href="../_static/big_c.ico"/>
+    <link rel="top" title="Home" href="../index.html" />
+    <link rel="up" title="Cyclus User Guide" href="main.html" />
+    <link rel="next" title="Use Cases for Cyclus Data Analysis" href="analysis_usecases.html" />
+    <link rel="prev" title="Stub Archetypes" href="stubagents.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1"><script type="text/javascript">
+var ga_enabled = !$.cookie('disable-ga');
+if(ga_enabled){
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-12222727-2']);
+  _gaq.push(['_setCookiePath', '/']);
+  _gaq.push(['_setDetectFlash', false]);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+}
+</script>
+  </head>
+  <body>
+    <div class="relbar-top">
+        
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="analysis_usecases.html" title="Use Cases for Cyclus Data Analysis"
+             accesskey="N">next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="stubagents.html" title="Stub Archetypes"
+             accesskey="P">previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">Home</a> &raquo;</li>
+
+          <li><a href="main.html" accesskey="U"><span style="font-variant:small-caps;">Cyclus</span> User Guide</a> &raquo;</li> 
+      </ul>
+    </div>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="understanding-the-database">
+<h1>Understanding the Database<a class="headerlink" href="#understanding-the-database" title="Permalink to this headline">¶</a></h1>
+<p>A single database can store multiple simulations&#8217; results. In order for this to
+work, every table in the database has a SimId column that identifies which
+simulation each row belongs to.  In order to robustly analyze the data, all
+processing should be simulation-ID-aware.  Because simulation ID&#8217;s are UUID&#8217;s,
+databases can be safely merged without conflicts.</p>
+<p><span style="font-variant:small-caps;">Cyclus</span> supports multiple database formats.  While each format is allowed to
+store information in its own way, the overall table structure in databases is
+the same.  <span style="font-variant:small-caps;">Cyclus</span> ships supporting two database formats:</p>
+<ul class="simple">
+<li>SQLite</li>
+<li>HDF5</li>
+</ul>
+<p>There are several tools that can be used to interrogate these file formats.
+That is left as an exercise for the reader.  Below are a few sections that
+group together and describe related tables.</p>
+<div class="section" id="table-descriptions">
+<h2>Table Descriptions<a class="headerlink" href="#table-descriptions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="resources-table">
+<h3>Resources Table<a class="headerlink" href="#resources-table" title="Permalink to this headline">¶</a></h3>
+<p>Because resources are tracked as immutable objects, every time a resource is
+changed in the simulation (split, combined, transmuted, decayed, etc.), it
+gets a new entry in the Resources table.  The heritage of resources is also
+tracked.  If two resources are combined into a new one, then the new resource
+entry will have the ID&#8217;s of the other two in its &#8220;Parent1&#8221; and &#8220;Parent2&#8221;
+columns.  The Resources table effectively encodes a heritage tree for all
+resources.  It is interesting to note that the Resources table does not encode
+any information about where a resource is.  This information can be inferred
+by corroborating Resource ID&#8217;s with the <tt class="docutils literal"><span class="pre">ResCreators</span></tt> and <tt class="docutils literal"><span class="pre">Transactions</span></tt>
+tables.</p>
+<ul class="simple">
+<li><strong>SimId</strong> (uuid)</li>
+<li><strong>ResourceId</strong> (int): The unique ID for this resource entry. See
+<a class="reference internal" href="../module/resources.html#resource-ids"><em>Resource IDs</em></a> for more details.</li>
+<li><strong>ObjId</strong> (int): A resources object id (obj_id) as it existed during the
+simulation simulation.  See <a class="reference internal" href="../module/resources.html#resource-ids"><em>Resource IDs</em></a> for more details.</li>
+<li><strong>Type</strong> (string): One of &#8220;Material&#8221; or &#8220;Product&#8221;.  These two types of
+resources have different internal state stored in different tables.  If the
+type is &#8220;Product&#8221;, then the internal state can be found in the <tt class="docutils literal"><span class="pre">Products</span></tt>
+table. If it is Material, then it is in the <tt class="docutils literal"><span class="pre">Compositions</span></tt> table.</li>
+<li><strong>TimeCreated</strong> (int): The simulation time step at which this resource state
+came into existence.</li>
+<li><strong>Quantity</strong> (double): Amount of the resource in &#8220;kg&#8221; for Material
+resources.  Amount in terms of the specific quality for Product resources.</li>
+<li><strong>Units</strong> (string): &#8220;kg&#8221; for all Material resources, &#8220;NONE&#8221; for Product
+resources.</li>
+<li><strong>QualId</strong> (int): Used to identify the corresponding internal-state
+entry (or entries) in the <tt class="docutils literal"><span class="pre">Products</span></tt> or <tt class="docutils literal"><span class="pre">Compositions</span></tt> table depending
+on the resource&#8217;s type.</li>
+<li><strong>Parent1</strong> (int): If a resource was newly created, this is zero. If this
+resource came from another via is transmutation, combining, or splitting,
+or decay then this is the parent ResourceId</li>
+<li><strong>Parent2</strong> (int): If a resource was newly created, this is zero. If this
+resource came from another via transmutation, decay, or splitting, Parent2
+is also zero. If the resource came from another via combining this is the
+second parent&#8217;s ResourceId.</li>
+</ul>
+</div>
+<div class="section" id="compositions-table">
+<h3>Compositions Table<a class="headerlink" href="#compositions-table" title="Permalink to this headline">¶</a></h3>
+<p>A composition consists of one or more nuclides and their respective mass
+fractions.  Each nuclide for a composition gets its own row and have the same
+QualId.</p>
+<ul class="simple">
+<li><strong>SimId</strong> (uuid)</li>
+<li><strong>QualId</strong> (int): Key to associate this composition with one or more
+entries in the <tt class="docutils literal"><span class="pre">Resources</span></tt> table.</li>
+<li><strong>NucId</strong> (int): Nuclide identifier in <tt class="docutils literal"><span class="pre">zzzaaammmm</span></tt> form.</li>
+<li><strong>MassFrac</strong> (double): Mass fraction for the nuclide in this composition.</li>
+</ul>
+</div>
+<div class="section" id="recipes-table">
+<h3>Recipes Table<a class="headerlink" href="#recipes-table" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><strong>SimId</strong> (uuid)</li>
+<li><strong>Recipe</strong> (string): Recipe name as given in the input file.</li>
+<li><strong>QualId</strong> (int): Key to identify the Composition for this recipe in the
+<tt class="docutils literal"><span class="pre">Compositions</span></tt> table.</li>
+</ul>
+</div>
+<div class="section" id="products-table">
+<h3>Products Table<a class="headerlink" href="#products-table" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><strong>SimId</strong> (uuid)</li>
+<li><strong>QualId</strong> (int): Key to associate this quality with one or more entries in
+the <tt class="docutils literal"><span class="pre">Resources</span></tt> table.</li>
+<li><strong>Quality</strong> (string): Describes a product&#8217;s quality (e.g. &#8220;bananas&#8221;, &#8220;KWh&#8221;,
+etc.)</li>
+</ul>
+</div>
+<div class="section" id="rescreators-table">
+<h3>ResCreators Table<a class="headerlink" href="#rescreators-table" title="Permalink to this headline">¶</a></h3>
+<p>Every time an agent creates a new resource from scratch, that event is
+recorded in this table.</p>
+<ul class="simple">
+<li><strong>SimId</strong> (uuid)</li>
+<li><strong>ResourceId</strong> (int): ID of a resource that was created at some point in the
+simulation.</li>
+<li><strong>AgentId</strong> (int): ID of the agent that created the resource associated with
+the ResourceId.</li>
+</ul>
+</div>
+<div class="section" id="agententry-table">
+<h3>AgentEntry Table<a class="headerlink" href="#agententry-table" title="Permalink to this headline">¶</a></h3>
+<p>Each agent that enters and participates in a simulation gets a row in this
+table.</p>
+<ul class="simple">
+<li><strong>SimId</strong> (uuid)</li>
+<li><strong>AgentId</strong> (int): Every agent in a simulation gets its own, unique ID.</li>
+<li><strong>Kind</strong> (string): One of &#8220;Region&#8221;, &#8220;Inst&#8221;, &#8220;Facility&#8221;, or &#8220;Agent&#8221;.</li>
+<li><strong>Spec</strong> (string): The single-string of the <a class="reference internal" href="find_agents.html"><em>agent specification</em></a>.</li>
+<li><strong>Prototype</strong> (string): The prototype name, as defined in the input file,
+that was used to create this agent.</li>
+<li><strong>ParentId</strong> (int): The AgentId of this agent&#8217;s parent - the agent that
+built/created this agent.</li>
+<li><strong>Lifetime</strong> (int): Number of time steps an agent is designed to operate
+over.  <tt class="docutils literal"><span class="pre">-1</span></tt> indicates an infinite lifetime.  Note that depending on how
+agents use the lifetime parameter, this may be entirely unrelated to how long
+agents were actually operating in the simulation.</li>
+<li><strong>EnterTime</strong> (int): The time step when the agent was built and entered the
+simulation.</li>
+</ul>
+</div>
+<div class="section" id="agentexit-table">
+<h3>AgentExit Table<a class="headerlink" href="#agentexit-table" title="Permalink to this headline">¶</a></h3>
+<p>Due to implementation details in the <span style="font-variant:small-caps;">Cyclus</span> kernel, this table is separate
+from the <tt class="docutils literal"><span class="pre">AgentEntry</span></tt> table.  If this table doesn&#8217;t exist, then no agents
+were decommissioned in the simulation.</p>
+<ul class="simple">
+<li><strong>SimId</strong> (uuid)</li>
+<li><strong>AgentId</strong> (int): Key to the AgentId on the <tt class="docutils literal"><span class="pre">AgentEntry</span></tt> table.</li>
+<li><strong>ExitTime</strong> (int): The time step when the agent was decommissioned and
+exited the simulation.</li>
+</ul>
+</div>
+<div class="section" id="transactions-table">
+<h3>Transactions Table<a class="headerlink" href="#transactions-table" title="Permalink to this headline">¶</a></h3>
+<p>Every single resource transfer between two agents is recorded as a row
+in this table.</p>
+<ul class="simple">
+<li><strong>SimId</strong> (uuid)</li>
+<li><strong>TransactionId</strong> (int): A unique identifier for this resource transfer.</li>
+<li><strong>SenderId</strong> (int): AgentId for the sending agent.</li>
+<li><strong>ReceiverId</strong> (int): AgentId for the receiving agent.</li>
+<li><strong>ResourceId</strong> (int): Key to the entry in the Resources table that describes
+the transferred resource.</li>
+<li><strong>Commodity</strong> (string): The commodity under which this transfer was
+negotiated.</li>
+<li><strong>Time</strong> (int): The time step at which the resource transfer took place.</li>
+</ul>
+</div>
+<div class="section" id="info-table">
+<h3>Info Table<a class="headerlink" href="#info-table" title="Permalink to this headline">¶</a></h3>
+<p>Each simulation gets a single row in this table describing global simulation
+parameters and <span style="font-variant:small-caps;">Cyclus</span> dependency version information.</p>
+<ul>
+<li><p class="first"><strong>SimId</strong> (uuid)</p>
+</li>
+<li><p class="first"><strong>Handle</strong> (string): A custom user-specified value from the input file
+allowing for convenient identification of simulations in a database (because
+the simulation uuid&#8217;s are not very memorable by mere mortals).</p>
+</li>
+<li><p class="first"><strong>InitialYear</strong> (int): The year in which time step zero occurs.</p>
+</li>
+<li><p class="first"><strong>InitialMonth</strong> (int): The month that time step zero represents.</p>
+</li>
+<li><p class="first"><strong>Duration</strong> (int): The length of the simulation in time steps.  Note that
+it is possible a simulation to terminate early before running its entire
+duration (see the <tt class="docutils literal"><span class="pre">Finish</span></tt> table section).</p>
+</li>
+<li><p class="first"><strong>ParentSimId</strong> (uuid): The SimId for this simulation&#8217;s parent. Zero if this
+simulation has no parent.</p>
+</li>
+<li><p class="first"><strong>ParentType</strong> (string): One of:</p>
+<blockquote>
+<div><ul class="simple">
+<li>&#8220;init&#8221; for simulations that are not based on any other simulation.</li>
+<li>&#8220;restart&#8221; for simulations that were restarted another simulation&#8217;s
+snapshot.</li>
+<li>&#8220;branch&#8221; for simulations that were started from a perturbed state of
+another simulation&#8217;s snapshot.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first"><strong>BranchTime</strong> (int): Zero if this was not a restarted or branched
+simulation. Otherwise, the time step of the ParentSim at which the
+restart/branch occurred.</p>
+</li>
+<li><p class="first"><strong>CyclusVersion</strong> (string): Version of <span style="font-variant:small-caps;">Cyclus</span> used to run this simulation.</p>
+</li>
+<li><p class="first"><strong>CyclusVersionDescribe</strong> (string): Detailed <span style="font-variant:small-caps;">Cyclus</span> version info (with commit hash)</p>
+</li>
+<li><p class="first"><strong>SqliteVersion</strong> (string)</p>
+</li>
+<li><p class="first"><strong>Hdf5Version</strong> (string)</p>
+</li>
+<li><p class="first"><strong>BoostVersion</strong> (string)</p>
+</li>
+<li><p class="first"><strong>LibXML2Version</strong> (string)</p>
+</li>
+<li><p class="first"><strong>CoinCBCVersion</strong> (string)</p>
+</li>
+</ul>
+</div>
+<div class="section" id="finish-table">
+<h3>Finish Table<a class="headerlink" href="#finish-table" title="Permalink to this headline">¶</a></h3>
+<p>Each simulation gets one row/entry in this table.</p>
+<ul class="simple">
+<li><strong>SimId</strong> (uuid)</li>
+<li><strong>EarlyTerm</strong> (bool): True (or 1) if the simulation terminated early and did
+not complete normally. False (or 0) otherwise.</li>
+<li><strong>EndTime</strong> (int): The time step at which the simulation ended.</li>
+</ul>
+</div>
+<div class="section" id="inputfiles-table">
+<h3>InputFiles Table<a class="headerlink" href="#inputfiles-table" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><strong>SimId</strong> (uuid)</li>
+<li><strong>Data</strong> (blob): A dump of the entire input file used for this simulation.</li>
+</ul>
+</div>
+<div class="section" id="decomschedule-table">
+<h3>DecomSchedule Table<a class="headerlink" href="#decomschedule-table" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><strong>SimId</strong> (uuid)</li>
+<li><strong>AgentId</strong> (int):</li>
+<li><strong>SchedTime</strong> (int):</li>
+<li><strong>DecomTime</strong> (int):</li>
+</ul>
+</div>
+<div class="section" id="buildschedule-table">
+<h3>BuildSchedule Table<a class="headerlink" href="#buildschedule-table" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><strong>SimId</strong> (uuid)</li>
+<li><strong>ParentId</strong> (piintd):</li>
+<li><strong>Prototype</strong> (string):</li>
+<li><strong>SchedTime</strong> (int):</li>
+<li><strong>BuildTime</strong> (int):</li>
+</ul>
+</div>
+<div class="section" id="snapshots-table">
+<h3>Snapshots Table<a class="headerlink" href="#snapshots-table" title="Permalink to this headline">¶</a></h3>
+<p>Every snapshot made during the simulation gets an entry in this table.  All
+times in this table are candidates for simulation restart/branching.</p>
+<ul class="simple">
+<li><strong>SimId</strong> (uuid)</li>
+<li><strong>Time</strong> (int): The time step a snapshot was taken for this simulation.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="post-processing">
+<h2>Post Processing<a class="headerlink" href="#post-processing" title="Permalink to this headline">¶</a></h2>
+<p>We are currently working on developing a post-process step for the database
+that creates a few new tables to assist data analysis and visualization.
+These tables are not set in stone and their schemas are subject to change.
+Below is a summary of them.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="../index.html" title="index">
+          <img class="logo" src="../_static/big_c.png" alt="Logo"/>
+        </a></p><div class="sphinxlocaltoc">
+    <h3><a href="../index.html">Page contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Understanding the Database</a><ul>
+<li><a class="reference internal" href="#table-descriptions">Table Descriptions</a><ul>
+<li><a class="reference internal" href="#resources-table">Resources Table</a></li>
+<li><a class="reference internal" href="#compositions-table">Compositions Table</a></li>
+<li><a class="reference internal" href="#recipes-table">Recipes Table</a></li>
+<li><a class="reference internal" href="#products-table">Products Table</a></li>
+<li><a class="reference internal" href="#rescreators-table">ResCreators Table</a></li>
+<li><a class="reference internal" href="#agententry-table">AgentEntry Table</a></li>
+<li><a class="reference internal" href="#agentexit-table">AgentExit Table</a></li>
+<li><a class="reference internal" href="#transactions-table">Transactions Table</a></li>
+<li><a class="reference internal" href="#info-table">Info Table</a></li>
+<li><a class="reference internal" href="#finish-table">Finish Table</a></li>
+<li><a class="reference internal" href="#inputfiles-table">InputFiles Table</a></li>
+<li><a class="reference internal" href="#decomschedule-table">DecomSchedule Table</a></li>
+<li><a class="reference internal" href="#buildschedule-table">BuildSchedule Table</a></li>
+<li><a class="reference internal" href="#snapshots-table">Snapshots Table</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#post-processing">Post Processing</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div class="sphinxprev">
+    <h4>Previous page</h4>
+    <p class="topless"><a href="stubagents.html"
+                          title="Previous page">&larr; Stub Archetypes</a></p>
+  </div>
+  <div class="sphinxnext">
+    <h4>Next page</h4>
+    <p class="topless"><a href="analysis_usecases.html"
+                          title="Next page">&rarr; Use Cases for <span style="font-variant:small-caps;">Cyclus</span> Data Analysis</a></p>
+  </div>
+  <div class="sphinxlocaltoc">
+  <h3>Useful Pages</h3>
+    <ul><li><ul>
+    <li><a href="http://fuelcycle.org/user/main.html">User Guide</a></li>
+    <li><a href="http://fuelcycle.org/module/main.html">Archetype Developer Guide</a></li>
+    <li><a href="http://fuelcycle.org/cyclus/api/">Cyclus API Documentation</a></li>
+    <li><a href="http://fuelcycle.org/cycamore/api/">Cycamore API Documentation</a></li>
+    <li><a href="http://fuelcycle.org/basics/glossary.html">Glossary</a></li>
+    <li><a href="mailto:cyclus-users+subscribe@googlegroups.com?subject=Subscribe&body=Send this message to subscribe to the list">Join</a> the 
+      <a href="https://groups.google.com/forum/#!forum/cyclus-users" target="_blank"><span style="font-variant:small-caps">Cyclus</span> Users</a> mailing list.
+    <li><a href="mailto:cyclus-dev+subscribe@googlegroups.com?subject=Subscribe&body=Send this message to subscribe to the list">Join</a> the 
+      <a href="https://groups.google.com/forum/#!forum/cyclus-users" target="_blank"><span style="font-variant:small-caps">Cyclus</span> Developers</a> mailing list.
+    </ul></li></ul>
+  </div>
+    
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <h3>Get Cyclus</h3>
+    <br>
+    Current version: <b>1.0.0</b>
+    <br><br>
+    Install:
+    <div class="highlight-bash" style="width:97.5%"><div class="highlight"><pre><span class="nv">$ </span>conda install cyclus cycamore</pre></div></div>
+    Get the Source:
+    <ul><li><ul>
+          <li><a href="https://github.com/cyclus/cyclus">Cyclus</a></li>
+          <li><a href="https://github.com/cyclus/cycamore">Cycamore</a></li>
+    </ul></li></ul>
+    <h3>Acknowledgements</h3>
+    The Cyclus project has received support from:
+    <br />
+    <a href="http://www.neup.gov" target="_blank"><img src="../_static/neup_logo_large.png" width=170px></a>
+    <br />
+    <br />
+
+    In addition, some of the students working on Cyclus have received support from:
+    <br />
+    <a href="http://www.anl.gov" target="_blank"><img src="../_static/AnlLogo.png" height=100px></a>
+    <a href="http://www.nrc.gov" target="_blank"><img src="../_static/USNRC.png" height=100px></a>
+    <br />
+    <a href="http://www.neup.gov" target="_blank"><img src="../_static/neup_logo_large.png" width=170px></a>
+    <br />
+    <a href="http://www.nsf.gov" target="_blank"><img src="../_static/nsf_logo.png" height=100px></a>
+    <a href="http://www.wisc.edu" target="_blank"><img src="../_static/crest.png" height=100px></a>
+
+    
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="relbar-bottom">
+        
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="analysis_usecases.html" title="Use Cases for Cyclus Data Analysis"
+             >next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="stubagents.html" title="Stub Archetypes"
+             >previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">Home</a> &raquo;</li>
+
+          <li><a href="main.html" ><span style="font-variant:small-caps;">Cyclus</span> User Guide</a> &raquo;</li> 
+      </ul>
+    </div>
+    </div>
+
+    <div class="footer">
+        &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
+      Last updated on May 30, 2014.
+    </div><script type="text/javascript">
+    if(ga_enabled){
+        document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");
+        document.write("Click <button title=\"set cookie to disable analytics for this site\" class=\"link\" onclick=\"$.cookie('disable-ga', 'true', {expires: 3650, path: '/'}); window.location.reload(); return false; \">here</button> to disable analytics for this site.");
+        document.write("</div>");
+    }else{
+        document.write("<div class=\"footer\">Google Analytics has been disabled. ");
+        document.write("Click <button title=\"set cookie to re-enable analytics for this site\" class=\"link\" onclick=\"$.cookie('disable-ga', null, {path: '/'}); window.location.reload(); return false; \">here</button> to re-enable analytics for this site.");
+    };
+</script>
+    <!-- cloud_sptheme 1.4 -->
+  </body>
+</html>

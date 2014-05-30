@@ -1,6 +1,7 @@
 
 
 
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -9,15 +10,16 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>CEP 1 - CEP Purpose and Guidelines &mdash; Cyclus Home</title>
+    <title>CEP 1 - CEP Purpose and Guidelines &mdash; Home</title>
     
-    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/cyclus.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '(0.4.3-433-gdf86f75)',
+        VERSION:     '(1.0.0-rc3-59-g7a5d0ac)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -26,34 +28,32 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="Cyclus Home" href="../index.html" />
+    <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../_static/cloud.js"></script>
+    <link rel="shortcut icon" href="../_static/big_c.ico"/>
+    <link rel="top" title="Home" href="../index.html" />
     <link rel="up" title="Cyclus Enhancement Proposals" href="cep0.html" />
     <link rel="next" title="CEP 2 - Separation of Concerns in the Cyclus Ecosystem" href="cep2.html" />
-    <link rel="prev" title="Cyclus Enhancement Proposals" href="cep0.html" />
-   
-<script type="text/javascript">
-
+    <link rel="prev" title="Cyclus Enhancement Proposals" href="cep0.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1"><script type="text/javascript">
+var ga_enabled = !$.cookie('disable-ga');
+if(ga_enabled){
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-12222727-2']);
+  _gaq.push(['_setCookiePath', '/']);
+  _gaq.push(['_setDetectFlash', false]);
   _gaq.push(['_trackPageview']);
-
   (function() {
     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
-
+}
 </script>
-
   </head>
   <body>
-<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
-  <a href="http://cyclus.github.com">
-    <img src="../_static/logo1.png"/>
-  </a>
-</div>
-
-
+    <div class="relbar-top">
+        
     <div class="related">
       <h3>Navigation</h3>
       <ul>
@@ -61,80 +61,21 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
           <a href="cep2.html" title="CEP 2 - Separation of Concerns in the Cyclus Ecosystem"
-             accesskey="N">next</a> |</li>
+             accesskey="N">next</a> &nbsp; &nbsp;</li>
         <li class="right" >
           <a href="cep0.html" title="Cyclus Enhancement Proposals"
-             accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">Cyclus Home</a> &raquo;</li>
-          <li><a href="cep0.html" accesskey="U">Cyclus Enhancement Proposals</a> &raquo;</li> 
+             accesskey="P">previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">Home</a> &raquo;</li>
+
+          <li><a href="cep0.html" accesskey="U"><span style="font-variant:small-caps;">Cyclus</span> Enhancement Proposals</a> &raquo;</li> 
       </ul>
     </div>
-      <div class="sphinxsidebar">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">CEP 1 - CEP Purpose and Guidelines</a><ul>
-<li><a class="reference internal" href="#what-is-a-cep">What is a CEP?</a></li>
-<li><a class="reference internal" href="#cep-types">CEP Types</a></li>
-<li><a class="reference internal" href="#cep-workflow">CEP Workflow</a><ul>
-<li><a class="reference internal" href="#cyclus-s-bdfp"><em>Cyclus</em>&#8216;s BDFP</a></li>
-<li><a class="reference internal" href="#cep-editors">CEP Editors</a></li>
-<li><a class="reference internal" href="#submitting-a-cep">Submitting a CEP</a></li>
-<li><a class="reference internal" href="#cep-review-resolution">CEP Review &amp; Resolution</a></li>
-<li><a class="reference internal" href="#cep-maintenance">CEP Maintenance</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#what-belongs-in-a-successful-cep">What belongs in a successful CEP?</a></li>
-<li><a class="reference internal" href="#cep-header-preamble">CEP Header Preamble</a></li>
-<li><a class="reference internal" href="#auxiliary-files">Auxiliary Files</a></li>
-<li><a class="reference internal" href="#reporting-cep-bugs-or-submitting-cep-updates">Reporting CEP Bugs, or Submitting CEP Updates</a></li>
-<li><a class="reference internal" href="#transferring-cep-ownership">Transferring CEP Ownership</a></li>
-<li><a class="reference internal" href="#cep-editor-responsibilities-workflow">CEP Editor Responsibilities &amp; Workflow</a></li>
-<li><a class="reference internal" href="#document-history">Document History</a></li>
-<li><a class="reference internal" href="#references-and-footnotes">References and Footnotes</a></li>
-</ul>
-</li>
-</ul>
-
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="cep0.html"
-                        title="previous chapter">Cyclus Enhancement Proposals</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="cep2.html"
-                        title="next chapter">CEP 2 - Separation of Concerns in the <em>Cyclus</em> Ecosystem</a></p>
-  <h3>Useful Pages</h3>
-    <li><a href="http://cyclus.github.com/basics/glossary.html">Glossary</a></li>
-    <li><a href="http://cyclus.github.com/basics/roadmap.html">Roadmap</a></li>
-    <li><a href="https://github.com/cyclus">Source Code</a></li>
-    <li><a href="http://fuelcycle.org/cyclus/api/">Cyclus Core Documentation</a></li>
-    <li><a href="http://fuelcycle.org/cycamore/api/">Cycamore Documentation</a></li>
-    
-<div id="searchbox" style="display: none">
-  <h3>Quick search</h3>
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-    <h3>Acknowledgements</h3>
-    Support for this research has included funding received from:
-    <img src=/_images/neup_logo_large.jpg width=170px>
-    <img src=/_images/AnlLogo.png height=100px>
-    <img src=/_images/USNRC.gif height=100px>
-    <img src=/_images/nsf_logo.jpg height=100px>
-    <img src=/_images/crest.png height=100px>
-
-    
-
-        </div>
-      </div>
+    </div>
+  
 
     <div class="document">
       <div class="documentwrapper">
@@ -165,14 +106,14 @@
 </table>
 <div class="section" id="what-is-a-cep">
 <h2>What is a CEP?<a class="headerlink" href="#what-is-a-cep" title="Permalink to this headline">¶</a></h2>
-<p>CEP stands for Cyclus Enhancement Proposal.  A CEP is a design
-document providing information to the <em>Cyclus</em> community, or describing
-a new feature or process for Cyclus and related prjects in its ecosystem.
+<p>CEP stands for <span style="font-variant:small-caps;">Cyclus</span> Enhancement Proposal.  A CEP is a design
+document providing information to the <span style="font-variant:small-caps;">Cyclus</span> community, or describing
+a new feature or process for <span style="font-variant:small-caps;">Cyclus</span> and related prjects in its ecosystem.
 The CEP should provide a concise technical specification of the feature and a
 rationale for the feature.</p>
 <p>We intend CEPs to be the primary mechanisms for proposing major new
 features, for collecting community input on an issue, and for
-documenting the design decisions that have gone into the Cyclus ecosystem.
+documenting the design decisions that have gone into the <span style="font-variant:small-caps;">Cyclus</span> ecosystem.
 The CEP author is responsible for building consensus within the community and
 documenting dissenting opinions.</p>
 <p>Because the CEPs are maintained as text files in a versioned
@@ -184,34 +125,34 @@ feature proposal <a class="footnote-reference" href="#id2" id="id1">[1]</a>.</p>
 <p>There are three kinds of CEP:</p>
 <ol class="arabic simple">
 <li>A <strong>Standards Track</strong> CEP describes a new feature or implementation
-for <em>Cyclus</em>. It may also describe an interoperability standard that will
-be supported outside of <em>Cyclus</em> core.</li>
-<li>An <strong>Informational</strong> CEP describes a <em>Cyclus</em> design issue, or
-provides general guidelines or information to the <em>Cyclus</em> community,
+for <span style="font-variant:small-caps;">Cyclus</span>. It may also describe an interoperability standard that will
+be supported outside of <span style="font-variant:small-caps;">Cyclus</span> core.</li>
+<li>An <strong>Informational</strong> CEP describes a <span style="font-variant:small-caps;">Cyclus</span> design issue, or
+provides general guidelines or information to the <span style="font-variant:small-caps;">Cyclus</span> community,
 but does not propose a new feature.  Informational CEPs do not
-necessarily represent a <em>Cyclus</em> community consensus or
+necessarily represent a <span style="font-variant:small-caps;">Cyclus</span> community consensus or
 recommendation, so users and implementers are free to ignore
 Informational CEPs or follow their advice.</li>
-<li>A <strong>Process</strong> CEP describes a process surrounding <em>Cyclus</em>, or
+<li>A <strong>Process</strong> CEP describes a process surrounding <span style="font-variant:small-caps;">Cyclus</span>, or
 proposes a change to (or an event in) a process.  Process CEPs are
-like Standards Track CEPs but apply to areas other than the <em>Cyclus</em>
+like Standards Track CEPs but apply to areas other than the <span style="font-variant:small-caps;">Cyclus</span>
 code development.  They may propose an implementation, but not to
-<em>Cyclus</em>&#8216;s codebase; they often require community consensus; unlike
+<span style="font-variant:small-caps;">Cyclus</span>&#8216;s codebase; they often require community consensus; unlike
 Informational CEPs, they are more than recommendations, and users
 are typically not free to ignore them.  Examples include
 procedures, guidelines, changes to the decision-making process, and
-changes to the tools or environment used in <em>Cyclus</em> development.
+changes to the tools or environment used in <span style="font-variant:small-caps;">Cyclus</span> development.
 Any meta-CEP is also considered a Process CEP.</li>
 </ol>
 </div>
 <div class="section" id="cep-workflow">
 <h2>CEP Workflow<a class="headerlink" href="#cep-workflow" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="cyclus-s-bdfp">
-<h3><em>Cyclus</em>&#8216;s BDFP<a class="headerlink" href="#cyclus-s-bdfp" title="Permalink to this headline">¶</a></h3>
+<h3><span style="font-variant:small-caps;">Cyclus</span>&#8216;s BDFP<a class="headerlink" href="#cyclus-s-bdfp" title="Permalink to this headline">¶</a></h3>
 <p>There are several reference in this CEP to the &#8220;BDFP&#8221;. This acronym stands
 for &#8220;Benevolent Dictator for the Proposal.&#8221; In most cases, it is fairly clear
 who this person is (Paul Wilson or Anthony Scopatz).  It is this persons
-responsibility to consider the entire <em>Cyclus</em> ecosystem when deciding whether
+responsibility to consider the entire <span style="font-variant:small-caps;">Cyclus</span> ecosystem when deciding whether
 or not to accept a proposal.  Weighted with this burden, their decision
 must be adhered to (dictator status), though they will try to do the right
 thing (benevolent).</p>
@@ -231,11 +172,11 @@ details.  The current editors are:</p>
 </div>
 <div class="section" id="submitting-a-cep">
 <h3>Submitting a CEP<a class="headerlink" href="#submitting-a-cep" title="Permalink to this headline">¶</a></h3>
-<p>The CEP process begins with a new idea for <em>Cyclus</em>.  It is highly
+<p>The CEP process begins with a new idea for <span style="font-variant:small-caps;">Cyclus</span>.  It is highly
 recommended that a single CEP contain a single key proposal or new
 idea. Small enhancements or patches often don&#8217;t need
-a CEP and can be injected into the <em>Cyclus</em> development workflow with a
-patch submission to the <em>Cyclus</em> <a class="reference external" href="https://github.com/cyclus/cyclus">issue tracker</a>. The more focused the
+a CEP and can be injected into the <span style="font-variant:small-caps;">Cyclus</span> development workflow with a
+patch submission to the <span style="font-variant:small-caps;">Cyclus</span> <a class="reference external" href="https://github.com/cyclus/cyclus">issue tracker</a>. The more focused the
 CEP, the more successful it tends to be.  The CEP editors reserve the
 right to reject CEP proposals if they appear too unfocused or too
 broad.  If in doubt, split your CEP into several well-focused ones.</p>
@@ -243,19 +184,19 @@ broad.  If in doubt, split your CEP into several well-focused ones.</p>
 style and format described below, shepherds the discussions in the
 appropriate forums, and attempts to build community consensus around
 the idea.  The CEP champion (a.k.a. Author) should first attempt to
-ascertain whether the idea is CEP-able.  Posting to the <em>Cyclus</em>-dev
+ascertain whether the idea is CEP-able.  Posting to the <a class="reference external" href="https://groups.google.com/forum/#!forum/cyclus-dev">cyclus-dev</a>
 mailing list is the best way to go about this.</p>
 <p>Vetting an idea publicly before going as far as writing a CEP is meant
 to save the potential author time. Many ideas have been brought
-forward for changing <em>Cyclus</em> that have been rejected for various
-reasons. Asking the <em>Cyclus</em> community first if an idea is original
+forward for changing <span style="font-variant:small-caps;">Cyclus</span> that have been rejected for various
+reasons. Asking the <span style="font-variant:small-caps;">Cyclus</span> community first if an idea is original
 helps prevent too much time being spent on something that is
 guaranteed to be rejected based on prior discussions (searching
 the internet does not always do the trick). It also helps to make sure
 the idea is applicable to the entire community and not just the author.
 Just because an idea sounds good to the author does not
-mean it will work for most people in most areas where <em>Cyclus</em> is used.</p>
-<p>Once the champion has asked the <em>Cyclus</em> community as to whether an
+mean it will work for most people in most areas where <span style="font-variant:small-caps;">Cyclus</span> is used.</p>
+<p>Once the champion has asked the <span style="font-variant:small-caps;">Cyclus</span> community as to whether an
 idea has any chance of acceptance, a draft CEP should be presented to
 mailing list.  This gives the author a chance to flesh out the draft
 CEP to make properly formatted, of high quality, and to address
@@ -271,7 +212,7 @@ and create and check-in the initial draft of the CEP.  The CEP editors
 will not unreasonably deny a CEP.  Reasons for denying CEP status
 include duplication of effort, being technically unsound, not
 providing proper motivation or addressing backwards compatibility, or
-not in keeping with the <em>Cyclus</em> philosophy.  The BDFP can be consulted
+not in keeping with the <span style="font-variant:small-caps;">Cyclus</span> philosophy.  The BDFP can be consulted
 during the approval phase, and is the final arbiter of the draft&#8217;s
 CEP-ability.</p>
 <p>Developers with git push privileges for the <a class="reference external" href="https://github.com/cyclus/cyclus.github.com/tree/source/source/cep">CEP repository</a> may claim
@@ -327,7 +268,7 @@ must be a clear and complete description of the proposed enhancement.
 The enhancement must represent a net improvement.  The proposed
 implementation, if applicable, must be solid and must not complicate
 the infrastructure unduly.  Finally, a proposed enhancement must be
-follow <em>Cyclus</em> best practices in order to be accepted by the BDFP.</p>
+follow <span style="font-variant:small-caps;">Cyclus</span> best practices in order to be accepted by the BDFP.</p>
 <p>Once a CEP has been accepted, the reference implementation must be
 completed.  When the reference implementation is complete and incorporated
 into the main source code repository, the status will be changed to &#8220;Final&#8221;.</p>
@@ -343,7 +284,7 @@ accepted that a competing proposal is a better alternative.</p>
 <p>When a CEP is Accepted, Rejected or Withdrawn, the CEP should be updated
 accordingly. In addition to updating the status field, at the very least
 the Resolution header should be added with a link to the relevant post
-in the <em>Cyclus</em>-dev mailing list archives.</p>
+in the <a class="reference external" href="https://groups.google.com/forum/#!forum/cyclus-dev">cyclus-dev</a> mailing list archives.</p>
 <p>CEPs can also be superseded by a different CEP, rendering the original
 obsolete.  This is intended for Informational CEPs, where version 2 of
 an API can replace version 1.</p>
@@ -382,7 +323,7 @@ example) or licensed under the <a class="reference external" href="http://www.op
 syntax and semantics of any new feature.</p>
 </li>
 <li><p class="first">Motivation &#8211; The motivation is critical for CEPs that want to
-change the <em>Cyclus</em> ecosystem.  It should clearly explain why the
+change the <span style="font-variant:small-caps;">Cyclus</span> ecosystem.  It should clearly explain why the
 existing language specification is inadequate to address the
 problem that the CEP solves.  CEP submissions without sufficient
 motivation may be rejected outright.</p>
@@ -411,7 +352,7 @@ rationale before writing code, the principle of &#8220;rough consensus
 and running code&#8221; is still useful when it comes to resolving many
 discussions of API details.</p>
 <p>The final implementation must include test code and documentation
-appropriate for <em>Cyclus</em>.</p>
+appropriate for <span style="font-variant:small-caps;">Cyclus</span>.</p>
 </li>
 </ol>
 </div>
@@ -450,15 +391,15 @@ approve or reject a CEP rests with someone other than the normal BDFP.</p>
 Informational, or Process.</p>
 <p>The Created header records the date that the CEP was assigned a
 number, while Post-History is used to record the dates of when new
-versions of the CEP are posted to <em>Cyclus</em> mailing list.  Both
+versions of the CEP are posted to <span style="font-variant:small-caps;">Cyclus</span> mailing list.  Both
 headers should be in yyyy-mm-dd format, e.g. 2001-08-14.</p>
-<p>Standards Track CEPs will typically have a <em>Cyclus</em>-Version header which
-indicates the version of <em>Cyclus</em> that the feature will be released with.
-Standards Track CEPs without a <em>Cyclus</em>-Version header indicate
+<p>Standards Track CEPs will typically have a <span style="font-variant:small-caps;">Cyclus</span>-Version header which
+indicates the version of <span style="font-variant:small-caps;">Cyclus</span> that the feature will be released with.
+Standards Track CEPs without a <span style="font-variant:small-caps;">Cyclus</span>-Version header indicate
 interoperability standards that will initially be supported through
 external libraries and tools, and then supplemented by a later CEP to
 add support to the standard library. Informational and Process CEPs do
-not need a <em>Cyclus</em>-Version header.</p>
+not need a <span style="font-variant:small-caps;">Cyclus</span>-Version header.</p>
 <p>CEPs may have a Requires header, indicating the CEP numbers that this
 CEP depends on.</p>
 <p>CEPs may also have a Superseded-By header indicating that a CEP has
@@ -481,8 +422,8 @@ factors, such as the maturity of the CEP, the preferences of the CEP
 author, and the nature of your comments.  For the early draft stages
 of the CEP, it&#8217;s probably best to send your comments and changes
 directly to the CEP author.  For more mature, or finished CEPs you may
-want to submit corrections to the <em>Cyclus</em> <a class="reference external" href="https://github.com/cyclus/cyclus">issue tracker</a> so that your
-changes don&#8217;t get lost.  If the CEP author is a <em>Cyclus</em> developer, assign the
+want to submit corrections to the <span style="font-variant:small-caps;">Cyclus</span> <a class="reference external" href="https://github.com/cyclus/cyclus">issue tracker</a> so that your
+changes don&#8217;t get lost.  If the CEP author is a <span style="font-variant:small-caps;">Cyclus</span> developer, assign the
 bug/patch to them, otherwise assign it to a CEP editor.</p>
 <p>When in doubt about where to send your changes, please check first
 with the CEP author and/or a CEP editor.</p>
@@ -503,14 +444,14 @@ direction of the CEP.  One aim of the CEP process is to try to build
 consensus around a CEP, but if that&#8217;s not possible, an author can always
 submit a competing CEP.</p>
 <p>If you are interested in assuming ownership of a CEP, send a message
-asking to take over, addressed to both the original author and the <em>Cyclus</em>
+asking to take over, addressed to both the original author and the <span style="font-variant:small-caps;">Cyclus</span>
 mailing list.  If the original author doesn&#8217;t respond to
 email in a timely manner, the CEP editors will make a unilateral
 decision (it&#8217;s not like such decisions can&#8217;t be reversed :).</p>
 </div>
 <div class="section" id="cep-editor-responsibilities-workflow">
 <h2>CEP Editor Responsibilities &amp; Workflow<a class="headerlink" href="#cep-editor-responsibilities-workflow" title="Permalink to this headline">¶</a></h2>
-<p>A CEP editor must subscribe to the <em>Cyclus</em> development mailing list.
+<p>A CEP editor must subscribe to the <span style="font-variant:small-caps;">Cyclus</span> development mailing list.
 For each new CEP that comes in an editor does the following:</p>
 <ul class="simple">
 <li>Read the CEP to check if it is ready: sound and complete.  The ideas
@@ -530,10 +471,10 @@ but sometimes it&#8217;s a special/joke number, like 666 or 3141).</li>
 <li>Monitor cyclus.github.com to make sure the CEP gets added to the site
 properly.</li>
 <li>Send email back to the CEP author with next steps (post to the
-<em>Cyclus</em> development mailing list).</li>
+<span style="font-variant:small-caps;">Cyclus</span> development mailing list).</li>
 </ul>
 <p>Many CEPs are written and maintained by developers with write access
-to the <em>Cyclus</em> codebase.  The CEP editors monitor the various repositories
+to the <span style="font-variant:small-caps;">Cyclus</span> codebase.  The CEP editors monitor the various repositories
 for CEP changes, and correct any structure, grammar, spelling, or
 markup mistakes they see.</p>
 <p>CEP editors don&#8217;t pass judgment on CEPs.  They merely do the
@@ -561,8 +502,111 @@ for retrieving older revisions, and can also be browsed via HTTP here:
           </div>
         </div>
       </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="../index.html" title="index">
+          <img class="logo" src="../_static/big_c.png" alt="Logo"/>
+        </a></p><div class="sphinxlocaltoc">
+    <h3><a href="../index.html">Page contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">CEP 1 - CEP Purpose and Guidelines</a><ul>
+<li><a class="reference internal" href="#what-is-a-cep">What is a CEP?</a></li>
+<li><a class="reference internal" href="#cep-types">CEP Types</a></li>
+<li><a class="reference internal" href="#cep-workflow">CEP Workflow</a><ul>
+<li><a class="reference internal" href="#cyclus-s-bdfp"><span style="font-variant:small-caps;">Cyclus</span>&#8216;s BDFP</a></li>
+<li><a class="reference internal" href="#cep-editors">CEP Editors</a></li>
+<li><a class="reference internal" href="#submitting-a-cep">Submitting a CEP</a></li>
+<li><a class="reference internal" href="#cep-review-resolution">CEP Review &amp; Resolution</a></li>
+<li><a class="reference internal" href="#cep-maintenance">CEP Maintenance</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#what-belongs-in-a-successful-cep">What belongs in a successful CEP?</a></li>
+<li><a class="reference internal" href="#cep-header-preamble">CEP Header Preamble</a></li>
+<li><a class="reference internal" href="#auxiliary-files">Auxiliary Files</a></li>
+<li><a class="reference internal" href="#reporting-cep-bugs-or-submitting-cep-updates">Reporting CEP Bugs, or Submitting CEP Updates</a></li>
+<li><a class="reference internal" href="#transferring-cep-ownership">Transferring CEP Ownership</a></li>
+<li><a class="reference internal" href="#cep-editor-responsibilities-workflow">CEP Editor Responsibilities &amp; Workflow</a></li>
+<li><a class="reference internal" href="#document-history">Document History</a></li>
+<li><a class="reference internal" href="#references-and-footnotes">References and Footnotes</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div class="sphinxprev">
+    <h4>Previous page</h4>
+    <p class="topless"><a href="cep0.html"
+                          title="Previous page">&larr; <span style="font-variant:small-caps;">Cyclus</span> Enhancement Proposals</a></p>
+  </div>
+  <div class="sphinxnext">
+    <h4>Next page</h4>
+    <p class="topless"><a href="cep2.html"
+                          title="Next page">&rarr; CEP 2 - Separation of Concerns in the <span style="font-variant:small-caps;">Cyclus</span> Ecosystem</a></p>
+  </div>
+  <div class="sphinxlocaltoc">
+  <h3>Useful Pages</h3>
+    <ul><li><ul>
+    <li><a href="http://fuelcycle.org/user/main.html">User Guide</a></li>
+    <li><a href="http://fuelcycle.org/module/main.html">Archetype Developer Guide</a></li>
+    <li><a href="http://fuelcycle.org/cyclus/api/">Cyclus API Documentation</a></li>
+    <li><a href="http://fuelcycle.org/cycamore/api/">Cycamore API Documentation</a></li>
+    <li><a href="http://fuelcycle.org/basics/glossary.html">Glossary</a></li>
+    <li><a href="mailto:cyclus-users+subscribe@googlegroups.com?subject=Subscribe&body=Send this message to subscribe to the list">Join</a> the 
+      <a href="https://groups.google.com/forum/#!forum/cyclus-users" target="_blank"><span style="font-variant:small-caps">Cyclus</span> Users</a> mailing list.
+    <li><a href="mailto:cyclus-dev+subscribe@googlegroups.com?subject=Subscribe&body=Send this message to subscribe to the list">Join</a> the 
+      <a href="https://groups.google.com/forum/#!forum/cyclus-users" target="_blank"><span style="font-variant:small-caps">Cyclus</span> Developers</a> mailing list.
+    </ul></li></ul>
+  </div>
+    
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <h3>Get Cyclus</h3>
+    <br>
+    Current version: <b>1.0.0</b>
+    <br><br>
+    Install:
+    <div class="highlight-bash" style="width:97.5%"><div class="highlight"><pre><span class="nv">$ </span>conda install cyclus cycamore</pre></div></div>
+    Get the Source:
+    <ul><li><ul>
+          <li><a href="https://github.com/cyclus/cyclus">Cyclus</a></li>
+          <li><a href="https://github.com/cyclus/cycamore">Cycamore</a></li>
+    </ul></li></ul>
+    <h3>Acknowledgements</h3>
+    The Cyclus project has received support from:
+    <br />
+    <a href="http://www.neup.gov" target="_blank"><img src="../_static/neup_logo_large.png" width=170px></a>
+    <br />
+    <br />
+
+    In addition, some of the students working on Cyclus have received support from:
+    <br />
+    <a href="http://www.anl.gov" target="_blank"><img src="../_static/AnlLogo.png" height=100px></a>
+    <a href="http://www.nrc.gov" target="_blank"><img src="../_static/USNRC.png" height=100px></a>
+    <br />
+    <a href="http://www.neup.gov" target="_blank"><img src="../_static/neup_logo_large.png" width=170px></a>
+    <br />
+    <a href="http://www.nsf.gov" target="_blank"><img src="../_static/nsf_logo.png" height=100px></a>
+    <a href="http://www.wisc.edu" target="_blank"><img src="../_static/crest.png" height=100px></a>
+
+    
+
+        </div>
+      </div>
       <div class="clearer"></div>
     </div>
+    <div class="relbar-bottom">
+        
     <div class="related">
       <h3>Navigation</h3>
       <ul>
@@ -570,19 +614,34 @@ for retrieving older revisions, and can also be browsed via HTTP here:
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
           <a href="cep2.html" title="CEP 2 - Separation of Concerns in the Cyclus Ecosystem"
-             >next</a> |</li>
+             >next</a> &nbsp; &nbsp;</li>
         <li class="right" >
           <a href="cep0.html" title="Cyclus Enhancement Proposals"
-             >previous</a> |</li>
-        <li><a href="../index.html">Cyclus Home</a> &raquo;</li>
-          <li><a href="cep0.html" >Cyclus Enhancement Proposals</a> &raquo;</li> 
+             >previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">Home</a> &raquo;</li>
+
+          <li><a href="cep0.html" ><span style="font-variant:small-caps;">Cyclus</span> Enhancement Proposals</a> &raquo;</li> 
       </ul>
     </div>
+    </div>
+
     <div class="footer">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on May 07, 2014.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
-    </div>
+      Last updated on May 30, 2014.
+    </div><script type="text/javascript">
+    if(ga_enabled){
+        document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");
+        document.write("Click <button title=\"set cookie to disable analytics for this site\" class=\"link\" onclick=\"$.cookie('disable-ga', 'true', {expires: 3650, path: '/'}); window.location.reload(); return false; \">here</button> to disable analytics for this site.");
+        document.write("</div>");
+    }else{
+        document.write("<div class=\"footer\">Google Analytics has been disabled. ");
+        document.write("Click <button title=\"set cookie to re-enable analytics for this site\" class=\"link\" onclick=\"$.cookie('disable-ga', null, {path: '/'}); window.location.reload(); return false; \">here</button> to re-enable analytics for this site.");
+    };
+</script>
+    <!-- cloud_sptheme 1.4 -->
   </body>
 </html>

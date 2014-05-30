@@ -1,0 +1,623 @@
+
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>cycpp &mdash; Home</title>
+    
+    <link rel="stylesheet" href="../_static/cyclus.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '(1.0.0-rc3-59-g7a5d0ac)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../_static/cloud.js"></script>
+    <link rel="shortcut icon" href="../_static/big_c.ico"/>
+    <link rel="top" title="Home" href="../index.html" />
+    <link rel="up" title="Cyclus Kernel Developer Guide" href="main.html" />
+    <link rel="next" title="Guide for Contributing to Cyclus" href="contributing_to_cyclus.html" />
+    <link rel="prev" title="Getting and Building Cyclus From Source" href="build_from_source.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1"><script type="text/javascript">
+var ga_enabled = !$.cookie('disable-ga');
+if(ga_enabled){
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-12222727-2']);
+  _gaq.push(['_setCookiePath', '/']);
+  _gaq.push(['_setDetectFlash', false]);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+}
+</script>
+  </head>
+  <body>
+    <div class="relbar-top">
+        
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="contributing_to_cyclus.html" title="Guide for Contributing to Cyclus"
+             accesskey="N">next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="build_from_source.html" title="Getting and Building Cyclus From Source"
+             accesskey="P">previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">Home</a> &raquo;</li>
+
+          <li><a href="main.html" accesskey="U"><span style="font-variant:small-caps;">Cyclus</span> Kernel Developer Guide</a> &raquo;</li> 
+      </ul>
+    </div>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-cycpp">
+<span id="cycpp"></span><h1>cycpp<a class="headerlink" href="#module-cycpp" title="Permalink to this headline">¶</a></h1>
+<p>The cyclus preprocessor.</p>
+<p>cycpp is a 3-pass preprocessor which adds reflection-like semantics to cyclus
+agents. This is needed to provide a high-level, user-facing API to cyclus.
+Code that uses cycpp is entirely valid C++ code and will compile normally even
+without first running it through the cycpp. This is because cycpp relies on
+custom #pragma decoration to annotate or inject into the code. These pragmas
+are skipped - by definition - by the C preprocessor and the C/C++ compiler.</p>
+<p>The three passes of cycpp are:</p>
+<ol class="arabic simple">
+<li>run cpp normally to canonize all other preprocessor directives,</li>
+<li>accumulate annotations for agents and state variables, and</li>
+<li>generate code based on annotations.</li>
+</ol>
+<p>All decorators have the following form:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c">#pragma cyclus &lt;decorator name&gt; [args]</span>
+</pre></div>
+</div>
+<p>The <tt class="docutils literal"><span class="pre">#pragma</span> <span class="pre">cyclus</span></tt> portion is a flag so that <em>only</em> cycpp consumes this
+#directive. This is followed by the actual <tt class="docutils literal"><span class="pre">&lt;decorator</span> <span class="pre">name&gt;</span></tt> which tells
+cycpp what to do with this pragma. Lastly, optional arguments may be passed to
+this decorator but all options <em>must</em> be on the same logical line as the
+directive.  How the arguments are interpreted is a function of the decorators
+themselves.  Most of them are simple Python statements or expressions. See the
+following handy table!</p>
+<p><strong>Decorator Arguments:</strong></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">var:</th><td class="field-body">Add the following C++ statement as an Agent&#8217;s state variable. There is
+one argument which must be a Python expression that evaluates to
+a dictionary or other mapping.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">exec:</th><td class="field-body">Executes arbitrary python code that is passed in as the arguments and
+loads this into the context. This is useful for importing handy modules,
+declaring variables for later use, or any of the other things that Python
+is great for. Any variables defined here are kept in a separate
+namespace from the classes.  Since this gives you direct access to the
+Python interpreter, try to be a little careful.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">note:</th><td class="field-body">Merges the argument (which like with var must evalutae to a dict) with the 
+current class level annotations. Enrties here overwrite previous entries.</td>
+</tr>
+</tbody>
+</table>
+<p>cycpp is implemented entirely in this file and with tools from the Python standard
+library. It requires Python 2.7+ or Python 3.3+ to run.</p>
+<dl class="function">
+<dt id="cycpp.preprocess_file">
+<tt class="descclassname">cycpp.</tt><tt class="descname">preprocess_file</tt><big>(</big><em>filename</em>, <em>includes=()</em>, <em>cpp_path='cpp'</em>, <em>cpp_args=('-xc++'</em>, <em>'-pipe'</em>, <em>'-E'</em>, <em>'-DCYCPP')</em><big>)</big><a class="headerlink" href="#cycpp.preprocess_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Preprocess a file using cpp.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>filename</strong> : str</p>
+<blockquote>
+<div><p>Name of the file you want to preprocess.</p>
+</div></blockquote>
+<p><strong>includes</strong> : list</p>
+<blockquote>
+<div><p>A list of all include directories to tell the preprocessor about</p>
+</div></blockquote>
+<p><strong>cpp_path</strong> : str, optional</p>
+<p><strong>cpp_args</strong> : str, optional</p>
+<blockquote class="last">
+<div><p>Refer to the documentation of parse_file for the meaning of these
+arguments.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>This was forked from pycparser: <a class="reference external" href="https://github.com/eliben/pycparser">https://github.com/eliben/pycparser</a></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="cycpp.Filter">
+<em class="property">class </em><tt class="descclassname">cycpp.</tt><tt class="descname">Filter</tt><big>(</big><em>machine=None</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#cycpp.Filter" title="Permalink to this definition">¶</a></dt>
+<dd><p>A basic, no-op filter.</p>
+<dl class="method">
+<dt id="cycpp.Filter.isvalid">
+<tt class="descname">isvalid</tt><big>(</big><em>statement</em><big>)</big><a class="headerlink" href="#cycpp.Filter.isvalid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if a statement is valid for this fliter.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="cycpp.Filter.transform">
+<tt class="descname">transform</tt><big>(</big><em>statement</em>, <em>sep</em><big>)</big><a class="headerlink" href="#cycpp.Filter.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs a transformation given this.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="cycpp.Filter.revert">
+<tt class="descname">revert</tt><big>(</big><em>statement</em>, <em>sep</em><big>)</big><a class="headerlink" href="#cycpp.Filter.revert" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reverts state transformation.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="cycpp.LinemarkerFilter">
+<em class="property">class </em><tt class="descclassname">cycpp.</tt><tt class="descname">LinemarkerFilter</tt><big>(</big><em>machine=None</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#cycpp.LinemarkerFilter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filter for computing the current source code line
+from preprocessor line marker directives.</p>
+<blockquote>
+<div># linenum filename [flags]</div></blockquote>
+<p>This is useful for debugging. See the cpp for more info:
+<a class="reference external" href="http://gcc.gnu.org/onlinedocs/cpp/Preprocessor-Output.html">http://gcc.gnu.org/onlinedocs/cpp/Preprocessor-Output.html</a></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="cycpp.AliasFilter">
+<em class="property">class </em><tt class="descclassname">cycpp.</tt><tt class="descname">AliasFilter</tt><big>(</big><em>machine=None</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#cycpp.AliasFilter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filter for managing alias (de-)scoping.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="cycpp.TypedefFilter">
+<em class="property">class </em><tt class="descclassname">cycpp.</tt><tt class="descname">TypedefFilter</tt><big>(</big><em>machine=None</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#cycpp.TypedefFilter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filter for handling typedef as aliases. Note that in-line compound
+typedefs of structs and unions are not supported.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="cycpp.UsingFilter">
+<em class="property">class </em><tt class="descclassname">cycpp.</tt><tt class="descname">UsingFilter</tt><big>(</big><em>machine=None</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#cycpp.UsingFilter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filter for accumumating using aliases.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="cycpp.NamespaceFilter">
+<em class="property">class </em><tt class="descclassname">cycpp.</tt><tt class="descname">NamespaceFilter</tt><big>(</big><em>machine=None</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#cycpp.NamespaceFilter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filter for accumumating namespace encapsulations.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="cycpp.UsingNamespaceFilter">
+<em class="property">class </em><tt class="descclassname">cycpp.</tt><tt class="descname">UsingNamespaceFilter</tt><big>(</big><em>machine=None</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#cycpp.UsingNamespaceFilter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filter for accumumating using namespace statement.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="cycpp.NamespaceAliasFilter">
+<em class="property">class </em><tt class="descclassname">cycpp.</tt><tt class="descname">NamespaceAliasFilter</tt><big>(</big><em>machine=None</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#cycpp.NamespaceAliasFilter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filter for accumumating namespace renames.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="cycpp.ClassFilter">
+<em class="property">class </em><tt class="descclassname">cycpp.</tt><tt class="descname">ClassFilter</tt><big>(</big><em>machine=None</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#cycpp.ClassFilter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filter for picking out class names.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="cycpp.ClassAndSuperclassFilter">
+<em class="property">class </em><tt class="descclassname">cycpp.</tt><tt class="descname">ClassAndSuperclassFilter</tt><big>(</big><em>machine=None</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#cycpp.ClassAndSuperclassFilter" title="Permalink to this definition">¶</a></dt>
+<dd><p>This accumulates superclass information as well as class information.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="cycpp.AccessFilter">
+<em class="property">class </em><tt class="descclassname">cycpp.</tt><tt class="descname">AccessFilter</tt><big>(</big><em>machine=None</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#cycpp.AccessFilter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filter for setting the current access control flag.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="cycpp.DecorationFilter">
+<em class="property">class </em><tt class="descclassname">cycpp.</tt><tt class="descname">DecorationFilter</tt><big>(</big><em>machine=None</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#cycpp.DecorationFilter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Abstract class for annotation accumulation.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="cycpp.VarDecorationFilter">
+<em class="property">class </em><tt class="descclassname">cycpp.</tt><tt class="descname">VarDecorationFilter</tt><big>(</big><em>machine=None</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#cycpp.VarDecorationFilter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filter for handling state variable decoration of the form:</p>
+<blockquote>
+<div>#pragma cyclus var &lt;dict&gt;</div></blockquote>
+<p>This evals the contents of dict and puts them in state.var_annotations, to be
+consumed by the next match with VarDeclarationFilter.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="cycpp.VarDeclarationFilter">
+<em class="property">class </em><tt class="descclassname">cycpp.</tt><tt class="descname">VarDeclarationFilter</tt><big>(</big><em>machine=None</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#cycpp.VarDeclarationFilter" title="Permalink to this definition">¶</a></dt>
+<dd><p>State varible declaration.  Only oeprates if state.var_annotations is
+not None. Access for member variable must be public.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="cycpp.ExecFilter">
+<em class="property">class </em><tt class="descclassname">cycpp.</tt><tt class="descname">ExecFilter</tt><big>(</big><em>machine=None</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#cycpp.ExecFilter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filter for executing arbitrary python code in the exec pragma and
+adding the results to the context.  This pragma has the form:</p>
+<blockquote>
+<div>#pragma cyclus exec &lt;code&gt;</div></blockquote>
+<p>Any Python statement(s) are valid as part of the code block. Be a little
+careful when using this pragma :).</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="cycpp.NoteDecorationFilter">
+<em class="property">class </em><tt class="descclassname">cycpp.</tt><tt class="descname">NoteDecorationFilter</tt><big>(</big><em>machine=None</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#cycpp.NoteDecorationFilter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filter for handling annotation decoration of the form:</p>
+<blockquote>
+<div>#pragma cyclus note &lt;dict&gt;</div></blockquote>
+<p>This evals the contents of dict and merges them in as the class-level
+annotations dict.</p>
+<dl class="method">
+<dt id="cycpp.NoteDecorationFilter.update">
+<tt class="descname">update</tt><big>(</big><em>old</em>, <em>new</em><big>)</big><a class="headerlink" href="#cycpp.NoteDecorationFilter.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the new annotations dictionary into the old one in-place recursively.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="cycpp.StateAccumulator">
+<em class="property">class </em><tt class="descclassname">cycpp.</tt><tt class="descname">StateAccumulator</tt><a class="headerlink" href="#cycpp.StateAccumulator" title="Permalink to this definition">¶</a></dt>
+<dd><p>The StateAccumulator class is the pass 2 state machine.</p>
+<p>This represents the state of the file as it is being traversed.
+At the end of the traversal this will have acquired all of the information
+needed for pass 2. It manages both the decorators and other needed bits
+of C++ syntax. It works by passing each statement through a sequence of
+filters, and builds up or destroys context as it goes.</p>
+<p>This class also functions as a typesystem for the types it sees.</p>
+<dl class="method">
+<dt id="cycpp.StateAccumulator.classname">
+<tt class="descname">classname</tt><big>(</big><big>)</big><a class="headerlink" href="#cycpp.StateAccumulator.classname" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the current, fully-expanded class name.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="cycpp.StateAccumulator.accumulate">
+<tt class="descname">accumulate</tt><big>(</big><em>statement</em>, <em>sep</em><big>)</big><a class="headerlink" href="#cycpp.StateAccumulator.accumulate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Modify the existing state by incoprorating the statement, which is
+partitioned from the next statement by sep.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="cycpp.StateAccumulator.includeloc">
+<tt class="descname">includeloc</tt><big>(</big><big>)</big><a class="headerlink" href="#cycpp.StateAccumulator.includeloc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Current location of the file from includes as a string.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="cycpp.StateAccumulator.canonize_type">
+<tt class="descname">canonize_type</tt><big>(</big><em>t</em>, <em>name='&lt;member variable&gt;'</em><big>)</big><a class="headerlink" href="#cycpp.StateAccumulator.canonize_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the canonical form for a type given the current state.
+This should not be called for types other than state variables.
+The name argument here is provided for debugging &amp; reporting purposes.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="cycpp.StateAccumulator.canonize_class">
+<tt class="descname">canonize_class</tt><big>(</big><em>cls</em>, <em>_usens=True</em><big>)</big><a class="headerlink" href="#cycpp.StateAccumulator.canonize_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>This canonizes a classname.  The class name need not be the current
+class whose scope we are in, but may be any class whatsoever. Returns
+None if the class could not be canonized.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="cycpp.accumulate_state">
+<tt class="descclassname">cycpp.</tt><tt class="descname">accumulate_state</tt><big>(</big><em>canon</em><big>)</big><a class="headerlink" href="#cycpp.accumulate_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes a canonical C++ source file and separates it out into statements
+which are fed into a state accumulator. The state is returned.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="cycpp.CloneFilter">
+<em class="property">class </em><tt class="descclassname">cycpp.</tt><tt class="descname">CloneFilter</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#cycpp.CloneFilter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filter for handling Clone() code generation:
+#pragma cyclus [def|decl|impl] clone [classname]</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="cycpp.InitFromCopyFilter">
+<em class="property">class </em><tt class="descclassname">cycpp.</tt><tt class="descname">InitFromCopyFilter</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#cycpp.InitFromCopyFilter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filter for handling copy-constructor-like InitFrom() code generation:
+#pragma cyclus [def|decl|impl] initfromcopy [classname]</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="cycpp.InitFromDbFilter">
+<em class="property">class </em><tt class="descclassname">cycpp.</tt><tt class="descname">InitFromDbFilter</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#cycpp.InitFromDbFilter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filter for handling db-constructor-like InitFrom() code
+generation:
+#pragma cyclus [def|decl|impl] initfromdb [classname]</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="cycpp.InfileToDbFilter">
+<em class="property">class </em><tt class="descclassname">cycpp.</tt><tt class="descname">InfileToDbFilter</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#cycpp.InfileToDbFilter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filter for handling InfileToDb() code generation:
+#pragma cyclus [def|decl|impl] infiletodb [classname]</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="cycpp.SchemaFilter">
+<em class="property">class </em><tt class="descclassname">cycpp.</tt><tt class="descname">SchemaFilter</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#cycpp.SchemaFilter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filter for handling schema() code generation:
+#pragma cyclus [def|decl|impl] schema [classname]</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="cycpp.AnnotationsFilter">
+<em class="property">class </em><tt class="descclassname">cycpp.</tt><tt class="descname">AnnotationsFilter</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#cycpp.AnnotationsFilter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filter for handling annotations() code generation:
+#pragma cyclus [def|decl|impl] annotations [classname]</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="cycpp.SnapshotFilter">
+<em class="property">class </em><tt class="descclassname">cycpp.</tt><tt class="descname">SnapshotFilter</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#cycpp.SnapshotFilter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filter for handling copy-constructor-like InitFrom() code generation:
+#pragma cyclus [def|decl|impl] snapshot [classname]</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="cycpp.SnapshotInvFilter">
+<em class="property">class </em><tt class="descclassname">cycpp.</tt><tt class="descname">SnapshotInvFilter</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#cycpp.SnapshotInvFilter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filter for handling SnapshotInv() code generation:
+#pragma cyclus [def|decl|impl] snapshotinv [classname]</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="cycpp.InitInvFilter">
+<em class="property">class </em><tt class="descclassname">cycpp.</tt><tt class="descname">InitInvFilter</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#cycpp.InitInvFilter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filter for handling InitInv() code generation:
+#pragma cyclus [def|decl|impl] initinv [classname]</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="cycpp.DefaultPragmaFilter">
+<em class="property">class </em><tt class="descclassname">cycpp.</tt><tt class="descname">DefaultPragmaFilter</tt><big>(</big><em>machine=None</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#cycpp.DefaultPragmaFilter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filter for handling default pragma code generation:
+#pragma cyclus [def|decl|impl]</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="cycpp.CodeGenerator">
+<em class="property">class </em><tt class="descclassname">cycpp.</tt><tt class="descname">CodeGenerator</tt><big>(</big><em>context</em>, <em>superclasses</em><big>)</big><a class="headerlink" href="#cycpp.CodeGenerator" title="Permalink to this definition">¶</a></dt>
+<dd><p>The CodeGenerator class is the pass 3 state machine.</p>
+<p>This represents the file as code is being injected into it.  At the end of
+the traversal this final stage it will built up a brand new file for pass
+3. It manages both the code insertion pragmas and other bits of C++ syntax
+as needed to determine locality. It works by passing each statement through
+a sequence of filters, and injects code based on the directive and the
+state.</p>
+<dl class="method">
+<dt id="cycpp.CodeGenerator.classname">
+<tt class="descname">classname</tt><big>(</big><big>)</big><a class="headerlink" href="#cycpp.CodeGenerator.classname" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the current, fully-expanded class name.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="cycpp.CodeGenerator.includeloc">
+<tt class="descname">includeloc</tt><big>(</big><big>)</big><a class="headerlink" href="#cycpp.CodeGenerator.includeloc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Current location of the file from includes as a string.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="cycpp.CodeGenerator.generate">
+<tt class="descname">generate</tt><big>(</big><em>statement</em>, <em>sep</em><big>)</big><a class="headerlink" href="#cycpp.CodeGenerator.generate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Modify the existing statements list by incoprorating, modifying, or
+ignoring this statement, which is partitioned from the next statement by
+sep.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="cycpp.generate_code">
+<tt class="descclassname">cycpp.</tt><tt class="descname">generate_code</tt><big>(</big><em>orig</em>, <em>context</em>, <em>superclasses</em><big>)</big><a class="headerlink" href="#cycpp.generate_code" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes a canonical C++ source file and separates it out into statements
+which are fed into a code generator. The new file is returned.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="cycpp.Proxy">
+<em class="property">class </em><tt class="descclassname">cycpp.</tt><tt class="descname">Proxy</tt><big>(</big><em>d</em><big>)</big><a class="headerlink" href="#cycpp.Proxy" title="Permalink to this definition">¶</a></dt>
+<dd><p>A proxy object for scoping purposes.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="cycpp.outter_split">
+<tt class="descclassname">cycpp.</tt><tt class="descname">outter_split</tt><big>(</big><em>s</em>, <em>open_brace='('</em>, <em>close_brace=')'</em>, <em>separator='</em>, <em>'</em><big>)</big><a class="headerlink" href="#cycpp.outter_split" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes a string and only split the outter most level.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="cycpp.split_template_args">
+<tt class="descclassname">cycpp.</tt><tt class="descname">split_template_args</tt><big>(</big><em>s</em>, <em>open_brace='&lt;'</em>, <em>close_brace='&gt;'</em>, <em>separator='</em>, <em>'</em><big>)</big><a class="headerlink" href="#cycpp.split_template_args" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes a string with template specialization and returns a list
+of the argument values as strings. Mostly cribbed from xdress.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="cycpp.parse_template">
+<tt class="descclassname">cycpp.</tt><tt class="descname">parse_template</tt><big>(</big><em>s</em>, <em>open_brace='&lt;'</em>, <em>close_brace='&gt;'</em>, <em>separator='</em>, <em>'</em><big>)</big><a class="headerlink" href="#cycpp.parse_template" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes a string &#8211; which may represent a template specialization &#8211;
+and returns the corresponding type. Mostly cribbed from xdress.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="cycpp.parent_intersection">
+<tt class="descclassname">cycpp.</tt><tt class="descname">parent_intersection</tt><big>(</big><em>classname</em>, <em>queryset</em>, <em>superclasses</em><big>)</big><a class="headerlink" href="#cycpp.parent_intersection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns all elements in query_set which are parents of classname and not
+parents of any other class in query_set</p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="../index.html" title="index">
+          <img class="logo" src="../_static/big_c.png" alt="Logo"/>
+        </a></p>
+  <div class="sphinxprev">
+    <h4>Previous page</h4>
+    <p class="topless"><a href="build_from_source.html"
+                          title="Previous page">&larr; Getting and Building <span style="font-variant:small-caps;">Cyclus</span> From Source</a></p>
+  </div>
+  <div class="sphinxnext">
+    <h4>Next page</h4>
+    <p class="topless"><a href="contributing_to_cyclus.html"
+                          title="Next page">&rarr; Guide for Contributing to <span style="font-variant:small-caps;">Cyclus</span></a></p>
+  </div>
+  <div class="sphinxlocaltoc">
+  <h3>Useful Pages</h3>
+    <ul><li><ul>
+    <li><a href="http://fuelcycle.org/user/main.html">User Guide</a></li>
+    <li><a href="http://fuelcycle.org/module/main.html">Archetype Developer Guide</a></li>
+    <li><a href="http://fuelcycle.org/cyclus/api/">Cyclus API Documentation</a></li>
+    <li><a href="http://fuelcycle.org/cycamore/api/">Cycamore API Documentation</a></li>
+    <li><a href="http://fuelcycle.org/basics/glossary.html">Glossary</a></li>
+    <li><a href="mailto:cyclus-users+subscribe@googlegroups.com?subject=Subscribe&body=Send this message to subscribe to the list">Join</a> the 
+      <a href="https://groups.google.com/forum/#!forum/cyclus-users" target="_blank"><span style="font-variant:small-caps">Cyclus</span> Users</a> mailing list.
+    <li><a href="mailto:cyclus-dev+subscribe@googlegroups.com?subject=Subscribe&body=Send this message to subscribe to the list">Join</a> the 
+      <a href="https://groups.google.com/forum/#!forum/cyclus-users" target="_blank"><span style="font-variant:small-caps">Cyclus</span> Developers</a> mailing list.
+    </ul></li></ul>
+  </div>
+    
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <h3>Get Cyclus</h3>
+    <br>
+    Current version: <b>1.0.0</b>
+    <br><br>
+    Install:
+    <div class="highlight-bash" style="width:97.5%"><div class="highlight"><pre><span class="nv">$ </span>conda install cyclus cycamore</pre></div></div>
+    Get the Source:
+    <ul><li><ul>
+          <li><a href="https://github.com/cyclus/cyclus">Cyclus</a></li>
+          <li><a href="https://github.com/cyclus/cycamore">Cycamore</a></li>
+    </ul></li></ul>
+    <h3>Acknowledgements</h3>
+    The Cyclus project has received support from:
+    <br />
+    <a href="http://www.neup.gov" target="_blank"><img src="../_static/neup_logo_large.png" width=170px></a>
+    <br />
+    <br />
+
+    In addition, some of the students working on Cyclus have received support from:
+    <br />
+    <a href="http://www.anl.gov" target="_blank"><img src="../_static/AnlLogo.png" height=100px></a>
+    <a href="http://www.nrc.gov" target="_blank"><img src="../_static/USNRC.png" height=100px></a>
+    <br />
+    <a href="http://www.neup.gov" target="_blank"><img src="../_static/neup_logo_large.png" width=170px></a>
+    <br />
+    <a href="http://www.nsf.gov" target="_blank"><img src="../_static/nsf_logo.png" height=100px></a>
+    <a href="http://www.wisc.edu" target="_blank"><img src="../_static/crest.png" height=100px></a>
+
+    
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="relbar-bottom">
+        
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="contributing_to_cyclus.html" title="Guide for Contributing to Cyclus"
+             >next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="build_from_source.html" title="Getting and Building Cyclus From Source"
+             >previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">Home</a> &raquo;</li>
+
+          <li><a href="main.html" ><span style="font-variant:small-caps;">Cyclus</span> Kernel Developer Guide</a> &raquo;</li> 
+      </ul>
+    </div>
+    </div>
+
+    <div class="footer">
+        &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
+      Last updated on May 30, 2014.
+    </div><script type="text/javascript">
+    if(ga_enabled){
+        document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");
+        document.write("Click <button title=\"set cookie to disable analytics for this site\" class=\"link\" onclick=\"$.cookie('disable-ga', 'true', {expires: 3650, path: '/'}); window.location.reload(); return false; \">here</button> to disable analytics for this site.");
+        document.write("</div>");
+    }else{
+        document.write("<div class=\"footer\">Google Analytics has been disabled. ");
+        document.write("Click <button title=\"set cookie to re-enable analytics for this site\" class=\"link\" onclick=\"$.cookie('disable-ga', null, {path: '/'}); window.location.reload(); return false; \">here</button> to re-enable analytics for this site.");
+    };
+</script>
+    <!-- cloud_sptheme 1.4 -->
+  </body>
+</html>

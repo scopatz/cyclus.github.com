@@ -1,0 +1,269 @@
+
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Installing Cyclus with Conda &mdash; Home</title>
+    
+    <link rel="stylesheet" href="../_static/cyclus.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '(1.0.0-rc3-59-g7a5d0ac)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../_static/cloud.js"></script>
+    <link rel="shortcut icon" href="../_static/big_c.ico"/>
+    <link rel="top" title="Home" href="../index.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1"><script type="text/javascript">
+var ga_enabled = !$.cookie('disable-ga');
+if(ga_enabled){
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-12222727-2']);
+  _gaq.push(['_setCookiePath', '/']);
+  _gaq.push(['_setDetectFlash', false]);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+}
+</script>
+  </head>
+  <body>
+    <div class="relbar-top">
+        
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">Home</a> &raquo;</li>
+ 
+      </ul>
+    </div>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="installing-cyclus-with-conda">
+<h1>Installing <span style="font-variant:small-caps;">Cyclus</span> with Conda<a class="headerlink" href="#installing-cyclus-with-conda" title="Permalink to this headline">¶</a></h1>
+<p>Conda is a cross platform, user space package manager aimed at simplifying the
+installation of open source software.  The <span style="font-variant:small-caps;">Cyclus</span> project uses conda to distribute
+pre-built cyclus and cycamore binaries.</p>
+<div class="section" id="fresh-install">
+<h2>Fresh Install<a class="headerlink" href="#fresh-install" title="Permalink to this headline">¶</a></h2>
+<p>If you are new to conda or do not have conda already installed on your system,
+please follow these steps to install <span style="font-variant:small-caps;">Cyclus</span>.
+Basic installation instructions for Conda can be found
+<a class="reference external" href="http://docs.continuum.io/anaconda/install.html">here</a>.</p>
+<ol class="arabic">
+<li><p class="first">Download and Install Miniconda</p>
+<blockquote>
+<div><ul>
+<li><p class="first">Go to the <a class="reference external" href="http://repo.continuum.io/miniconda/">miniconda downloads page</a>
+and get the version approriate to your system.</p>
+</li>
+<li><p class="first">Install this to the <tt class="docutils literal"><span class="pre">~/miniconda</span></tt> directory.  For example, you would
+use a command similar the following:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>bash Miniconda-3.5.2-Linux-x86_64.sh -b -p ~/miniconda
+</pre></div>
+</div>
+</li>
+<li><p class="first">Finally, add the <tt class="docutils literal"><span class="pre">~/miniconda/bin</span></tt> directory to your <tt class="docutils literal"><span class="pre">PATH</span></tt> either
+in your current environment or in your <tt class="docutils literal"><span class="pre">.bashrc</span></tt> or both.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;${HOME}/miniconda/bin:${PATH}&quot;</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Configure conda to look for <span style="font-variant:small-caps;">Cyclus</span></p>
+<blockquote>
+<div><ul>
+<li><p class="first">Download this <a class="reference download internal" href="../_downloads/condarc"><tt class="xref download docutils literal"><span class="pre">condarc</span></tt></a> file and save it as <tt class="docutils literal"><span class="pre">~/.condarc</span></tt>.  If
+you&#8217;d prefer to do this from the command line, type:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -L http://fuelcycle.org/_downloads/condarc &gt;&gt; ~/.condarc
+</pre></div>
+</div>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Install <span style="font-variant:small-caps;">Cyclus</span> and Cycamore</p>
+<blockquote>
+<div><ul>
+<li><p class="first">Now that conda is installed and ready, installing <span style="font-variant:small-caps;">Cyclus</span> is as simple as:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>conda install cycamore --yes
+</pre></div>
+</div>
+<p>Note that installing cycamore will also install cyclus since cyclus is one
+of cycamore&#8217;s dependencies.</p>
+</li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
+<p>And that is it!</p>
+</div>
+<div class="section" id="already-have-conda">
+<h2>Already Have Conda?<a class="headerlink" href="#already-have-conda" title="Permalink to this headline">¶</a></h2>
+<p>If you already have conda installed, installing <span style="font-variant:small-caps;">Cyclus</span> is even easier.
+You simply need to make sure that the <span style="font-variant:small-caps;">Cyclus</span> binstar organization is part of
+your channels.  Please edit the <tt class="docutils literal"><span class="pre">channels</span></tt> section of your <tt class="file docutils literal"><span class="pre">~/.condarc</span></tt>
+to include the URL <tt class="docutils literal"><span class="pre">https://conda.binstar.org/cyclus</span></tt>.  For example,</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">channels</span><span class="p-Indicator">:</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">https://conda.binstar.org/cyclus</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">defaults</span>
+</pre></div>
+</div>
+<p>Once this is done, install <span style="font-variant:small-caps;">Cyclus</span> with the following comand.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>conda install cycamore --yes
+</pre></div>
+</div>
+<p>Note that installing cycamore will also install cyclus since cyclus is one
+of cycamore&#8217;s dependencies.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="../index.html" title="index">
+          <img class="logo" src="../_static/big_c.png" alt="Logo"/>
+        </a></p><div class="sphinxlocaltoc">
+    <h3><a href="../index.html">Page contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Installing <span style="font-variant:small-caps;">Cyclus</span> with Conda</a><ul>
+<li><a class="reference internal" href="#fresh-install">Fresh Install</a></li>
+<li><a class="reference internal" href="#already-have-conda">Already Have Conda?</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div class="sphinxlocaltoc">
+  <h3>Useful Pages</h3>
+    <ul><li><ul>
+    <li><a href="http://fuelcycle.org/user/main.html">User Guide</a></li>
+    <li><a href="http://fuelcycle.org/module/main.html">Archetype Developer Guide</a></li>
+    <li><a href="http://fuelcycle.org/cyclus/api/">Cyclus API Documentation</a></li>
+    <li><a href="http://fuelcycle.org/cycamore/api/">Cycamore API Documentation</a></li>
+    <li><a href="http://fuelcycle.org/basics/glossary.html">Glossary</a></li>
+    <li><a href="mailto:cyclus-users+subscribe@googlegroups.com?subject=Subscribe&body=Send this message to subscribe to the list">Join</a> the 
+      <a href="https://groups.google.com/forum/#!forum/cyclus-users" target="_blank"><span style="font-variant:small-caps">Cyclus</span> Users</a> mailing list.
+    <li><a href="mailto:cyclus-dev+subscribe@googlegroups.com?subject=Subscribe&body=Send this message to subscribe to the list">Join</a> the 
+      <a href="https://groups.google.com/forum/#!forum/cyclus-users" target="_blank"><span style="font-variant:small-caps">Cyclus</span> Developers</a> mailing list.
+    </ul></li></ul>
+  </div>
+    
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <h3>Get Cyclus</h3>
+    <br>
+    Current version: <b>1.0.0</b>
+    <br><br>
+    Install:
+    <div class="highlight-bash" style="width:97.5%"><div class="highlight"><pre><span class="nv">$ </span>conda install cyclus cycamore</pre></div></div>
+    Get the Source:
+    <ul><li><ul>
+          <li><a href="https://github.com/cyclus/cyclus">Cyclus</a></li>
+          <li><a href="https://github.com/cyclus/cycamore">Cycamore</a></li>
+    </ul></li></ul>
+    <h3>Acknowledgements</h3>
+    The Cyclus project has received support from:
+    <br />
+    <a href="http://www.neup.gov" target="_blank"><img src="../_static/neup_logo_large.png" width=170px></a>
+    <br />
+    <br />
+
+    In addition, some of the students working on Cyclus have received support from:
+    <br />
+    <a href="http://www.anl.gov" target="_blank"><img src="../_static/AnlLogo.png" height=100px></a>
+    <a href="http://www.nrc.gov" target="_blank"><img src="../_static/USNRC.png" height=100px></a>
+    <br />
+    <a href="http://www.neup.gov" target="_blank"><img src="../_static/neup_logo_large.png" width=170px></a>
+    <br />
+    <a href="http://www.nsf.gov" target="_blank"><img src="../_static/nsf_logo.png" height=100px></a>
+    <a href="http://www.wisc.edu" target="_blank"><img src="../_static/crest.png" height=100px></a>
+
+    
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="relbar-bottom">
+        
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">Home</a> &raquo;</li>
+ 
+      </ul>
+    </div>
+    </div>
+
+    <div class="footer">
+        &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
+      Last updated on May 30, 2014.
+    </div><script type="text/javascript">
+    if(ga_enabled){
+        document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");
+        document.write("Click <button title=\"set cookie to disable analytics for this site\" class=\"link\" onclick=\"$.cookie('disable-ga', 'true', {expires: 3650, path: '/'}); window.location.reload(); return false; \">here</button> to disable analytics for this site.");
+        document.write("</div>");
+    }else{
+        document.write("<div class=\"footer\">Google Analytics has been disabled. ");
+        document.write("Click <button title=\"set cookie to re-enable analytics for this site\" class=\"link\" onclick=\"$.cookie('disable-ga', null, {path: '/'}); window.location.reload(); return false; \">here</button> to re-enable analytics for this site.");
+    };
+</script>
+    <!-- cloud_sptheme 1.4 -->
+  </body>
+</html>

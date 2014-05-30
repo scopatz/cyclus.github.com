@@ -1,0 +1,303 @@
+
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Institution - Institution agents (at least one required in each Region) &mdash; Home</title>
+    
+    <link rel="stylesheet" href="../../_static/cyclus.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '(1.0.0-rc3-59-g7a5d0ac)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../../_static/cloud.js"></script>
+    <link rel="shortcut icon" href="../../_static/big_c.ico"/>
+    <link rel="top" title="Home" href="../../index.html" />
+    <link rel="up" title="Writing a Cyclus Input File" href="../writing_input.html" />
+    <link rel="next" title="Recipe - Recipe Definition (optional, may appear multiple times)" href="recipe.html" />
+    <link rel="prev" title="Region - Region agents (at least one required)" href="region.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1"><script type="text/javascript">
+var ga_enabled = !$.cookie('disable-ga');
+if(ga_enabled){
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-12222727-2']);
+  _gaq.push(['_setCookiePath', '/']);
+  _gaq.push(['_setDetectFlash', false]);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+}
+</script>
+  </head>
+  <body>
+    <div class="relbar-top">
+        
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="recipe.html" title="Recipe - Recipe Definition (optional, may appear multiple times)"
+             accesskey="N">next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="region.html" title="Region - Region agents (at least one required)"
+             accesskey="P">previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../../index.html">Home</a> &raquo;</li>
+
+          <li><a href="../main.html" ><span style="font-variant:small-caps;">Cyclus</span> User Guide</a> &raquo;</li>
+          <li><a href="../writing_input.html" accesskey="U">Writing a <span style="font-variant:small-caps;">Cyclus</span> Input File</a> &raquo;</li> 
+      </ul>
+    </div>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="institution-institution-agents-at-least-one-required-in-each-region">
+<h1><tt class="docutils literal"><span class="pre">Institution</span></tt> - Institution agents (at least one required in each <tt class="docutils literal"><span class="pre">Region</span></tt>)<a class="headerlink" href="#institution-institution-agents-at-least-one-required-in-each-region" title="Permalink to this headline">¶</a></h1>
+<p>Every agent that participates in a <span style="font-variant:small-caps;">Cyclus</span> simulation represents either a
+facility, an institution or a region.  Each <tt class="docutils literal"><span class="pre">institution</span></tt> block defines an
+agent that acts as an institution in the simulation.  In contrast to the
+<tt class="docutils literal"><span class="pre">facility</span></tt> block that defines a <a class="reference internal" href="../../basics/glossary.html#term-prototype"><em class="xref std std-term">prototype</em></a>, this block defines an
+<a class="reference internal" href="../../basics/glossary.html#term-agent"><em class="xref std std-term">agent</em></a>.</p>
+<p>An <tt class="docutils literal"><span class="pre">institution</span></tt> block can only appear within a <tt class="docutils literal"><span class="pre">region</span></tt> block.</p>
+<p>Each <tt class="docutils literal"><span class="pre">institution</span></tt> block has the following sections in any order:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">name</span></tt> (required once) - a name for the prototype</li>
+<li><tt class="docutils literal"><span class="pre">lifetime</span></tt> (optional once) - a non-negative integer indicating the number
+of time steps that this institution agent will be active in the simulation</li>
+<li><tt class="docutils literal"><span class="pre">config</span></tt> (required once) - the archetype-specific configuration</li>
+<li><tt class="docutils literal"><span class="pre">initialfacilitylist</span></tt> (optional, may appear multiple times) - a list of
+facility agents operating at the beginning of the simulation</li>
+</ul>
+<p>Each <tt class="docutils literal"><span class="pre">initialfacilitylist</span></tt> block contains one or more <tt class="docutils literal"><span class="pre">entry</span></tt> blocks that
+each contain the following sections, in the following order:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">prototype</span></tt> - the name of a facility prototype defined elsewhere in the input file</li>
+<li><tt class="docutils literal"><span class="pre">number</span></tt> - the number of such facilities that are operating at the beginning of the simulation</li>
+</ul>
+<div class="section" id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;institution&gt;</span>
+  <span class="nt">&lt;name&gt;</span>SingleInstitution<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;initialfacilitylist&gt;</span>
+    <span class="nt">&lt;entry&gt;</span>
+      <span class="nt">&lt;prototype&gt;</span>FacilityA<span class="nt">&lt;/prototype&gt;</span>
+      <span class="nt">&lt;number&gt;</span>1<span class="nt">&lt;/number&gt;</span>
+    <span class="nt">&lt;/entry&gt;</span>
+    <span class="nt">&lt;entry&gt;</span>
+      <span class="nt">&lt;prototype&gt;</span>FacilityB<span class="nt">&lt;/prototype&gt;</span>
+      <span class="nt">&lt;number&gt;</span>1<span class="nt">&lt;/number&gt;</span>
+    <span class="nt">&lt;/entry&gt;</span>
+  <span class="nt">&lt;/initialfacilitylist&gt;</span>
+  <span class="nt">&lt;config&gt;</span> <span class="nt">&lt;NullInst/&gt;</span> <span class="nt">&lt;/config&gt;</span>
+<span class="nt">&lt;/institution&gt;</span>
+
+<span class="nt">&lt;institution&gt;</span>
+  <span class="nt">&lt;name&gt;</span>AnotherInstitution<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;config&gt;</span> <span class="nt">&lt;NullInst/&gt;</span> <span class="nt">&lt;/config&gt;</span>
+<span class="nt">&lt;/institution&gt;</span>
+</pre></div>
+</div>
+<p>This example introduces two institution agents (the region section that
+encloses them is not shown).  The first institution has the name
+<cite>SingleInstitution</cite>, and is configured from the <a class="reference internal" href="../../basics/glossary.html#term-archetype"><em class="xref std std-term">archetype</em></a> with the
+name (or alias) <cite>NullInst</cite>.  The author of the <tt class="docutils literal"><span class="pre">NullInst</span></tt> archetype has
+defined no archetype-specific data. This agent begins the simulation with two
+facility agents, one based on the <tt class="docutils literal"><span class="pre">FacilityA</span></tt> prototype and another based on
+the <tt class="docutils literal"><span class="pre">FacilityB</span></tt> prototype.  The second institution has the name
+<cite>AnotherInstitution</cite>, is also configured from the archetype with the name (or
+alias) <tt class="docutils literal"><span class="pre">NullInst</span></tt>.  This institution has no initial facilities.</p>
+</div>
+<div class="html-toggle section" id="grammar-definition">
+<h2>Grammar Definition<a class="headerlink" href="#grammar-definition" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;institution&quot;</span><span class="nt">&gt;</span> <span class="nt">&lt;interleave&gt;</span>
+  <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;</span> <span class="nt">&lt;text/&gt;</span> <span class="nt">&lt;/element&gt;</span>
+  <span class="nt">&lt;optional&gt;</span>
+    <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;lifetime&quot;</span><span class="nt">&gt;</span> <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;nonNegativeInteger&quot;</span><span class="nt">/&gt;</span> <span class="nt">&lt;/element&gt;</span>
+  <span class="nt">&lt;/optional&gt;</span>
+
+  <span class="nt">&lt;optional&gt;</span>
+    <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;initialfacilitylist&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;oneOrMore&gt;</span>
+        <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;entry&quot;</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;prototype&quot;</span><span class="nt">&gt;</span> <span class="nt">&lt;text/&gt;</span> <span class="nt">&lt;/element&gt;</span>
+          <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;number&quot;</span><span class="nt">&gt;</span> <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;nonNegativeInteger&quot;</span><span class="nt">/&gt;</span> <span class="nt">&lt;/element&gt;</span>
+        <span class="nt">&lt;/element&gt;</span>
+      <span class="nt">&lt;/oneOrMore&gt;</span>
+    <span class="nt">&lt;/element&gt;</span>
+  <span class="nt">&lt;/optional&gt;</span>
+
+  <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;config&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;choice&gt;</span>
+    @Inst_REFS@
+    <span class="nt">&lt;/choice&gt;</span>
+  <span class="nt">&lt;/element&gt;</span>
+<span class="nt">&lt;/interleave&gt;</span> <span class="nt">&lt;/element&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="../../index.html" title="index">
+          <img class="logo" src="../../_static/big_c.png" alt="Logo"/>
+        </a></p><div class="sphinxlocaltoc">
+    <h3><a href="../../index.html">Page contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#"><tt class="docutils literal"><span class="pre">Institution</span></tt> - Institution agents (at least one required in each <tt class="docutils literal"><span class="pre">Region</span></tt>)</a><ul>
+<li><a class="reference internal" href="#example">Example</a></li>
+<li><a class="reference internal" href="#grammar-definition">Grammar Definition</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div class="sphinxprev">
+    <h4>Previous page</h4>
+    <p class="topless"><a href="region.html"
+                          title="Previous page">&larr; <tt class="docutils literal"><span class="pre">Region</span></tt> - Region agents (at least one required)</a></p>
+  </div>
+  <div class="sphinxnext">
+    <h4>Next page</h4>
+    <p class="topless"><a href="recipe.html"
+                          title="Next page">&rarr; <tt class="docutils literal"><span class="pre">Recipe</span></tt> - Recipe Definition (optional, may appear multiple times)</a></p>
+  </div>
+  <div class="sphinxlocaltoc">
+  <h3>Useful Pages</h3>
+    <ul><li><ul>
+    <li><a href="http://fuelcycle.org/user/main.html">User Guide</a></li>
+    <li><a href="http://fuelcycle.org/module/main.html">Archetype Developer Guide</a></li>
+    <li><a href="http://fuelcycle.org/cyclus/api/">Cyclus API Documentation</a></li>
+    <li><a href="http://fuelcycle.org/cycamore/api/">Cycamore API Documentation</a></li>
+    <li><a href="http://fuelcycle.org/basics/glossary.html">Glossary</a></li>
+    <li><a href="mailto:cyclus-users+subscribe@googlegroups.com?subject=Subscribe&body=Send this message to subscribe to the list">Join</a> the 
+      <a href="https://groups.google.com/forum/#!forum/cyclus-users" target="_blank"><span style="font-variant:small-caps">Cyclus</span> Users</a> mailing list.
+    <li><a href="mailto:cyclus-dev+subscribe@googlegroups.com?subject=Subscribe&body=Send this message to subscribe to the list">Join</a> the 
+      <a href="https://groups.google.com/forum/#!forum/cyclus-users" target="_blank"><span style="font-variant:small-caps">Cyclus</span> Developers</a> mailing list.
+    </ul></li></ul>
+  </div>
+    
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <h3>Get Cyclus</h3>
+    <br>
+    Current version: <b>1.0.0</b>
+    <br><br>
+    Install:
+    <div class="highlight-bash" style="width:97.5%"><div class="highlight"><pre><span class="nv">$ </span>conda install cyclus cycamore</pre></div></div>
+    Get the Source:
+    <ul><li><ul>
+          <li><a href="https://github.com/cyclus/cyclus">Cyclus</a></li>
+          <li><a href="https://github.com/cyclus/cycamore">Cycamore</a></li>
+    </ul></li></ul>
+    <h3>Acknowledgements</h3>
+    The Cyclus project has received support from:
+    <br />
+    <a href="http://www.neup.gov" target="_blank"><img src="../../_static/neup_logo_large.png" width=170px></a>
+    <br />
+    <br />
+
+    In addition, some of the students working on Cyclus have received support from:
+    <br />
+    <a href="http://www.anl.gov" target="_blank"><img src="../../_static/AnlLogo.png" height=100px></a>
+    <a href="http://www.nrc.gov" target="_blank"><img src="../../_static/USNRC.png" height=100px></a>
+    <br />
+    <a href="http://www.neup.gov" target="_blank"><img src="../../_static/neup_logo_large.png" width=170px></a>
+    <br />
+    <a href="http://www.nsf.gov" target="_blank"><img src="../../_static/nsf_logo.png" height=100px></a>
+    <a href="http://www.wisc.edu" target="_blank"><img src="../../_static/crest.png" height=100px></a>
+
+    
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="relbar-bottom">
+        
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="recipe.html" title="Recipe - Recipe Definition (optional, may appear multiple times)"
+             >next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="region.html" title="Region - Region agents (at least one required)"
+             >previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../../index.html">Home</a> &raquo;</li>
+
+          <li><a href="../main.html" ><span style="font-variant:small-caps;">Cyclus</span> User Guide</a> &raquo;</li>
+          <li><a href="../writing_input.html" >Writing a <span style="font-variant:small-caps;">Cyclus</span> Input File</a> &raquo;</li> 
+      </ul>
+    </div>
+    </div>
+
+    <div class="footer">
+        &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
+      Last updated on May 30, 2014.
+    </div><script type="text/javascript">
+    if(ga_enabled){
+        document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");
+        document.write("Click <button title=\"set cookie to disable analytics for this site\" class=\"link\" onclick=\"$.cookie('disable-ga', 'true', {expires: 3650, path: '/'}); window.location.reload(); return false; \">here</button> to disable analytics for this site.");
+        document.write("</div>");
+    }else{
+        document.write("<div class=\"footer\">Google Analytics has been disabled. ");
+        document.write("Click <button title=\"set cookie to re-enable analytics for this site\" class=\"link\" onclick=\"$.cookie('disable-ga', null, {path: '/'}); window.location.reload(); return false; \">here</button> to re-enable analytics for this site.");
+    };
+</script>
+    <!-- cloud_sptheme 1.4 -->
+  </body>
+</html>

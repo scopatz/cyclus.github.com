@@ -1,6 +1,7 @@
 
 
 
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -9,15 +10,16 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>CEP 3 - Cyclus Release Procedure &mdash; Cyclus Home</title>
+    <title>CEP 3 - Cyclus Release Procedure &mdash; Home</title>
     
-    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/cyclus.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '(0.4.3-433-gdf86f75)',
+        VERSION:     '(1.0.0-rc3-59-g7a5d0ac)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -26,34 +28,32 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="Cyclus Home" href="../index.html" />
+    <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../_static/cloud.js"></script>
+    <link rel="shortcut icon" href="../_static/big_c.ico"/>
+    <link rel="top" title="Home" href="../index.html" />
     <link rel="up" title="Cyclus Enhancement Proposals" href="cep0.html" />
     <link rel="next" title="CEP 17 - Resource Tracking and Interfaces Re-Re-Redo" href="cep17.html" />
-    <link rel="prev" title="CEP 2 - Separation of Concerns in the Cyclus Ecosystem" href="cep2.html" />
-   
-<script type="text/javascript">
-
+    <link rel="prev" title="CEP 2 - Separation of Concerns in the Cyclus Ecosystem" href="cep2.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1"><script type="text/javascript">
+var ga_enabled = !$.cookie('disable-ga');
+if(ga_enabled){
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-12222727-2']);
+  _gaq.push(['_setCookiePath', '/']);
+  _gaq.push(['_setDetectFlash', false]);
   _gaq.push(['_trackPageview']);
-
   (function() {
     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
-
+}
 </script>
-
   </head>
   <body>
-<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
-  <a href="http://cyclus.github.com">
-    <img src="../_static/logo1.png"/>
-  </a>
-</div>
-
-
+    <div class="relbar-top">
+        
     <div class="related">
       <h3>Navigation</h3>
       <ul>
@@ -61,71 +61,21 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
           <a href="cep17.html" title="CEP 17 - Resource Tracking and Interfaces Re-Re-Redo"
-             accesskey="N">next</a> |</li>
+             accesskey="N">next</a> &nbsp; &nbsp;</li>
         <li class="right" >
           <a href="cep2.html" title="CEP 2 - Separation of Concerns in the Cyclus Ecosystem"
-             accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">Cyclus Home</a> &raquo;</li>
-          <li><a href="cep0.html" accesskey="U">Cyclus Enhancement Proposals</a> &raquo;</li> 
+             accesskey="P">previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">Home</a> &raquo;</li>
+
+          <li><a href="cep0.html" accesskey="U"><span style="font-variant:small-caps;">Cyclus</span> Enhancement Proposals</a> &raquo;</li> 
       </ul>
     </div>
-      <div class="sphinxsidebar">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">CEP 3 - Cyclus Release Procedure</a><ul>
-<li><a class="reference internal" href="#abstract">Abstract</a></li>
-<li><a class="reference internal" href="#the-cyclus-ecosystem">The Cyclus Ecosystem</a></li>
-<li><a class="reference internal" href="#release-candidates-branches">Release Candidates &amp; Branches</a></li>
-<li><a class="reference internal" href="#project-checklist">Project Checklist</a></li>
-<li><a class="reference internal" href="#maintainence-tasks">Maintainence Tasks</a><ul>
-<li><a class="reference internal" href="#cyclus">Cyclus</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#document-history">Document History</a></li>
-</ul>
-</li>
-</ul>
-
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="cep2.html"
-                        title="previous chapter">CEP 2 - Separation of Concerns in the <em>Cyclus</em> Ecosystem</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="cep17.html"
-                        title="next chapter">CEP 17 - Resource Tracking and Interfaces Re-Re-Redo</a></p>
-  <h3>Useful Pages</h3>
-    <li><a href="http://cyclus.github.com/basics/glossary.html">Glossary</a></li>
-    <li><a href="http://cyclus.github.com/basics/roadmap.html">Roadmap</a></li>
-    <li><a href="https://github.com/cyclus">Source Code</a></li>
-    <li><a href="http://fuelcycle.org/cyclus/api/">Cyclus Core Documentation</a></li>
-    <li><a href="http://fuelcycle.org/cycamore/api/">Cycamore Documentation</a></li>
-    
-<div id="searchbox" style="display: none">
-  <h3>Quick search</h3>
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-    <h3>Acknowledgements</h3>
-    Support for this research has included funding received from:
-    <img src=/_images/neup_logo_large.jpg width=170px>
-    <img src=/_images/AnlLogo.png height=100px>
-    <img src=/_images/USNRC.gif height=100px>
-    <img src=/_images/nsf_logo.jpg height=100px>
-    <img src=/_images/crest.png height=100px>
-
-    
-
-        </div>
-      </div>
+    </div>
+  
 
     <div class="document">
       <div class="documentwrapper">
@@ -133,14 +83,14 @@
           <div class="body">
             
   <div class="section" id="cep-3-cyclus-release-procedure">
-<h1>CEP 3 - Cyclus Release Procedure<a class="headerlink" href="#cep-3-cyclus-release-procedure" title="Permalink to this headline">¶</a></h1>
+<h1>CEP 3 - <span style="font-variant:small-caps;">Cyclus</span> Release Procedure<a class="headerlink" href="#cep-3-cyclus-release-procedure" title="Permalink to this headline">¶</a></h1>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">CEP:</th><td class="field-body">3</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Title:</th><td class="field-body">Cyclus Release Procedure</td>
+<tr class="field-even field"><th class="field-name">Title:</th><td class="field-body"><span style="font-variant:small-caps;">Cyclus</span> Release Procedure</td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Last-Modified:</th><td class="field-body">2014-02-24</td>
 </tr>
@@ -157,21 +107,21 @@
 <div class="section" id="abstract">
 <h2>Abstract<a class="headerlink" href="#abstract" title="Permalink to this headline">¶</a></h2>
 <p>The purpose of this document is to act as a guideline and checklist for how
-to release the cyclus core code base and the supported projects in the ecosystem.</p>
+to release the <span style="font-variant:small-caps;">Cyclus</span> core code base and the supported projects in the ecosystem.</p>
 </div>
 <div class="section" id="the-cyclus-ecosystem">
-<h2>The Cyclus Ecosystem<a class="headerlink" href="#the-cyclus-ecosystem" title="Permalink to this headline">¶</a></h2>
+<h2>The <span style="font-variant:small-caps;">Cyclus</span> Ecosystem<a class="headerlink" href="#the-cyclus-ecosystem" title="Permalink to this headline">¶</a></h2>
 <p>The very first thing to do when preparing for an upcoming release is to elect
 a release manager.  This person has the special responsibility of making sure
 all of the following tasks are implemented.  Therefore, their judgment for the
 placement of issues and code stability must be adhered to.</p>
-<p>The cyclus ecosystem has a few projects which are all released together.
+<p>The <span style="font-variant:small-caps;">Cyclus</span> ecosystem has a few projects which are all released together.
 (This may change in the future a development diverges and the core becomes more
 stable.)  The projects that are under the release manager&#8217;s purview are:</p>
 <ul class="simple">
 <li><a class="reference external" href="https://github.com/cyclus/cyclus">Cyclus</a></li>
 <li><a class="reference external" href="https://github.com/cyclus/cycamore">Cycamore</a></li>
-<li><a class="reference external" href="https://github.com/cyclus/cycstub">Cycstub</a> - copy the files from cyclus core&#8217;s <tt class="docutils literal"><span class="pre">stub/</span></tt> dir into the
+<li><a class="reference external" href="https://github.com/cyclus/cycstub">Cycstub</a> - copy the files from <span style="font-variant:small-caps;">Cyclus</span> core&#8217;s <tt class="docutils literal"><span class="pre">stub/</span></tt> dir into the
 cycstub&#8217;s <tt class="docutils literal"><span class="pre">src/</span></tt> dir.</li>
 </ul>
 <p>The projects which are not yet under the release managers purview are:</p>
@@ -209,7 +159,7 @@ release.</p>
 </div>
 <div class="section" id="project-checklist">
 <h2>Project Checklist<a class="headerlink" href="#project-checklist" title="Permalink to this headline">¶</a></h2>
-<p>When releasing a cyclus project, make sure to do the following items in order:</p>
+<p>When releasing a <span style="font-variant:small-caps;">Cyclus</span> project, make sure to do the following items in order:</p>
 <ol class="arabic simple">
 <li>Review <strong>ALL</strong> issues in the issue tracker, reassigning or closing them as needed.</li>
 <li>Ensure that all issues in this release&#8217;s milestone have been closed.  Moving issues
@@ -239,15 +189,39 @@ with the name &#8216;X.X.X&#8217;.  Finally, delete the release branch.</li>
 <p>Each project may have associate maintenance tasks which may need to be performed at
 least as often as every micro release.</p>
 <div class="section" id="cyclus">
-<h3>Cyclus<a class="headerlink" href="#cyclus" title="Permalink to this headline">¶</a></h3>
-<p><strong>Update Pyne:</strong>  PyNE source code is included and shipped as part of cyclus. As pyne
+<h3><span style="font-variant:small-caps;">Cyclus</span><a class="headerlink" href="#cyclus" title="Permalink to this headline">¶</a></h3>
+<p><strong>Update Pyne:</strong>  PyNE source code is included and shipped as part of <span style="font-variant:small-caps;">Cyclus</span>. As pyne
 evolves, we&#8217;ll want to have our version evolve as well. Here are the steps to do so.
-These assume that in your HOME dir there are both the pyne and cyclus repos.  Remember
+These assume that in your HOME dir there are both the pyne and <span style="font-variant:small-caps;">Cyclus</span> repos.  Remember
 to check in the changes afterwards.</p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd</span> ~/pyne
-<span class="nv">$ </span>./amalgamate.py -s pyne.cc -i pyne.h -f license.txt cpp/pyne.* cpp/extra_types.h <span class="se">\</span>
-  cpp/h5wrap.h cpp/nucname.* cpp/rxname.* cpp/data.*
+<span class="nv">$ </span>./amalgamate.py -s pyne.cc -i pyne.h -f license.txt cpp/pyne.* cpp/extra_types.h  <span class="se">\</span>
+  cpp/h5wrap.h cpp/state_map.cpp cpp/nucname.* cpp/rxname.* cpp/data.* cpp/jsoncpp.cpp <span class="se">\</span>
+  cpp/json/*
 <span class="nv">$ </span>cp pyne.* ~/cyclus/src
+</pre></div>
+</div>
+<p><strong>Update Nuclear Data:</strong> PyNE also provides a nuclear data library generator which we use for
+our source data.  Occassionally, this needs to be updated as updates to pyne itself come out.
+The command for generating <span style="font-variant:small-caps;">Cyclus</span> specific nuclear data is as follows:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd</span> ~/pyne
+<span class="nv">$ </span>nuc_data_make -o cyclus_nuc_data.h5 <span class="se">\</span>
+ -m atomic_mass,scattering_lengths,decay,simple_xs,materials,eaf,wimsd_fpy,nds_fpy
+</pre></div>
+</div>
+<p>Once the file is generated it must be put onto rackspace.</p>
+<p><strong>Update Gtest:</strong> We include a copy of the fused Gtest source code within our
+source tree located in the <tt class="docutils literal"><span class="pre">tests/GoogleTest</span></tt> directory.  To keep up with
+Gtest&#8217;s natural evolution cycle, please download the latest release of Google Tests
+and follow <a class="reference external" href="https://code.google.com/p/googletest/wiki/V1_6_AdvancedGuide#Fusing_Google_Test_Source_Files">the fused source directions here</a>.  If we go too long without doing this,
+it could be very painful to update.</p>
+</div>
+<div class="section" id="cycstub">
+<h3>Cycstub<a class="headerlink" href="#cycstub" title="Permalink to this headline">¶</a></h3>
+<p>Every release the relevant files from <span style="font-variant:small-caps;">Cyclus</span> should be copied over to cyclus.
+Use the following BASH commands to do so:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>cp ~/cyclus/tests/input/stub_example.xml ~/cycstub/input/example.xml <span class="o">&amp;&amp;</span> <span class="se">\</span>
+  cp ~/cyclus/stubs/stub_* ~/cycstub/src/
 </pre></div>
 </div>
 </div>
@@ -262,8 +236,103 @@ to check in the changes afterwards.</p>
           </div>
         </div>
       </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="../index.html" title="index">
+          <img class="logo" src="../_static/big_c.png" alt="Logo"/>
+        </a></p><div class="sphinxlocaltoc">
+    <h3><a href="../index.html">Page contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">CEP 3 - <span style="font-variant:small-caps;">Cyclus</span> Release Procedure</a><ul>
+<li><a class="reference internal" href="#abstract">Abstract</a></li>
+<li><a class="reference internal" href="#the-cyclus-ecosystem">The <span style="font-variant:small-caps;">Cyclus</span> Ecosystem</a></li>
+<li><a class="reference internal" href="#release-candidates-branches">Release Candidates &amp; Branches</a></li>
+<li><a class="reference internal" href="#project-checklist">Project Checklist</a></li>
+<li><a class="reference internal" href="#maintainence-tasks">Maintainence Tasks</a><ul>
+<li><a class="reference internal" href="#cyclus"><span style="font-variant:small-caps;">Cyclus</span></a></li>
+<li><a class="reference internal" href="#cycstub">Cycstub</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#document-history">Document History</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div class="sphinxprev">
+    <h4>Previous page</h4>
+    <p class="topless"><a href="cep2.html"
+                          title="Previous page">&larr; CEP 2 - Separation of Concerns in the <span style="font-variant:small-caps;">Cyclus</span> Ecosystem</a></p>
+  </div>
+  <div class="sphinxnext">
+    <h4>Next page</h4>
+    <p class="topless"><a href="cep17.html"
+                          title="Next page">&rarr; CEP 17 - Resource Tracking and Interfaces Re-Re-Redo</a></p>
+  </div>
+  <div class="sphinxlocaltoc">
+  <h3>Useful Pages</h3>
+    <ul><li><ul>
+    <li><a href="http://fuelcycle.org/user/main.html">User Guide</a></li>
+    <li><a href="http://fuelcycle.org/module/main.html">Archetype Developer Guide</a></li>
+    <li><a href="http://fuelcycle.org/cyclus/api/">Cyclus API Documentation</a></li>
+    <li><a href="http://fuelcycle.org/cycamore/api/">Cycamore API Documentation</a></li>
+    <li><a href="http://fuelcycle.org/basics/glossary.html">Glossary</a></li>
+    <li><a href="mailto:cyclus-users+subscribe@googlegroups.com?subject=Subscribe&body=Send this message to subscribe to the list">Join</a> the 
+      <a href="https://groups.google.com/forum/#!forum/cyclus-users" target="_blank"><span style="font-variant:small-caps">Cyclus</span> Users</a> mailing list.
+    <li><a href="mailto:cyclus-dev+subscribe@googlegroups.com?subject=Subscribe&body=Send this message to subscribe to the list">Join</a> the 
+      <a href="https://groups.google.com/forum/#!forum/cyclus-users" target="_blank"><span style="font-variant:small-caps">Cyclus</span> Developers</a> mailing list.
+    </ul></li></ul>
+  </div>
+    
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <h3>Get Cyclus</h3>
+    <br>
+    Current version: <b>1.0.0</b>
+    <br><br>
+    Install:
+    <div class="highlight-bash" style="width:97.5%"><div class="highlight"><pre><span class="nv">$ </span>conda install cyclus cycamore</pre></div></div>
+    Get the Source:
+    <ul><li><ul>
+          <li><a href="https://github.com/cyclus/cyclus">Cyclus</a></li>
+          <li><a href="https://github.com/cyclus/cycamore">Cycamore</a></li>
+    </ul></li></ul>
+    <h3>Acknowledgements</h3>
+    The Cyclus project has received support from:
+    <br />
+    <a href="http://www.neup.gov" target="_blank"><img src="../_static/neup_logo_large.png" width=170px></a>
+    <br />
+    <br />
+
+    In addition, some of the students working on Cyclus have received support from:
+    <br />
+    <a href="http://www.anl.gov" target="_blank"><img src="../_static/AnlLogo.png" height=100px></a>
+    <a href="http://www.nrc.gov" target="_blank"><img src="../_static/USNRC.png" height=100px></a>
+    <br />
+    <a href="http://www.neup.gov" target="_blank"><img src="../_static/neup_logo_large.png" width=170px></a>
+    <br />
+    <a href="http://www.nsf.gov" target="_blank"><img src="../_static/nsf_logo.png" height=100px></a>
+    <a href="http://www.wisc.edu" target="_blank"><img src="../_static/crest.png" height=100px></a>
+
+    
+
+        </div>
+      </div>
       <div class="clearer"></div>
     </div>
+    <div class="relbar-bottom">
+        
     <div class="related">
       <h3>Navigation</h3>
       <ul>
@@ -271,19 +340,34 @@ to check in the changes afterwards.</p>
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
           <a href="cep17.html" title="CEP 17 - Resource Tracking and Interfaces Re-Re-Redo"
-             >next</a> |</li>
+             >next</a> &nbsp; &nbsp;</li>
         <li class="right" >
           <a href="cep2.html" title="CEP 2 - Separation of Concerns in the Cyclus Ecosystem"
-             >previous</a> |</li>
-        <li><a href="../index.html">Cyclus Home</a> &raquo;</li>
-          <li><a href="cep0.html" >Cyclus Enhancement Proposals</a> &raquo;</li> 
+             >previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">Home</a> &raquo;</li>
+
+          <li><a href="cep0.html" ><span style="font-variant:small-caps;">Cyclus</span> Enhancement Proposals</a> &raquo;</li> 
       </ul>
     </div>
+    </div>
+
     <div class="footer">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on May 07, 2014.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
-    </div>
+      Last updated on May 30, 2014.
+    </div><script type="text/javascript">
+    if(ga_enabled){
+        document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");
+        document.write("Click <button title=\"set cookie to disable analytics for this site\" class=\"link\" onclick=\"$.cookie('disable-ga', 'true', {expires: 3650, path: '/'}); window.location.reload(); return false; \">here</button> to disable analytics for this site.");
+        document.write("</div>");
+    }else{
+        document.write("<div class=\"footer\">Google Analytics has been disabled. ");
+        document.write("Click <button title=\"set cookie to re-enable analytics for this site\" class=\"link\" onclick=\"$.cookie('disable-ga', null, {path: '/'}); window.location.reload(); return false; \">here</button> to re-enable analytics for this site.");
+    };
+</script>
+    <!-- cloud_sptheme 1.4 -->
   </body>
 </html>

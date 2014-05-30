@@ -1,6 +1,7 @@
 
 
 
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -9,15 +10,16 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>CEP 19 - Cyclus Input Procedure Updates &mdash; Cyclus Home</title>
+    <title>CEP 19 - Cyclus Input Procedure Updates &mdash; Home</title>
     
-    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/cyclus.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '(0.4.3-433-gdf86f75)',
+        VERSION:     '(1.0.0-rc3-59-g7a5d0ac)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -26,34 +28,32 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="Cyclus Home" href="../index.html" />
+    <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../_static/cloud.js"></script>
+    <link rel="shortcut icon" href="../_static/big_c.ico"/>
+    <link rel="top" title="Home" href="../index.html" />
     <link rel="up" title="Cyclus Enhancement Proposals" href="cep0.html" />
     <link rel="next" title="CEP 20 - Time Step Execution Stack" href="cep20.html" />
-    <link rel="prev" title="CEP 18 - Dynamic Resource Exchange Procedure" href="cep18.html" />
-   
-<script type="text/javascript">
-
+    <link rel="prev" title="CEP 18 - Dynamic Resource Exchange Procedure" href="cep18.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1"><script type="text/javascript">
+var ga_enabled = !$.cookie('disable-ga');
+if(ga_enabled){
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-12222727-2']);
+  _gaq.push(['_setCookiePath', '/']);
+  _gaq.push(['_setDetectFlash', false]);
   _gaq.push(['_trackPageview']);
-
   (function() {
     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
-
+}
 </script>
-
   </head>
   <body>
-<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
-  <a href="http://cyclus.github.com">
-    <img src="../_static/logo1.png"/>
-  </a>
-</div>
-
-
+    <div class="relbar-top">
+        
     <div class="related">
       <h3>Navigation</h3>
       <ul>
@@ -61,84 +61,21 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
           <a href="cep20.html" title="CEP 20 - Time Step Execution Stack"
-             accesskey="N">next</a> |</li>
+             accesskey="N">next</a> &nbsp; &nbsp;</li>
         <li class="right" >
           <a href="cep18.html" title="CEP 18 - Dynamic Resource Exchange Procedure"
-             accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">Cyclus Home</a> &raquo;</li>
-          <li><a href="cep0.html" accesskey="U">Cyclus Enhancement Proposals</a> &raquo;</li> 
+             accesskey="P">previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">Home</a> &raquo;</li>
+
+          <li><a href="cep0.html" accesskey="U"><span style="font-variant:small-caps;">Cyclus</span> Enhancement Proposals</a> &raquo;</li> 
       </ul>
     </div>
-      <div class="sphinxsidebar">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">CEP 19 - Cyclus Input Procedure Updates</a><ul>
-<li><a class="reference internal" href="#introduction">Introduction</a></li>
-<li><a class="reference internal" href="#motivation">Motivation</a></li>
-<li><a class="reference internal" href="#specification-implementation">Specification &amp; Implementation</a><ul>
-<li><a class="reference internal" href="#tooltip">Tooltip</a></li>
-<li><a class="reference internal" href="#help">Help</a></li>
-<li><a class="reference internal" href="#units">Units</a></li>
-<li><a class="reference internal" href="#user-level">User Level</a></li>
-<li><a class="reference internal" href="#vary">Vary</a></li>
-<li><a class="reference internal" href="#sampling-function">Sampling Function</a></li>
-<li><a class="reference internal" href="#field-types">Field Types</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#cycic-specific-tags">Cycic Specific Tags</a><ul>
-<li><a class="reference internal" href="#top-level-information">Top level Information</a></li>
-<li><a class="reference internal" href="#facility-circles">Facility Circles</a></li>
-<li><a class="reference internal" href="#market-circles">Market Circles</a></li>
-<li><a class="reference internal" href="#region-shapes">Region Shapes</a></li>
-<li><a class="reference internal" href="#institution-shapes">Institution Shapes</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#document-history">Document History</a></li>
-<li><a class="reference internal" href="#references-and-footnotes">References and Footnotes</a></li>
-</ul>
-</li>
-</ul>
-
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="cep18.html"
-                        title="previous chapter">CEP 18 - Dynamic Resource Exchange Procedure</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="cep20.html"
-                        title="next chapter">CEP 20 - Time Step Execution Stack</a></p>
-  <h3>Useful Pages</h3>
-    <li><a href="http://cyclus.github.com/basics/glossary.html">Glossary</a></li>
-    <li><a href="http://cyclus.github.com/basics/roadmap.html">Roadmap</a></li>
-    <li><a href="https://github.com/cyclus">Source Code</a></li>
-    <li><a href="http://fuelcycle.org/cyclus/api/">Cyclus Core Documentation</a></li>
-    <li><a href="http://fuelcycle.org/cycamore/api/">Cycamore Documentation</a></li>
-    
-<div id="searchbox" style="display: none">
-  <h3>Quick search</h3>
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-    <h3>Acknowledgements</h3>
-    Support for this research has included funding received from:
-    <img src=/_images/neup_logo_large.jpg width=170px>
-    <img src=/_images/AnlLogo.png height=100px>
-    <img src=/_images/USNRC.gif height=100px>
-    <img src=/_images/nsf_logo.jpg height=100px>
-    <img src=/_images/crest.png height=100px>
-
-    
-
-        </div>
-      </div>
+    </div>
+  
 
     <div class="document">
       <div class="documentwrapper">
@@ -146,14 +83,14 @@
           <div class="body">
             
   <div class="section" id="cep-19-cyclus-input-procedure-updates">
-<h1>CEP 19 - Cyclus Input Procedure Updates<a class="headerlink" href="#cep-19-cyclus-input-procedure-updates" title="Permalink to this headline">¶</a></h1>
+<h1>CEP 19 - <span style="font-variant:small-caps;">Cyclus</span> Input Procedure Updates<a class="headerlink" href="#cep-19-cyclus-input-procedure-updates" title="Permalink to this headline">¶</a></h1>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">CEP:</th><td class="field-body">19</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Title:</th><td class="field-body">Cyclus Input Procedure Updates</td>
+<tr class="field-even field"><th class="field-name">Title:</th><td class="field-body"><span style="font-variant:small-caps;">Cyclus</span> Input Procedure Updates</td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Last-Modified:</th><td class="field-body">2013-10-16</td>
 </tr>
@@ -169,12 +106,12 @@
 </table>
 <div class="section" id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
-<p>This CEP proposes to update the cyclus input paradigm and the module schemas such that
+<p>This CEP proposes to update the <span style="font-variant:small-caps;">Cyclus</span> input paradigm and the module schemas such that
 they enable a wider variety of tools. This CEP was written with two types of tools in mind:
 graphical user interfaces and large scale parameter investigations. The goal of this
 CEP is to give the input scheme the descriptive power it needs to provide users and module
-developers with an elegent and clear method of building cyclus input files.</p>
-<p>The first major change is to develop a suite of patterns for use by cyclus module schema.
+developers with an elegent and clear method of building <span style="font-variant:small-caps;">Cyclus</span> input files.</p>
+<p>The first major change is to develop a suite of patterns for use by <span style="font-variant:small-caps;">Cyclus</span> module schema.
 These patterns are meant to richly representing module input fields. These patterns will be a
 collection of elements that provide sufficient metadata needed by the two use cases listed
 above. For instance, one such additional element is &#8216;tooltip&#8217;.</p>
@@ -190,7 +127,7 @@ many elements of the pattern will also be useful for parametric sweeps.</p>
 </div>
 <div class="section" id="specification-implementation">
 <h2>Specification &amp; Implementation<a class="headerlink" href="#specification-implementation" title="Permalink to this headline">¶</a></h2>
-<p>The following patterns are proposed to be added to the master Cyclus schema.</p>
+<p>The following patterns are proposed to be added to the master <span style="font-variant:small-caps;">Cyclus</span> schema.</p>
 <div class="section" id="tooltip">
 <h3>Tooltip<a class="headerlink" href="#tooltip" title="Permalink to this headline">¶</a></h3>
 <p>Tooltip elements is a short string of text that the developer can add to an input field that will
@@ -254,7 +191,7 @@ and if left blank the value will be set to zero by the graphical user interface.
 </div>
 <div class="section" id="vary">
 <h3>Vary<a class="headerlink" href="#vary" title="Permalink to this headline">¶</a></h3>
-<p>The &#8216;vary&#8217; element is a special boolean element that allows a cyclus user to set wether the input
+<p>The &#8216;vary&#8217; element is a special boolean element that allows a <span style="font-variant:small-caps;">Cyclus</span> user to set wether the input
 field it is attached to can be varied for a parametric study. This flag is optional and can take
 the values &#8220;true&#8221;, &#8220;false&#8221;, &#8220;1&#8221;, &#8220;0&#8221;.</p>
 <div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;define</span> <span class="na">name=</span><span class="s">&quot;vary&quot;</span><span class="nt">&gt;</span>
@@ -598,11 +535,11 @@ implies that the field has discrete values for which it can take.</p>
 </div>
 <div class="section" id="cycic-specific-tags">
 <h2>Cycic Specific Tags<a class="headerlink" href="#cycic-specific-tags" title="Permalink to this headline">¶</a></h2>
-<p>In order to facilitate loading cyclus scenarios that were previously built with CycIC
+<p>In order to facilitate loading <span style="font-variant:small-caps;">Cyclus</span> scenarios that were previously built with CycIC
 some additional fields are proposed to be added to the xml grammar. These fields will
 hold information on how to display the graphical parts of the simulation.</p>
-<p>This portion of the xml file will not be read by cyclus, and should have no impact on
-the cyclus core code.</p>
+<p>This portion of the xml file will not be read by <span style="font-variant:small-caps;">Cyclus</span>, and should have no impact on
+the <span style="font-variant:small-caps;">Cyclus</span> core code.</p>
 <div class="section" id="top-level-information">
 <h3>Top level Information<a class="headerlink" href="#top-level-information" title="Permalink to this headline">¶</a></h3>
 <p>Here the name of the CycIC simulation, a description, and some comments about it
@@ -730,8 +667,115 @@ nodes so that they may be loaded in the proper place.</p>
           </div>
         </div>
       </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="../index.html" title="index">
+          <img class="logo" src="../_static/big_c.png" alt="Logo"/>
+        </a></p><div class="sphinxlocaltoc">
+    <h3><a href="../index.html">Page contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">CEP 19 - <span style="font-variant:small-caps;">Cyclus</span> Input Procedure Updates</a><ul>
+<li><a class="reference internal" href="#introduction">Introduction</a></li>
+<li><a class="reference internal" href="#motivation">Motivation</a></li>
+<li><a class="reference internal" href="#specification-implementation">Specification &amp; Implementation</a><ul>
+<li><a class="reference internal" href="#tooltip">Tooltip</a></li>
+<li><a class="reference internal" href="#help">Help</a></li>
+<li><a class="reference internal" href="#units">Units</a></li>
+<li><a class="reference internal" href="#user-level">User Level</a></li>
+<li><a class="reference internal" href="#vary">Vary</a></li>
+<li><a class="reference internal" href="#sampling-function">Sampling Function</a></li>
+<li><a class="reference internal" href="#field-types">Field Types</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cycic-specific-tags">Cycic Specific Tags</a><ul>
+<li><a class="reference internal" href="#top-level-information">Top level Information</a></li>
+<li><a class="reference internal" href="#facility-circles">Facility Circles</a></li>
+<li><a class="reference internal" href="#market-circles">Market Circles</a></li>
+<li><a class="reference internal" href="#region-shapes">Region Shapes</a></li>
+<li><a class="reference internal" href="#institution-shapes">Institution Shapes</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#document-history">Document History</a></li>
+<li><a class="reference internal" href="#references-and-footnotes">References and Footnotes</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div class="sphinxprev">
+    <h4>Previous page</h4>
+    <p class="topless"><a href="cep18.html"
+                          title="Previous page">&larr; CEP 18 - Dynamic Resource Exchange Procedure</a></p>
+  </div>
+  <div class="sphinxnext">
+    <h4>Next page</h4>
+    <p class="topless"><a href="cep20.html"
+                          title="Next page">&rarr; CEP 20 - Time Step Execution Stack</a></p>
+  </div>
+  <div class="sphinxlocaltoc">
+  <h3>Useful Pages</h3>
+    <ul><li><ul>
+    <li><a href="http://fuelcycle.org/user/main.html">User Guide</a></li>
+    <li><a href="http://fuelcycle.org/module/main.html">Archetype Developer Guide</a></li>
+    <li><a href="http://fuelcycle.org/cyclus/api/">Cyclus API Documentation</a></li>
+    <li><a href="http://fuelcycle.org/cycamore/api/">Cycamore API Documentation</a></li>
+    <li><a href="http://fuelcycle.org/basics/glossary.html">Glossary</a></li>
+    <li><a href="mailto:cyclus-users+subscribe@googlegroups.com?subject=Subscribe&body=Send this message to subscribe to the list">Join</a> the 
+      <a href="https://groups.google.com/forum/#!forum/cyclus-users" target="_blank"><span style="font-variant:small-caps">Cyclus</span> Users</a> mailing list.
+    <li><a href="mailto:cyclus-dev+subscribe@googlegroups.com?subject=Subscribe&body=Send this message to subscribe to the list">Join</a> the 
+      <a href="https://groups.google.com/forum/#!forum/cyclus-users" target="_blank"><span style="font-variant:small-caps">Cyclus</span> Developers</a> mailing list.
+    </ul></li></ul>
+  </div>
+    
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <h3>Get Cyclus</h3>
+    <br>
+    Current version: <b>1.0.0</b>
+    <br><br>
+    Install:
+    <div class="highlight-bash" style="width:97.5%"><div class="highlight"><pre><span class="nv">$ </span>conda install cyclus cycamore</pre></div></div>
+    Get the Source:
+    <ul><li><ul>
+          <li><a href="https://github.com/cyclus/cyclus">Cyclus</a></li>
+          <li><a href="https://github.com/cyclus/cycamore">Cycamore</a></li>
+    </ul></li></ul>
+    <h3>Acknowledgements</h3>
+    The Cyclus project has received support from:
+    <br />
+    <a href="http://www.neup.gov" target="_blank"><img src="../_static/neup_logo_large.png" width=170px></a>
+    <br />
+    <br />
+
+    In addition, some of the students working on Cyclus have received support from:
+    <br />
+    <a href="http://www.anl.gov" target="_blank"><img src="../_static/AnlLogo.png" height=100px></a>
+    <a href="http://www.nrc.gov" target="_blank"><img src="../_static/USNRC.png" height=100px></a>
+    <br />
+    <a href="http://www.neup.gov" target="_blank"><img src="../_static/neup_logo_large.png" width=170px></a>
+    <br />
+    <a href="http://www.nsf.gov" target="_blank"><img src="../_static/nsf_logo.png" height=100px></a>
+    <a href="http://www.wisc.edu" target="_blank"><img src="../_static/crest.png" height=100px></a>
+
+    
+
+        </div>
+      </div>
       <div class="clearer"></div>
     </div>
+    <div class="relbar-bottom">
+        
     <div class="related">
       <h3>Navigation</h3>
       <ul>
@@ -739,19 +783,34 @@ nodes so that they may be loaded in the proper place.</p>
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
           <a href="cep20.html" title="CEP 20 - Time Step Execution Stack"
-             >next</a> |</li>
+             >next</a> &nbsp; &nbsp;</li>
         <li class="right" >
           <a href="cep18.html" title="CEP 18 - Dynamic Resource Exchange Procedure"
-             >previous</a> |</li>
-        <li><a href="../index.html">Cyclus Home</a> &raquo;</li>
-          <li><a href="cep0.html" >Cyclus Enhancement Proposals</a> &raquo;</li> 
+             >previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">Home</a> &raquo;</li>
+
+          <li><a href="cep0.html" ><span style="font-variant:small-caps;">Cyclus</span> Enhancement Proposals</a> &raquo;</li> 
       </ul>
     </div>
+    </div>
+
     <div class="footer">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on May 07, 2014.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
-    </div>
+      Last updated on May 30, 2014.
+    </div><script type="text/javascript">
+    if(ga_enabled){
+        document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");
+        document.write("Click <button title=\"set cookie to disable analytics for this site\" class=\"link\" onclick=\"$.cookie('disable-ga', 'true', {expires: 3650, path: '/'}); window.location.reload(); return false; \">here</button> to disable analytics for this site.");
+        document.write("</div>");
+    }else{
+        document.write("<div class=\"footer\">Google Analytics has been disabled. ");
+        document.write("Click <button title=\"set cookie to re-enable analytics for this site\" class=\"link\" onclick=\"$.cookie('disable-ga', null, {path: '/'}); window.location.reload(); return false; \">here</button> to re-enable analytics for this site.");
+    };
+</script>
+    <!-- cloud_sptheme 1.4 -->
   </body>
 </html>

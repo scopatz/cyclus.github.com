@@ -1,0 +1,391 @@
+
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Guide for Contributing to Cyclus &mdash; Home</title>
+    
+    <link rel="stylesheet" href="../_static/cyclus.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '(1.0.0-rc3-59-g7a5d0ac)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../_static/cloud.js"></script>
+    <link rel="shortcut icon" href="../_static/big_c.ico"/>
+    <link rel="top" title="Home" href="../index.html" />
+    <link rel="up" title="Cyclus Kernel Developer Guide" href="main.html" />
+    <link rel="next" title="Building Cyclus With Conda" href="build_with_conda.html" />
+    <link rel="prev" title="cycpp" href="cycpp.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1"><script type="text/javascript">
+var ga_enabled = !$.cookie('disable-ga');
+if(ga_enabled){
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-12222727-2']);
+  _gaq.push(['_setCookiePath', '/']);
+  _gaq.push(['_setDetectFlash', false]);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+}
+</script>
+  </head>
+  <body>
+    <div class="relbar-top">
+        
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="build_with_conda.html" title="Building Cyclus With Conda"
+             accesskey="N">next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="cycpp.html" title="cycpp"
+             accesskey="P">previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">Home</a> &raquo;</li>
+
+          <li><a href="main.html" accesskey="U"><span style="font-variant:small-caps;">Cyclus</span> Kernel Developer Guide</a> &raquo;</li> 
+      </ul>
+    </div>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="guide-for-contributing-to-cyclus">
+<h1>Guide for Contributing to <span style="font-variant:small-caps;">Cyclus</span><a class="headerlink" href="#guide-for-contributing-to-cyclus" title="Permalink to this headline">¶</a></h1>
+<p><span style="font-variant:small-caps;">Cyclus</span> has a number of projects under its umbrella.  The core <span style="font-variant:small-caps;">Cyclus</span>
+project repository is located at <a class="reference external" href="http://github.com/cyclus/cyclus">http://github.com/cyclus/cyclus</a>. Additional
+projects found at <a class="reference external" href="http://github.com/cyclus">http://github.com/cyclus</a> include :</p>
+<ul class="simple">
+<li>Cycamore, the <span style="font-variant:small-caps;">Cyclus</span> additional module repository</li>
+<li>Cycic, the <span style="font-variant:small-caps;">Cyclus</span> input controller</li>
+<li>and more to come.</li>
+</ul>
+<p>Although you do not have to register with GitHub to download and edit the
+code, if you desire your work to be integrated into the <span style="font-variant:small-caps;">Cyclus</span> mainline of
+development <em>you must fork the cyclus core repository into your own GitHub
+account and submit &#8216;Pull Requests&#8217;</em>. <a class="reference internal" href="build_from_source.html"><em>Here is a tutorial on getting and
+building cyclus.</em></a></p>
+<div class="section" id="working-on-a-topic">
+<h2>Working on a Topic<a class="headerlink" href="#working-on-a-topic" title="Permalink to this headline">¶</a></h2>
+<p><em>Note that &#8220;upstream&#8221; repository refers to the primary `cyclus/cyclus`
+repository.</em></p>
+<p>You may find or create an issue report in a <span style="font-variant:small-caps;">Cyclus</span> repository that you would
+like to solve.</p>
+<p>You&#8217;ll first need to fork your repository and create a branch for the topic
+you&#8217;d like you solve. As you do your development, push only to your own fork.
+Make a pull request to the upstream repository (usually the &#8220;develop&#8221; branch)
+only after:</p>
+<ul class="simple">
+<li>You have pulled the latest changes from the upstream repository.</li>
+<li>You have completed a logical set of changes.</li>
+<li><span style="font-variant:small-caps;">Cyclus</span> compiles with no errors.</li>
+<li>All tests pass.</li>
+<li><span style="font-variant:small-caps;">Cyclus</span> input files run as expected.</li>
+<li>Your code has been reviewed by another developer.</li>
+</ul>
+<p>Code from the &#8220;develop&#8221; branch generally must pass even more rigorous checks
+before being integrated into the &#8220;master&#8221; branch. Hotfixes would be a
+possible exception to this.</p>
+</div>
+<div class="section" id="keeping-your-fork-up-to-date">
+<h2>Keeping Your Fork Up To Date<a class="headerlink" href="#keeping-your-fork-up-to-date" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul>
+<li><p class="first">Use a branching workflow similar to the one described at
+<a class="reference external" href="http://progit.org/book/ch3-4.html">http://progit.org/book/ch3-4.html</a>.</p>
+</li>
+<li><p class="first">The &#8220;develop&#8221; branch is how <span style="font-variant:small-caps;">Cyclus</span> developers will share (generally
+compilable) progress when we are not yet ready for the code to become
+&#8216;production&#8217;.</p>
+</li>
+<li><p class="first">Keep your own &#8220;master&#8221; and &#8220;develop&#8221; branches in sync with the upstream
+repository&#8217;s &#8220;master&#8221; and &#8220;develop&#8221; branches. The master branch should
+always be the &#8216;stable&#8217; or &#8216;production&#8217; release of <span style="font-variant:small-caps;">Cyclus</span>.</p>
+<blockquote>
+<div><ul>
+<li><p class="first">Pull the most recent history from the upstream repository &#8220;master&#8221;
+and/or &#8220;develop&#8221; branches before you merge changes into your
+corresponding local branch. Consider doing a rebase pull instead of
+a regular pull or &#8216;fetch and merge&#8217;.  For example:</p>
+<div class="highlight-python"><pre>git checkout develop
+git pull --rebase upstream develop</pre>
+</div>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">As you do development on topic branches in your own fork, consider
+rebasing the topic branch onto the &#8220;master&#8221; and/or &#8220;develop&#8221;  branches
+after <em>pulls</em> from the upstream repository rather than merging the pulled
+changes into your branch.  This will help maintain a more linear (and clean)
+history.  <em>Please see caution about rebasing below</em>.  For example:</p>
+<div class="highlight-python"><pre>git checkout [your topic branch]
+git rebase develop</pre>
+</div>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="passing-tests">
+<h2>Passing Tests<a class="headerlink" href="#passing-tests" title="Permalink to this headline">¶</a></h2>
+<p>To check that your branch passes the tests, you must build and install your topic
+branch and then run the tests built during that process.</p>
+<p>For the <span style="font-variant:small-caps;">Cyclus</span> core, the tests are run using the CyclusUnitTestDriver (at
+the moment, <tt class="docutils literal"><span class="pre">`make</span> <span class="pre">test`</span></tt> is insufficient). For example</p>
+<div class="highlight-python"><pre>mkdir build
+mkdir install
+cd build
+cmake ../src -DCMAKE_INSTALL_PREFIX=../install
+make
+make install
+../install/cyclus/bin/CyclusUnitTestDriver</pre>
+</div>
+<p>In Cycamore, the additional module repository, the tests are run in an exactly
+analogous way, but using the CycamoreUnitTestDriver. For example</p>
+<div class="highlight-python"><pre>mkdir build
+mkdir install
+cd build
+cmake ../src -DCMAKE_INSTALL_PREFIX=../install
+make
+make install
+../install/cycamore/bin/CycamoreUnitTestDriver</pre>
+</div>
+<p>In addition to the CycamoreUnitTestDriver, a suite of input files can be run and
+tested using the run_inputs.py script that is configured, built, and installed
+with Cycamore. It relies on the input files that are part of your Cycamore
+repository, and only succeeds for input files that are correct (some may have
+known issues. See the issue list in Cycamore for details.) To run the example
+input files,</p>
+<div class="highlight-python"><pre>python ../install/cycamore/bin/run_inputs.py</pre>
+</div>
+</div>
+<div class="section" id="making-a-pull-request">
+<h2>Making a Pull Request<a class="headerlink" href="#making-a-pull-request" title="Permalink to this headline">¶</a></h2>
+<p>When you are ready to move changes from one of your topic branches into the
+&#8220;develop&#8221; branch, it must be reviewed and accepted by another developer.</p>
+<blockquote>
+<div><ul class="simple">
+<li>You may want to review this <a class="reference external" href="https://help.github.com/articles/using-pull-requests/">tutorial</a> before you make
+a pull request to the develop branch.</li>
+</ul>
+</div></blockquote>
+<p>Sometimes, your pull request will be closed by the reviewer until further
+changes are made to appease the reviewer&#8217;s concerns. This may be frustrating,
+but please act rationally, discuss the issues on the GitHub space made for
+your pull request, consult the <cite>style guide &lt;style_guide&gt;</cite>, email the
+developer listhost for further advice, and make changes to your topic branch
+accordingly. The pull request will be updated with those changes when you push
+them to your fork.  When you think your request is ready for another review,
+you can reopen the review yourself with the button made available to you.</p>
+</div>
+<div class="section" id="reviewing-a-pull-request">
+<h2>Reviewing a Pull Request<a class="headerlink" href="#reviewing-a-pull-request" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul>
+<li><p class="first">Build, install, and test it. If you have added the remote repository as
+a remote you can check it out and merge it with the current develop
+branch thusly,</p>
+<div class="highlight-python"><pre>git checkout -b remote_name/branch_name
+git merge develop</pre>
+</div>
+</li>
+<li><p class="first">Look over the code.</p>
+<ul class="simple">
+<li>Check that it meets <a class="reference internal" href="style_guide.html"><em>our style guidelines</em></a>.</li>
+<li>Make inline review comments concerning improvements.</li>
+</ul>
+</li>
+<li><p class="first">Accept the Pull Request</p>
+<ul>
+<li><p class="first">In general, <strong>every commit</strong> (notice this is not &#8216;every push&#8217;) to the
+&#8220;develop&#8221; and &#8220;master&#8221; branches should compile and pass tests. This
+is guaranteed by using a NON-fast-forward merge during the pull request
+acceptance process.</p>
+</li>
+<li><p class="first">The green &#8220;Merge Pull Request&#8221; button does a non-fast-forward merge by
+default. However, if that button is unavailable, you&#8217;ve made minor
+local changes to the pulled branch, or you just want to do it from the
+command line, make sure your merge is a non-fast-forward merge. For example:</p>
+<div class="highlight-python"><pre>git checkout develop
+git merge --no-ff remote_name/branch_name -m "A message""</pre>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="see-also">
+<h2>See also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<p>A good description of a git workflow with good graphics is available at
+<a class="reference external" href="http://nvie.com/posts/a-successful-git-branching-model/">http://nvie.com/posts/a-successful-git-branching-model/</a></p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="../index.html" title="index">
+          <img class="logo" src="../_static/big_c.png" alt="Logo"/>
+        </a></p><div class="sphinxlocaltoc">
+    <h3><a href="../index.html">Page contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Guide for Contributing to <span style="font-variant:small-caps;">Cyclus</span></a><ul>
+<li><a class="reference internal" href="#working-on-a-topic">Working on a Topic</a></li>
+<li><a class="reference internal" href="#keeping-your-fork-up-to-date">Keeping Your Fork Up To Date</a></li>
+<li><a class="reference internal" href="#passing-tests">Passing Tests</a></li>
+<li><a class="reference internal" href="#making-a-pull-request">Making a Pull Request</a></li>
+<li><a class="reference internal" href="#reviewing-a-pull-request">Reviewing a Pull Request</a></li>
+<li><a class="reference internal" href="#see-also">See also</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div class="sphinxprev">
+    <h4>Previous page</h4>
+    <p class="topless"><a href="cycpp.html"
+                          title="Previous page">&larr; cycpp</a></p>
+  </div>
+  <div class="sphinxnext">
+    <h4>Next page</h4>
+    <p class="topless"><a href="build_with_conda.html"
+                          title="Next page">&rarr; Building <span style="font-variant:small-caps;">Cyclus</span> With Conda</a></p>
+  </div>
+  <div class="sphinxlocaltoc">
+  <h3>Useful Pages</h3>
+    <ul><li><ul>
+    <li><a href="http://fuelcycle.org/user/main.html">User Guide</a></li>
+    <li><a href="http://fuelcycle.org/module/main.html">Archetype Developer Guide</a></li>
+    <li><a href="http://fuelcycle.org/cyclus/api/">Cyclus API Documentation</a></li>
+    <li><a href="http://fuelcycle.org/cycamore/api/">Cycamore API Documentation</a></li>
+    <li><a href="http://fuelcycle.org/basics/glossary.html">Glossary</a></li>
+    <li><a href="mailto:cyclus-users+subscribe@googlegroups.com?subject=Subscribe&body=Send this message to subscribe to the list">Join</a> the 
+      <a href="https://groups.google.com/forum/#!forum/cyclus-users" target="_blank"><span style="font-variant:small-caps">Cyclus</span> Users</a> mailing list.
+    <li><a href="mailto:cyclus-dev+subscribe@googlegroups.com?subject=Subscribe&body=Send this message to subscribe to the list">Join</a> the 
+      <a href="https://groups.google.com/forum/#!forum/cyclus-users" target="_blank"><span style="font-variant:small-caps">Cyclus</span> Developers</a> mailing list.
+    </ul></li></ul>
+  </div>
+    
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <h3>Get Cyclus</h3>
+    <br>
+    Current version: <b>1.0.0</b>
+    <br><br>
+    Install:
+    <div class="highlight-bash" style="width:97.5%"><div class="highlight"><pre><span class="nv">$ </span>conda install cyclus cycamore</pre></div></div>
+    Get the Source:
+    <ul><li><ul>
+          <li><a href="https://github.com/cyclus/cyclus">Cyclus</a></li>
+          <li><a href="https://github.com/cyclus/cycamore">Cycamore</a></li>
+    </ul></li></ul>
+    <h3>Acknowledgements</h3>
+    The Cyclus project has received support from:
+    <br />
+    <a href="http://www.neup.gov" target="_blank"><img src="../_static/neup_logo_large.png" width=170px></a>
+    <br />
+    <br />
+
+    In addition, some of the students working on Cyclus have received support from:
+    <br />
+    <a href="http://www.anl.gov" target="_blank"><img src="../_static/AnlLogo.png" height=100px></a>
+    <a href="http://www.nrc.gov" target="_blank"><img src="../_static/USNRC.png" height=100px></a>
+    <br />
+    <a href="http://www.neup.gov" target="_blank"><img src="../_static/neup_logo_large.png" width=170px></a>
+    <br />
+    <a href="http://www.nsf.gov" target="_blank"><img src="../_static/nsf_logo.png" height=100px></a>
+    <a href="http://www.wisc.edu" target="_blank"><img src="../_static/crest.png" height=100px></a>
+
+    
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="relbar-bottom">
+        
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="build_with_conda.html" title="Building Cyclus With Conda"
+             >next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="cycpp.html" title="cycpp"
+             >previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">Home</a> &raquo;</li>
+
+          <li><a href="main.html" ><span style="font-variant:small-caps;">Cyclus</span> Kernel Developer Guide</a> &raquo;</li> 
+      </ul>
+    </div>
+    </div>
+
+    <div class="footer">
+        &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
+      Last updated on May 30, 2014.
+    </div><script type="text/javascript">
+    if(ga_enabled){
+        document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");
+        document.write("Click <button title=\"set cookie to disable analytics for this site\" class=\"link\" onclick=\"$.cookie('disable-ga', 'true', {expires: 3650, path: '/'}); window.location.reload(); return false; \">here</button> to disable analytics for this site.");
+        document.write("</div>");
+    }else{
+        document.write("<div class=\"footer\">Google Analytics has been disabled. ");
+        document.write("Click <button title=\"set cookie to re-enable analytics for this site\" class=\"link\" onclick=\"$.cookie('disable-ga', null, {path: '/'}); window.location.reload(); return false; \">here</button> to re-enable analytics for this site.");
+    };
+</script>
+    <!-- cloud_sptheme 1.4 -->
+  </body>
+</html>

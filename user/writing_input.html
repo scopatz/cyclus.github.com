@@ -1,0 +1,321 @@
+
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Writing a Cyclus Input File &mdash; Home</title>
+    
+    <link rel="stylesheet" href="../_static/cyclus.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '(1.0.0-rc3-59-g7a5d0ac)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../_static/cloud.js"></script>
+    <link rel="shortcut icon" href="../_static/big_c.ico"/>
+    <link rel="top" title="Home" href="../index.html" />
+    <link rel="up" title="Cyclus User Guide" href="main.html" />
+    <link rel="next" title="Control - Simulation Control (required once)" href="input_specs/control.html" />
+    <link rel="prev" title="Cyclus User Guide" href="main.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1"><script type="text/javascript">
+var ga_enabled = !$.cookie('disable-ga');
+if(ga_enabled){
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-12222727-2']);
+  _gaq.push(['_setCookiePath', '/']);
+  _gaq.push(['_setDetectFlash', false]);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+}
+</script>
+  </head>
+  <body>
+    <div class="relbar-top">
+        
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="input_specs/control.html" title="Control - Simulation Control (required once)"
+             accesskey="N">next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="main.html" title="Cyclus User Guide"
+             accesskey="P">previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">Home</a> &raquo;</li>
+
+          <li><a href="main.html" accesskey="U"><span style="font-variant:small-caps;">Cyclus</span> User Guide</a> &raquo;</li> 
+      </ul>
+    </div>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="writing-a-cyclus-input-file">
+<h1>Writing a <span style="font-variant:small-caps;">Cyclus</span> Input File<a class="headerlink" href="#writing-a-cyclus-input-file" title="Permalink to this headline">¶</a></h1>
+<p>This section will provide an introduction to creating a valid input file for
+<span style="font-variant:small-caps;">Cyclus</span> by hand.  Because <span style="font-variant:small-caps;">Cyclus</span> uses XML, input files have clearly defined
+sections, or blocks, that can be automatically validated for correctness.</p>
+<p>Work is underway to provide a drag-and-drop graphical user interface to
+facilitate building <span style="font-variant:small-caps;">Cyclus</span> input files in the future.</p>
+<div class="section" id="a-brief-introduction-to-xml">
+<h2>A Brief Introduction to XML<a class="headerlink" href="#a-brief-introduction-to-xml" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://www.w3schools.com/xml/default.asp">XML</a> stands for EXtensible Markup Language, and was designed to provide
+structure to data in a generic way by grouping the data between starting and
+ending &#8220;tags&#8221;.  The tags used to provide that structure are not defined
+universally, but each project can invent their own language for those tags.
+The data that lies between a pair starting and ending tags may be additional
+sections defined by other tags.</p>
+<p>Here is a simple example of an XML section for the common concept of a
+message between people:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;note&gt;</span>
+   <span class="nt">&lt;to&gt;</span>Matt<span class="nt">&lt;/to&gt;</span>          <span class="c">&lt;!-- message recipient --&gt;</span>
+   <span class="nt">&lt;from&gt;</span>Anthony<span class="nt">&lt;/from&gt;</span>   <span class="c">&lt;!-- message sender --&gt;</span>
+   <span class="nt">&lt;heading&gt;</span>Cyclus released today<span class="nt">&lt;/heading&gt;</span>
+   <span class="nt">&lt;body&gt;</span>We have released Cyclus v1.0 for everyone to use.<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/note&gt;</span>
+</pre></div>
+</div>
+<p>In this example, a section named <tt class="docutils literal"><span class="pre">note</span></tt> includes four other sections named
+<tt class="docutils literal"><span class="pre">to</span></tt>, <tt class="docutils literal"><span class="pre">from</span></tt>, <tt class="docutils literal"><span class="pre">heading</span></tt>, and <tt class="docutils literal"><span class="pre">body</span></tt>, respectively.</p>
+<p>The set of tags for any given project, and their relationship to each other in
+the hierarchy, is referred to as a grammar.  In addition to defining which
+tags exist, the grammar defines how many times each tag must or may exist
+in a given section.  A tag may be completely optional, required one or more
+times, or allowed to appear as many times as the user desires.</p>
+<p>Although XML grammars are designed to be self-documenting, comments can be
+inserted into XML files anywhere using the <tt class="docutils literal"><span class="pre">&lt;!--</span> <span class="pre">comment</span> <span class="pre">here</span> <span class="pre">--&gt;</span></tt> syntax,
+as shown above.</p>
+</div>
+<div class="section" id="the-cyclus-input-file">
+<h2>The <span style="font-variant:small-caps;">Cyclus</span> Input File<a class="headerlink" href="#the-cyclus-input-file" title="Permalink to this headline">¶</a></h2>
+<p>Every <span style="font-variant:small-caps;">Cyclus</span> input file must have exactly one <tt class="docutils literal"><span class="pre">simulation</span></tt> section that
+contains all data for a simulation.</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;simulation&gt;</span>
+  ... simulation data will go here ...
+<span class="nt">&lt;/simulation&gt;</span>
+</pre></div>
+</div>
+<p>Although not all sections are required, the following sections may appear in
+any order in the input file:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="input_specs/control.html"><tt class="docutils literal"><span class="pre">Control</span></tt> - Simulation Control (required once)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="input_specs/commodity.html"><tt class="docutils literal"><span class="pre">Commodity</span></tt> - Commodity Priority  (optional, may appear multiple times)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="input_specs/archetypes.html"><tt class="docutils literal"><span class="pre">Archetypes</span></tt> - List of available agent archetypes (required once)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="input_specs/facility.html"><tt class="docutils literal"><span class="pre">Facility</span></tt> - Facility Prototypes (at least one required)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="input_specs/region.html"><tt class="docutils literal"><span class="pre">Region</span></tt> - Region agents (at least one required)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="input_specs/inst.html"><tt class="docutils literal"><span class="pre">Institution</span></tt> - Institution agents (at least one required in each <tt class="docutils literal"><span class="pre">Region</span></tt>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="input_specs/recipe.html"><tt class="docutils literal"><span class="pre">Recipe</span></tt> - Recipe Definition (optional, may appear multiple times)</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="including-xml-files">
+<h2>Including XML Files<a class="headerlink" href="#including-xml-files" title="Permalink to this headline">¶</a></h2>
+<p>One feature of XML is that you are able to include external XML files inside of
+your current document. This lets you reuse common parts of your input file that
+do not change across multiple simulations. To enable XML include semantics
+the attribute <tt class="docutils literal"><span class="pre">xmlns:xi=&quot;http://www.w3.org/2001/XInclude&quot;</span></tt> <em>must</em> be added to the
+<tt class="docutils literal"><span class="pre">&lt;simulation&gt;</span></tt> tag. Then to include an external
+file use the <tt class="docutils literal"><span class="pre">&lt;xi:include</span> <span class="pre">href=&quot;path/to/file&quot;</span> <span class="pre">/&gt;</span></tt> tag where you want the included
+file to go.</p>
+<p>A common inclusion pattern is to have a recipe book of materials in one file
+and then include this in your simulation.</p>
+<p><strong>input.xml:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;simulation</span> <span class="na">xmlns:xi=</span><span class="s">&quot;http://www.w3.org/2001/XInclude&quot;</span><span class="nt">&gt;</span>
+  ...
+  <span class="nt">&lt;xi:include</span> <span class="na">href=</span><span class="s">&quot;recipebook.xml&quot;</span> <span class="nt">/&gt;</span>
+  ...
+<span class="nt">&lt;/simulation&gt;</span>
+</pre></div>
+</div>
+<p><strong>recipebook.xml:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;recipe&gt;</span>
+  <span class="nt">&lt;name&gt;</span>proton_recipe<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;basis&gt;</span>mass<span class="nt">&lt;/basis&gt;</span>
+  <span class="nt">&lt;nuclide&gt;</span>
+    <span class="nt">&lt;id&gt;</span>010010000<span class="nt">&lt;/id&gt;</span>
+    <span class="nt">&lt;comp&gt;</span>1<span class="nt">&lt;/comp&gt;</span>
+  <span class="nt">&lt;/nuclide&gt;</span>
+<span class="nt">&lt;/recipe&gt;</span>
+
+<span class="nt">&lt;recipe&gt;</span>
+  <span class="nt">&lt;name&gt;</span>natU_recipe<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;basis&gt;</span>atom<span class="nt">&lt;/basis&gt;</span>
+  <span class="nt">&lt;nuclide&gt;</span>
+    <span class="nt">&lt;id&gt;</span>922350000<span class="nt">&lt;/id&gt;&lt;comp&gt;</span>0.007<span class="nt">&lt;/comp&gt;</span>
+  <span class="nt">&lt;/nuclide&gt;</span>
+  <span class="nt">&lt;nuclide&gt;</span>
+    <span class="nt">&lt;id&gt;</span>922380000<span class="nt">&lt;/id&gt;&lt;comp&gt;</span>0.993<span class="nt">&lt;/comp&gt;</span>
+  <span class="nt">&lt;/nuclide&gt;</span>
+<span class="nt">&lt;/recipe&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="../index.html" title="index">
+          <img class="logo" src="../_static/big_c.png" alt="Logo"/>
+        </a></p><div class="sphinxlocaltoc">
+    <h3><a href="../index.html">Page contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Writing a <span style="font-variant:small-caps;">Cyclus</span> Input File</a><ul>
+<li><a class="reference internal" href="#a-brief-introduction-to-xml">A Brief Introduction to XML</a></li>
+<li><a class="reference internal" href="#the-cyclus-input-file">The <span style="font-variant:small-caps;">Cyclus</span> Input File</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#including-xml-files">Including XML Files</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div class="sphinxprev">
+    <h4>Previous page</h4>
+    <p class="topless"><a href="main.html"
+                          title="Previous page">&larr; <span style="font-variant:small-caps;">Cyclus</span> User Guide</a></p>
+  </div>
+  <div class="sphinxnext">
+    <h4>Next page</h4>
+    <p class="topless"><a href="input_specs/control.html"
+                          title="Next page">&rarr; <tt class="docutils literal"><span class="pre">Control</span></tt> - Simulation Control (required once)</a></p>
+  </div>
+  <div class="sphinxlocaltoc">
+  <h3>Useful Pages</h3>
+    <ul><li><ul>
+    <li><a href="http://fuelcycle.org/user/main.html">User Guide</a></li>
+    <li><a href="http://fuelcycle.org/module/main.html">Archetype Developer Guide</a></li>
+    <li><a href="http://fuelcycle.org/cyclus/api/">Cyclus API Documentation</a></li>
+    <li><a href="http://fuelcycle.org/cycamore/api/">Cycamore API Documentation</a></li>
+    <li><a href="http://fuelcycle.org/basics/glossary.html">Glossary</a></li>
+    <li><a href="mailto:cyclus-users+subscribe@googlegroups.com?subject=Subscribe&body=Send this message to subscribe to the list">Join</a> the 
+      <a href="https://groups.google.com/forum/#!forum/cyclus-users" target="_blank"><span style="font-variant:small-caps">Cyclus</span> Users</a> mailing list.
+    <li><a href="mailto:cyclus-dev+subscribe@googlegroups.com?subject=Subscribe&body=Send this message to subscribe to the list">Join</a> the 
+      <a href="https://groups.google.com/forum/#!forum/cyclus-users" target="_blank"><span style="font-variant:small-caps">Cyclus</span> Developers</a> mailing list.
+    </ul></li></ul>
+  </div>
+    
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <h3>Get Cyclus</h3>
+    <br>
+    Current version: <b>1.0.0</b>
+    <br><br>
+    Install:
+    <div class="highlight-bash" style="width:97.5%"><div class="highlight"><pre><span class="nv">$ </span>conda install cyclus cycamore</pre></div></div>
+    Get the Source:
+    <ul><li><ul>
+          <li><a href="https://github.com/cyclus/cyclus">Cyclus</a></li>
+          <li><a href="https://github.com/cyclus/cycamore">Cycamore</a></li>
+    </ul></li></ul>
+    <h3>Acknowledgements</h3>
+    The Cyclus project has received support from:
+    <br />
+    <a href="http://www.neup.gov" target="_blank"><img src="../_static/neup_logo_large.png" width=170px></a>
+    <br />
+    <br />
+
+    In addition, some of the students working on Cyclus have received support from:
+    <br />
+    <a href="http://www.anl.gov" target="_blank"><img src="../_static/AnlLogo.png" height=100px></a>
+    <a href="http://www.nrc.gov" target="_blank"><img src="../_static/USNRC.png" height=100px></a>
+    <br />
+    <a href="http://www.neup.gov" target="_blank"><img src="../_static/neup_logo_large.png" width=170px></a>
+    <br />
+    <a href="http://www.nsf.gov" target="_blank"><img src="../_static/nsf_logo.png" height=100px></a>
+    <a href="http://www.wisc.edu" target="_blank"><img src="../_static/crest.png" height=100px></a>
+
+    
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="relbar-bottom">
+        
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="input_specs/control.html" title="Control - Simulation Control (required once)"
+             >next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="main.html" title="Cyclus User Guide"
+             >previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">Home</a> &raquo;</li>
+
+          <li><a href="main.html" ><span style="font-variant:small-caps;">Cyclus</span> User Guide</a> &raquo;</li> 
+      </ul>
+    </div>
+    </div>
+
+    <div class="footer">
+        &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
+      Last updated on May 30, 2014.
+    </div><script type="text/javascript">
+    if(ga_enabled){
+        document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");
+        document.write("Click <button title=\"set cookie to disable analytics for this site\" class=\"link\" onclick=\"$.cookie('disable-ga', 'true', {expires: 3650, path: '/'}); window.location.reload(); return false; \">here</button> to disable analytics for this site.");
+        document.write("</div>");
+    }else{
+        document.write("<div class=\"footer\">Google Analytics has been disabled. ");
+        document.write("Click <button title=\"set cookie to re-enable analytics for this site\" class=\"link\" onclick=\"$.cookie('disable-ga', null, {path: '/'}); window.location.reload(); return false; \">here</button> to re-enable analytics for this site.");
+    };
+</script>
+    <!-- cloud_sptheme 1.4 -->
+  </body>
+</html>

@@ -1,6 +1,7 @@
 
 
 
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -9,15 +10,16 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>CEP 2 - Separation of Concerns in the Cyclus Ecosystem &mdash; Cyclus Home</title>
+    <title>CEP 2 - Separation of Concerns in the Cyclus Ecosystem &mdash; Home</title>
     
-    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/cyclus.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '(0.4.3-433-gdf86f75)',
+        VERSION:     '(1.0.0-rc3-59-g7a5d0ac)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -26,34 +28,32 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="Cyclus Home" href="../index.html" />
+    <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../_static/cloud.js"></script>
+    <link rel="shortcut icon" href="../_static/big_c.ico"/>
+    <link rel="top" title="Home" href="../index.html" />
     <link rel="up" title="Cyclus Enhancement Proposals" href="cep0.html" />
     <link rel="next" title="CEP 3 - Cyclus Release Procedure" href="cep3.html" />
-    <link rel="prev" title="CEP 1 - CEP Purpose and Guidelines" href="cep1.html" />
-   
-<script type="text/javascript">
-
+    <link rel="prev" title="CEP 1 - CEP Purpose and Guidelines" href="cep1.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1"><script type="text/javascript">
+var ga_enabled = !$.cookie('disable-ga');
+if(ga_enabled){
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-12222727-2']);
+  _gaq.push(['_setCookiePath', '/']);
+  _gaq.push(['_setDetectFlash', false]);
   _gaq.push(['_trackPageview']);
-
   (function() {
     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
-
+}
 </script>
-
   </head>
   <body>
-<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
-  <a href="http://cyclus.github.com">
-    <img src="../_static/logo1.png"/>
-  </a>
-</div>
-
-
+    <div class="relbar-top">
+        
     <div class="related">
       <h3>Navigation</h3>
       <ul>
@@ -61,76 +61,21 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
           <a href="cep3.html" title="CEP 3 - Cyclus Release Procedure"
-             accesskey="N">next</a> |</li>
+             accesskey="N">next</a> &nbsp; &nbsp;</li>
         <li class="right" >
           <a href="cep1.html" title="CEP 1 - CEP Purpose and Guidelines"
-             accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">Cyclus Home</a> &raquo;</li>
-          <li><a href="cep0.html" accesskey="U">Cyclus Enhancement Proposals</a> &raquo;</li> 
+             accesskey="P">previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">Home</a> &raquo;</li>
+
+          <li><a href="cep0.html" accesskey="U"><span style="font-variant:small-caps;">Cyclus</span> Enhancement Proposals</a> &raquo;</li> 
       </ul>
     </div>
-      <div class="sphinxsidebar">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">CEP 2 - Separation of Concerns in the <em>Cyclus</em> Ecosystem</a><ul>
-<li><a class="reference internal" href="#abstract">Abstract</a></li>
-<li><a class="reference internal" href="#concerns">Concerns</a><ul>
-<li><a class="reference internal" href="#dynamic-resource-exchange-simulation">Dynamic Resource Exchange Simulation</a></li>
-<li><a class="reference internal" href="#domain-models">Domain Models</a></li>
-<li><a class="reference internal" href="#analysis-visualization">Analysis &amp; Visualization</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#the-cyclus-ecosystem">The Cyclus Ecosystem</a><ul>
-<li><a class="reference internal" href="#toolkits">Toolkits</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#summary">Summary</a></li>
-<li><a class="reference internal" href="#document-history">Document History</a></li>
-<li><a class="reference internal" href="#references-and-footnotes">References and Footnotes</a></li>
-</ul>
-</li>
-</ul>
-
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="cep1.html"
-                        title="previous chapter">CEP 1 - CEP Purpose and Guidelines</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="cep3.html"
-                        title="next chapter">CEP 3 - Cyclus Release Procedure</a></p>
-  <h3>Useful Pages</h3>
-    <li><a href="http://cyclus.github.com/basics/glossary.html">Glossary</a></li>
-    <li><a href="http://cyclus.github.com/basics/roadmap.html">Roadmap</a></li>
-    <li><a href="https://github.com/cyclus">Source Code</a></li>
-    <li><a href="http://fuelcycle.org/cyclus/api/">Cyclus Core Documentation</a></li>
-    <li><a href="http://fuelcycle.org/cycamore/api/">Cycamore Documentation</a></li>
-    
-<div id="searchbox" style="display: none">
-  <h3>Quick search</h3>
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-    <h3>Acknowledgements</h3>
-    Support for this research has included funding received from:
-    <img src=/_images/neup_logo_large.jpg width=170px>
-    <img src=/_images/AnlLogo.png height=100px>
-    <img src=/_images/USNRC.gif height=100px>
-    <img src=/_images/nsf_logo.jpg height=100px>
-    <img src=/_images/crest.png height=100px>
-
-    
-
-        </div>
-      </div>
+    </div>
+  
 
     <div class="document">
       <div class="documentwrapper">
@@ -138,14 +83,14 @@
           <div class="body">
             
   <div class="section" id="cep-2-separation-of-concerns-in-the-cyclus-ecosystem">
-<h1>CEP 2 - Separation of Concerns in the <em>Cyclus</em> Ecosystem<a class="headerlink" href="#cep-2-separation-of-concerns-in-the-cyclus-ecosystem" title="Permalink to this headline">¶</a></h1>
+<h1>CEP 2 - Separation of Concerns in the <span style="font-variant:small-caps;">Cyclus</span> Ecosystem<a class="headerlink" href="#cep-2-separation-of-concerns-in-the-cyclus-ecosystem" title="Permalink to this headline">¶</a></h1>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">CEP:</th><td class="field-body">2</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Title:</th><td class="field-body">Separation of Concerns in the <em>Cyclus</em> Ecosystem, or Where Do I Put My Code?</td>
+<tr class="field-even field"><th class="field-name">Title:</th><td class="field-body">Separation of Concerns in the <span style="font-variant:small-caps;">Cyclus</span> Ecosystem, or Where Do I Put My Code?</td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Last-Modified:</th><td class="field-body">2013-08-27</td>
 </tr>
@@ -162,12 +107,12 @@
 <div class="section" id="abstract">
 <h2>Abstract<a class="headerlink" href="#abstract" title="Permalink to this headline">¶</a></h2>
 <p>The purpose of this CEP is to clearly delineate the purpose &#8211; technical and
-cultural &#8211; of the various projects which make up the <em>Cyclus</em> ecosystem.
+cultural &#8211; of the various projects which make up the <span style="font-variant:small-caps;">Cyclus</span> ecosystem.
 Projects, for purposes here, are unique entities which have independent lifetimes
 and central concerns. Many projects may try to tackle the same concern but no
 single project may tackle more than one concern.  Concerns, like projects, may
 be dependent upon one another.</p>
-<p>The central concerns in the <em>Cyclus</em> ecosystem are
+<p>The central concerns in the <span style="font-variant:small-caps;">Cyclus</span> ecosystem are
 <strong>dynamic resource exchange simulation</strong> (DRES),  <strong>domain models</strong> (DM), and
 <strong>analysis &amp; visualization</strong> (A&amp;V).</p>
 </div>
@@ -274,9 +219,9 @@ all DRES parameters are guaranteed to also be present.</p>
 </div>
 </div>
 <div class="section" id="the-cyclus-ecosystem">
-<h2>The Cyclus Ecosystem<a class="headerlink" href="#the-cyclus-ecosystem" title="Permalink to this headline">¶</a></h2>
+<h2>The <span style="font-variant:small-caps;">Cyclus</span> Ecosystem<a class="headerlink" href="#the-cyclus-ecosystem" title="Permalink to this headline">¶</a></h2>
 <p>While many fuel cycle simulators may choose to implement all of the above concerns
-in a single project, each concern in the <em>Cyclus</em> ecosystem is implemented in
+in a single project, each concern in the <span style="font-variant:small-caps;">Cyclus</span> ecosystem is implemented in
 its own project.  Many projects may satisfy the needs of a concern.  However, no
 project may try to address multiple concerns. This provides a clear guideline
 for which projects should accept which kinds of code.</p>
@@ -285,7 +230,7 @@ with these concerns in mind.  If this fails because of a fundamental ambiguity
 or mixing of multiple concerns, place the code with the most dependent concern.
 For example, if it is not clear if a class belongs with domain models or with the
 resource exchange put it with the domain models to be safe.</p>
-<p>The cyclus development team currently provides and supports three projects,
+<p>The <span style="font-variant:small-caps;">Cyclus</span> development team currently provides and supports three projects,
 one for each concern:</p>
 <ul class="simple">
 <li><a class="reference external" href="https://github.com/cyclus/cyclus">Cyclus</a> - Dynamic Resource Exchange Simulation (individual actors, discrete time)</li>
@@ -296,7 +241,7 @@ one for each concern:</p>
 Figure 2 displays this graph along with other projects which implement or may
 in the future implement this concern (&#8216;?&#8217;).</p>
 <div class="figure align-center">
-<img src="../_images/cep-0002-2.svg" /><p class="caption"><strong>Figure 2:</strong> Dependencies Between Projects is Cyclus Ecosystem.</p>
+<img src="../_images/cep-0002-2.svg" /><p class="caption"><strong>Figure 2:</strong> Dependencies Between Projects is <span style="font-variant:small-caps;">Cyclus</span> Ecosystem.</p>
 </div>
 <div class="section" id="toolkits">
 <h3>Toolkits<a class="headerlink" href="#toolkits" title="Permalink to this headline">¶</a></h3>
@@ -310,8 +255,8 @@ par with resource exchange, domain models, and analysis &amp; visualization.</p>
 corresponds most closely with its concern.  The toolkit provides a layer on top of
 the concern implementation.  Thus the toolkit will be aware of other parts of the
 project but the concern implementation should not call into elements from the toolkit.</p>
-<p>For example, resources are part of the primary concern of <em>Cyclus</em>.  Thus
-a ResourceBuffer class would be part of the <em>Cyclus</em> toolkit.  This is because
+<p>For example, resources are part of the primary concern of <span style="font-variant:small-caps;">Cyclus</span>.  Thus
+a ResourceBuffer class would be part of the <span style="font-variant:small-caps;">Cyclus</span> toolkit.  This is because
 resource exchange can be implemented without a ResourceBuffer but such a class
 is useful to provide to domain model developers.  Furthermore, the buffer
 applies to all resources is not specific to any domain. Thus this class should be
@@ -322,7 +267,7 @@ included next to the resource exchange implementation.</p>
 <h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
 <p>Many other ecosystems and projects model the fuel cycle and make their own choices
 about how to separate &#8211; or not &#8211; the concerns of resource exchange, domain models,
-and analysis and visualization.  The <em>Cyclus</em> ecosystem places all concerns in
+and analysis and visualization.  The <span style="font-variant:small-caps;">Cyclus</span> ecosystem places all concerns in
 separate projects.  This allows a high degree of modularity between software and
 developers.  Such an ecosystem enables experts to contribute their specific
 knowledge base in a way that is independent from other parts of the ecosystem
@@ -361,8 +306,107 @@ primary concern.</p>
           </div>
         </div>
       </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="../index.html" title="index">
+          <img class="logo" src="../_static/big_c.png" alt="Logo"/>
+        </a></p><div class="sphinxlocaltoc">
+    <h3><a href="../index.html">Page contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">CEP 2 - Separation of Concerns in the <span style="font-variant:small-caps;">Cyclus</span> Ecosystem</a><ul>
+<li><a class="reference internal" href="#abstract">Abstract</a></li>
+<li><a class="reference internal" href="#concerns">Concerns</a><ul>
+<li><a class="reference internal" href="#dynamic-resource-exchange-simulation">Dynamic Resource Exchange Simulation</a></li>
+<li><a class="reference internal" href="#domain-models">Domain Models</a></li>
+<li><a class="reference internal" href="#analysis-visualization">Analysis &amp; Visualization</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#the-cyclus-ecosystem">The <span style="font-variant:small-caps;">Cyclus</span> Ecosystem</a><ul>
+<li><a class="reference internal" href="#toolkits">Toolkits</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#summary">Summary</a></li>
+<li><a class="reference internal" href="#document-history">Document History</a></li>
+<li><a class="reference internal" href="#references-and-footnotes">References and Footnotes</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div class="sphinxprev">
+    <h4>Previous page</h4>
+    <p class="topless"><a href="cep1.html"
+                          title="Previous page">&larr; CEP 1 - CEP Purpose and Guidelines</a></p>
+  </div>
+  <div class="sphinxnext">
+    <h4>Next page</h4>
+    <p class="topless"><a href="cep3.html"
+                          title="Next page">&rarr; CEP 3 - <span style="font-variant:small-caps;">Cyclus</span> Release Procedure</a></p>
+  </div>
+  <div class="sphinxlocaltoc">
+  <h3>Useful Pages</h3>
+    <ul><li><ul>
+    <li><a href="http://fuelcycle.org/user/main.html">User Guide</a></li>
+    <li><a href="http://fuelcycle.org/module/main.html">Archetype Developer Guide</a></li>
+    <li><a href="http://fuelcycle.org/cyclus/api/">Cyclus API Documentation</a></li>
+    <li><a href="http://fuelcycle.org/cycamore/api/">Cycamore API Documentation</a></li>
+    <li><a href="http://fuelcycle.org/basics/glossary.html">Glossary</a></li>
+    <li><a href="mailto:cyclus-users+subscribe@googlegroups.com?subject=Subscribe&body=Send this message to subscribe to the list">Join</a> the 
+      <a href="https://groups.google.com/forum/#!forum/cyclus-users" target="_blank"><span style="font-variant:small-caps">Cyclus</span> Users</a> mailing list.
+    <li><a href="mailto:cyclus-dev+subscribe@googlegroups.com?subject=Subscribe&body=Send this message to subscribe to the list">Join</a> the 
+      <a href="https://groups.google.com/forum/#!forum/cyclus-users" target="_blank"><span style="font-variant:small-caps">Cyclus</span> Developers</a> mailing list.
+    </ul></li></ul>
+  </div>
+    
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <h3>Get Cyclus</h3>
+    <br>
+    Current version: <b>1.0.0</b>
+    <br><br>
+    Install:
+    <div class="highlight-bash" style="width:97.5%"><div class="highlight"><pre><span class="nv">$ </span>conda install cyclus cycamore</pre></div></div>
+    Get the Source:
+    <ul><li><ul>
+          <li><a href="https://github.com/cyclus/cyclus">Cyclus</a></li>
+          <li><a href="https://github.com/cyclus/cycamore">Cycamore</a></li>
+    </ul></li></ul>
+    <h3>Acknowledgements</h3>
+    The Cyclus project has received support from:
+    <br />
+    <a href="http://www.neup.gov" target="_blank"><img src="../_static/neup_logo_large.png" width=170px></a>
+    <br />
+    <br />
+
+    In addition, some of the students working on Cyclus have received support from:
+    <br />
+    <a href="http://www.anl.gov" target="_blank"><img src="../_static/AnlLogo.png" height=100px></a>
+    <a href="http://www.nrc.gov" target="_blank"><img src="../_static/USNRC.png" height=100px></a>
+    <br />
+    <a href="http://www.neup.gov" target="_blank"><img src="../_static/neup_logo_large.png" width=170px></a>
+    <br />
+    <a href="http://www.nsf.gov" target="_blank"><img src="../_static/nsf_logo.png" height=100px></a>
+    <a href="http://www.wisc.edu" target="_blank"><img src="../_static/crest.png" height=100px></a>
+
+    
+
+        </div>
+      </div>
       <div class="clearer"></div>
     </div>
+    <div class="relbar-bottom">
+        
     <div class="related">
       <h3>Navigation</h3>
       <ul>
@@ -370,19 +414,34 @@ primary concern.</p>
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
           <a href="cep3.html" title="CEP 3 - Cyclus Release Procedure"
-             >next</a> |</li>
+             >next</a> &nbsp; &nbsp;</li>
         <li class="right" >
           <a href="cep1.html" title="CEP 1 - CEP Purpose and Guidelines"
-             >previous</a> |</li>
-        <li><a href="../index.html">Cyclus Home</a> &raquo;</li>
-          <li><a href="cep0.html" >Cyclus Enhancement Proposals</a> &raquo;</li> 
+             >previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">Home</a> &raquo;</li>
+
+          <li><a href="cep0.html" ><span style="font-variant:small-caps;">Cyclus</span> Enhancement Proposals</a> &raquo;</li> 
       </ul>
     </div>
+    </div>
+
     <div class="footer">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on May 07, 2014.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
-    </div>
+      Last updated on May 30, 2014.
+    </div><script type="text/javascript">
+    if(ga_enabled){
+        document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");
+        document.write("Click <button title=\"set cookie to disable analytics for this site\" class=\"link\" onclick=\"$.cookie('disable-ga', 'true', {expires: 3650, path: '/'}); window.location.reload(); return false; \">here</button> to disable analytics for this site.");
+        document.write("</div>");
+    }else{
+        document.write("<div class=\"footer\">Google Analytics has been disabled. ");
+        document.write("Click <button title=\"set cookie to re-enable analytics for this site\" class=\"link\" onclick=\"$.cookie('disable-ga', null, {path: '/'}); window.location.reload(); return false; \">here</button> to re-enable analytics for this site.");
+    };
+</script>
+    <!-- cloud_sptheme 1.4 -->
   </body>
 </html>

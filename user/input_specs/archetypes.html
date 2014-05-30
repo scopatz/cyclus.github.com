@@ -1,0 +1,285 @@
+
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Archetypes - List of available agent archetypes (required once) &mdash; Home</title>
+    
+    <link rel="stylesheet" href="../../_static/cyclus.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '(1.0.0-rc3-59-g7a5d0ac)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../../_static/cloud.js"></script>
+    <link rel="shortcut icon" href="../../_static/big_c.ico"/>
+    <link rel="top" title="Home" href="../../index.html" />
+    <link rel="up" title="Writing a Cyclus Input File" href="../writing_input.html" />
+    <link rel="next" title="Facility - Facility Prototypes (at least one required)" href="facility.html" />
+    <link rel="prev" title="Commodity - Commodity Priority (optional, may appear multiple times)" href="commodity.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1"><script type="text/javascript">
+var ga_enabled = !$.cookie('disable-ga');
+if(ga_enabled){
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-12222727-2']);
+  _gaq.push(['_setCookiePath', '/']);
+  _gaq.push(['_setDetectFlash', false]);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+}
+</script>
+  </head>
+  <body>
+    <div class="relbar-top">
+        
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="facility.html" title="Facility - Facility Prototypes (at least one required)"
+             accesskey="N">next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="commodity.html" title="Commodity - Commodity Priority (optional, may appear multiple times)"
+             accesskey="P">previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../../index.html">Home</a> &raquo;</li>
+
+          <li><a href="../main.html" ><span style="font-variant:small-caps;">Cyclus</span> User Guide</a> &raquo;</li>
+          <li><a href="../writing_input.html" accesskey="U">Writing a <span style="font-variant:small-caps;">Cyclus</span> Input File</a> &raquo;</li> 
+      </ul>
+    </div>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="archetypes-list-of-available-agent-archetypes-required-once">
+<h1><tt class="docutils literal"><span class="pre">Archetypes</span></tt> - List of available agent archetypes (required once)<a class="headerlink" href="#archetypes-list-of-available-agent-archetypes-required-once" title="Permalink to this headline">¶</a></h1>
+<p>Every agent that participates in a <span style="font-variant:small-caps;">Cyclus</span> simulation is based on a
+<a class="reference internal" href="../../basics/glossary.html#term-prototype"><em class="xref std std-term">prototype</em></a> that is formed by configuring an <a class="reference internal" href="../../basics/glossary.html#term-archetype"><em class="xref std std-term">archetype</em></a>.  The
+<tt class="docutils literal"><span class="pre">archetypes</span></tt> block defines the set of archetypes that are available to a
+simulation, and provides specifications that uniquely identify each archetype.</p>
+<p>A single <tt class="docutils literal"><span class="pre">archetypes</span></tt> block is required, and contains one or more <tt class="docutils literal"><span class="pre">spec</span></tt>
+blocks.  Each <tt class="docutils literal"><span class="pre">spec</span></tt> block has these blocks in the following order:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">path</span></tt> (optional) - a slash-separated path</li>
+<li><tt class="docutils literal"><span class="pre">lib</span></tt> (optional) - a library name</li>
+<li><tt class="docutils literal"><span class="pre">name</span></tt> (required) - a name</li>
+<li><tt class="docutils literal"><span class="pre">alias</span></tt> (optional) - a alternative name for the archetype</li>
+</ul>
+<p>In addition to the unambiguous specification (as defined in
+<a class="reference internal" href="../find_agents.html"><em>Archetype Identification and Discovery</em></a>) formed by the <tt class="docutils literal"><span class="pre">path</span></tt>, <tt class="docutils literal"><span class="pre">lib</span></tt>, and <tt class="docutils literal"><span class="pre">name</span></tt>, the
+<tt class="docutils literal"><span class="pre">alias</span></tt> provides an alternative name by which to refer to the archetype
+elsewhere in the file.  If an alias is defined, it is the <strong>only way</strong> to
+refer to that archetype in other locations.</p>
+<div class="section" id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;archetypes&gt;</span>
+   <span class="nt">&lt;spec&gt;</span>
+     <span class="nt">&lt;path&gt;</span>my/custom/path<span class="nt">&lt;/path&gt;</span>
+     <span class="nt">&lt;lib&gt;</span>myAgentCollection<span class="nt">&lt;/lib&gt;</span>
+     <span class="nt">&lt;name&gt;</span>myFirstReactorAgent<span class="nt">&lt;/name&gt;</span>
+     <span class="nt">&lt;alias&gt;</span>ReactorAgent<span class="nt">&lt;/alias&gt;</span>
+   <span class="nt">&lt;/spec&gt;</span>
+   <span class="nt">&lt;spec&gt;</span>
+     <span class="nt">&lt;name&gt;</span>simpleSource<span class="nt">&lt;/name&gt;</span>
+   <span class="nt">&lt;/spec&gt;</span>
+   <span class="nt">&lt;spec&gt;</span>
+     <span class="nt">&lt;name&gt;</span>simpleRegion<span class="nt">&lt;/name&gt;</span>
+   <span class="nt">&lt;/spec&gt;</span>
+   <span class="nt">&lt;spec&gt;</span>
+     <span class="nt">&lt;name&gt;</span>simpleInst<span class="nt">&lt;/name&gt;</span>
+   <span class="nt">&lt;/spec&gt;</span>
+<span class="nt">&lt;/archetypes&gt;</span>
+</pre></div>
+</div>
+<p>This example introduces four different archetypes into the simulation to be
+used elsewhere when defining agent prototypes.  The first archetype is named
+<cite>myFirstReactorAgent</cite>, found in a library file such as
+<cite>libmyAgentCollection.so</cite> (on linux), in the filesystem path
+<cite>my/custom/path</cite>.  All references to this archetype will use the alias
+<cite>ReactorAgent</cite>.  The other archetypes are named <cite>simpleSource</cite>,
+<cite>simpleRegion</cite>, and <cite>simpleInst</cite>, all of which are found in standard locations
+defined in <a class="reference internal" href="../find_agents.html"><em>Archetype Identification and Discovery</em></a>.  For example, <cite>simpleSource</cite> will be found
+in a library file with a name such as <cite>libsimpleSource.so</cite>, in the standard
+<span style="font-variant:small-caps;">Cyclus</span> archetype path.</p>
+</div>
+<div class="html-toggle section" id="grammar-definition">
+<h2>Grammar Definition<a class="headerlink" href="#grammar-definition" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;archetypes&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;oneOrMore&gt;</span>
+    <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;spec&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;optional&gt;&lt;element</span> <span class="na">name=</span><span class="s">&quot;path&quot;</span><span class="nt">&gt;&lt;text/&gt;&lt;/element&gt;&lt;/optional&gt;</span>
+      <span class="nt">&lt;optional&gt;&lt;element</span> <span class="na">name=</span><span class="s">&quot;lib&quot;</span><span class="nt">&gt;&lt;text/&gt;&lt;/element&gt;&lt;/optional&gt;</span>
+      <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;&lt;text/&gt;&lt;/element&gt;</span>
+      <span class="nt">&lt;optional&gt;&lt;element</span> <span class="na">name=</span><span class="s">&quot;alias&quot;</span><span class="nt">&gt;&lt;text/&gt;&lt;/element&gt;&lt;/optional&gt;</span>
+    <span class="nt">&lt;/element&gt;</span>
+  <span class="nt">&lt;/oneOrMore&gt;</span>
+<span class="nt">&lt;/element&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="../../index.html" title="index">
+          <img class="logo" src="../../_static/big_c.png" alt="Logo"/>
+        </a></p><div class="sphinxlocaltoc">
+    <h3><a href="../../index.html">Page contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#"><tt class="docutils literal"><span class="pre">Archetypes</span></tt> - List of available agent archetypes (required once)</a><ul>
+<li><a class="reference internal" href="#example">Example</a></li>
+<li><a class="reference internal" href="#grammar-definition">Grammar Definition</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div class="sphinxprev">
+    <h4>Previous page</h4>
+    <p class="topless"><a href="commodity.html"
+                          title="Previous page">&larr; <tt class="docutils literal"><span class="pre">Commodity</span></tt> - Commodity Priority  (optional, may appear multiple times)</a></p>
+  </div>
+  <div class="sphinxnext">
+    <h4>Next page</h4>
+    <p class="topless"><a href="facility.html"
+                          title="Next page">&rarr; <tt class="docutils literal"><span class="pre">Facility</span></tt> - Facility Prototypes (at least one required)</a></p>
+  </div>
+  <div class="sphinxlocaltoc">
+  <h3>Useful Pages</h3>
+    <ul><li><ul>
+    <li><a href="http://fuelcycle.org/user/main.html">User Guide</a></li>
+    <li><a href="http://fuelcycle.org/module/main.html">Archetype Developer Guide</a></li>
+    <li><a href="http://fuelcycle.org/cyclus/api/">Cyclus API Documentation</a></li>
+    <li><a href="http://fuelcycle.org/cycamore/api/">Cycamore API Documentation</a></li>
+    <li><a href="http://fuelcycle.org/basics/glossary.html">Glossary</a></li>
+    <li><a href="mailto:cyclus-users+subscribe@googlegroups.com?subject=Subscribe&body=Send this message to subscribe to the list">Join</a> the 
+      <a href="https://groups.google.com/forum/#!forum/cyclus-users" target="_blank"><span style="font-variant:small-caps">Cyclus</span> Users</a> mailing list.
+    <li><a href="mailto:cyclus-dev+subscribe@googlegroups.com?subject=Subscribe&body=Send this message to subscribe to the list">Join</a> the 
+      <a href="https://groups.google.com/forum/#!forum/cyclus-users" target="_blank"><span style="font-variant:small-caps">Cyclus</span> Developers</a> mailing list.
+    </ul></li></ul>
+  </div>
+    
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <h3>Get Cyclus</h3>
+    <br>
+    Current version: <b>1.0.0</b>
+    <br><br>
+    Install:
+    <div class="highlight-bash" style="width:97.5%"><div class="highlight"><pre><span class="nv">$ </span>conda install cyclus cycamore</pre></div></div>
+    Get the Source:
+    <ul><li><ul>
+          <li><a href="https://github.com/cyclus/cyclus">Cyclus</a></li>
+          <li><a href="https://github.com/cyclus/cycamore">Cycamore</a></li>
+    </ul></li></ul>
+    <h3>Acknowledgements</h3>
+    The Cyclus project has received support from:
+    <br />
+    <a href="http://www.neup.gov" target="_blank"><img src="../../_static/neup_logo_large.png" width=170px></a>
+    <br />
+    <br />
+
+    In addition, some of the students working on Cyclus have received support from:
+    <br />
+    <a href="http://www.anl.gov" target="_blank"><img src="../../_static/AnlLogo.png" height=100px></a>
+    <a href="http://www.nrc.gov" target="_blank"><img src="../../_static/USNRC.png" height=100px></a>
+    <br />
+    <a href="http://www.neup.gov" target="_blank"><img src="../../_static/neup_logo_large.png" width=170px></a>
+    <br />
+    <a href="http://www.nsf.gov" target="_blank"><img src="../../_static/nsf_logo.png" height=100px></a>
+    <a href="http://www.wisc.edu" target="_blank"><img src="../../_static/crest.png" height=100px></a>
+
+    
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="relbar-bottom">
+        
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="facility.html" title="Facility - Facility Prototypes (at least one required)"
+             >next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="commodity.html" title="Commodity - Commodity Priority (optional, may appear multiple times)"
+             >previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../../index.html">Home</a> &raquo;</li>
+
+          <li><a href="../main.html" ><span style="font-variant:small-caps;">Cyclus</span> User Guide</a> &raquo;</li>
+          <li><a href="../writing_input.html" >Writing a <span style="font-variant:small-caps;">Cyclus</span> Input File</a> &raquo;</li> 
+      </ul>
+    </div>
+    </div>
+
+    <div class="footer">
+        &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
+      Last updated on May 30, 2014.
+    </div><script type="text/javascript">
+    if(ga_enabled){
+        document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");
+        document.write("Click <button title=\"set cookie to disable analytics for this site\" class=\"link\" onclick=\"$.cookie('disable-ga', 'true', {expires: 3650, path: '/'}); window.location.reload(); return false; \">here</button> to disable analytics for this site.");
+        document.write("</div>");
+    }else{
+        document.write("<div class=\"footer\">Google Analytics has been disabled. ");
+        document.write("Click <button title=\"set cookie to re-enable analytics for this site\" class=\"link\" onclick=\"$.cookie('disable-ga', null, {path: '/'}); window.location.reload(); return false; \">here</button> to re-enable analytics for this site.");
+    };
+</script>
+    <!-- cloud_sptheme 1.4 -->
+  </body>
+</html>

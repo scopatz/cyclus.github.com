@@ -1,6 +1,7 @@
 
 
 
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -9,15 +10,16 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>CEP 17 - Resource Tracking and Interfaces Re-Re-Redo &mdash; Cyclus Home</title>
+    <title>CEP 17 - Resource Tracking and Interfaces Re-Re-Redo &mdash; Home</title>
     
-    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/cyclus.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '(0.4.3-433-gdf86f75)',
+        VERSION:     '(1.0.0-rc3-59-g7a5d0ac)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -26,34 +28,32 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="Cyclus Home" href="../index.html" />
+    <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../_static/cloud.js"></script>
+    <link rel="shortcut icon" href="../_static/big_c.ico"/>
+    <link rel="top" title="Home" href="../index.html" />
     <link rel="up" title="Cyclus Enhancement Proposals" href="cep0.html" />
     <link rel="next" title="CEP 18 - Dynamic Resource Exchange Procedure" href="cep18.html" />
-    <link rel="prev" title="CEP 3 - Cyclus Release Procedure" href="cep3.html" />
-   
-<script type="text/javascript">
-
+    <link rel="prev" title="CEP 3 - Cyclus Release Procedure" href="cep3.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1"><script type="text/javascript">
+var ga_enabled = !$.cookie('disable-ga');
+if(ga_enabled){
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-12222727-2']);
+  _gaq.push(['_setCookiePath', '/']);
+  _gaq.push(['_setDetectFlash', false]);
   _gaq.push(['_trackPageview']);
-
   (function() {
     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
-
+}
 </script>
-
   </head>
   <body>
-<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
-  <a href="http://cyclus.github.com">
-    <img src="../_static/logo1.png"/>
-  </a>
-</div>
-
-
+    <div class="relbar-top">
+        
     <div class="related">
       <h3>Navigation</h3>
       <ul>
@@ -61,86 +61,21 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
           <a href="cep18.html" title="CEP 18 - Dynamic Resource Exchange Procedure"
-             accesskey="N">next</a> |</li>
+             accesskey="N">next</a> &nbsp; &nbsp;</li>
         <li class="right" >
           <a href="cep3.html" title="CEP 3 - Cyclus Release Procedure"
-             accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">Cyclus Home</a> &raquo;</li>
-          <li><a href="cep0.html" accesskey="U">Cyclus Enhancement Proposals</a> &raquo;</li> 
+             accesskey="P">previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">Home</a> &raquo;</li>
+
+          <li><a href="cep0.html" accesskey="U"><span style="font-variant:small-caps;">Cyclus</span> Enhancement Proposals</a> &raquo;</li> 
       </ul>
     </div>
-      <div class="sphinxsidebar">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">CEP 17 - Resource Tracking and Interfaces Re-Re-Redo</a><ul>
-<li><a class="reference internal" href="#abstract">Abstract</a></li>
-<li><a class="reference internal" href="#motivation-and-rationale">Motivation and Rationale</a></li>
-<li><a class="reference internal" href="#specification">Specification</a><ul>
-<li><a class="reference internal" href="#data-tracking">Data Tracking</a></li>
-<li><a class="reference internal" href="#output-schema">Output Schema</a></li>
-<li><a class="reference internal" href="#resources-material-api">Resources/Material API</a><ul>
-<li><a class="reference internal" href="#resource-class">Resource class</a></li>
-<li><a class="reference internal" href="#material-class">Material class</a></li>
-<li><a class="reference internal" href="#genericresource-class">GenericResource class</a></li>
-<li><a class="reference internal" href="#composition-class">Composition class</a></li>
-<li><a class="reference internal" href="#compmath-namespace">compmath namespace</a></li>
-<li><a class="reference internal" href="#matquery-class">MatQuery class</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#other-changes">Other Changes</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#backwards-compatibility">Backwards Compatibility</a></li>
-<li><a class="reference internal" href="#other-notes">Other Notes</a><ul>
-<li><a class="reference internal" href="#current-implementation-bugs">Current implementation bugs</a></li>
-<li><a class="reference internal" href="#backends-and-performance">Backends and Performance</a></li>
-<li><a class="reference internal" href="#decay-initiation">Decay Initiation</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="cep3.html"
-                        title="previous chapter">CEP 3 - Cyclus Release Procedure</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="cep18.html"
-                        title="next chapter">CEP 18 - Dynamic Resource Exchange Procedure</a></p>
-  <h3>Useful Pages</h3>
-    <li><a href="http://cyclus.github.com/basics/glossary.html">Glossary</a></li>
-    <li><a href="http://cyclus.github.com/basics/roadmap.html">Roadmap</a></li>
-    <li><a href="https://github.com/cyclus">Source Code</a></li>
-    <li><a href="http://fuelcycle.org/cyclus/api/">Cyclus Core Documentation</a></li>
-    <li><a href="http://fuelcycle.org/cycamore/api/">Cycamore Documentation</a></li>
-    
-<div id="searchbox" style="display: none">
-  <h3>Quick search</h3>
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-    <h3>Acknowledgements</h3>
-    Support for this research has included funding received from:
-    <img src=/_images/neup_logo_large.jpg width=170px>
-    <img src=/_images/AnlLogo.png height=100px>
-    <img src=/_images/USNRC.gif height=100px>
-    <img src=/_images/nsf_logo.jpg height=100px>
-    <img src=/_images/crest.png height=100px>
-
-    
-
-        </div>
-      </div>
+    </div>
+  
 
     <div class="document">
       <div class="documentwrapper">
@@ -175,7 +110,7 @@
 <ol class="arabic">
 <li><p class="first"><strong>Resource tracking:</strong></p>
 <p>Several types of analysis are made difficult to impossible by the
-incomplete resource history currently recorded by Cyclus simulations. Such
+incomplete resource history currently recorded by <span style="font-variant:small-caps;">Cyclus</span> simulations. Such
 analyses include agent time-dependent isotopic inventories and
 proliferation-resistance material handling. It is proposed that all
 resource state and state transitions will be tracked (as opposed to just
@@ -199,7 +134,7 @@ resource interface complexity. Because changes to resource tracking will be
 intrusive to the current resource interfaces, performing these changes
 together is desirable.</p>
 <p><strong>Resouce Tracking:</strong></p>
-<p>Currently Cyclus only tracks the state of resources when they are transacted.
+<p>Currently <span style="font-variant:small-caps;">Cyclus</span> only tracks the state of resources when they are transacted.
 This limited tracking is problematic for certain kinds of output
 analysis.  Examples:</p>
 <ol class="arabic simple">
@@ -249,14 +184,14 @@ the classes be more modular/maintainable for the core developers.  Some
 basic material/composition query/manipulation wrapper(s) can be made
 setting the stage for the further development of a &#8220;toolkit&#8221; for dealing
 with materials and compositions.  External developers can easily create
-toolkits for others to use that don&#8217;t even need to be a part of the Cyclus
+toolkits for others to use that don&#8217;t even need to be a part of the <span style="font-variant:small-caps;">Cyclus</span>
 core. This makes it easier to ensure that material/composition inner
 workings remain pure and correct despite rapid or significant changes to
 the kitchen-sink API that will likely evolve.</p>
 </div>
 <div class="section" id="specification">
 <h2>Specification<a class="headerlink" href="#specification" title="Permalink to this headline">¶</a></h2>
-<p>A reference implementation exists for both the cyclus core and cycamore.
+<p>A reference implementation exists for both the <span style="font-variant:small-caps;">Cyclus</span> core and cycamore.
 These reside at <a class="reference external" href="https://github.com/rwcarlsen/cyclus">https://github.com/rwcarlsen/cyclus</a> (&#8220;res&#8221; branch) and
 <a class="reference external" href="https://github.com/rwcarlsen/cycamore">https://github.com/rwcarlsen/cycamore</a> (&#8220;res&#8221; branch) respectively.  Further
 implementation details can be found there.</p>
@@ -318,7 +253,7 @@ differing &#8220;quality&#8221; field values.</em></p>
 <h3>Resources/Material API<a class="headerlink" href="#resources-material-api" title="Permalink to this headline">¶</a></h3>
 <p>The Material and Composition classes will be designed to provide only the
 minimal interface to support basic manipulation and tracking required by the
-cyclus core.  All more complex operations will be implemented in helper
+<span style="font-variant:small-caps;">Cyclus</span> core.  All more complex operations will be implemented in helper
 classes (like MatQuery). A summary of each of these classes&#8217; new role and
 its public interfaces are described below.</p>
 <div class="section" id="resource-class">
@@ -716,7 +651,7 @@ throw-away/create material.</li>
 <div class="section" id="current-implementation-bugs">
 <h3>Current implementation bugs<a class="headerlink" href="#current-implementation-bugs" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>The current (before this CEP) Cyclus core does not correctly record
+<li>The current (before this CEP) <span style="font-variant:small-caps;">Cyclus</span> core does not correctly record
 decayed compositions in the output database. This makes comparing
 simulation output size and performance with that of this CEP&#8217;s proposed
 changes not exactly &#8220;fair&#8221;.</li>
@@ -728,7 +663,7 @@ changes not exactly &#8220;fair&#8221;.</li>
 will cause significant slowdown using an Sqlite backend database <em>when
 material decay is frequent</em>.  This slowdown prompted the development of a
 faster HDF5 alternative (currently merged into develop branch).</p>
-<p>Basic performance stats were collected by running a full cyclus
+<p>Basic performance stats were collected by running a full <span style="font-variant:small-caps;">Cyclus</span>
 inpro_low.xml simulation <tt class="docutils literal"><span class="pre">time</span> <span class="pre">cyclus</span> <span class="pre">[path/to/]inpro_low.xml</span></tt>.  For
 reference:</p>
 <ul class="simple">
@@ -737,7 +672,7 @@ reference:</p>
 <li>2200 decay calculations</li>
 <li>~28,000,000 resource object state changes recorded (with CEP implemented)</li>
 </ul>
-<p>Cyclus was built with CMake&#8217;s &#8220;RELEASE&#8221; mode.  Results reported are
+<p><span style="font-variant:small-caps;">Cyclus</span> was built with CMake&#8217;s &#8220;RELEASE&#8221; mode.  Results reported are
 approximate and specific to my office computer.</p>
 <p>Without proposed changes (decayed compositions are not recorded - current bug):</p>
 <table border="1" class="docutils">
@@ -825,8 +760,117 @@ here <a class="reference external" href="https://github.com/cyclus/cyclus/issues
           </div>
         </div>
       </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="../index.html" title="index">
+          <img class="logo" src="../_static/big_c.png" alt="Logo"/>
+        </a></p><div class="sphinxlocaltoc">
+    <h3><a href="../index.html">Page contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">CEP 17 - Resource Tracking and Interfaces Re-Re-Redo</a><ul>
+<li><a class="reference internal" href="#abstract">Abstract</a></li>
+<li><a class="reference internal" href="#motivation-and-rationale">Motivation and Rationale</a></li>
+<li><a class="reference internal" href="#specification">Specification</a><ul>
+<li><a class="reference internal" href="#data-tracking">Data Tracking</a></li>
+<li><a class="reference internal" href="#output-schema">Output Schema</a></li>
+<li><a class="reference internal" href="#resources-material-api">Resources/Material API</a><ul>
+<li><a class="reference internal" href="#resource-class">Resource class</a></li>
+<li><a class="reference internal" href="#material-class">Material class</a></li>
+<li><a class="reference internal" href="#genericresource-class">GenericResource class</a></li>
+<li><a class="reference internal" href="#composition-class">Composition class</a></li>
+<li><a class="reference internal" href="#compmath-namespace">compmath namespace</a></li>
+<li><a class="reference internal" href="#matquery-class">MatQuery class</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#other-changes">Other Changes</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#backwards-compatibility">Backwards Compatibility</a></li>
+<li><a class="reference internal" href="#other-notes">Other Notes</a><ul>
+<li><a class="reference internal" href="#current-implementation-bugs">Current implementation bugs</a></li>
+<li><a class="reference internal" href="#backends-and-performance">Backends and Performance</a></li>
+<li><a class="reference internal" href="#decay-initiation">Decay Initiation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div class="sphinxprev">
+    <h4>Previous page</h4>
+    <p class="topless"><a href="cep3.html"
+                          title="Previous page">&larr; CEP 3 - <span style="font-variant:small-caps;">Cyclus</span> Release Procedure</a></p>
+  </div>
+  <div class="sphinxnext">
+    <h4>Next page</h4>
+    <p class="topless"><a href="cep18.html"
+                          title="Next page">&rarr; CEP 18 - Dynamic Resource Exchange Procedure</a></p>
+  </div>
+  <div class="sphinxlocaltoc">
+  <h3>Useful Pages</h3>
+    <ul><li><ul>
+    <li><a href="http://fuelcycle.org/user/main.html">User Guide</a></li>
+    <li><a href="http://fuelcycle.org/module/main.html">Archetype Developer Guide</a></li>
+    <li><a href="http://fuelcycle.org/cyclus/api/">Cyclus API Documentation</a></li>
+    <li><a href="http://fuelcycle.org/cycamore/api/">Cycamore API Documentation</a></li>
+    <li><a href="http://fuelcycle.org/basics/glossary.html">Glossary</a></li>
+    <li><a href="mailto:cyclus-users+subscribe@googlegroups.com?subject=Subscribe&body=Send this message to subscribe to the list">Join</a> the 
+      <a href="https://groups.google.com/forum/#!forum/cyclus-users" target="_blank"><span style="font-variant:small-caps">Cyclus</span> Users</a> mailing list.
+    <li><a href="mailto:cyclus-dev+subscribe@googlegroups.com?subject=Subscribe&body=Send this message to subscribe to the list">Join</a> the 
+      <a href="https://groups.google.com/forum/#!forum/cyclus-users" target="_blank"><span style="font-variant:small-caps">Cyclus</span> Developers</a> mailing list.
+    </ul></li></ul>
+  </div>
+    
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <h3>Get Cyclus</h3>
+    <br>
+    Current version: <b>1.0.0</b>
+    <br><br>
+    Install:
+    <div class="highlight-bash" style="width:97.5%"><div class="highlight"><pre><span class="nv">$ </span>conda install cyclus cycamore</pre></div></div>
+    Get the Source:
+    <ul><li><ul>
+          <li><a href="https://github.com/cyclus/cyclus">Cyclus</a></li>
+          <li><a href="https://github.com/cyclus/cycamore">Cycamore</a></li>
+    </ul></li></ul>
+    <h3>Acknowledgements</h3>
+    The Cyclus project has received support from:
+    <br />
+    <a href="http://www.neup.gov" target="_blank"><img src="../_static/neup_logo_large.png" width=170px></a>
+    <br />
+    <br />
+
+    In addition, some of the students working on Cyclus have received support from:
+    <br />
+    <a href="http://www.anl.gov" target="_blank"><img src="../_static/AnlLogo.png" height=100px></a>
+    <a href="http://www.nrc.gov" target="_blank"><img src="../_static/USNRC.png" height=100px></a>
+    <br />
+    <a href="http://www.neup.gov" target="_blank"><img src="../_static/neup_logo_large.png" width=170px></a>
+    <br />
+    <a href="http://www.nsf.gov" target="_blank"><img src="../_static/nsf_logo.png" height=100px></a>
+    <a href="http://www.wisc.edu" target="_blank"><img src="../_static/crest.png" height=100px></a>
+
+    
+
+        </div>
+      </div>
       <div class="clearer"></div>
     </div>
+    <div class="relbar-bottom">
+        
     <div class="related">
       <h3>Navigation</h3>
       <ul>
@@ -834,19 +878,34 @@ here <a class="reference external" href="https://github.com/cyclus/cyclus/issues
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
           <a href="cep18.html" title="CEP 18 - Dynamic Resource Exchange Procedure"
-             >next</a> |</li>
+             >next</a> &nbsp; &nbsp;</li>
         <li class="right" >
           <a href="cep3.html" title="CEP 3 - Cyclus Release Procedure"
-             >previous</a> |</li>
-        <li><a href="../index.html">Cyclus Home</a> &raquo;</li>
-          <li><a href="cep0.html" >Cyclus Enhancement Proposals</a> &raquo;</li> 
+             >previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">Home</a> &raquo;</li>
+
+          <li><a href="cep0.html" ><span style="font-variant:small-caps;">Cyclus</span> Enhancement Proposals</a> &raquo;</li> 
       </ul>
     </div>
+    </div>
+
     <div class="footer">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on May 07, 2014.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
-    </div>
+      Last updated on May 30, 2014.
+    </div><script type="text/javascript">
+    if(ga_enabled){
+        document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");
+        document.write("Click <button title=\"set cookie to disable analytics for this site\" class=\"link\" onclick=\"$.cookie('disable-ga', 'true', {expires: 3650, path: '/'}); window.location.reload(); return false; \">here</button> to disable analytics for this site.");
+        document.write("</div>");
+    }else{
+        document.write("<div class=\"footer\">Google Analytics has been disabled. ");
+        document.write("Click <button title=\"set cookie to re-enable analytics for this site\" class=\"link\" onclick=\"$.cookie('disable-ga', null, {path: '/'}); window.location.reload(); return false; \">here</button> to re-enable analytics for this site.");
+    };
+</script>
+    <!-- cloud_sptheme 1.4 -->
   </body>
 </html>
