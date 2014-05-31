@@ -18,7 +18,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     'b&#39;(1.0.0-rc3-55-g09cdf9c)&#39;',
+        VERSION:     '(1.0.0-rc4-3-g52c5186)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -112,7 +112,7 @@ encompass an information gathering procedure, providing generic information to
 any market exchange solution procedure. The final phase is modular in that any
 algorithm can be used to solve the exchange. This modular phase takes the place
 of the current implementation of MarketModels. The procedure is informed by
-agent-based supply chain modeling literature <a class="reference internal" href="#julka-agent-based-2002" id="id1">[JSK02]</a> with
+agent-based supply chain modeling literature <a class="reference internal" href="#julka-agent-based-2002" id="id1">[1]</a> with
 modifications as required for our nuclear-engineering domain specific
 information.</p>
 </div>
@@ -184,7 +184,7 @@ with specific, defined agency.</p>
 <p>Supply-demand determination at any given time step occurs in nominally three
 steps, or <strong>phases</strong>, and the associated terminology is taken from previous
 supply chain agent-based modeling work
-<a class="reference internal" href="#julka-agent-based-2002" id="id2">[JSK02]</a>. Importantly, this information-gathering step is
+<a class="reference internal" href="#julka-agent-based-2002" id="id2">[1]</a>. Importantly, this information-gathering step is
 agnostic as to the actual matching algorithm used, it is concerned only with
 querying the current status of supply and demand and facility preference thereof
 in the simulation.</p>
@@ -220,7 +220,7 @@ commodities it receives for a given time step.</p>
 profile, effectively providing no information. In general, a requester may have
 more than one request (nodes in Figure 1) per commodity. A prime example is a
 reactor that chooses to requests fuel assemblies, of which they request many.</p>
-<a class="reference internal image-reference" href="../_images/cep-0018-3.png"><img alt="../_images/cep-0018-3.png" class="align-center" src="../_images/cep-0018-3.png" /></a>
+<a class="reference internal image-reference" href="../_images/cep-0018-3.png"><img alt="../_images/cep-0018-3.png" class="align-center" src="../_images/cep-0018-3.png" style="width: 238.0px; height: 397.0px;" /></a>
 <p><strong>Figure 1:</strong> A Requester during the RFB Phase, where a collection of requests
 (as nodes) is shown.</p>
 <p>The second phase allows suppliers to <strong>respond</strong> to the set of consumption
@@ -248,7 +248,7 @@ capacity, and define a translation function. The translation function takes a
 request as an argument and returns a value in the units of the constraint. A
 prime example is an enrichment facility, which may be able to enrich many
 orders, but is constrained by the total SWUs it can provide.</p>
-<a class="reference internal image-reference" href="../_images/cep-0018-4.png"><img alt="../_images/cep-0018-4.png" class="align-center" src="../_images/cep-0018-4.png" /></a>
+<a class="reference internal image-reference" href="../_images/cep-0018-4.png"><img alt="../_images/cep-0018-4.png" class="align-center" src="../_images/cep-0018-4.png" style="width: 228.5px; height: 398.0px;" /></a>
 <p><strong>Figure 2:</strong> A Supplier during the RRFB Phase, where a collection of commodity
 supplies (as nodes) is shown.</p>
 <p>The final phase of the information gathering procedure allows consumer
@@ -282,7 +282,7 @@ ground. Another would be to move the paradigm more towards economics and have
 the suppliers set the cost of a transaction, which they could tailor to the
 requester. However, this draws in a whole other field of bidding that requires
 much more rigor and thought as to its validity and implementation.</p>
-<a class="reference internal image-reference" href="../_images/cep-0018-5.png"><img alt="../_images/cep-0018-5.png" class="align-center" src="../_images/cep-0018-5.png" /></a>
+<a class="reference internal image-reference" href="../_images/cep-0018-5.png"><img alt="../_images/cep-0018-5.png" class="align-center" src="../_images/cep-0018-5.png" style="width: 328.5px; height: 271.0px;" /></a>
 <p><strong>Figure 3:</strong> A supplier-consumer pair with request isotopics, response
 isotopics, and an associated preference.</p>
 <p>Institutions and Regions in <span style="font-variant:small-caps;">Cyclus</span> are provided in order to add granularity to
@@ -300,7 +300,7 @@ preferences among possible suppliers based on the supplier&#8217;s quality of
 product. Because this agency is encapsulated for each agent, it is possible to
 define strategies that can be attached or detached to the agents at
 run-time. Such strategies are an example of the Strategy design pattern
-<a class="reference internal" href="#vlissides-design-1995" id="id3">[VHJG95]</a>.</p>
+<a class="reference internal" href="#vlissides-design-1995" id="id3">[2]</a>.</p>
 </div>
 <div class="section" id="institutional-agency">
 <h4>Institutional Agency<a class="headerlink" href="#institutional-agency" title="Permalink to this headline">¶</a></h4>
@@ -532,13 +532,13 @@ requests</li>
 <p id="bibtex-bibliography-cep/cep18-0"><table class="docutils citation" frame="void" id="julka-agent-based-2002" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[JSK02]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> N.&nbsp;Julka, R.&nbsp;Srinivasan, and I.&nbsp;Karimi. Agent-based supply chain management-1: framework. <em>Computers &amp; Chemical Engineering</em>, 26(12):1755–1769, 2002. <a class="reference external" href="http://www.sciencedirect.com/science/article/pii/S0098135402001503">URL: http://www.sciencedirect.com/science/article/pii/S0098135402001503</a>.</td></tr>
+<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> <span class="last"><span><span><span><span><span><span><span>N.</span><span>&nbsp;</span></span><span>Julka</span></span><span>, </span><span><span><span>R.</span><span>&nbsp;</span></span><span>Srinivasan</span></span></span><span>, and </span><span><span><span>I.</span><span>&nbsp;</span></span><span>Karimi</span></span></span><span>.</span></span><span> </span><span><span>Agent-based supply chain management-1: framework</span><span>.</span></span></span><span> </span><span><span><em><span>Computers &amp; Chemical Engineering</span></em><span>, </span><span><span><span>26</span><span><span>(</span><span>12</span><span>)</span></span><span>:</span></span><span>1755–1769</span></span></span><span>, </span><span>2002</span><span>.</span></span></span></td></tr>
 </tbody>
 </table>
 <table class="docutils citation" frame="void" id="vlissides-design-1995" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id3">[VHJG95]</a></td><td>John Vlissides, R&nbsp;Helm, R&nbsp;Johnson, and E&nbsp;Gamma. Design patterns: elements of reusable object-oriented software. <em>Reading: Addison-Wesley</em>, 1995.</td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id3">[2]</a></td><td><span class="first last"><span><span><span><span><span><span><span>John</span><span> </span></span><span>Vlissides</span></span><span>, </span><span><span><span>R</span><span>&nbsp;</span></span><span>Helm</span></span><span>, </span><span><span><span>R</span><span>&nbsp;</span></span><span>Johnson</span></span></span><span>, and </span><span><span><span>E</span><span>&nbsp;</span></span><span>Gamma</span></span></span><span>.</span></span><span> </span><span><span>Design patterns: elements of reusable object-oriented software</span><span>.</span></span></span><span> </span><span><em><span>Reading: Addison-Wesley</span></em><span>, </span><span>1995</span><span>.</span></span></span></td></tr>
 </tbody>
 </table>
 </p>
