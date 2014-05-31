@@ -1,7 +1,6 @@
 
 
 
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -19,7 +18,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '(1.0.0-rc3-59-g7a5d0ac)',
+        VERSION:     '(1.0.0-rc4-3-g52c5186)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -479,10 +478,11 @@ defining equivalence trivially as &#8220;the same object in memory&#8221; or poi
 equality.  Some discussion regarding this can be found in comments here:
 <a class="reference external" href="https://github.com/cyclus/cyclus/issues/484">https://github.com/cyclus/cyclus/issues/484</a>.  Of particular concern w.r.t.
 the previous equivalence notion is this:</p>
-<div class="highlight-python"><pre>Also - another potential issue I thought of: Repeatedly calling multiple
+<div class="highlight-python"><div class="highlight"><pre>Also - another potential issue I thought of: Repeatedly calling multiple
 consecutive small differences negligible could result in compositions
 staying the same that would have otherwise been appreciably different if
-each small change were allowed to propogate as a new composition.</pre>
+each small change were allowed to propogate as a new composition.
+</pre></div>
 </div>
 <p>While there are definitely uses for material/composition equivalence, they
 should/will not be used by the core (for now) and best belong in MatQuery
@@ -895,7 +895,7 @@ here <a class="reference external" href="https://github.com/cyclus/cyclus/issues
 
     <div class="footer">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on May 30, 2014.
+      Last updated on May 31, 2014.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");

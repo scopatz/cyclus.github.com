@@ -1,7 +1,6 @@
 
 
 
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -19,7 +18,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '(1.0.0-rc3-59-g7a5d0ac)',
+        VERSION:     '(1.0.0-rc4-3-g52c5186)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -139,8 +138,9 @@ always be the &#8216;stable&#8217; or &#8216;production&#8217; release of <span 
 and/or &#8220;develop&#8221; branches before you merge changes into your
 corresponding local branch. Consider doing a rebase pull instead of
 a regular pull or &#8216;fetch and merge&#8217;.  For example:</p>
-<div class="highlight-python"><pre>git checkout develop
-git pull --rebase upstream develop</pre>
+<div class="highlight-python"><div class="highlight"><pre>git checkout develop
+git pull --rebase upstream develop
+</pre></div>
 </div>
 </li>
 </ul>
@@ -151,8 +151,9 @@ rebasing the topic branch onto the &#8220;master&#8221; and/or &#8220;develop&#8
 after <em>pulls</em> from the upstream repository rather than merging the pulled
 changes into your branch.  This will help maintain a more linear (and clean)
 history.  <em>Please see caution about rebasing below</em>.  For example:</p>
-<div class="highlight-python"><pre>git checkout [your topic branch]
-git rebase develop</pre>
+<div class="highlight-python"><div class="highlight"><pre>git checkout [your topic branch]
+git rebase develop
+</pre></div>
 </div>
 </li>
 </ul>
@@ -164,23 +165,25 @@ git rebase develop</pre>
 branch and then run the tests built during that process.</p>
 <p>For the <span style="font-variant:small-caps;">Cyclus</span> core, the tests are run using the CyclusUnitTestDriver (at
 the moment, <tt class="docutils literal"><span class="pre">`make</span> <span class="pre">test`</span></tt> is insufficient). For example</p>
-<div class="highlight-python"><pre>mkdir build
+<div class="highlight-python"><div class="highlight"><pre>mkdir build
 mkdir install
 cd build
 cmake ../src -DCMAKE_INSTALL_PREFIX=../install
 make
 make install
-../install/cyclus/bin/CyclusUnitTestDriver</pre>
+../install/cyclus/bin/CyclusUnitTestDriver
+</pre></div>
 </div>
 <p>In Cycamore, the additional module repository, the tests are run in an exactly
 analogous way, but using the CycamoreUnitTestDriver. For example</p>
-<div class="highlight-python"><pre>mkdir build
+<div class="highlight-python"><div class="highlight"><pre>mkdir build
 mkdir install
 cd build
 cmake ../src -DCMAKE_INSTALL_PREFIX=../install
 make
 make install
-../install/cycamore/bin/CycamoreUnitTestDriver</pre>
+../install/cycamore/bin/CycamoreUnitTestDriver
+</pre></div>
 </div>
 <p>In addition to the CycamoreUnitTestDriver, a suite of input files can be run and
 tested using the run_inputs.py script that is configured, built, and installed
@@ -188,7 +191,8 @@ with Cycamore. It relies on the input files that are part of your Cycamore
 repository, and only succeeds for input files that are correct (some may have
 known issues. See the issue list in Cycamore for details.) To run the example
 input files,</p>
-<div class="highlight-python"><pre>python ../install/cycamore/bin/run_inputs.py</pre>
+<div class="highlight-python"><div class="highlight"><pre>python ../install/cycamore/bin/run_inputs.py
+</pre></div>
 </div>
 </div>
 <div class="section" id="making-a-pull-request">
@@ -217,8 +221,9 @@ you can reopen the review yourself with the button made available to you.</p>
 <li><p class="first">Build, install, and test it. If you have added the remote repository as
 a remote you can check it out and merge it with the current develop
 branch thusly,</p>
-<div class="highlight-python"><pre>git checkout -b remote_name/branch_name
-git merge develop</pre>
+<div class="highlight-python"><div class="highlight"><pre>git checkout -b remote_name/branch_name
+git merge develop
+</pre></div>
 </div>
 </li>
 <li><p class="first">Look over the code.</p>
@@ -238,8 +243,9 @@ acceptance process.</p>
 default. However, if that button is unavailable, you&#8217;ve made minor
 local changes to the pulled branch, or you just want to do it from the
 command line, make sure your merge is a non-fast-forward merge. For example:</p>
-<div class="highlight-python"><pre>git checkout develop
-git merge --no-ff remote_name/branch_name -m "A message""</pre>
+<div class="highlight-python"><div class="highlight"><pre>git checkout develop
+git merge --no-ff remote_name/branch_name -m &quot;A message&quot;&quot;
+</pre></div>
 </div>
 </li>
 </ul>
@@ -375,7 +381,7 @@ git merge --no-ff remote_name/branch_name -m "A message""</pre>
 
     <div class="footer">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on May 30, 2014.
+      Last updated on May 31, 2014.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");

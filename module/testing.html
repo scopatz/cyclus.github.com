@@ -1,7 +1,6 @@
 
 
 
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -19,7 +18,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '(1.0.0-rc3-59-g7a5d0ac)',
+        VERSION:     '(1.0.0-rc4-3-g52c5186)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -114,9 +113,9 @@ lines must be added to your <tt class="docutils literal"><span class="pre">*_tes
 outline in <a class="reference internal" href="cmake.html#cmake-build"><em>Building Modules with CMake</em></a> adds the following lines to
 <tt class="docutils literal"><span class="pre">tutorial_facility_tests.cc</span></tt> to get all of the free <tt class="docutils literal"><span class="pre">cyclus::Agent</span></tt> and
 <tt class="docutils literal"><span class="pre">cyclus::Facility</span></tt> unit tests:</p>
-<div class="highlight-python"><pre>#include "tutorial_facility.h"
-#include "facility_tests.h"
-#include "agent_tests.h"
+<div class="highlight-python"><div class="highlight"><pre>#include &quot;tutorial_facility.h&quot;
+#include &quot;facility_tests.h&quot;
+#include &quot;agent_tests.h&quot;
 
 #ifndef CYCLUS_AGENT_TESTS_CONNECTED
 int ConnectAgentTests();
@@ -132,7 +131,8 @@ INSTANTIATE_TEST_CASE_P(TutorialFac, FacilityTests,
                         ::testing::Values(&amp;TutorialFacilityConstructor));
 
 INSTANTIATE_TEST_CASE_P(TutorialFac, AgentTests,
-                        ::testing::Values(&amp;TutorialFacilityConstructor));</pre>
+                        ::testing::Values(&amp;TutorialFacilityConstructor));
+</pre></div>
 </div>
 <p>The above lines can be specialized to your case by replacing <tt class="docutils literal"><span class="pre">TutorialFac</span></tt> with
 an appropriate moniker (anything that uniquely identifies your unit test
@@ -151,7 +151,7 @@ track of how many <a class="reference internal" href="../basics/glossary.html#te
 install them on your system.</p>
 <p>Make a file called <tt class="docutils literal"><span class="pre">tick_tracker.h</span></tt> in the <tt class="docutils literal"><span class="pre">src</span></tt> directory that has the
 following lines:</p>
-<div class="highlight-cpp"><pre>#include "cyclus.h"
+<div class="highlight-cpp"><div class="highlight"><pre>#include &quot;cyclus.h&quot;
 
 class TickTracker : public cyclus::Facility {
  public:
@@ -170,7 +170,8 @@ class TickTracker : public cyclus::Facility {
 
  private:
   int n_ticks_;
-};</pre>
+};
+</pre></div>
 </div>
 <p>Next, make a file called <tt class="docutils literal"><span class="pre">tick_tracker.cc</span></tt> in the <tt class="docutils literal"><span class="pre">src</span></tt> directory that has the
 following lines:</p>
@@ -240,7 +241,7 @@ file is), run:</p>
 </pre></div>
 </div>
 <p>Which results in:</p>
-<div class="highlight-python"><pre>[==========] Running 8 tests from 3 test cases.
+<div class="highlight-python"><div class="highlight"><pre>[==========] Running 8 tests from 3 test cases.
 [----------] Global test environment set-up.
 [----------] 1 test from TickTracker
 [ RUN      ] TickTracker.track_ticks
@@ -269,7 +270,8 @@ file is), run:</p>
 
 [----------] Global test environment tear-down
 [==========] 8 tests from 3 test cases ran. (86 ms total)
-[  PASSED  ] 8 tests.</pre>
+[  PASSED  ] 8 tests.
+</pre></div>
 </div>
 </div>
 </div>
@@ -392,7 +394,7 @@ file is), run:</p>
 
     <div class="footer">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on May 30, 2014.
+      Last updated on May 31, 2014.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");

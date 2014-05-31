@@ -1,7 +1,6 @@
 
 
 
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -19,7 +18,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '(1.0.0-rc3-59-g7a5d0ac)',
+        VERSION:     '(1.0.0-rc4-3-g52c5186)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -91,13 +90,13 @@ if(ga_enabled){
 <p>Radioactive decay of a group of isotopes over time can be described by the
 following first order differential equation:</p>
 <div class="math">
-<p><img src="../_images/math/6f3be04d2830e9948738f5652f9da4526c9b80c6.png" alt="\frac{d}{dt}\mathbf{N(\mathit{t})}=\textrm{A}\: \mathbf{N(\mathit{t})}"/></p>
+<p><img src="../_images/math/da176a62748247e445fcd43a21ff5bae8fe2c806.png" alt="\frac{d}{dt}\mathbf{N(\mathit{t})}=\textrm{A}\: \mathbf{N(\mathit{t})}"/></p>
 </div><p>where the vector <cite>N(t)</cite> contains the number density of all the
 isotopes being considered at time <cite>t</cite>, and A is called the decay
 matrix.  The solution to this differential equation can be expressed in terms
 of a matrix exponential:</p>
 <div class="math">
-<p><img src="../_images/math/3f8cebb8e77195d568671febb365501f2ceb6108.png" alt="\mathbf{N(\mathit{to+\Delta t})}=e^{\Delta t \textrm{A}}\: \mathbf{N(\mathit{to})}"/></p>
+<p><img src="../_images/math/3ec86fa0b465796d5b918a6b2839f90a17dec70d.png" alt="\mathbf{N(\mathit{to+\Delta t})}=e^{\Delta t \textrm{A}}\: \mathbf{N(\mathit{to})}"/></p>
 </div><p>The decay method currently implemented in <span style="font-variant:small-caps;">Cyclus</span> computes this matrix
 exponential solution at any given time using a series approximation known as
 the Uniformization Method.  This implementation was written by Kerry Dunn, and
@@ -108,7 +107,7 @@ is explained in more detail below.</p>
 Series expansion of the matrix exponential solution, which can be described by
 the following summation:</p>
 <div class="math">
-<p><img src="../_images/math/04a16eaecfb3d76e6dc9642e57f224a0a4600b26.png" alt="\mathbf{N(\mathit{to+\Delta t})}\approx \sum_{k=0}^{p}\frac{\left (\Delta t \right )^k}{k!}\: \textrm{A}^k\: \mathbf{N(\mathit{to})}"/></p>
+<p><img src="../_images/math/2eea439f5a512a1e58ad193c93987c859b14ead1.png" alt="\mathbf{N(\mathit{to+\Delta t})}\approx \sum_{k=0}^{p}\frac{\left (\Delta t \right )^k}{k!}\: \textrm{A}^k\: \mathbf{N(\mathit{to})}"/></p>
 </div><p>The primary disadvantage of using this Taylor Series expansion to compute the
 matrix exponential solution is that it can be subject to cancellation error as
 a result of summing terms with alternating signs.  These terms with alternating
@@ -121,22 +120,22 @@ as the uniformization technique.</p>
 <cite>alpha</cite> to be equal to the absolute value of the maximum diagonal
 element of <cite>A</cite>:</p>
 <div class="math">
-<p><img src="../_images/math/b6cd1de8ca47eebec280ad06b18ddbf0c1e7f46c.png" alt="\alpha=max_i\left | {a_i}_i \right |"/></p>
+<p><img src="../_images/math/b9011e991b8013f6df8bd7ae17c8acecea244861.png" alt="\alpha=max_i\left | {a_i}_i \right |"/></p>
 </div><p>Then, given <cite>alpha</cite>, the next step is to redefine the matrix
 exponential solution using a different matrix <cite>P</cite>:</p>
 <div class="math">
-<p><img src="../_images/math/8ed98c7548b142105c9f741ae507f3b3714ee9fa.png" alt="\textrm{P}=\frac{1}{\alpha}\textrm{A}+\textrm{I}"/></p>
+<p><img src="../_images/math/9d160678979f69feadbb059a89654e82baa334a7.png" alt="\textrm{P}=\frac{1}{\alpha}\textrm{A}+\textrm{I}"/></p>
 </div><p>where I is the identity matrix.  Note that <cite>P</cite> is completely non-negative, so a
 Taylor Series expansion of this matrix exponential is not subject to the same
 cancellation error that occurs with the original decay matrix.  By replacing <cite>A</cite>
 with <cite>P</cite>, the matrix exponential solution can now be expressed by the following
 summation:</p>
 <div class="math">
-<p><img src="../_images/math/b0bba049ba3cb6fe782394cfc83f4b13574705c6.png" alt="\mathbf{N(\mathit{to+\Delta t})}=e^{-\alpha \Delta t}\: e^{\Delta t (\alpha \textrm{P})}\: \mathbf{N(\mathit{to})}\approx e^{-\alpha \Delta t}\sum_{k=0}^{p}\frac{\left (\Delta t \right )^k}{k!}\: (\alpha \textrm{P})^k\: \mathbf{N(\mathit{to})}"/></p>
+<p><img src="../_images/math/6b00ec242bf1a2af724dfe2f412d02544e88b463.png" alt="\mathbf{N(\mathit{to+\Delta t})}=e^{-\alpha \Delta t}\: e^{\Delta t (\alpha \textrm{P})}\: \mathbf{N(\mathit{to})}\approx e^{-\alpha \Delta t}\sum_{k=0}^{p}\frac{\left (\Delta t \right )^k}{k!}\: (\alpha \textrm{P})^k\: \mathbf{N(\mathit{to})}"/></p>
 </div><p>Note that this modified Taylor Series expansion can also be expressed in terms
 of the original matrix A by substituting the definition for <cite>P</cite>:</p>
 <div class="math">
-<p><img src="../_images/math/a931c7a0f0687e27571b4d66b78d13b77bcb9c1d.png" alt="\mathbf{N(\mathit{to+\Delta t})}\approx e^{-\alpha\Delta t}\sum_{k=0}^{p}\frac{\left (\Delta t \right )^k}{k!}\: (\textrm{A}+\alpha \textrm{I})^k\: \mathbf{N(\mathit{to})}"/></p>
+<p><img src="../_images/math/3f207d0133303f5d532047eaab32b72fe2e52a53.png" alt="\mathbf{N(\mathit{to+\Delta t})}\approx e^{-\alpha\Delta t}\sum_{k=0}^{p}\frac{\left (\Delta t \right )^k}{k!}\: (\textrm{A}+\alpha \textrm{I})^k\: \mathbf{N(\mathit{to})}"/></p>
 </div></div>
 <div class="section" id="implementation-in-cyclus">
 <h2>Implementation in <span style="font-variant:small-caps;">Cyclus</span><a class="headerlink" href="#implementation-in-cyclus" title="Permalink to this headline">¶</a></h2>
@@ -154,8 +153,8 @@ limited by the size of a long double on the system being used to run <span style
 To determine the maximum time scale that will be valid for a particular group
 of isotopes, the following equation can be used:</p>
 <div class="math">
-<p><img src="../_images/math/bff9f8723b2da73f83341074f98354f8b400848e.png" alt="{t_{max} = \frac{ln(\textrm{LDBL\_MAX})}{min(\lambda)}}"/></p>
-</div><p>where <cite>LDBL_MAX</cite> is the size of a long double and <img class="math" src="../_images/math/ce4588fd900d02afcbd260bc07f54cce49a7dc4a.png" alt="\lambda"/> is the
+<p><img src="../_images/math/f429659fa93283f7df90e50529e7a1f34fed8992.png" alt="{t_{max} = \frac{ln(\textrm{LDBL\_MAX})}{min(\lambda)}}"/></p>
+</div><p>where <cite>LDBL_MAX</cite> is the size of a long double and <img class="math" src="../_images/math/1ab0134b6e0837594649c75a2ed83cfd85a2d03d.png" alt="\lambda"/> is the
 largest decay constant of the group of isotopes being considered.</p>
 <p>As an example, suppose that the isotope with the smallest half-life being
 considered is Cm-232.  This particular isotope has a decay constant of 1.5532
@@ -305,7 +304,7 @@ Analysis</em>, <em>29</em>, 345-368 (1999)</li>
 
     <div class="footer">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on May 30, 2014.
+      Last updated on May 31, 2014.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");
