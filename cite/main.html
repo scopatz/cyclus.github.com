@@ -18,7 +18,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '(1.0.0-rc4-3-g52c5186)',
+        VERSION:     '(0.4.3-838-g8e74141)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,26 +27,11 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
     <script type="text/javascript" src="../_static/cloud.js"></script>
     <link rel="shortcut icon" href="../_static/big_c.ico"/>
     <link rel="top" title="Home" href="../index.html" />
     <link rel="prev" title="Cyclus 0.2 Release Notes" href="../previous/v0.2.html" /> 
-        <meta name="viewport" content="width=device-width, initial-scale=1"><script type="text/javascript">
-var ga_enabled = !$.cookie('disable-ga');
-if(ga_enabled){
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-12222727-2']);
-  _gaq.push(['_setCookiePath', '/']);
-  _gaq.push(['_setDetectFlash', false]);
-  _gaq.push(['_trackPageview']);
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-}
-</script>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
     <div class="relbar-top">
@@ -81,21 +66,21 @@ if(ga_enabled){
 <div class="section" id="cyclus-in-the-literature">
 <h2><span style="font-variant:small-caps;">Cyclus</span> in the Literature<a class="headerlink" href="#cyclus-in-the-literature" title="Permalink to this headline">¶</a></h2>
 <p>The following are notable publications regarding <span style="font-variant:small-caps;">Cyclus</span>:</p>
-<ol class="upperroman" id="bibtex-bibliography-cite/main-0" start="1">
-<li><span class="first"><span><span><span><span><span><span><span>Matthew</span><span> </span></span><span>Gidden</span></span><span>, </span><span><span><span>Robert</span><span> </span></span><span>Carlsen</span></span><span>, </span><span><span><span>Kathryn</span><span> </span></span><span>Huff</span></span></span><span>, and </span><span><span><span>Paul</span><span> </span></span><span>Wilson</span></span></span><span>.</span></span><span> </span><span><span>An agent-based framework for fuel cycle simulation with recycling</span><span>.</span></span></span><span> </span><span><span><span>In</span><span> </span><span><em><span>Proceedings of GLOBAL</span></em><span>.</span></span></span><span> </span><span><span>Salt Lake City, UT, United States</span><span>, </span><span><span>Sep</span><span> </span><span>2013</span></span><span>.</span></span></span></span></li>
-<li><span class="first"><span><span><span><span><span><span><span>Matthew</span><span> </span></span><span>Gidden</span></span><span>, </span><span><span><span>Robert</span><span> </span></span><span>Carlsen</span></span><span>, </span><span><span><span>Arrielle</span><span> </span></span><span>Opotowsky</span></span><span>, </span><span><span><span>Olzhas</span><span> </span></span><span>Rakhimov</span></span><span>, </span><span><span><span>Anthony</span><span> </span></span><span>Scopatz</span></span></span><span>, and </span><span><span><span>Paul</span><span> </span></span><span>Wilson</span></span></span><span>.</span></span><span> </span><span><span>Agent-based dynamic resource exchange in Cyclus</span><span>.</span></span></span><span> </span><span><span><span>In</span><span> </span><span><em><span>Proceedings of PHYSOR</span></em><span>.</span></span></span><span> </span><span><span>Kyoto, Japan</span><span>, </span><span><span>Sep</span><span> </span><span>2014</span></span><span>.</span></span></span></span></li>
-<li><span class="first"><span><span><span><span><span><span><span>Matthew</span><span> </span></span><span>Gidden</span></span><span>, </span><span><span><span>Paul</span><span> </span></span><span>Wilson</span></span><span>, </span><span><span><span>Kathryn</span><span> </span></span><span>Huff</span></span></span><span>, and </span><span><span><span>Robert</span><span> </span></span><span>Carlsen</span></span></span><span>.</span></span><span> </span><span><span>Once-through benchmarks with Cyclus, a modular, open-source fuel cycle simulator</span><span>.</span></span></span><span> </span><span><span><span>In</span><span> </span><span><em><span>Proceedings of the 2012 ANS Winter Conference</span></em><span>.</span></span></span><span> </span><span><span>San Diego, CA</span><span>, </span><span><span>Nov</span><span> </span><span>2012</span></span><span>.</span></span></span></span></li>
-<li><span class="first"><span><span><span><span><span><span><span>Matthew</span><span> </span></span><span>Gidden</span></span><span>, </span><span><span><span>Paul</span><span> </span></span><span>Wilson</span></span></span><span>, and </span><span><span><span>Anthony</span><span> </span></span><span>Scopatz</span></span></span><span>.</span></span><span> </span><span><span>Developing standardized, open benchmarks and a corresponding specification language for the simulation of dynamic fuel cycles</span><span>.</span></span></span><span> </span><span><span><span>In</span><span> </span><span><em><span>Proceedings of the 2013 ANS Summer Conference</span></em><span>.</span></span></span><span> </span><span><span>Atlanta, GA, United States</span><span>, </span><span><span>Jun</span><span> </span><span>2013</span></span><span>.</span></span></span></span></li>
-<li><span class="first"><span><span><span><span><span>Kathryn</span><span> </span></span><span>Huff</span></span><span>.</span></span><span> </span><span><span>Cyclus fuel cycle simulation capabilities with the Cyder disposal system model</span><span>.</span></span></span><span> </span><span><span><span>In</span><span> </span><span><em><span>Proceedings of GLOBAL</span></em><span>.</span></span></span><span> </span><span><span>Salt Lake City, UT, United States</span><span>, </span><span><span>Sep</span><span> </span><span>2013</span></span><span>.</span></span></span></span></li>
-<li><span class="first"><span><span><span><span><span><span><span>Kathryn</span><span> </span></span><span>Huff</span></span><span>, </span><span><span><span>Paul</span><span> </span></span><span>Wilson</span></span></span><span>, and </span><span><span><span>Matthew</span><span> </span></span><span>Gidden</span></span></span><span>.</span></span><span> </span><span><span>Open architecture and modular paradigm of Cyclus, a fuel cycle simulation code</span><span>.</span></span></span><span> </span><span><span><span>In</span><span> </span><span><span><em><span>Transactions of the American Nuclear Society</span></em><span>, </span><span><span>volume</span><span> </span><span>104</span></span></span><span>, </span><span>183</span><span>.</span></span></span><span> </span><span><span>2011</span><span>.</span></span></span></span></li>
-<li><span class="first"><span><span><span><span><span>Anthony</span><span> </span></span><span>Scopatz</span></span><span>.</span></span><span> </span><span><span>A dynamic, dependent type system for nuclear fuel cycle code generation</span><span>.</span></span></span><span> </span><span><span><span>In</span><span> </span><span><em><span>Proceedings of GLOBAL</span></em><span>.</span></span></span><span> </span><span><span>Salt Lake City, UT</span><span>, </span><span>2013</span><span>.</span></span></span></span></li>
+<ol class="upperroman simple" id="bibtex-bibliography-cite/main-0" start="1">
+<li>Matthew Gidden, Robert Carlsen, Kathryn Huff, and Paul Wilson. An agent-based framework for fuel cycle simulation with recycling. In <em>Proceedings of GLOBAL</em>. Salt Lake City, UT, United States, Sep 2013.</li>
+<li>Matthew Gidden, Robert Carlsen, Arrielle Opotowsky, Olzhas Rakhimov, Anthony Scopatz, and Paul Wilson. Agent-based dynamic resource exchange in Cyclus. In <em>Proceedings of PHYSOR</em>. Kyoto, Japan, Sep 2014.</li>
+<li>Matthew Gidden, Paul Wilson, Kathryn Huff, and Robert Carlsen. Once-through benchmarks with Cyclus, a modular, open-source fuel cycle simulator. In <em>Proceedings of the 2012 ANS Winter Conference</em>. San Diego, CA, Nov 2012.</li>
+<li>Matthew Gidden, Paul Wilson, and Anthony Scopatz. Developing standardized, open benchmarks and a corresponding specification language for the simulation of dynamic fuel cycles. In <em>Proceedings of the 2013 ANS Summer Conference</em>. Atlanta, GA, United States, Jun 2013.</li>
+<li>Kathryn Huff. Cyclus fuel cycle simulation capabilities with the Cyder disposal system model. In <em>Proceedings of GLOBAL</em>. Salt Lake City, UT, United States, Sep 2013.</li>
+<li>Kathryn Huff, Paul Wilson, and Matthew Gidden. Open architecture and modular paradigm of Cyclus, a fuel cycle simulation code. In <em>Transactions of the American Nuclear Society</em>, volume 104, 183. 2011.</li>
+<li>Anthony Scopatz. A dynamic, dependent type system for nuclear fuel cycle code generation. In <em>Proceedings of GLOBAL</em>. Salt Lake City, UT, 2013.</li>
 </ol>
 </div>
 <div class="section" id="citing-cyclus">
 <h2>Citing <span style="font-variant:small-caps;">Cyclus</span><a class="headerlink" href="#citing-cyclus" title="Permalink to this headline">¶</a></h2>
 <p>Here is an entry for citing <span style="font-variant:small-caps;">Cyclus</span> in your publications:</p>
-<ul id="bibtex-bibliography-cite/main-1">
-<li><span class="first"><span><span><span><span><span><span><span>Matthew</span><span> </span></span><span>Gidden</span></span><span>, </span><span><span><span>Robert</span><span> </span></span><span>Carlsen</span></span><span>, </span><span><span><span>Arrielle</span><span> </span></span><span>Opotowsky</span></span><span>, </span><span><span><span>Olzhas</span><span> </span></span><span>Rakhimov</span></span><span>, </span><span><span><span>Anthony</span><span> </span></span><span>Scopatz</span></span></span><span>, and </span><span><span><span>Paul</span><span> </span></span><span>Wilson</span></span></span><span>.</span></span><span> </span><span><span>Agent-based dynamic resource exchange in Cyclus</span><span>.</span></span></span><span> </span><span><span><span>In</span><span> </span><span><em><span>Proceedings of PHYSOR</span></em><span>.</span></span></span><span> </span><span><span>Kyoto, Japan</span><span>, </span><span><span>Sep</span><span> </span><span>2014</span></span><span>.</span></span></span></span></li>
+<ul class="simple" id="bibtex-bibliography-cite/main-1">
+<li>Matthew Gidden, Robert Carlsen, Arrielle Opotowsky, Olzhas Rakhimov, Anthony Scopatz, and Paul Wilson. Agent-based dynamic resource exchange in Cyclus. In <em>Proceedings of PHYSOR</em>. Kyoto, Japan, Sep 2014.</li>
 </ul>
 </div>
 </div>
@@ -208,17 +193,8 @@ if(ga_enabled){
 
     <div class="footer">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on May 31, 2014.
-    </div><script type="text/javascript">
-    if(ga_enabled){
-        document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");
-        document.write("Click <button title=\"set cookie to disable analytics for this site\" class=\"link\" onclick=\"$.cookie('disable-ga', 'true', {expires: 3650, path: '/'}); window.location.reload(); return false; \">here</button> to disable analytics for this site.");
-        document.write("</div>");
-    }else{
-        document.write("<div class=\"footer\">Google Analytics has been disabled. ");
-        document.write("Click <button title=\"set cookie to re-enable analytics for this site\" class=\"link\" onclick=\"$.cookie('disable-ga', null, {path: '/'}); window.location.reload(); return false; \">here</button> to re-enable analytics for this site.");
-    };
-</script>
+      Last updated on Jun 02, 2014.
+    </div>
     <!-- cloud_sptheme 1.4 -->
   </body>
 </html>
