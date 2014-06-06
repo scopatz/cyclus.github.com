@@ -18,7 +18,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     'b&#39;(1.0.0-rc4-13-g666a31c)&#39;',
+        VERSION:     '()',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,28 +27,13 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
     <script type="text/javascript" src="../_static/cloud.js"></script>
     <link rel="shortcut icon" href="../_static/big_c.ico"/>
     <link rel="top" title="Home" href="../index.html" />
     <link rel="up" title="Cyclus Enhancement Proposals" href="cep0.html" />
     <link rel="next" title="CEP 19 - Cyclus Input Procedure Updates" href="cep19.html" />
     <link rel="prev" title="CEP 17 - Resource Tracking and Interfaces Re-Re-Redo" href="cep17.html" /> 
-        <meta name="viewport" content="width=device-width, initial-scale=1"><script type="text/javascript">
-var ga_enabled = !$.cookie('disable-ga');
-if(ga_enabled){
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-12222727-2']);
-  _gaq.push(['_setCookiePath', '/']);
-  _gaq.push(['_setDetectFlash', false]);
-  _gaq.push(['_trackPageview']);
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-}
-</script>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
     <div class="relbar-top">
@@ -206,21 +191,21 @@ material, including depleted uranium from enrichment or reprocessed uranium from
 separations. Accordingly, it could demand both commodities as long as it
 provides a corresponding constraint with respect to total consumption.</p>
 <p>At the completion of the RFB phase, the market exchange will have a set of
-consumption portfolios, <img class="math" src="../_images/math/f48b617185733d8dd6712643f1ab17c736661a06.png" alt="P"/>, for each requester in the exchange, shown as
+consumption portfolios, <span class="math">P</span>, for each requester in the exchange, shown as
 the orange box in Figure 1. Each portfolio consists of a set of requests,
-<img class="math" src="../_images/math/9d86170e7de539c0ff999de09621ee0c7b6c8ed0.png" alt="R"/>, a cardinal preferential ordering over the requests, <img class="math" src="../_images/math/a70bbd811ec701ca47ecdd95636100e4851c023d.png" alt="\alpha_R"/>,
-and possibly a set of constraints over the requests, <img class="math" src="../_images/math/c4428a54b0e184e3ceed64207cc5b35e8e78c360.png" alt="c_R"/>. A constraint
+<span class="math">R</span>, a cardinal preferential ordering over the requests, <span class="math">\alpha_R</span>,
+and possibly a set of constraints over the requests, <span class="math">c_R</span>. A constraint
 can be associated with more than one request. Take the previous example of MOX
 and UOX for an LWR. Each is a separate request, but a constraint may be
 concerned with the combination of the two. Another example is a repository that
 may request many commodities, but has a radiotoxicity constraint over any
 commodities it receives for a given time step.</p>
-<p>A request consists of a quantity, <img class="math" src="../_images/math/41739637485ccd50d37e4d8a798236a150448ebf.png" alt="q_r"/>, and a target isotopic vector,
-<img class="math" src="../_images/math/f176bdfcd10183d5f9222c468778a237d5293a9f.png" alt="I_r"/>. Consumers are allowed to offer the null set of isotopics as their
+<p>A request consists of a quantity, <span class="math">q_r</span>, and a target isotopic vector,
+<span class="math">I_r</span>. Consumers are allowed to offer the null set of isotopics as their
 profile, effectively providing no information. In general, a requester may have
 more than one request (nodes in Figure 1) per commodity. A prime example is a
 reactor that chooses to requests fuel assemblies, of which they request many.</p>
-<a class="reference internal image-reference" href="../_images/cep-0018-3.png"><img alt="../_images/cep-0018-3.png" class="align-center" src="../_images/cep-0018-3.png" /></a>
+<a class="reference internal image-reference" href="../_images/cep-0018-3.png"><img alt="../_images/cep-0018-3.png" class="align-center" src="../_images/cep-0018-3.png" style="width: 238.0px; height: 397.0px;" /></a>
 <p><strong>Figure 1:</strong> A Requester during the RFB Phase, where a collection of requests
 (as nodes) is shown.</p>
 <p>The second phase allows suppliers to <strong>respond</strong> to the set of consumption
@@ -248,7 +233,7 @@ capacity, and define a translation function. The translation function takes a
 request as an argument and returns a value in the units of the constraint. A
 prime example is an enrichment facility, which may be able to enrich many
 orders, but is constrained by the total SWUs it can provide.</p>
-<a class="reference internal image-reference" href="../_images/cep-0018-4.png"><img alt="../_images/cep-0018-4.png" class="align-center" src="../_images/cep-0018-4.png" /></a>
+<a class="reference internal image-reference" href="../_images/cep-0018-4.png"><img alt="../_images/cep-0018-4.png" class="align-center" src="../_images/cep-0018-4.png" style="width: 228.5px; height: 398.0px;" /></a>
 <p><strong>Figure 2:</strong> A Supplier during the RRFB Phase, where a collection of commodity
 supplies (as nodes) is shown.</p>
 <p>The final phase of the information gathering procedure allows consumer
@@ -282,7 +267,7 @@ ground. Another would be to move the paradigm more towards economics and have
 the suppliers set the cost of a transaction, which they could tailor to the
 requester. However, this draws in a whole other field of bidding that requires
 much more rigor and thought as to its validity and implementation.</p>
-<a class="reference internal image-reference" href="../_images/cep-0018-5.png"><img alt="../_images/cep-0018-5.png" class="align-center" src="../_images/cep-0018-5.png" /></a>
+<a class="reference internal image-reference" href="../_images/cep-0018-5.png"><img alt="../_images/cep-0018-5.png" class="align-center" src="../_images/cep-0018-5.png" style="width: 328.5px; height: 271.0px;" /></a>
 <p><strong>Figure 3:</strong> A supplier-consumer pair with request isotopics, response
 isotopics, and an associated preference.</p>
 <p>Institutions and Regions in <span style="font-variant:small-caps;">Cyclus</span> are provided in order to add granularity to
@@ -688,17 +673,8 @@ requests</li>
 
     <div class="footer">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Jun 03, 2014.
-    </div><script type="text/javascript">
-    if(ga_enabled){
-        document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");
-        document.write("Click <button title=\"set cookie to disable analytics for this site\" class=\"link\" onclick=\"$.cookie('disable-ga', 'true', {expires: 3650, path: '/'}); window.location.reload(); return false; \">here</button> to disable analytics for this site.");
-        document.write("</div>");
-    }else{
-        document.write("<div class=\"footer\">Google Analytics has been disabled. ");
-        document.write("Click <button title=\"set cookie to re-enable analytics for this site\" class=\"link\" onclick=\"$.cookie('disable-ga', null, {path: '/'}); window.location.reload(); return false; \">here</button> to re-enable analytics for this site.");
-    };
-</script>
+      Last updated on Jun 06, 2014.
+    </div>
     <!-- cloud_sptheme 1.4 -->
   </body>
 </html>
