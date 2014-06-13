@@ -18,7 +18,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '(1.0.0-rc4-35-g4194659)',
+        VERSION:     '(1.0.0-rc4-43-g701e113)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -93,9 +93,9 @@ than worrying about the tedious and error-prone process of making your
 agents conform to the <span style="font-variant:small-caps;">Cyclus</span> kernel.</p>
 <p>Before we continue there are a couple of noteworthy points about <tt class="docutils literal"><span class="pre">cycpp</span></tt>:</p>
 <ul class="simple">
-<li>Even when using the preprocessor agents are still completely valid C++
-and may be compiled even without running <tt class="docutils literal"><span class="pre">cycpp</span></tt> (though they probably
-won&#8217;t do the correct thing in a simulation).</li>
+<li>Even when using the preprocessor, agents are still completely valid C++
+and may be compiled without running <tt class="docutils literal"><span class="pre">cycpp</span></tt> - though they probably
+won&#8217;t do the correct thing in a simulation.</li>
 <li>If your module is compiled with the CMake macros found in UseCyclus,
 <tt class="docutils literal"><span class="pre">cycpp</span></tt> is run automatically for you on all relevant files.</li>
 </ul>
@@ -144,13 +144,13 @@ For example,</p>
 </div>
 <p>These two lines declare that the member variable <tt class="docutils literal"><span class="pre">flux</span></tt> is in fact a state
 variable of type double with the given metadata.  The keys of this dictionary
-may be anything you desire, though because they are eventually persisted to
-JSON the keys must be have a string types. Certain keys have special semantic
-meaning and there are two - <tt class="docutils literal"><span class="pre">type</span></tt> and <tt class="docutils literal"><span class="pre">index</span></tt> - that are set by <tt class="docutils literal"><span class="pre">cycpp</span></tt>
-and should not be specified explicitly. State variables my have any C++ type
-that is allowed by the database backend that is being used.  For a listing of
+may be anything you desire. Though because they are eventually persisted to
+JSON the keys must be strings. Certain keys have special semantic
+meaning. Furthermore, there are two keys - <tt class="docutils literal"><span class="pre">type</span></tt> and <tt class="docutils literal"><span class="pre">index</span></tt> - that are set by
+<tt class="docutils literal"><span class="pre">cycpp</span></tt> itself and should not be specified explicitly. State variables may have any
+C++ type that is allowed by the database backend that is being used.  For a listing of
 valid types please refer to the <a class="reference internal" href="dbtypes.html"><em>Database Types</em></a> page. <a class="reference internal" href="#cycpp-table-1"><em>Table I. Special State Variable Annotations</em></a>
-contains a listing of all special keys and their meaning.</p>
+contains a listing of all special keys and their meanings.</p>
 <table border="1" class="styled-table centered docutils" id="cycpp-table-1">
 <caption><strong>Table I.</strong> Special State Variable Annotations</caption>
 <colgroup>
@@ -221,12 +221,12 @@ writing them out to the database respectively.</td>
 <tr class="row-odd"><td class="left-align no-left-divider single-right-divider">schema</td>
 <td class="left-align single-left-divider no-right-divider">Code snippet to use in the <tt class="docutils literal"><span class="pre">schema()</span></tt> function for
 this state variable instead of using code generation.
-This is a string.</td>
+This is an RNG string.</td>
 </tr>
 <tr class="row-even"><td class="left-align no-left-divider single-right-divider">snapshot</td>
 <td class="left-align single-left-divider no-right-divider">Code snippet to use in the <tt class="docutils literal"><span class="pre">Snapshot()</span></tt> function for
 this state variable instead of using code generation.
-This is an RNG string.</td>
+This is a string.</td>
 </tr>
 <tr class="row-odd"><td class="left-align no-left-divider single-right-divider">snapshotinv</td>
 <td class="left-align single-left-divider no-right-divider">Code snippet to use in the <tt class="docutils literal"><span class="pre">SnapshotInv()</span></tt> function for
@@ -735,7 +735,7 @@ listing of the member function information, please see <a class="reference inter
 
     <div class="footer">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Jun 11, 2014.
+      Last updated on Jun 13, 2014.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");
