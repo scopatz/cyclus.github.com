@@ -201,39 +201,49 @@ shape of <tt class="docutils literal"><span class="pre">[10,</span> <span class=
 <td class="left-align single-left-divider no-right-divider">Integer from 0 - 10 for representing ease (0) or difficulty (10)
 in using this variable, default 0.</td>
 </tr>
-<tr class="row-even"><td class="left-align no-left-divider single-right-divider">initfromcopy</td>
+<tr class="row-even"><td class="left-align no-left-divider single-right-divider">schematype</td>
+<td class="left-align single-left-divider no-right-divider">This is the data type that is used in the schema for input file
+validation. This enables the you to supply just the data type
+rather than having to overwrite the full schema for this state
+variable. In most cases - when the shape is rank 0 or 1 such
+as for scalars or vectors - this is simply a string. In cases
+where the rank is 2+ this is a list of strings. Please refer to
+the <a class="reference external" href="http://www.w3.org/TR/xmlschema-2/">XML Schema Datatypes</a>
+page for more information. <em>New in v1.1.</em></td>
+</tr>
+<tr class="row-odd"><td class="left-align no-left-divider single-right-divider">initfromcopy</td>
 <td class="left-align single-left-divider no-right-divider">Code snippet to use in the <tt class="docutils literal"><span class="pre">InitFrom(Agent*</span> <span class="pre">m)</span></tt> function for
 this state variable instead of using code generation.
 This is a string.</td>
 </tr>
-<tr class="row-odd"><td class="left-align no-left-divider single-right-divider">initfromdb</td>
+<tr class="row-even"><td class="left-align no-left-divider single-right-divider">initfromdb</td>
 <td class="left-align single-left-divider no-right-divider">Code snippet to use in the <tt class="docutils literal"><span class="pre">InitFrom(QueryableBackend*</span> <span class="pre">b)</span></tt>
 function for this state variable instead of using code generation.
 This is a string.</td>
 </tr>
-<tr class="row-even"><td class="left-align no-left-divider single-right-divider">infiletodb</td>
+<tr class="row-odd"><td class="left-align no-left-divider single-right-divider">infiletodb</td>
 <td class="left-align single-left-divider no-right-divider">Code snippets to use in the <tt class="docutils literal"><span class="pre">InfileToDb()</span></tt> function
 for this state variable instead of using code generation.
 This is a dictionary of string values with the two keys &#8216;read&#8217;
 and &#8216;write&#8217; which represent reading values from the input file
 writing them out to the database respectively.</td>
 </tr>
-<tr class="row-odd"><td class="left-align no-left-divider single-right-divider">schema</td>
+<tr class="row-even"><td class="left-align no-left-divider single-right-divider">schema</td>
 <td class="left-align single-left-divider no-right-divider">Code snippet to use in the <tt class="docutils literal"><span class="pre">schema()</span></tt> function for
 this state variable instead of using code generation.
 This is an RNG string.</td>
 </tr>
-<tr class="row-even"><td class="left-align no-left-divider single-right-divider">snapshot</td>
+<tr class="row-odd"><td class="left-align no-left-divider single-right-divider">snapshot</td>
 <td class="left-align single-left-divider no-right-divider">Code snippet to use in the <tt class="docutils literal"><span class="pre">Snapshot()</span></tt> function for
 this state variable instead of using code generation.
 This is a string.</td>
 </tr>
-<tr class="row-odd"><td class="left-align no-left-divider single-right-divider">snapshotinv</td>
+<tr class="row-even"><td class="left-align no-left-divider single-right-divider">snapshotinv</td>
 <td class="left-align single-left-divider no-right-divider">Code snippet to use in the <tt class="docutils literal"><span class="pre">SnapshotInv()</span></tt> function for
 this state variable instead of using code generation.
 This is a string.</td>
 </tr>
-<tr class="row-even"><td class="left-align no-left-divider single-right-divider">initinv</td>
+<tr class="row-odd"><td class="left-align no-left-divider single-right-divider">initinv</td>
 <td class="left-align single-left-divider no-right-divider">Code snippet to use in the <tt class="docutils literal"><span class="pre">InitInv()</span></tt> function for
 this state variable instead of using code generation.
 This is a string.</td>
@@ -735,7 +745,7 @@ listing of the member function information, please see <a class="reference inter
 
     <div class="footer">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Jun 13, 2014.
+      Last updated on Jun 14, 2014.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");

@@ -95,14 +95,12 @@ if(ga_enabled){
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">commod:</th><td class="field-body"><p class="first"><em>std::string</em></p>
 <p>source commodity</p>
-<p>commodity that the source facility supplies
-:schematype: token</p>
+<p>commodity that the source facility supplies</p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">recipe_name:</th><td class="field-body"><p class="first"><em>std::string</em></p>
 <p>commodity recipe name</p>
-<p>recipe name for source facility&#8217;s commodity
-:schematype: token</p>
+<p>recipe name for source facility&#8217;s commodity</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">capacity:</th><td class="field-body"><p class="first"><em>double</em></p>
@@ -115,10 +113,10 @@ if(ga_enabled){
 <p><strong>Schema:</strong></p>
 <div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;interleave&gt;</span>
 <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;commod&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;token&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span> <span class="nt">/&gt;</span>
 <span class="nt">&lt;/element&gt;</span>
 <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;recipe_name&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;token&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span> <span class="nt">/&gt;</span>
 <span class="nt">&lt;/element&gt;</span>
 <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;capacity&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;double&quot;</span> <span class="nt">/&gt;</span>
@@ -138,8 +136,7 @@ if(ga_enabled){
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">in_commods:</th><td class="field-body"><p class="first"><em>std::vector&lt;std::string&gt;</em></p>
 <p>input commodities</p>
-<p>commodities that the sink facility accepts
-:schematype: token</p>
+<p>commodities that the sink facility accepts</p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">capacity:</th><td class="field-body"><p class="first"><em>double</em></p>
@@ -170,7 +167,7 @@ if(ga_enabled){
 <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;in_commods&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;oneOrMore&gt;</span>
         <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;val&quot;</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;token&quot;</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span> <span class="nt">/&gt;</span>
         <span class="nt">&lt;/element&gt;</span>
     <span class="nt">&lt;/oneOrMore&gt;</span>
 <span class="nt">&lt;/element&gt;</span>
@@ -215,20 +212,17 @@ if(ga_enabled){
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">in_commod:</th><td class="field-body"><p class="first"><em>std::string</em></p>
 <p>input commodity</p>
-<p>commodity that the k-facility consumes
-:schematype: token</p>
+<p>commodity that the k-facility consumes</p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">out_commod:</th><td class="field-body"><p class="first"><em>std::string</em></p>
 <p>output commodity</p>
-<p>commodity that the k-facility supplies
-:schematype: token</p>
+<p>commodity that the k-facility supplies</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">recipe_name:</th><td class="field-body"><p class="first"><em>std::string</em>, shape=[50]</p>
 <p>in-commodity recipe name</p>
-<p>recipe name for the k-facility&#8217;s in-commodity
-:schematype: token</p>
+<p>recipe name for the k-facility&#8217;s in-commodity</p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">in_capacity:</th><td class="field-body"><p class="first"><em>double</em></p>
@@ -278,13 +272,13 @@ if(ga_enabled){
 <p><strong>Schema:</strong></p>
 <div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;interleave&gt;</span>
 <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;in_commod&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;token&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span> <span class="nt">/&gt;</span>
 <span class="nt">&lt;/element&gt;</span>
 <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;out_commod&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;token&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span> <span class="nt">/&gt;</span>
 <span class="nt">&lt;/element&gt;</span>
 <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;recipe_name&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;token&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span> <span class="nt">/&gt;</span>
 <span class="nt">&lt;/element&gt;</span>
 <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;in_capacity&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;double&quot;</span> <span class="nt">/&gt;</span>
@@ -323,14 +317,12 @@ if(ga_enabled){
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">commod:</th><td class="field-body"><p class="first"><em>std::string</em></p>
 <p>predator commodity</p>
-<p>commodity that the predator supplies
-:schematype: token</p>
+<p>commodity that the predator supplies</p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">prey:</th><td class="field-body"><p class="first"><em>std::string</em></p>
 <p>predator&#8217;s prey</p>
-<p>prey that the predator hunts
-:schematype: token</p>
+<p>prey that the predator hunts</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">full:</th><td class="field-body"><p class="first"><em>double</em>, default=1</p>
@@ -394,10 +386,10 @@ if(ga_enabled){
 <p><strong>Schema:</strong></p>
 <div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;interleave&gt;</span>
 <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;commod&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;token&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span> <span class="nt">/&gt;</span>
 <span class="nt">&lt;/element&gt;</span>
 <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;prey&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;token&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span> <span class="nt">/&gt;</span>
 <span class="nt">&lt;/element&gt;</span>
 <span class="nt">&lt;optional&gt;</span>
     <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;full&quot;</span><span class="nt">&gt;</span>
@@ -468,14 +460,6 @@ if(ga_enabled){
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">commod:</th><td class="field-body"><p class="first"><em>std::string</em></p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">schematype:</th><td class="field-body">token</td>
-</tr>
-</tbody>
-</table>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">birth_freq:</th><td class="field-body"><p class="first"><em>int</em>, default=1</p>
@@ -509,7 +493,7 @@ if(ga_enabled){
 <p><strong>Schema:</strong></p>
 <div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;interleave&gt;</span>
 <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;commod&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;token&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span> <span class="nt">/&gt;</span>
 <span class="nt">&lt;/element&gt;</span>
 <span class="nt">&lt;optional&gt;</span>
     <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;birth_freq&quot;</span><span class="nt">&gt;</span>
@@ -664,7 +648,7 @@ if(ga_enabled){
 
     <div class="footer">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Jun 13, 2014.
+      Last updated on Jun 14, 2014.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");
