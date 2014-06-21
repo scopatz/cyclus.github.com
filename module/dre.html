@@ -316,7 +316,8 @@ example, consider an interface that helps determines preferences based on
 <span class="p">};</span>
 </pre></div>
 </div>
-<p>A trader can then implement its preference adjustment as follows:</p>
+<p>A trader who then wants behavior based on whether a bidder&#8217;s manager inherits
+from <tt class="docutils literal"><span class="pre">PrefGetter</span></tt> can then implement its preference adjustment as follows:</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="k">virtual</span> <span class="kt">void</span> <span class="nf">AdjustMatlPrefs</span><span class="p">(</span>
     <span class="n">cyclus</span><span class="o">::</span><span class="n">PrefMap</span><span class="o">&lt;</span><span class="n">cyclus</span><span class="o">::</span><span class="n">Material</span><span class="o">&gt;::</span><span class="n">type</span><span class="o">&amp;</span> <span class="n">prefs</span><span class="p">)</span> <span class="p">{</span>
   <span class="n">cyclus</span><span class="o">::</span><span class="n">PrefMap</span><span class="o">&lt;</span><span class="n">cyclus</span><span class="o">::</span><span class="n">Material</span><span class="o">&gt;::</span><span class="n">type</span><span class="o">::</span><span class="n">iterator</span> <span class="n">pmit</span><span class="p">;</span>
