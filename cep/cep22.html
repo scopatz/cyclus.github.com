@@ -9,7 +9,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>CEP 21 - Agent Identification and Discovery &mdash; Home</title>
+    <title>CEP 5 - Logging Methodology and Implementation &mdash; Home</title>
     
     <link rel="stylesheet" href="../_static/cyclus.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -32,8 +32,8 @@
     <link rel="shortcut icon" href="../_static/big_c.ico"/>
     <link rel="top" title="Home" href="../index.html" />
     <link rel="up" title="Cyclus Enhancement Proposals" href="cep0.html" />
-    <link rel="next" title="CEP 5 - Logging Methodology and Implementation" href="cep22.html" />
-    <link rel="prev" title="CEP 20 - Time Step Execution Stack" href="cep20.html" /> 
+    <link rel="next" title="Cyclus Previous Versions" href="../previous/main.html" />
+    <link rel="prev" title="CEP 21 - Agent Identification and Discovery" href="cep21.html" /> 
         <meta name="viewport" content="width=device-width, initial-scale=1"><script type="text/javascript">
 var ga_enabled = !$.cookie('disable-ga');
 if(ga_enabled){
@@ -63,10 +63,10 @@ if(ga_enabled){
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> &nbsp; &nbsp;</li>
         <li class="right" >
-          <a href="cep22.html" title="CEP 5 - Logging Methodology and Implementation"
+          <a href="../previous/main.html" title="Cyclus Previous Versions"
              accesskey="N">next</a> &nbsp; &nbsp;</li>
         <li class="right" >
-          <a href="cep20.html" title="CEP 20 - Time Step Execution Stack"
+          <a href="cep21.html" title="CEP 21 - Agent Identification and Discovery"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
     <li><a href="../index.html">Home</a> &raquo;</li>
 
@@ -81,101 +81,39 @@ if(ga_enabled){
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="cep-21-agent-identification-and-discovery">
-<h1>CEP 21 - Agent Identification and Discovery<a class="headerlink" href="#cep-21-agent-identification-and-discovery" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="cep-5-logging-methodology-and-implementation">
+<h1>CEP 5 - Logging Methodology and Implementation<a class="headerlink" href="#cep-5-logging-methodology-and-implementation" title="Permalink to this headline">¶</a></h1>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">CEP:</th><td class="field-body">21</td>
+<tr class="field-odd field"><th class="field-name">CEP:</th><td class="field-body">22</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Title:</th><td class="field-body">Agent Identification and Distribution</td>
+<tr class="field-even field"><th class="field-name">Title:</th><td class="field-body">Logging Methodology and Implementation</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Last-Modified:</th><td class="field-body">2014-05-05</td>
+<tr class="field-odd field"><th class="field-name">Last-Modified:</th><td class="field-body">2014-06-29</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Author:</th><td class="field-body">Robert Carlsen &lt;<a class="reference external" href="mailto:rwcarlsen&#37;&#52;&#48;gmail&#46;com">rwcarlsen<span>&#64;</span>gmail<span>&#46;</span>com</a>&gt;</td>
+<tr class="field-even field"><th class="field-name">Author:</th><td class="field-body">None</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Status:</th><td class="field-body">Accepted</td>
+<tr class="field-odd field"><th class="field-name">Status:</th><td class="field-body">Deferred</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">Standards Track</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Created:</th><td class="field-body">Robert Carlsen</td>
+<tr class="field-odd field"><th class="field-name">Created:</th><td class="field-body">2014-06-29</td>
 </tr>
 </tbody>
 </table>
-<div class="section" id="abstract">
-<h2>Abstract<a class="headerlink" href="#abstract" title="Permalink to this headline">¶</a></h2>
-<p><span style="font-variant:small-caps;">Cyclus</span> is designed to have plugin modules that can be easily distributed and
-installed.  A &#8220;module&#8221; is a shared library containing one or more compiled
-<span style="font-variant:small-caps;">Cyclus</span> agents.  Agents within mouldes must be uniquely identifiable and
-discoverable by both users managing their <span style="font-variant:small-caps;">Cyclus</span> installation and by the
-<span style="font-variant:small-caps;">Cyclus</span> kernel itself.  A user wishing to use certain modules must install them
-in a desired location and then identify specific agents in them to <span style="font-variant:small-caps;">Cyclus</span>.
-This CEP explains where modules can/should be installed and how <span style="font-variant:small-caps;">Cyclus</span> finds
-and identifies agents in them.</p>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>The current state of logging in <span style="font-variant:small-caps;">Cyclus</span>, i.e., reporting results to <cite>stdout</cite>
+and <cite>stderr</cite>, has been identified as non-ideal. A non-deferred version of this
+CEP will provide a new logging methodology, an implementation thereof, and a
+discussion a series of examples of how logging should occur at both the kernel
+and archetype development level (if neccessary).</p>
 </div>
-<div class="section" id="agent-spec">
-<h2>Agent Spec<a class="headerlink" href="#agent-spec" title="Permalink to this headline">¶</a></h2>
-<p>Agents will be uniquely identified by 3 components together referred to as an
-&#8220;agent spec&#8221;:</p>
-<ol class="arabic">
-<li><p class="first">path: e.g. <tt class="docutils literal"><span class="pre">my/module/path</span></tt></p>
-<p>A slash-delimited, valid filesystem path relative to CYCLUS_PATH (see
-Module Discovery below).</p>
-</li>
-<li><p class="first">library: e.g. <tt class="docutils literal"><span class="pre">MyModule</span></tt></p>
-<p>Name of the compiled shared object library file without the &#8220;lib&#8221; prefix
-and without the file extension. If empty, is expanded to the agent class.
-The example above would correspond to a library file named &#8220;libMyModule.so&#8221;
-(linux), &#8220;libMyModule.dylib&#8221; (darwin), etc.</p>
-</li>
-<li><p class="first">agent class: e.g. <tt class="docutils literal"><span class="pre">MyAgent</span></tt></p>
-<p>The name of the agent&#8217;s c++ class as compiled into the shared library file.</p>
-</li>
-</ol>
-<p>An agent spec also has a single-string form composed of the three components
-separated by colons:</p>
-<div class="highlight-python"><div class="highlight"><pre>[path]:[library]:[agent-class]
-
-e.g. &quot;my/module/path:MyModule:MyAgent&quot;
-</pre></div>
-</div>
-<p>Example linux agent specs with corresponding filepath expansions:</p>
-<div class="highlight-python"><div class="highlight"><pre>my/path:MyModule:MyAgent -&gt; my/path/libMyModule.so
-my/path::MyAgent         -&gt; my/path/libMyAgent.so
-:MyModule:MyAgent        -&gt; libMyModule.so
-::MyAgent                -&gt; libMyAgent.so
-</pre></div>
-</div>
-</div>
-<div class="section" id="module-discovery">
-<h2>Module Discovery<a class="headerlink" href="#module-discovery" title="Permalink to this headline">¶</a></h2>
-<p>When running a simulation, <span style="font-variant:small-caps;">Cyclus</span> will search the following candidate
-directories (in order) for each given agent spec:</p>
-<ol class="arabic simple">
-<li>Each colon-separated directory in the CYCLUS_PATH environment variable.</li>
-<li>The default <span style="font-variant:small-caps;">Cyclus</span> module install directory: <tt class="docutils literal"><span class="pre">[install-dir]/lib/cyclus</span></tt>.</li>
-</ol>
-<p><span style="font-variant:small-caps;">Cyclus</span> will check for the library by building consecutive paths with the
-following composition:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="n">candidate</span><span class="o">-</span><span class="nb">dir</span><span class="p">]</span><span class="o">/</span><span class="p">[</span><span class="n">path</span><span class="p">]</span><span class="o">/</span><span class="n">lib</span><span class="p">[</span><span class="n">library</span><span class="p">][</span><span class="n">extension</span><span class="p">]</span>
-</pre></div>
-</div>
-<p><span style="font-variant:small-caps;">Cyclus</span> uses the first matching shared library file found and assumes the
-specified agent class exists inside it.</p>
-</div>
-<div class="section" id="conventions">
-<h2>Conventions<a class="headerlink" href="#conventions" title="Permalink to this headline">¶</a></h2>
-<p>The path should consist of only alpha-numeric characters, slashes,
-underscores, and dashes. <strong>No</strong> spaces.  If there are resource files that must
-be installed with the shared library file, the library and resources should be
-placed in their own directory.</p>
-<p>The shared library name should consist of only alpha-numeric characters,
-slashes, underscores.  <strong>No</strong> spaces. If the shared library only has a
-single agent in it, the library should be the same as the agent class.  For
-example, if my agent was named <tt class="docutils literal"><span class="pre">MyAgent</span></tt>, then the library file should be
-named <tt class="docutils literal"><span class="pre">libMyAgent.so</span></tt> on a linux system.  This allows the defaults to
-prevent stuttering in the agent&#8217;s module spec.</p>
+<div class="section" id="document-history">
+<h2>Document History<a class="headerlink" href="#document-history" title="Permalink to this headline">¶</a></h2>
+<p>This document is released under the CC-BY 3.0 license.</p>
 </div>
 </div>
 
@@ -190,11 +128,9 @@ prevent stuttering in the agent&#8217;s module spec.</p>
         </a></p><div class="sphinxlocaltoc">
     <h3><a href="../index.html">Page contents</a></h3>
     <ul>
-<li><a class="reference internal" href="#">CEP 21 - Agent Identification and Discovery</a><ul>
-<li><a class="reference internal" href="#abstract">Abstract</a></li>
-<li><a class="reference internal" href="#agent-spec">Agent Spec</a></li>
-<li><a class="reference internal" href="#module-discovery">Module Discovery</a></li>
-<li><a class="reference internal" href="#conventions">Conventions</a></li>
+<li><a class="reference internal" href="#">CEP 5 - Logging Methodology and Implementation</a><ul>
+<li><a class="reference internal" href="#overview">Overview</a></li>
+<li><a class="reference internal" href="#document-history">Document History</a></li>
 </ul>
 </li>
 </ul>
@@ -202,13 +138,13 @@ prevent stuttering in the agent&#8217;s module spec.</p>
   </div>
   <div class="sphinxprev">
     <h4>Previous page</h4>
-    <p class="topless"><a href="cep20.html"
-                          title="Previous page">&larr; CEP 20 - Time Step Execution Stack</a></p>
+    <p class="topless"><a href="cep21.html"
+                          title="Previous page">&larr; CEP 21 - Agent Identification and Discovery</a></p>
   </div>
   <div class="sphinxnext">
     <h4>Next page</h4>
-    <p class="topless"><a href="cep22.html"
-                          title="Next page">&rarr; CEP 5 - Logging Methodology and Implementation</a></p>
+    <p class="topless"><a href="../previous/main.html"
+                          title="Next page">&rarr; <span style="font-variant:small-caps;">Cyclus</span> Previous Versions</a></p>
   </div>
   <div class="sphinxlocaltoc">
   <h3>Useful Pages</h3>
@@ -284,10 +220,10 @@ prevent stuttering in the agent&#8217;s module spec.</p>
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> &nbsp; &nbsp;</li>
         <li class="right" >
-          <a href="cep22.html" title="CEP 5 - Logging Methodology and Implementation"
+          <a href="../previous/main.html" title="Cyclus Previous Versions"
              >next</a> &nbsp; &nbsp;</li>
         <li class="right" >
-          <a href="cep20.html" title="CEP 20 - Time Step Execution Stack"
+          <a href="cep21.html" title="CEP 21 - Agent Identification and Discovery"
              >previous</a> &nbsp; &nbsp;</li>
     <li><a href="../index.html">Home</a> &raquo;</li>
 
