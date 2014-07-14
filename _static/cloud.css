@@ -158,7 +158,7 @@ div.document.collapsed-sidebar div.bodywrapper { margin-left: 0; }
 
 div.body
 {
-    min-height: 6in;
+    min-height: 6in ; min height of document;
     /* note: this ^ is just a hack to prevent body from being shorter than sidebar */
 
     background-color: #ffffff;
@@ -1194,9 +1194,9 @@ table.indextable td > dl > dd > dl
  * adapt for 'compact' and 'minimal' page sizes
  *------------------------------------*/
 
-@media only screen and (max-width: 960px),
-       only screen and (max-width: 700px),
-       only screen and (max-device-width: 700px),
+@media only screen and (max-width: 960px ; max width of "compact" mode (hides extra padding).),
+       only screen and (max-width: 700px ; max width of "minimal" mode (hides sidebar and other extras).),
+       only screen and (max-device-width: 700px ; max width of "minimal" mode (hides sidebar and other extras).),
        handheld
 {
     body { margin: 0; }
@@ -1221,8 +1221,8 @@ table.indextable td > dl > dd > dl
 /*------------------------------------
  * adapt for 'minimal' page size
  *------------------------------------*/
-@media only screen and (max-width: 700px),
-       only screen and (max-device-width: 700px),
+@media only screen and (max-width: 700px ; max width of "minimal" mode (hides sidebar and other extras).),
+       only screen and (max-device-width: 700px ; max width of "minimal" mode (hides sidebar and other extras).),
        handheld
 {
     body { font-size: 87.5%; }
