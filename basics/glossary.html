@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '(1.1.0)',
+        VERSION:     '(1.1.0-8-g5562008)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -128,6 +128,11 @@ kernel at the beginning of every simulation.</dd>
 <dt id="term-dynamic-resource-exchange">dynamic resource exchange</dt>
 <dd>the methodology that governs time step behavior in <span style="font-variant:small-caps;">Cyclus</span> &#8211; see
 <a class="reference internal" href="../arche/dre.html"><em>Dynamic Resource Exchange</em></a></dd>
+<dt id="term-entity">entity</dt>
+<dd>The kind of the archetype. Usually this is either region, institution,
+or facility. For agents that are not specificaly one of these kinds
+still inherit from the <tt class="docutils literal"><span class="pre">Agent</span></tt> class the term archtype is used.
+Otherwise the entity is unknown.</dd>
 <dt id="term-fuel-cycle-simulator">fuel cycle simulator</dt>
 <dd>A computational framework for modeling nuclear fuel cycles.</dd>
 <dt id="term-kernel-phase">kernel phase</dt>
@@ -278,7 +283,7 @@ simulations.</dd>
 
     <div class="footer">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Sep 19, 2014.
+      Last updated on Sep 24, 2014.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");

@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '(1.1.0)',
+        VERSION:     '(1.1.0-8-g5562008)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -288,7 +288,30 @@ this is <tt class="docutils literal"><span class="pre">vars</span></tt> which co
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td class="left-align no-left-divider single-right-divider">vars</td>
-<td class="left-align single-left-divider no-right-divider">The state variable annotations, <strong>DO NOT SET</strong>.</td>
+<td class="left-align single-left-divider no-right-divider">The state variable annotations, <strong>READ ONLY</strong>.</td>
+</tr>
+<tr class="row-odd"><td class="left-align no-left-divider single-right-divider">name</td>
+<td class="left-align single-left-divider no-right-divider">C++ class name (string) of the archetype. <strong>READ ONLY.</strong>
+<em>New in version 1.1.1.</em></td>
+</tr>
+<tr class="row-even"><td class="left-align no-left-divider single-right-divider">entity</td>
+<td class="left-align single-left-divider no-right-divider">The kind of archetype that this is based on which class it
+inherits from. If this inherits from <tt class="docutils literal"><span class="pre">cyclus::Region</span></tt>,
+<tt class="docutils literal"><span class="pre">cyclus::Institution</span></tt>, or <tt class="docutils literal"><span class="pre">cyclus::Facility</span></tt> then this
+will be the string &#8216;region&#8217;, &#8216;institution&#8217;, or &#8216;facility&#8217;
+respecively. If the class inherits from <tt class="docutils literal"><span class="pre">cyclus::Agent</span></tt> but
+does not inherit from the previous three then this will be
+the string &#8216;archetype&#8217;. In the class does not even inherit
+from <tt class="docutils literal"><span class="pre">cyclus::Agent</span></tt>, then this will be &#8216;unknown&#8217;.
+<strong>READ ONLY.</strong> <em>New in version 1.1.1.</em></td>
+</tr>
+<tr class="row-odd"><td class="left-align no-left-divider single-right-divider">parents</td>
+<td class="left-align single-left-divider no-right-divider">List of string class names of the direct superclasses of this
+archetype. <strong>READ ONLY.</strong> <em>New in version 1.1.1.</em></td>
+</tr>
+<tr class="row-even"><td class="left-align no-left-divider single-right-divider">all_parents</td>
+<td class="left-align single-left-divider no-right-divider">List of string class names of all the superclasses of this
+archetype. <strong>READ ONLY.</strong> <em>New in version 1.1.1.</em></td>
 </tr>
 <tr class="row-odd"><td class="left-align no-left-divider single-right-divider">doc</td>
 <td class="left-align single-left-divider no-right-divider">Documentation string.</td>
@@ -297,8 +320,8 @@ this is <tt class="docutils literal"><span class="pre">vars</span></tt> which co
 <td class="left-align single-left-divider no-right-divider">Brief documentation string for user interfaces.</td>
 </tr>
 <tr class="row-odd"><td class="left-align no-left-divider single-right-divider">userlevel</td>
-<td class="left-align single-left-divider no-right-divider">Integer from 0 - 10 for representing ease (0) or difficulty (10)
-in using this variable, default 0.</td>
+<td class="left-align single-left-divider no-right-divider">Integer from 0 - 10 for representing ease (0) or
+difficulty (10) in using this variable, default 0.</td>
 </tr>
 </tbody>
 </table>
@@ -815,7 +838,7 @@ in much the same way.</p>
 
     <div class="footer">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Sep 19, 2014.
+      Last updated on Sep 24, 2014.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");

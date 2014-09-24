@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '(1.1.0)',
+        VERSION:     '(1.1.0-8-g5562008)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -328,6 +328,12 @@ filters, and builds up or destroys context as it goes.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="cycpp.StateAccumulator.ensure_class_context">
+<tt class="descname">ensure_class_context</tt><big>(</big><em>classname</em><big>)</big><a class="headerlink" href="#cycpp.StateAccumulator.ensure_class_context" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ensures that the context for the class at heand is well-formed.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="cycpp.StateAccumulator.accumulate">
 <tt class="descname">accumulate</tt><big>(</big><em>statement</em>, <em>sep</em><big>)</big><a class="headerlink" href="#cycpp.StateAccumulator.accumulate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Modify the existing state by incoprorating the statement, which is
@@ -450,6 +456,12 @@ state.</p>
 <dt id="cycpp.CodeGenerator.classname">
 <tt class="descname">classname</tt><big>(</big><big>)</big><a class="headerlink" href="#cycpp.CodeGenerator.classname" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the current, fully-expanded class name.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="cycpp.CodeGenerator.ensure_class_context">
+<tt class="descname">ensure_class_context</tt><big>(</big><em>classname</em><big>)</big><a class="headerlink" href="#cycpp.CodeGenerator.ensure_class_context" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ensures that the context for the class at heand is well-formed.</p>
 </dd></dl>
 
 <dl class="method">
@@ -623,7 +635,7 @@ parents of any other class in query_set</p>
 
     <div class="footer">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Sep 19, 2014.
+      Last updated on Sep 24, 2014.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");
