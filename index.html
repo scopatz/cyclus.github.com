@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '(1.1.0-8-g5562008)',
+        VERSION:     'b&#39;(1.0.0-rc4-128-gf34b8c1)&#39;',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -136,8 +136,13 @@ Cyclus input file: <br>
 
     function submitJob() {
         var text = $('#infile-box').val();
-        $.post(server + "/job/submit-infile", text, function(data) {
-            $('#jobid').text(data);
+        $.post(server + "/api/v1/job-infile", text, function(data) {
+            var resp = JSON.parse(data)
+                            var jid = ""
+                            for (var i = 0; i < resp.Id.length; i++) {
+                                    jid += resp.Id[i].toString(16)
+                            }
+            $('#jobid').text(jid);
             $('#dashboard').load(server + "/dashboard");
         })
     }
