@@ -368,11 +368,18 @@ cycamore itself.</p>
 </tr>
 <tr class="field-even field"><th class="field-name">feed_assay:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">double</span></tt></p>
 <p><em>feed assay</em></p>
-<p>feed assay for the enrichment process
-:derived_init: cyclus::Material::Ptr feed = cyclus::Material::CreateUntracked(0, context()-&gt;GetRecipe(in_recipe)); feed_assay = cyclus::toolkit::UraniumAssay(feed);</p>
+<p>feed assay for the enrichment process</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">derived_init:</th><td class="field-body">cyclus::Material::Ptr feed = cyclus::Material::CreateUntracked(0, context()-&gt;GetRecipe(in_recipe)); feed_assay = cyclus::toolkit::UraniumAssay(feed);</td>
+</tr>
+</tbody>
+</table>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">inventory:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">cyclus::toolkit::ResourceBuff</span></tt></p>
+<tr class="field-even field"><th class="field-name">inventory:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">cyclus::toolkit::ResourceBuff</span></tt></p>
 <table class="last docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -697,7 +704,7 @@ cycamore itself.</p>
 
     <div class="footer">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Sep 29, 2014.
+      Last updated on Sep 30, 2014.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");
