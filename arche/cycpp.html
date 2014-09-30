@@ -208,7 +208,7 @@ in using this variable, default 0.</td>
 </tr>
 <tr class="row-even"><td class="left-align no-left-divider single-right-divider">schematype</td>
 <td class="left-align single-left-divider no-right-divider">This is the data type that is used in the schema for input file
-validation. This enables the you to supply just the data type
+validation. This enables you to supply just the data type
 rather than having to overwrite the full schema for this state
 variable. In most cases - when the shape is rank 0 or 1 such
 as for scalars or vectors - this is simply a string. In cases
@@ -634,7 +634,7 @@ on the Reactor agent is always snapshotted to the database as the value 42.
 However, we did not want to permanently alter the value of this variable.
 This could be achieved through the following pattern:</p>
 <div class="highlight-c++"><div class="highlight"><pre>void Reactor::Snapshot(cyclus::DbInit di) {
-  double real_flux = flux;  // copy the existsing fluc value.
+  double real_flux = flux;  // copy the existing flux value.
   flux = 42;  // set the value to wat we want temporarily
 
   // fill in the code generated implementation of Shapshop()
@@ -686,7 +686,7 @@ memory or in the database.</p>
             <span class="s">&#39;if (material_identifier%2 == 1)</span><span class="se">\n</span><span class="s">&#39;</span> \
             <span class="s">&#39;  material_identifier++;</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">,</span> \
     <span class="s">&#39;write&#39;</span><span class="p">:</span> <span class="s">&#39;-&gt;AddVal(&quot;material_identifier&quot;, material_identifier)</span><span class="se">\n</span><span class="s">&#39;</span> \
-    <span class="p">}}</span>
+<span class="p">}}</span>
 </pre></div>
 </div>
 <p>For more examples and explanation of what the <tt class="docutils literal"><span class="pre">InfileToDb()</span></tt> function
@@ -701,8 +701,9 @@ as follows:</p>
 <span class="cp">                        &#39;read&#39;: &#39;material_identifier = cyclus::Query&lt;int&gt;(tree, &quot;matid&quot;);\n&#39; \</span>
 <span class="cp">                                &#39;if (material_identifier%2 == 1)\n&#39; \</span>
 <span class="cp">                                &#39;  material_identifier++;\n&#39;, \</span>
-<span class="cp">                                &#39;write&#39;: &#39;-&gt;AddVal(&quot;material_identifier&quot;, material_identifier)\n&#39; \</span>
-<span class="cp">                    }}</span>
+<span class="cp">                        &#39;write&#39;: &#39;-&gt;AddVal(&quot;material_identifier&quot;, material_identifier)\n&#39; \</span>
+<span class="cp">                        }\</span>
+<span class="cp">                    }</span>
 <span class="kt">int</span> <span class="n">material_identifier</span><span class="p">;</span>
 </pre></div>
 </div>
@@ -838,7 +839,7 @@ in much the same way.</p>
 
     <div class="footer">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Sep 24, 2014.
+      Last updated on Sep 29, 2014.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");

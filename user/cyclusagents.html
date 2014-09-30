@@ -91,11 +91,11 @@ if(ga_enabled){
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">all_parents:</th><td class="field-body">[u&#8217;cyclus::Agent&#8217;, u&#8217;cyclus::Facility&#8217;, u&#8217;cyclus::Ider&#8217;, u&#8217;cyclus::StateWrangler&#8217;, u&#8217;cyclus::TimeListener&#8217;, u&#8217;cyclus::Trader&#8217;]</td>
+<tr class="field-odd field"><th class="field-name">entity:</th><td class="field-body">facility</td>
 </tr>
-<tr class="field-even field"><th class="field-name">entity:</th><td class="field-body">facility</td>
+<tr class="field-even field"><th class="field-name">parents:</th><td class="field-body">[cyclus::Facility]</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">parents:</th><td class="field-body">[u&#8217;cyclus::Facility&#8217;]</td>
+<tr class="field-odd field"><th class="field-name">all_parents:</th><td class="field-body">[cyclus::Agent, cyclus::Facility, cyclus::Ider, cyclus::StateWrangler, cyclus::TimeListener, cyclus::Trader]</td>
 </tr>
 </tbody>
 </table>
@@ -104,20 +104,20 @@ if(ga_enabled){
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">commod:</th><td class="field-body"><p class="first"><em>std::string</em></p>
-<p>source commodity</p>
+<tr class="field-odd field"><th class="field-name">commod:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">std::string</span></tt></p>
+<p><em>source commodity</em></p>
 <p>commodity that the source facility supplies
 :schematype: token</p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">recipe_name:</th><td class="field-body"><p class="first"><em>std::string</em></p>
-<p>commodity recipe name</p>
+<tr class="field-even field"><th class="field-name">recipe_name:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">std::string</span></tt></p>
+<p><em>commodity recipe name</em></p>
 <p>recipe name for source facility&#8217;s commodity
 :schematype: token</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">capacity:</th><td class="field-body"><p class="first"><em>double</em></p>
-<p>source capacity</p>
+<tr class="field-odd field"><th class="field-name">capacity:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">double</span></tt></p>
+<p><em>source capacity</em></p>
 <p class="last">amount of commodity that can be supplied at each time step</p>
 </td>
 </tr>
@@ -146,11 +146,11 @@ if(ga_enabled){
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">all_parents:</th><td class="field-body">[u&#8217;cyclus::Agent&#8217;, u&#8217;cyclus::Facility&#8217;, u&#8217;cyclus::Ider&#8217;, u&#8217;cyclus::StateWrangler&#8217;, u&#8217;cyclus::TimeListener&#8217;, u&#8217;cyclus::Trader&#8217;]</td>
+<tr class="field-odd field"><th class="field-name">entity:</th><td class="field-body">facility</td>
 </tr>
-<tr class="field-even field"><th class="field-name">entity:</th><td class="field-body">facility</td>
+<tr class="field-even field"><th class="field-name">parents:</th><td class="field-body">[cyclus::Facility]</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">parents:</th><td class="field-body">[u&#8217;cyclus::Facility&#8217;]</td>
+<tr class="field-odd field"><th class="field-name">all_parents:</th><td class="field-body">[cyclus::Agent, cyclus::Facility, cyclus::Ider, cyclus::StateWrangler, cyclus::TimeListener, cyclus::Trader]</td>
 </tr>
 </tbody>
 </table>
@@ -159,23 +159,23 @@ if(ga_enabled){
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">in_commods:</th><td class="field-body"><p class="first"><em>std::vector&lt;std::string&gt;</em></p>
-<p>input commodities</p>
+<tr class="field-odd field"><th class="field-name">in_commods:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">std::vector&lt;std::string&gt;</span></tt></p>
+<p><em>input commodities</em></p>
 <p>commodities that the sink facility accepts
 :schematype: token</p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">capacity:</th><td class="field-body"><p class="first"><em>double</em></p>
-<p>sink capacity</p>
+<tr class="field-even field"><th class="field-name">capacity:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">double</span></tt></p>
+<p><em>sink capacity</em></p>
 <p>capacity the sink facility can accept at each time step</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">max_inv_size:</th><td class="field-body"><p class="first"><em>double</em>, default=1e+299</p>
-<p>sink maximum inventory size</p>
+<tr class="field-odd field"><th class="field-name">max_inv_size:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">double</span></tt>, default=1e+299</p>
+<p><em>sink maximum inventory size</em></p>
 <p>total maximum inventory size of sink facility</p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">inventory:</th><td class="field-body"><p class="first"><em>cyclus::toolkit::ResourceBuff</em></p>
+<tr class="field-even field"><th class="field-name">inventory:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">cyclus::toolkit::ResourceBuff</span></tt></p>
 <table class="last docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -217,11 +217,11 @@ if(ga_enabled){
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">all_parents:</th><td class="field-body">[u&#8217;cyclus::Agent&#8217;, u&#8217;cyclus::Ider&#8217;, u&#8217;cyclus::Region&#8217;, u&#8217;cyclus::StateWrangler&#8217;, u&#8217;cyclus::TimeListener&#8217;]</td>
+<tr class="field-odd field"><th class="field-name">entity:</th><td class="field-body">region</td>
 </tr>
-<tr class="field-even field"><th class="field-name">entity:</th><td class="field-body">region</td>
+<tr class="field-even field"><th class="field-name">parents:</th><td class="field-body">[cyclus::Region]</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">parents:</th><td class="field-body">[u&#8217;cyclus::Region&#8217;]</td>
+<tr class="field-odd field"><th class="field-name">all_parents:</th><td class="field-body">[cyclus::Agent, cyclus::Ider, cyclus::Region, cyclus::StateWrangler, cyclus::TimeListener]</td>
 </tr>
 </tbody>
 </table>
@@ -238,11 +238,11 @@ if(ga_enabled){
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">all_parents:</th><td class="field-body">[u&#8217;cyclus::Agent&#8217;, u&#8217;cyclus::Ider&#8217;, u&#8217;cyclus::Institution&#8217;, u&#8217;cyclus::StateWrangler&#8217;, u&#8217;cyclus::TimeListener&#8217;]</td>
+<tr class="field-odd field"><th class="field-name">entity:</th><td class="field-body">institution</td>
 </tr>
-<tr class="field-even field"><th class="field-name">entity:</th><td class="field-body">institution</td>
+<tr class="field-even field"><th class="field-name">parents:</th><td class="field-body">[cyclus::Institution]</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">parents:</th><td class="field-body">[u&#8217;cyclus::Institution&#8217;]</td>
+<tr class="field-odd field"><th class="field-name">all_parents:</th><td class="field-body">[cyclus::Agent, cyclus::Ider, cyclus::Institution, cyclus::StateWrangler, cyclus::TimeListener]</td>
 </tr>
 </tbody>
 </table>
@@ -259,11 +259,11 @@ if(ga_enabled){
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">all_parents:</th><td class="field-body">[u&#8217;cyclus::Agent&#8217;, u&#8217;cyclus::Facility&#8217;, u&#8217;cyclus::Ider&#8217;, u&#8217;cyclus::StateWrangler&#8217;, u&#8217;cyclus::TimeListener&#8217;, u&#8217;cyclus::Trader&#8217;]</td>
+<tr class="field-odd field"><th class="field-name">entity:</th><td class="field-body">facility</td>
 </tr>
-<tr class="field-even field"><th class="field-name">entity:</th><td class="field-body">facility</td>
+<tr class="field-even field"><th class="field-name">parents:</th><td class="field-body">[cyclus::Facility]</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">parents:</th><td class="field-body">[u&#8217;cyclus::Facility&#8217;]</td>
+<tr class="field-odd field"><th class="field-name">all_parents:</th><td class="field-body">[cyclus::Agent, cyclus::Facility, cyclus::Ider, cyclus::StateWrangler, cyclus::TimeListener, cyclus::Trader]</td>
 </tr>
 </tbody>
 </table>
@@ -272,46 +272,46 @@ if(ga_enabled){
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">in_commod:</th><td class="field-body"><p class="first"><em>std::string</em></p>
-<p>input commodity</p>
+<tr class="field-odd field"><th class="field-name">in_commod:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">std::string</span></tt></p>
+<p><em>input commodity</em></p>
 <p>commodity that the k-facility consumes
 :schematype: token</p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">out_commod:</th><td class="field-body"><p class="first"><em>std::string</em></p>
-<p>output commodity</p>
+<tr class="field-even field"><th class="field-name">out_commod:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">std::string</span></tt></p>
+<p><em>output commodity</em></p>
 <p>commodity that the k-facility supplies
 :schematype: token</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">recipe_name:</th><td class="field-body"><p class="first"><em>std::string</em>, shape=[50]</p>
-<p>in-commodity recipe name</p>
+<tr class="field-odd field"><th class="field-name">recipe_name:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">std::string</span></tt>, shape=[50]</p>
+<p><em>in-commodity recipe name</em></p>
 <p>recipe name for the k-facility&#8217;s in-commodity
 :schematype: token</p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">in_capacity:</th><td class="field-body"><p class="first"><em>double</em></p>
-<p>input commodity capacity</p>
+<tr class="field-even field"><th class="field-name">in_capacity:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">double</span></tt></p>
+<p><em>input commodity capacity</em></p>
 <p>number of commodity units that can be taken at each time step (infinite capacity can be represented by a very large number</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">out_capacity:</th><td class="field-body"><p class="first"><em>double</em></p>
-<p>output commodity capacity</p>
+<tr class="field-odd field"><th class="field-name">out_capacity:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">double</span></tt></p>
+<p><em>output commodity capacity</em></p>
 <p>number of commodity units that can be supplied at each time step (infinite capacity can be represented by a very large number</p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name" colspan="2">current_capacity:</th></tr>
-<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first"><em>double</em>, default=0</p>
-<p>current output capacity</p>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">double</span></tt>, default=0</p>
+<p><em>current output capacity</em></p>
 <p>number of output commodity units that can be supplied at the current time step (infinite capacity can be represented by a very large number</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">max_inv_size:</th><td class="field-body"><p class="first"><em>double</em>, default=1e+299</p>
-<p>k-facility maximum inventory size</p>
+<tr class="field-odd field"><th class="field-name">max_inv_size:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">double</span></tt>, default=1e+299</p>
+<p><em>k-facility maximum inventory size</em></p>
 <p>total maximum inventory size of the k-facility</p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">inventory:</th><td class="field-body"><p class="first"><em>cyclus::toolkit::ResourceBuff</em></p>
+<tr class="field-even field"><th class="field-name">inventory:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">cyclus::toolkit::ResourceBuff</span></tt></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -322,13 +322,13 @@ if(ga_enabled){
 </table>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">k_factor_in:</th><td class="field-body"><p class="first"><em>double</em></p>
-<p>input k-factor</p>
+<tr class="field-even field"><th class="field-name">k_factor_in:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">double</span></tt></p>
+<p><em>input k-factor</em></p>
 <p>conversion factor that governs the behavior of the k-facility&#8217;s input commodity capacity</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">k_factor_out:</th><td class="field-body"><p class="first"><em>double</em></p>
-<p>output k-factor</p>
+<tr class="field-odd field"><th class="field-name">k_factor_out:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">double</span></tt></p>
+<p><em>output k-factor</em></p>
 <p class="last">conversion factor that governs the behavior of the k-facility&#8217;s output commodity capacity</p>
 </td>
 </tr>
@@ -379,11 +379,11 @@ if(ga_enabled){
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">all_parents:</th><td class="field-body">[u&#8217;cyclus::Agent&#8217;, u&#8217;cyclus::Facility&#8217;, u&#8217;cyclus::Ider&#8217;, u&#8217;cyclus::StateWrangler&#8217;, u&#8217;cyclus::TimeListener&#8217;, u&#8217;cyclus::Trader&#8217;]</td>
+<tr class="field-odd field"><th class="field-name">entity:</th><td class="field-body">facility</td>
 </tr>
-<tr class="field-even field"><th class="field-name">entity:</th><td class="field-body">facility</td>
+<tr class="field-even field"><th class="field-name">parents:</th><td class="field-body">[cyclus::Facility]</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">parents:</th><td class="field-body">[u&#8217;cyclus::Facility&#8217;]</td>
+<tr class="field-odd field"><th class="field-name">all_parents:</th><td class="field-body">[cyclus::Agent, cyclus::Facility, cyclus::Ider, cyclus::StateWrangler, cyclus::TimeListener, cyclus::Trader]</td>
 </tr>
 </tbody>
 </table>
@@ -392,71 +392,71 @@ if(ga_enabled){
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">commod:</th><td class="field-body"><p class="first"><em>std::string</em></p>
-<p>predator commodity</p>
+<tr class="field-odd field"><th class="field-name">commod:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">std::string</span></tt></p>
+<p><em>predator commodity</em></p>
 <p>commodity that the predator supplies
 :schematype: token</p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">prey:</th><td class="field-body"><p class="first"><em>std::string</em></p>
-<p>predator&#8217;s prey</p>
+<tr class="field-even field"><th class="field-name">prey:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">std::string</span></tt></p>
+<p><em>predator&#8217;s prey</em></p>
 <p>prey that the predator hunts
 :schematype: token</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">full:</th><td class="field-body"><p class="first"><em>double</em>, default=1</p>
-<p>feast size</p>
+<tr class="field-odd field"><th class="field-name">full:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">double</span></tt>, default=1</p>
+<p><em>feast size</em></p>
 <p>how many units of prey a predator consumes until it is satisfied</p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">hunt_cap:</th><td class="field-body"><p class="first"><em>double</em>, default=1</p>
-<p>hunting yield</p>
+<tr class="field-even field"><th class="field-name">hunt_cap:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">double</span></tt>, default=1</p>
+<p><em>hunting yield</em></p>
 <p>how many units of prey a predator can catch during a hunt</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">hunt_freq:</th><td class="field-body"><p class="first"><em>int</em>, default=1</p>
-<p>hunting frequency</p>
+<tr class="field-odd field"><th class="field-name">hunt_freq:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">int</span></tt>, default=1</p>
+<p><em>hunting frequency</em></p>
 <p>how often a predator needs to hunt</p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">success:</th><td class="field-body"><p class="first"><em>double</em>, default=1</p>
-<p>hunting success fraction</p>
+<tr class="field-even field"><th class="field-name">success:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">double</span></tt>, default=1</p>
+<p><em>hunting success fraction</em></p>
 <p>fraction of hunting success on a scale from 0 to 1</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">nchildren:</th><td class="field-body"><p class="first"><em>double</em>, default=1</p>
-<p>number of children</p>
+<tr class="field-odd field"><th class="field-name">nchildren:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">double</span></tt>, default=1</p>
+<p><em>number of children</em></p>
 <p>number of predator children born at each birthing instance</p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">age:</th><td class="field-body"><p class="first"><em>int</em>, default=0</p>
-<p>predator age</p>
+<tr class="field-even field"><th class="field-name">age:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">int</span></tt>, default=0</p>
+<p><em>predator age</em></p>
 <p>age of predator at beginning of simulation</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">lifespan:</th><td class="field-body"><p class="first"><em>int</em>, default=1</p>
-<p>predator lifespan</p>
+<tr class="field-odd field"><th class="field-name">lifespan:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">int</span></tt>, default=1</p>
+<p><em>predator lifespan</em></p>
 <p>how long a predator lives</p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">dead:</th><td class="field-body"><p class="first"><em>bool</em>, default=0</p>
-<p>dead?</p>
+<tr class="field-even field"><th class="field-name">dead:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">bool</span></tt>, default=0</p>
+<p><em>dead?</em></p>
 <p>flag for whether predator is currently dead</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">hunt_factor:</th><td class="field-body"><p class="first"><em>bool</em>, default=0</p>
-<p>hunting success factor</p>
+<tr class="field-odd field"><th class="field-name">hunt_factor:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">bool</span></tt>, default=0</p>
+<p><em>hunting success factor</em></p>
 <p>whether or not to base hunting success on relative predator/prey populations</p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name" colspan="2">birth_and_death:</th></tr>
-<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first"><em>bool</em>, default=0</p>
-<p>simultaneous birth and death?</p>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">bool</span></tt>, default=0</p>
+<p><em>simultaneous birth and death?</em></p>
 <p>whether or not simultaneous birth and and death are allowed (i.e., can a facility give birth and die in the same time step?)</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">consumed:</th><td class="field-body"><p class="first"><em>double</em>, default=0</p>
-<p>prey consumed</p>
+<tr class="field-odd field"><th class="field-name">consumed:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">double</span></tt>, default=0</p>
+<p><em>prey consumed</em></p>
 <p class="last">how many units of prey consumed per time step</p>
 </td>
 </tr>
@@ -537,11 +537,11 @@ if(ga_enabled){
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">all_parents:</th><td class="field-body">[u&#8217;cyclus::Agent&#8217;, u&#8217;cyclus::Facility&#8217;, u&#8217;cyclus::Ider&#8217;, u&#8217;cyclus::StateWrangler&#8217;, u&#8217;cyclus::TimeListener&#8217;, u&#8217;cyclus::Trader&#8217;]</td>
+<tr class="field-odd field"><th class="field-name">entity:</th><td class="field-body">facility</td>
 </tr>
-<tr class="field-even field"><th class="field-name">entity:</th><td class="field-body">facility</td>
+<tr class="field-even field"><th class="field-name">parents:</th><td class="field-body">[cyclus::Facility]</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">parents:</th><td class="field-body">[u&#8217;cyclus::Facility&#8217;]</td>
+<tr class="field-odd field"><th class="field-name">all_parents:</th><td class="field-body">[cyclus::Agent, cyclus::Facility, cyclus::Ider, cyclus::StateWrangler, cyclus::TimeListener, cyclus::Trader]</td>
 </tr>
 </tbody>
 </table>
@@ -550,7 +550,7 @@ if(ga_enabled){
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">commod:</th><td class="field-body"><p class="first"><em>std::string</em></p>
+<tr class="field-odd field"><th class="field-name">commod:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">std::string</span></tt></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -561,29 +561,29 @@ if(ga_enabled){
 </table>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">birth_freq:</th><td class="field-body"><p class="first"><em>int</em>, default=1</p>
-<p>birth frequency</p>
+<tr class="field-even field"><th class="field-name">birth_freq:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">int</span></tt>, default=1</p>
+<p><em>birth frequency</em></p>
 <p>number of time steps between birth of children</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">nchildren:</th><td class="field-body"><p class="first"><em>int</em>, default=1</p>
-<p>number of children</p>
+<tr class="field-odd field"><th class="field-name">nchildren:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">int</span></tt>, default=1</p>
+<p><em>number of children</em></p>
 <p>number of children born at each birthing instance</p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">age:</th><td class="field-body"><p class="first"><em>int</em>, default=0</p>
-<p>prey age</p>
+<tr class="field-even field"><th class="field-name">age:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">int</span></tt>, default=0</p>
+<p><em>prey age</em></p>
 <p>age of prey at start of simulation</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">dead:</th><td class="field-body"><p class="first"><em>bool</em>, default=0</p>
-<p>dead?</p>
+<tr class="field-odd field"><th class="field-name">dead:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">bool</span></tt>, default=0</p>
+<p><em>dead?</em></p>
 <p>flag for whether prey is currently dead</p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name" colspan="2">birth_and_death:</th></tr>
-<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first"><em>bool</em>, default=1</p>
-<p>simultaneous birth and death?</p>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">bool</span></tt>, default=1</p>
+<p><em>simultaneous birth and death?</em></p>
 <p class="last">whether or not simultaneous birth and and death are allowed (i.e., can a facility give birth and die in the same time step?)</p>
 </td>
 </tr>
@@ -747,7 +747,7 @@ if(ga_enabled){
 
     <div class="footer">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Sep 24, 2014.
+      Last updated on Sep 29, 2014.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");

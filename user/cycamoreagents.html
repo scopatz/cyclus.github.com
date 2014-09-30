@@ -92,23 +92,23 @@ cycamore itself.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">out_commod:</th><td class="field-body"><p class="first"><em>std::string</em></p>
-<p>source output commodity</p>
+<tr class="field-odd field"><th class="field-name">out_commod:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">std::string</span></tt></p>
+<p><em>source output commodity</em></p>
 <p>output commodity that the source facility supplies</p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">recipe_name:</th><td class="field-body"><p class="first"><em>std::string</em></p>
-<p>commodity recipe name</p>
+<tr class="field-even field"><th class="field-name">recipe_name:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">std::string</span></tt></p>
+<p><em>commodity recipe name</em></p>
 <p>recipe name for source facility&#8217;s commodity</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">capacity:</th><td class="field-body"><p class="first"><em>double</em>, default=1e+299</p>
-<p>source capacity</p>
+<tr class="field-odd field"><th class="field-name">capacity:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">double</span></tt>, default=1e+299</p>
+<p><em>source capacity</em></p>
 <p>amount of commodity that can be supplied at each time step</p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name" colspan="2">current_capacity:</th></tr>
-<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first"><em>double</em></p>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">double</span></tt></p>
 <table class="last docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -147,22 +147,22 @@ cycamore itself.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">in_commods:</th><td class="field-body"><p class="first"><em>std::vector&lt;std::string&gt;</em></p>
-<p>input commodities</p>
+<tr class="field-odd field"><th class="field-name">in_commods:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">std::vector&lt;std::string&gt;</span></tt></p>
+<p><em>input commodities</em></p>
 <p>commodities that the sink facility accepts</p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">capacity:</th><td class="field-body"><p class="first"><em>double</em>, default=1e+299</p>
-<p>sink capacity</p>
+<tr class="field-even field"><th class="field-name">capacity:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">double</span></tt>, default=1e+299</p>
+<p><em>sink capacity</em></p>
 <p>capacity the sink facility can accept at each time step</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">max_inv_size:</th><td class="field-body"><p class="first"><em>double</em>, default=1e+299</p>
-<p>sink maximum inventory size</p>
+<tr class="field-odd field"><th class="field-name">max_inv_size:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">double</span></tt>, default=1e+299</p>
+<p><em>sink maximum inventory size</em></p>
 <p>total maximum inventory size of sink facility</p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">inventory:</th><td class="field-body"><p class="first"><em>cyclus::toolkit::ResourceBuff</em></p>
+<tr class="field-even field"><th class="field-name">inventory:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">cyclus::toolkit::ResourceBuff</span></tt></p>
 <table class="last docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -228,8 +228,8 @@ cycamore itself.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">prototypes:</th><td class="field-body"><p class="first"><em>std::vector&lt;std::string&gt;</em></p>
-<p>facility prototypes</p>
+<tr class="field-odd field"><th class="field-name">prototypes:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">std::vector&lt;std::string&gt;</span></tt></p>
+<p><em>facility prototypes</em></p>
 <p class="last">a facility to be managed by the institution</p>
 </td>
 </tr>
@@ -257,23 +257,23 @@ cycamore itself.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">commodity_name:</th><td class="field-body"><p class="first"><em>std::string</em></p>
-<p>commodity in demand</p>
+<tr class="field-odd field"><th class="field-name">commodity_name:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">std::string</span></tt></p>
+<p><em>commodity in demand</em></p>
 <p>name of the commodity experiencing a growth in demand</p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">demand_types:</th><td class="field-body"><p class="first"><em>std::vector&lt;std::string&gt;</em></p>
-<p>demand type</p>
+<tr class="field-even field"><th class="field-name">demand_types:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">std::vector&lt;std::string&gt;</span></tt></p>
+<p><em>demand type</em></p>
 <p>mathematical description of demand growth (i.e., linear, exponential, piecewise)</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">demand_params:</th><td class="field-body"><p class="first"><em>std::vector&lt;std::string&gt;</em></p>
-<p>demand parameters</p>
+<tr class="field-odd field"><th class="field-name">demand_params:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">std::vector&lt;std::string&gt;</span></tt></p>
+<p><em>demand parameters</em></p>
 <p>parameters that define the behavior of the demand type function</p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">demand_times:</th><td class="field-body"><p class="first"><em>std::vector&lt;int&gt;</em></p>
-<p>demand times</p>
+<tr class="field-even field"><th class="field-name">demand_times:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">std::vector&lt;int&gt;</span></tt></p>
+<p><em>demand times</em></p>
 <p class="last">vector describing the length of times regarding the piecewise demand type</p>
 </td>
 </tr>
@@ -318,44 +318,44 @@ cycamore itself.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">in_commod:</th><td class="field-body"><p class="first"><em>std::string</em></p>
-<p>input commodity</p>
+<tr class="field-odd field"><th class="field-name">in_commod:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">std::string</span></tt></p>
+<p><em>input commodity</em></p>
 <p>commodity that the enrichment facility accepts</p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">out_commod:</th><td class="field-body"><p class="first"><em>std::string</em></p>
-<p>output commodity</p>
+<tr class="field-even field"><th class="field-name">out_commod:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">std::string</span></tt></p>
+<p><em>output commodity</em></p>
 <p>commodity that the enrichment facility supplies</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">in_recipe:</th><td class="field-body"><p class="first"><em>std::string</em></p>
-<p>input commodity recipe</p>
+<tr class="field-odd field"><th class="field-name">in_recipe:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">std::string</span></tt></p>
+<p><em>input commodity recipe</em></p>
 <p>recipe for enrichment facility&#8217;s input commodity</p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">tails_assay:</th><td class="field-body"><p class="first"><em>double</em>, default=0.03</p>
-<p>tails assay</p>
+<tr class="field-even field"><th class="field-name">tails_assay:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">double</span></tt>, default=0.03</p>
+<p><em>tails assay</em></p>
 <p>tails assay from the enrichment process</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">swu_capacity:</th><td class="field-body"><p class="first"><em>double</em>, default=1e+299</p>
-<p>SWU capacity</p>
+<tr class="field-odd field"><th class="field-name">swu_capacity:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">double</span></tt>, default=1e+299</p>
+<p><em>SWU capacity</em></p>
 <p>separative work unit (SWU) capcity of enrichment facility</p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">max_inv_size:</th><td class="field-body"><p class="first"><em>double</em>, default=1e+299</p>
-<p>maximum inventory size</p>
+<tr class="field-even field"><th class="field-name">max_inv_size:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">double</span></tt>, default=1e+299</p>
+<p><em>maximum inventory size</em></p>
 <p>maximum inventory capacity of natural uranium in the enrichment facility</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name" colspan="2">initial_reserves:</th></tr>
-<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><p class="first"><em>double</em>, default=0</p>
-<p>initial uranium reserves</p>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">double</span></tt>, default=0</p>
+<p><em>initial uranium reserves</em></p>
 <p>amount of natural uranium stored at the enrichment facility at the beginning of the simulation</p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name" colspan="2">current_swu_capacity:</th></tr>
-<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first"><em>double</em></p>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">double</span></tt></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -366,13 +366,13 @@ cycamore itself.</p>
 </table>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">feed_assay:</th><td class="field-body"><p class="first"><em>double</em></p>
-<p>feed assay</p>
+<tr class="field-even field"><th class="field-name">feed_assay:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">double</span></tt></p>
+<p><em>feed assay</em></p>
 <p>feed assay for the enrichment process
 :derived_init: cyclus::Material::Ptr feed = cyclus::Material::CreateUntracked(0, context()-&gt;GetRecipe(in_recipe)); feed_assay = cyclus::toolkit::UraniumAssay(feed);</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">inventory:</th><td class="field-body"><p class="first"><em>cyclus::toolkit::ResourceBuff</em></p>
+<tr class="field-odd field"><th class="field-name">inventory:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">cyclus::toolkit::ResourceBuff</span></tt></p>
 <table class="last docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -697,7 +697,7 @@ cycamore itself.</p>
 
     <div class="footer">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Sep 24, 2014.
+      Last updated on Sep 29, 2014.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");
