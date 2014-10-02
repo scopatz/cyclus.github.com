@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     'b&#39;(1.0.0-rc4-126-gac1e66f)&#39;',
+        VERSION:     'b&#39;(1.1.0-10-g1115421)&#39;',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -87,6 +87,20 @@ cycamore itself.</p>
 <div class="section" id="cycamore-source">
 <h2>:cycamore:<strong>Source</strong><a class="headerlink" href="#cycamore-source" title="Permalink to this headline">¶</a></h2>
 <p>A source facility that provides a commodity with a given capacity</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">entity:</th><td class="field-body">facility</td>
+</tr>
+<tr class="field-even field"><th class="field-name">parents:</th><td class="field-body">[&#8216;cyclus::Facility&#8217;, &#8216;cyclus::toolkit::CommodityProducer&#8217;]</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">all_parents:</th><td class="field-body">[&#8216;cyclus::Agent&#8217;, &#8216;cyclus::Facility&#8217;, &#8216;cyclus::Ider&#8217;, &#8216;cyclus::StateWrangler&#8217;, &#8216;cyclus::TimeListener&#8217;, &#8216;cyclus::Trader&#8217;, &#8216;cyclus::toolkit::AgentManaged&#8217;, &#8216;cyclus::toolkit::CommodityProducer&#8217;]</td>
+</tr>
+<tr class="field-even field"><th class="field-name">name:</th><td class="field-body">cycamore::Source</td>
+</tr>
+</tbody>
+</table>
 <p><strong>State Variables:</strong></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -142,6 +156,20 @@ cycamore itself.</p>
 <div class="section" id="cycamore-sink">
 <h2>:cycamore:<strong>Sink</strong><a class="headerlink" href="#cycamore-sink" title="Permalink to this headline">¶</a></h2>
 <p>A sink facility that accepts specified amounts of commodities from other agents</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">entity:</th><td class="field-body">facility</td>
+</tr>
+<tr class="field-even field"><th class="field-name">parents:</th><td class="field-body">[&#8216;cyclus::Facility&#8217;]</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">all_parents:</th><td class="field-body">[&#8216;cyclus::Agent&#8217;, &#8216;cyclus::Facility&#8217;, &#8216;cyclus::Ider&#8217;, &#8216;cyclus::StateWrangler&#8217;, &#8216;cyclus::TimeListener&#8217;, &#8216;cyclus::Trader&#8217;]</td>
+</tr>
+<tr class="field-even field"><th class="field-name">name:</th><td class="field-body">cycamore::Sink</td>
+</tr>
+</tbody>
+</table>
 <p><strong>State Variables:</strong></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -202,6 +230,20 @@ cycamore itself.</p>
 <div class="section" id="cycamore-deployinst">
 <h2>:cycamore:<strong>DeployInst</strong><a class="headerlink" href="#cycamore-deployinst" title="Permalink to this headline">¶</a></h2>
 <p>An institution that owns, operates, and deploys facilities manually defined in the input file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">entity:</th><td class="field-body">institution</td>
+</tr>
+<tr class="field-even field"><th class="field-name">parents:</th><td class="field-body">[&#8216;cyclus::Institution&#8217;]</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">all_parents:</th><td class="field-body">[&#8216;cyclus::Agent&#8217;, &#8216;cyclus::Ider&#8217;, &#8216;cyclus::Institution&#8217;, &#8216;cyclus::StateWrangler&#8217;, &#8216;cyclus::TimeListener&#8217;]</td>
+</tr>
+<tr class="field-even field"><th class="field-name">name:</th><td class="field-body">cycamore::DeployInst</td>
+</tr>
+</tbody>
+</table>
 <p><strong>Schema:</strong></p>
 <div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;oneOrMore&gt;</span>                               
 <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;buildorder&quot;</span><span class="nt">&gt;</span>            
@@ -223,6 +265,20 @@ cycamore itself.</p>
 <div class="section" id="cycamore-managerinst">
 <h2>:cycamore:<strong>ManagerInst</strong><a class="headerlink" href="#cycamore-managerinst" title="Permalink to this headline">¶</a></h2>
 <p>An institution that owns and operates a manually entered list of facilities in the input file</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">entity:</th><td class="field-body">institution</td>
+</tr>
+<tr class="field-even field"><th class="field-name">parents:</th><td class="field-body">[&#8216;cyclus::Institution&#8217;, &#8216;cyclus::toolkit::Builder&#8217;, &#8216;cyclus::toolkit::CommodityProducerManager&#8217;]</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">all_parents:</th><td class="field-body">[&#8216;cyclus::Agent&#8217;, &#8216;cyclus::Ider&#8217;, &#8216;cyclus::Institution&#8217;, &#8216;cyclus::StateWrangler&#8217;, &#8216;cyclus::TimeListener&#8217;, &#8216;cyclus::toolkit::AgentManaged&#8217;, &#8216;cyclus::toolkit::Builder&#8217;, &#8216;cyclus::toolkit::CommodityProducerManager&#8217;]</td>
+</tr>
+<tr class="field-even field"><th class="field-name">name:</th><td class="field-body">cycamore::ManagerInst</td>
+</tr>
+</tbody>
+</table>
 <p><strong>State Variables:</strong></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -252,6 +308,20 @@ cycamore itself.</p>
 <div class="section" id="cycamore-growthregion">
 <h2>:cycamore:<strong>GrowthRegion</strong><a class="headerlink" href="#cycamore-growthregion" title="Permalink to this headline">¶</a></h2>
 <p>A region that governs a scenario in which there is growth in demand for a commodity.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">entity:</th><td class="field-body">region</td>
+</tr>
+<tr class="field-even field"><th class="field-name">parents:</th><td class="field-body">[&#8216;cyclus::Region&#8217;]</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">all_parents:</th><td class="field-body">[&#8216;cyclus::Agent&#8217;, &#8216;cyclus::Ider&#8217;, &#8216;cyclus::Region&#8217;, &#8216;cyclus::StateWrangler&#8217;, &#8216;cyclus::TimeListener&#8217;]</td>
+</tr>
+<tr class="field-even field"><th class="field-name">name:</th><td class="field-body">cycamore::GrowthRegion</td>
+</tr>
+</tbody>
+</table>
 <p><strong>State Variables:</strong></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -313,6 +383,20 @@ cycamore itself.</p>
 <div class="section" id="cycamore-enrichmentfacility">
 <h2>:cycamore:<strong>EnrichmentFacility</strong><a class="headerlink" href="#cycamore-enrichmentfacility" title="Permalink to this headline">¶</a></h2>
 <p>An enrichment facility that intakes a commodity (usually natural uranium) and supplies a user-specified enriched product based on SWU capacity</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">entity:</th><td class="field-body">facility</td>
+</tr>
+<tr class="field-even field"><th class="field-name">parents:</th><td class="field-body">[&#8216;cyclus::Facility&#8217;]</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">all_parents:</th><td class="field-body">[&#8216;cyclus::Agent&#8217;, &#8216;cyclus::Facility&#8217;, &#8216;cyclus::Ider&#8217;, &#8216;cyclus::StateWrangler&#8217;, &#8216;cyclus::TimeListener&#8217;, &#8216;cyclus::Trader&#8217;]</td>
+</tr>
+<tr class="field-even field"><th class="field-name">name:</th><td class="field-body">cycamore::EnrichmentFacility</td>
+</tr>
+</tbody>
+</table>
 <p><strong>State Variables:</strong></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -431,6 +515,20 @@ cycamore itself.</p>
 <div class="section" id="cycamore-batchreactor">
 <h2>:cycamore:<strong>BatchReactor</strong><a class="headerlink" href="#cycamore-batchreactor" title="Permalink to this headline">¶</a></h2>
 <p>A reactor facility that has three storage areas that hold batches of materials: reserves, core, and storage. It can manage multiple input-output commodity pairs.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">entity:</th><td class="field-body">facility</td>
+</tr>
+<tr class="field-even field"><th class="field-name">parents:</th><td class="field-body">[&#8216;cyclus::Facility&#8217;, &#8216;cyclus::toolkit::CommodityProducer&#8217;]</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">all_parents:</th><td class="field-body">[&#8216;cyclus::Agent&#8217;, &#8216;cyclus::Facility&#8217;, &#8216;cyclus::Ider&#8217;, &#8216;cyclus::StateWrangler&#8217;, &#8216;cyclus::TimeListener&#8217;, &#8216;cyclus::Trader&#8217;, &#8216;cyclus::toolkit::AgentManaged&#8217;, &#8216;cyclus::toolkit::CommodityProducer&#8217;]</td>
+</tr>
+<tr class="field-even field"><th class="field-name">name:</th><td class="field-body">cycamore::BatchReactor</td>
+</tr>
+</tbody>
+</table>
 <p><strong>Schema:</strong></p>
 <div class="highlight-xml"><div class="highlight"><pre><span class="c">&lt;!-- cyclus::Material In/Out  --&gt;</span>           
 <span class="nt">&lt;oneOrMore&gt;</span>                                 
@@ -704,7 +802,7 @@ cycamore itself.</p>
 
     <div class="footer">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Sep 30, 2014.
+      Last updated on Oct 02, 2014.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");

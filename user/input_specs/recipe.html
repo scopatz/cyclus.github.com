@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     'b&#39;(1.0.0-rc4-126-gac1e66f)&#39;',
+        VERSION:     'b&#39;(1.1.0-10-g1115421)&#39;',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -108,18 +108,20 @@ based on the atom fractions or mass fractions; one of:</p>
 relative composition, where each section includes:</p>
 <blockquote>
 <div><ul class="simple">
-<li><tt class="docutils literal"><span class="pre">id</span></tt> - a non-negative integer defining the nuclide in the form
-ZZAAAMMMM</li>
+<li><tt class="docutils literal"><span class="pre">id</span></tt> - either a named isotope (ie. U-235) or a non-negative
+integer defining the nuclide in the form ZZAAAMMMM</li>
 <li><tt class="docutils literal"><span class="pre">comp</span></tt> - a number indicating the fraction of the material made up
-of this nuclide</li>
+of this nuclide.  The fractions are normalized to the sum of all
+constituents.</li>
 </ul>
 </div></blockquote>
 </li>
 </ul>
 </div></blockquote>
-<p>The format of the <cite>nuclide</cite> <cite>id</cite> is a general format that encodes the atomic
-number (Z), the mass number (A) and the energy state (M) with the formula
-(Z*1000 + A) * 10000 + M.</p>
+<p>The numerical format of the <cite>nuclide</cite> <cite>id</cite> is a general format that
+encodes the atomic number (Z), the mass number (A) and the energy</p>
+<blockquote>
+<div>state (M) with the formula (Z*1000 + A) * 10000 + M.</div></blockquote>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;recipe&gt;</span>
@@ -284,7 +286,7 @@ atom fractions, and contains two nuclides: 0.7% of the atoms are U-235 and
 
     <div class="footer">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Sep 30, 2014.
+      Last updated on Oct 02, 2014.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");
