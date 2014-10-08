@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     'b&#39;(1.1.0-10-g1115421)&#39;',
+        VERSION:     'b&#39;(1.1.0-20-gcf19b94)&#39;',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -321,21 +321,37 @@ not complete normally. False (or 0) otherwise.</li>
 </div>
 <div class="section" id="decomschedule-table">
 <h3>DecomSchedule Table<a class="headerlink" href="#decomschedule-table" title="Permalink to this headline">¶</a></h3>
+<p>When agents are scheduled to be decommissioned in the simulation, the details
+are recorded in this table.  Note that this table contains an entry for each
+scheduling regardless of whether or not it actually occurred; if a simulation
+ended before time reached the scheduled time, the agent would not have been
+decommissioned.</p>
 <ul class="simple">
 <li><strong>SimId</strong> (uuid)</li>
-<li><strong>AgentId</strong> (int):</li>
-<li><strong>SchedTime</strong> (int):</li>
-<li><strong>DecomTime</strong> (int):</li>
+<li><strong>AgentId</strong> (int): ID of the agent that is/was to be decommissioned.</li>
+<li><strong>SchedTime</strong> (int): The time step on which this decommissioning event was
+created.</li>
+<li><strong>DecomTime</strong> (int): The time step on which the agent was (or would have
+been) decommissioned.</li>
 </ul>
 </div>
 <div class="section" id="buildschedule-table">
 <h3>BuildSchedule Table<a class="headerlink" href="#buildschedule-table" title="Permalink to this headline">¶</a></h3>
+<p>When agents are scheduled to be built in the simulation, the details are
+recorded in this table.  Note that this table contains an entry for each
+scheduling regardless of whether or not it actually occurred; if a simulation
+ended before time reached the scheduled time, the agent would not have been
+built.</p>
 <ul class="simple">
 <li><strong>SimId</strong> (uuid)</li>
-<li><strong>ParentId</strong> (piintd):</li>
-<li><strong>Prototype</strong> (string):</li>
-<li><strong>SchedTime</strong> (int):</li>
-<li><strong>BuildTime</strong> (int):</li>
+<li><strong>ParentId</strong> (piintd): The Id of the agent that will become this new agent&#8217;s
+parent.</li>
+<li><strong>Prototype</strong> (string): The name of the agent prototype that will be used to
+generate the new agent.  This corresponds to the prototypes defined in an
+input files.</li>
+<li><strong>SchedTime</strong> (int): The time step on which this build event was created.</li>
+<li><strong>BuildTime</strong> (int): The time step on which the agent was (or would have
+been) built and deployed into the simulation.</li>
 </ul>
 </div>
 <div class="section" id="snapshots-table">
@@ -490,7 +506,7 @@ Below is a summary of them.</p>
 
     <div class="footer">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Oct 02, 2014.
+      Last updated on Oct 08, 2014.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");

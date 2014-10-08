@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     'b&#39;(1.1.0-10-g1115421)&#39;',
+        VERSION:     'b&#39;(1.1.0-20-gcf19b94)&#39;',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -107,26 +107,23 @@ tag, and has the following sections in any order:</p>
 </div>
 <div class="html-toggle section" id="grammar-definition">
 <h2>Grammar Definition<a class="headerlink" href="#grammar-definition" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-xml"><div class="highlight"><pre><span class="c">&lt;!-- begin section for simulation parameters --&gt;</span>
-<span class="nt">&lt;define</span> <span class="na">name=</span><span class="s">&quot;control&quot;</span><span class="nt">/&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;element</span> <span class="na">name =</span><span class="s">&quot;control&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;interleave&gt;</span>
-    <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;duration&quot;</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;nonNegativeInteger&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;/element&gt;</span>
-    <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;startmonth&quot;</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;nonNegativeInteger&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;/element&gt;</span>
-    <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;startyear&quot;</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;nonNegativeInteger&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;/element&gt;</span>
-    <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;simstart&quot;</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;nonNegativeInteger&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;/element&gt;</span>
-    <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;decay&quot;</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;integer&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;/element&gt;</span>
+
+    <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;duration&quot;</span><span class="nt">&gt;</span>   <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;nonNegativeInteger&quot;</span><span class="nt">/&gt;</span> <span class="nt">&lt;/element&gt;</span>
+    <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;startmonth&quot;</span><span class="nt">&gt;</span> <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;nonNegativeInteger&quot;</span><span class="nt">/&gt;</span> <span class="nt">&lt;/element&gt;</span>
+    <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;startyear&quot;</span><span class="nt">&gt;</span>  <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;nonNegativeInteger&quot;</span><span class="nt">/&gt;</span> <span class="nt">&lt;/element&gt;</span>
+
+    <span class="nt">&lt;optional&gt;</span>
+      <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;simhandle&quot;</span><span class="nt">&gt;</span> <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span><span class="nt">/&gt;</span> <span class="nt">&lt;/element&gt;</span>
+    <span class="nt">&lt;/optional&gt;</span>
+
+    <span class="nt">&lt;optional&gt;</span>
+      <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;decay&quot;</span><span class="nt">&gt;</span> <span class="nt">&lt;text/&gt;</span> <span class="nt">&lt;/element&gt;</span>
+    <span class="nt">&lt;/optional&gt;</span>
+
   <span class="nt">&lt;/interleave&gt;</span>
-<span class="nt">&lt;/define&gt;</span>
+<span class="nt">&lt;/element&gt;</span>
 </pre></div>
 </div>
 </div>
@@ -250,7 +247,7 @@ tag, and has the following sections in any order:</p>
 
     <div class="footer">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Oct 02, 2014.
+      Last updated on Oct 08, 2014.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");
