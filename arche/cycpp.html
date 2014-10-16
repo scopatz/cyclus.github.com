@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     'b&#39;(1.1.0-20-gcf19b94)&#39;',
+        VERSION:     '(1.1.0-25-g83704a2)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -205,6 +205,23 @@ shape of <tt class="docutils literal"><span class="pre">[10,</span> <span class=
 <tr class="row-odd"><td class="left-align no-left-divider single-right-divider">userlevel</td>
 <td class="left-align single-left-divider no-right-divider">Integer from 0 - 10 for representing ease (0) or difficulty (10)
 in using this variable, default 0.</td>
+</tr>
+<tr class="row-even"><td class="left-align no-left-divider single-right-divider">uilabel</td>
+<td class="left-align single-left-divider no-right-divider">The text string a UI will display as the name of this input on
+the UI input form.</td>
+</tr>
+<tr class="row-odd"><td class="left-align no-left-divider single-right-divider">uitype</td>
+<td class="left-align single-left-divider no-right-divider">The type of the input field in reference in a UI,
+currently supported types are; incommodity, outcommodity,
+range, combobox, facility, and recipe.</td>
+</tr>
+<tr class="row-even"><td class="left-align no-left-divider single-right-divider">range</td>
+<td class="left-align single-left-divider no-right-divider">This indicates the range associated with a range Type.
+It must take the form of <tt class="docutils literal"><span class="pre">[min,</span> <span class="pre">max]</span></tt> or <tt class="docutils literal"><span class="pre">[min,</span> <span class="pre">max,</span> <span class="pre">(optional)</span> <span class="pre">step</span> <span class="pre">size]</span></tt>.</td>
+</tr>
+<tr class="row-odd"><td class="left-align no-left-divider single-right-divider">catagorical</td>
+<td class="left-align single-left-divider no-right-divider">This indicates the decrete values a combobox Type can take. It
+must take the form of <tt class="docutils literal"><span class="pre">[value1,</span> <span class="pre">value2,</span> <span class="pre">value3,</span> <span class="pre">etc]</span></tt>.</td>
 </tr>
 <tr class="row-even"><td class="left-align no-left-divider single-right-divider">schematype</td>
 <td class="left-align single-left-divider no-right-divider">This is the data type that is used in the schema for input file
@@ -839,7 +856,7 @@ in much the same way.</p>
 
     <div class="footer">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Oct 08, 2014.
+      Last updated on Oct 16, 2014.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");
