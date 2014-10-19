@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '(1.1.0-25-g83704a2)',
+        VERSION:     '(1.1.0-36-g4f90307)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -97,6 +97,8 @@ cycamore itself.</p>
 </tr>
 <tr class="field-odd field"><th class="field-name">all_parents:</th><td class="field-body">[cyclus::Agent, cyclus::Facility, cyclus::Ider, cyclus::StateWrangler, cyclus::TimeListener, cyclus::Trader, cyclus::toolkit::AgentManaged, cyclus::toolkit::CommodityProducer]</td>
 </tr>
+<tr class="field-even field"><th class="field-name">name:</th><td class="field-body">cycamore::Source</td>
+</tr>
 </tbody>
 </table>
 <p><strong>State Variables:</strong></p>
@@ -107,20 +109,36 @@ cycamore itself.</p>
 <tr class="field-odd field"><th class="field-name">out_commod:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">std::string</span></tt></p>
 <p><em>source output commodity</em></p>
 <p>output commodity that the source facility supplies</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">uitype:</th><td class="field-body">outcommodity</td>
+</tr>
+</tbody>
+</table>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">recipe_name:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">std::string</span></tt></p>
 <p><em>commodity recipe name</em></p>
 <p>recipe name for source facility&#8217;s commodity</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">uitype:</th><td class="field-body">recipe</td>
+</tr>
+</tbody>
+</table>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">capacity:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">double</span></tt>, default=1e+299</p>
+<tr class="field-even field"><th class="field-name">capacity:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">double</span></tt>, default=1e+299</p>
 <p><em>source capacity</em></p>
 <p>amount of commodity that can be supplied at each time step</p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name" colspan="2">current_capacity:</th></tr>
-<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">double</span></tt></p>
+<tr class="field-odd field"><th class="field-name" colspan="2">current_capacity:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">double</span></tt></p>
 <table class="last docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -164,6 +182,8 @@ cycamore itself.</p>
 </tr>
 <tr class="field-odd field"><th class="field-name">all_parents:</th><td class="field-body">[cyclus::Agent, cyclus::Facility, cyclus::Ider, cyclus::StateWrangler, cyclus::TimeListener, cyclus::Trader]</td>
 </tr>
+<tr class="field-even field"><th class="field-name">name:</th><td class="field-body">cycamore::Sink</td>
+</tr>
 </tbody>
 </table>
 <p><strong>State Variables:</strong></p>
@@ -174,6 +194,14 @@ cycamore itself.</p>
 <tr class="field-odd field"><th class="field-name">in_commods:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">std::vector&lt;std::string&gt;</span></tt></p>
 <p><em>input commodities</em></p>
 <p>commodities that the sink facility accepts</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">uitype:</th><td class="field-body">[u&#8217;oneormore&#8217;, u&#8217;incommodity&#8217;]</td>
+</tr>
+</tbody>
+</table>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">capacity:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">double</span></tt>, default=1e+299</p>
@@ -236,6 +264,8 @@ cycamore itself.</p>
 </tr>
 <tr class="field-odd field"><th class="field-name">all_parents:</th><td class="field-body">[cyclus::Agent, cyclus::Ider, cyclus::Institution, cyclus::StateWrangler, cyclus::TimeListener]</td>
 </tr>
+<tr class="field-even field"><th class="field-name">name:</th><td class="field-body">cycamore::DeployInst</td>
+</tr>
 </tbody>
 </table>
 <p><strong>Schema:</strong></p>
@@ -269,6 +299,8 @@ cycamore itself.</p>
 </tr>
 <tr class="field-odd field"><th class="field-name">all_parents:</th><td class="field-body">[cyclus::Agent, cyclus::Ider, cyclus::Institution, cyclus::StateWrangler, cyclus::TimeListener, cyclus::toolkit::AgentManaged, cyclus::toolkit::Builder, cyclus::toolkit::CommodityProducerManager]</td>
 </tr>
+<tr class="field-even field"><th class="field-name">name:</th><td class="field-body">cycamore::ManagerInst</td>
+</tr>
 </tbody>
 </table>
 <p><strong>State Variables:</strong></p>
@@ -278,7 +310,15 @@ cycamore itself.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">prototypes:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">std::vector&lt;std::string&gt;</span></tt></p>
 <p><em>facility prototypes</em></p>
-<p class="last">a facility to be managed by the institution</p>
+<p>a facility to be managed by the institution</p>
+<table class="last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">uitype:</th><td class="field-body">prototype</td>
+</tr>
+</tbody>
+</table>
 </td>
 </tr>
 </tbody>
@@ -310,6 +350,8 @@ cycamore itself.</p>
 </tr>
 <tr class="field-odd field"><th class="field-name">all_parents:</th><td class="field-body">[cyclus::Agent, cyclus::Ider, cyclus::Region, cyclus::StateWrangler, cyclus::TimeListener]</td>
 </tr>
+<tr class="field-even field"><th class="field-name">name:</th><td class="field-body">cycamore::GrowthRegion</td>
+</tr>
 </tbody>
 </table>
 <p><strong>State Variables:</strong></p>
@@ -320,6 +362,14 @@ cycamore itself.</p>
 <tr class="field-odd field"><th class="field-name">commodity_name:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">std::string</span></tt></p>
 <p><em>commodity in demand</em></p>
 <p>name of the commodity experiencing a growth in demand</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">uitype:</th><td class="field-body">commodity</td>
+</tr>
+</tbody>
+</table>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">demand_types:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">std::vector&lt;std::string&gt;</span></tt></p>
@@ -383,6 +433,8 @@ cycamore itself.</p>
 </tr>
 <tr class="field-odd field"><th class="field-name">all_parents:</th><td class="field-body">[cyclus::Agent, cyclus::Facility, cyclus::Ider, cyclus::StateWrangler, cyclus::TimeListener, cyclus::Trader]</td>
 </tr>
+<tr class="field-even field"><th class="field-name">name:</th><td class="field-body">cycamore::EnrichmentFacility</td>
+</tr>
 </tbody>
 </table>
 <p><strong>State Variables:</strong></p>
@@ -393,16 +445,40 @@ cycamore itself.</p>
 <tr class="field-odd field"><th class="field-name">in_commod:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">std::string</span></tt></p>
 <p><em>input commodity</em></p>
 <p>commodity that the enrichment facility accepts</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">uitype:</th><td class="field-body">incommodity</td>
+</tr>
+</tbody>
+</table>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">out_commod:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">std::string</span></tt></p>
 <p><em>output commodity</em></p>
 <p>commodity that the enrichment facility supplies</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">uitype:</th><td class="field-body">outcommodity</td>
+</tr>
+</tbody>
+</table>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">in_recipe:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">std::string</span></tt></p>
+<tr class="field-even field"><th class="field-name">in_recipe:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">std::string</span></tt></p>
 <p><em>input commodity recipe</em></p>
 <p>recipe for enrichment facility&#8217;s input commodity</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">uitype:</th><td class="field-body">recipe</td>
+</tr>
+</tbody>
+</table>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">tails_assay:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">double</span></tt>, default=0.03</p>
@@ -512,6 +588,8 @@ cycamore itself.</p>
 <tr class="field-even field"><th class="field-name">parents:</th><td class="field-body">[cyclus::Facility, cyclus::toolkit::CommodityProducer]</td>
 </tr>
 <tr class="field-odd field"><th class="field-name">all_parents:</th><td class="field-body">[cyclus::Agent, cyclus::Facility, cyclus::Ider, cyclus::StateWrangler, cyclus::TimeListener, cyclus::Trader, cyclus::toolkit::AgentManaged, cyclus::toolkit::CommodityProducer]</td>
+</tr>
+<tr class="field-even field"><th class="field-name">name:</th><td class="field-body">cycamore::BatchReactor</td>
 </tr>
 </tbody>
 </table>
@@ -788,7 +866,7 @@ cycamore itself.</p>
 
     <div class="footer">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Oct 16, 2014.
+      Last updated on Oct 19, 2014.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");

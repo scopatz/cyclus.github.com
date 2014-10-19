@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '(1.1.0-25-g83704a2)',
+        VERSION:     '(1.1.0-36-g4f90307)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -219,7 +219,7 @@ range, combobox, facility, and recipe.</td>
 <td class="left-align single-left-divider no-right-divider">This indicates the range associated with a range Type.
 It must take the form of <tt class="docutils literal"><span class="pre">[min,</span> <span class="pre">max]</span></tt> or <tt class="docutils literal"><span class="pre">[min,</span> <span class="pre">max,</span> <span class="pre">(optional)</span> <span class="pre">step</span> <span class="pre">size]</span></tt>.</td>
 </tr>
-<tr class="row-odd"><td class="left-align no-left-divider single-right-divider">catagorical</td>
+<tr class="row-odd"><td class="left-align no-left-divider single-right-divider">categorical</td>
 <td class="left-align single-left-divider no-right-divider">This indicates the decrete values a combobox Type can take. It
 must take the form of <tt class="docutils literal"><span class="pre">[value1,</span> <span class="pre">value2,</span> <span class="pre">value3,</span> <span class="pre">etc]</span></tt>.</td>
 </tr>
@@ -330,13 +330,22 @@ archetype. <strong>READ ONLY.</strong> <em>New in version 1.1.1.</em></td>
 <td class="left-align single-left-divider no-right-divider">List of string class names of all the superclasses of this
 archetype. <strong>READ ONLY.</strong> <em>New in version 1.1.1.</em></td>
 </tr>
-<tr class="row-odd"><td class="left-align no-left-divider single-right-divider">doc</td>
+<tr class="row-odd"><td class="left-align no-left-divider single-right-divider">niche</td>
+<td class="left-align single-left-divider no-right-divider">A string which names the group that the achetype belongs to
+that defines how it is swappable with other archetypes. If
+two archetypes have the same niche then they are partially or
+wholly swappable. Niches may overlap and any string may be
+used as the niche. Some example niches that are useful to
+displaying user interfaces are: <tt class="docutils literal"><span class="pre">reactor</span></tt>, <tt class="docutils literal"><span class="pre">reprocessing</span></tt>,
+<tt class="docutils literal"><span class="pre">repository</span></tt>, <tt class="docutils literal"><span class="pre">mine</span></tt>, and others.</td>
+</tr>
+<tr class="row-even"><td class="left-align no-left-divider single-right-divider">doc</td>
 <td class="left-align single-left-divider no-right-divider">Documentation string.</td>
 </tr>
-<tr class="row-even"><td class="left-align no-left-divider single-right-divider">tooltip</td>
+<tr class="row-odd"><td class="left-align no-left-divider single-right-divider">tooltip</td>
 <td class="left-align single-left-divider no-right-divider">Brief documentation string for user interfaces.</td>
 </tr>
-<tr class="row-odd"><td class="left-align no-left-divider single-right-divider">userlevel</td>
+<tr class="row-even"><td class="left-align no-left-divider single-right-divider">userlevel</td>
 <td class="left-align single-left-divider no-right-divider">Integer from 0 - 10 for representing ease (0) or
 difficulty (10) in using this variable, default 0.</td>
 </tr>
@@ -856,7 +865,7 @@ in much the same way.</p>
 
     <div class="footer">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Oct 16, 2014.
+      Last updated on Oct 19, 2014.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");

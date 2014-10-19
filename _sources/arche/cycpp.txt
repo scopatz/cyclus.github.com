@@ -147,7 +147,7 @@ contains a listing of all special keys and their meanings.
                  range, combobox, facility, and recipe. 
     range        This indicates the range associated with a range Type.
                  It must take the form of ``[min, max]`` or ``[min, max, (optional) step size]``.
-    catagorical  This indicates the decrete values a combobox Type can take. It
+    categorical  This indicates the decrete values a combobox Type can take. It
                  must take the form of ``[value1, value2, value3, etc]``. 
     schematype   This is the data type that is used in the schema for input file
                  validation. This enables you to supply just the data type
@@ -243,6 +243,13 @@ this is ``vars`` which contains the state variable annotations!
                  archetype. **READ ONLY.** *New in version 1.1.1.*
     all_parents  List of string class names of all the superclasses of this
                  archetype. **READ ONLY.** *New in version 1.1.1.*
+    niche        A string which names the group that the achetype belongs to 
+                 that defines how it is swappable with other archetypes. If 
+                 two archetypes have the same niche then they are partially or 
+                 wholly swappable. Niches may overlap and any string may be 
+                 used as the niche. Some example niches that are useful to 
+                 displaying user interfaces are: ``reactor``, ``reprocessing``,
+                 ``repository``, ``mine``, and others.
     doc          Documentation string.
     tooltip      Brief documentation string for user interfaces.
     userlevel    Integer from 0 - 10 for representing ease (0) or 
