@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '(1.1.0-36-g4f90307)',
+        VERSION:     'b&#39;(1.1.0-30-g8321907)&#39;',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -99,10 +99,10 @@ composition.</li>
 quality/units.</li>
 </ul>
 <p>Conceptually, a resource can be anything that might be an interesting traded
-item (e.g., electricity, money, or workers).  <em>All changes to resource objects
-(including creation) are tracked and recorded in the database.  Because of
-this, agents should handle resources carefully, being conscious of mass
-conservation among other things.</em></p>
+item (e.g., electricity, money, or workers).  By default, all changes to
+resource objects (including creation) are tracked and recorded in the
+database.  Because of this, agents should handle resources carefully.  For
+more details about this, see <a class="reference internal" href="#tracked-untracked"><em>Tracked and Untracked Resources</em></a>.</p>
 <p>All resource objects are created and managed as pointer types. For
 convenience, each of the classes related to resources have a special pointer
 type defined:</p>
@@ -140,7 +140,7 @@ resources with different qualities may NOT be combined together.</p>
 <li>Extract</li>
 <li>Absorb</li>
 </ul>
-<div class="highlight-c++"><div class="highlight"><pre><span class="c1">// create a 100 grapes product resource</span>
+<div class="highlight-c++"><div class="highlight"><pre><span class="c1">// create a &quot;grapes&quot; product holding 100 grapes.</span>
 <span class="n">cyclus</span><span class="o">::</span><span class="n">Product</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">p1</span> <span class="o">=</span> <span class="n">cyclus</span><span class="o">::</span><span class="n">Product</span><span class="o">::</span><span class="n">Create</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="s">&quot;grapes&quot;</span><span class="p">);</span>
 
 <span class="c1">// extract 7 grapes from p1</span>
@@ -158,8 +158,8 @@ resources with different qualities may NOT be combined together.</p>
 <p>Materials in <span style="font-variant:small-caps;">Cyclus</span> have a mass and an associated nuclide composition.  The
 composition is represented by a  <tt class="docutils literal"><span class="pre">cyclus::Composition</span></tt> object.  Material
 quantity is always represented in units of kg. Agents can either create a
-composition manually (see the <em>Compositions</em> section below) or acquired from
-the <tt class="docutils literal"><span class="pre">cyclus::Context</span></tt> which holds all recipes defined as part of the
+composition manually (see the <em>Compositions</em> section below) or acquire one from
+their <tt class="docutils literal"><span class="pre">cyclus::Context</span></tt> which holds all recipes defined as part of the
 simulation input.</p>
 <p>There are 4 basic operations that can be performed on material resources
 (examples follow):</p>
@@ -275,6 +275,42 @@ example above, you should <strong>NEVER</strong> use pointers (e.g.
 and change across simulation snapshot+restart.</p>
 </div>
 </div>
+<div class="section" id="tracked-and-untracked-resources">
+<span id="tracked-untracked"></span><h2>Tracked and Untracked Resources<a class="headerlink" href="#tracked-and-untracked-resources" title="Permalink to this headline">¶</a></h2>
+<p>All changes to normal resource objects (including creation, splitting,
+trasmutation, etc.) are tracked and recorded in the database.  By default, all
+resources are <strong>tracked resources</strong>.  Because of this, agents should handle
+resources carefully, being conscious of mass conservation among other things.
+Anything done with resources is recorded in the database as having <em>actually</em>
+happened in the simulation.  If a new resource is created, it is instantly
+recorded in the database as being a part of an agent&#8217;s real/actual inventory.
+Placeholder or &#8220;dummy&#8221; resources can also be created if necessary.  No
+information about these resources is recorded in the simulation database and
+they are referred to as <strong>untracked resources</strong>.  An agent&#8217;s most common (and
+likely only) need for untracked resources occurs when communicating details
+about a desired/available resources for requests/bids during resource
+exchange.  Here untracked resources fulfill a communication roll only.</p>
+<p>Just like the functions for creating trakced resources, there are
+corresponding function for creating both untracked materials and untracked
+products:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="n">cyclus</span><span class="o">::</span><span class="n">Composition</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">c</span> <span class="o">=</span> <span class="n">context</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">GetRecipe</span><span class="p">(</span><span class="s">&quot;enriched_u&quot;</span><span class="p">);</span>
+
+<span class="c1">// create an untracked 100 kg material from c (the enriched_u recipe)</span>
+<span class="n">cyclus</span><span class="o">::</span><span class="n">Material</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">m1</span> <span class="o">=</span> <span class="n">cyclus</span><span class="o">::</span><span class="n">Material</span><span class="o">::</span><span class="n">CreateUntracked</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">c</span><span class="p">);</span>
+
+<span class="c1">// create an untracked &quot;grapes&quot; product holding 100 grapes.</span>
+<span class="n">cyclus</span><span class="o">::</span><span class="n">Product</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">p1</span> <span class="o">=</span> <span class="n">cyclus</span><span class="o">::</span><span class="n">Product</span><span class="o">::</span><span class="n">CreateUntracked</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="s">&quot;grapes&quot;</span><span class="p">);</span>
+
+<span class="c1">// nothing about m1 and p1 will ever be recorded in the output data.</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">When a need for placeholder, dummy, or otherwise untracked
+resource arises, use &#8220;untracked&#8221; resources.  Do NOT create tracked
+resources to use in resource exchange requests and bids.</p>
+</div>
+</div>
 </div>
 
 
@@ -295,6 +331,7 @@ and change across simulation snapshot+restart.</p>
 </ul>
 </li>
 <li><a class="reference internal" href="#resource-ids">Resource IDs</a></li>
+<li><a class="reference internal" href="#tracked-and-untracked-resources">Tracked and Untracked Resources</a></li>
 </ul>
 </li>
 </ul>
@@ -398,7 +435,7 @@ and change across simulation snapshot+restart.</p>
 
     <div class="footer">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Oct 19, 2014.
+      Last updated on Oct 21, 2014.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");
