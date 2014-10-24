@@ -1,0 +1,362 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Adding a ResourceBuffer from the Toolkit &mdash; Home</title>
+    
+    <link rel="stylesheet" href="../../_static/cyclus.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '(1.1.0-58-g464f74a)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../../_static/cloud.js"></script>
+    <link rel="shortcut icon" href="../../_static/big_c.ico"/>
+    <link rel="top" title="Home" href="../../index.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1"><script type="text/javascript">
+var ga_enabled = !$.cookie('disable-ga');
+if(ga_enabled){
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-12222727-2']);
+  _gaq.push(['_setCookiePath', '/']);
+  _gaq.push(['_setDetectFlash', false]);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+}
+</script>
+  </head>
+  <body>
+    <div class="relbar-top">
+        
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+    <li><a href="../../index.html">Home</a> &raquo;</li>
+ 
+      </ul>
+    </div>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="adding-a-resourcebuffer-from-the-toolkit">
+<h1>Adding a ResourceBuffer from the Toolkit<a class="headerlink" href="#adding-a-resourcebuffer-from-the-toolkit" title="Permalink to this headline">¶</a></h1>
+<p>Cyclus has a growing Toolkit of standard patterns that can be used by
+archetype developers.  There are many advantages to using the Toolkit patterns
+vs developing similar functionality yourself, typical of most code reuse
+situations:</p>
+<ul class="simple">
+<li>robustness - Toolkit patterns have been subjected to the Cyclus QA process</li>
+<li>time savings - it will take less time to learn how to use a Toolkit than it takes to develop your own</li>
+<li>improvements - You can benefit immediately from any improvements in the performance of the Toolkit pattern</li>
+</ul>
+<p>Code reuse is a critical best practice in all software development.</p>
+<p>One of the Toolkit patterns is a ResourceBuff, providing a way to track an inventory of Resoure objects.</p>
+<p>In this lesson, we will:</p>
+<ol class="arabic simple">
+<li>Add a ResourceBuff to use as an inventory of material</li>
+<li>Change our log information to show the info about the buffer</li>
+<li>Add a state variable for the user input to set the size of the buffer</li>
+</ol>
+<div class="section" id="add-a-resourcebuff">
+<h2>Add a ResourceBuff<a class="headerlink" href="#add-a-resourcebuff" title="Permalink to this headline">¶</a></h2>
+<p>A ResourceBuff is available as a data type for another state variable, so we simply have to add the following:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="c1">/// this facility holds material in storage.</span>
+<span class="cp">#pragma cyclus var</span>
+<span class="n">cyclus</span><span class="o">::</span><span class="n">toolkit</span><span class="o">::</span><span class="n">ResourceBuff</span> <span class="n">inventory</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>This creates a state variable named <tt class="docutils literal"><span class="pre">inventory</span></tt> that is based on the
+<tt class="docutils literal"><span class="pre">cyclus::toolkit::ResourceBuff</span></tt> class.  A ResourceBuff object has special
+handling by the preprocessor, so it will not appear in the schema and
+therefore will not appear in the Cycic UI either.</p>
+<p>Let&#8217;s build, install and test this:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>python install.py --prefix<span class="o">=</span>../install
+<span class="nv">$ </span>cyclus -v 2 input/example.xml
+</pre></div>
+</div>
+</div>
+<div class="section" id="change-the-log-output-to-be-about-the-buffer">
+<h2>Change the Log Output to Be About the Buffer<a class="headerlink" href="#change-the-log-output-to-be-about-the-buffer" title="Permalink to this headline">¶</a></h2>
+<p>Now that we have some interesting data, let&#8217;s change our log message to report
+things about that data.  In particular, we will plot the quantity of material
+in the buffer and the remaining space in the buffer.</p>
+<p>First, remove the LOG from the <tt class="docutils literal"><span class="pre">Tick()</span></tt> method that wrote &#8220;Hello&#8221;.</p>
+<p>Then change the LOG in the <tt class="docutils literal"><span class="pre">Tock()</span></tt> to be:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="n">LOG</span><span class="p">(</span><span class="n">cyclus</span><span class="o">::</span><span class="n">LEV_INFO1</span><span class="p">,</span> <span class="s">&quot;tutorial_storage&quot;</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;The current inventory is &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">inventory</span><span class="p">.</span><span class="n">quantity</span><span class="p">()</span>
+                                           <span class="o">&lt;&lt;</span> <span class="s">&quot; kg of material with &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">inventory</span><span class="p">.</span><span class="n">space</span><span class="p">()</span>
+                                           <span class="o">&lt;&lt;</span> <span class="s">&quot; kg of space remaining.&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Notice tht this uses the built in <tt class="docutils literal"><span class="pre">quantity()</span></tt> and <tt class="docutils literal"><span class="pre">space()</span></tt> methods of a
+ResourceBuff object.</p>
+<p>Let&#8217;s build, install and test this:</p>
+<div class="highlight-bash"><div class="highlight"><pre>   <span class="nv">$ </span>python install.py --prefix<span class="o">=</span>../install
+   <span class="nv">$ </span>cyclus -v 2 input/example.xml
+             :
+         .CL:CC CC             _Q     _Q  _Q_Q    _Q    _Q              _Q
+       CC;CCCCCCCC:C;         /_<span class="se">\)</span>   /_<span class="se">\)</span>/_/<span class="se">\\</span><span class="o">)</span>  /_<span class="se">\)</span>  /_<span class="se">\)</span>            /_<span class="se">\)</span>
+       CCCCCCCCCCCCCl       __O|/O___O|/O_OO|/O__O|/O__O|/O____________O|/O__
+    CCCCCCf     iCCCLCC     /////////////////////////////////////////////////
+    iCCCt  ;;;;;.  CCCC
+   CCCC  ;;;;;;;;;. CClL.                          c
+  CCCC ,;;       ;;: CCCC  ;                   : CCCCi
+   CCC ;;         ;;  CC   ;;:                CCC<span class="sb">`</span>   <span class="sb">`</span>C;
+ lCCC ;;              CCCC  ;;;:             :CC .;;. C;   ;    :   ;  :;;
+ CCCC ;.              CCCC    ;;;,           CC ;    ; Ci  ;    :   ;  :  ;
+  iCC :;               CC       ;;;,        ;C ;       CC  ;    :   ; .
+ CCCi ;;               CCC        ;;;.      .C ;       tf  ;    :   ;  ;.
+ CCC  ;;               CCC          ;;;;;;; fC :       lC  ;    :   ;    ;:
+  iCf ;;               CC         :;;:      tC ;       CC  ;    :   ;     ;
+ fCCC :;              LCCf      ;;;:         LC :.  ,: C   ;    ;   ; ;   ;
+ CCCC  ;;             CCCC    ;;;:           CCi <span class="sb">`</span>;;<span class="sb">`</span> CC.  ;;;; :;.;.  ; ,;
+   CCl ;;             CC    ;;;;              CCC    CCL
+  tCCC  ;;        ;; CCCL  ;;;                  tCCCCC.
+   CCCC  ;;     :;; CCCCf  ;                     ,L
+    lCCC   ;;;;;;  CCCL
+    CCCCCC  :;;  fCCCCC
+     . CCCC     CCCC .
+      .CCCCCCCCCCCCCi
+         iCCCCCLCf
+          .  C. ,
+             :
+INFO1<span class="o">(</span>core  <span class="o">)</span>:Simulation <span class="nb">set </span>to run from <span class="nv">start</span><span class="o">=</span>0 to <span class="nv">end</span><span class="o">=</span>10
+INFO1<span class="o">(</span>core  <span class="o">)</span>:Beginning simulation
+INFO1<span class="o">(</span>tutori<span class="o">)</span>:The current inventory is 0 kg of material with 1.79769e+308 kg of space remaining.
+INFO1<span class="o">(</span>tutori<span class="o">)</span>:The current inventory is 0 kg of material with 1.79769e+308 kg of space remaining.
+INFO1<span class="o">(</span>tutori<span class="o">)</span>:The current inventory is 0 kg of material with 1.79769e+308 kg of space remaining.
+INFO1<span class="o">(</span>tutori<span class="o">)</span>:The current inventory is 0 kg of material with 1.79769e+308 kg of space remaining.
+INFO1<span class="o">(</span>tutori<span class="o">)</span>:The current inventory is 0 kg of material with 1.79769e+308 kg of space remaining.
+INFO1<span class="o">(</span>tutori<span class="o">)</span>:The current inventory is 0 kg of material with 1.79769e+308 kg of space remaining.
+INFO1<span class="o">(</span>tutori<span class="o">)</span>:The current inventory is 0 kg of material with 1.79769e+308 kg of space remaining.
+INFO1<span class="o">(</span>tutori<span class="o">)</span>:The current inventory is 0 kg of material with 1.79769e+308 kg of space remaining.
+INFO1<span class="o">(</span>tutori<span class="o">)</span>:The current inventory is 0 kg of material with 1.79769e+308 kg of space remaining.
+INFO1<span class="o">(</span>tutori<span class="o">)</span>:The current inventory is 0 kg of material with 1.79769e+308 kg of space remaining.
+
+Status: Cyclus run successful!
+Output location: cyclus.sqlite
+Simulation ID: f26913d0-c743-4e2f-9859-20cbcb916498
+</pre></div>
+</div>
+</div>
+<div class="section" id="add-a-state-variable-to-define-the-size-of-the-resourcebuff">
+<h2>Add a State Variable to Define the Size of the ResourceBuff<a class="headerlink" href="#add-a-state-variable-to-define-the-size-of-the-resourcebuff" title="Permalink to this headline">¶</a></h2>
+<p>You will note that the space remaining is a very large number and that we have
+no way to specify it in the input.  We can do this by adding another state variable:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="c1">/// max inventory size</span>
+<span class="cp">#pragma cyclus var {&#39;doc&#39;: &#39;Total quantity of material that can be stored.&#39;, \</span>
+<span class="cp">                    &#39;tooltip&#39;: &#39;Storage facility size&#39;, \</span>
+<span class="cp">                    &#39;units&#39;: &#39;kg&#39;, \</span>
+<span class="cp">                    &#39;uilabel&#39;: &#39;Inventory Size&#39; }</span>
+<span class="kt">double</span> <span class="n">max_inv_size</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>As a special (read, undocumented) feature of a ResourceBuff, you also use the
+pragma to initialize its size from another state variable.  Change the pragma
+for the ResourceBuf to be:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="cp">#pragma cyclus var {&#39;capacity&#39; : &#39;max_inv_size&#39;}</span>
+</pre></div>
+</div>
+<p>Finally, we need to change our sample input file to include the additional
+state variable.  Insert the following element into the
+<tt class="docutils literal"><span class="pre">&lt;Tutorial_storageFacility&gt;</span></tt> element:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;max_inv_size&gt;</span>10000<span class="nt">&lt;/max_inv_size&gt;</span>
+</pre></div>
+</div>
+<p>Let&#8217;s build, install and try it:</p>
+<div class="highlight-bash"><div class="highlight"><pre>   <span class="nv">$ </span>python install.py --prefix<span class="o">=</span>../install
+   <span class="nv">$ </span>cyclus -v 2 input/example.xml
+             :
+         .CL:CC CC             _Q     _Q  _Q_Q    _Q    _Q              _Q
+       CC;CCCCCCCC:C;         /_<span class="se">\)</span>   /_<span class="se">\)</span>/_/<span class="se">\\</span><span class="o">)</span>  /_<span class="se">\)</span>  /_<span class="se">\)</span>            /_<span class="se">\)</span>
+       CCCCCCCCCCCCCl       __O|/O___O|/O_OO|/O__O|/O__O|/O____________O|/O__
+    CCCCCCf     iCCCLCC     /////////////////////////////////////////////////
+    iCCCt  ;;;;;.  CCCC
+   CCCC  ;;;;;;;;;. CClL.                          c
+  CCCC ,;;       ;;: CCCC  ;                   : CCCCi
+   CCC ;;         ;;  CC   ;;:                CCC<span class="sb">`</span>   <span class="sb">`</span>C;
+ lCCC ;;              CCCC  ;;;:             :CC .;;. C;   ;    :   ;  :;;
+ CCCC ;.              CCCC    ;;;,           CC ;    ; Ci  ;    :   ;  :  ;
+  iCC :;               CC       ;;;,        ;C ;       CC  ;    :   ; .
+ CCCi ;;               CCC        ;;;.      .C ;       tf  ;    :   ;  ;.
+ CCC  ;;               CCC          ;;;;;;; fC :       lC  ;    :   ;    ;:
+  iCf ;;               CC         :;;:      tC ;       CC  ;    :   ;     ;
+ fCCC :;              LCCf      ;;;:         LC :.  ,: C   ;    ;   ; ;   ;
+ CCCC  ;;             CCCC    ;;;:           CCi <span class="sb">`</span>;;<span class="sb">`</span> CC.  ;;;; :;.;.  ; ,;
+   CCl ;;             CC    ;;;;              CCC    CCL
+  tCCC  ;;        ;; CCCL  ;;;                  tCCCCC.
+   CCCC  ;;     :;; CCCCf  ;                     ,L
+    lCCC   ;;;;;;  CCCL
+    CCCCCC  :;;  fCCCCC
+     . CCCC     CCCC .
+      .CCCCCCCCCCCCCi
+         iCCCCCLCf
+          .  C. ,
+             :
+INFO1<span class="o">(</span>core  <span class="o">)</span>:Simulation <span class="nb">set </span>to run from <span class="nv">start</span><span class="o">=</span>0 to <span class="nv">end</span><span class="o">=</span>10
+INFO1<span class="o">(</span>core  <span class="o">)</span>:Beginning simulation
+INFO1<span class="o">(</span>tutori<span class="o">)</span>:The current inventory is 0 kg of material with 10000 kg of space remaining.
+INFO1<span class="o">(</span>tutori<span class="o">)</span>:The current inventory is 0 kg of material with 10000 kg of space remaining.
+INFO1<span class="o">(</span>tutori<span class="o">)</span>:The current inventory is 0 kg of material with 10000 kg of space remaining.
+INFO1<span class="o">(</span>tutori<span class="o">)</span>:The current inventory is 0 kg of material with 10000 kg of space remaining.
+INFO1<span class="o">(</span>tutori<span class="o">)</span>:The current inventory is 0 kg of material with 10000 kg of space remaining.
+INFO1<span class="o">(</span>tutori<span class="o">)</span>:The current inventory is 0 kg of material with 10000 kg of space remaining.
+INFO1<span class="o">(</span>tutori<span class="o">)</span>:The current inventory is 0 kg of material with 10000 kg of space remaining.
+INFO1<span class="o">(</span>tutori<span class="o">)</span>:The current inventory is 0 kg of material with 10000 kg of space remaining.
+INFO1<span class="o">(</span>tutori<span class="o">)</span>:The current inventory is 0 kg of material with 10000 kg of space remaining.
+INFO1<span class="o">(</span>tutori<span class="o">)</span>:The current inventory is 0 kg of material with 10000 kg of space remaining.
+
+Status: Cyclus run successful!
+Output location: cyclus.sqlite
+Simulation ID: 7bf4a93e-e719-41d3-a468-9e596e725529
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="../../index.html" title="index">
+          <img class="logo" src="../../_static/big_c.png" alt="Logo"/>
+        </a></p><div class="sphinxlocaltoc">
+    <h3><a href="../../index.html">Page contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Adding a ResourceBuffer from the Toolkit</a><ul>
+<li><a class="reference internal" href="#add-a-resourcebuff">Add a ResourceBuff</a></li>
+<li><a class="reference internal" href="#change-the-log-output-to-be-about-the-buffer">Change the Log Output to Be About the Buffer</a></li>
+<li><a class="reference internal" href="#add-a-state-variable-to-define-the-size-of-the-resourcebuff">Add a State Variable to Define the Size of the ResourceBuff</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div class="sphinxlocaltoc">
+  <h3>Useful Pages</h3>
+    <ul><li><ul>
+    <li><a href="http://fuelcycle.org/user/index.html">User Guide</a></li>
+    <li><a href="http://fuelcycle.org/arche/index.html">Archetype Developer Guide</a></li>
+    <li><a href="http://fuelcycle.org/cyclus/api/">Cyclus API Documentation</a></li>
+    <li><a href="http://fuelcycle.org/cycamore/api/">Cycamore API Documentation</a></li>
+    <li><a href="http://fuelcycle.org/basics/glossary.html">Glossary</a></li>
+    <li><a href="mailto:cyclus-users+subscribe@googlegroups.com?subject=Subscribe&body=Send this message to subscribe to the list">Join</a> the 
+      <a href="https://groups.google.com/forum/#!forum/cyclus-users" target="_blank"><span style="font-variant:small-caps">Cyclus</span> Users</a> mailing list.
+    <li><a href="mailto:cyclus-dev+subscribe@googlegroups.com?subject=Subscribe&body=Send this message to subscribe to the list">Join</a> the 
+      <a href="https://groups.google.com/forum/#!forum/cyclus-users" target="_blank"><span style="font-variant:small-caps">Cyclus</span> Developers</a> mailing list.
+    </ul></li></ul>
+  </div>
+    
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <h3>Get Cyclus</h3>
+    <br>
+    Current version: <b>1.1.0</b>
+    <br><br>
+    Install:
+    <div class="highlight-bash" style="width:97.5%"><div class="highlight"><pre><span class="nv">$ </span>conda install cyclus cycamore</pre></div></div>
+    Get the Source:
+    <ul><li><ul>
+          <li><a href="https://github.com/cyclus/cyclus">Cyclus</a></li>
+          <li><a href="https://github.com/cyclus/cycamore">Cycamore</a></li>
+    </ul></li></ul>
+    <h3>Acknowledgements</h3>
+    The Cyclus project has received support from:
+    <br />
+    <a href="http://www.neup.gov" target="_blank"><img src="../../_static/neup_logo_large.png" width=170px></a>
+    <br />
+    <br />
+
+    In addition, some of the students working on Cyclus have received support from:
+    <br />
+    <a href="http://www.anl.gov" target="_blank"><img src="../../_static/AnlLogo.png" height=100px></a>
+    <a href="http://www.nrc.gov" target="_blank"><img src="../../_static/USNRC.png" height=100px></a>
+    <br />
+    <a href="http://www.neup.gov" target="_blank"><img src="../../_static/neup_logo_large.png" width=170px></a>
+    <br />
+    <a href="http://www.nsf.gov" target="_blank"><img src="../../_static/nsf_logo.png" height=100px></a>
+    <a href="http://www.wisc.edu" target="_blank"><img src="../../_static/crest.png" height=100px></a>
+
+    
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="relbar-bottom">
+        
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+    <li><a href="../../index.html">Home</a> &raquo;</li>
+ 
+      </ul>
+    </div>
+    </div>
+
+    <div class="footer">
+        &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
+      Last updated on Oct 24, 2014.
+    </div><script type="text/javascript">
+    if(ga_enabled){
+        document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");
+        document.write("Click <button title=\"set cookie to disable analytics for this site\" class=\"link\" onclick=\"$.cookie('disable-ga', 'true', {expires: 3650, path: '/'}); window.location.reload(); return false; \">here</button> to disable analytics for this site.");
+        document.write("</div>");
+    }else{
+        document.write("<div class=\"footer\">Google Analytics has been disabled. ");
+        document.write("Click <button title=\"set cookie to re-enable analytics for this site\" class=\"link\" onclick=\"$.cookie('disable-ga', null, {path: '/'}); window.location.reload(); return false; \">here</button> to re-enable analytics for this site.");
+    };
+</script>
+    <!-- cloud_sptheme 1.4 -->
+  </body>
+</html>
