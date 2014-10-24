@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '(1.1.0-47-g0c9e836)',
+        VERSION:     '(1.1.0-58-g464f74a)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -106,8 +106,9 @@ stop tracking the original stub files:</p>
 </pre></div>
 </div>
 <p>We will then add the files that were modified:</p>
-<blockquote>
-<div>$ git add CMakeLists.txt input/example.xml src/CMakeLists.txt tutorial_storage_*</div></blockquote>
+<div class="highlight-python"><div class="highlight"><pre>$ git add CMakeLists.txt input/example.xml src/CMakeLists.txt src/tutorial_storage_*
+</pre></div>
+</div>
 <p>Finally, we can commit these changes:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>git commit -m <span class="s2">&quot;Changed cycstub files from stub to tutorial_storage&quot;</span>
 </pre></div>
