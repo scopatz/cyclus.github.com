@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     'b&#39;(1.1.0-30-g8321907)&#39;',
+        VERSION:     '(1.1.0-47-g0c9e836)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -174,10 +174,10 @@ simulation input.</p>
 <span class="n">cyclus</span><span class="o">::</span><span class="n">Composition</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">c2</span> <span class="o">=</span> <span class="n">context</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">GetRecipe</span><span class="p">(</span><span class="s">&quot;enriched_u&quot;</span><span class="p">);</span>
 
 <span class="c1">// create a 100 kg material from the nat_u recipe defined in the input file</span>
-<span class="n">cyclus</span><span class="o">::</span><span class="n">Material</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">m1</span> <span class="o">=</span> <span class="n">cyclus</span><span class="o">::</span><span class="n">Material</span><span class="o">::</span><span class="n">Create</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">c</span><span class="p">);</span>
+<span class="n">cyclus</span><span class="o">::</span><span class="n">Material</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">m1</span> <span class="o">=</span> <span class="n">cyclus</span><span class="o">::</span><span class="n">Material</span><span class="o">::</span><span class="n">Create</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">c1</span><span class="p">);</span>
 
 <span class="c1">// extract 1 kg of enriched U from m1</span>
-<span class="n">cyclus</span><span class="o">::</span><span class="n">Material</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">m2</span> <span class="o">=</span> <span class="n">m1</span><span class="o">-&gt;</span><span class="n">ExtractComp</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">c</span><span class="p">);</span>
+<span class="n">cyclus</span><span class="o">::</span><span class="n">Material</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">m2</span> <span class="o">=</span> <span class="n">m1</span><span class="o">-&gt;</span><span class="n">ExtractComp</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">c2</span><span class="p">);</span>
 <span class="c1">// mass of m1 is now 99 kg and its composition has changed</span>
 
 <span class="c1">// extract 1 kg from m1 of whatever composition it is</span>
@@ -435,7 +435,7 @@ resources to use in resource exchange requests and bids.</p>
 
     <div class="footer">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Oct 21, 2014.
+      Last updated on Oct 24, 2014.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");

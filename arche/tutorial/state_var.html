@@ -1,0 +1,412 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Adding State Variables &mdash; Home</title>
+    
+    <link rel="stylesheet" href="../../_static/cyclus.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '(1.1.0-47-g0c9e836)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../../_static/cloud.js"></script>
+    <link rel="shortcut icon" href="../../_static/big_c.ico"/>
+    <link rel="top" title="Home" href="../../index.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1"><script type="text/javascript">
+var ga_enabled = !$.cookie('disable-ga');
+if(ga_enabled){
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-12222727-2']);
+  _gaq.push(['_setCookiePath', '/']);
+  _gaq.push(['_setDetectFlash', false]);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+}
+</script>
+  </head>
+  <body>
+    <div class="relbar-top">
+        
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+    <li><a href="../../index.html">Home</a> &raquo;</li>
+ 
+      </ul>
+    </div>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="adding-state-variables">
+<h1>Adding State Variables<a class="headerlink" href="#adding-state-variables" title="Permalink to this headline">¶</a></h1>
+<p>In this lesson, we will add the state variables that will define this
+facility.  We will make use of the Cyclus <tt class="docutils literal"><span class="pre">#pragma</span></tt> directives so that these
+state variables are available in the Cycic user interface as well as being
+logged in the output.</p>
+<p>We will take the following steps:</p>
+<ol class="arabic simple">
+<li>Add the necessary state variables</li>
+<li>Build and install the updated module</li>
+<li>Modify the sample input file to include these variables</li>
+</ol>
+<div class="section" id="adding-state-variables-with-cyclus-pragma">
+<h2>Adding State Variables with Cyclus #pragma<a class="headerlink" href="#adding-state-variables-with-cyclus-pragma" title="Permalink to this headline">¶</a></h2>
+<p>The Cyclus preprocessor provides a <tt class="docutils literal"><span class="pre">#pragma</span></tt> that includes a variable in the
+set of state variables and allows convenient annotations.</p>
+<p>First, we&#8217;ll add the maximum monthly transfer capacity, called <tt class="docutils literal"><span class="pre">throughput</span></tt>.
+Open the file <tt class="docutils literal"><span class="pre">src/tutorial_storage_facility.h</span></tt> in your text editor.</p>
+<p>Immediately after the declaration of <tt class="docutils literal"><span class="pre">Tock()</span></tt>, add the following:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="cp">#pragma cyclus var {&#39;doc&#39;: &#39;Maximum amount of material that can be transfered in or out each time step&#39;, \</span>
+<span class="cp">                    &#39;tooltip&#39;: &#39;Maximum amount of material that can be transfered in or out each time step&#39;, \</span>
+<span class="cp">                    &#39;units&#39;: &#39;kg&#39;, \</span>
+<span class="cp">                    &#39;uilabel&#39;: &#39;Maximum Throughput&#39;}</span>
+<span class="kt">double</span> <span class="n">throughput</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Now, we&#8217;ll add variable for the minimum amount of time that material is
+stored, and the maximum fissle content of a new shipment.</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="cp">#pragma cyclus var {&#39;doc&#39;: &#39;Minimum amount of time material must be stored&#39;, \</span>
+<span class="cp">                    &#39;tooltip&#39;: &#39;Minimum amount of time material must be stored&#39;, \</span>
+<span class="cp">                    &#39;units&#39;: &#39;months&#39;, \</span>
+<span class="cp">                    &#39;uilabel&#39;: &#39;Storage Time&#39;}</span>
+<span class="kt">int</span> <span class="n">storage_time</span><span class="p">;</span>
+
+<span class="cp">#pragma cyclus var {&#39;doc&#39;: &#39;Maximum mass fraction of each new shipment that is fissile&#39;, \</span>
+<span class="cp">                    &#39;tooltip&#39;: &#39;Maximum mass fraction of each new shipment that is fissile&#39;, \</span>
+<span class="cp">                    &#39;uilabel&#39;: &#39;Maximum Fissile Fraction&#39;}</span>
+<span class="kt">double</span> <span class="n">max_fissile</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="build-and-install-the-modified-module">
+<h2>Build and Install the Modified Module<a class="headerlink" href="#build-and-install-the-modified-module" title="Permalink to this headline">¶</a></h2>
+<p>To rebuild and reinstall this module, just issue the same command as before:</p>
+</div>
+<div class="section" id="modifying-the-input-file">
+<h2>Modifying the Input File<a class="headerlink" href="#modifying-the-input-file" title="Permalink to this headline">¶</a></h2>
+<p>If you try to run the same input file with your modified module, you will get
+errors because the sample input file no longer includes the necessary pieces
+to define your module.  It is missing the new variables.  Try it:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>cyclus -v 2 input/example.xml
+              :
+          .CL:CC CC             _Q     _Q  _Q_Q    _Q    _Q              _Q
+        CC;CCCCCCCC:C;         /_<span class="se">\)</span>   /_<span class="se">\)</span>/_/<span class="se">\\</span><span class="o">)</span>  /_<span class="se">\)</span>  /_<span class="se">\)</span>            /_<span class="se">\)</span>
+        CCCCCCCCCCCCCl       __O|/O___O|/O_OO|/O__O|/O__O|/O____________O|/O__
+     CCCCCCf     iCCCLCC     /////////////////////////////////////////////////
+     iCCCt  ;;;;;.  CCCC
+    CCCC  ;;;;;;;;;. CClL.                          c
+   CCCC ,;;       ;;: CCCC  ;                   : CCCCi
+    CCC ;;         ;;  CC   ;;:                CCC<span class="sb">`</span>   <span class="sb">`</span>C;
+  lCCC ;;              CCCC  ;;;:             :CC .;;. C;   ;    :   ;  :;;
+  CCCC ;.              CCCC    ;;;,           CC ;    ; Ci  ;    :   ;  :  ;
+   iCC :;               CC       ;;;,        ;C ;       CC  ;    :   ; .
+  CCCi ;;               CCC        ;;;.      .C ;       tf  ;    :   ;  ;.
+  CCC  ;;               CCC          ;;;;;;; fC :       lC  ;    :   ;    ;:
+   iCf ;;               CC         :;;:      tC ;       CC  ;    :   ;     ;
+  fCCC :;              LCCf      ;;;:         LC :.  ,: C   ;    ;   ; ;   ;
+  CCCC  ;;             CCCC    ;;;:           CCi <span class="sb">`</span>;;<span class="sb">`</span> CC.  ;;;; :;.;.  ; ,;
+    CCl ;;             CC    ;;;;              CCC    CCL
+   tCCC  ;;        ;; CCCL  ;;;                  tCCCCC.
+    CCCC  ;;     :;; CCCCf  ;                     ,L
+     lCCC   ;;;;;;  CCCL
+     CCCCCC  :;;  fCCCCC
+      . CCCC     CCCC .
+       .CCCCCCCCCCCCCi
+          iCCCCCLCf
+           .  C. ,
+              :
+Entity: line 17: element Tutorial_storageFacility: Relax-NG validity error : Expecting an element throughput, got nothing
+Entity: line 17: element Tutorial_storageFacility: Relax-NG validity error : Invalid sequence in interleave
+Entity: line 17: element Tutorial_storageFacility: Relax-NG validity error : Element Tutorial_storageFacility failed to validate content
+ ERROR<span class="o">(</span>core  <span class="o">)</span>:Document failed schema validation
+</pre></div>
+</div>
+<p>Notice that you were able to take advantage of the input file validation simply by using the <tt class="docutils literal"><span class="pre">#pragma</span></tt>.</p>
+<p>Now, we&#8217;ll change that input file.  Open the file <tt class="docutils literal"><span class="pre">input/example.xml</span></tt> in
+your text editor, and find the prototype configuration for the single facility
+named &#8220;OneFacility&#8221; that looks like this.</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;facility&gt;</span>
+  <span class="nt">&lt;name&gt;</span>OneFacility<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;config&gt;</span>
+    <span class="nt">&lt;Tutorial_storageFacility</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/config&gt;</span>
+<span class="nt">&lt;/facility&gt;</span>
+</pre></div>
+</div>
+<p>We need to replace the <tt class="docutils literal"><span class="pre">&lt;config&gt;</span></tt> element with this:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;config&gt;</span>
+  <span class="nt">&lt;Tutorial_storageFacility&gt;</span>
+    <span class="nt">&lt;throughput&gt;</span>100<span class="nt">&lt;/throughput&gt;</span>
+    <span class="nt">&lt;storage_time&gt;</span>60<span class="nt">&lt;/storage_time&gt;</span>
+    <span class="nt">&lt;max_fissile&gt;</span>1.0<span class="nt">&lt;/max_fissile&gt;</span>
+  <span class="nt">&lt;/Tutorial_storageFacility&gt;</span>
+<span class="nt">&lt;/config&gt;</span>
+</pre></div>
+</div>
+<p>Now we can try it again:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>cyclus -v 2 input/example.xml
+              :
+          .CL:CC CC             _Q     _Q  _Q_Q    _Q    _Q              _Q
+        CC;CCCCCCCC:C;         /_<span class="se">\)</span>   /_<span class="se">\)</span>/_/<span class="se">\\</span><span class="o">)</span>  /_<span class="se">\)</span>  /_<span class="se">\)</span>            /_<span class="se">\)</span>
+        CCCCCCCCCCCCCl       __O|/O___O|/O_OO|/O__O|/O__O|/O____________O|/O__
+     CCCCCCf     iCCCLCC     /////////////////////////////////////////////////
+     iCCCt  ;;;;;.  CCCC
+    CCCC  ;;;;;;;;;. CClL.                          c
+   CCCC ,;;       ;;: CCCC  ;                   : CCCCi
+    CCC ;;         ;;  CC   ;;:                CCC<span class="sb">`</span>   <span class="sb">`</span>C;
+  lCCC ;;              CCCC  ;;;:             :CC .;;. C;   ;    :   ;  :;;
+  CCCC ;.              CCCC    ;;;,           CC ;    ; Ci  ;    :   ;  :  ;
+   iCC :;               CC       ;;;,        ;C ;       CC  ;    :   ; .
+  CCCi ;;               CCC        ;;;.      .C ;       tf  ;    :   ;  ;.
+  CCC  ;;               CCC          ;;;;;;; fC :       lC  ;    :   ;    ;:
+   iCf ;;               CC         :;;:      tC ;       CC  ;    :   ;     ;
+  fCCC :;              LCCf      ;;;:         LC :.  ,: C   ;    ;   ; ;   ;
+  CCCC  ;;             CCCC    ;;;:           CCi <span class="sb">`</span>;;<span class="sb">`</span> CC.  ;;;; :;.;.  ; ,;
+    CCl ;;             CC    ;;;;              CCC    CCL
+   tCCC  ;;        ;; CCCL  ;;;                  tCCCCC.
+    CCCC  ;;     :;; CCCCf  ;                     ,L
+     lCCC   ;;;;;;  CCCL
+     CCCCCC  :;;  fCCCCC
+      . CCCC     CCCC .
+       .CCCCCCCCCCCCCi
+          iCCCCCLCf
+           .  C. ,
+              :
+</pre></div>
+</div>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>cyclus -v 2 input/example.xml
+              :
+          .CL:CC CC             _Q     _Q  _Q_Q    _Q    _Q              _Q
+        CC;CCCCCCCC:C;         /_<span class="se">\)</span>   /_<span class="se">\)</span>/_/<span class="se">\\</span><span class="o">)</span>  /_<span class="se">\)</span>  /_<span class="se">\)</span>            /_<span class="se">\)</span>
+        CCCCCCCCCCCCCl       __O|/O___O|/O_OO|/O__O|/O__O|/O____________O|/O__
+     CCCCCCf     iCCCLCC     /////////////////////////////////////////////////
+     iCCCt  ;;;;;.  CCCC
+    CCCC  ;;;;;;;;;. CClL.                          c
+   CCCC ,;;       ;;: CCCC  ;                   : CCCCi
+    CCC ;;         ;;  CC   ;;:                CCC<span class="sb">`</span>   <span class="sb">`</span>C;
+  lCCC ;;              CCCC  ;;;:             :CC .;;. C;   ;    :   ;  :;;
+  CCCC ;.              CCCC    ;;;,           CC ;    ; Ci  ;    :   ;  :  ;
+   iCC :;               CC       ;;;,        ;C ;       CC  ;    :   ; .
+  CCCi ;;               CCC        ;;;.      .C ;       tf  ;    :   ;  ;.
+  CCC  ;;               CCC          ;;;;;;; fC :       lC  ;    :   ;    ;:
+   iCf ;;               CC         :;;:      tC ;       CC  ;    :   ;     ;
+  fCCC :;              LCCf      ;;;:         LC :.  ,: C   ;    ;   ; ;   ;
+  CCCC  ;;             CCCC    ;;;:           CCi <span class="sb">`</span>;;<span class="sb">`</span> CC.  ;;;; :;.;.  ; ,;
+    CCl ;;             CC    ;;;;              CCC    CCL
+   tCCC  ;;        ;; CCCL  ;;;                  tCCCCC.
+    CCCC  ;;     :;; CCCCf  ;                     ,L
+     lCCC   ;;;;;;  CCCL
+     CCCCCC  :;;  fCCCCC
+      . CCCC     CCCC .
+       .CCCCCCCCCCCCCi
+          iCCCCCLCf
+           .  C. ,
+              :
+</pre></div>
+</div>
+<div class="highlight-bash"><div class="highlight"><pre>   <span class="nv">$ </span>cyclus -v 2 input/example.xml
+                 :
+             .CL:CC CC             _Q     _Q  _Q_Q    _Q    _Q              _Q
+           CC;CCCCCCCC:C;         /_<span class="se">\)</span>   /_<span class="se">\)</span>/_/<span class="se">\\</span><span class="o">)</span>  /_<span class="se">\)</span>  /_<span class="se">\)</span>            /_<span class="se">\)</span>
+           CCCCCCCCCCCCCl       __O|/O___O|/O_OO|/O__O|/O__O|/O____________O|/O__
+        CCCCCCf     iCCCLCC     /////////////////////////////////////////////////
+        iCCCt  ;;;;;.  CCCC
+       CCCC  ;;;;;;;;;. CClL.                          c
+      CCCC ,;;       ;;: CCCC  ;                   : CCCCi
+       CCC ;;         ;;  CC   ;;:                CCC<span class="sb">`</span>   <span class="sb">`</span>C;
+     lCCC ;;              CCCC  ;;;:             :CC .;;. C;   ;    :   ;  :;;
+     CCCC ;.              CCCC    ;;;,           CC ;    ; Ci  ;    :   ;  :  ;
+      iCC :;               CC       ;;;,        ;C ;       CC  ;    :   ; .
+     CCCi ;;               CCC        ;;;.      .C ;       tf  ;    :   ;  ;.
+     CCC  ;;               CCC          ;;;;;;; fC :       lC  ;    :   ;    ;:
+      iCf ;;               CC         :;;:      tC ;       CC  ;    :   ;     ;
+     fCCC :;              LCCf      ;;;:         LC :.  ,: C   ;    ;   ; ;   ;
+     CCCC  ;;             CCCC    ;;;:           CCi <span class="sb">`</span>;;<span class="sb">`</span> CC.  ;;;; :;.;.  ; ,;
+       CCl ;;             CC    ;;;;              CCC    CCL
+      tCCC  ;;        ;; CCCL  ;;;                  tCCCCC.
+       CCCC  ;;     :;; CCCCf  ;                     ,L
+        lCCC   ;;;;;;  CCCL
+        CCCCCC  :;;  fCCCCC
+         . CCCC     CCCC .
+          .CCCCCCCCCCCCCi
+             iCCCCCLCf
+              .  C. ,
+                 :
+INFO1<span class="o">(</span>core  <span class="o">)</span>:Simulation <span class="nb">set </span>to run from <span class="nv">start</span><span class="o">=</span>0 to <span class="nv">end</span><span class="o">=</span>10
+INFO1<span class="o">(</span>core  <span class="o">)</span>:Beginning simulation
+INFO1<span class="o">(</span>tutori<span class="o">)</span>:Hello
+INFO1<span class="o">(</span>tutori<span class="o">)</span>:World!
+INFO1<span class="o">(</span>tutori<span class="o">)</span>:Hello
+INFO1<span class="o">(</span>tutori<span class="o">)</span>:World!
+INFO1<span class="o">(</span>tutori<span class="o">)</span>:Hello
+INFO1<span class="o">(</span>tutori<span class="o">)</span>:World!
+INFO1<span class="o">(</span>tutori<span class="o">)</span>:Hello
+INFO1<span class="o">(</span>tutori<span class="o">)</span>:World!
+INFO1<span class="o">(</span>tutori<span class="o">)</span>:Hello
+INFO1<span class="o">(</span>tutori<span class="o">)</span>:World!
+INFO1<span class="o">(</span>tutori<span class="o">)</span>:Hello
+INFO1<span class="o">(</span>tutori<span class="o">)</span>:World!
+INFO1<span class="o">(</span>tutori<span class="o">)</span>:Hello
+INFO1<span class="o">(</span>tutori<span class="o">)</span>:World!
+INFO1<span class="o">(</span>tutori<span class="o">)</span>:Hello
+INFO1<span class="o">(</span>tutori<span class="o">)</span>:World!
+INFO1<span class="o">(</span>tutori<span class="o">)</span>:Hello
+INFO1<span class="o">(</span>tutori<span class="o">)</span>:World!
+INFO1<span class="o">(</span>tutori<span class="o">)</span>:Hello
+INFO1<span class="o">(</span>tutori<span class="o">)</span>:World!
+</pre></div>
+</div>
+<p>Status: Cyclus run successful!
+Output location: cyclus.sqlite
+Simulation ID: 9f15b93c-9ab2-49bb-a14f-fef872e64ce8</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="../../index.html" title="index">
+          <img class="logo" src="../../_static/big_c.png" alt="Logo"/>
+        </a></p><div class="sphinxlocaltoc">
+    <h3><a href="../../index.html">Page contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Adding State Variables</a><ul>
+<li><a class="reference internal" href="#adding-state-variables-with-cyclus-pragma">Adding State Variables with Cyclus #pragma</a></li>
+<li><a class="reference internal" href="#build-and-install-the-modified-module">Build and Install the Modified Module</a></li>
+<li><a class="reference internal" href="#modifying-the-input-file">Modifying the Input File</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div class="sphinxlocaltoc">
+  <h3>Useful Pages</h3>
+    <ul><li><ul>
+    <li><a href="http://fuelcycle.org/user/main.html">User Guide</a></li>
+    <li><a href="http://fuelcycle.org/module/main.html">Archetype Developer Guide</a></li>
+    <li><a href="http://fuelcycle.org/cyclus/api/">Cyclus API Documentation</a></li>
+    <li><a href="http://fuelcycle.org/cycamore/api/">Cycamore API Documentation</a></li>
+    <li><a href="http://fuelcycle.org/basics/glossary.html">Glossary</a></li>
+    <li><a href="mailto:cyclus-users+subscribe@googlegroups.com?subject=Subscribe&body=Send this message to subscribe to the list">Join</a> the 
+      <a href="https://groups.google.com/forum/#!forum/cyclus-users" target="_blank"><span style="font-variant:small-caps">Cyclus</span> Users</a> mailing list.
+    <li><a href="mailto:cyclus-dev+subscribe@googlegroups.com?subject=Subscribe&body=Send this message to subscribe to the list">Join</a> the 
+      <a href="https://groups.google.com/forum/#!forum/cyclus-users" target="_blank"><span style="font-variant:small-caps">Cyclus</span> Developers</a> mailing list.
+    </ul></li></ul>
+  </div>
+    
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <h3>Get Cyclus</h3>
+    <br>
+    Current version: <b>1.1.0</b>
+    <br><br>
+    Install:
+    <div class="highlight-bash" style="width:97.5%"><div class="highlight"><pre><span class="nv">$ </span>conda install cyclus cycamore</pre></div></div>
+    Get the Source:
+    <ul><li><ul>
+          <li><a href="https://github.com/cyclus/cyclus">Cyclus</a></li>
+          <li><a href="https://github.com/cyclus/cycamore">Cycamore</a></li>
+    </ul></li></ul>
+    <h3>Acknowledgements</h3>
+    The Cyclus project has received support from:
+    <br />
+    <a href="http://www.neup.gov" target="_blank"><img src="../../_static/neup_logo_large.png" width=170px></a>
+    <br />
+    <br />
+
+    In addition, some of the students working on Cyclus have received support from:
+    <br />
+    <a href="http://www.anl.gov" target="_blank"><img src="../../_static/AnlLogo.png" height=100px></a>
+    <a href="http://www.nrc.gov" target="_blank"><img src="../../_static/USNRC.png" height=100px></a>
+    <br />
+    <a href="http://www.neup.gov" target="_blank"><img src="../../_static/neup_logo_large.png" width=170px></a>
+    <br />
+    <a href="http://www.nsf.gov" target="_blank"><img src="../../_static/nsf_logo.png" height=100px></a>
+    <a href="http://www.wisc.edu" target="_blank"><img src="../../_static/crest.png" height=100px></a>
+
+    
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="relbar-bottom">
+        
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+    <li><a href="../../index.html">Home</a> &raquo;</li>
+ 
+      </ul>
+    </div>
+    </div>
+
+    <div class="footer">
+        &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
+      Last updated on Oct 24, 2014.
+    </div><script type="text/javascript">
+    if(ga_enabled){
+        document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");
+        document.write("Click <button title=\"set cookie to disable analytics for this site\" class=\"link\" onclick=\"$.cookie('disable-ga', 'true', {expires: 3650, path: '/'}); window.location.reload(); return false; \">here</button> to disable analytics for this site.");
+        document.write("</div>");
+    }else{
+        document.write("<div class=\"footer\">Google Analytics has been disabled. ");
+        document.write("Click <button title=\"set cookie to re-enable analytics for this site\" class=\"link\" onclick=\"$.cookie('disable-ga', null, {path: '/'}); window.location.reload(); return false; \">here</button> to re-enable analytics for this site.");
+    };
+</script>
+    <!-- cloud_sptheme 1.4 -->
+  </body>
+</html>
