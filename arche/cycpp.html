@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '(1.1.0-77-g05b963a)',
+        VERSION:     '(v1.1.1-34-g59d600b)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -191,24 +191,34 @@ shape of <tt class="docutils literal"><span class="pre">[10,</span> <span class=
 <td class="left-align single-left-divider no-right-divider">Integer from 0 - 10 for representing ease (0) or difficulty (10)
 in using this variable, default 0.</td>
 </tr>
-<tr class="row-even"><td class="left-align no-left-divider single-right-divider">uilabel</td>
+<tr class="row-even"><td class="left-align no-left-divider single-right-divider">alias</td>
+<td class="left-align single-left-divider no-right-divider">The name of the state variable in the schema and input file.
+If this is not present it defaults to the C++ variable name.</td>
+</tr>
+<tr class="row-odd"><td class="left-align no-left-divider single-right-divider">uilabel</td>
 <td class="left-align single-left-divider no-right-divider">The text string a UI will display as the name of this input on
 the UI input form.</td>
 </tr>
-<tr class="row-odd"><td class="left-align no-left-divider single-right-divider">uitype</td>
+<tr class="row-even"><td class="left-align no-left-divider single-right-divider">uitype</td>
 <td class="left-align single-left-divider no-right-divider">The type of the input field in reference in a UI,
 currently supported types are; incommodity, outcommodity,
-range, combobox, facility, and recipe.</td>
+commodity, range, combobox, facility, prototype, recipe, nuclide,
+and none.
+For &#8216;nuclide&#8217; when the type is an int, the values will be read in
+from the input file in human readable string format (&#8216;U-235&#8217;) and
+automatically converted to results of <tt class="docutils literal"><span class="pre">pyne::nucname::id()</span></tt>
+(922350000) in the database and on the archetype.</td>
 </tr>
-<tr class="row-even"><td class="left-align no-left-divider single-right-divider">range</td>
-<td class="left-align single-left-divider no-right-divider">This indicates the range associated with a range Type.
-It must take the form of <tt class="docutils literal"><span class="pre">[min,</span> <span class="pre">max]</span></tt> or <tt class="docutils literal"><span class="pre">[min,</span> <span class="pre">max,</span> <span class="pre">(optional)</span> <span class="pre">step</span> <span class="pre">size]</span></tt>.</td>
+<tr class="row-odd"><td class="left-align no-left-divider single-right-divider">range</td>
+<td class="left-align single-left-divider no-right-divider">This indicates the range associated with a range type.
+It must take the form of <tt class="docutils literal"><span class="pre">[min,</span> <span class="pre">max]</span></tt> or
+<tt class="docutils literal"><span class="pre">[min,</span> <span class="pre">max,</span> <span class="pre">(optional)</span> <span class="pre">step</span> <span class="pre">size]</span></tt>.</td>
 </tr>
-<tr class="row-odd"><td class="left-align no-left-divider single-right-divider">categorical</td>
+<tr class="row-even"><td class="left-align no-left-divider single-right-divider">categorical</td>
 <td class="left-align single-left-divider no-right-divider">This indicates the decrete values a combobox Type can take. It
 must take the form of <tt class="docutils literal"><span class="pre">[value1,</span> <span class="pre">value2,</span> <span class="pre">value3,</span> <span class="pre">etc]</span></tt>.</td>
 </tr>
-<tr class="row-even"><td class="left-align no-left-divider single-right-divider">schematype</td>
+<tr class="row-odd"><td class="left-align no-left-divider single-right-divider">schematype</td>
 <td class="left-align single-left-divider no-right-divider">This is the data type that is used in the schema for input file
 validation. This enables you to supply just the data type
 rather than having to overwrite the full schema for this state
@@ -218,41 +228,41 @@ where the rank is 2+ this is a list of strings. Please refer to
 the <a class="reference external" href="http://www.w3.org/TR/xmlschema-2/">XML Schema Datatypes</a>
 page for more information. <em>New in v1.1.</em></td>
 </tr>
-<tr class="row-odd"><td class="left-align no-left-divider single-right-divider">initfromcopy</td>
+<tr class="row-even"><td class="left-align no-left-divider single-right-divider">initfromcopy</td>
 <td class="left-align single-left-divider no-right-divider">Code snippet to use in the <tt class="docutils literal"><span class="pre">InitFrom(Agent*</span> <span class="pre">m)</span></tt> function for
 this state variable instead of using code generation.
 This is a string.</td>
 </tr>
-<tr class="row-even"><td class="left-align no-left-divider single-right-divider">initfromdb</td>
+<tr class="row-odd"><td class="left-align no-left-divider single-right-divider">initfromdb</td>
 <td class="left-align single-left-divider no-right-divider">Code snippet to use in the <tt class="docutils literal"><span class="pre">InitFrom(QueryableBackend*</span> <span class="pre">b)</span></tt>
 function for this state variable instead of using code generation.
 This is a string.</td>
 </tr>
-<tr class="row-odd"><td class="left-align no-left-divider single-right-divider">infiletodb</td>
+<tr class="row-even"><td class="left-align no-left-divider single-right-divider">infiletodb</td>
 <td class="left-align single-left-divider no-right-divider">Code snippets to use in the <tt class="docutils literal"><span class="pre">InfileToDb()</span></tt> function
 for this state variable instead of using code generation.
 This is a dictionary of string values with the two keys &#8216;read&#8217;
 and &#8216;write&#8217; which represent reading values from the input file
 writing them out to the database respectively.</td>
 </tr>
-<tr class="row-even"><td class="left-align no-left-divider single-right-divider">schema</td>
+<tr class="row-odd"><td class="left-align no-left-divider single-right-divider">schema</td>
 <td class="left-align single-left-divider no-right-divider">Code snippet to use in the <tt class="docutils literal"><span class="pre">schema()</span></tt> function for
 this state variable instead of using code generation.
 This is an RNG string. If you supply this then you likely need
 to supply <tt class="docutils literal"><span class="pre">infiletodb</span></tt> as well to ensure that your custom
 schema is read into the database correctly.</td>
 </tr>
-<tr class="row-odd"><td class="left-align no-left-divider single-right-divider">snapshot</td>
+<tr class="row-even"><td class="left-align no-left-divider single-right-divider">snapshot</td>
 <td class="left-align single-left-divider no-right-divider">Code snippet to use in the <tt class="docutils literal"><span class="pre">Snapshot()</span></tt> function for
 this state variable instead of using code generation.
 This is a string.</td>
 </tr>
-<tr class="row-even"><td class="left-align no-left-divider single-right-divider">snapshotinv</td>
+<tr class="row-odd"><td class="left-align no-left-divider single-right-divider">snapshotinv</td>
 <td class="left-align single-left-divider no-right-divider">Code snippet to use in the <tt class="docutils literal"><span class="pre">SnapshotInv()</span></tt> function for
 this state variable instead of using code generation.
 This is a string.</td>
 </tr>
-<tr class="row-odd"><td class="left-align no-left-divider single-right-divider">initinv</td>
+<tr class="row-even"><td class="left-align no-left-divider single-right-divider">initinv</td>
 <td class="left-align single-left-divider no-right-divider">Code snippet to use in the <tt class="docutils literal"><span class="pre">InitInv()</span></tt> function for
 this state variable instead of using code generation.
 This is a string.</td>
@@ -850,7 +860,7 @@ in much the same way.</p>
 
     <div class="footer">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Nov 05, 2014.
+      Last updated on Nov 13, 2014.
     </div>
     <!-- cloud_sptheme 1.4 -->
   </body>
