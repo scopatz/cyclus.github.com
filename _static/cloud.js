@@ -136,11 +136,15 @@ $(document).ready(function (){
 
   var show_btn = $('#sidebar-show', holder);
   var hide_btn = $('#sidebar-hide', holder);
+  /* FIXME: when url_root is a relative path, this sets cookie in wrong spot.
+     need to detect relative roots, and combine with document.location.path */
+  var copts = { expires: 7, path: DOCUMENTATION_OPTIONS.url_root };
 
   show_btn.click(function (){
     doc.removeClass("collapsed-sidebar");
     hide_btn.show();
     show_btn.hide();
+    $.cookie("sidebar", "expanded", copts);
     $(window).trigger("cloud-sidebar-toggled", false);
   });
 
@@ -148,9 +152,11 @@ $(document).ready(function (){
     doc.addClass("collapsed-sidebar");
     show_btn.show();
     hide_btn.hide();
+    $.cookie("sidebar", "collapsed", copts);
     $(window).trigger("cloud-sidebar-toggled", true);
   });
 
+  var state = $.cookie("sidebar");
 
 
   doc.append(holder);
