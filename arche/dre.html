@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '(v1.1.1-34-g59d600b)',
+        VERSION:     '(1.2.0-rc1)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -502,7 +502,7 @@ it wants given another facility&#8217;s inventory.</p>
  public:
   #pragma cyclus
 
-  cyclus::Material::Ptr IdealMatl(const cyclus::ResourceBuff&amp; buffer) {
+  cyclus::Material::Ptr IdealMatl(const cyclus::toolkit::ResBuf&amp; buffer) {
      // provide whatever implementation is desired
   }
 };
@@ -527,7 +527,7 @@ it wants given another facility&#8217;s inventory.</p>
     <span class="n">Agent</span><span class="o">*</span> <span class="n">agent</span> <span class="o">=</span> <span class="n">it</span><span class="o">-&gt;</span><span class="n">requester</span><span class="p">();</span>
     <span class="n">TradeInformer</span><span class="o">*</span> <span class="n">cast</span> <span class="o">=</span> <span class="k">dynamic_cast</span><span class="o">&lt;</span><span class="n">TradeInformer</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">agent</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">cast</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">offer</span> <span class="o">=</span> <span class="n">cast</span><span class="o">-&gt;</span><span class="n">IdealMatl</span><span class="p">(</span><span class="n">inventory</span><span class="p">);</span> <span class="c1">// inventory is a state variable cyclus::ResourceBuff</span>
+        <span class="n">offer</span> <span class="o">=</span> <span class="n">cast</span><span class="o">-&gt;</span><span class="n">IdealMatl</span><span class="p">(</span><span class="n">inventory</span><span class="p">);</span> <span class="c1">// inventory is a state variable ResBuf</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="kt">double</span> <span class="n">qty</span> <span class="o">=</span> <span class="n">it</span><span class="o">-&gt;</span><span class="n">quantity</span><span class="p">();</span>
         <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">recipe</span> <span class="o">=</span> <span class="s">&quot;recipe&quot;</span><span class="p">;</span>
@@ -626,7 +626,7 @@ it wants given another facility&#8217;s inventory.</p>
 <script type="text/javascript">$('#searchbox').show(0);</script>
     <h3>Get Cyclus</h3>
     <br>
-    Current version: <b>1.1.0</b>
+    Current version: <b>1.2.0</b>
     <br><br>
     Install:
     <div class="highlight-bash" style="width:97.5%"><div class="highlight"><pre><span class="nv">$ </span>conda install cyclus cycamore</pre></div></div>
@@ -684,7 +684,7 @@ it wants given another facility&#8217;s inventory.</p>
 
     <div class="footer">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Nov 18, 2014.
+      Last updated on Dec 02, 2014.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");

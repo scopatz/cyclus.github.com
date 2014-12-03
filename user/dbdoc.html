@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '(v1.1.1-34-g59d600b)',
+        VERSION:     '(1.2.0-rc1)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -363,6 +363,34 @@ times in this table are candidates for simulation restart/branching.</p>
 <li><strong>Time</strong> (int): The time step a snapshot was taken for this simulation.</li>
 </ul>
 </div>
+<div class="section" id="debugging">
+<h3>Debugging<a class="headerlink" href="#debugging" title="Permalink to this headline">¶</a></h3>
+<p>If <span style="font-variant:small-caps;">Cyclus</span> was run in debugging mode then the database will then contain
+the following two extra tables:</p>
+<ul class="simple">
+<li><strong>DebugRequests</strong>: record of every resource request made in the simulation.<ul>
+<li><tt class="docutils literal"><span class="pre">SimId</span></tt>:  simulation UUID</li>
+<li><tt class="docutils literal"><span class="pre">Time</span></tt>:  time step of the request</li>
+<li><tt class="docutils literal"><span class="pre">ReqId</span></tt>, simulation-unique identifier for this request</li>
+<li><tt class="docutils literal"><span class="pre">RequesterID</span></tt>: ID of the requesting agent</li>
+<li><tt class="docutils literal"><span class="pre">Commodity</span></tt>: the commodity of the request</li>
+<li><tt class="docutils literal"><span class="pre">Preference</span></tt>: agent&#8217;s preference for this particular request</li>
+<li><tt class="docutils literal"><span class="pre">Exclusive</span></tt>: true (non-zero) if this request is all-or-nothing (integral)</li>
+<li><tt class="docutils literal"><span class="pre">ResType</span></tt>: resource type (e.g. &#8220;Material&#8221;, &#8220;Product&#8221;)</li>
+<li><tt class="docutils literal"><span class="pre">Quantity</span></tt>: amount of the request</li>
+<li><tt class="docutils literal"><span class="pre">ResUnits</span></tt>: units of the request (e.g. kg)</li>
+</ul>
+</li>
+<li><strong>DebugBids</strong>: record of every resource bid made in the simulation.<ul>
+<li><tt class="docutils literal"><span class="pre">SimId</span></tt>: simulation UUID</li>
+<li><tt class="docutils literal"><span class="pre">ReqId</span></tt>: simulation-unique identifier for the bid&#8217;s request</li>
+<li><tt class="docutils literal"><span class="pre">BidderId</span></tt>: ID of the the bidding agent</li>
+<li><tt class="docutils literal"><span class="pre">BidQuantity</span></tt>: amount of thd bid</li>
+<li><tt class="docutils literal"><span class="pre">Exclusive</span></tt>: true(non-zero) if this request is all-or-nothing (integral)</li>
+</ul>
+</li>
+</ul>
+</div>
 </div>
 <div class="section" id="post-processing">
 <h2>Post Processing<a class="headerlink" href="#post-processing" title="Permalink to this headline">¶</a></h2>
@@ -400,6 +428,7 @@ Below is a summary of them.</p>
 <li><a class="reference internal" href="#decomschedule-table">DecomSchedule Table</a></li>
 <li><a class="reference internal" href="#buildschedule-table">BuildSchedule Table</a></li>
 <li><a class="reference internal" href="#snapshots-table">Snapshots Table</a></li>
+<li><a class="reference internal" href="#debugging">Debugging</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#post-processing">Post Processing</a></li>
@@ -448,7 +477,7 @@ Below is a summary of them.</p>
 <script type="text/javascript">$('#searchbox').show(0);</script>
     <h3>Get Cyclus</h3>
     <br>
-    Current version: <b>1.1.0</b>
+    Current version: <b>1.2.0</b>
     <br><br>
     Install:
     <div class="highlight-bash" style="width:97.5%"><div class="highlight"><pre><span class="nv">$ </span>conda install cyclus cycamore</pre></div></div>
@@ -506,7 +535,7 @@ Below is a summary of them.</p>
 
     <div class="footer">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Nov 18, 2014.
+      Last updated on Dec 02, 2014.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");

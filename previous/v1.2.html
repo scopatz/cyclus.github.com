@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>CEP 5 - Archetype Development Best Practices &mdash; Home</title>
+    <title>Cyclus 1.2 Release Notes &mdash; Home</title>
     
     <link rel="stylesheet" href="../_static/cyclus.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -30,9 +30,9 @@
     <script type="text/javascript" src="../_static/cloud.js"></script>
     <link rel="shortcut icon" href="../_static/big_c.ico"/>
     <link rel="top" title="Home" href="../index.html" />
-    <link rel="up" title="Cyclus Enhancement Proposals" href="cep0.html" />
-    <link rel="next" title="CEP 17 - Resource Tracking and Interfaces Re-Re-Redo" href="cep17.html" />
-    <link rel="prev" title="CEP 4 - Attribution of Code Products in the Cyclus Ecosystem" href="cep4.html" /> 
+    <link rel="up" title="Cyclus Previous Versions" href="index.html" />
+    <link rel="next" title="Cyclus 1.1 Release Notes" href="v1.1.html" />
+    <link rel="prev" title="Cyclus Previous Versions" href="index.html" /> 
         <meta name="viewport" content="width=device-width, initial-scale=1"><script type="text/javascript">
 var ga_enabled = !$.cookie('disable-ga');
 if(ga_enabled){
@@ -62,14 +62,14 @@ if(ga_enabled){
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> &nbsp; &nbsp;</li>
         <li class="right" >
-          <a href="cep17.html" title="CEP 17 - Resource Tracking and Interfaces Re-Re-Redo"
+          <a href="v1.1.html" title="Cyclus 1.1 Release Notes"
              accesskey="N">next</a> &nbsp; &nbsp;</li>
         <li class="right" >
-          <a href="cep4.html" title="CEP 4 - Attribution of Code Products in the Cyclus Ecosystem"
+          <a href="index.html" title="Cyclus Previous Versions"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
     <li><a href="../index.html">Home</a> &raquo;</li>
 
-          <li><a href="cep0.html" accesskey="U"><span style="font-variant:small-caps;">Cyclus</span> Enhancement Proposals</a> &raquo;</li> 
+          <li><a href="index.html" accesskey="U"><span style="font-variant:small-caps;">Cyclus</span> Previous Versions</a> &raquo;</li> 
       </ul>
     </div>
     </div>
@@ -80,67 +80,66 @@ if(ga_enabled){
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="cep-5-archetype-development-best-practices">
-<h1>CEP 5 - Archetype Development Best Practices<a class="headerlink" href="#cep-5-archetype-development-best-practices" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="cyclus-1-2-release-notes">
+<h1>Cyclus 1.2 Release Notes<a class="headerlink" href="#cyclus-1-2-release-notes" title="Permalink to this headline">¶</a></h1>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">CEP:</th><td class="field-body">5</td>
+<tr class="field-odd field"><th class="field-name">Author:</th><td class="field-body">Cyclus Developers</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Title:</th><td class="field-body">Archetype Development Best Practices</td>
+<tr class="field-even field"><th class="field-name">Website:</th><td class="field-body"><a class="reference external" href="http://fuelcycle.org/">http://fuelcycle.org/</a></td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Last-Modified:</th><td class="field-body">2014-06-29</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Author:</th><td class="field-body">Matthew Gidden</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Status:</th><td class="field-body">Deferred</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">Process</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Created:</th><td class="field-body">2014-06-29</td>
+<tr class="field-odd field"><th class="field-name">Contact:</th><td class="field-body"><a class="reference external" href="https://groups.google.com/forum/#!forum/cyclus-dev">https://groups.google.com/forum/#!forum/cyclus-dev</a></td>
 </tr>
 </tbody>
 </table>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">This CEP is looking for a champion.</p>
-</div>
-<div class="section" id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p>As the archetype ecosystem begins to develop, an initial set of archetype
-development best practices need to be identified that both achieve the aims of
-fuel cycle simulation and analysis and encourage the continued proliferation of
-the ecosystem. This set of best practices should have general consensus among
-both kernel and archetype developers, it should be documented, and the best
-practices should be used in code examples. This CEP could be a living document
-for some amount of time that is updated as additional best practices are
-identified.</p>
-<p>A primary example of such a concern is archetype interaction implementation. One
-of the aims of Cyclus as a fuel cycle simulator is to provide a plug-and-play,
-modular platform. Accordingly, there is a desire for archetypes to actually <em>be</em>
-plug-and-playable. However, in an initial use case, archetype developers found
-the easiest archetype implementation to include explicit type identification.</p>
-<p>Three interaction models have been identified:</p>
+<p>The Cyclus core team is excited to announce the latest stable version
+of the cyclus ecosystem! This includes over 125 commits by 5 developers.</p>
+<div class="section" id="major-features">
+<h2>Major features<a class="headerlink" href="#major-features" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><em>Black Box</em> - do not dynamically type check, requiring all interfaces be known
-at compile time (note that not even Cyclus currently is completely &#8220;black box&#8221;
-in this manner &#8211; the institution class type checks its children to access the
-facility&#8217;s <tt class="docutils literal"><span class="pre">Decommission</span></tt> API).</li>
-<li><em>Grey Box</em> - dynamic type check can be performed only for <span style="font-variant:small-caps;">Cyclus</span> and <span style="font-variant:small-caps;">Cyclus</span>
-toolkit interfaces. To date this has been implemented using toolkit mixins
-with Cycamore agents.</li>
-<li><em>White Box</em> - dynamic type checking can be performed for any interface,
-specifically allowing special interactions between two archetype
-implementations.</li>
+<li>Added &#8216;entity&#8217; key to the archetype annotations. This may take on one of the
+following values: region, institution, facility, archetype, or unknown.</li>
+<li>Added further reflection to archetypes by including &#8216;parents&#8217; and &#8216;all_parents&#8217;
+lists to the metadata.</li>
+<li>Added archetype name to metadata annotations.</li>
+<li>Nicer looking JSON strings.</li>
+<li>Fixed dynamic loading error that was triggered in weird cases on linux.</li>
+<li>The command <tt class="docutils literal"><span class="pre">cyclus</span> <span class="pre">-m</span></tt> now returns all metadata.</li>
+<li>Added Squash() functions to MatQuery class.</li>
+<li>Added &#8216;nuclide&#8217; to availible &#8216;uitypes&#8217;.</li>
+<li>Added Extra debugging info via <tt class="docutils literal"><span class="pre">CYCLUS_DEBUG_DRE</span></tt> environment variable.</li>
+<li>Added new experimental ResBuf class for resource buffering.</li>
+<li>Added optional tails buffer to enrichment class.</li>
+<li>Many bug fixes.</li>
 </ul>
-<p>A non-deferred version of this CEP will identify these interaction models and
-provide guidance for which models the use of which are considered a best
-practice.</p>
+<p>Since v1.1,</p>
+<ul class="simple">
+<li>Cyclus: 95 commits resulted in 644 changed files encompassing a net 2347</li>
+</ul>
+<p>line insertions(+) and 397 deletions(-).</p>
+<ul class="simple">
+<li>Cycamore: 33 commits resulted in 15 changed files encompassing a net 93</li>
+</ul>
+<p>line insertions(+) and 91 deletions(-).</p>
 </div>
-<div class="section" id="document-history">
-<h2>Document History<a class="headerlink" href="#document-history" title="Permalink to this headline">¶</a></h2>
-<p>This document is released under the CC-BY 3.0 license.</p>
+<div class="section" id="contributors">
+<h2>Contributors<a class="headerlink" href="#contributors" title="Permalink to this headline">¶</a></h2>
+<p>The following people contributed to this release of Cyclus.  A &#8220;*&#8221; by their
+name indicates a first time contributor.  Names follow alphabetically,</p>
+<ul class="simple">
+<li>Robert Carlsen</li>
+<li>Robert Flanagan*</li>
+<li>Matthew Gidden</li>
+<li>Katy Huff</li>
+<li>Arrielle Opotowsky</li>
+<li>Olzhas Rakhimov</li>
+<li>Anthony Scopatz</li>
+<li>Zach Welch</li>
+<li>Paul Wilson</li>
+<li>John Xia*</li>
+</ul>
 </div>
 </div>
 
@@ -155,9 +154,9 @@ practice.</p>
         </a></p><div class="sphinxlocaltoc">
     <h3><a href="../index.html">Page contents</a></h3>
     <ul>
-<li><a class="reference internal" href="#">CEP 5 - Archetype Development Best Practices</a><ul>
-<li><a class="reference internal" href="#overview">Overview</a></li>
-<li><a class="reference internal" href="#document-history">Document History</a></li>
+<li><a class="reference internal" href="#">Cyclus 1.2 Release Notes</a><ul>
+<li><a class="reference internal" href="#major-features">Major features</a></li>
+<li><a class="reference internal" href="#contributors">Contributors</a></li>
 </ul>
 </li>
 </ul>
@@ -165,13 +164,13 @@ practice.</p>
   </div>
   <div class="sphinxprev">
     <h4>Previous page</h4>
-    <p class="topless"><a href="cep4.html"
-                          title="Previous page">&larr; CEP 4 - Attribution of Code Products in the <span style="font-variant:small-caps;">Cyclus</span> Ecosystem</a></p>
+    <p class="topless"><a href="index.html"
+                          title="Previous page">&larr; <span style="font-variant:small-caps;">Cyclus</span> Previous Versions</a></p>
   </div>
   <div class="sphinxnext">
     <h4>Next page</h4>
-    <p class="topless"><a href="cep17.html"
-                          title="Next page">&rarr; CEP 17 - Resource Tracking and Interfaces Re-Re-Redo</a></p>
+    <p class="topless"><a href="v1.1.html"
+                          title="Next page">&rarr; Cyclus 1.1 Release Notes</a></p>
   </div>
   <div class="sphinxlocaltoc">
   <h3>Useful Pages</h3>
@@ -247,14 +246,14 @@ practice.</p>
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> &nbsp; &nbsp;</li>
         <li class="right" >
-          <a href="cep17.html" title="CEP 17 - Resource Tracking and Interfaces Re-Re-Redo"
+          <a href="v1.1.html" title="Cyclus 1.1 Release Notes"
              >next</a> &nbsp; &nbsp;</li>
         <li class="right" >
-          <a href="cep4.html" title="CEP 4 - Attribution of Code Products in the Cyclus Ecosystem"
+          <a href="index.html" title="Cyclus Previous Versions"
              >previous</a> &nbsp; &nbsp;</li>
     <li><a href="../index.html">Home</a> &raquo;</li>
 
-          <li><a href="cep0.html" ><span style="font-variant:small-caps;">Cyclus</span> Enhancement Proposals</a> &raquo;</li> 
+          <li><a href="index.html" ><span style="font-variant:small-caps;">Cyclus</span> Previous Versions</a> &raquo;</li> 
       </ul>
     </div>
     </div>

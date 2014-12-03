@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '(v1.1.1-34-g59d600b)',
+        VERSION:     '(1.2.0-rc1)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -184,7 +184,7 @@ with the name &#8216;X.X.X&#8217;.  Finally, delete the release branch.</li>
 </ol>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">To distingush them, branche names have a <tt class="docutils literal"><span class="pre">v</span></tt> prefix (<tt class="docutils literal"><span class="pre">vX.X.X</span></tt>) while tag
+<p class="last">To distingush them, branch names have a <tt class="docutils literal"><span class="pre">v</span></tt> prefix (<tt class="docutils literal"><span class="pre">vX.X.X</span></tt>) while tag
 names lack this prefix (<tt class="docutils literal"><span class="pre">X.X.X</span></tt>).</p>
 </div>
 </div>
@@ -235,7 +235,7 @@ probably best to do this prior to any release candidates if possible.</p>
 <p>Once stable and there are no more code changes to be made, add the symbols
 in this release to the database with the following command:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd </span>cyclus/release
-<span class="nv">$ </span>./smbchk-t.py --update -t X.X.X
+<span class="nv">$ </span>./smbchk.py --update -t X.X.X
 </pre></div>
 </div>
 <p>where <tt class="docutils literal"><span class="pre">X.X.X</span></tt> is the version tag. This should alter the <tt class="docutils literal"><span class="pre">symbols.json</span></tt>
@@ -324,7 +324,7 @@ Use the following BASH commands to do so:</p>
 <script type="text/javascript">$('#searchbox').show(0);</script>
     <h3>Get Cyclus</h3>
     <br>
-    Current version: <b>1.1.0</b>
+    Current version: <b>1.2.0</b>
     <br><br>
     Install:
     <div class="highlight-bash" style="width:97.5%"><div class="highlight"><pre><span class="nv">$ </span>conda install cyclus cycamore</pre></div></div>
@@ -382,7 +382,7 @@ Use the following BASH commands to do so:</p>
 
     <div class="footer">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Nov 18, 2014.
+      Last updated on Dec 02, 2014.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");
