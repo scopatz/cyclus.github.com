@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '(1.2.0-rc1)',
+        VERSION:     '(v1.1.1-37-g74523a0)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -241,6 +241,51 @@ in this release to the database with the following command:</p>
 <p>where <tt class="docutils literal"><span class="pre">X.X.X</span></tt> is the version tag. This should alter the <tt class="docutils literal"><span class="pre">symbols.json</span></tt>
 file.  Commit this and add it to the repo.</p>
 </div>
+<div class="section" id="cycamore">
+<h3>Cycamore<a class="headerlink" href="#cycamore" title="Permalink to this headline">¶</a></h3>
+<p>On each new release (major, minor, micro), the release manager is responsible
+for updating the regression test databases updated.</p>
+<p>First, add the actual releases as tags (this can be done through the GitHub
+interface).</p>
+<p>Next, generate the new databases:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd</span> ~/cycamore/tests
+<span class="nv">$ </span>python ref.py gen
+</pre></div>
+</div>
+<p>Next, rename the databases:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>rename <span class="s1">&#39;s/^[^_]*_[^_]*_(.*)/&lt;cyclus version&gt;_&lt;cycamore version&gt;_$1/&#39;</span> *.h5
+</pre></div>
+</div>
+<p>where</p>
+<ul class="simple">
+<li>&lt;cyclus version&gt; is replaced by the current version tag name for cyclus
+(e.g. v0.1)</li>
+<li>&lt;cycamore version&gt; is replaced by the current version tag name for cycamore
+(e.g. v0.1)</li>
+</ul>
+<p>so that, using the above examples, the command is</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>rename <span class="s1">&#39;s/^[^_]*_[^_]*_(.*)/v0.1_v0.1_$1/&#39;</span> *.h5
+</pre></div>
+</div>
+<p>At this point, you will need to get a credentials file, which exists in the
+metadata document in the Cyclus-CI shared folder on Google drive. If you have
+questions, please email <a class="reference external" href="mailto:cyclus-ci&#37;&#52;&#48;googlegroups&#46;com">cyclus-ci<span>&#64;</span>googlegroups<span>&#46;</span>com</a>. The file must be named
+<cite>rs.cred</cite>.</p>
+<p>Now, update (add) them on the regression test server</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>python ref.py add *.h5
+</pre></div>
+</div>
+<p>Next, add the reflist file you just altered:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>git add reflist.json
+<span class="nv">$ </span>git commit -m <span class="s2">&quot;updated reflist.json&quot;</span>
+<span class="nv">$ </span>git push upstream develop
+</pre></div>
+</div>
+<p>Finally, feel free to clean up after yourself</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>rm *.h5
+</pre></div>
+</div>
+</div>
 <div class="section" id="cycstub">
 <h3>Cycstub<a class="headerlink" href="#cycstub" title="Permalink to this headline">¶</a></h3>
 <p>Every release the relevant files from <span style="font-variant:small-caps;">Cyclus</span> should be copied over to cyclus.
@@ -275,6 +320,7 @@ Use the following BASH commands to do so:</p>
 <li><a class="reference internal" href="#project-checklist">Project Checklist</a></li>
 <li><a class="reference internal" href="#maintainence-tasks">Maintainence Tasks</a><ul>
 <li><a class="reference internal" href="#cyclus"><span style="font-variant:small-caps;">Cyclus</span></a></li>
+<li><a class="reference internal" href="#cycamore">Cycamore</a></li>
 <li><a class="reference internal" href="#cycstub">Cycstub</a></li>
 </ul>
 </li>
@@ -382,7 +428,7 @@ Use the following BASH commands to do so:</p>
 
     <div class="footer">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Dec 02, 2014.
+      Last updated on Dec 08, 2014.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");
