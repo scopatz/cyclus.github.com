@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Setup a new code repository based on Cycstub &mdash; Home</title>
+    <title>Review of Cyclus Code and Associated Modules/Tools Development - Argonne National Lab (10/23/14) &mdash; Home</title>
     
     <link rel="stylesheet" href="../../_static/cyclus.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -29,7 +29,9 @@
     <script type="text/javascript" src="../../_static/jquery.cookie.js"></script>
     <script type="text/javascript" src="../../_static/cloud.js"></script>
     <link rel="shortcut icon" href="../../_static/big_c.ico"/>
-    <link rel="top" title="Home" href="../../index.html" /> 
+    <link rel="top" title="Home" href="../../index.html" />
+    <link rel="up" title="Cyclus Publications &amp; Meetings" href="../index.html" />
+    <link rel="prev" title="Cyclus Publications &amp; Meetings" href="../index.html" /> 
         <meta name="viewport" content="width=device-width, initial-scale=1"><script type="text/javascript">
 var ga_enabled = !$.cookie('disable-ga');
 if(ga_enabled){
@@ -58,8 +60,12 @@ if(ga_enabled){
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="../index.html" title="Cyclus Publications &amp; Meetings"
+             accesskey="P">previous</a> &nbsp; &nbsp;</li>
     <li><a href="../../index.html">Home</a> &raquo;</li>
- 
+
+          <li><a href="../index.html" accesskey="U"><span style="font-variant:small-caps;">Cyclus</span> Publications &amp; Meetings</a> &raquo;</li> 
       </ul>
     </div>
     </div>
@@ -70,85 +76,94 @@ if(ga_enabled){
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="setup-a-new-code-repository-based-on-cycstub">
-<h1>Setup a new code repository based on Cycstub<a class="headerlink" href="#setup-a-new-code-repository-based-on-cycstub" title="Permalink to this headline">¶</a></h1>
-<p>In this lesson, we will:</p>
-<ol class="arabic simple">
-<li>Clone the Cycstub repository to your local machine</li>
-<li>Rename the templates in your Cycstub repository</li>
-<li>Create a new respository on Github</li>
-<li>Connect this repository with your new Github repository</li>
-<li>Push the Cycstub repository to your new Github repository</li>
+  <div class="section" id="review-of-cyclus-code-and-associated-modules-tools-development-argonne-national-lab-10-23-14">
+<h1>Review of Cyclus Code and Associated Modules/Tools Development - Argonne National Lab (10/23/14)<a class="headerlink" href="#review-of-cyclus-code-and-associated-modules-tools-development-argonne-national-lab-10-23-14" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="agenda">
+<h2>Agenda<a class="headerlink" href="#agenda" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="9%" />
+<col width="67%" />
+<col width="24%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>8:00</td>
+<td>Welcomes - Fuel Cycle Options Campaign &amp; Cyclus Development Team</td>
+<td>B.P. Singh (DOE)
+R. Wigeland (INL)
+T. Taiwo (ANL)
+P. Wilson (U. Wisc)</td>
+</tr>
+<tr class="row-even"><td>8:20</td>
+<td>Introductory Comments by DOE Technical
+Point of Conctact for  Cyclus Related-Activities</td>
+<td><ol class="first last upperalpha simple" start="2">
+<li>Dixon (INL)</li>
 </ol>
-<div class="section" id="clone-the-cycstub-repository-to-your-local-machine">
-<h2>Clone the Cycstub repository to your local machine<a class="headerlink" href="#clone-the-cycstub-repository-to-your-local-machine" title="Permalink to this headline">¶</a></h2>
-<p>First, you need to get the <tt class="docutils literal"><span class="pre">cycstub</span></tt> code.  Cycstub is a skeleton code base
-that you can use to quick-start new <span style="font-variant:small-caps;">Cyclus</span> module development projects.  We
-will grab cycstub by using git to <a class="reference external" href="https://github.com/cyclus/cycstub.git">clone the repository</a>.  Let&#8217;s put this code in a
-<tt class="docutils literal"><span class="pre">TutorialStorage</span></tt> directory and go into it.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>git clone https://github.com/cyclus/cycstub.git TutorialStorage
-<span class="nv">$ </span><span class="nb">cd </span>TutorialStorage
-</pre></div>
-</div>
-</div>
-<div class="section" id="rename-the-templates-in-the-cycstub-clone">
-<h2>Rename the templates in the Cycstub clone<a class="headerlink" href="#rename-the-templates-in-the-cycstub-clone" title="Permalink to this headline">¶</a></h2>
-<p>Since cycstub is a template project everything is named <tt class="docutils literal"><span class="pre">stub</span></tt>. We need to
-change this to reflect the name we want our new project to be called -
-<tt class="docutils literal"><span class="pre">tutorial_storage</span></tt> here.  Cycstub comes with a renaming tool to do just
-this!  From the command line, run Python in the following way:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>python rename.py tutorial_storage
-</pre></div>
-</div>
-<p>We will now commit the changes to this local repository.  The first step is to
-stop tracking the original stub files:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>git rm src/stub_*
-</pre></div>
-</div>
-<p>We will then add the files that were modified:</p>
-<div class="highlight-python"><div class="highlight"><pre>$ git add CMakeLists.txt input/example.xml src/CMakeLists.txt src/tutorial_storage_*
-</pre></div>
-</div>
-<p>Finally, we can commit these changes:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>git commit -m <span class="s2">&quot;Changed cycstub files from stub to tutorial_storage&quot;</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="create-a-new-repository-on-github">
-<h2>Create a New Repository on Github<a class="headerlink" href="#create-a-new-repository-on-github" title="Permalink to this headline">¶</a></h2>
-<p>Log in to your Github account and start a new repository by clicking on the
-&#8216;+&#8217; symbol next to your account name.</p>
-<img alt="../../_images/github_new.png" src="../../_images/github_new.png" />
-<p>Enter the name for your repository, &#8220;TutorialStorage&#8221;, and click the &#8220;Create
-repository&#8221; button.</p>
-</div>
-<div class="section" id="connect-this-repository-with-your-new-github-repository">
-<h2>Connect this repository with your new Github repository<a class="headerlink" href="#connect-this-repository-with-your-new-github-repository" title="Permalink to this headline">¶</a></h2>
-<p>The clone of <tt class="docutils literal"><span class="pre">cycstub</span></tt> that you just made is connected to the original
-<a class="reference external" href="https://github.com/cyclus/cycstub.git">cycstub repository</a>.  You can see
-this using the <tt class="docutils literal"><span class="pre">git</span> <span class="pre">remote</span></tt> command:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>git remote -v
-origin      https://github.com/cyclus/cycstub.git <span class="o">(</span>fetch<span class="o">)</span>
-origin      https://github.com/cyclus/cycstub.git <span class="o">(</span>push<span class="o">)</span>
-</pre></div>
-</div>
-<p>We would like to sever this connection since and instead connect this local
-repository to our new Github repository:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>git remote <span class="nb">set</span>-url origin https://github.com/&lt;your_github_username&gt;/TutorialStorage.git
-<span class="nv">$ </span>git remote -v
-origin      https://github.com/&lt;your_github_username&gt;/TutorialStorage.git <span class="o">(</span>fetch<span class="o">)</span>
-origin      https://github.com/&lt;your_github_username&gt;/TutorialStorage.git <span class="o">(</span>push<span class="o">)</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="push-the-cycstub-repository-to-your-new-github-repository">
-<h2>Push the Cycstub repository to your new Github repository<a class="headerlink" href="#push-the-cycstub-repository-to-your-new-github-repository" title="Permalink to this headline">¶</a></h2>
-<p>You are now ready to push this renamed clone of <tt class="docutils literal"><span class="pre">cycstub</span></tt> to your new
-repository and begin development.  Since the primary branch of this repository
-is the <tt class="docutils literal"><span class="pre">develop</span></tt> branch, you will need to connect this branch</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>git push origin
-</pre></div>
-</div>
+</td>
+</tr>
+<tr class="row-odd"><td>8:30</td>
+<td>Cyclus Development: History, Strategy, Contributors,
+Funding, Future Developmental Needs, and Potential Users</td>
+<td><ol class="first last upperalpha simple" start="16">
+<li>Wilson (U. Wisc)</li>
+</ol>
+</td>
+</tr>
+<tr class="row-even"><td>9:30</td>
+<td>Cyclus v1.1 Status and Capabilities</td>
+<td>Scopatz (U. Wisc)</td>
+</tr>
+<tr class="row-odd"><td>10:00</td>
+<td>Communication Research</td>
+<td>Brossard (U. Wisc)</td>
+</tr>
+<tr class="row-even"><td>10:30</td>
+<td>Break</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>10:45</td>
+<td>Building Cyclus Scenarios with Cycic</td>
+<td>Flanagan (U. Texas)</td>
+</tr>
+<tr class="row-even"><td>11:15</td>
+<td>Exploring Cyclus Results with Cyclist</td>
+<td>Livnat (U. Utah)</td>
+</tr>
+<tr class="row-odd"><td>11:45</td>
+<td>Module development for FCO analysis</td>
+<td>Huff (UC- Berkeley)</td>
+</tr>
+<tr class="row-even"><td>12:15</td>
+<td>Lunch</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>13:30</td>
+<td>Insights on Fuel Cycle Simulators</td>
+<td>Price (Consultant)</td>
+</tr>
+<tr class="row-even"><td>14:00</td>
+<td>Reactor Modules for Cyclus based on Bright</td>
+<td>Schneider (U. Texas)</td>
+</tr>
+<tr class="row-odd"><td>14:30</td>
+<td>Facility Modules for Cyclus based on Origen</td>
+<td>Skutnik (U. Tennessee)</td>
+</tr>
+<tr class="row-even"><td>15:00</td>
+<td>Break</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>15:15</td>
+<td>Cyclus Optimization Strategies</td>
+<td>Carlsen (U. Wisc)</td>
+</tr>
+<tr class="row-even"><td>15:45</td>
+<td>Cyclus Community/Ecosystem Roadmap</td>
+<td>Scopatz (U. Wisc)</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 
@@ -163,16 +178,17 @@ is the <tt class="docutils literal"><span class="pre">develop</span></tt> branch
         </a></p><div class="sphinxlocaltoc">
     <h3><a href="../../index.html">Page contents</a></h3>
     <ul>
-<li><a class="reference internal" href="#">Setup a new code repository based on Cycstub</a><ul>
-<li><a class="reference internal" href="#clone-the-cycstub-repository-to-your-local-machine">Clone the Cycstub repository to your local machine</a></li>
-<li><a class="reference internal" href="#rename-the-templates-in-the-cycstub-clone">Rename the templates in the Cycstub clone</a></li>
-<li><a class="reference internal" href="#create-a-new-repository-on-github">Create a New Repository on Github</a></li>
-<li><a class="reference internal" href="#connect-this-repository-with-your-new-github-repository">Connect this repository with your new Github repository</a></li>
-<li><a class="reference internal" href="#push-the-cycstub-repository-to-your-new-github-repository">Push the Cycstub repository to your new Github repository</a></li>
+<li><a class="reference internal" href="#">Review of Cyclus Code and Associated Modules/Tools Development - Argonne National Lab (10/23/14)</a><ul>
+<li><a class="reference internal" href="#agenda">Agenda</a></li>
 </ul>
 </li>
 </ul>
 
+  </div>
+  <div class="sphinxprev">
+    <h4>Previous page</h4>
+    <p class="topless"><a href="../index.html"
+                          title="Previous page">&larr; <span style="font-variant:small-caps;">Cyclus</span> Publications &amp; Meetings</a></p>
   </div>
   <div class="sphinxlocaltoc">
   <h3>Useful Pages</h3>
@@ -247,8 +263,12 @@ is the <tt class="docutils literal"><span class="pre">develop</span></tt> branch
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="../index.html" title="Cyclus Publications &amp; Meetings"
+             >previous</a> &nbsp; &nbsp;</li>
     <li><a href="../../index.html">Home</a> &raquo;</li>
- 
+
+          <li><a href="../index.html" ><span style="font-variant:small-caps;">Cyclus</span> Publications &amp; Meetings</a> &raquo;</li> 
       </ul>
     </div>
     </div>
