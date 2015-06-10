@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '(1.2.0-31-gefd3b39)',
+        VERSION:     '(1.3.1)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -81,7 +81,7 @@ if(ga_enabled){
           <div class="body">
             
   <div class="section" id="testing-agents-and-modules">
-<h1>Testing Agents and Modules<a class="headerlink" href="#testing-agents-and-modules" title="Permalink to this headline">¶</a></h1>
+<span id="testing"></span><h1>Testing Agents and Modules<a class="headerlink" href="#testing-agents-and-modules" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
 <p>Writing <a class="reference external" href="http://en.wikipedia.org/wiki/Unit_testing">unit tests</a> for your
@@ -273,6 +273,95 @@ file is), run:</p>
 </pre></div>
 </div>
 </div>
+<div class="section" id="testing-resource-exchange">
+<h2>Testing Resource Exchange<a class="headerlink" href="#testing-resource-exchange" title="Permalink to this headline">¶</a></h2>
+<p>One of the most important things to test is your archetype&#8217;s resource exchange
+behavior.  Does it request/receive the right kinds of material?  Does it offer/sell
+resources at the right time?  One of the best ways to test this is to actually
+run a simulation with your archetype.  Cyclus comes with a mock simulation
+environment that makes it easy to write these kinds of tests in a way that
+works well with gtest.</p>
+<p><tt class="docutils literal"><span class="pre">MockSim</span></tt> is a helper for running full simulations entirely in-code without
+having to deal with input files, output database files, and other pieces of
+the full Cyclus stack.  All you have to do is initialize a MockSim indicating
+the archetype you want to test and the simulation duration.  Then add any
+number of sources and/or sinks to transact with your agent.  They can have
+specific recipes (or not) and their deployment and lifetime (before
+decommissioning) can be specified too.  Here is an example using the
+agents:Source archetype in Cyclus as the tested agent:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="c1">// Define a composition to use as a simulation recipe.</span>
+<span class="n">cyclus</span><span class="o">::</span><span class="n">CompMap</span> <span class="n">m</span><span class="p">;</span>
+<span class="n">m</span><span class="p">[</span><span class="mi">922350000</span><span class="p">]</span> <span class="o">=</span> <span class="mf">.05</span><span class="p">;</span>
+<span class="n">m</span><span class="p">[</span><span class="mi">922380000</span><span class="p">]</span> <span class="o">=</span> <span class="mf">.95</span><span class="p">;</span>
+<span class="n">cyclus</span><span class="o">::</span><span class="n">Composition</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">fresh</span> <span class="o">=</span> <span class="n">cyclus</span><span class="o">::</span><span class="n">Composition</span><span class="o">::</span><span class="n">CreateFromMass</span><span class="p">(</span><span class="n">m</span><span class="p">);</span>
+
+<span class="c1">// Define our archetype xml configuration.</span>
+<span class="c1">// This is the info that goes</span>
+<span class="c1">// &quot;&lt;config&gt;&lt;[archetype-name]&gt;here&lt;/[archetype-name]&gt;&lt;/config&gt;&quot;</span>
+<span class="c1">// in the input file.</span>
+<span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">config</span> <span class="o">=</span>
+    <span class="s">&quot;&lt;commod&gt;enriched_u&lt;/commod&gt;&quot;</span>
+    <span class="s">&quot;&lt;recipe_name&gt;fresh_fuel&lt;/recipe_name&gt;&quot;</span>
+    <span class="s">&quot;&lt;capacity&gt;10&lt;/capacity&gt;&quot;</span><span class="p">;</span>
+
+<span class="c1">// Create and run a 10 time step mock simulation</span>
+<span class="kt">int</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="n">cyclus</span><span class="o">::</span><span class="n">MockSim</span> <span class="n">sim</span><span class="p">(</span><span class="n">cyclus</span><span class="o">::</span><span class="n">AgentSpec</span><span class="p">(</span><span class="s">&quot;:agents:Source&quot;</span><span class="p">),</span> <span class="n">config</span><span class="p">,</span> <span class="n">dur</span><span class="p">);</span>
+<span class="n">sim</span><span class="p">.</span><span class="n">AddRecipe</span><span class="p">(</span><span class="s">&quot;fresh_fuel&quot;</span><span class="p">,</span> <span class="n">fresh</span><span class="p">);</span> <span class="c1">// with one composition recipe</span>
+<span class="n">sim</span><span class="p">.</span><span class="n">AddSink</span><span class="p">(</span><span class="s">&quot;enriched_u&quot;</span><span class="p">)</span> <span class="c1">// and one sink facility</span>
+    <span class="p">.</span><span class="n">recipe</span><span class="p">(</span><span class="s">&quot;fresh_fuel&quot;</span><span class="p">)</span> <span class="c1">// requesting a particular recipe</span>
+    <span class="p">.</span><span class="n">capacity</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="c1">// with a 5 kg per time step receiving limit</span>
+    <span class="p">.</span><span class="n">Finalize</span><span class="p">();</span> <span class="c1">// (don&#39;t forget to call this for each source/sink you add)</span>
+
+<span class="n">sim</span><span class="p">.</span><span class="n">AddSink</span><span class="p">(</span><span class="s">&quot;enriched_u&quot;</span><span class="p">)</span> <span class="c1">// And another sink facility</span>
+        <span class="c1">// requesting no particular recipe</span>
+        <span class="c1">// and with infinite capacity</span>
+    <span class="p">.</span><span class="n">start</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="c1">// that isn&#39;t built until the 3rd timestep.</span>
+    <span class="p">.</span><span class="n">Finalize</span><span class="p">();</span>
+<span class="kt">int</span> <span class="n">agent_id</span> <span class="o">=</span> <span class="n">sim</span><span class="p">.</span><span class="n">Run</span><span class="p">();</span> <span class="c1">// capture the ID of the agent being tested</span>
+</pre></div>
+</div>
+<p>The parameters that can be set (or not) for each source/sink are:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">recipe(std::string</span> <span class="pre">r)</span></tt>: The recipe to request/provide. Default is none -
+sources provide requested material, sinks take anything.</li>
+<li><tt class="docutils literal"><span class="pre">capacity(double</span> <span class="pre">cap)</span></tt>: The per time step throughput/capacity limit for
+the source/sink. Default is infinite.</li>
+<li><tt class="docutils literal"><span class="pre">start(int</span> <span class="pre">t)</span></tt>: Time the source/sink is initially built. Default is time
+step zero.</li>
+<li><tt class="docutils literal"><span class="pre">lifetime(int)</span></tt>: The number of time steps the source/sink is deployed
+until automatic decommissioning. Default is infinite (never decommissioned).</li>
+</ul>
+<p>For more details, you can read the <a class="reference external" href="http://fuelcycle.org/cyclus/api/classcyclus_1_1MockSim.html">MockSim API docs</a>.
+Querying simulation results can be accomplished by getting a reference to the
+in-memory database generated.  Not all data that is present in normal
+full-stack simulations is available.  However, most of the key core tables are
+fully available.  Namely the Transactions, Composition, Resources,
+ResCreators, AgentEntry, and AgentExit tables are available.  Any
+custom-tables created by the tested archetype will also be available.  Here is
+a sample query and test you might write using the gtest framework:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="c1">// return all transactions where our source facility is the sender</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">cyclus</span><span class="o">::</span><span class="n">Cond</span><span class="o">&gt;</span> <span class="n">conds</span><span class="p">;</span>
+<span class="n">conds</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="s">&quot;SenderId&quot;</span><span class="p">,</span> <span class="s">&quot;==&quot;</span><span class="p">,</span> <span class="n">agent_id</span><span class="p">);</span>
+<span class="n">cyclus</span><span class="o">::</span><span class="n">QueryResult</span> <span class="n">qr</span> <span class="o">=</span> <span class="n">sim</span><span class="p">.</span><span class="n">db</span><span class="p">().</span><span class="n">Query</span><span class="p">(</span><span class="s">&quot;Transactions&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">conds</span><span class="p">);</span>
+<span class="kt">int</span> <span class="n">n_trans</span> <span class="o">=</span> <span class="n">qr</span><span class="p">.</span><span class="n">rows</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+<span class="n">EXPECT_EQ</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">n_trans</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;expected 10 transactions, got &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">n_trans</span><span class="p">;</span>
+
+<span class="c1">// reconstruct the material object for the first transaction</span>
+<span class="kt">int</span> <span class="n">res_id</span> <span class="o">=</span> <span class="n">qr</span><span class="p">.</span><span class="n">GetVal</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;ResourceId&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+<span class="n">cyclus</span><span class="o">::</span><span class="n">Material</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">m</span> <span class="o">=</span> <span class="n">sim</span><span class="p">.</span><span class="n">GetMaterial</span><span class="p">(</span><span class="n">res_id</span><span class="p">);</span>
+<span class="n">EXPECT_DOUBLE_EQ</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">m</span><span class="o">-&gt;</span><span class="n">quantity</span><span class="p">());</span>
+
+<span class="c1">// confirm composition is as expected</span>
+<span class="n">cyclus</span><span class="o">::</span><span class="n">toolkit</span><span class="o">::</span><span class="n">MatQuery</span> <span class="n">mq</span><span class="p">(</span><span class="n">m</span><span class="p">);</span>
+<span class="n">EXPECT_DOUBLE_EQ</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">mq</span><span class="p">.</span><span class="n">mass</span><span class="p">(</span><span class="mi">922350000</span><span class="p">));</span>
+<span class="n">EXPECT_DOUBLE_EQ</span><span class="p">(</span><span class="mf">9.5</span><span class="p">,</span> <span class="n">mq</span><span class="p">.</span><span class="n">mass</span><span class="p">(</span><span class="mi">922380000</span><span class="p">));</span>
+</pre></div>
+</div>
+<p>You can read API documentation for the <a class="reference external" href="http://fuelcycle.org/cyclus/api/classcyclus_1_1QueryableBackend.html">queryable database</a> and
+<a class="reference external" href="http://fuelcycle.org/cyclus/api/classcyclus_1_1QueryResult.html">query results</a> for more
+details.</p>
+</div>
 <div class="section" id="debugging">
 <h2>Debugging<a class="headerlink" href="#debugging" title="Permalink to this headline">¶</a></h2>
 <p>Cyclus has the ability to dump extra information about a simulation run&#8217;s
@@ -329,6 +418,7 @@ to those of the corresponding request.</p>
 <li><a class="reference internal" href="#overview">Overview</a></li>
 <li><a class="reference internal" href="#unit-tests-out-of-the-box">Unit Tests Out of the Box</a></li>
 <li><a class="reference internal" href="#unit-test-example">Unit Test Example</a></li>
+<li><a class="reference internal" href="#testing-resource-exchange">Testing Resource Exchange</a></li>
 <li><a class="reference internal" href="#debugging">Debugging</a></li>
 </ul>
 </li>
@@ -348,15 +438,15 @@ to those of the corresponding request.</p>
   <div class="sphinxlocaltoc">
   <h3>Useful Pages</h3>
     <ul><li><ul>
-    <li><a href="http://fuelcycle.org/user/index.html">User Guide</a></li>
-    <li><a href="http://fuelcycle.org/arche/index.html">Archetype Developer Guide</a></li>
+    <li><a href="/user/index.html">User Guide</a></li>
+    <li><a href="/arche/index.html">Archetype Developer Guide</a></li>
     <li><a href="http://fuelcycle.org/cyclus/api/">Cyclus API Documentation</a></li>
     <li><a href="http://fuelcycle.org/cycamore/api/">Cycamore API Documentation</a></li>
-    <li><a href="http://fuelcycle.org/basics/glossary.html">Glossary</a></li>
+    <li><a href="/basics/glossary.html">Glossary</a></li>
     <li><a href="mailto:cyclus-users+subscribe@googlegroups.com?subject=Subscribe&body=Send this message to subscribe to the list">Join</a> the 
       <a href="https://groups.google.com/forum/#!forum/cyclus-users" target="_blank"><span style="font-variant:small-caps">Cyclus</span> Users</a> mailing list.
     <li><a href="mailto:cyclus-dev+subscribe@googlegroups.com?subject=Subscribe&body=Send this message to subscribe to the list">Join</a> the 
-      <a href="https://groups.google.com/forum/#!forum/cyclus-users" target="_blank"><span style="font-variant:small-caps">Cyclus</span> Developers</a> mailing list.
+      <a href="https://groups.google.com/forum/#!forum/cyclus-dev" target="_blank"><span style="font-variant:small-caps">Cyclus</span> Developers</a> mailing list.
     </ul></li></ul>
   </div>
     
@@ -375,7 +465,7 @@ to those of the corresponding request.</p>
 <script type="text/javascript">$('#searchbox').show(0);</script>
     <h3>Get Cyclus</h3>
     <br>
-    Current version: <b>1.2.0</b>
+    Current version: <b>1.3.0</b>
     <br><br>
     Install:
     <div class="highlight-bash" style="width:97.5%"><div class="highlight"><pre><span class="nv">$ </span>conda install cyclus cycamore</pre></div></div>
@@ -433,7 +523,7 @@ to those of the corresponding request.</p>
 
     <div class="footer">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Jan 13, 2015.
+      Last updated on Jun 10, 2015.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");

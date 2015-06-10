@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '(1.2.0-31-gefd3b39)',
+        VERSION:     '(1.3.1)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -31,7 +31,7 @@
     <link rel="shortcut icon" href="../_static/big_c.ico"/>
     <link rel="top" title="Home" href="../index.html" />
     <link rel="up" title="Cyclus User Guide" href="index.html" />
-    <link rel="next" title="Understanding the Database" href="dbdoc.html" />
+    <link rel="next" title="Cymetric" href="cymetric/index.html" />
     <link rel="prev" title="Cycamore Archetypes" href="cycamoreagents.html" /> 
         <meta name="viewport" content="width=device-width, initial-scale=1"><script type="text/javascript">
 var ga_enabled = !$.cookie('disable-ga');
@@ -62,7 +62,7 @@ if(ga_enabled){
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> &nbsp; &nbsp;</li>
         <li class="right" >
-          <a href="dbdoc.html" title="Understanding the Database"
+          <a href="cymetric/index.html" title="Cymetric"
              accesskey="N">next</a> &nbsp; &nbsp;</li>
         <li class="right" >
           <a href="cycamoreagents.html" title="Cycamore Archetypes"
@@ -87,69 +87,60 @@ if(ga_enabled){
 <div class="section" id="stubs-stubregion-stubregion">
 <h2>stubs:StubRegion:<strong>StubRegion</strong><a class="headerlink" href="#stubs-stubregion-stubregion" title="Permalink to this headline">¶</a></h2>
 <p>A stub region is provided as a skeleton for the design of new region agents.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">entity:</th><td class="field-body">region</td>
-</tr>
-<tr class="field-even field"><th class="field-name">parents:</th><td class="field-body">[cyclus::Region]</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">all_parents:</th><td class="field-body">[cyclus::Agent, cyclus::Ider, cyclus::Region, cyclus::StateWrangler, cyclus::TimeListener]</td>
-</tr>
-<tr class="field-even field"><th class="field-name">name:</th><td class="field-body">stubs::StubRegion</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Schema:</strong></p>
+<div class="section" id="other-info">
+<h3>Other Info<a class="headerlink" href="#other-info" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><strong>Full Archetype Name</strong>: stubs::StubRegion</li>
+<li><strong>Simulation Entity Type</strong>: region</li>
+<li><strong>Interfaces</strong>: [cyclus::Region]</li>
+<li><strong>All Interfaces</strong>: [cyclus::Agent, cyclus::Ider, cyclus::Region, cyclus::StateWrangler, cyclus::TimeListener]</li>
+</ul>
+</div>
+<div class="section" id="xml-input-schema">
+<h3>XML Input Schema<a class="headerlink" href="#xml-input-schema" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;text/&gt;</span>
 </pre></div>
+</div>
 </div>
 </div>
 <hr class="docutils" />
 <div class="section" id="stubs-stubinst-stubinst">
 <h2>stubs:StubInst:<strong>StubInst</strong><a class="headerlink" href="#stubs-stubinst-stubinst" title="Permalink to this headline">¶</a></h2>
 <p>A stub institution is provided as a skeleton for the design of new institution agents.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">entity:</th><td class="field-body">institution</td>
-</tr>
-<tr class="field-even field"><th class="field-name">parents:</th><td class="field-body">[cyclus::Institution]</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">all_parents:</th><td class="field-body">[cyclus::Agent, cyclus::Ider, cyclus::Institution, cyclus::StateWrangler, cyclus::TimeListener]</td>
-</tr>
-<tr class="field-even field"><th class="field-name">name:</th><td class="field-body">stubs::StubInst</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Schema:</strong></p>
+<div class="section" id="id1">
+<h3>Other Info<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><strong>Full Archetype Name</strong>: stubs::StubInst</li>
+<li><strong>Simulation Entity Type</strong>: institution</li>
+<li><strong>Interfaces</strong>: [cyclus::Institution]</li>
+<li><strong>All Interfaces</strong>: [cyclus::Agent, cyclus::Ider, cyclus::Institution, cyclus::StateWrangler, cyclus::TimeListener]</li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h3>XML Input Schema<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;text/&gt;</span>
 </pre></div>
+</div>
 </div>
 </div>
 <hr class="docutils" />
 <div class="section" id="stubs-stubfacility-stubfacility">
 <h2>stubs:StubFacility:<strong>StubFacility</strong><a class="headerlink" href="#stubs-stubfacility-stubfacility" title="Permalink to this headline">¶</a></h2>
 <p>A stub facility is provided as a skeleton for the design of new facility agents.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">entity:</th><td class="field-body">facility</td>
-</tr>
-<tr class="field-even field"><th class="field-name">parents:</th><td class="field-body">[cyclus::Facility]</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">all_parents:</th><td class="field-body">[cyclus::Agent, cyclus::Facility, cyclus::Ider, cyclus::StateWrangler, cyclus::TimeListener, cyclus::Trader]</td>
-</tr>
-<tr class="field-even field"><th class="field-name">name:</th><td class="field-body">stubs::StubFacility</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Schema:</strong></p>
+<div class="section" id="id3">
+<h3>Other Info<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><strong>Full Archetype Name</strong>: stubs::StubFacility</li>
+<li><strong>Simulation Entity Type</strong>: facility</li>
+<li><strong>Interfaces</strong>: [cyclus::Facility]</li>
+<li><strong>All Interfaces</strong>: [cyclus::Agent, cyclus::Facility, cyclus::Ider, cyclus::StateWrangler, cyclus::TimeListener, cyclus::Trader]</li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h3>XML Input Schema<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;text/&gt;</span>
 </pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -166,9 +157,21 @@ if(ga_enabled){
     <h3><a href="../index.html">Page contents</a></h3>
     <ul>
 <li><a class="reference internal" href="#">Stub Archetypes</a><ul>
-<li><a class="reference internal" href="#stubs-stubregion-stubregion">stubs:StubRegion:<strong>StubRegion</strong></a></li>
-<li><a class="reference internal" href="#stubs-stubinst-stubinst">stubs:StubInst:<strong>StubInst</strong></a></li>
-<li><a class="reference internal" href="#stubs-stubfacility-stubfacility">stubs:StubFacility:<strong>StubFacility</strong></a></li>
+<li><a class="reference internal" href="#stubs-stubregion-stubregion">stubs:StubRegion:<strong>StubRegion</strong></a><ul>
+<li><a class="reference internal" href="#other-info">Other Info</a></li>
+<li><a class="reference internal" href="#xml-input-schema">XML Input Schema</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#stubs-stubinst-stubinst">stubs:StubInst:<strong>StubInst</strong></a><ul>
+<li><a class="reference internal" href="#id1">Other Info</a></li>
+<li><a class="reference internal" href="#id2">XML Input Schema</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#stubs-stubfacility-stubfacility">stubs:StubFacility:<strong>StubFacility</strong></a><ul>
+<li><a class="reference internal" href="#id3">Other Info</a></li>
+<li><a class="reference internal" href="#id4">XML Input Schema</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -181,21 +184,21 @@ if(ga_enabled){
   </div>
   <div class="sphinxnext">
     <h4>Next page</h4>
-    <p class="topless"><a href="dbdoc.html"
-                          title="Next page">&rarr; Understanding the Database</a></p>
+    <p class="topless"><a href="cymetric/index.html"
+                          title="Next page">&rarr; Cymetric</a></p>
   </div>
   <div class="sphinxlocaltoc">
   <h3>Useful Pages</h3>
     <ul><li><ul>
-    <li><a href="http://fuelcycle.org/user/index.html">User Guide</a></li>
-    <li><a href="http://fuelcycle.org/arche/index.html">Archetype Developer Guide</a></li>
+    <li><a href="/user/index.html">User Guide</a></li>
+    <li><a href="/arche/index.html">Archetype Developer Guide</a></li>
     <li><a href="http://fuelcycle.org/cyclus/api/">Cyclus API Documentation</a></li>
     <li><a href="http://fuelcycle.org/cycamore/api/">Cycamore API Documentation</a></li>
-    <li><a href="http://fuelcycle.org/basics/glossary.html">Glossary</a></li>
+    <li><a href="/basics/glossary.html">Glossary</a></li>
     <li><a href="mailto:cyclus-users+subscribe@googlegroups.com?subject=Subscribe&body=Send this message to subscribe to the list">Join</a> the 
       <a href="https://groups.google.com/forum/#!forum/cyclus-users" target="_blank"><span style="font-variant:small-caps">Cyclus</span> Users</a> mailing list.
     <li><a href="mailto:cyclus-dev+subscribe@googlegroups.com?subject=Subscribe&body=Send this message to subscribe to the list">Join</a> the 
-      <a href="https://groups.google.com/forum/#!forum/cyclus-users" target="_blank"><span style="font-variant:small-caps">Cyclus</span> Developers</a> mailing list.
+      <a href="https://groups.google.com/forum/#!forum/cyclus-dev" target="_blank"><span style="font-variant:small-caps">Cyclus</span> Developers</a> mailing list.
     </ul></li></ul>
   </div>
     
@@ -214,7 +217,7 @@ if(ga_enabled){
 <script type="text/javascript">$('#searchbox').show(0);</script>
     <h3>Get Cyclus</h3>
     <br>
-    Current version: <b>1.2.0</b>
+    Current version: <b>1.3.0</b>
     <br><br>
     Install:
     <div class="highlight-bash" style="width:97.5%"><div class="highlight"><pre><span class="nv">$ </span>conda install cyclus cycamore</pre></div></div>
@@ -258,7 +261,7 @@ if(ga_enabled){
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> &nbsp; &nbsp;</li>
         <li class="right" >
-          <a href="dbdoc.html" title="Understanding the Database"
+          <a href="cymetric/index.html" title="Cymetric"
              >next</a> &nbsp; &nbsp;</li>
         <li class="right" >
           <a href="cycamoreagents.html" title="Cycamore Archetypes"
@@ -272,7 +275,7 @@ if(ga_enabled){
 
     <div class="footer">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Jan 13, 2015.
+      Last updated on Jun 10, 2015.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");
