@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '(1.3.1)',
+        VERSION:     'b&#39;(1.3.1-47-gd5578ed)&#39;',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -29,7 +29,10 @@
     <script type="text/javascript" src="../../_static/jquery.cookie.js"></script>
     <script type="text/javascript" src="../../_static/cloud.js"></script>
     <link rel="shortcut icon" href="../../_static/big_c.ico"/>
-    <link rel="top" title="Home" href="../../index.html" /> 
+    <link rel="top" title="Home" href="../../index.html" />
+    <link rel="up" title="Cyclus User Tutorial" href="index.html" />
+    <link rel="next" title="Adding Prototypes to your Simulation" href="add_proto.html" />
+    <link rel="prev" title="Starting a New Scenario" href="sim_parm.html" /> 
         <meta name="viewport" content="width=device-width, initial-scale=1"><script type="text/javascript">
 var ga_enabled = !$.cookie('disable-ga');
 if(ga_enabled){
@@ -46,10 +49,10 @@ if(ga_enabled){
 }
 </script>
   </head>
-  <body>
+  <body role="document">
     <div class="relbar-top">
         
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -58,8 +61,16 @@ if(ga_enabled){
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="add_proto.html" title="Adding Prototypes to your Simulation"
+             accesskey="N">next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="sim_parm.html" title="Starting a New Scenario"
+             accesskey="P">previous</a> &nbsp; &nbsp;</li>
     <li><a href="../../index.html">Home</a> &raquo;</li>
- 
+
+          <li class="nav-item nav-item-1"><a href="../index.html" ><span style="font-variant:small-caps;">Cyclus</span> User Guide</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U"><span style="font-variant:small-caps;">Cyclus</span> User Tutorial</a> &raquo;</li> 
       </ul>
     </div>
     </div>
@@ -68,7 +79,7 @@ if(ga_enabled){
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="understanding-and-adding-archetypes-to-your-scenario">
 <h1>Understanding and Adding Archetypes to Your Scenario<a class="headerlink" href="#understanding-and-adding-archetypes-to-your-scenario" title="Permalink to this headline">¶</a></h1>
@@ -78,7 +89,7 @@ if(ga_enabled){
 switch between different models of fuel cycle facilities.  Models may differ
 in the way they choose to represent the physics of the facility, or in the way
 they choose for the facility to interact with other facilities, or both. In
-<span style="font-variant:small-caps;">Cyclus</span>, we call each of these different models an <a class="reference internal" href="../../basics/glossary.html#term-archetype"><em class="xref std std-term">archetype</em></a>.</p>
+<span style="font-variant:small-caps;">Cyclus</span>, we call each of these different models an <a class="reference internal" href="../../basics/glossary.html#term-archetype"><span class="xref std std-term">archetype</span></a>.</p>
 <div class="section" id="archetype-example-reactor-fidelity">
 <h3>Archetype Example: Reactor Fidelity<a class="headerlink" href="#archetype-example-reactor-fidelity" title="Permalink to this headline">¶</a></h3>
 <p>The easiest way for most fuel cycle analysts to understand the difference
@@ -167,7 +178,7 @@ subset of archetypes will be used in this particular scenario.</p>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
         <p class="logo"><a href="../../index.html" title="index">
           <img class="logo" src="../../_static/big_c.png" alt="Logo"/>
@@ -187,6 +198,16 @@ subset of archetypes will be used in this particular scenario.</p>
 </ul>
 
   </div>
+  <div class="sphinxprev">
+    <h4>Previous page</h4>
+    <p class="topless"><a href="sim_parm.html"
+                          title="Previous page">&larr; Starting a New Scenario</a></p>
+  </div>
+  <div class="sphinxnext">
+    <h4>Next page</h4>
+    <p class="topless"><a href="add_proto.html"
+                          title="Next page">&rarr; Adding Prototypes to your Simulation</a></p>
+  </div>
   <div class="sphinxlocaltoc">
   <h3>Useful Pages</h3>
     <ul><li><ul>
@@ -202,7 +223,7 @@ subset of archetypes will be used in this particular scenario.</p>
     </ul></li></ul>
   </div>
     
-<div id="searchbox" style="display: none">
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../../search.html" method="get">
       <input type="text" name="q" />
@@ -251,7 +272,7 @@ subset of archetypes will be used in this particular scenario.</p>
     </div>
     <div class="relbar-bottom">
         
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -260,15 +281,23 @@ subset of archetypes will be used in this particular scenario.</p>
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="add_proto.html" title="Adding Prototypes to your Simulation"
+             >next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="sim_parm.html" title="Starting a New Scenario"
+             >previous</a> &nbsp; &nbsp;</li>
     <li><a href="../../index.html">Home</a> &raquo;</li>
- 
+
+          <li class="nav-item nav-item-1"><a href="../index.html" ><span style="font-variant:small-caps;">Cyclus</span> User Guide</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" ><span style="font-variant:small-caps;">Cyclus</span> User Tutorial</a> &raquo;</li> 
       </ul>
     </div>
     </div>
 
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Jun 10, 2015.
+      Last updated on Aug 19, 2015.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");

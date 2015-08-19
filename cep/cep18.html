@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '(1.3.1)',
+        VERSION:     'b&#39;(1.3.1-47-gd5578ed)&#39;',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -49,10 +49,10 @@ if(ga_enabled){
 }
 </script>
   </head>
-  <body>
+  <body role="document">
     <div class="relbar-top">
         
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -69,7 +69,7 @@ if(ga_enabled){
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
     <li><a href="../index.html">Home</a> &raquo;</li>
 
-          <li><a href="cep0.html" accesskey="U"><span style="font-variant:small-caps;">Cyclus</span> Enhancement Proposals</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="cep0.html" accesskey="U"><span style="font-variant:small-caps;">Cyclus</span> Enhancement Proposals</a> &raquo;</li> 
       </ul>
     </div>
     </div>
@@ -78,7 +78,7 @@ if(ga_enabled){
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="cep-18-dynamic-resource-exchange-procedure">
 <h1>CEP 18 - Dynamic Resource Exchange Procedure<a class="headerlink" href="#cep-18-dynamic-resource-exchange-procedure" title="Permalink to this headline">¶</a></h1>
@@ -111,7 +111,7 @@ encompass an information gathering procedure, providing generic information to
 any market exchange solution procedure. The final phase is modular in that any
 algorithm can be used to solve the exchange. This modular phase takes the place
 of the current implementation of MarketModels. The procedure is informed by
-agent-based supply chain modeling literature <a class="reference internal" href="#julka-agent-based-2002" id="id1">[1]</a> with
+agent-based supply chain modeling literature <a class="reference internal" href="#julka-agent-based-2002" id="id1">[JSK02]</a> with
 modifications as required for our nuclear-engineering domain specific
 information.</p>
 </div>
@@ -183,7 +183,7 @@ with specific, defined agency.</p>
 <p>Supply-demand determination at any given time step occurs in nominally three
 steps, or <strong>phases</strong>, and the associated terminology is taken from previous
 supply chain agent-based modeling work
-<a class="reference internal" href="#julka-agent-based-2002" id="id2">[1]</a>. Importantly, this information-gathering step is
+<a class="reference internal" href="#julka-agent-based-2002" id="id2">[JSK02]</a>. Importantly, this information-gathering step is
 agnostic as to the actual matching algorithm used, it is concerned only with
 querying the current status of supply and demand and facility preference thereof
 in the simulation.</p>
@@ -205,21 +205,21 @@ material, including depleted uranium from enrichment or reprocessed uranium from
 separations. Accordingly, it could demand both commodities as long as it
 provides a corresponding constraint with respect to total consumption.</p>
 <p>At the completion of the RFB phase, the market exchange will have a set of
-consumption portfolios, <img class="math" src="../_images/math/f48b617185733d8dd6712643f1ab17c736661a06.png" alt="P"/>, for each requester in the exchange, shown as
+consumption portfolios, <span class="math">P</span>, for each requester in the exchange, shown as
 the orange box in Figure 1. Each portfolio consists of a set of requests,
-<img class="math" src="../_images/math/9d86170e7de539c0ff999de09621ee0c7b6c8ed0.png" alt="R"/>, a cardinal preferential ordering over the requests, <img class="math" src="../_images/math/a70bbd811ec701ca47ecdd95636100e4851c023d.png" alt="\alpha_R"/>,
-and possibly a set of constraints over the requests, <img class="math" src="../_images/math/c4428a54b0e184e3ceed64207cc5b35e8e78c360.png" alt="c_R"/>. A constraint
+<span class="math">R</span>, a cardinal preferential ordering over the requests, <span class="math">\alpha_R</span>,
+and possibly a set of constraints over the requests, <span class="math">c_R</span>. A constraint
 can be associated with more than one request. Take the previous example of MOX
 and UOX for an LWR. Each is a separate request, but a constraint may be
 concerned with the combination of the two. Another example is a repository that
 may request many commodities, but has a radiotoxicity constraint over any
 commodities it receives for a given time step.</p>
-<p>A request consists of a quantity, <img class="math" src="../_images/math/41739637485ccd50d37e4d8a798236a150448ebf.png" alt="q_r"/>, and a target isotopic vector,
-<img class="math" src="../_images/math/f176bdfcd10183d5f9222c468778a237d5293a9f.png" alt="I_r"/>. Consumers are allowed to offer the null set of isotopics as their
+<p>A request consists of a quantity, <span class="math">q_r</span>, and a target isotopic vector,
+<span class="math">I_r</span>. Consumers are allowed to offer the null set of isotopics as their
 profile, effectively providing no information. In general, a requester may have
 more than one request (nodes in Figure 1) per commodity. A prime example is a
 reactor that chooses to requests fuel assemblies, of which they request many.</p>
-<a class="reference internal image-reference" href="../_images/cep-0018-3.png"><img alt="../_images/cep-0018-3.png" class="align-center" src="../_images/cep-0018-3.png" style="width: 238.0px; height: 397.0px;" /></a>
+<a class="reference internal image-reference" href="../_images/cep-0018-3.png"><img alt="../_images/cep-0018-3.png" class="align-center" src="../_images/cep-0018-3.png" /></a>
 <p><strong>Figure 1:</strong> A Requester during the RFB Phase, where a collection of requests
 (as nodes) is shown.</p>
 <p>The second phase allows suppliers to <strong>respond</strong> to the set of consumption
@@ -247,7 +247,7 @@ capacity, and define a translation function. The translation function takes a
 request as an argument and returns a value in the units of the constraint. A
 prime example is an enrichment facility, which may be able to enrich many
 orders, but is constrained by the total SWUs it can provide.</p>
-<a class="reference internal image-reference" href="../_images/cep-0018-4.png"><img alt="../_images/cep-0018-4.png" class="align-center" src="../_images/cep-0018-4.png" style="width: 228.5px; height: 398.0px;" /></a>
+<a class="reference internal image-reference" href="../_images/cep-0018-4.png"><img alt="../_images/cep-0018-4.png" class="align-center" src="../_images/cep-0018-4.png" /></a>
 <p><strong>Figure 2:</strong> A Supplier during the RRFB Phase, where a collection of commodity
 supplies (as nodes) is shown.</p>
 <p>The final phase of the information gathering procedure allows consumer
@@ -281,7 +281,7 @@ ground. Another would be to move the paradigm more towards economics and have
 the suppliers set the cost of a transaction, which they could tailor to the
 requester. However, this draws in a whole other field of bidding that requires
 much more rigor and thought as to its validity and implementation.</p>
-<a class="reference internal image-reference" href="../_images/cep-0018-5.png"><img alt="../_images/cep-0018-5.png" class="align-center" src="../_images/cep-0018-5.png" style="width: 328.5px; height: 271.0px;" /></a>
+<a class="reference internal image-reference" href="../_images/cep-0018-5.png"><img alt="../_images/cep-0018-5.png" class="align-center" src="../_images/cep-0018-5.png" /></a>
 <p><strong>Figure 3:</strong> A supplier-consumer pair with request isotopics, response
 isotopics, and an associated preference.</p>
 <p>Institutions and Regions in <span style="font-variant:small-caps;">Cyclus</span> are provided in order to add granularity to
@@ -299,7 +299,7 @@ preferences among possible suppliers based on the supplier&#8217;s quality of
 product. Because this agency is encapsulated for each agent, it is possible to
 define strategies that can be attached or detached to the agents at
 run-time. Such strategies are an example of the Strategy design pattern
-<a class="reference internal" href="#vlissides-design-1995" id="id3">[2]</a>.</p>
+<a class="reference internal" href="#vlissides-design-1995" id="id3">[VHJG95]</a>.</p>
 </div>
 <div class="section" id="institutional-agency">
 <h4>Institutional Agency<a class="headerlink" href="#institutional-agency" title="Permalink to this headline">¶</a></h4>
@@ -382,10 +382,10 @@ described first.</p>
 <p>Reference implementation (in /src) and tests (in /tests) for each can be found
 in the <a class="reference external" href="https://github.com/gidden/cyclus/tree/cep18">CEP18 branch</a>.</p>
 <p>A template approach has been taken, delineating, for instance, a material
-request, <tt class="docutils literal"><span class="pre">Request&lt;Material&gt;</span></tt>, from a GenericResource request,
-<tt class="docutils literal"><span class="pre">Request&lt;GenericResource&gt;</span></tt>. The current behavior (i.e., only using parent
+request, <code class="docutils literal"><span class="pre">Request&lt;Material&gt;</span></code>, from a GenericResource request,
+<code class="docutils literal"><span class="pre">Request&lt;GenericResource&gt;</span></code>. The current behavior (i.e., only using parent
 classes and dynamic casting to derived classes) can be invoked by templating on
-the <tt class="docutils literal"><span class="pre">Resource</span></tt> type, i.e., <tt class="docutils literal"><span class="pre">Request&lt;Resource&gt;</span></tt>. See the <a class="reference external" href="https://github.com/gidden/cyclus/blob/cep18/tests/capacity_constraint_tests.cc">capacity constraint
+the <code class="docutils literal"><span class="pre">Resource</span></code> type, i.e., <code class="docutils literal"><span class="pre">Request&lt;Resource&gt;</span></code>. See the <a class="reference external" href="https://github.com/gidden/cyclus/blob/cep18/tests/capacity_constraint_tests.cc">capacity constraint
 tests</a> for an example of this range of behavior.</p>
 </div>
 <div class="section" id="resource-exchange">
@@ -483,7 +483,7 @@ ExchangeContext into an ExchangeGraph, and has a pretty simple interface:</p>
 
 <span class="k">template</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span>
 <span class="k">class</span> <span class="nc">ExchangeTranslator</span> <span class="p">{</span>
- <span class="nl">public:</span>
+ <span class="k">public</span><span class="o">:</span>
   <span class="n">ExchangeGraph</span> <span class="n">ToGraph</span><span class="p">(</span><span class="k">const</span> <span class="n">ExchangeContext</span><span class="o">&amp;</span> <span class="n">ec</span><span class="p">)</span> <span class="p">{</span>
    <span class="cm">/* do translation */</span>
   <span class="p">};</span>
@@ -503,7 +503,7 @@ constrained ExchangeGraph is provided as input, and a solution ExchangeGraph is
 provided as output, which satisfies the provided constraints. It too, has a
 pretty simple interface</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="k">class</span> <span class="nc">ExchangeSolver</span> <span class="p">{</span>
- <span class="nl">public:</span>
+ <span class="k">public</span><span class="o">:</span>
   <span class="k">virtual</span> <span class="kt">void</span> <span class="n">Solve</span><span class="p">(</span><span class="k">const</span> <span class="n">ExchangeGraph</span><span class="o">&amp;</span> <span class="n">g</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 <span class="p">};</span>
 </pre></div>
@@ -531,13 +531,13 @@ requests</li>
 <p id="bibtex-bibliography-cep/cep18-0"><table class="docutils citation" frame="void" id="julka-agent-based-2002" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> N.&nbsp;Julka, R.&nbsp;Srinivasan, and I.&nbsp;Karimi. Agent-based supply chain management-1: framework. <em>Computers &amp; Chemical Engineering</em>, 26(12):1755–1769, 2002.</td></tr>
+<tr><td class="label">[JSK02]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> N.&nbsp;Julka, R.&nbsp;Srinivasan, and I.&nbsp;Karimi. Agent-based supply chain management-1: framework. <em>Computers &amp; Chemical Engineering</em>, 26(12):1755–1769, 2002. <a class="reference external" href="http://www.sciencedirect.com/science/article/pii/S0098135402001503">URL: http://www.sciencedirect.com/science/article/pii/S0098135402001503</a>.</td></tr>
 </tbody>
 </table>
 <table class="docutils citation" frame="void" id="vlissides-design-1995" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id3">[2]</a></td><td>John Vlissides, R&nbsp;Helm, R&nbsp;Johnson, and E&nbsp;Gamma. Design patterns: elements of reusable object-oriented software. <em>Reading: Addison-Wesley</em>, 1995.</td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id3">[VHJG95]</a></td><td>John Vlissides, R&nbsp;Helm, R&nbsp;Johnson, and E&nbsp;Gamma. Design patterns: elements of reusable object-oriented software. <em>Reading: Addison-Wesley</em>, 1995.</td></tr>
 </tbody>
 </table>
 </p>
@@ -548,7 +548,7 @@ requests</li>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
         <p class="logo"><a href="../index.html" title="index">
           <img class="logo" src="../_static/big_c.png" alt="Logo"/>
@@ -614,7 +614,7 @@ requests</li>
     </ul></li></ul>
   </div>
     
-<div id="searchbox" style="display: none">
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
@@ -663,7 +663,7 @@ requests</li>
     </div>
     <div class="relbar-bottom">
         
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -680,14 +680,14 @@ requests</li>
              >previous</a> &nbsp; &nbsp;</li>
     <li><a href="../index.html">Home</a> &raquo;</li>
 
-          <li><a href="cep0.html" ><span style="font-variant:small-caps;">Cyclus</span> Enhancement Proposals</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="cep0.html" ><span style="font-variant:small-caps;">Cyclus</span> Enhancement Proposals</a> &raquo;</li> 
       </ul>
     </div>
     </div>
 
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Jun 10, 2015.
+      Last updated on Aug 19, 2015.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");

@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '(1.3.1)',
+        VERSION:     'b&#39;(1.3.1-47-gd5578ed)&#39;',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -49,10 +49,10 @@ if(ga_enabled){
 }
 </script>
   </head>
-  <body>
+  <body role="document">
     <div class="relbar-top">
         
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -69,7 +69,7 @@ if(ga_enabled){
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
     <li><a href="../index.html">Home</a> &raquo;</li>
 
-          <li><a href="cep0.html" accesskey="U"><span style="font-variant:small-caps;">Cyclus</span> Enhancement Proposals</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="cep0.html" accesskey="U"><span style="font-variant:small-caps;">Cyclus</span> Enhancement Proposals</a> &raquo;</li> 
       </ul>
     </div>
     </div>
@@ -78,7 +78,7 @@ if(ga_enabled){
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="cep-3-cyclus-release-procedure">
 <h1>CEP 3 - <span style="font-variant:small-caps;">Cyclus</span> Release Procedure<a class="headerlink" href="#cep-3-cyclus-release-procedure" title="Permalink to this headline">¶</a></h1>
@@ -130,45 +130,45 @@ stable.)  The projects that are under the release manager&#8217;s purview are:</
 <div class="section" id="release-candidates-tags-branches">
 <h2>Release Candidates (Tags &amp; Branches)<a class="headerlink" href="#release-candidates-tags-branches" title="Permalink to this headline">¶</a></h2>
 <p>At the beginning of a release, a special branch for <em>each</em> project should be
-made off of <tt class="docutils literal"><span class="pre">develop</span></tt> named <tt class="docutils literal"><span class="pre">vX.X.X-release</span></tt>. Note the <em>v</em> at the beginning. Each
+made off of <code class="docutils literal"><span class="pre">develop</span></code> named <code class="docutils literal"><span class="pre">vX.X.X-release</span></code>. Note the <em>v</em> at the beginning. Each
 project should have the initial version of of it&#8217;s release branch <em>tagged</em> as
-<tt class="docutils literal"><span class="pre">X.X.X-rc1</span></tt>, the first release candidate.</p>
+<code class="docutils literal"><span class="pre">X.X.X-rc1</span></code>, the first release candidate.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">To distingush them, branch names have a <tt class="docutils literal"><span class="pre">v</span></tt> prefix (<tt class="docutils literal"><span class="pre">vX.X.X-release</span></tt>)
-while tag names lack this prefix (<tt class="docutils literal"><span class="pre">X.X.X-rcX</span></tt>).</p>
+<p class="last">To distingush them, branch names have a <code class="docutils literal"><span class="pre">v</span></code> prefix (<code class="docutils literal"><span class="pre">vX.X.X-release</span></code>)
+while tag names lack this prefix (<code class="docutils literal"><span class="pre">X.X.X-rcX</span></code>).</p>
 </div>
 <p>Release candidates serve as an official proving ground for the release. Upon
 creation, an announcement should be made to the developer&#8217;s list, and users of
 the project should be encouraged to test them out in order to bugs/other issues.</p>
 <p>Any required changes must be pull requested from a topical branch into the
 <em>release</em> branch.  After this has been accepted, the topical branch must be
-merged with <tt class="docutils literal"><span class="pre">develop</span></tt> as well. The release branch is there so that development
-can continue on the <tt class="docutils literal"><span class="pre">develop</span></tt> branch while the release candidates (rc) are out
+merged with <code class="docutils literal"><span class="pre">develop</span></code> as well. The release branch is there so that development
+can continue on the <code class="docutils literal"><span class="pre">develop</span></code> branch while the release candidates (rc) are out
 and under review.  This is because otherwise any new developments would have to
-wait until post-release to be merged into <tt class="docutils literal"><span class="pre">develop</span></tt> to prevent them from
+wait until post-release to be merged into <code class="docutils literal"><span class="pre">develop</span></code> to prevent them from
 accidentally getting released early.</p>
-<p>Everything that is in the release branch must also be part of <tt class="docutils literal"><span class="pre">develop</span></tt>.
+<p>Everything that is in the release branch must also be part of <code class="docutils literal"><span class="pre">develop</span></code>.
 Graphically,</p>
-<div class="figure align-center">
-<img src="../_images/cep-0003-1.svg" /><p class="caption"><strong>Figure 1:</strong> Branch hierarchy under release.</p>
+<div class="figure align-center" id="id5">
+<img src="../_images/cep-0003-1.svg" /><p class="caption"><span class="caption-text"><strong>Figure 1:</strong> Branch hierarchy under release.</span></p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Any commits merged into the release branch must <em>also</em> be merged into
-<tt class="docutils literal"><span class="pre">develop</span></tt>. It is common practice for the release manager to request the
-reviewer pull requests to merge the subject topical branch into <tt class="docutils literal"><span class="pre">develop</span></tt>
+<code class="docutils literal"><span class="pre">develop</span></code>. It is common practice for the release manager to request the
+reviewer pull requests to merge the subject topical branch into <code class="docutils literal"><span class="pre">develop</span></code>
 as well. However, it is the ultimate release manager&#8217;s responsibility to
-make sure <tt class="docutils literal"><span class="pre">develop</span></tt> is kept up to date with the <tt class="docutils literal"><span class="pre">release</span></tt> branch.</p>
+make sure <code class="docutils literal"><span class="pre">develop</span></code> is kept up to date with the <code class="docutils literal"><span class="pre">release</span></code> branch.</p>
 </div>
 <p>If changes are made to the release branch, a new candidate must be issued after
-<em>2 - 5 days</em>. Every time a new release candidate comes out the <tt class="docutils literal"><span class="pre">vX.X.X-release</span></tt>
-must be tagged with the name <tt class="docutils literal"><span class="pre">X.X.X-rcX</span></tt>. A developer&#8217;s list annoucement must
+<em>2 - 5 days</em>. Every time a new release candidate comes out the <code class="docutils literal"><span class="pre">vX.X.X-release</span></code>
+must be tagged with the name <code class="docutils literal"><span class="pre">X.X.X-rcX</span></code>. A developer&#8217;s list annoucement must
 accompany any new candidate.</p>
 <p>The release branch must be quiet and untouched for <em>2 - 5 days prior</em> to the
-full release. When the full and final release happens, the <tt class="docutils literal"><span class="pre">vX.X.X-release</span></tt>
-branch is merged into <tt class="docutils literal"><span class="pre">master</span></tt> and then deleted. All commits in the
-<tt class="docutils literal"><span class="pre">vX.X.X-release</span></tt> branch must have also been merged into the <tt class="docutils literal"><span class="pre">develop</span></tt> branch
+full release. When the full and final release happens, the <code class="docutils literal"><span class="pre">vX.X.X-release</span></code>
+branch is merged into <code class="docutils literal"><span class="pre">master</span></code> and then deleted. All commits in the
+<code class="docutils literal"><span class="pre">vX.X.X-release</span></code> branch must have also been merged into the <code class="docutils literal"><span class="pre">develop</span></code> branch
 as they were accepted.</p>
 </div>
 <div class="section" id="project-checklist">
@@ -192,12 +192,12 @@ completing this milestone.</p>
 </li>
 <li><p class="first">Review the current state of documentation and make approriate updates.</p>
 </li>
-<li><p class="first">Update any new database types in <tt class="docutils literal"><span class="pre">cyclus.github.com/source/arche/dbtypes.js</span></tt></p>
+<li><p class="first">Update any new database types in <code class="docutils literal"><span class="pre">cyclus.github.com/source/arche/dbtypes.js</span></code></p>
 </li>
 <li><p class="first">Finish the release candidate process</p>
 <blockquote>
 <div><ul class="simple">
-<li>make sure all commits in the <tt class="docutils literal"><span class="pre">release</span></tt> branch also are in <tt class="docutils literal"><span class="pre">develop</span></tt></li>
+<li>make sure all commits in the <code class="docutils literal"><span class="pre">release</span></code> branch also are in <code class="docutils literal"><span class="pre">develop</span></code></li>
 </ul>
 </div></blockquote>
 </li>
@@ -207,16 +207,17 @@ completing this milestone.</p>
 <h3>Release Process<a class="headerlink" href="#release-process" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic">
 <li><p class="first">Make sure every local <span style="font-variant:small-caps;">Cyclus</span> project repository is up to date with its
-<tt class="docutils literal"><span class="pre">master</span></tt>, <tt class="docutils literal"><span class="pre">develop</span></tt>, and <tt class="docutils literal"><span class="pre">vX.X.X-release</span></tt> branches on <tt class="docutils literal"><span class="pre">upstream</span></tt></p>
+<code class="docutils literal"><span class="pre">master</span></code>, <code class="docutils literal"><span class="pre">develop</span></code>, and <code class="docutils literal"><span class="pre">vX.X.X-release</span></code> branches on <code class="docutils literal"><span class="pre">upstream</span></code></p>
 </li>
-<li><p class="first">Bump the version in <tt class="docutils literal"><span class="pre">cyclus/src/version.h</span></tt>, commit the change</p>
+<li><p class="first">Bump the version in <code class="docutils literal"><span class="pre">cyclus/src/version.h</span></code>, <code class="docutils literal"><span class="pre">cycamore/src/version.h</span></code>, and
+<code class="docutils literal"><span class="pre">cymetric/setup.py</span></code>; commit the changes</p>
 </li>
 <li><p class="first">Perform maintainence tasks for all projects</p>
 <blockquote>
 <div><ul class="simple">
-<li>they are described in detail below, <em>but</em> the <tt class="docutils literal"><span class="pre">maintenence.sh</span></tt> utility
-in <tt class="docutils literal"><span class="pre">release/utils</span></tt> will do this automatically for you</li>
-<li>make sure to have your <tt class="docutils literal"><span class="pre">rs.cred</span></tt> file (see <tt class="docutils literal"><span class="pre">maintenence.sh</span></tt>&#8216;s help)</li>
+<li>they are described in detail below, <em>but</em> the <code class="docutils literal"><span class="pre">maintenence.sh</span></code> utility
+in <code class="docutils literal"><span class="pre">release/utils</span></code> will do this automatically for you</li>
+<li>make sure to have your <code class="docutils literal"><span class="pre">rs.cred</span></code> file (see <code class="docutils literal"><span class="pre">maintenence.sh</span></code>&#8216;s help)</li>
 </ul>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd</span> /path/to/release/utils
 <span class="nv">$ </span><span class="nb">export </span><span class="nv">CYCLUS_DIR</span><span class="o">=</span>/path/to/cyclus
@@ -259,7 +260,7 @@ in <tt class="docutils literal"><span class="pre">release/utils</span></tt> will
 <li><p class="first">Draft release notes</p>
 <blockquote>
 <div><ul class="simple">
-<li>the <tt class="docutils literal"><span class="pre">make_release_notes.sh</span></tt> utility in <tt class="docutils literal"><span class="pre">release/utils</span></tt> will help
+<li>the <code class="docutils literal"><span class="pre">make_release_notes.sh</span></code> utility in <code class="docutils literal"><span class="pre">release/utils</span></code> will help
 provide a template</li>
 </ul>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd</span> /path/to/release/utils
@@ -270,15 +271,15 @@ provide a template</li>
 </pre></div>
 </div>
 <ul class="simple">
-<li>add the release notes as <tt class="docutils literal"><span class="pre">cyclus.github.com/source/previous/vX.X.X.rst</span></tt>
-with appropriate updates to <tt class="docutils literal"><span class="pre">index.rst</span></tt> in that directory</li>
+<li>add the release notes as <code class="docutils literal"><span class="pre">cyclus.github.com/source/previous/vX.X.X.rst</span></code>
+with appropriate updates to <code class="docutils literal"><span class="pre">index.rst</span></code> in that directory</li>
 </ul>
 </div></blockquote>
 </li>
 <li><p class="first">Update the API docs</p>
 <blockquote>
 <div><ul class="simple">
-<li>the <tt class="docutils literal"><span class="pre">api_docs.sh</span></tt> utility in <tt class="docutils literal"><span class="pre">release/utils</span></tt> will do this
+<li>the <code class="docutils literal"><span class="pre">api_docs.sh</span></code> utility in <code class="docutils literal"><span class="pre">release/utils</span></code> will do this
 automatically for you</li>
 </ul>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd</span> /path/to/release/utils
@@ -292,7 +293,7 @@ automatically for you</li>
 <li><p class="first">Upload the conda packages</p>
 <blockquote>
 <div><ul class="simple">
-<li>the <tt class="docutils literal"><span class="pre">upload_conda.sh</span></tt> utility in <tt class="docutils literal"><span class="pre">release/utils</span></tt> will do this
+<li>the <code class="docutils literal"><span class="pre">upload_conda.sh</span></code> utility in <code class="docutils literal"><span class="pre">release/utils</span></code> will do this
 automatically for you</li>
 </ul>
 <div class="admonition note">
@@ -312,7 +313,7 @@ automatically for you</li>
 </div>
 </div></blockquote>
 </li>
-<li><p class="first">Update the <tt class="docutils literal"><span class="pre">master</span></tt> branch of all projects and clean up</p>
+<li><p class="first">Update the <code class="docutils literal"><span class="pre">master</span></code> branch of all projects and clean up</p>
 <blockquote>
 <div><div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd</span> /path/to/project
 <span class="nv">$ </span>git push upstream X.X.X master
@@ -335,10 +336,18 @@ automatically for you</li>
 </ul>
 </div></blockquote>
 </li>
-<li><p class="first">Update release information on the front page (<tt class="docutils literal"><span class="pre">source/index.rst</span></tt>) and
-layout template (<tt class="docutils literal"><span class="pre">source/atemplates/layout.html</span></tt>) of the website.</p>
+<li><p class="first">Update website release information</p>
+<blockquote>
+<div><ul class="simple">
+<li>on the front page (<code class="docutils literal"><span class="pre">source/index.rst</span></code>)</li>
+<li>DOIs (<code class="docutils literal"><span class="pre">source/cite/index.rst</span></code>)</li>
+<li>release notes (<code class="docutils literal"><span class="pre">source/previous/index.rst</span></code>), remember both the release
+notes and the zip/tar URLs!</li>
+<li>layout template (<code class="docutils literal"><span class="pre">source/atemplates/layout.html</span></code>) of the website</li>
+</ul>
+</div></blockquote>
 </li>
-<li><p class="first">Commit all changes to <tt class="docutils literal"><span class="pre">cyclus.github.com</span></tt> and <tt class="docutils literal"><span class="pre">make</span> <span class="pre">gh-publish</span></tt></p>
+<li><p class="first">Commit all changes to <code class="docutils literal"><span class="pre">cyclus.github.com</span></code> and <code class="docutils literal"><span class="pre">make</span> <span class="pre">gh-publish</span></code></p>
 </li>
 <li><p class="first">Send out an email to <cite>cyclus-dev</cite> and <cite>cyclus-users</cite> to announce the release!</p>
 </li>
@@ -349,7 +358,7 @@ layout template (<tt class="docutils literal"><span class="pre">source/atemplate
 <h2>Maintainence Tasks<a class="headerlink" href="#maintainence-tasks" title="Permalink to this headline">¶</a></h2>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">There is now the <tt class="docutils literal"><span class="pre">maintenence.sh</span></tt> utility in <tt class="docutils literal"><span class="pre">release/utils</span></tt> that
+<p class="last">There is now the <code class="docutils literal"><span class="pre">maintenence.sh</span></code> utility in <code class="docutils literal"><span class="pre">release/utils</span></code> that
 will automate this for you. The section remains here for posterity.</p>
 </div>
 <p>Each project may have associate maintenance tasks which may need to be performed
@@ -375,7 +384,7 @@ The command for generating <span style="font-variant:small-caps;">Cyclus</span> 
 </div>
 <p>Once the file is generated it must be put onto rackspace.</p>
 <p><strong>Update Gtest:</strong> We include a copy of the fused Gtest source code within our
-source tree located in the <tt class="docutils literal"><span class="pre">tests/GoogleTest</span></tt> directory.  To keep up with
+source tree located in the <code class="docutils literal"><span class="pre">tests/GoogleTest</span></code> directory.  To keep up with
 Gtest&#8217;s natural evolution cycle, please download the latest release of Google Tests
 and follow <a class="reference external" href="https://code.google.com/p/googletest/wiki/V1_6_AdvancedGuide#Fusing_Google_Test_Source_Files">the fused source directions here</a>.  If we go too long without doing this,
 it could be very painful to update.</p>
@@ -400,7 +409,7 @@ in this release to the database with the following command:</p>
 <span class="nv">$ </span>./smbchk.py --update -t X.X.X
 </pre></div>
 </div>
-<p>where <tt class="docutils literal"><span class="pre">X.X.X</span></tt> is the version tag. This should alter the <tt class="docutils literal"><span class="pre">symbols.json</span></tt>
+<p>where <code class="docutils literal"><span class="pre">X.X.X</span></code> is the version tag. This should alter the <code class="docutils literal"><span class="pre">symbols.json</span></code>
 file.  Commit this and add it to the repo.</p>
 </div>
 <div class="section" id="cycamore">
@@ -431,7 +440,7 @@ Use the following BASH commands to do so:</p>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
         <p class="logo"><a href="../index.html" title="index">
           <img class="logo" src="../_static/big_c.png" alt="Logo"/>
@@ -485,7 +494,7 @@ Use the following BASH commands to do so:</p>
     </ul></li></ul>
   </div>
     
-<div id="searchbox" style="display: none">
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
@@ -534,7 +543,7 @@ Use the following BASH commands to do so:</p>
     </div>
     <div class="relbar-bottom">
         
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -551,14 +560,14 @@ Use the following BASH commands to do so:</p>
              >previous</a> &nbsp; &nbsp;</li>
     <li><a href="../index.html">Home</a> &raquo;</li>
 
-          <li><a href="cep0.html" ><span style="font-variant:small-caps;">Cyclus</span> Enhancement Proposals</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="cep0.html" ><span style="font-variant:small-caps;">Cyclus</span> Enhancement Proposals</a> &raquo;</li> 
       </ul>
     </div>
     </div>
 
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Jun 10, 2015.
+      Last updated on Aug 19, 2015.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");

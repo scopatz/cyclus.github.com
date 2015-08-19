@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '(1.3.1)',
+        VERSION:     'b&#39;(1.3.1-47-gd5578ed)&#39;',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -48,10 +48,10 @@ if(ga_enabled){
 }
 </script>
   </head>
-  <body>
+  <body role="document">
     <div class="relbar-top">
         
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -76,13 +76,13 @@ if(ga_enabled){
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="cyclus-user-guide">
 <h1><span style="font-variant:small-caps;">Cyclus</span> User Guide<a class="headerlink" href="#cyclus-user-guide" title="Permalink to this headline">¶</a></h1>
 <p>This guide covers the basics of installation, creating simulation input files,
 and running them.  If you haven&#8217;t already, you should take a look at
-<a class="reference internal" href="../basics/concepts.html#basics-concepts"><em>Fundemental Concepts in Cyclus</em></a>. After that you can install <span style="font-variant:small-caps;">Cyclus</span>:</p>
+<a class="reference internal" href="../basics/concepts.html#basics-concepts"><span>Fundemental Concepts in Cyclus</span></a>. After that you can install <span style="font-variant:small-caps;">Cyclus</span>:</p>
 <div class="section" id="installing-cyclus">
 <h2>Installing <span style="font-variant:small-caps;">Cyclus</span><a class="headerlink" href="#installing-cyclus" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
@@ -110,24 +110,27 @@ and running them.  If you haven&#8217;t already, you should take a look at
 <li class="toctree-l1"><a class="reference internal" href="running_sims.html">Running Simulations</a></li>
 </ul>
 </div>
-<p>You can also run a simulation right now from the comfort of your browser <a class="reference internal" href="../index.html#try-it"><em>here</em></a>!</p>
+<p>You can also run a simulation right now from the comfort of your browser <a class="reference internal" href="../index.html#try-it"><span>here</span></a>!</p>
+</div>
+<div class="section" id="tutorials">
+<h2>Tutorials<a class="headerlink" href="#tutorials" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="tutorial/index.html"><em>ANS 2015 Annual Meeting Tutorial</em></a> - using the user interface and cloud simulation environment</li>
+</ul>
+<div class="toctree-wrapper compound">
+</div>
 </div>
 <div class="section" id="archetypes">
 <h2>Archetypes<a class="headerlink" href="#archetypes" title="Permalink to this headline">¶</a></h2>
-<p>The following is a listing of core-supported libraries and documentation for
-the <a class="reference internal" href="../basics/glossary.html#term-archetype"><em class="xref std std-term">archetypes</em></a> that live inside of them.</p>
+<p>Collections of <a class="reference internal" href="../basics/glossary.html#term-archetype"><span class="xref std std-term">archetypes</span></a> are provided by various teams
+and individuals for use by <span style="font-variant:small-caps;">Cyclus</span> users.</p>
+<dl class="docutils">
+<dt><strong>Cycamore</strong></dt>
+<dd>The Cycamore library of archetypes is provided by the <span style="font-variant:small-caps;">Cyclus</span> development
+team as a basic set of archetypes for modeling simple nuclear fuel cycles.</dd>
+</dl>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="cyclusagents.html">Cyclus Archetypes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="cyclusagents.html#agents-source">:agents:<strong>Source</strong></a></li>
-<li class="toctree-l2"><a class="reference internal" href="cyclusagents.html#agents-sink">:agents:<strong>Sink</strong></a></li>
-<li class="toctree-l2"><a class="reference internal" href="cyclusagents.html#agents-nullregion">:agents:<strong>NullRegion</strong></a></li>
-<li class="toctree-l2"><a class="reference internal" href="cyclusagents.html#agents-nullinst">:agents:<strong>NullInst</strong></a></li>
-<li class="toctree-l2"><a class="reference internal" href="cyclusagents.html#agents-kfacility">:agents:<strong>KFacility</strong></a></li>
-<li class="toctree-l2"><a class="reference internal" href="cyclusagents.html#agents-predator">:agents:<strong>Predator</strong></a></li>
-<li class="toctree-l2"><a class="reference internal" href="cyclusagents.html#agents-prey">:agents:<strong>Prey</strong></a></li>
-</ul>
-</li>
 <li class="toctree-l1"><a class="reference internal" href="cycamoreagents.html">Cycamore Archetypes</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="cycamoreagents.html#cycamore-source">:cycamore:<strong>Source</strong></a></li>
 <li class="toctree-l2"><a class="reference internal" href="cycamoreagents.html#cycamore-sink">:cycamore:<strong>Sink</strong></a></li>
@@ -140,10 +143,32 @@ the <a class="reference internal" href="../basics/glossary.html#term-archetype">
 <li class="toctree-l2"><a class="reference internal" href="cycamoreagents.html#cycamore-growthregion">:cycamore:<strong>GrowthRegion</strong></a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="stubagents.html">Stub Archetypes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="stubagents.html#stubs-stubregion-stubregion">stubs:StubRegion:<strong>StubRegion</strong></a></li>
-<li class="toctree-l2"><a class="reference internal" href="stubagents.html#stubs-stubinst-stubinst">stubs:StubInst:<strong>StubInst</strong></a></li>
-<li class="toctree-l2"><a class="reference internal" href="stubagents.html#stubs-stubfacility-stubfacility">stubs:StubFacility:<strong>StubFacility</strong></a></li>
+</ul>
+</div>
+<dl class="docutils">
+<dt><strong>Bright-lite</strong></dt>
+<dd>The University of Texas - Austin is developing a set of archetypes for fuel
+fabrication and reactors that rely on interpolation tables for more
+accurate prediction of fresh fuel compositions and estimates of fuel
+depletion.</dd>
+<dt><strong>Cyborg</strong></dt>
+<dd>The University of Tennessee is working with Oak Ridge National Lab to
+develop archetypes that will use ORIGEN calculations to improve the
+estimate of nuclear fuel properties.</dd>
+<dt><strong>Cyclus Testing</strong></dt>
+<dd>The <span style="font-variant:small-caps;">Cyclus</span> kernel includes some archetype for testing the basic
+functionality of the kenel.</dd>
+</dl>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cyclusagents.html">Cyclus Archetypes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cyclusagents.html#agents-source">:agents:<strong>Source</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="cyclusagents.html#agents-sink">:agents:<strong>Sink</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="cyclusagents.html#agents-nullregion">:agents:<strong>NullRegion</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="cyclusagents.html#agents-nullinst">:agents:<strong>NullInst</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="cyclusagents.html#agents-kfacility">:agents:<strong>KFacility</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="cyclusagents.html#agents-predator">:agents:<strong>Predator</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="cyclusagents.html#agents-prey">:agents:<strong>Prey</strong></a></li>
 </ul>
 </li>
 </ul>
@@ -177,7 +202,7 @@ the <a class="reference internal" href="../basics/glossary.html#term-archetype">
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
         <p class="logo"><a href="../index.html" title="index">
           <img class="logo" src="../_static/big_c.png" alt="Logo"/>
@@ -188,7 +213,10 @@ the <a class="reference internal" href="../basics/glossary.html#term-archetype">
 <li><a class="reference internal" href="#installing-cyclus">Installing <span style="font-variant:small-caps;">Cyclus</span></a></li>
 <li><a class="reference internal" href="#writing-input-files">Writing Input Files</a></li>
 <li><a class="reference internal" href="#running-simulations">Running Simulations</a></li>
-<li><a class="reference internal" href="#archetypes">Archetypes</a></li>
+<li><a class="reference internal" href="#tutorials">Tutorials</a></li>
+<li><a class="reference internal" href="#archetypes">Archetypes</a><ul>
+</ul>
+</li>
 <li><a class="reference internal" href="#visualization-analysis">Visualization &amp; Analysis</a></li>
 </ul>
 </li>
@@ -220,7 +248,7 @@ the <a class="reference internal" href="../basics/glossary.html#term-archetype">
     </ul></li></ul>
   </div>
     
-<div id="searchbox" style="display: none">
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
@@ -269,7 +297,7 @@ the <a class="reference internal" href="../basics/glossary.html#term-archetype">
     </div>
     <div class="relbar-bottom">
         
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -290,9 +318,9 @@ the <a class="reference internal" href="../basics/glossary.html#term-archetype">
     </div>
     </div>
 
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Jun 10, 2015.
+      Last updated on Aug 19, 2015.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");

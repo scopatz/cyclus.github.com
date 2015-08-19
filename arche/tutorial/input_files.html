@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '(1.3.1)',
+        VERSION:     'b&#39;(1.3.1-47-gd5578ed)&#39;',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -49,10 +49,10 @@ if(ga_enabled){
 }
 </script>
   </head>
-  <body>
+  <body role="document">
     <div class="relbar-top">
         
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -69,8 +69,8 @@ if(ga_enabled){
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
     <li><a href="../../index.html">Home</a> &raquo;</li>
 
-          <li><a href="../index.html" ><span style="font-variant:small-caps;">Cyclus</span> Archetype Developer Guide</a> &raquo;</li>
-          <li><a href="index.html" accesskey="U">Archetype Development Tutorial</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../index.html" ><span style="font-variant:small-caps;">Cyclus</span> Archetype Developer Guide</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">Archetype Development Tutorial</a> &raquo;</li> 
       </ul>
     </div>
     </div>
@@ -79,7 +79,7 @@ if(ga_enabled){
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="making-input-files">
 <h1>Making Input Files<a class="headerlink" href="#making-input-files" title="Permalink to this headline">¶</a></h1>
@@ -100,13 +100,13 @@ minimum information needed to get up and running with the Storage archetype.</p>
 <div class="section" id="make-a-basic-input-file">
 <h2>Make a Basic Input File<a class="headerlink" href="#make-a-basic-input-file" title="Permalink to this headline">¶</a></h2>
 <p>The goal of this basic input file is to create the following facility set up.</p>
-<div class="figure align-center">
+<div class="figure align-center" id="id4">
 <a class="reference internal image-reference" href="../../_images/simple_cycle.svg"><img src="../../_images/simple_cycle.svg" width="80%" /></a>
-<p class="caption"><strong>Figure:</strong> The target &#8220;cycle&#8221;.</p>
+<p class="caption"><span class="caption-text"><strong>Figure:</strong> The target &#8220;cycle&#8221;.</span></p>
 </div>
-<p>Let&#8217;s start with very simple dynamics, where the <tt class="docutils literal"><span class="pre">Source</span></tt> can send one unit of
-fuel per time step, the <tt class="docutils literal"><span class="pre">Sink</span></tt> can take one unit of fuel per time step, and
-the <tt class="docutils literal"><span class="pre">Storage</span></tt> stores fuel for one time step.</p>
+<p>Let&#8217;s start with very simple dynamics, where the <code class="docutils literal"><span class="pre">Source</span></code> can send one unit of
+fuel per time step, the <code class="docutils literal"><span class="pre">Sink</span></code> can take one unit of fuel per time step, and
+the <code class="docutils literal"><span class="pre">Storage</span></code> stores fuel for one time step.</p>
 <p>First, make a new input file</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> cp input/storage.xml input/basic.xml
 </pre></div>
@@ -136,9 +136,9 @@ tag &lt;/simulation&gt; )</p>
 </div>
 <div class="section" id="adding-new-archetypes">
 <h3>Adding New Archetypes<a class="headerlink" href="#adding-new-archetypes" title="Permalink to this headline">¶</a></h3>
-<p>We need to add a <tt class="docutils literal"><span class="pre">Source</span></tt> archetype and a <tt class="docutils literal"><span class="pre">Sink</span></tt> archetype, which we can
-find in the <tt class="docutils literal"><span class="pre">agents</span></tt> library of Cyclus. To do so, add the following lines to
-the <tt class="docutils literal"><span class="pre">&lt;archetypes/&gt;</span></tt> block of your input file.</p>
+<p>We need to add a <code class="docutils literal"><span class="pre">Source</span></code> archetype and a <code class="docutils literal"><span class="pre">Sink</span></code> archetype, which we can
+find in the <code class="docutils literal"><span class="pre">agents</span></code> library of Cyclus. To do so, add the following lines to
+the <code class="docutils literal"><span class="pre">&lt;archetypes/&gt;</span></code> block of your input file.</p>
 <div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;spec&gt;&lt;lib&gt;</span>agents<span class="nt">&lt;/lib&gt;&lt;name&gt;</span>Source<span class="nt">&lt;/name&gt;&lt;/spec&gt;</span>
 <span class="nt">&lt;spec&gt;&lt;lib&gt;</span>agents<span class="nt">&lt;/lib&gt;&lt;name&gt;</span>Sink<span class="nt">&lt;/name&gt;&lt;/spec&gt;</span>
 </pre></div>
@@ -157,15 +157,15 @@ the <tt class="docutils literal"><span class="pre">&lt;archetypes/&gt;</span></t
 <div class="section" id="adding-prototypes">
 <h3>Adding Prototypes<a class="headerlink" href="#adding-prototypes" title="Permalink to this headline">¶</a></h3>
 <p>A configured archetype is called a <em>prototype</em> in Cyclus parlance. You can read
-how to on the <a class="reference internal" href="../../user/cyclusagents.html#cyclus-archetypes"><em>Cyclus Archetypes</em></a> and <a class="reference internal" href="../../user/cycamoreagents.html#cycamore-archetypes"><em>Cycamore Archetypes</em></a>
+how to on the <a class="reference internal" href="../../user/cyclusagents.html#cyclus-archetypes"><span>Cyclus Archetypes</span></a> and <a class="reference internal" href="../../user/cycamoreagents.html#cycamore-archetypes"><span>Cycamore Archetypes</span></a>
 pages.</p>
 <div class="section" id="source">
 <h4>Source<a class="headerlink" href="#source" title="Permalink to this headline">¶</a></h4>
 <p>Beginning with the Cyclus <a class="reference external" href="http://fuelcycle.org/user/cyclusagents.html#agents-source">Source</a>, you must, at
-minimum, supply an entry for <tt class="docutils literal"><span class="pre">&lt;commod/&gt;</span></tt> and <tt class="docutils literal"><span class="pre">&lt;capacity/&gt;</span></tt>. This prototype
-will also include a <tt class="docutils literal"><span class="pre">&lt;recipe_name/&gt;</span></tt> entry. In this example, you want the
+minimum, supply an entry for <code class="docutils literal"><span class="pre">&lt;commod/&gt;</span></code> and <code class="docutils literal"><span class="pre">&lt;capacity/&gt;</span></code>. This prototype
+will also include a <code class="docutils literal"><span class="pre">&lt;recipe_name/&gt;</span></code> entry. In this example, you want the
 source facility to supply one unit of fuel per time step and you want it to be
-connected to the <tt class="docutils literal"><span class="pre">incommod</span></tt> of the Storage prototype. Finally, let&#8217;s name the
+connected to the <code class="docutils literal"><span class="pre">incommod</span></code> of the Storage prototype. Finally, let&#8217;s name the
 Source &#8220;FuelSource&#8221;.</p>
 <p>Accordingly, add the following lines after the Storage prototype</p>
 <div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;facility&gt;</span>
@@ -184,7 +184,7 @@ Source &#8220;FuelSource&#8221;.</p>
 <div class="section" id="sink">
 <h4>Sink<a class="headerlink" href="#sink" title="Permalink to this headline">¶</a></h4>
 <p>Similarly, the Cyclus <a class="reference external" href="http://fuelcycle.org/user/cyclusagents.html#agents-sink">Sink</a>, you must, at
-minimum, supply an entry in the <tt class="docutils literal"><span class="pre">&lt;in_commod/&gt;</span></tt> tag and a <tt class="docutils literal"><span class="pre">&lt;capacity/&gt;</span></tt>. We
+minimum, supply an entry in the <code class="docutils literal"><span class="pre">&lt;in_commod/&gt;</span></code> tag and a <code class="docutils literal"><span class="pre">&lt;capacity/&gt;</span></code>. We
 want a similar structure to the Source prototype, i.e., connection to the
 Storage prototype and a demand for one unit of fuel per time step. We can also
 name this Sink prototype &#8220;FuelSink&#8221;.</p>
@@ -206,19 +206,19 @@ name this Sink prototype &#8220;FuelSink&#8221;.</p>
 <div class="section" id="storage">
 <h4>Storage<a class="headerlink" href="#storage" title="Permalink to this headline">¶</a></h4>
 <p>The Storage prototype is fine as it is. If you don&#8217;t like the name
-<tt class="docutils literal"><span class="pre">OneFacility</span></tt>, however, you are free to replace it with something more fitting
-like <tt class="docutils literal"><span class="pre">FuelStorage</span></tt>.</p>
+<code class="docutils literal"><span class="pre">OneFacility</span></code>, however, you are free to replace it with something more fitting
+like <code class="docutils literal"><span class="pre">FuelStorage</span></code>.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p class="last">Make sure to replace <tt class="docutils literal"><span class="pre">OneFacility</span></tt> everywhere though!</p>
+<p class="last">Make sure to replace <code class="docutils literal"><span class="pre">OneFacility</span></code> everywhere though!</p>
 </div>
 </div>
 <div class="section" id="region-institution">
 <h4>Region &amp; Institution<a class="headerlink" href="#region-institution" title="Permalink to this headline">¶</a></h4>
 <p>Deployment for facility agents must be declared in the input file. In order for
 our source and sink to be deployed at the beginning of the simulation, they must
-be added to the <tt class="docutils literal"><span class="pre">&lt;initialfacilitylist/&gt;</span></tt>. Accordingly, add the following lines
-below the <tt class="docutils literal"><span class="pre">OneFacility</span></tt> entry. Note that order here does not matter.</p>
+be added to the <code class="docutils literal"><span class="pre">&lt;initialfacilitylist/&gt;</span></code>. Accordingly, add the following lines
+below the <code class="docutils literal"><span class="pre">OneFacility</span></code> entry. Note that order here does not matter.</p>
 <div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;entry&gt;</span>
   <span class="nt">&lt;prototype&gt;</span>FuelSink<span class="nt">&lt;/prototype&gt;</span>
   <span class="nt">&lt;number&gt;</span>1<span class="nt">&lt;/number&gt;</span>
@@ -264,13 +264,13 @@ below the <tt class="docutils literal"><span class="pre">OneFacility</span></tt>
 <div class="section" id="run-the-basic-file">
 <h2>Run the Basic File<a class="headerlink" href="#run-the-basic-file" title="Permalink to this headline">¶</a></h2>
 <p>Run the file with a slightly higher verbosity</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> cyclus -v 4 input/basic.xml
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> cyclus -v <span class="m">4</span> input/basic.xml
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">You&#8217;ll get more helpful information for this run by upping the verbosity
-from <tt class="docutils literal"><span class="pre">3</span></tt> to <tt class="docutils literal"><span class="pre">4</span></tt>.</p>
+from <code class="docutils literal"><span class="pre">3</span></code> to <code class="docutils literal"><span class="pre">4</span></code>.</p>
 </div>
 <p>What output do you see? Are things working as expected?</p>
 <p>You should see something like the following for a single time step</p>
@@ -299,11 +299,11 @@ from <tt class="docutils literal"><span class="pre">3</span></tt> to <tt class="
 from the Source to Storage every time step. After the first time step, a unit of
 material was also sent from Storage to the Sink every time step, having been
 stored for the interim period.</p>
-<p>This consistent flow occurred because, given the storage time <img class="math" src="../../_images/math/06c98a74678de6921268572c006c72f536ee2788.png" alt="t_s"/>,
-capacity <img class="math" src="../../_images/math/65868d23a5bfe5b3b2d819386b19c14fa36af134.png" alt="c"/>, and throughput <img class="math" src="../../_images/math/d9e99c35d3632bb156b7aca0e93cd78a148a10e8.png" alt="\tau"/>, the following relation is true</p>
+<p>This consistent flow occurred because, given the storage time <span class="math">t_s</span>,
+capacity <span class="math">c</span>, and throughput <span class="math">\tau</span>, the following relation is true</p>
 <div class="math">
-<p><img src="../../_images/math/40f77bfa5bb77d4fbefd480e50d6dacf7c0a4c5c.png" alt="t_s &lt; min(c, \tau)"/></p>
-</div><p>What happens when <img class="math" src="../../_images/math/b546302042aec4ac0b7ceabaec825dff432d78c9.png" alt="t_s &gt; min(c, \tau)"/>? Let&#8217;s find out!</p>
+<p><span class="math">t_s &lt; min(c, \tau)</span></p>
+</div><p>What happens when <span class="math">t_s &gt; min(c, \tau)</span>? Let&#8217;s find out!</p>
 <p>First, make a new input file</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> cp input/basic.xml input/interesting.xml
 </pre></div>
@@ -321,12 +321,12 @@ capacity <img class="math" src="../../_images/math/65868d23a5bfe5b3b2d819386b19c
 <span class="nt">&lt;/config&gt;</span>
 </pre></div>
 </div>
-<p>Note that now we have <img class="math" src="../../_images/math/d0c9bf2efa16de9dbf0520d7b2dc1081a3d7d5fa.png" alt="t_s = 5"/> and <img class="math" src="../../_images/math/4da863452301a08eb8625aa47dc293de42e21f07.png" alt="c = 2"/>.</p>
+<p>Note that now we have <span class="math">t_s = 5</span> and <span class="math">c = 2</span>.</p>
 </div>
 <div class="section" id="run-the-interesting-file">
 <h2>Run the Interesting File<a class="headerlink" href="#run-the-interesting-file" title="Permalink to this headline">¶</a></h2>
 <p>Run the file</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> cyclus -v 4 input/interesting.xml
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> cyclus -v <span class="m">4</span> input/interesting.xml
 </pre></div>
 </div>
 <div class="section" id="exercise">
@@ -349,7 +349,7 @@ dynamics of this scenario.</p>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
         <p class="logo"><a href="../../index.html" title="index">
           <img class="logo" src="../../_static/big_c.png" alt="Logo"/>
@@ -407,7 +407,7 @@ dynamics of this scenario.</p>
     </ul></li></ul>
   </div>
     
-<div id="searchbox" style="display: none">
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../../search.html" method="get">
       <input type="text" name="q" />
@@ -456,7 +456,7 @@ dynamics of this scenario.</p>
     </div>
     <div class="relbar-bottom">
         
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -473,15 +473,15 @@ dynamics of this scenario.</p>
              >previous</a> &nbsp; &nbsp;</li>
     <li><a href="../../index.html">Home</a> &raquo;</li>
 
-          <li><a href="../index.html" ><span style="font-variant:small-caps;">Cyclus</span> Archetype Developer Guide</a> &raquo;</li>
-          <li><a href="index.html" >Archetype Development Tutorial</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../index.html" ><span style="font-variant:small-caps;">Cyclus</span> Archetype Developer Guide</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >Archetype Development Tutorial</a> &raquo;</li> 
       </ul>
     </div>
     </div>
 
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Jun 10, 2015.
+      Last updated on Aug 19, 2015.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");
