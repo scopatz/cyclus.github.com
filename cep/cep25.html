@@ -106,13 +106,13 @@ if(ga_enabled){
 <h2>Abstract<a class="headerlink" href="#abstract" title="Permalink to this headline">¶</a></h2>
 <p>This CEP describes the process of adjusting preferences in the DRE, e.g., with
 regard to implementing international trade instruments. It generalizes
-methodology of the preference andjustment phase.</p>
+methodology of the preference adjustment phase.</p>
 </div>
 <div class="section" id="motivation">
 <h2>Motivation<a class="headerlink" href="#motivation" title="Permalink to this headline">¶</a></h2>
 <p>The current preference adjustment phase only includes the requesting facility
 and its managers (i.e. institution and region). Only allowing requesting
-managers to adjust preferences are problematic because it prohibits, for
+managers to adjust preferences is problematic because it prohibits, for
 example, the complete modeling of intra-regional instruments such as tariffs.</p>
 </div>
 <div class="section" id="specification-implementation">
@@ -134,10 +134,10 @@ managed by an <code class="docutils literal"><span class="pre">Institution</span
 its managers are queried in order followed by the managers of the bidder. The
 bidder is not involved, because it is assumed that suppliers are motivated to
 reduce inventory. Bidder&#8217;s managers are involved in order to generally model
-international instruments, such as tariffs. As a different ordering are desired
+international instruments, such as tariffs. As different orderings are desired
 in the future, they may be implemented. The only requirement of a given ordering
 implementation is that it must maintain a preference adjustment history. That
-is, a datastructure comprising and ordered list of entity-preference pairs that
+is, a data structure comprising and ordered list of entity-preference pairs that
 records the history of the adjusted preference for each trade.</p>
 <p>An important caveat includes the adjustment of preferences to a &#8220;no trade&#8221;
 value. Archetype developers are allowed to denote a trade as &#8220;impossible&#8221; by
@@ -145,7 +145,7 @@ setting the preference value to a non-positive number. If at any point during
 the adjustment phase such a state is found, the phase is considered over for
 that trade and the trade is removed from the exchange. Consider the following
 situation: a trade is initially set to the default preference of unity; the
-first manager quried has a rule that negates the trade (sending its value to
+first manager queried has a rule that negates the trade (sending its value to
 negative unity) while the next manager queried has a rule that increases all
 trades by a magnitude of two units. Rather than setting the final trade
 preference at unity based on input from both managers, the trade is removed from
@@ -156,8 +156,8 @@ many different negotiation models, or negotiation rules, by which to determine a
 final value given a collection of entities&#8217; input. Again, this CEP provides a
 default rule, which is to take the final preference value, unperturbed, through
 the adjustment process. However, any rule that takes as an argument the
-adjustment history datastructure and provides a final preference value is valid
-in this methodology. Of course, different rules must be implemented as they are
+adjustment history data structure and provides a final preference value is valid
+in this methodology. Of course, different rules may be implemented as they are
 required.</p>
 <p>This CEP does not explicitly provide an user-facing interface for adjusting
 either the adjustment ordering or aggregation. The provided methodology is a
@@ -171,7 +171,7 @@ determination.</p>
 </div>
 <div class="section" id="backwards-compatibility">
 <h2>Backwards Compatibility<a class="headerlink" href="#backwards-compatibility" title="Permalink to this headline">¶</a></h2>
-<p>No backwards incompatabilities are introduced with this CEP.</p>
+<p>No backwards incompatibilities are introduced with this CEP.</p>
 </div>
 <div class="section" id="document-history">
 <h2>Document History<a class="headerlink" href="#document-history" title="Permalink to this headline">¶</a></h2>
@@ -309,7 +309,7 @@ determination.</p>
 
     <div class="footer" role="contentinfo">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Aug 21, 2015.
+      Last updated on Sep 07, 2015.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");
