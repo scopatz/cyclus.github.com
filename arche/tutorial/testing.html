@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     'b&#39;(1.3.1-47-gd5578ed)&#39;',
+        VERSION:     '(1.3.1-110-ge628f32)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -49,10 +49,10 @@ if(ga_enabled){
 }
 </script>
   </head>
-  <body role="document">
+  <body>
     <div class="relbar-top">
         
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -69,8 +69,8 @@ if(ga_enabled){
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
     <li><a href="../../index.html">Home</a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../index.html" ><span style="font-variant:small-caps;">Cyclus</span> Archetype Developer Guide</a> &raquo;</li>
-          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">Archetype Development Tutorial</a> &raquo;</li> 
+          <li><a href="../index.html" ><span style="font-variant:small-caps;">Cyclus</span> Archetype Developer Guide</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">Archetype Development Tutorial</a> &raquo;</li> 
       </ul>
     </div>
     </div>
@@ -79,7 +79,7 @@ if(ga_enabled){
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body" role="main">
+          <div class="body">
             
   <div class="section" id="adding-a-test">
 <h1>Adding a Test<a class="headerlink" href="#adding-a-test" title="Permalink to this headline">¶</a></h1>
@@ -115,23 +115,23 @@ state and then call a function and confirm that the observed final state matches
 the expected final state. For the Storage facility, one such state transition is
 as follows</p>
 <ul class="simple">
-<li><strong>Initial State</strong>: There is material in the <code class="docutils literal"><span class="pre">input</span></code> buffer</li>
-<li><strong>Function Call</strong>: <code class="docutils literal"><span class="pre">Tock()</span></code></li>
-<li><strong>Expected Final State</strong>: The <code class="docutils literal"><span class="pre">input</span></code> buffer is empty and the inventory buffer
+<li><strong>Initial State</strong>: There is material in the <tt class="docutils literal"><span class="pre">input</span></tt> buffer</li>
+<li><strong>Function Call</strong>: <tt class="docutils literal"><span class="pre">Tock()</span></tt></li>
+<li><strong>Expected Final State</strong>: The <tt class="docutils literal"><span class="pre">input</span></tt> buffer is empty and the inventory buffer
 has increase by the same amount</li>
 </ul>
-<p>Begin by opening the file <code class="docutils literal"><span class="pre">src/storage_tests.cc</span></code> in your favorite text editor
-and find the test for the <code class="docutils literal"><span class="pre">Tock()</span></code> function. It should look something like</p>
+<p>Begin by opening the file <tt class="docutils literal"><span class="pre">src/storage_tests.cc</span></tt> in your favorite text editor
+and find the test for the <tt class="docutils literal"><span class="pre">Tock()</span></tt> function. It should look something like</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="n">TEST_F</span><span class="p">(</span><span class="n">StorageTest</span><span class="p">,</span> <span class="n">Tock</span><span class="p">)</span> <span class="p">{</span>
   <span class="n">EXPECT_NO_THROW</span><span class="p">(</span><span class="n">facility</span><span class="o">-&gt;</span><span class="n">Tock</span><span class="p">());</span>
   <span class="c1">// Test Storage specific behaviors of the Tock function here</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>You can set up the initial state by pushing a <code class="docutils literal"><span class="pre">Material</span></code> object to the
-<code class="docutils literal"><span class="pre">input</span></code> buffer. An easy way to make a <code class="docutils literal"><span class="pre">Material</span></code> object is to use the
-<code class="docutils literal"><span class="pre">NewBlankMaterial()</span></code> API.</p>
-<p>Add the following lines before the <code class="docutils literal"><span class="pre">Tock()</span></code> function call in the test</p>
+<p>You can set up the initial state by pushing a <tt class="docutils literal"><span class="pre">Material</span></tt> object to the
+<tt class="docutils literal"><span class="pre">input</span></tt> buffer. An easy way to make a <tt class="docutils literal"><span class="pre">Material</span></tt> object is to use the
+<tt class="docutils literal"><span class="pre">NewBlankMaterial()</span></tt> API.</p>
+<p>Add the following lines before the <tt class="docutils literal"><span class="pre">Tock()</span></tt> function call in the test</p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="kt">double</span> <span class="n">qty</span> <span class="o">=</span> <span class="mi">42</span><span class="p">;</span>
 <span class="n">facility</span><span class="o">-&gt;</span><span class="n">input</span><span class="p">.</span><span class="n">Push</span><span class="p">(</span><span class="n">cyclus</span><span class="o">::</span><span class="n">NewBlankMaterial</span><span class="p">(</span><span class="n">qty</span><span class="p">));</span>
 </pre></div>
@@ -145,7 +145,7 @@ and find the test for the <code class="docutils literal"><span class="pre">Tock(
 <div class="highlight-c++"><div class="highlight"><pre><span class="n">EXPECT_NO_THROW</span><span class="p">(</span><span class="n">facility</span><span class="o">-&gt;</span><span class="n">Tock</span><span class="p">());</span>
 </pre></div>
 </div>
-<p>Next, add the test for the final state after the call to <code class="docutils literal"><span class="pre">Tock()</span></code></p>
+<p>Next, add the test for the final state after the call to <tt class="docutils literal"><span class="pre">Tock()</span></tt></p>
 <div class="highlight-c++"><div class="highlight"><pre><span class="n">EXPECT_DOUBLE_EQ</span><span class="p">(</span><span class="n">facility</span><span class="o">-&gt;</span><span class="n">input</span><span class="p">.</span><span class="n">quantity</span><span class="p">(),</span> <span class="mi">0</span><span class="p">);</span>
 <span class="n">EXPECT_DOUBLE_EQ</span><span class="p">(</span><span class="n">facility</span><span class="o">-&gt;</span><span class="n">inventory</span><span class="p">.</span><span class="n">quantity</span><span class="p">(),</span> <span class="n">qty</span><span class="p">);</span>
 </pre></div>
@@ -173,7 +173,7 @@ and find the test for the <code class="docutils literal"><span class="pre">Tock(
 <p>Can you come up with another unit test?</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">The <code class="docutils literal"><span class="pre">Tock()</span></code> test did not depend on any particular state. We always expect
+<p class="last">The <tt class="docutils literal"><span class="pre">Tock()</span></tt> test did not depend on any particular state. We always expect
 the input-to-inventory transfer to take place, no matter what. Is that true
 for your test?</p>
 </div>
@@ -181,7 +181,7 @@ for your test?</p>
 <div class="section" id="further-reading">
 <h2>Further Reading<a class="headerlink" href="#further-reading" title="Permalink to this headline">¶</a></h2>
 <p>After unit tests, the next step to take is testing your archetype in an actual
-simulation. You can find more on the <a class="reference internal" href="../testing.html#testing"><span>Testing Agents and Modules</span></a> page.</p>
+simulation. You can find more on the <a class="reference internal" href="../testing.html#testing"><em>Testing Agents and Modules</em></a> page.</p>
 <p>One of the best ways to learn is by example. The Cycamore repository has
 <a class="reference external" href="https://github.com/cyclus/cycamore/tree/develop/tests">examples</a> of running
 regression tests that include the full execution stack &#8211; read an input file,
@@ -195,7 +195,7 @@ testing feature in Cyclus.</p>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
         <p class="logo"><a href="../../index.html" title="index">
           <img class="logo" src="../../_static/big_c.png" alt="Logo"/>
@@ -237,7 +237,7 @@ testing feature in Cyclus.</p>
     </ul></li></ul>
   </div>
     
-<div id="searchbox" style="display: none" role="search">
+<div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="../../search.html" method="get">
       <input type="text" name="q" />
@@ -286,7 +286,7 @@ testing feature in Cyclus.</p>
     </div>
     <div class="relbar-bottom">
         
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -303,15 +303,15 @@ testing feature in Cyclus.</p>
              >previous</a> &nbsp; &nbsp;</li>
     <li><a href="../../index.html">Home</a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../index.html" ><span style="font-variant:small-caps;">Cyclus</span> Archetype Developer Guide</a> &raquo;</li>
-          <li class="nav-item nav-item-2"><a href="index.html" >Archetype Development Tutorial</a> &raquo;</li> 
+          <li><a href="../index.html" ><span style="font-variant:small-caps;">Cyclus</span> Archetype Developer Guide</a> &raquo;</li>
+          <li><a href="index.html" >Archetype Development Tutorial</a> &raquo;</li> 
       </ul>
     </div>
     </div>
 
-    <div class="footer" role="contentinfo">
+    <div class="footer">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Sep 07, 2015.
+      Last updated on Sep 23, 2015.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");
