@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '(1.3.1-73-g3b0d23e)',
+        VERSION:     '(1.3.1-153-gb86cf92)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -201,63 +201,14 @@ specified commodities.</div></blockquote>
 </div>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">social_behav:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">std::string</span></tt>, optional (default=&#8221;None&#8221;)</p>
-<p>type of social behavior used in trade decisions: None, Every, Random, Reference where behav_interval describes the time interval for behavior action.Reference queries the RNG to mimic Random, but returns zero material qty to trade.</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;social_behav&gt;</span>[string]<span class="nt">&lt;/social_behav&gt;</span>
-</pre></div>
-</div>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">behav_interval:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">double</span></tt>, optional (default=0)</p>
-<p>interval of social behavior: Every or EveryRandom.  If 0 then behavior is not implemented</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;behav_interval&gt;</span>[double]<span class="nt">&lt;/behav_interval&gt;</span>
-</pre></div>
-</div>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">user_pref:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">int</span></tt>, optional (default=1)</p>
-<p>change the default preference for requests from this agent</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;user_pref&gt;</span>[int]<span class="nt">&lt;/user_pref&gt;</span>
-</pre></div>
-</div>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">rng_seed:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">int</span></tt>, optional (default=0)</p>
-<p>seed on current system time if set to -1, otherwise seed on number defined</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;rng_seed&gt;</span>[int]<span class="nt">&lt;/rng_seed&gt;</span>
-</pre></div>
-</div>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">avg_qty:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">double</span></tt>, optional (default=1e+299)</p>
-<p>mean for the normal distribution that is sampled to determine the amount of material actually requested at each time step</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;avg_qty&gt;</span>[double]<span class="nt">&lt;/avg_qty&gt;</span>
-</pre></div>
-</div>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">sigma:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">double</span></tt>, optional (default=0)</p>
-<p>standard deviation (FWHM) of the normal distribution used to generate requested amount of material (avg_qty)</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;sigma&gt;</span>[double]<span class="nt">&lt;/sigma&gt;</span>
-</pre></div>
-</div>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">t_trade:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">double</span></tt>, optional (default=0)</p>
-<p>At all timesteps before this value, the facility does make material requests. At times at or beyond this value, requests are made subject to the other behavioral features available in this archetype</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;t_trade&gt;</span>[double]<span class="nt">&lt;/t_trade&gt;</span>
-</pre></div>
-</div>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">max_inv_size:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">double</span></tt>, optional (default=1e+299)</p>
+<tr class="field-odd field"><th class="field-name">max_inv_size:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">double</span></tt>, optional (default=1e+299)</p>
 <p>total maximum inventory size of sink facility</p>
 <div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;max_inv_size&gt;</span>[double]<span class="nt">&lt;/max_inv_size&gt;</span>
 </pre></div>
 </div>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">capacity:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">double</span></tt>, optional (default=1e+299)</p>
+<tr class="field-even field"><th class="field-name">capacity:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">double</span></tt>, optional (default=1e+299)</p>
 <p>capacity the sink facility can accept at each time step</p>
 <div class="last highlight-xml"><div class="highlight"><pre><span class="nt">&lt;capacity&gt;</span>[double]<span class="nt">&lt;/capacity&gt;</span>
 </pre></div>
@@ -289,41 +240,6 @@ specified commodities.</div></blockquote>
     <span class="nt">&lt;optional&gt;</span>
         <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;recipe_name&quot;</span><span class="nt">&gt;</span>
             <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span><span class="nt">/&gt;</span>
-        <span class="nt">&lt;/element&gt;</span>
-    <span class="nt">&lt;/optional&gt;</span>
-    <span class="nt">&lt;optional&gt;</span>
-        <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;social_behav&quot;</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span><span class="nt">/&gt;</span>
-        <span class="nt">&lt;/element&gt;</span>
-    <span class="nt">&lt;/optional&gt;</span>
-    <span class="nt">&lt;optional&gt;</span>
-        <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;behav_interval&quot;</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;double&quot;</span><span class="nt">/&gt;</span>
-        <span class="nt">&lt;/element&gt;</span>
-    <span class="nt">&lt;/optional&gt;</span>
-    <span class="nt">&lt;optional&gt;</span>
-        <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;user_pref&quot;</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;int&quot;</span><span class="nt">/&gt;</span>
-        <span class="nt">&lt;/element&gt;</span>
-    <span class="nt">&lt;/optional&gt;</span>
-    <span class="nt">&lt;optional&gt;</span>
-        <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;rng_seed&quot;</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;int&quot;</span><span class="nt">/&gt;</span>
-        <span class="nt">&lt;/element&gt;</span>
-    <span class="nt">&lt;/optional&gt;</span>
-    <span class="nt">&lt;optional&gt;</span>
-        <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;avg_qty&quot;</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;double&quot;</span><span class="nt">/&gt;</span>
-        <span class="nt">&lt;/element&gt;</span>
-    <span class="nt">&lt;/optional&gt;</span>
-    <span class="nt">&lt;optional&gt;</span>
-        <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;sigma&quot;</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;double&quot;</span><span class="nt">/&gt;</span>
-        <span class="nt">&lt;/element&gt;</span>
-    <span class="nt">&lt;/optional&gt;</span>
-    <span class="nt">&lt;optional&gt;</span>
-        <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;t_trade&quot;</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;double&quot;</span><span class="nt">/&gt;</span>
         <span class="nt">&lt;/element&gt;</span>
     <span class="nt">&lt;/optional&gt;</span>
     <span class="nt">&lt;optional&gt;</span>
@@ -434,28 +350,7 @@ specified commodities.</div></blockquote>
 </div>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">social_behav:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">std::string</span></tt>, optional (default=&#8221;None&#8221;)</p>
-<p>type of social behavior used in trade decisions: None, Every, Random where behav_interval describes the time interval for behavior action</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;social_behav&gt;</span>[string]<span class="nt">&lt;/social_behav&gt;</span>
-</pre></div>
-</div>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">behav_interval:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">double</span></tt>, optional (default=0)</p>
-<p>interval of social behavior: Every or EveryRandom.  If 0 then behavior is not implemented</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;behav_interval&gt;</span>[double]<span class="nt">&lt;/behav_interval&gt;</span>
-</pre></div>
-</div>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">rng_seed:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">bool</span></tt>, optional (default=0)</p>
-<p>seed on current system time if set to -1, otherwise seed on number defined</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;rng_seed&gt;</span>[boolean]<span class="nt">&lt;/rng_seed&gt;</span>
-</pre></div>
-</div>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">swu_capacity:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">double</span></tt>, optional (default=1e+299)</p>
+<tr class="field-even field"><th class="field-name">swu_capacity:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">double</span></tt>, optional (default=1e+299)</p>
 <p>separative work unit (SWU) capacity of enrichment facility (kgSWU/timestep)</p>
 <div class="last highlight-xml"><div class="highlight"><pre><span class="nt">&lt;swu_capacity&gt;</span>[double]<span class="nt">&lt;/swu_capacity&gt;</span>
 </pre></div>
@@ -515,21 +410,6 @@ specified commodities.</div></blockquote>
     <span class="nt">&lt;/optional&gt;</span>
     <span class="nt">&lt;optional&gt;</span>
         <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;order_prefs&quot;</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;boolean&quot;</span><span class="nt">/&gt;</span>
-        <span class="nt">&lt;/element&gt;</span>
-    <span class="nt">&lt;/optional&gt;</span>
-    <span class="nt">&lt;optional&gt;</span>
-        <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;social_behav&quot;</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span><span class="nt">/&gt;</span>
-        <span class="nt">&lt;/element&gt;</span>
-    <span class="nt">&lt;/optional&gt;</span>
-    <span class="nt">&lt;optional&gt;</span>
-        <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;behav_interval&quot;</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;double&quot;</span><span class="nt">/&gt;</span>
-        <span class="nt">&lt;/element&gt;</span>
-    <span class="nt">&lt;/optional&gt;</span>
-    <span class="nt">&lt;optional&gt;</span>
-        <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;rng_seed&quot;</span><span class="nt">&gt;</span>
             <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;boolean&quot;</span><span class="nt">/&gt;</span>
         <span class="nt">&lt;/element&gt;</span>
     <span class="nt">&lt;/optional&gt;</span>
@@ -1834,7 +1714,7 @@ specified commodities.</div></blockquote>
 
     <div class="footer">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Oct 19, 2015.
+      Last updated on Jan 29, 2016.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");

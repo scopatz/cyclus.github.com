@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '(1.3.1-73-g3b0d23e)',
+        VERSION:     '(1.3.1-153-gb86cf92)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -131,6 +131,20 @@ used elsewhere when defining agent prototypes.  The first archetype is named
 defined in <a class="reference internal" href="../find_agents.html"><em>Archetype Identification and Discovery</em></a>.  For example, <cite>simpleSource</cite> will be found
 in a library file with a name such as <cite>libsimpleSource.so</cite>, in the standard
 <span style="font-variant:small-caps;">Cyclus</span> archetype path.</p>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+<span class="nt">&quot;archetypes&quot;</span><span class="p">:</span> <span class="p">{</span>
+  <span class="nt">&quot;spec&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;my/custom/path&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;lib&quot;</span><span class="p">:</span> <span class="s2">&quot;myAgentCollection&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;alias&quot;</span><span class="p">:</span> <span class="s2">&quot;ReactorAgent&quot;</span> <span class="p">},</span>
+  <span class="nt">&quot;spec&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;simpleSource&quot;</span> <span class="p">},</span>
+  <span class="nt">&quot;spec&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;simpleRegion&quot;</span> <span class="p">},</span>
+  <span class="nt">&quot;spec&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;simpleInst&quot;</span> <span class="p">}</span>
+<span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This is what the example above would look like if written in JSON.</p>
 </div>
 <div class="html-toggle section" id="grammar-definition">
 <h2>Grammar Definition<a class="headerlink" href="#grammar-definition" title="Permalink to this headline">¶</a></h2>
@@ -268,7 +282,7 @@ in a library file with a name such as <cite>libsimpleSource.so</cite>, in the st
 
     <div class="footer">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Oct 19, 2015.
+      Last updated on Jan 29, 2016.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");

@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '(1.3.1-73-g3b0d23e)',
+        VERSION:     '(1.3.1-153-gb86cf92)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -136,6 +136,27 @@ facility agents, one based on the <tt class="docutils literal"><span class="pre"
 the <tt class="docutils literal"><span class="pre">FacilityB</span></tt> prototype.  The second institution has the name
 <cite>AnotherInstitution</cite>, is also configured from the archetype with the name (or
 alias) <tt class="docutils literal"><span class="pre">NullInst</span></tt>.  This institution has no initial facilities.</p>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+ <span class="nt">&quot;institution&quot;</span><span class="p">:</span> <span class="p">{</span>
+   <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;SingleInstitution&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;initialfacilitylist&quot;</span><span class="p">:</span> <span class="p">[{</span>
+     <span class="nt">&quot;entry&quot;</span><span class="p">:</span> <span class="p">{</span>
+       <span class="nt">&quot;prototype&quot;</span><span class="p">:</span> <span class="s2">&quot;FacilityA&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;number&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}},</span>
+     <span class="p">{</span><span class="nt">&quot;entry&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;prototype&quot;</span><span class="p">:</span> <span class="s2">&quot;FacilityB&quot;</span><span class="p">}}],</span>
+   <span class="nt">&quot;config&quot;</span><span class="p">:</span> <span class="p">{}</span>
+   <span class="p">}</span>
+ <span class="p">}</span>
+
+<span class="p">{</span>
+ <span class="nt">&quot;institution&quot;</span><span class="p">:</span> <span class="p">{</span>
+   <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;AnotherInstitution&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;config&quot;</span><span class="p">:</span> <span class="p">{}</span>
+   <span class="p">}</span>
+ <span class="p">}</span>
+</pre></div>
+</div>
+<p>This is what the example above would look like if written in JSON.</p>
 </div>
 <div class="html-toggle section" id="grammar-definition">
 <h2>Grammar Definition<a class="headerlink" href="#grammar-definition" title="Permalink to this headline">¶</a></h2>
@@ -286,7 +307,7 @@ alias) <tt class="docutils literal"><span class="pre">NullInst</span></tt>.  Thi
 
     <div class="footer">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Oct 19, 2015.
+      Last updated on Jan 29, 2016.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");

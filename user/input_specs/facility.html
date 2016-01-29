@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '(1.3.1-73-g3b0d23e)',
+        VERSION:     '(1.3.1-153-gb86cf92)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -123,6 +123,26 @@ author of the <cite>Sink</cite> archetype.  The second has the name <tt class="d
 lifetime of 720 time steps (60 years) and is based on the archetype with the
 name (or alias) <cite>RecipeReactor</cite>.  The contents of the <tt class="docutils literal"><span class="pre">RecipeReactor</span></tt>
 section are defined by the author of the <cite>RecipeReactor</cite> archetype.</p>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+ <span class="nt">&quot;facility&quot;</span><span class="p">:</span> <span class="p">{</span>
+   <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;LongTermStorage&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;config&quot;</span><span class="p">:</span> <span class="p">{</span>
+   <span class="nt">&quot;sink&quot;</span><span class="p">:</span> <span class="s2">&quot;... archetype-specific input for a `Sink` archetype&quot;</span> <span class="p">}</span>
+   <span class="p">}</span>
+ <span class="p">}</span>
+
+
+<span class="p">{</span>
+ <span class="nt">&quot;facility&quot;</span><span class="p">:</span> <span class="p">{</span>
+   <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;PBMR&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;lifetime&quot;</span><span class="p">:</span> <span class="mi">720</span><span class="p">,</span>
+   <span class="nt">&quot;config&quot;</span><span class="p">:</span> <span class="p">{</span>
+   <span class="nt">&quot;RecipeReactor&quot;</span><span class="p">:</span> <span class="s2">&quot;... archetype-specific input for a `RecipeReactor` archetype&quot;</span> <span class="p">}</span>
+   <span class="p">}</span>
+ <span class="p">}</span>
+</pre></div>
+</div>
+<p>This is what the example above would look like if written in JSON.</p>
 </div>
 <div class="html-toggle section" id="grammar-definition">
 <h2>Grammar Definition<a class="headerlink" href="#grammar-definition" title="Permalink to this headline">¶</a></h2>
@@ -262,7 +282,7 @@ section are defined by the author of the <cite>RecipeReactor</cite> archetype.</
 
     <div class="footer">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Oct 19, 2015.
+      Last updated on Jan 29, 2016.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");
