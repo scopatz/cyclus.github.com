@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '(1.3.1-153-gb86cf92)',
+        VERSION:     'b&#39;(1.3.0-rc4-52-gb86cf92)&#39;',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -49,10 +49,10 @@ if(ga_enabled){
 }
 </script>
   </head>
-  <body>
+  <body role="document">
     <div class="relbar-top">
         
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -69,7 +69,7 @@ if(ga_enabled){
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
     <li><a href="../index.html">Home</a> &raquo;</li>
 
-          <li><a href="index.html" accesskey="U"><span style="font-variant:small-caps;">Cyclus</span> Kernel Developer Guide</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U"><span style="font-variant:small-caps;">Cyclus</span> Kernel Developer Guide</a> &raquo;</li> 
       </ul>
     </div>
     </div>
@@ -78,7 +78,7 @@ if(ga_enabled){
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="building-cyclus-with-conda">
 <h1>Building <span style="font-variant:small-caps;">Cyclus</span> With Conda<a class="headerlink" href="#building-cyclus-with-conda" title="Permalink to this headline">¶</a></h1>
@@ -88,7 +88,7 @@ is a directory containing at least two files, meta.yaml and build.sh.
 Version information, build and run dependencies, the location of the source
 code, and other information about the package are stored in meta.yaml, while
 build.sh contains a script to build from source. Packages are built from
-recipes using the <tt class="docutils literal"><span class="pre">conda</span> <span class="pre">build</span> <span class="pre">&lt;recipe</span> <span class="pre">dir&gt;</span></tt> command. Necessary dependency
+recipes using the <code class="docutils literal"><span class="pre">conda</span> <span class="pre">build</span> <span class="pre">&lt;recipe</span> <span class="pre">dir&gt;</span></code> command. Necessary dependency
 packages will be automatically downloaded and installed before the build.sh
 script is run and installed.  The final output is a tar.bz2 file which is a
 Conda package containing the necessary binaries, libraries, etc.  This package
@@ -100,7 +100,7 @@ an available Conda package to install.</p>
 <a class="reference external" href="http://github.com/cyclus/ciclus">Ciclus Repo</a>. As part of installing and
 maintaining <span style="font-variant:small-caps;">Cyclus</span> with Conda, recipes for a number of dependencies have
 also been created.  All lowercase directories in this repo (except fetch) are
-Conda recipes.  Additionally, this repo contains a stock <tt class="docutils literal"><span class="pre">.condarc</span></tt> file
+Conda recipes.  Additionally, this repo contains a stock <code class="docutils literal"><span class="pre">.condarc</span></code> file
 which automatically points to the
 <span style="font-variant:small-caps;">Cyclus</span> <a class="reference external" href="http://binstar.org/cyclus">Binstar Account</a>.</p>
 <div class="section" id="how-to-work-with-conda">
@@ -108,25 +108,25 @@ which automatically points to the
 <p>There are many ways to customize the files in Ciclus repo.</p>
 <p>1) Push a package to Binstar Once you have successfully built a Conda recipe,
 it can be uploaded to Binstar with the command</p>
-<div class="highlight-python"><div class="highlight"><pre>binstar upload -u cyclus anaconda/conda-bld/linux-64/cyclus-&lt;VERSION&gt;.tar.bz2
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">binstar</span> <span class="n">upload</span> <span class="o">-</span><span class="n">u</span> <span class="n">cyclus</span> <span class="n">anaconda</span><span class="o">/</span><span class="n">conda</span><span class="o">-</span><span class="n">bld</span><span class="o">/</span><span class="n">linux</span><span class="o">-</span><span class="mi">64</span><span class="o">/</span><span class="n">cyclus</span><span class="o">-&lt;</span><span class="n">VERSION</span><span class="o">&gt;.</span><span class="n">tar</span><span class="o">.</span><span class="n">bz2</span>
 </pre></div>
 </div>
 <p>So, for instance, uploading version 1.0 of <span style="font-variant:small-caps;">Cyclus</span> would be</p>
-<div class="highlight-python"><div class="highlight"><pre>binstar upload -u cyclus anaconda/conda-bld/linux-64/cyclus-1.0.tar.bz2
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">binstar</span> <span class="n">upload</span> <span class="o">-</span><span class="n">u</span> <span class="n">cyclus</span> <span class="n">anaconda</span><span class="o">/</span><span class="n">conda</span><span class="o">-</span><span class="n">bld</span><span class="o">/</span><span class="n">linux</span><span class="o">-</span><span class="mi">64</span><span class="o">/</span><span class="n">cyclus</span><span class="o">-</span><span class="mf">1.0</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">bz2</span>
 </pre></div>
 </div>
 <p>2) <strong>Change the repository  to build:</strong> Say you want to test your fork of <span style="font-variant:small-caps;">Cyclus</span>
 before making a pull request. To customize what repos <span style="font-variant:small-caps;">Cyclus</span> and Cycamore
-are pulled from, look in <tt class="docutils literal"><span class="pre">cyclus/meta.yaml</span></tt> and <tt class="docutils literal"><span class="pre">cycamore/meta.yaml</span></tt>
-respectively.  In these files you can change the <tt class="docutils literal"><span class="pre">git_url</span></tt> field to point to
+are pulled from, look in <code class="docutils literal"><span class="pre">cyclus/meta.yaml</span></code> and <code class="docutils literal"><span class="pre">cycamore/meta.yaml</span></code>
+respectively.  In these files you can change the <code class="docutils literal"><span class="pre">git_url</span></code> field to point to
 the repo of your choice.</p>
-<p>3) <strong>Change the branch to build:</strong> In <tt class="docutils literal"><span class="pre">cyclus/meta.yaml</span></tt> (or Cycamore), alter the
-<tt class="docutils literal"><span class="pre">git_tag</span></tt> field to the branch or tag you want to use.</p>
+<p>3) <strong>Change the branch to build:</strong> In <code class="docutils literal"><span class="pre">cyclus/meta.yaml</span></code> (or Cycamore), alter the
+<code class="docutils literal"><span class="pre">git_tag</span></code> field to the branch or tag you want to use.</p>
 <p>4) <strong>Test a new build process for Cyclus and Cycamore:</strong> To alter <span style="font-variant:small-caps;">Cyclus</span> or
-Cycamore&#8217;s build process, look at <tt class="docutils literal"><span class="pre">build.sh</span></tt> in <span style="font-variant:small-caps;">Cyclus</span> or Cycamore
+Cycamore&#8217;s build process, look at <code class="docutils literal"><span class="pre">build.sh</span></code> in <span style="font-variant:small-caps;">Cyclus</span> or Cycamore
 respectively.</p>
 <p>5) <strong>Create/upload a new version of a dependency:</strong> Alter the dependency&#8217;s
-<tt class="docutils literal"><span class="pre">meta.yaml</span></tt> file to point to the correct version of dependency source code.
+<code class="docutils literal"><span class="pre">meta.yaml</span></code> file to point to the correct version of dependency source code.
 Build the package, follow instructions in 1 to upload to Binstar.</p>
 </div>
 </div>
@@ -135,7 +135,7 @@ Build the package, follow instructions in 1 to upload to Binstar.</p>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
         <p class="logo"><a href="../index.html" title="index">
           <img class="logo" src="../_static/big_c.png" alt="Logo"/>
@@ -174,7 +174,7 @@ Build the package, follow instructions in 1 to upload to Binstar.</p>
     </ul></li></ul>
   </div>
     
-<div id="searchbox" style="display: none">
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
@@ -182,9 +182,6 @@ Build the package, follow instructions in 1 to upload to Binstar.</p>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
     <h3>Get Cyclus</h3>
@@ -224,7 +221,7 @@ Build the package, follow instructions in 1 to upload to Binstar.</p>
     </div>
     <div class="relbar-bottom">
         
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -241,14 +238,14 @@ Build the package, follow instructions in 1 to upload to Binstar.</p>
              >previous</a> &nbsp; &nbsp;</li>
     <li><a href="../index.html">Home</a> &raquo;</li>
 
-          <li><a href="index.html" ><span style="font-variant:small-caps;">Cyclus</span> Kernel Developer Guide</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="index.html" ><span style="font-variant:small-caps;">Cyclus</span> Kernel Developer Guide</a> &raquo;</li> 
       </ul>
     </div>
     </div>
 
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Jan 29, 2016.
+      Last updated on Apr 07, 2016.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");

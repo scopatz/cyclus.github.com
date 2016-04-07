@@ -161,7 +161,10 @@ $(document).ready(function (){
 
   doc.append(holder);
 
-  if (typeof state === "undefined") {n	var state = "uncollapsed";n  };n  if (state == "collapsed"){
+  if (typeof state === "undefined") {
+	var state = "uncollapsed";
+  };
+  if (state == "collapsed"){
     doc.addClass("collapsed-sidebar");
     show_btn.show();
     hide_btn.hide();

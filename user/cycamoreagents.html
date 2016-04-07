@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '(1.3.1-153-gb86cf92)',
+        VERSION:     'b&#39;(1.3.0-rc4-52-gb86cf92)&#39;',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -49,10 +49,10 @@ if(ga_enabled){
 }
 </script>
   </head>
-  <body>
+  <body role="document">
     <div class="relbar-top">
         
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -69,7 +69,7 @@ if(ga_enabled){
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
     <li><a href="../index.html">Home</a> &raquo;</li>
 
-          <li><a href="index.html" accesskey="U"><span style="font-variant:small-caps;">Cyclus</span> User Guide</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U"><span style="font-variant:small-caps;">Cyclus</span> User Guide</a> &raquo;</li> 
       </ul>
     </div>
     </div>
@@ -78,11 +78,11 @@ if(ga_enabled){
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="cycamore-archetypes">
 <span id="id1"></span><h1>Cycamore Archetypes<a class="headerlink" href="#cycamore-archetypes" title="Permalink to this headline">¶</a></h1>
-<p>This is a collection of archetypes found in the <tt class="docutils literal"><span class="pre">cycamore</span></tt> module that comes with
+<p>This is a collection of archetypes found in the <code class="docutils literal"><span class="pre">cycamore</span></code> module that comes with
 cycamore itself.</p>
 <div class="section" id="cycamore-source">
 <h2>:cycamore:<strong>Source</strong><a class="headerlink" href="#cycamore-source" title="Permalink to this headline">¶</a></h2>
@@ -101,30 +101,50 @@ no more material.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">outcommod:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">std::string</span></tt></p>
+<tr class="field-odd field"><th class="field-name">outcommod:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">std::string</span></code></p>
 <p>Output commodity on which the source offers material.</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;outcommod&gt;</span>[outcommodity]<span class="nt">&lt;/outcommod&gt;</span>
+<p><strong>XML:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;outcommod&gt;</span>[outcommodity]<span class="nt">&lt;/outcommod&gt;</span>
+</pre></div>
+</div>
+<p><strong>JSON:</strong></p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;outcommod&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">}</span>  <span class="c1"># outcommodity</span>
 </pre></div>
 </div>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">outrecipe:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">std::string</span></tt>, optional (default=&#8221;&#8221;)</p>
+<tr class="field-even field"><th class="field-name">outrecipe:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">std::string</span></code>, optional (default=&#8221;&#8221;)</p>
 <p>Name of composition recipe that this source provides regardless of requested composition. If empty, source creates and provides whatever compositions are requested.</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;outrecipe&gt;</span>[recipe]<span class="nt">&lt;/outrecipe&gt;</span>
+<p><strong>XML:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;outrecipe&gt;</span>[recipe]<span class="nt">&lt;/outrecipe&gt;</span>
+</pre></div>
+</div>
+<p><strong>JSON:</strong></p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;outrecipe&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;&quot;</span><span class="p p-Indicator">}</span>  <span class="c1"># recipe</span>
 </pre></div>
 </div>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">inventory_size:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">double</span></tt>, optional (default=1e+299)</p>
+<tr class="field-odd field"><th class="field-name">inventory_size:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">double</span></code>, optional (default=1e+299)</p>
 <p>Total amount of material this source has remaining. Every trade decreases this value by the supplied material quantity.  When it reaches zero, the source cannot provide any  more material.</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;inventory_size&gt;</span>[double ( kg )]<span class="nt">&lt;/inventory_size&gt;</span>
+<p><strong>XML:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;inventory_size&gt;</span>[double ( kg )]<span class="nt">&lt;/inventory_size&gt;</span>
+</pre></div>
+</div>
+<p><strong>JSON:</strong></p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;inventory_size&quot;</span><span class="p p-Indicator">:</span> <span class="nv">1e+299</span><span class="p p-Indicator">}</span>  <span class="c1"># double, kg</span>
 </pre></div>
 </div>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">throughput:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">double</span></tt>, optional (default=1e+299)</p>
+<tr class="field-even field"><th class="field-name">throughput:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">double</span></code>, optional (default=1e+299)</p>
 <p>amount of commodity that can be supplied at each time step</p>
-<div class="last highlight-xml"><div class="highlight"><pre><span class="nt">&lt;throughput&gt;</span>[double ( kg/(time step) )]<span class="nt">&lt;/throughput&gt;</span>
+<p><strong>XML:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;throughput&gt;</span>[double ( kg/(time step) )]<span class="nt">&lt;/throughput&gt;</span>
+</pre></div>
+</div>
+<p><strong>JSON:</strong></p>
+<div class="last highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;throughput&quot;</span><span class="p p-Indicator">:</span> <span class="nv">1e+299</span><span class="p p-Indicator">}</span>  <span class="c1"># double, kg/(time step)</span>
 </pre></div>
 </div>
 </td>
@@ -137,13 +157,13 @@ no more material.</p>
 <ul class="simple">
 <li><strong>Full Archetype Name</strong>: cycamore::Source</li>
 <li><strong>Simulation Entity Type</strong>: facility</li>
-<li><strong>Interfaces</strong>: [cyclus::Facility, cyclus::toolkit::CommodityProducer]</li>
-<li><strong>All Interfaces</strong>: [cyclus::Agent, cyclus::Facility, cyclus::Ider, cyclus::StateWrangler, cyclus::TimeListener, cyclus::Trader, cyclus::toolkit::AgentManaged, cyclus::toolkit::CommodityProducer]</li>
+<li><strong>Interfaces</strong>: [&#8216;cyclus::Facility&#8217;, &#8216;cyclus::toolkit::CommodityProducer&#8217;]</li>
+<li><strong>All Interfaces</strong>: [&#8216;cyclus::Agent&#8217;, &#8216;cyclus::Facility&#8217;, &#8216;cyclus::Ider&#8217;, &#8216;cyclus::StateWrangler&#8217;, &#8216;cyclus::TimeListener&#8217;, &#8216;cyclus::Trader&#8217;, &#8216;cyclus::toolkit::AgentManaged&#8217;, &#8216;cyclus::toolkit::CommodityProducer&#8217;]</li>
 </ul>
 </div>
 <div class="section" id="xml-input-schema">
 <h3>XML Input Schema<a class="headerlink" href="#xml-input-schema" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;interleave&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;interleave&gt;</span>
     <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;outcommod&quot;</span><span class="nt">&gt;</span>
         <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span><span class="nt">/&gt;</span>
     <span class="nt">&lt;/element&gt;</span>
@@ -183,34 +203,58 @@ specified commodities.</div></blockquote>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">in_commods:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">std::vector&lt;std::string&gt;</span></tt></p>
+<tr class="field-odd field"><th class="field-name">in_commods:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">std::vector&lt;std::string&gt;</span></code></p>
 <p>commodities that the sink facility accepts</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;in_commods&gt;</span>
-    <span class="nt">&lt;val&gt;</span>[incommodity]<span class="nt">&lt;/val&gt;</span>
-    <span class="nt">&lt;val&gt;</span>[incommodity]<span class="nt">&lt;/val&gt;</span>
-    ...
+<p><strong>XML:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;in_commods&gt;</span>
+  <span class="nt">&lt;val&gt;</span>[incommodity]<span class="nt">&lt;/val&gt;</span>
+  <span class="nt">&lt;val&gt;</span>[incommodity]<span class="nt">&lt;/val&gt;</span>
+  ...
 <span class="nt">&lt;/in_commods&gt;</span>
 </pre></div>
 </div>
+<p><strong>JSON:</strong></p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;in_commods&quot;</span><span class="p p-Indicator">:</span>  <span class="p p-Indicator">{</span><span class="s">&quot;val&quot;</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span>
+   <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">,</span>
+   <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">,</span>
+   <span class="nv">...</span>
+<span class="p p-Indicator">]}}</span>
+</pre></div>
+</div>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">recipe_name:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">std::string</span></tt>, optional (default=&#8221;&#8221;)</p>
+<tr class="field-even field"><th class="field-name">recipe_name:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">std::string</span></code>, optional (default=&#8221;&#8221;)</p>
 <p>name of recipe to use for material requests, where the default (empty string) is to accept everything</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;recipe_name&gt;</span>[recipe]<span class="nt">&lt;/recipe_name&gt;</span>
+<p><strong>XML:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;recipe_name&gt;</span>[recipe]<span class="nt">&lt;/recipe_name&gt;</span>
+</pre></div>
+</div>
+<p><strong>JSON:</strong></p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;recipe_name&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;&quot;</span><span class="p p-Indicator">}</span>  <span class="c1"># recipe</span>
 </pre></div>
 </div>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">max_inv_size:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">double</span></tt>, optional (default=1e+299)</p>
+<tr class="field-odd field"><th class="field-name">max_inv_size:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">double</span></code>, optional (default=1e+299)</p>
 <p>total maximum inventory size of sink facility</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;max_inv_size&gt;</span>[double]<span class="nt">&lt;/max_inv_size&gt;</span>
+<p><strong>XML:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;max_inv_size&gt;</span>[double]<span class="nt">&lt;/max_inv_size&gt;</span>
+</pre></div>
+</div>
+<p><strong>JSON:</strong></p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;max_inv_size&quot;</span><span class="p p-Indicator">:</span> <span class="nv">1e+299</span><span class="p p-Indicator">}</span>  <span class="c1"># double</span>
 </pre></div>
 </div>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">capacity:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">double</span></tt>, optional (default=1e+299)</p>
+<tr class="field-even field"><th class="field-name">capacity:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">double</span></code>, optional (default=1e+299)</p>
 <p>capacity the sink facility can accept at each time step</p>
-<div class="last highlight-xml"><div class="highlight"><pre><span class="nt">&lt;capacity&gt;</span>[double]<span class="nt">&lt;/capacity&gt;</span>
+<p><strong>XML:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;capacity&gt;</span>[double]<span class="nt">&lt;/capacity&gt;</span>
+</pre></div>
+</div>
+<p><strong>JSON:</strong></p>
+<div class="last highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;capacity&quot;</span><span class="p p-Indicator">:</span> <span class="nv">1e+299</span><span class="p p-Indicator">}</span>  <span class="c1"># double</span>
 </pre></div>
 </div>
 </td>
@@ -223,13 +267,13 @@ specified commodities.</div></blockquote>
 <ul class="simple">
 <li><strong>Full Archetype Name</strong>: cycamore::Sink</li>
 <li><strong>Simulation Entity Type</strong>: facility</li>
-<li><strong>Interfaces</strong>: [cyclus::Facility]</li>
-<li><strong>All Interfaces</strong>: [cyclus::Agent, cyclus::Facility, cyclus::Ider, cyclus::StateWrangler, cyclus::TimeListener, cyclus::Trader]</li>
+<li><strong>Interfaces</strong>: [&#8216;cyclus::Facility&#8217;]</li>
+<li><strong>All Interfaces</strong>: [&#8216;cyclus::Agent&#8217;, &#8216;cyclus::Facility&#8217;, &#8216;cyclus::Ider&#8217;, &#8216;cyclus::StateWrangler&#8217;, &#8216;cyclus::TimeListener&#8217;, &#8216;cyclus::Trader&#8217;]</li>
 </ul>
 </div>
 <div class="section" id="id4">
 <h3>XML Input Schema<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;interleave&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;interleave&gt;</span>
     <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;in_commods&quot;</span><span class="nt">&gt;</span>
         <span class="nt">&lt;oneOrMore&gt;</span>
             <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;val&quot;</span><span class="nt">&gt;</span>
@@ -270,57 +314,92 @@ specified commodities.</div></blockquote>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">feed_commod:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">std::string</span></tt></p>
+<tr class="field-odd field"><th class="field-name">feed_commod:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">std::string</span></code></p>
 <p>feed commodity that the enrichment facility accepts</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;feed_commod&gt;</span>[incommodity]<span class="nt">&lt;/feed_commod&gt;</span>
+<p><strong>XML:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;feed_commod&gt;</span>[incommodity]<span class="nt">&lt;/feed_commod&gt;</span>
+</pre></div>
+</div>
+<p><strong>JSON:</strong></p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;feed_commod&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">}</span>  <span class="c1"># incommodity</span>
 </pre></div>
 </div>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">feed_recipe:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">std::string</span></tt></p>
+<tr class="field-even field"><th class="field-name">feed_recipe:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">std::string</span></code></p>
 <p>recipe for enrichment facility feed commodity</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;feed_recipe&gt;</span>[recipe]<span class="nt">&lt;/feed_recipe&gt;</span>
+<p><strong>XML:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;feed_recipe&gt;</span>[recipe]<span class="nt">&lt;/feed_recipe&gt;</span>
+</pre></div>
+</div>
+<p><strong>JSON:</strong></p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;feed_recipe&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">}</span>  <span class="c1"># recipe</span>
 </pre></div>
 </div>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">product_commod:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">std::string</span></tt></p>
+<tr class="field-odd field"><th class="field-name">product_commod:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">std::string</span></code></p>
 <p>product commodity that the enrichment facility generates</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;product_commod&gt;</span>[outcommodity]<span class="nt">&lt;/product_commod&gt;</span>
+<p><strong>XML:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;product_commod&gt;</span>[outcommodity]<span class="nt">&lt;/product_commod&gt;</span>
+</pre></div>
+</div>
+<p><strong>JSON:</strong></p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;product_commod&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">}</span>  <span class="c1"># outcommodity</span>
 </pre></div>
 </div>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">tails_commod:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">std::string</span></tt></p>
+<tr class="field-even field"><th class="field-name">tails_commod:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">std::string</span></code></p>
 <p>tails commodity supplied by enrichment facility</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;tails_commod&gt;</span>[outcommodity]<span class="nt">&lt;/tails_commod&gt;</span>
+<p><strong>XML:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;tails_commod&gt;</span>[outcommodity]<span class="nt">&lt;/tails_commod&gt;</span>
+</pre></div>
+</div>
+<p><strong>JSON:</strong></p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;tails_commod&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">}</span>  <span class="c1"># outcommodity</span>
 </pre></div>
 </div>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">tails_assay:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">double</span></tt>, optional (default=0.003)</p>
+<tr class="field-odd field"><th class="field-name">tails_assay:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">double</span></code>, optional (default=0.003)</p>
 <p>tails assay from the enrichment process</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;tails_assay&gt;</span>[double]<span class="nt">&lt;/tails_assay&gt;</span>
+<p><strong>XML:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;tails_assay&gt;</span>[double]<span class="nt">&lt;/tails_assay&gt;</span>
+</pre></div>
+</div>
+<p><strong>JSON:</strong></p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;tails_assay&quot;</span><span class="p p-Indicator">:</span> <span class="nv">0.003</span><span class="p p-Indicator">}</span>  <span class="c1"># double</span>
 </pre></div>
 </div>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">initial_feed:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">double</span></tt>, optional (default=0)</p>
+<tr class="field-even field"><th class="field-name">initial_feed:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">double</span></code>, optional (default=0)</p>
 <p>amount of natural uranium stored at the enrichment facility at the beginning of the simulation (kg)</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;initial_feed&gt;</span>[double]<span class="nt">&lt;/initial_feed&gt;</span>
+<p><strong>XML:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;initial_feed&gt;</span>[double]<span class="nt">&lt;/initial_feed&gt;</span>
+</pre></div>
+</div>
+<p><strong>JSON:</strong></p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;initial_feed&quot;</span><span class="p p-Indicator">:</span> <span class="nv">0</span><span class="p p-Indicator">}</span>  <span class="c1"># double</span>
 </pre></div>
 </div>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name" colspan="2">max_feed_inventory:</th></tr>
-<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">double</span></tt>, optional (default=1e+299)</p>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">double</span></code>, optional (default=1e+299)</p>
 <p>maximum total inventory of natural uranium in the enrichment facility (kg)</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;max_feed_inventory&gt;</span>[double]<span class="nt">&lt;/max_feed_inventory&gt;</span>
+<p><strong>XML:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;max_feed_inventory&gt;</span>[double]<span class="nt">&lt;/max_feed_inventory&gt;</span>
+</pre></div>
+</div>
+<p><strong>JSON:</strong></p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;max_feed_inventory&quot;</span><span class="p p-Indicator">:</span> <span class="nv">1e+299</span><span class="p p-Indicator">}</span>  <span class="c1"># double</span>
 </pre></div>
 </div>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">max_enrich:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">double</span></tt>, optional (default=1.0)</p>
+<tr class="field-even field"><th class="field-name">max_enrich:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">double</span></code>, optional (default=1.0)</p>
 <p>maximum allowed weight fraction of U235 in product</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -330,12 +409,17 @@ specified commodities.</div></blockquote>
 </tr>
 </tbody>
 </table>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;max_enrich&gt;</span>[double]<span class="nt">&lt;/max_enrich&gt;</span>
+<p><strong>XML:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;max_enrich&gt;</span>[double]<span class="nt">&lt;/max_enrich&gt;</span>
+</pre></div>
+</div>
+<p><strong>JSON:</strong></p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;max_enrich&quot;</span><span class="p p-Indicator">:</span> <span class="nv">1.0</span><span class="p p-Indicator">}</span>  <span class="c1"># double</span>
 </pre></div>
 </div>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">order_prefs:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">bool</span></tt>, optional (default=1)</p>
+<tr class="field-even field"><th class="field-name">order_prefs:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">bool</span></code>, optional (default=1)</p>
 <p>turn on preference ordering for input material so that EF chooses higher U235 content first</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -345,14 +429,24 @@ specified commodities.</div></blockquote>
 </tr>
 </tbody>
 </table>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;order_prefs&gt;</span>[boolean]<span class="nt">&lt;/order_prefs&gt;</span>
+<p><strong>XML:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;order_prefs&gt;</span>[boolean]<span class="nt">&lt;/order_prefs&gt;</span>
+</pre></div>
+</div>
+<p><strong>JSON:</strong></p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;order_prefs&quot;</span><span class="p p-Indicator">:</span> <span class="nv">1</span><span class="p p-Indicator">}</span>  <span class="c1"># boolean</span>
 </pre></div>
 </div>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">swu_capacity:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">double</span></tt>, optional (default=1e+299)</p>
+<tr class="field-even field"><th class="field-name">swu_capacity:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">double</span></code>, optional (default=1e+299)</p>
 <p>separative work unit (SWU) capacity of enrichment facility (kgSWU/timestep)</p>
-<div class="last highlight-xml"><div class="highlight"><pre><span class="nt">&lt;swu_capacity&gt;</span>[double]<span class="nt">&lt;/swu_capacity&gt;</span>
+<p><strong>XML:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;swu_capacity&gt;</span>[double]<span class="nt">&lt;/swu_capacity&gt;</span>
+</pre></div>
+</div>
+<p><strong>JSON:</strong></p>
+<div class="last highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;swu_capacity&quot;</span><span class="p p-Indicator">:</span> <span class="nv">1e+299</span><span class="p p-Indicator">}</span>  <span class="c1"># double</span>
 </pre></div>
 </div>
 </td>
@@ -365,14 +459,14 @@ specified commodities.</div></blockquote>
 <ul class="simple">
 <li><strong>Full Archetype Name</strong>: cycamore::Enrichment</li>
 <li><strong>Simulation Entity Type</strong>: facility</li>
-<li><strong>Interfaces</strong>: [cyclus::Facility]</li>
-<li><strong>All Interfaces</strong>: [cyclus::Agent, cyclus::Facility, cyclus::Ider, cyclus::StateWrangler, cyclus::TimeListener, cyclus::Trader]</li>
+<li><strong>Interfaces</strong>: [&#8216;cyclus::Facility&#8217;]</li>
+<li><strong>All Interfaces</strong>: [&#8216;cyclus::Agent&#8217;, &#8216;cyclus::Facility&#8217;, &#8216;cyclus::Ider&#8217;, &#8216;cyclus::StateWrangler&#8217;, &#8216;cyclus::TimeListener&#8217;, &#8216;cyclus::Trader&#8217;]</li>
 <li><strong>niche</strong>: enrichment facility</li>
 </ul>
 </div>
 <div class="section" id="id7">
 <h3>XML Input Schema<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;interleave&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;interleave&gt;</span>
     <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;feed_commod&quot;</span><span class="nt">&gt;</span>
         <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span><span class="nt">/&gt;</span>
     <span class="nt">&lt;/element&gt;</span>
@@ -437,213 +531,371 @@ specified commodities.</div></blockquote>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">fuel_incommods:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">std::vector&lt;std::string&gt;</span></tt></p>
+<tr class="field-odd field"><th class="field-name">fuel_incommods:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">std::vector&lt;std::string&gt;</span></code></p>
 <p>Ordered list of input commodities on which to requesting fuel.</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;fuel_incommods&gt;</span>
-    <span class="nt">&lt;val&gt;</span>[incommodity]<span class="nt">&lt;/val&gt;</span>
-    <span class="nt">&lt;val&gt;</span>[incommodity]<span class="nt">&lt;/val&gt;</span>
-    ...
+<p><strong>XML:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;fuel_incommods&gt;</span>
+  <span class="nt">&lt;val&gt;</span>[incommodity]<span class="nt">&lt;/val&gt;</span>
+  <span class="nt">&lt;val&gt;</span>[incommodity]<span class="nt">&lt;/val&gt;</span>
+  ...
 <span class="nt">&lt;/fuel_incommods&gt;</span>
 </pre></div>
 </div>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">fuel_inrecipes:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">std::vector&lt;std::string&gt;</span></tt></p>
-<p>Fresh fuel recipes to request for each of the given fuel input commodities (same order).</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;fuel_inrecipes&gt;</span>
-    <span class="nt">&lt;val&gt;</span>[recipe]<span class="nt">&lt;/val&gt;</span>
-    <span class="nt">&lt;val&gt;</span>[recipe]<span class="nt">&lt;/val&gt;</span>
-    ...
-<span class="nt">&lt;/fuel_inrecipes&gt;</span>
+<p><strong>JSON:</strong></p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;fuel_incommods&quot;</span><span class="p p-Indicator">:</span>  <span class="p p-Indicator">{</span><span class="s">&quot;val&quot;</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span>
+   <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">,</span>
+   <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">,</span>
+   <span class="nv">...</span>
+<span class="p p-Indicator">]}}</span>
 </pre></div>
 </div>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">fuel_prefs:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">std::vector&lt;double&gt;</span></tt>, optional (default=[])</p>
+<tr class="field-even field"><th class="field-name">fuel_inrecipes:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">std::vector&lt;std::string&gt;</span></code></p>
+<p>Fresh fuel recipes to request for each of the given fuel input commodities (same order).</p>
+<p><strong>XML:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;fuel_inrecipes&gt;</span>
+  <span class="nt">&lt;val&gt;</span>[recipe]<span class="nt">&lt;/val&gt;</span>
+  <span class="nt">&lt;val&gt;</span>[recipe]<span class="nt">&lt;/val&gt;</span>
+  ...
+<span class="nt">&lt;/fuel_inrecipes&gt;</span>
+</pre></div>
+</div>
+<p><strong>JSON:</strong></p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;fuel_inrecipes&quot;</span><span class="p p-Indicator">:</span>  <span class="p p-Indicator">{</span><span class="s">&quot;val&quot;</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span>
+   <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">,</span>
+   <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">,</span>
+   <span class="nv">...</span>
+<span class="p p-Indicator">]}}</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">fuel_prefs:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">std::vector&lt;double&gt;</span></code>, optional (default=[])</p>
 <p>The preference for each type of fresh fuel requested corresponding to each input commodity (same order).  If no preferences are specified, 1.0 is used for all fuel requests (default).</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;fuel_prefs&gt;</span>
-    <span class="nt">&lt;val&gt;</span>[double]<span class="nt">&lt;/val&gt;</span>
-    <span class="nt">&lt;val&gt;</span>[double]<span class="nt">&lt;/val&gt;</span>
-    ...
+<p><strong>XML:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;fuel_prefs&gt;</span>
+  <span class="nt">&lt;val&gt;</span>[double]<span class="nt">&lt;/val&gt;</span>
+  <span class="nt">&lt;val&gt;</span>[double]<span class="nt">&lt;/val&gt;</span>
+  ...
 <span class="nt">&lt;/fuel_prefs&gt;</span>
+</pre></div>
+</div>
+<p><strong>JSON:</strong></p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;fuel_prefs&quot;</span><span class="p p-Indicator">:</span>  <span class="p p-Indicator">{</span><span class="s">&quot;val&quot;</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span>
+   <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">,</span>
+   <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">,</span>
+   <span class="nv">...</span>
+<span class="p p-Indicator">]}}</span>
 </pre></div>
 </div>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name" colspan="2">fuel_outcommods:</th></tr>
-<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">std::vector&lt;std::string&gt;</span></tt></p>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">std::vector&lt;std::string&gt;</span></code></p>
 <p>Output commodities on which to offer spent fuel originally received as each particular input commodity (same order).</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;fuel_outcommods&gt;</span>
-    <span class="nt">&lt;val&gt;</span>[outcommodity]<span class="nt">&lt;/val&gt;</span>
-    <span class="nt">&lt;val&gt;</span>[outcommodity]<span class="nt">&lt;/val&gt;</span>
-    ...
+<p><strong>XML:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;fuel_outcommods&gt;</span>
+  <span class="nt">&lt;val&gt;</span>[outcommodity]<span class="nt">&lt;/val&gt;</span>
+  <span class="nt">&lt;val&gt;</span>[outcommodity]<span class="nt">&lt;/val&gt;</span>
+  ...
 <span class="nt">&lt;/fuel_outcommods&gt;</span>
+</pre></div>
+</div>
+<p><strong>JSON:</strong></p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;fuel_outcommods&quot;</span><span class="p p-Indicator">:</span>  <span class="p p-Indicator">{</span><span class="s">&quot;val&quot;</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span>
+   <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">,</span>
+   <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">,</span>
+   <span class="nv">...</span>
+<span class="p p-Indicator">]}}</span>
 </pre></div>
 </div>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name" colspan="2">fuel_outrecipes:</th></tr>
-<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">std::vector&lt;std::string&gt;</span></tt></p>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">std::vector&lt;std::string&gt;</span></code></p>
 <p>Spent fuel recipes corresponding to the given fuel input commodities (same order). Fuel received via a particular input commodity is transmuted to the recipe specified here after being burned during a cycle.</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;fuel_outrecipes&gt;</span>
-    <span class="nt">&lt;val&gt;</span>[recipe]<span class="nt">&lt;/val&gt;</span>
-    <span class="nt">&lt;val&gt;</span>[recipe]<span class="nt">&lt;/val&gt;</span>
-    ...
+<p><strong>XML:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;fuel_outrecipes&gt;</span>
+  <span class="nt">&lt;val&gt;</span>[recipe]<span class="nt">&lt;/val&gt;</span>
+  <span class="nt">&lt;val&gt;</span>[recipe]<span class="nt">&lt;/val&gt;</span>
+  ...
 <span class="nt">&lt;/fuel_outrecipes&gt;</span>
+</pre></div>
+</div>
+<p><strong>JSON:</strong></p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;fuel_outrecipes&quot;</span><span class="p p-Indicator">:</span>  <span class="p p-Indicator">{</span><span class="s">&quot;val&quot;</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span>
+   <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">,</span>
+   <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">,</span>
+   <span class="nv">...</span>
+<span class="p p-Indicator">]}}</span>
 </pre></div>
 </div>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name" colspan="2">recipe_change_times:</th></tr>
-<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">std::vector&lt;int&gt;</span></tt>, optional (default=[])</p>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">std::vector&lt;int&gt;</span></code>, optional (default=[])</p>
 <p>A time step on which to change the input-output recipe pair for a requested fresh fuel.</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;recipe_change_times&gt;</span>
-    <span class="nt">&lt;val&gt;</span>[int]<span class="nt">&lt;/val&gt;</span>
-    <span class="nt">&lt;val&gt;</span>[int]<span class="nt">&lt;/val&gt;</span>
-    ...
+<p><strong>XML:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;recipe_change_times&gt;</span>
+  <span class="nt">&lt;val&gt;</span>[int]<span class="nt">&lt;/val&gt;</span>
+  <span class="nt">&lt;val&gt;</span>[int]<span class="nt">&lt;/val&gt;</span>
+  ...
 <span class="nt">&lt;/recipe_change_times&gt;</span>
+</pre></div>
+</div>
+<p><strong>JSON:</strong></p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;recipe_change_times&quot;</span><span class="p p-Indicator">:</span>  <span class="p p-Indicator">{</span><span class="s">&quot;val&quot;</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span>
+   <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">,</span>
+   <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">,</span>
+   <span class="nv">...</span>
+<span class="p p-Indicator">]}}</span>
 </pre></div>
 </div>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name" colspan="2">recipe_change_commods:</th></tr>
-<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">std::vector&lt;std::string&gt;</span></tt>, optional (default=[])</p>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">std::vector&lt;std::string&gt;</span></code>, optional (default=[])</p>
 <p>The input commodity indicating fresh fuel for which recipes will be changed. Same order as and direct correspondence to the specified recipe change times.</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;recipe_change_commods&gt;</span>
-    <span class="nt">&lt;val&gt;</span>[incommodity]<span class="nt">&lt;/val&gt;</span>
-    <span class="nt">&lt;val&gt;</span>[incommodity]<span class="nt">&lt;/val&gt;</span>
-    ...
+<p><strong>XML:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;recipe_change_commods&gt;</span>
+  <span class="nt">&lt;val&gt;</span>[incommodity]<span class="nt">&lt;/val&gt;</span>
+  <span class="nt">&lt;val&gt;</span>[incommodity]<span class="nt">&lt;/val&gt;</span>
+  ...
 <span class="nt">&lt;/recipe_change_commods&gt;</span>
+</pre></div>
+</div>
+<p><strong>JSON:</strong></p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;recipe_change_commods&quot;</span><span class="p p-Indicator">:</span>  <span class="p p-Indicator">{</span><span class="s">&quot;val&quot;</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span>
+   <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">,</span>
+   <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">,</span>
+   <span class="nv">...</span>
+<span class="p p-Indicator">]}}</span>
 </pre></div>
 </div>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name" colspan="2">recipe_change_in:</th></tr>
-<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">std::vector&lt;std::string&gt;</span></tt>, optional (default=[])</p>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">std::vector&lt;std::string&gt;</span></code>, optional (default=[])</p>
 <p>The new input recipe to use for this recipe change. Same order as and direct correspondence to the specified recipe change times.</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;recipe_change_in&gt;</span>
-    <span class="nt">&lt;val&gt;</span>[recipe]<span class="nt">&lt;/val&gt;</span>
-    <span class="nt">&lt;val&gt;</span>[recipe]<span class="nt">&lt;/val&gt;</span>
-    ...
+<p><strong>XML:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;recipe_change_in&gt;</span>
+  <span class="nt">&lt;val&gt;</span>[recipe]<span class="nt">&lt;/val&gt;</span>
+  <span class="nt">&lt;val&gt;</span>[recipe]<span class="nt">&lt;/val&gt;</span>
+  ...
 <span class="nt">&lt;/recipe_change_in&gt;</span>
+</pre></div>
+</div>
+<p><strong>JSON:</strong></p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;recipe_change_in&quot;</span><span class="p p-Indicator">:</span>  <span class="p p-Indicator">{</span><span class="s">&quot;val&quot;</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span>
+   <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">,</span>
+   <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">,</span>
+   <span class="nv">...</span>
+<span class="p p-Indicator">]}}</span>
 </pre></div>
 </div>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name" colspan="2">recipe_change_out:</th></tr>
-<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">std::vector&lt;std::string&gt;</span></tt>, optional (default=[])</p>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">std::vector&lt;std::string&gt;</span></code>, optional (default=[])</p>
 <p>The new output recipe to use for this recipe change. Same order as and direct correspondence to the specified recipe change times.</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;recipe_change_out&gt;</span>
-    <span class="nt">&lt;val&gt;</span>[recipe]<span class="nt">&lt;/val&gt;</span>
-    <span class="nt">&lt;val&gt;</span>[recipe]<span class="nt">&lt;/val&gt;</span>
-    ...
+<p><strong>XML:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;recipe_change_out&gt;</span>
+  <span class="nt">&lt;val&gt;</span>[recipe]<span class="nt">&lt;/val&gt;</span>
+  <span class="nt">&lt;val&gt;</span>[recipe]<span class="nt">&lt;/val&gt;</span>
+  ...
 <span class="nt">&lt;/recipe_change_out&gt;</span>
 </pre></div>
 </div>
+<p><strong>JSON:</strong></p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;recipe_change_out&quot;</span><span class="p p-Indicator">:</span>  <span class="p p-Indicator">{</span><span class="s">&quot;val&quot;</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span>
+   <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">,</span>
+   <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">,</span>
+   <span class="nv">...</span>
+<span class="p p-Indicator">]}}</span>
+</pre></div>
+</div>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">assem_size:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">double</span></tt></p>
+<tr class="field-even field"><th class="field-name">assem_size:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">double</span></code></p>
 <p>Mass (kg) of a single assembly.</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;assem_size&gt;</span>[double ( kg )]<span class="nt">&lt;/assem_size&gt;</span>
+<p><strong>XML:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;assem_size&gt;</span>[double ( kg )]<span class="nt">&lt;/assem_size&gt;</span>
+</pre></div>
+</div>
+<p><strong>JSON:</strong></p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;assem_size&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">}</span>  <span class="c1"># double, kg</span>
 </pre></div>
 </div>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">n_assem_batch:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">int</span></tt></p>
-<p>Number of assemblies that constitute a single batch.  This is the number of assemblies discharged from the core fully burned each cycle.Batch size is equivalent to <tt class="docutils literal"><span class="pre">n_assem_batch</span> <span class="pre">/</span> <span class="pre">n_assem_core</span></tt>.</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;n_assem_batch&gt;</span>[int]<span class="nt">&lt;/n_assem_batch&gt;</span>
+<tr class="field-odd field"><th class="field-name">n_assem_batch:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">int</span></code></p>
+<p>Number of assemblies that constitute a single batch.  This is the number of assemblies discharged from the core fully burned each cycle.Batch size is equivalent to <code class="docutils literal"><span class="pre">n_assem_batch</span> <span class="pre">/</span> <span class="pre">n_assem_core</span></code>.</p>
+<p><strong>XML:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;n_assem_batch&gt;</span>[int]<span class="nt">&lt;/n_assem_batch&gt;</span>
+</pre></div>
+</div>
+<p><strong>JSON:</strong></p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;n_assem_batch&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">}</span>  <span class="c1"># int</span>
 </pre></div>
 </div>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">n_assem_core:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">int</span></tt></p>
+<tr class="field-even field"><th class="field-name">n_assem_core:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">int</span></code></p>
 <p>Number of assemblies that constitute a full core.</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;n_assem_core&gt;</span>[int]<span class="nt">&lt;/n_assem_core&gt;</span>
+<p><strong>XML:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;n_assem_core&gt;</span>[int]<span class="nt">&lt;/n_assem_core&gt;</span>
+</pre></div>
+</div>
+<p><strong>JSON:</strong></p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;n_assem_core&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">}</span>  <span class="c1"># int</span>
 </pre></div>
 </div>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">n_assem_fresh:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">int</span></tt>, optional (default=0)</p>
+<tr class="field-odd field"><th class="field-name">n_assem_fresh:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">int</span></code>, optional (default=0)</p>
 <p>Number of fresh fuel assemblies to keep on-hand if possible.</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;n_assem_fresh&gt;</span>[int ( assemblies )]<span class="nt">&lt;/n_assem_fresh&gt;</span>
+<p><strong>XML:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;n_assem_fresh&gt;</span>[int ( assemblies )]<span class="nt">&lt;/n_assem_fresh&gt;</span>
+</pre></div>
+</div>
+<p><strong>JSON:</strong></p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;n_assem_fresh&quot;</span><span class="p p-Indicator">:</span> <span class="nv">0</span><span class="p p-Indicator">}</span>  <span class="c1"># int, assemblies</span>
 </pre></div>
 </div>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">n_assem_spent:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">int</span></tt>, optional (default=1000000000)</p>
+<tr class="field-even field"><th class="field-name">n_assem_spent:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">int</span></code>, optional (default=1000000000)</p>
 <p>Number of spent fuel assemblies that can be stored on-site before reactor operation stalls.</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;n_assem_spent&gt;</span>[int ( assemblies )]<span class="nt">&lt;/n_assem_spent&gt;</span>
+<p><strong>XML:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;n_assem_spent&gt;</span>[int ( assemblies )]<span class="nt">&lt;/n_assem_spent&gt;</span>
+</pre></div>
+</div>
+<p><strong>JSON:</strong></p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;n_assem_spent&quot;</span><span class="p p-Indicator">:</span> <span class="nv">1000000000</span><span class="p p-Indicator">}</span>  <span class="c1"># int, assemblies</span>
 </pre></div>
 </div>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">cycle_time:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">int</span></tt></p>
+<tr class="field-odd field"><th class="field-name">cycle_time:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">int</span></code></p>
 <p>The duration of a full operational cycle (excluding refueling time) in time steps.</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;cycle_time&gt;</span>[int ( time steps )]<span class="nt">&lt;/cycle_time&gt;</span>
+<p><strong>XML:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;cycle_time&gt;</span>[int ( time steps )]<span class="nt">&lt;/cycle_time&gt;</span>
+</pre></div>
+</div>
+<p><strong>JSON:</strong></p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;cycle_time&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">}</span>  <span class="c1"># int, time steps</span>
 </pre></div>
 </div>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">refuel_time:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">int</span></tt></p>
+<tr class="field-even field"><th class="field-name">refuel_time:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">int</span></code></p>
 <p>The duration of a full refueling period - the minimum time between the end of a cycle and the start of the next cycle.</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;refuel_time&gt;</span>[int ( time steps )]<span class="nt">&lt;/refuel_time&gt;</span>
+<p><strong>XML:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;refuel_time&gt;</span>[int ( time steps )]<span class="nt">&lt;/refuel_time&gt;</span>
+</pre></div>
+</div>
+<p><strong>JSON:</strong></p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;refuel_time&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">}</span>  <span class="c1"># int, time steps</span>
 </pre></div>
 </div>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">cycle_step:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">int</span></tt>, optional (default=0)</p>
+<tr class="field-odd field"><th class="field-name">cycle_step:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">int</span></code>, optional (default=0)</p>
 <p>Number of time steps since the start of the last cycle. Only set this if you know what you are doing</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;cycle_step&gt;</span>[int ( time steps )]<span class="nt">&lt;/cycle_step&gt;</span>
+<p><strong>XML:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;cycle_step&gt;</span>[int ( time steps )]<span class="nt">&lt;/cycle_step&gt;</span>
+</pre></div>
+</div>
+<p><strong>JSON:</strong></p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;cycle_step&quot;</span><span class="p p-Indicator">:</span> <span class="nv">0</span><span class="p p-Indicator">}</span>  <span class="c1"># int, time steps</span>
 </pre></div>
 </div>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">power_cap:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">double</span></tt>, optional (default=0)</p>
+<tr class="field-even field"><th class="field-name">power_cap:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">double</span></code>, optional (default=0)</p>
 <p>Amount of electrical power the facility produces when operating normally.</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;power_cap&gt;</span>[double ( MWe )]<span class="nt">&lt;/power_cap&gt;</span>
+<p><strong>XML:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;power_cap&gt;</span>[double ( MWe )]<span class="nt">&lt;/power_cap&gt;</span>
+</pre></div>
+</div>
+<p><strong>JSON:</strong></p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;power_cap&quot;</span><span class="p p-Indicator">:</span> <span class="nv">0</span><span class="p p-Indicator">}</span>  <span class="c1"># double, MWe</span>
 </pre></div>
 </div>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">power_name:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">std::string</span></tt>, optional (default=&#8221;power&#8221;)</p>
+<tr class="field-odd field"><th class="field-name">power_name:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">std::string</span></code>, optional (default=&#8221;power&#8221;)</p>
 <p>The name of the &#8216;power&#8217; commodity used in conjunction with a deployment curve.</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;power_name&gt;</span>[string]<span class="nt">&lt;/power_name&gt;</span>
+<p><strong>XML:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;power_name&gt;</span>[string]<span class="nt">&lt;/power_name&gt;</span>
+</pre></div>
+</div>
+<p><strong>JSON:</strong></p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;power_name&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;power&quot;</span><span class="p p-Indicator">}</span>  <span class="c1"># string</span>
 </pre></div>
 </div>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name" colspan="2">pref_change_times:</th></tr>
-<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">std::vector&lt;int&gt;</span></tt>, optional (default=[])</p>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">std::vector&lt;int&gt;</span></code>, optional (default=[])</p>
 <p>A time step on which to change the request preference for a particular fresh fuel type.</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;pref_change_times&gt;</span>
-    <span class="nt">&lt;val&gt;</span>[int]<span class="nt">&lt;/val&gt;</span>
-    <span class="nt">&lt;val&gt;</span>[int]<span class="nt">&lt;/val&gt;</span>
-    ...
+<p><strong>XML:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;pref_change_times&gt;</span>
+  <span class="nt">&lt;val&gt;</span>[int]<span class="nt">&lt;/val&gt;</span>
+  <span class="nt">&lt;val&gt;</span>[int]<span class="nt">&lt;/val&gt;</span>
+  ...
 <span class="nt">&lt;/pref_change_times&gt;</span>
+</pre></div>
+</div>
+<p><strong>JSON:</strong></p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;pref_change_times&quot;</span><span class="p p-Indicator">:</span>  <span class="p p-Indicator">{</span><span class="s">&quot;val&quot;</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span>
+   <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">,</span>
+   <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">,</span>
+   <span class="nv">...</span>
+<span class="p p-Indicator">]}}</span>
 </pre></div>
 </div>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name" colspan="2">pref_change_commods:</th></tr>
-<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">std::vector&lt;std::string&gt;</span></tt>, optional (default=[])</p>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">std::vector&lt;std::string&gt;</span></code>, optional (default=[])</p>
 <p>The input commodity for a particular fuel preference change.  Same order as and direct correspondence to the specified preference change times.</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;pref_change_commods&gt;</span>
-    <span class="nt">&lt;val&gt;</span>[incommodity]<span class="nt">&lt;/val&gt;</span>
-    <span class="nt">&lt;val&gt;</span>[incommodity]<span class="nt">&lt;/val&gt;</span>
-    ...
+<p><strong>XML:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;pref_change_commods&gt;</span>
+  <span class="nt">&lt;val&gt;</span>[incommodity]<span class="nt">&lt;/val&gt;</span>
+  <span class="nt">&lt;val&gt;</span>[incommodity]<span class="nt">&lt;/val&gt;</span>
+  ...
 <span class="nt">&lt;/pref_change_commods&gt;</span>
+</pre></div>
+</div>
+<p><strong>JSON:</strong></p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;pref_change_commods&quot;</span><span class="p p-Indicator">:</span>  <span class="p p-Indicator">{</span><span class="s">&quot;val&quot;</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span>
+   <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">,</span>
+   <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">,</span>
+   <span class="nv">...</span>
+<span class="p p-Indicator">]}}</span>
 </pre></div>
 </div>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name" colspan="2">pref_change_values:</th></tr>
-<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">std::vector&lt;double&gt;</span></tt>, optional (default=[])</p>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">std::vector&lt;double&gt;</span></code>, optional (default=[])</p>
 <p>The new/changed request preference for a particular fresh fuel. Same order as and direct correspondence to the specified preference change times.</p>
-<div class="last highlight-xml"><div class="highlight"><pre><span class="nt">&lt;pref_change_values&gt;</span>
-    <span class="nt">&lt;val&gt;</span>[double]<span class="nt">&lt;/val&gt;</span>
-    <span class="nt">&lt;val&gt;</span>[double]<span class="nt">&lt;/val&gt;</span>
-    ...
+<p><strong>XML:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;pref_change_values&gt;</span>
+  <span class="nt">&lt;val&gt;</span>[double]<span class="nt">&lt;/val&gt;</span>
+  <span class="nt">&lt;val&gt;</span>[double]<span class="nt">&lt;/val&gt;</span>
+  ...
 <span class="nt">&lt;/pref_change_values&gt;</span>
+</pre></div>
+</div>
+<p><strong>JSON:</strong></p>
+<div class="last highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;pref_change_values&quot;</span><span class="p p-Indicator">:</span>  <span class="p p-Indicator">{</span><span class="s">&quot;val&quot;</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span>
+   <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">,</span>
+   <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">,</span>
+   <span class="nv">...</span>
+<span class="p p-Indicator">]}}</span>
 </pre></div>
 </div>
 </td>
@@ -656,14 +908,14 @@ specified commodities.</div></blockquote>
 <ul class="simple">
 <li><strong>Full Archetype Name</strong>: cycamore::Reactor</li>
 <li><strong>Simulation Entity Type</strong>: facility</li>
-<li><strong>Interfaces</strong>: [cyclus::Facility, cyclus::toolkit::CommodityProducer]</li>
-<li><strong>All Interfaces</strong>: [cyclus::Agent, cyclus::Facility, cyclus::Ider, cyclus::StateWrangler, cyclus::TimeListener, cyclus::Trader, cyclus::toolkit::AgentManaged, cyclus::toolkit::CommodityProducer]</li>
+<li><strong>Interfaces</strong>: [&#8216;cyclus::Facility&#8217;, &#8216;cyclus::toolkit::CommodityProducer&#8217;]</li>
+<li><strong>All Interfaces</strong>: [&#8216;cyclus::Agent&#8217;, &#8216;cyclus::Facility&#8217;, &#8216;cyclus::Ider&#8217;, &#8216;cyclus::StateWrangler&#8217;, &#8216;cyclus::TimeListener&#8217;, &#8216;cyclus::Trader&#8217;, &#8216;cyclus::toolkit::AgentManaged&#8217;, &#8216;cyclus::toolkit::CommodityProducer&#8217;]</li>
 <li><strong>niche</strong>: reactor</li>
 </ul>
 </div>
 <div class="section" id="id10">
 <h3>XML Input Schema<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;interleave&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;interleave&gt;</span>
     <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;fuel_incommods&quot;</span><span class="nt">&gt;</span>
         <span class="nt">&lt;oneOrMore&gt;</span>
             <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;val&quot;</span><span class="nt">&gt;</span>
@@ -821,105 +1073,182 @@ specified commodities.</div></blockquote>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">feed_commods:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">std::vector&lt;std::string&gt;</span></tt></p>
+<tr class="field-odd field"><th class="field-name">feed_commods:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">std::vector&lt;std::string&gt;</span></code></p>
 <p>Ordered list of commodities on which to request feed material to separate. Order only matters for matching up with feed commodity preferences if specified.</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;feed_commods&gt;</span>
-    <span class="nt">&lt;val&gt;</span>[incommodity]<span class="nt">&lt;/val&gt;</span>
-    <span class="nt">&lt;val&gt;</span>[incommodity]<span class="nt">&lt;/val&gt;</span>
-    ...
+<p><strong>XML:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;feed_commods&gt;</span>
+  <span class="nt">&lt;val&gt;</span>[incommodity]<span class="nt">&lt;/val&gt;</span>
+  <span class="nt">&lt;val&gt;</span>[incommodity]<span class="nt">&lt;/val&gt;</span>
+  ...
 <span class="nt">&lt;/feed_commods&gt;</span>
+</pre></div>
+</div>
+<p><strong>JSON:</strong></p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;feed_commods&quot;</span><span class="p p-Indicator">:</span>  <span class="p p-Indicator">{</span><span class="s">&quot;val&quot;</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span>
+   <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">,</span>
+   <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">,</span>
+   <span class="nv">...</span>
+<span class="p p-Indicator">]}}</span>
 </pre></div>
 </div>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name" colspan="2">feed_commod_prefs:</th></tr>
-<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">std::vector&lt;double&gt;</span></tt>, optional (default=[])</p>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">std::vector&lt;double&gt;</span></code>, optional (default=[])</p>
 <p>Feed commodity request preferences for each of the given feed commodities (same order). If unspecified, default is to use 1.0 for all preferences.</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;feed_commod_prefs&gt;</span>
-    <span class="nt">&lt;val&gt;</span>[double]<span class="nt">&lt;/val&gt;</span>
-    <span class="nt">&lt;val&gt;</span>[double]<span class="nt">&lt;/val&gt;</span>
-    ...
+<p><strong>XML:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;feed_commod_prefs&gt;</span>
+  <span class="nt">&lt;val&gt;</span>[double]<span class="nt">&lt;/val&gt;</span>
+  <span class="nt">&lt;val&gt;</span>[double]<span class="nt">&lt;/val&gt;</span>
+  ...
 <span class="nt">&lt;/feed_commod_prefs&gt;</span>
 </pre></div>
 </div>
+<p><strong>JSON:</strong></p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;feed_commod_prefs&quot;</span><span class="p p-Indicator">:</span>  <span class="p p-Indicator">{</span><span class="s">&quot;val&quot;</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span>
+   <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">,</span>
+   <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">,</span>
+   <span class="nv">...</span>
+<span class="p p-Indicator">]}}</span>
+</pre></div>
+</div>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">feed_recipe:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">std::string</span></tt>, optional (default=&#8221;&#8221;)</p>
+<tr class="field-odd field"><th class="field-name">feed_recipe:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">std::string</span></code>, optional (default=&#8221;&#8221;)</p>
 <p>Name for recipe to be used in feed requests. Empty string results in use of a dummy recipe.</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;feed_recipe&gt;</span>[recipe]<span class="nt">&lt;/feed_recipe&gt;</span>
+<p><strong>XML:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;feed_recipe&gt;</span>[recipe]<span class="nt">&lt;/feed_recipe&gt;</span>
+</pre></div>
+</div>
+<p><strong>JSON:</strong></p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;feed_recipe&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;&quot;</span><span class="p p-Indicator">}</span>  <span class="c1"># recipe</span>
 </pre></div>
 </div>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">feedbuf_size:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">double</span></tt></p>
+<tr class="field-even field"><th class="field-name">feedbuf_size:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">double</span></code></p>
 <p>Maximum amount of feed material to keep on hand.</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;feedbuf_size&gt;</span>[double ( kg )]<span class="nt">&lt;/feedbuf_size&gt;</span>
+<p><strong>XML:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;feedbuf_size&gt;</span>[double ( kg )]<span class="nt">&lt;/feedbuf_size&gt;</span>
+</pre></div>
+</div>
+<p><strong>JSON:</strong></p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;feedbuf_size&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">}</span>  <span class="c1"># double, kg</span>
 </pre></div>
 </div>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">throughput:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">double</span></tt></p>
+<tr class="field-odd field"><th class="field-name">throughput:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">double</span></code></p>
 <p>Maximum quantity of feed material that can be processed per time step.</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;throughput&gt;</span>[double ( kg/(time step) )]<span class="nt">&lt;/throughput&gt;</span>
+<p><strong>XML:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;throughput&gt;</span>[double ( kg/(time step) )]<span class="nt">&lt;/throughput&gt;</span>
+</pre></div>
+</div>
+<p><strong>JSON:</strong></p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;throughput&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">}</span>  <span class="c1"># double, kg/(time step)</span>
 </pre></div>
 </div>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name" colspan="2">leftover_commod:</th></tr>
-<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">std::string</span></tt>, optional (default=&#8221;default-waste-stream&#8221;)</p>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">std::string</span></code>, optional (default=&#8221;default-waste-stream&#8221;)</p>
 <p>Commodity on which to trade the leftover separated material stream. This MUST NOT be the same as any commodity used to define the other separations streams.</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;leftover_commod&gt;</span>[outcommodity]<span class="nt">&lt;/leftover_commod&gt;</span>
+<p><strong>XML:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;leftover_commod&gt;</span>[outcommodity]<span class="nt">&lt;/leftover_commod&gt;</span>
+</pre></div>
+</div>
+<p><strong>JSON:</strong></p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;leftover_commod&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;default-waste-stream&quot;</span><span class="p p-Indicator">}</span>  <span class="c1"># outcommodity</span>
 </pre></div>
 </div>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name" colspan="2">leftoverbuf_size:</th></tr>
-<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">double</span></tt>, optional (default=1e+299)</p>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">double</span></code>, optional (default=1e+299)</p>
 <p>Maximum amount of leftover separated material (not included in any other stream) that can be stored. If full, the facility halts operation until space becomes available.</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;leftoverbuf_size&gt;</span>[double ( kg )]<span class="nt">&lt;/leftoverbuf_size&gt;</span>
+<p><strong>XML:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;leftoverbuf_size&gt;</span>[double ( kg )]<span class="nt">&lt;/leftoverbuf_size&gt;</span>
+</pre></div>
+</div>
+<p><strong>JSON:</strong></p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;leftoverbuf_size&quot;</span><span class="p p-Indicator">:</span> <span class="nv">1e+299</span><span class="p p-Indicator">}</span>  <span class="c1"># double, kg</span>
 </pre></div>
 </div>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">streams:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">std::map&lt;std::string,</span> <span class="pre">std::pair&lt;double,</span> <span class="pre">std::map&lt;int,</span> <span class="pre">double&gt;&gt;&gt;</span></tt></p>
+<tr class="field-even field"><th class="field-name">streams:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">std::map&lt;std::string,</span> <span class="pre">std::pair&lt;double,</span> <span class="pre">std::map&lt;int,</span> <span class="pre">double&gt;&gt;&gt;</span></code></p>
 <p>Output streams for separations. Each stream must have a unique name identifying the commodity on  which its material is traded, a max buffer capacity in kg (neg values indicate infinite size), and a set of component efficiencies. &#8216;comp&#8217; is a component to be separated into the stream (e.g. U, Pu, etc.) and &#8216;eff&#8217; is the mass fraction of the component that is separated from the feed into this output stream. If any stream buffer is full, the facility halts operation until space becomes available. The sum total of all component efficiencies across streams must be less than or equal to 1 (e.g. sum of U efficiencies for all streams must be &lt;= 1).</p>
-<div class="last highlight-xml"><div class="highlight"><pre><span class="nt">&lt;streams&gt;</span>
-    <span class="nt">&lt;item&gt;</span>
-        <span class="nt">&lt;commod&gt;</span>[outcommodity]<span class="nt">&lt;/commod&gt;</span>
-        <span class="nt">&lt;info&gt;</span>
-            <span class="nt">&lt;buf_size&gt;</span>[double]<span class="nt">&lt;/buf_size&gt;</span>
-            <span class="nt">&lt;efficiencies&gt;</span>
-                <span class="nt">&lt;item&gt;</span>
-                    <span class="nt">&lt;comp&gt;</span>[nuclide]<span class="nt">&lt;/comp&gt;</span>
-                    <span class="nt">&lt;eff&gt;</span>[double]<span class="nt">&lt;/eff&gt;</span>
-                <span class="nt">&lt;/item&gt;</span>
-                <span class="nt">&lt;item&gt;</span>
-                    <span class="nt">&lt;comp&gt;</span>[nuclide]<span class="nt">&lt;/comp&gt;</span>
-                    <span class="nt">&lt;eff&gt;</span>[double]<span class="nt">&lt;/eff&gt;</span>
-                <span class="nt">&lt;/item&gt;</span>
-                ...
-            <span class="nt">&lt;/efficiencies&gt;</span>
-        <span class="nt">&lt;/info&gt;</span>
-    <span class="nt">&lt;/item&gt;</span>
-    <span class="nt">&lt;item&gt;</span>
-        <span class="nt">&lt;commod&gt;</span>[outcommodity]<span class="nt">&lt;/commod&gt;</span>
-        <span class="nt">&lt;info&gt;</span>
-            <span class="nt">&lt;buf_size&gt;</span>[double]<span class="nt">&lt;/buf_size&gt;</span>
-            <span class="nt">&lt;efficiencies&gt;</span>
-                <span class="nt">&lt;item&gt;</span>
-                    <span class="nt">&lt;comp&gt;</span>[nuclide]<span class="nt">&lt;/comp&gt;</span>
-                    <span class="nt">&lt;eff&gt;</span>[double]<span class="nt">&lt;/eff&gt;</span>
-                <span class="nt">&lt;/item&gt;</span>
-                <span class="nt">&lt;item&gt;</span>
-                    <span class="nt">&lt;comp&gt;</span>[nuclide]<span class="nt">&lt;/comp&gt;</span>
-                    <span class="nt">&lt;eff&gt;</span>[double]<span class="nt">&lt;/eff&gt;</span>
-                <span class="nt">&lt;/item&gt;</span>
-                ...
-            <span class="nt">&lt;/efficiencies&gt;</span>
-        <span class="nt">&lt;/info&gt;</span>
-    <span class="nt">&lt;/item&gt;</span>
-    ...
+<p><strong>XML:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;streams&gt;</span>
+  <span class="nt">&lt;item&gt;</span>
+    <span class="nt">&lt;commod&gt;</span>[outcommodity]<span class="nt">&lt;/commod&gt;</span>
+    <span class="nt">&lt;info&gt;</span>
+      <span class="nt">&lt;buf_size&gt;</span>[double]<span class="nt">&lt;/buf_size&gt;</span>
+      <span class="nt">&lt;efficiencies&gt;</span>
+        <span class="nt">&lt;item&gt;</span>
+          <span class="nt">&lt;comp&gt;</span>[nuclide]<span class="nt">&lt;/comp&gt;</span>
+          <span class="nt">&lt;eff&gt;</span>[double]<span class="nt">&lt;/eff&gt;</span>
+        <span class="nt">&lt;/item&gt;</span>
+        <span class="nt">&lt;item&gt;</span>
+          <span class="nt">&lt;comp&gt;</span>[nuclide]<span class="nt">&lt;/comp&gt;</span>
+          <span class="nt">&lt;eff&gt;</span>[double]<span class="nt">&lt;/eff&gt;</span>
+        <span class="nt">&lt;/item&gt;</span>
+        ...
+      <span class="nt">&lt;/efficiencies&gt;</span>
+    <span class="nt">&lt;/info&gt;</span>
+  <span class="nt">&lt;/item&gt;</span>
+  <span class="nt">&lt;item&gt;</span>
+    <span class="nt">&lt;commod&gt;</span>[outcommodity]<span class="nt">&lt;/commod&gt;</span>
+    <span class="nt">&lt;info&gt;</span>
+      <span class="nt">&lt;buf_size&gt;</span>[double]<span class="nt">&lt;/buf_size&gt;</span>
+      <span class="nt">&lt;efficiencies&gt;</span>
+        <span class="nt">&lt;item&gt;</span>
+          <span class="nt">&lt;comp&gt;</span>[nuclide]<span class="nt">&lt;/comp&gt;</span>
+          <span class="nt">&lt;eff&gt;</span>[double]<span class="nt">&lt;/eff&gt;</span>
+        <span class="nt">&lt;/item&gt;</span>
+        <span class="nt">&lt;item&gt;</span>
+          <span class="nt">&lt;comp&gt;</span>[nuclide]<span class="nt">&lt;/comp&gt;</span>
+          <span class="nt">&lt;eff&gt;</span>[double]<span class="nt">&lt;/eff&gt;</span>
+        <span class="nt">&lt;/item&gt;</span>
+        ...
+      <span class="nt">&lt;/efficiencies&gt;</span>
+    <span class="nt">&lt;/info&gt;</span>
+  <span class="nt">&lt;/item&gt;</span>
+  ...
 <span class="nt">&lt;/streams&gt;</span>
+</pre></div>
+</div>
+<p><strong>JSON:</strong></p>
+<div class="last highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;streams&quot;</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">{</span>
+  <span class="s">&quot;item&quot;</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[{</span>
+    <span class="s">&quot;commod&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">,</span>
+    <span class="s">&quot;info&quot;</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">{</span>
+      <span class="s">&quot;buf_size&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">,</span>
+      <span class="s">&quot;efficiencies&quot;</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">{</span>
+        <span class="s">&quot;item&quot;</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[{</span>
+          <span class="s">&quot;comp&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">,</span>
+          <span class="s">&quot;eff&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">},</span>
+          <span class="p p-Indicator">{</span><span class="s">&quot;comp&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">,</span>
+          <span class="s">&quot;eff&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">},</span>
+          <span class="nv">...</span>
+      <span class="p p-Indicator">]}</span>
+      <span class="p p-Indicator">}</span>
+    <span class="p p-Indicator">},</span>
+    <span class="p p-Indicator">{</span><span class="s">&quot;commod&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">,</span>
+    <span class="s">&quot;info&quot;</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">{</span>
+      <span class="s">&quot;buf_size&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">,</span>
+      <span class="s">&quot;efficiencies&quot;</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">{</span>
+        <span class="s">&quot;item&quot;</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[{</span>
+          <span class="s">&quot;comp&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">,</span>
+          <span class="s">&quot;eff&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">},</span>
+          <span class="p p-Indicator">{</span><span class="s">&quot;comp&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">,</span>
+          <span class="s">&quot;eff&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">},</span>
+          <span class="nv">...</span>
+      <span class="p p-Indicator">]}</span>
+      <span class="p p-Indicator">}</span>
+    <span class="p p-Indicator">},</span>
+    <span class="nv">...</span>
+<span class="p p-Indicator">]}}</span>
 </pre></div>
 </div>
 </td>
@@ -932,14 +1261,14 @@ specified commodities.</div></blockquote>
 <ul class="simple">
 <li><strong>Full Archetype Name</strong>: cycamore::Separations</li>
 <li><strong>Simulation Entity Type</strong>: facility</li>
-<li><strong>Interfaces</strong>: [cyclus::Facility]</li>
-<li><strong>All Interfaces</strong>: [cyclus::Agent, cyclus::Facility, cyclus::Ider, cyclus::StateWrangler, cyclus::TimeListener, cyclus::Trader]</li>
+<li><strong>Interfaces</strong>: [&#8216;cyclus::Facility&#8217;]</li>
+<li><strong>All Interfaces</strong>: [&#8216;cyclus::Agent&#8217;, &#8216;cyclus::Facility&#8217;, &#8216;cyclus::Ider&#8217;, &#8216;cyclus::StateWrangler&#8217;, &#8216;cyclus::TimeListener&#8217;, &#8216;cyclus::Trader&#8217;]</li>
 <li><strong>niche</strong>: separations</li>
 </ul>
 </div>
 <div class="section" id="id13">
 <h3>XML Input Schema<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;interleave&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;interleave&gt;</span>
     <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;feed_commods&quot;</span><span class="nt">&gt;</span>
         <span class="nt">&lt;oneOrMore&gt;</span>
             <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;val&quot;</span><span class="nt">&gt;</span>
@@ -1042,133 +1371,224 @@ specified commodities.</div></blockquote>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">fill_commods:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">std::vector&lt;std::string&gt;</span></tt></p>
+<tr class="field-odd field"><th class="field-name">fill_commods:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">std::vector&lt;std::string&gt;</span></code></p>
 <p>Ordered list of commodities on which to requesting filler stream material.</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;fill_commods&gt;</span>
-    <span class="nt">&lt;val&gt;</span>[incommodity]<span class="nt">&lt;/val&gt;</span>
-    <span class="nt">&lt;val&gt;</span>[incommodity]<span class="nt">&lt;/val&gt;</span>
-    ...
+<p><strong>XML:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;fill_commods&gt;</span>
+  <span class="nt">&lt;val&gt;</span>[incommodity]<span class="nt">&lt;/val&gt;</span>
+  <span class="nt">&lt;val&gt;</span>[incommodity]<span class="nt">&lt;/val&gt;</span>
+  ...
 <span class="nt">&lt;/fill_commods&gt;</span>
+</pre></div>
+</div>
+<p><strong>JSON:</strong></p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;fill_commods&quot;</span><span class="p p-Indicator">:</span>  <span class="p p-Indicator">{</span><span class="s">&quot;val&quot;</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span>
+   <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">,</span>
+   <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">,</span>
+   <span class="nv">...</span>
+<span class="p p-Indicator">]}}</span>
 </pre></div>
 </div>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name" colspan="2">fill_commod_prefs:</th></tr>
-<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">std::vector&lt;double&gt;</span></tt>, optional (default=[])</p>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">std::vector&lt;double&gt;</span></code>, optional (default=[])</p>
 <p>Filler stream commodity request preferences for each of the given filler commodities (same order). If unspecified, default is to use 1.0 for all preferences.</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;fill_commod_prefs&gt;</span>
-    <span class="nt">&lt;val&gt;</span>[double]<span class="nt">&lt;/val&gt;</span>
-    <span class="nt">&lt;val&gt;</span>[double]<span class="nt">&lt;/val&gt;</span>
-    ...
+<p><strong>XML:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;fill_commod_prefs&gt;</span>
+  <span class="nt">&lt;val&gt;</span>[double]<span class="nt">&lt;/val&gt;</span>
+  <span class="nt">&lt;val&gt;</span>[double]<span class="nt">&lt;/val&gt;</span>
+  ...
 <span class="nt">&lt;/fill_commod_prefs&gt;</span>
 </pre></div>
 </div>
+<p><strong>JSON:</strong></p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;fill_commod_prefs&quot;</span><span class="p p-Indicator">:</span>  <span class="p p-Indicator">{</span><span class="s">&quot;val&quot;</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span>
+   <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">,</span>
+   <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">,</span>
+   <span class="nv">...</span>
+<span class="p p-Indicator">]}}</span>
+</pre></div>
+</div>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">fill_recipe:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">std::string</span></tt></p>
+<tr class="field-odd field"><th class="field-name">fill_recipe:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">std::string</span></code></p>
 <p>Name of recipe to be used in filler material stream requests.</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;fill_recipe&gt;</span>[recipe]<span class="nt">&lt;/fill_recipe&gt;</span>
+<p><strong>XML:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;fill_recipe&gt;</span>[recipe]<span class="nt">&lt;/fill_recipe&gt;</span>
+</pre></div>
+</div>
+<p><strong>JSON:</strong></p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;fill_recipe&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">}</span>  <span class="c1"># recipe</span>
 </pre></div>
 </div>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">fill_size:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">double</span></tt></p>
+<tr class="field-even field"><th class="field-name">fill_size:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">double</span></code></p>
 <p>Size of filler material stream inventory.</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;fill_size&gt;</span>[double ( kg )]<span class="nt">&lt;/fill_size&gt;</span>
+<p><strong>XML:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;fill_size&gt;</span>[double ( kg )]<span class="nt">&lt;/fill_size&gt;</span>
+</pre></div>
+</div>
+<p><strong>JSON:</strong></p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;fill_size&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">}</span>  <span class="c1"># double, kg</span>
 </pre></div>
 </div>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">fiss_commods:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">std::vector&lt;std::string&gt;</span></tt></p>
+<tr class="field-odd field"><th class="field-name">fiss_commods:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">std::vector&lt;std::string&gt;</span></code></p>
 <p>Ordered list of commodities on which to requesting fissile stream material.</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;fiss_commods&gt;</span>
-    <span class="nt">&lt;val&gt;</span>[incommodity]<span class="nt">&lt;/val&gt;</span>
-    <span class="nt">&lt;val&gt;</span>[incommodity]<span class="nt">&lt;/val&gt;</span>
-    ...
+<p><strong>XML:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;fiss_commods&gt;</span>
+  <span class="nt">&lt;val&gt;</span>[incommodity]<span class="nt">&lt;/val&gt;</span>
+  <span class="nt">&lt;val&gt;</span>[incommodity]<span class="nt">&lt;/val&gt;</span>
+  ...
 <span class="nt">&lt;/fiss_commods&gt;</span>
+</pre></div>
+</div>
+<p><strong>JSON:</strong></p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;fiss_commods&quot;</span><span class="p p-Indicator">:</span>  <span class="p p-Indicator">{</span><span class="s">&quot;val&quot;</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span>
+   <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">,</span>
+   <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">,</span>
+   <span class="nv">...</span>
+<span class="p p-Indicator">]}}</span>
 </pre></div>
 </div>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name" colspan="2">fiss_commod_prefs:</th></tr>
-<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">std::vector&lt;double&gt;</span></tt>, optional (default=[])</p>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">std::vector&lt;double&gt;</span></code>, optional (default=[])</p>
 <p>Fissile stream commodity request preferences for each of the given fissile commodities (same order). If unspecified, default is to use 1.0 for all preferences.</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;fiss_commod_prefs&gt;</span>
-    <span class="nt">&lt;val&gt;</span>[double]<span class="nt">&lt;/val&gt;</span>
-    <span class="nt">&lt;val&gt;</span>[double]<span class="nt">&lt;/val&gt;</span>
-    ...
+<p><strong>XML:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;fiss_commod_prefs&gt;</span>
+  <span class="nt">&lt;val&gt;</span>[double]<span class="nt">&lt;/val&gt;</span>
+  <span class="nt">&lt;val&gt;</span>[double]<span class="nt">&lt;/val&gt;</span>
+  ...
 <span class="nt">&lt;/fiss_commod_prefs&gt;</span>
 </pre></div>
 </div>
+<p><strong>JSON:</strong></p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;fiss_commod_prefs&quot;</span><span class="p p-Indicator">:</span>  <span class="p p-Indicator">{</span><span class="s">&quot;val&quot;</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span>
+   <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">,</span>
+   <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">,</span>
+   <span class="nv">...</span>
+<span class="p p-Indicator">]}}</span>
+</pre></div>
+</div>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">fiss_recipe:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">std::string</span></tt>, optional (default=&#8221;&#8221;)</p>
+<tr class="field-odd field"><th class="field-name">fiss_recipe:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">std::string</span></code>, optional (default=&#8221;&#8221;)</p>
 <p>Name for recipe to be used in fissile stream requests. Empty string results in use of an empty dummy recipe.</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;fiss_recipe&gt;</span>[recipe]<span class="nt">&lt;/fiss_recipe&gt;</span>
+<p><strong>XML:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;fiss_recipe&gt;</span>[recipe]<span class="nt">&lt;/fiss_recipe&gt;</span>
+</pre></div>
+</div>
+<p><strong>JSON:</strong></p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;fiss_recipe&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;&quot;</span><span class="p p-Indicator">}</span>  <span class="c1"># recipe</span>
 </pre></div>
 </div>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">fiss_size:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">double</span></tt></p>
+<tr class="field-even field"><th class="field-name">fiss_size:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">double</span></code></p>
 <p>Size of fissile material stream inventory.</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;fiss_size&gt;</span>[double ( kg )]<span class="nt">&lt;/fiss_size&gt;</span>
+<p><strong>XML:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;fiss_size&gt;</span>[double ( kg )]<span class="nt">&lt;/fiss_size&gt;</span>
+</pre></div>
+</div>
+<p><strong>JSON:</strong></p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;fiss_size&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">}</span>  <span class="c1"># double, kg</span>
 </pre></div>
 </div>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">topup_commod:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">std::string</span></tt>, optional (default=&#8221;&#8221;)</p>
+<tr class="field-odd field"><th class="field-name">topup_commod:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">std::string</span></code>, optional (default=&#8221;&#8221;)</p>
 <p>Commodity on which to request material for top-up stream. This MUST be set if &#8216;topup_size &gt; 0&#8217;.</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;topup_commod&gt;</span>[incommodity]<span class="nt">&lt;/topup_commod&gt;</span>
+<p><strong>XML:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;topup_commod&gt;</span>[incommodity]<span class="nt">&lt;/topup_commod&gt;</span>
+</pre></div>
+</div>
+<p><strong>JSON:</strong></p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;topup_commod&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;&quot;</span><span class="p p-Indicator">}</span>  <span class="c1"># incommodity</span>
 </pre></div>
 </div>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">topup_pref:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">double</span></tt>, optional (default=1.0)</p>
+<tr class="field-even field"><th class="field-name">topup_pref:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">double</span></code>, optional (default=1.0)</p>
 <p>Top-up material stream request preference.</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;topup_pref&gt;</span>[double]<span class="nt">&lt;/topup_pref&gt;</span>
+<p><strong>XML:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;topup_pref&gt;</span>[double]<span class="nt">&lt;/topup_pref&gt;</span>
+</pre></div>
+</div>
+<p><strong>JSON:</strong></p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;topup_pref&quot;</span><span class="p p-Indicator">:</span> <span class="nv">1.0</span><span class="p p-Indicator">}</span>  <span class="c1"># double</span>
 </pre></div>
 </div>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">topup_recipe:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">std::string</span></tt>, optional (default=&#8221;&#8221;)</p>
+<tr class="field-odd field"><th class="field-name">topup_recipe:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">std::string</span></code>, optional (default=&#8221;&#8221;)</p>
 <p>Name of recipe to be used in top-up material stream requests. This MUST be set if &#8216;topup_size &gt; 0&#8217;.</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;topup_recipe&gt;</span>[recipe]<span class="nt">&lt;/topup_recipe&gt;</span>
+<p><strong>XML:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;topup_recipe&gt;</span>[recipe]<span class="nt">&lt;/topup_recipe&gt;</span>
+</pre></div>
+</div>
+<p><strong>JSON:</strong></p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;topup_recipe&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;&quot;</span><span class="p p-Indicator">}</span>  <span class="c1"># recipe</span>
 </pre></div>
 </div>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">topup_size:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">double</span></tt>, optional (default=0)</p>
+<tr class="field-even field"><th class="field-name">topup_size:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">double</span></code>, optional (default=0)</p>
 <p>Size of top-up material stream inventory.</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;topup_size&gt;</span>[double ( kg )]<span class="nt">&lt;/topup_size&gt;</span>
+<p><strong>XML:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;topup_size&gt;</span>[double ( kg )]<span class="nt">&lt;/topup_size&gt;</span>
+</pre></div>
+</div>
+<p><strong>JSON:</strong></p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;topup_size&quot;</span><span class="p p-Indicator">:</span> <span class="nv">0</span><span class="p p-Indicator">}</span>  <span class="c1"># double, kg</span>
 </pre></div>
 </div>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">outcommod:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">std::string</span></tt></p>
+<tr class="field-odd field"><th class="field-name">outcommod:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">std::string</span></code></p>
 <p>Commodity on which to offer/supply mixed fuel material.</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;outcommod&gt;</span>[outcommodity]<span class="nt">&lt;/outcommod&gt;</span>
+<p><strong>XML:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;outcommod&gt;</span>[outcommodity]<span class="nt">&lt;/outcommod&gt;</span>
+</pre></div>
+</div>
+<p><strong>JSON:</strong></p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;outcommod&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">}</span>  <span class="c1"># outcommodity</span>
 </pre></div>
 </div>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">throughput:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">double</span></tt></p>
+<tr class="field-even field"><th class="field-name">throughput:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">double</span></code></p>
 <p>Maximum number of kg of fuel material that can be supplied per time step.</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;throughput&gt;</span>[double ( kg )]<span class="nt">&lt;/throughput&gt;</span>
+<p><strong>XML:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;throughput&gt;</span>[double ( kg )]<span class="nt">&lt;/throughput&gt;</span>
+</pre></div>
+</div>
+<p><strong>JSON:</strong></p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;throughput&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">}</span>  <span class="c1"># double, kg</span>
 </pre></div>
 </div>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">spectrum:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">std::string</span></tt></p>
+<tr class="field-odd field"><th class="field-name">spectrum:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">std::string</span></code></p>
 <p>The type of cross-sections to use for composition property calculation. Use &#8216;fission_spectrum_ave&#8217; for fast reactor compositions or &#8216;thermal&#8217; for thermal reactors.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">categorical:</th><td class="field-body">[u&#8217;fission_spectrum_ave&#8217;, u&#8217;thermal&#8217;]</td>
+<tr class="field-odd field"><th class="field-name">categorical:</th><td class="field-body">[&#8216;fission_spectrum_ave&#8217;, &#8216;thermal&#8217;]</td>
 </tr>
 </tbody>
 </table>
-<div class="last highlight-xml"><div class="highlight"><pre><span class="nt">&lt;spectrum&gt;</span>[string]<span class="nt">&lt;/spectrum&gt;</span>
+<p><strong>XML:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;spectrum&gt;</span>[string]<span class="nt">&lt;/spectrum&gt;</span>
+</pre></div>
+</div>
+<p><strong>JSON:</strong></p>
+<div class="last highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;spectrum&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">}</span>  <span class="c1"># string</span>
 </pre></div>
 </div>
 </td>
@@ -1181,14 +1601,14 @@ specified commodities.</div></blockquote>
 <ul class="simple">
 <li><strong>Full Archetype Name</strong>: cycamore::FuelFab</li>
 <li><strong>Simulation Entity Type</strong>: facility</li>
-<li><strong>Interfaces</strong>: [cyclus::Facility]</li>
-<li><strong>All Interfaces</strong>: [cyclus::Agent, cyclus::Facility, cyclus::Ider, cyclus::StateWrangler, cyclus::TimeListener, cyclus::Trader]</li>
+<li><strong>Interfaces</strong>: [&#8216;cyclus::Facility&#8217;]</li>
+<li><strong>All Interfaces</strong>: [&#8216;cyclus::Agent&#8217;, &#8216;cyclus::Facility&#8217;, &#8216;cyclus::Ider&#8217;, &#8216;cyclus::StateWrangler&#8217;, &#8216;cyclus::TimeListener&#8217;, &#8216;cyclus::Trader&#8217;]</li>
 <li><strong>niche</strong>: fabrication</li>
 </ul>
 </div>
 <div class="section" id="id16">
 <h3>XML Input Schema<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;interleave&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;interleave&gt;</span>
     <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;fill_commods&quot;</span><span class="nt">&gt;</span>
         <span class="nt">&lt;oneOrMore&gt;</span>
             <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;val&quot;</span><span class="nt">&gt;</span>
@@ -1279,46 +1699,82 @@ specified commodities.</div></blockquote>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">prototypes:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">std::vector&lt;std::string&gt;</span></tt></p>
+<tr class="field-odd field"><th class="field-name">prototypes:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">std::vector&lt;std::string&gt;</span></code></p>
 <p>Ordered list of prototypes to build.</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;prototypes&gt;</span>
-    <span class="nt">&lt;val&gt;</span>[prototype]<span class="nt">&lt;/val&gt;</span>
-    <span class="nt">&lt;val&gt;</span>[prototype]<span class="nt">&lt;/val&gt;</span>
-    ...
+<p><strong>XML:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;prototypes&gt;</span>
+  <span class="nt">&lt;val&gt;</span>[prototype]<span class="nt">&lt;/val&gt;</span>
+  <span class="nt">&lt;val&gt;</span>[prototype]<span class="nt">&lt;/val&gt;</span>
+  ...
 <span class="nt">&lt;/prototypes&gt;</span>
 </pre></div>
 </div>
+<p><strong>JSON:</strong></p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;prototypes&quot;</span><span class="p p-Indicator">:</span>  <span class="p p-Indicator">{</span><span class="s">&quot;val&quot;</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span>
+   <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">,</span>
+   <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">,</span>
+   <span class="nv">...</span>
+<span class="p p-Indicator">]}}</span>
+</pre></div>
+</div>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">build_times:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">std::vector&lt;int&gt;</span></tt></p>
+<tr class="field-even field"><th class="field-name">build_times:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">std::vector&lt;int&gt;</span></code></p>
 <p>Time step on which to deploy agents given in prototype list (same order).</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;build_times&gt;</span>
-    <span class="nt">&lt;val&gt;</span>[int]<span class="nt">&lt;/val&gt;</span>
-    <span class="nt">&lt;val&gt;</span>[int]<span class="nt">&lt;/val&gt;</span>
-    ...
+<p><strong>XML:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;build_times&gt;</span>
+  <span class="nt">&lt;val&gt;</span>[int]<span class="nt">&lt;/val&gt;</span>
+  <span class="nt">&lt;val&gt;</span>[int]<span class="nt">&lt;/val&gt;</span>
+  ...
 <span class="nt">&lt;/build_times&gt;</span>
 </pre></div>
 </div>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">n_build:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">std::vector&lt;int&gt;</span></tt></p>
-<p>Number of each prototype given in prototype list that should be deployed (same order).</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;n_build&gt;</span>
-    <span class="nt">&lt;val&gt;</span>[int]<span class="nt">&lt;/val&gt;</span>
-    <span class="nt">&lt;val&gt;</span>[int]<span class="nt">&lt;/val&gt;</span>
-    ...
-<span class="nt">&lt;/n_build&gt;</span>
+<p><strong>JSON:</strong></p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;build_times&quot;</span><span class="p p-Indicator">:</span>  <span class="p p-Indicator">{</span><span class="s">&quot;val&quot;</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span>
+   <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">,</span>
+   <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">,</span>
+   <span class="nv">...</span>
+<span class="p p-Indicator">]}}</span>
 </pre></div>
 </div>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">lifetimes:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">std::vector&lt;int&gt;</span></tt>, optional (default=[])</p>
+<tr class="field-odd field"><th class="field-name">n_build:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">std::vector&lt;int&gt;</span></code></p>
+<p>Number of each prototype given in prototype list that should be deployed (same order).</p>
+<p><strong>XML:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;n_build&gt;</span>
+  <span class="nt">&lt;val&gt;</span>[int]<span class="nt">&lt;/val&gt;</span>
+  <span class="nt">&lt;val&gt;</span>[int]<span class="nt">&lt;/val&gt;</span>
+  ...
+<span class="nt">&lt;/n_build&gt;</span>
+</pre></div>
+</div>
+<p><strong>JSON:</strong></p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;n_build&quot;</span><span class="p p-Indicator">:</span>  <span class="p p-Indicator">{</span><span class="s">&quot;val&quot;</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span>
+   <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">,</span>
+   <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">,</span>
+   <span class="nv">...</span>
+<span class="p p-Indicator">]}}</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">lifetimes:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">std::vector&lt;int&gt;</span></code>, optional (default=[])</p>
 <p>Lifetimes for each prototype in prototype list (same order). These lifetimes override the lifetimes in the original prototype definition. If unspecified, lifetimes from the original prototype definitions are used. Although a new prototype is created in the Prototypes table for each lifetime with the suffix &#8216;_life_[lifetime]&#8217;, all deployed agents themselves will have the same original prototype name (and so will the Agents tables).</p>
-<div class="last highlight-xml"><div class="highlight"><pre><span class="nt">&lt;lifetimes&gt;</span>
-    <span class="nt">&lt;val&gt;</span>[int]<span class="nt">&lt;/val&gt;</span>
-    <span class="nt">&lt;val&gt;</span>[int]<span class="nt">&lt;/val&gt;</span>
-    ...
+<p><strong>XML:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;lifetimes&gt;</span>
+  <span class="nt">&lt;val&gt;</span>[int]<span class="nt">&lt;/val&gt;</span>
+  <span class="nt">&lt;val&gt;</span>[int]<span class="nt">&lt;/val&gt;</span>
+  ...
 <span class="nt">&lt;/lifetimes&gt;</span>
+</pre></div>
+</div>
+<p><strong>JSON:</strong></p>
+<div class="last highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;lifetimes&quot;</span><span class="p p-Indicator">:</span>  <span class="p p-Indicator">{</span><span class="s">&quot;val&quot;</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span>
+   <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">,</span>
+   <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">,</span>
+   <span class="nv">...</span>
+<span class="p p-Indicator">]}}</span>
 </pre></div>
 </div>
 </td>
@@ -1331,13 +1787,13 @@ specified commodities.</div></blockquote>
 <ul class="simple">
 <li><strong>Full Archetype Name</strong>: cycamore::DeployInst</li>
 <li><strong>Simulation Entity Type</strong>: institution</li>
-<li><strong>Interfaces</strong>: [cyclus::Institution]</li>
-<li><strong>All Interfaces</strong>: [cyclus::Agent, cyclus::Ider, cyclus::Institution, cyclus::StateWrangler, cyclus::TimeListener]</li>
+<li><strong>Interfaces</strong>: [&#8216;cyclus::Institution&#8217;]</li>
+<li><strong>All Interfaces</strong>: [&#8216;cyclus::Agent&#8217;, &#8216;cyclus::Ider&#8217;, &#8216;cyclus::Institution&#8217;, &#8216;cyclus::StateWrangler&#8217;, &#8216;cyclus::TimeListener&#8217;]</li>
 </ul>
 </div>
 <div class="section" id="id19">
 <h3>XML Input Schema<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;interleave&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;interleave&gt;</span>
     <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;prototypes&quot;</span><span class="nt">&gt;</span>
         <span class="nt">&lt;oneOrMore&gt;</span>
             <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;val&quot;</span><span class="nt">&gt;</span>
@@ -1383,13 +1839,22 @@ specified commodities.</div></blockquote>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">prototypes:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">std::vector&lt;std::string&gt;</span></tt></p>
+<tr class="field-odd field"><th class="field-name">prototypes:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">std::vector&lt;std::string&gt;</span></code></p>
 <p>A set of facility prototypes that this institution can build. All prototypes in this list must be based on an archetype that implements the cyclus::toolkit::CommodityProducer interface</p>
-<div class="last highlight-xml"><div class="highlight"><pre><span class="nt">&lt;prototypes&gt;</span>
-    <span class="nt">&lt;val&gt;</span>[prototype]<span class="nt">&lt;/val&gt;</span>
-    <span class="nt">&lt;val&gt;</span>[prototype]<span class="nt">&lt;/val&gt;</span>
-    ...
+<p><strong>XML:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;prototypes&gt;</span>
+  <span class="nt">&lt;val&gt;</span>[prototype]<span class="nt">&lt;/val&gt;</span>
+  <span class="nt">&lt;val&gt;</span>[prototype]<span class="nt">&lt;/val&gt;</span>
+  ...
 <span class="nt">&lt;/prototypes&gt;</span>
+</pre></div>
+</div>
+<p><strong>JSON:</strong></p>
+<div class="last highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;prototypes&quot;</span><span class="p p-Indicator">:</span>  <span class="p p-Indicator">{</span><span class="s">&quot;val&quot;</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span>
+   <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">,</span>
+   <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">,</span>
+   <span class="nv">...</span>
+<span class="p p-Indicator">]}}</span>
 </pre></div>
 </div>
 </td>
@@ -1402,13 +1867,13 @@ specified commodities.</div></blockquote>
 <ul class="simple">
 <li><strong>Full Archetype Name</strong>: cycamore::ManagerInst</li>
 <li><strong>Simulation Entity Type</strong>: institution</li>
-<li><strong>Interfaces</strong>: [cyclus::Institution, cyclus::toolkit::Builder, cyclus::toolkit::CommodityProducerManager]</li>
-<li><strong>All Interfaces</strong>: [cyclus::Agent, cyclus::Ider, cyclus::Institution, cyclus::StateWrangler, cyclus::TimeListener, cyclus::toolkit::AgentManaged, cyclus::toolkit::Builder, cyclus::toolkit::CommodityProducerManager]</li>
+<li><strong>Interfaces</strong>: [&#8216;cyclus::Institution&#8217;, &#8216;cyclus::toolkit::Builder&#8217;, &#8216;cyclus::toolkit::CommodityProducerManager&#8217;]</li>
+<li><strong>All Interfaces</strong>: [&#8216;cyclus::Agent&#8217;, &#8216;cyclus::Ider&#8217;, &#8216;cyclus::Institution&#8217;, &#8216;cyclus::StateWrangler&#8217;, &#8216;cyclus::TimeListener&#8217;, &#8216;cyclus::toolkit::AgentManaged&#8217;, &#8216;cyclus::toolkit::Builder&#8217;, &#8216;cyclus::toolkit::CommodityProducerManager&#8217;]</li>
 </ul>
 </div>
 <div class="section" id="id22">
 <h3>XML Input Schema<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;interleave&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;interleave&gt;</span>
     <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;prototypes&quot;</span><span class="nt">&gt;</span>
         <span class="nt">&lt;oneOrMore&gt;</span>
             <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;val&quot;</span><span class="nt">&gt;</span>
@@ -1431,61 +1896,105 @@ specified commodities.</div></blockquote>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">growth:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">std::map&lt;std::string,</span> <span class="pre">std::vector&lt;std::pair&lt;int,</span> <span class="pre">std::pair&lt;std::string,</span> <span class="pre">std::string&gt;&gt;&gt;&gt;</span></tt></p>
+<tr class="field-odd field"><th class="field-name">growth:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">std::map&lt;std::string,</span> <span class="pre">std::vector&lt;std::pair&lt;int,</span> <span class="pre">std::pair&lt;std::string,</span> <span class="pre">std::string&gt;&gt;&gt;&gt;</span></code></p>
 <p>Nameplate capacity demand functions.</p>
 <p>Each demand type must be for a commodity for which capacity can be built (e.g., &#8216;power&#8217; from cycamore::Reactors). Any archetype that implements the cyclus::toolkit::CommodityProducer interface can interact with the GrowthRegion in the manner.</p>
 <p>Demand functions are defined as piecewise functions. Each piece must be provided a starting time and function description. Each function description is comprised of a function type and associated parameters.</p>
 <blockquote>
 <div><ul class="simple">
-<li>Start times are inclusive. For a start time <img class="math" src="../_images/math/fb761c2e199ad45ccf14767f48b88169479d840f.png" alt="t_0"/>, the demand function is evaluated on <img class="math" src="../_images/math/b35b54a60150f7223f006776d44d8c2233682acd.png" alt="[t_0, \infty)"/>.</li>
+<li>Start times are inclusive. For a start time <span class="math">t_0</span>, the demand function is evaluated on <span class="math">[t_0, \infty)</span>.</li>
 <li>Supported function types are based on the <a class="reference external" href="http://fuelcycle.org/cyclus/api/classcyclus_1_1toolkit_1_1BasicFunctionFactory.html#a2f3806305d99a745ab57c300e54a603d">cyclus::toolkit::BasicFunctionFactory types</a>.</li>
 <li>The type name is the lower-case name of the function (e.g., &#8216;linear&#8217;, &#8216;exponential&#8217;, etc.).</li>
 <li>The parameters associated with each function type can be found on their respective documentation pages.</li>
 </ul>
 </div></blockquote>
-<div class="last highlight-xml"><div class="highlight"><pre><span class="nt">&lt;growth&gt;</span>
-    <span class="nt">&lt;item&gt;</span>
-        <span class="nt">&lt;commod&gt;</span>[string]<span class="nt">&lt;/commod&gt;</span>
-        <span class="nt">&lt;piecewise_function&gt;</span>
-            <span class="nt">&lt;piece&gt;</span>
-                <span class="nt">&lt;start&gt;</span>[int]<span class="nt">&lt;/start&gt;</span>
-                <span class="nt">&lt;function&gt;</span>
-                    <span class="nt">&lt;type&gt;</span>[string]<span class="nt">&lt;/type&gt;</span>
-                    <span class="nt">&lt;params&gt;</span>[string]<span class="nt">&lt;/params&gt;</span>
-                <span class="nt">&lt;/function&gt;</span>
-            <span class="nt">&lt;/piece&gt;</span>
-            <span class="nt">&lt;piece&gt;</span>
-                <span class="nt">&lt;start&gt;</span>[int]<span class="nt">&lt;/start&gt;</span>
-                <span class="nt">&lt;function&gt;</span>
-                    <span class="nt">&lt;type&gt;</span>[string]<span class="nt">&lt;/type&gt;</span>
-                    <span class="nt">&lt;params&gt;</span>[string]<span class="nt">&lt;/params&gt;</span>
-                <span class="nt">&lt;/function&gt;</span>
-            <span class="nt">&lt;/piece&gt;</span>
-            ...
-        <span class="nt">&lt;/piecewise_function&gt;</span>
-    <span class="nt">&lt;/item&gt;</span>
-    <span class="nt">&lt;item&gt;</span>
-        <span class="nt">&lt;commod&gt;</span>[string]<span class="nt">&lt;/commod&gt;</span>
-        <span class="nt">&lt;piecewise_function&gt;</span>
-            <span class="nt">&lt;piece&gt;</span>
-                <span class="nt">&lt;start&gt;</span>[int]<span class="nt">&lt;/start&gt;</span>
-                <span class="nt">&lt;function&gt;</span>
-                    <span class="nt">&lt;type&gt;</span>[string]<span class="nt">&lt;/type&gt;</span>
-                    <span class="nt">&lt;params&gt;</span>[string]<span class="nt">&lt;/params&gt;</span>
-                <span class="nt">&lt;/function&gt;</span>
-            <span class="nt">&lt;/piece&gt;</span>
-            <span class="nt">&lt;piece&gt;</span>
-                <span class="nt">&lt;start&gt;</span>[int]<span class="nt">&lt;/start&gt;</span>
-                <span class="nt">&lt;function&gt;</span>
-                    <span class="nt">&lt;type&gt;</span>[string]<span class="nt">&lt;/type&gt;</span>
-                    <span class="nt">&lt;params&gt;</span>[string]<span class="nt">&lt;/params&gt;</span>
-                <span class="nt">&lt;/function&gt;</span>
-            <span class="nt">&lt;/piece&gt;</span>
-            ...
-        <span class="nt">&lt;/piecewise_function&gt;</span>
-    <span class="nt">&lt;/item&gt;</span>
-    ...
+<p><strong>XML:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;growth&gt;</span>
+  <span class="nt">&lt;item&gt;</span>
+    <span class="nt">&lt;commod&gt;</span>[string]<span class="nt">&lt;/commod&gt;</span>
+    <span class="nt">&lt;piecewise_function&gt;</span>
+      <span class="nt">&lt;piece&gt;</span>
+        <span class="nt">&lt;start&gt;</span>[int]<span class="nt">&lt;/start&gt;</span>
+        <span class="nt">&lt;function&gt;</span>
+          <span class="nt">&lt;type&gt;</span>[string]<span class="nt">&lt;/type&gt;</span>
+          <span class="nt">&lt;params&gt;</span>[string]<span class="nt">&lt;/params&gt;</span>
+        <span class="nt">&lt;/function&gt;</span>
+      <span class="nt">&lt;/piece&gt;</span>
+      <span class="nt">&lt;piece&gt;</span>
+        <span class="nt">&lt;start&gt;</span>[int]<span class="nt">&lt;/start&gt;</span>
+        <span class="nt">&lt;function&gt;</span>
+          <span class="nt">&lt;type&gt;</span>[string]<span class="nt">&lt;/type&gt;</span>
+          <span class="nt">&lt;params&gt;</span>[string]<span class="nt">&lt;/params&gt;</span>
+        <span class="nt">&lt;/function&gt;</span>
+      <span class="nt">&lt;/piece&gt;</span>
+      ...
+    <span class="nt">&lt;/piecewise_function&gt;</span>
+  <span class="nt">&lt;/item&gt;</span>
+  <span class="nt">&lt;item&gt;</span>
+    <span class="nt">&lt;commod&gt;</span>[string]<span class="nt">&lt;/commod&gt;</span>
+    <span class="nt">&lt;piecewise_function&gt;</span>
+      <span class="nt">&lt;piece&gt;</span>
+        <span class="nt">&lt;start&gt;</span>[int]<span class="nt">&lt;/start&gt;</span>
+        <span class="nt">&lt;function&gt;</span>
+          <span class="nt">&lt;type&gt;</span>[string]<span class="nt">&lt;/type&gt;</span>
+          <span class="nt">&lt;params&gt;</span>[string]<span class="nt">&lt;/params&gt;</span>
+        <span class="nt">&lt;/function&gt;</span>
+      <span class="nt">&lt;/piece&gt;</span>
+      <span class="nt">&lt;piece&gt;</span>
+        <span class="nt">&lt;start&gt;</span>[int]<span class="nt">&lt;/start&gt;</span>
+        <span class="nt">&lt;function&gt;</span>
+          <span class="nt">&lt;type&gt;</span>[string]<span class="nt">&lt;/type&gt;</span>
+          <span class="nt">&lt;params&gt;</span>[string]<span class="nt">&lt;/params&gt;</span>
+        <span class="nt">&lt;/function&gt;</span>
+      <span class="nt">&lt;/piece&gt;</span>
+      ...
+    <span class="nt">&lt;/piecewise_function&gt;</span>
+  <span class="nt">&lt;/item&gt;</span>
+  ...
 <span class="nt">&lt;/growth&gt;</span>
+</pre></div>
+</div>
+<p><strong>JSON:</strong></p>
+<div class="last highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;growth&quot;</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">{</span>
+  <span class="s">&quot;item&quot;</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[{</span>
+    <span class="s">&quot;commod&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">,</span>
+    <span class="s">&quot;piecewise_function&quot;</span><span class="p p-Indicator">:</span>  <span class="p p-Indicator">{</span><span class="s">&quot;piece&quot;</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span>
+       <span class="p p-Indicator">{</span>
+        <span class="s">&quot;start&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">,</span>
+        <span class="s">&quot;function&quot;</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">{</span>
+          <span class="s">&quot;type&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">,</span>
+          <span class="s">&quot;params&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;&lt;required&gt;&quot;</span>
+          <span class="p p-Indicator">}</span>
+        <span class="p p-Indicator">},</span>
+       <span class="p p-Indicator">{</span>
+        <span class="s">&quot;start&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">,</span>
+        <span class="s">&quot;function&quot;</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">{</span>
+          <span class="s">&quot;type&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">,</span>
+          <span class="s">&quot;params&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;&lt;required&gt;&quot;</span>
+          <span class="p p-Indicator">}</span>
+        <span class="p p-Indicator">},</span>
+        <span class="nv">...</span>
+    <span class="p p-Indicator">]}},</span>
+    <span class="p p-Indicator">{</span><span class="s">&quot;commod&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">,</span>
+    <span class="s">&quot;piecewise_function&quot;</span><span class="p p-Indicator">:</span>  <span class="p p-Indicator">{</span><span class="s">&quot;piece&quot;</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span>
+       <span class="p p-Indicator">{</span>
+        <span class="s">&quot;start&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">,</span>
+        <span class="s">&quot;function&quot;</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">{</span>
+          <span class="s">&quot;type&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">,</span>
+          <span class="s">&quot;params&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;&lt;required&gt;&quot;</span>
+          <span class="p p-Indicator">}</span>
+        <span class="p p-Indicator">},</span>
+       <span class="p p-Indicator">{</span>
+        <span class="s">&quot;start&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">,</span>
+        <span class="s">&quot;function&quot;</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">{</span>
+          <span class="s">&quot;type&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">,</span>
+          <span class="s">&quot;params&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;&lt;required&gt;&quot;</span>
+          <span class="p p-Indicator">}</span>
+        <span class="p p-Indicator">},</span>
+        <span class="nv">...</span>
+    <span class="p p-Indicator">]}},</span>
+    <span class="nv">...</span>
+<span class="p p-Indicator">]}}</span>
 </pre></div>
 </div>
 </td>
@@ -1498,13 +2007,13 @@ specified commodities.</div></blockquote>
 <ul class="simple">
 <li><strong>Full Archetype Name</strong>: cycamore::GrowthRegion</li>
 <li><strong>Simulation Entity Type</strong>: region</li>
-<li><strong>Interfaces</strong>: [cyclus::Region]</li>
-<li><strong>All Interfaces</strong>: [cyclus::Agent, cyclus::Ider, cyclus::Region, cyclus::StateWrangler, cyclus::TimeListener]</li>
+<li><strong>Interfaces</strong>: [&#8216;cyclus::Region&#8217;]</li>
+<li><strong>All Interfaces</strong>: [&#8216;cyclus::Agent&#8217;, &#8216;cyclus::Ider&#8217;, &#8216;cyclus::Region&#8217;, &#8216;cyclus::StateWrangler&#8217;, &#8216;cyclus::TimeListener&#8217;]</li>
 </ul>
 </div>
 <div class="section" id="id25">
 <h3>XML Input Schema<a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;interleave&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;interleave&gt;</span>
     <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;growth&quot;</span><span class="nt">&gt;</span>
         <span class="nt">&lt;oneOrMore&gt;</span>
             <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;item&quot;</span><span class="nt">&gt;</span>
@@ -1548,7 +2057,7 @@ specified commodities.</div></blockquote>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
         <p class="logo"><a href="../index.html" title="index">
           <img class="logo" src="../_static/big_c.png" alt="Logo"/>
@@ -1640,7 +2149,7 @@ specified commodities.</div></blockquote>
     </ul></li></ul>
   </div>
     
-<div id="searchbox" style="display: none">
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
@@ -1648,9 +2157,6 @@ specified commodities.</div></blockquote>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
     <h3>Get Cyclus</h3>
@@ -1690,7 +2196,7 @@ specified commodities.</div></blockquote>
     </div>
     <div class="relbar-bottom">
         
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -1707,14 +2213,14 @@ specified commodities.</div></blockquote>
              >previous</a> &nbsp; &nbsp;</li>
     <li><a href="../index.html">Home</a> &raquo;</li>
 
-          <li><a href="index.html" ><span style="font-variant:small-caps;">Cyclus</span> User Guide</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="index.html" ><span style="font-variant:small-caps;">Cyclus</span> User Guide</a> &raquo;</li> 
       </ul>
     </div>
     </div>
 
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Jan 29, 2016.
+      Last updated on Apr 07, 2016.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");

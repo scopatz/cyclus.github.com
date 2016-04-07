@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '(1.3.1-153-gb86cf92)',
+        VERSION:     'b&#39;(1.3.0-rc4-52-gb86cf92)&#39;',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -49,10 +49,10 @@ if(ga_enabled){
 }
 </script>
   </head>
-  <body>
+  <body role="document">
     <div class="relbar-top">
         
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -69,7 +69,7 @@ if(ga_enabled){
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
     <li><a href="../index.html">Home</a> &raquo;</li>
 
-          <li><a href="index.html" accesskey="U"><span style="font-variant:small-caps;">Cyclus</span> Archetype Developer Guide</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U"><span style="font-variant:small-caps;">Cyclus</span> Archetype Developer Guide</a> &raquo;</li> 
       </ul>
     </div>
     </div>
@@ -78,7 +78,7 @@ if(ga_enabled){
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="initialization-and-restart">
 <h1>Initialization and Restart<a class="headerlink" href="#initialization-and-restart" title="Permalink to this headline">¶</a></h1>
@@ -88,11 +88,11 @@ running from XML input files, the <span style="font-variant:small-caps;">Cyclus<
 contents into the database and then initializes the simulation from the
 database.  In order for this to work correctly, agents must be able to record
 the entirety of their internal state to the database and able to restore that
-state exactly.  The <tt class="docutils literal"><span class="pre">cyclus::Agent</span></tt> class provides a group of functions in
+state exactly.  The <code class="docutils literal"><span class="pre">cyclus::Agent</span></code> class provides a group of functions in
 support of this functionality that must all be implemented carefully and
-consistently. If possible, the <a class="reference internal" href="cycpp.html"><em>Cyclus preprocessor</em></a> should be
+consistently. If possible, the <a class="reference internal" href="cycpp.html"><span class="doc">Cyclus preprocessor</span></a> should be
 used to automate the generation of code for the following functions:</p>
-<div class="highlight-c++"><div class="highlight"><pre><span class="kt">void</span> <span class="nf">InfileToDb</span><span class="p">(</span><span class="n">InfileTree</span><span class="o">*</span> <span class="n">tree</span><span class="p">,</span> <span class="n">DbInit</span> <span class="n">di</span><span class="p">);</span>
+<div class="highlight-c++"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">InfileToDb</span><span class="p">(</span><span class="n">InfileTree</span><span class="o">*</span> <span class="n">tree</span><span class="p">,</span> <span class="n">DbInit</span> <span class="n">di</span><span class="p">);</span>
 <span class="kt">void</span> <span class="nf">InitFrom</span><span class="p">(</span><span class="n">cyclus</span><span class="o">::</span><span class="n">QueryableBackend</span><span class="o">*</span><span class="p">);</span>
 <span class="kt">void</span> <span class="nf">InitInv</span><span class="p">(</span><span class="n">cyclus</span><span class="o">::</span><span class="n">Inventories</span><span class="o">&amp;</span> <span class="n">invs</span><span class="p">);</span>
 <span class="n">cyclus</span><span class="o">::</span><span class="n">Inventories</span> <span class="n">SnapshotInv</span><span class="p">();</span>
@@ -106,7 +106,7 @@ used to automate the generation of code for the following functions:</p>
 <p>When the preprocessor isn&#8217;t sufficient, read the <a class="reference external" href="http://fuelcycle.org/cyclus/api/classcyclus_1_1Agent.html">API documents</a> for the functions
 listed above VERY CAREFULLY. There are also a few other functions related to
 initialization that are important to understand well:</p>
-<div class="highlight-c++"><div class="highlight"><pre><span class="kt">void</span> <span class="nf">Build</span><span class="p">(</span><span class="n">cyclus</span><span class="o">::</span><span class="n">Agent</span><span class="o">*</span> <span class="n">parent</span><span class="p">);</span>
+<div class="highlight-c++"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">Build</span><span class="p">(</span><span class="n">cyclus</span><span class="o">::</span><span class="n">Agent</span><span class="o">*</span> <span class="n">parent</span><span class="p">);</span>
 <span class="kt">void</span> <span class="nf">EnterNotify</span><span class="p">();</span>
 <span class="kt">void</span> <span class="nf">BuildNotify</span><span class="p">(</span><span class="n">cyclus</span><span class="o">::</span><span class="n">Agent</span><span class="o">*</span> <span class="n">child</span><span class="p">);</span>
 <span class="kt">void</span> <span class="nf">Decommission</span><span class="p">(</span><span class="n">cyclus</span><span class="o">::</span><span class="n">Agent</span><span class="o">*</span> <span class="n">child</span><span class="p">);</span>
@@ -114,7 +114,7 @@ initialization that are important to understand well:</p>
 </div>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p class="last">The functions mentioned on this page (except <tt class="docutils literal"><span class="pre">void</span> <span class="pre">InitFrom(cyclus::Agent*)</span></tt>)
+<p class="last">The functions mentioned on this page (except <code class="docutils literal"><span class="pre">void</span> <span class="pre">InitFrom(cyclus::Agent*)</span></code>)
 should NEVER be invoked directly by agents.</p>
 </div>
 </div>
@@ -123,7 +123,7 @@ should NEVER be invoked directly by agents.</p>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
         <p class="logo"><a href="../index.html" title="index">
           <img class="logo" src="../_static/big_c.png" alt="Logo"/>
@@ -153,7 +153,7 @@ should NEVER be invoked directly by agents.</p>
     </ul></li></ul>
   </div>
     
-<div id="searchbox" style="display: none">
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
@@ -161,9 +161,6 @@ should NEVER be invoked directly by agents.</p>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
     <h3>Get Cyclus</h3>
@@ -203,7 +200,7 @@ should NEVER be invoked directly by agents.</p>
     </div>
     <div class="relbar-bottom">
         
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -220,14 +217,14 @@ should NEVER be invoked directly by agents.</p>
              >previous</a> &nbsp; &nbsp;</li>
     <li><a href="../index.html">Home</a> &raquo;</li>
 
-          <li><a href="index.html" ><span style="font-variant:small-caps;">Cyclus</span> Archetype Developer Guide</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="index.html" ><span style="font-variant:small-caps;">Cyclus</span> Archetype Developer Guide</a> &raquo;</li> 
       </ul>
     </div>
     </div>
 
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Jan 29, 2016.
+      Last updated on Apr 07, 2016.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");

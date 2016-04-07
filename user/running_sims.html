@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '(1.3.1-153-gb86cf92)',
+        VERSION:     'b&#39;(1.3.0-rc4-52-gb86cf92)&#39;',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -49,10 +49,10 @@ if(ga_enabled){
 }
 </script>
   </head>
-  <body>
+  <body role="document">
     <div class="relbar-top">
         
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -69,7 +69,7 @@ if(ga_enabled){
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
     <li><a href="../index.html">Home</a> &raquo;</li>
 
-          <li><a href="index.html" accesskey="U"><span style="font-variant:small-caps;">Cyclus</span> User Guide</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U"><span style="font-variant:small-caps;">Cyclus</span> User Guide</a> &raquo;</li> 
       </ul>
     </div>
     </div>
@@ -78,19 +78,19 @@ if(ga_enabled){
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="running-simulations">
 <h1>Running Simulations<a class="headerlink" href="#running-simulations" title="Permalink to this headline">¶</a></h1>
 <p>To run a simulation you must use the <span style="font-variant:small-caps;">Cyclus</span> command line utility:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>./path/to/cyclus <span class="o">[</span>options<span class="o">]</span> <span class="o">[</span>input-file<span class="o">]</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ ./path/to/cyclus <span class="o">[</span>options<span class="o">]</span> <span class="o">[</span>input-file<span class="o">]</span>
 </pre></div>
 </div>
 <p>For more information, please refer to the help:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>cyclus -h
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ cyclus -h
 Usage:   cyclus <span class="o">[</span>opts<span class="o">]</span> <span class="o">[</span>input-file<span class="o">]</span>
 
-  -h <span class="o">[</span> --help <span class="o">]</span>            produce <span class="nb">help </span>message
+  -h <span class="o">[</span> --help <span class="o">]</span>            produce <span class="nb">help</span> message
   -V <span class="o">[</span> --version <span class="o">]</span>         print cyclus core and dependency versions and quit
   --restart arg            restart from the specified simulation snapshot
                            <span class="o">[</span>db-file<span class="o">]</span>:<span class="o">[</span>sim-id<span class="o">]</span>:<span class="o">[</span>timestep<span class="o">]</span>
@@ -127,13 +127,13 @@ Usage:   cyclus <span class="o">[</span>opts<span class="o">]</span> <span class
 </div>
 <div class="section" id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>cyclus ./path/to/myinput.xml
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ cyclus ./path/to/myinput.xml
 
-<span class="nv">$ </span>cyclus -v LEV_DEBUG5 myinput.xml
+$ cyclus -v LEV_DEBUG5 myinput.xml
 
-<span class="nv">$ </span>cyclus -v LEV_INFO3 myinput.xml
+$ cyclus -v LEV_INFO3 myinput.xml
 
-<span class="nv">$ </span>cyclus -v <span class="m">4</span> myinput.xml
+$ cyclus -v <span class="m">4</span> myinput.xml
 </pre></div>
 </div>
 </div>
@@ -143,7 +143,7 @@ Usage:   cyclus <span class="o">[</span>opts<span class="o">]</span> <span class
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
         <p class="logo"><a href="../index.html" title="index">
           <img class="logo" src="../_static/big_c.png" alt="Logo"/>
@@ -182,7 +182,7 @@ Usage:   cyclus <span class="o">[</span>opts<span class="o">]</span> <span class
     </ul></li></ul>
   </div>
     
-<div id="searchbox" style="display: none">
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
@@ -190,9 +190,6 @@ Usage:   cyclus <span class="o">[</span>opts<span class="o">]</span> <span class
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
     <h3>Get Cyclus</h3>
@@ -232,7 +229,7 @@ Usage:   cyclus <span class="o">[</span>opts<span class="o">]</span> <span class
     </div>
     <div class="relbar-bottom">
         
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -249,14 +246,14 @@ Usage:   cyclus <span class="o">[</span>opts<span class="o">]</span> <span class
              >previous</a> &nbsp; &nbsp;</li>
     <li><a href="../index.html">Home</a> &raquo;</li>
 
-          <li><a href="index.html" ><span style="font-variant:small-caps;">Cyclus</span> User Guide</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="index.html" ><span style="font-variant:small-caps;">Cyclus</span> User Guide</a> &raquo;</li> 
       </ul>
     </div>
     </div>
 
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Jan 29, 2016.
+      Last updated on Apr 07, 2016.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");

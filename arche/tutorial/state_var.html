@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '(1.3.1-153-gb86cf92)',
+        VERSION:     'b&#39;(1.3.0-rc4-52-gb86cf92)&#39;',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -49,10 +49,10 @@ if(ga_enabled){
 }
 </script>
   </head>
-  <body>
+  <body role="document">
     <div class="relbar-top">
         
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -69,8 +69,8 @@ if(ga_enabled){
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
     <li><a href="../../index.html">Home</a> &raquo;</li>
 
-          <li><a href="../index.html" ><span style="font-variant:small-caps;">Cyclus</span> Archetype Developer Guide</a> &raquo;</li>
-          <li><a href="index.html" accesskey="U">Archetype Development Tutorial</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../index.html" ><span style="font-variant:small-caps;">Cyclus</span> Archetype Developer Guide</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">Archetype Development Tutorial</a> &raquo;</li> 
       </ul>
     </div>
     </div>
@@ -79,25 +79,25 @@ if(ga_enabled){
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="adding-state-variables">
 <h1>Adding State Variables<a class="headerlink" href="#adding-state-variables" title="Permalink to this headline">¶</a></h1>
 <p>In this lesson, we will:</p>
 <ol class="arabic simple">
 <li>Add the necessary state variables to define this facility using the Cyclus
-<tt class="docutils literal"><span class="pre">#pragma</span></tt> directives</li>
+<code class="docutils literal"><span class="pre">#pragma</span></code> directives</li>
 <li>Build and install the updated module</li>
 <li>Modify the sample input file to include these variables</li>
 </ol>
 <div class="section" id="add-state-variables-with-cyclus-pragma">
 <h2>Add State Variables with Cyclus #pragma<a class="headerlink" href="#add-state-variables-with-cyclus-pragma" title="Permalink to this headline">¶</a></h2>
-<p>The Cyclus preprocessor provides a <tt class="docutils literal"><span class="pre">#pragma</span></tt> that defines variables to
+<p>The Cyclus preprocessor provides a <code class="docutils literal"><span class="pre">#pragma</span></code> that defines variables to
 be part of the set of state variables and allows convenient annotations.</p>
-<p>First, we&#8217;ll add the maximum monthly transfer capacity, called <tt class="docutils literal"><span class="pre">throughput</span></tt>.
-Open the file <tt class="docutils literal"><span class="pre">src/storage.h</span></tt> in your text editor.</p>
-<p>Immediately after the declaration of <tt class="docutils literal"><span class="pre">Tock()</span></tt>, add the following:</p>
-<div class="highlight-c++"><div class="highlight"><pre><span class="cp">#pragma cyclus var { \</span>
+<p>First, we&#8217;ll add the maximum monthly transfer capacity, called <code class="docutils literal"><span class="pre">throughput</span></code>.
+Open the file <code class="docutils literal"><span class="pre">src/storage.h</span></code> in your text editor.</p>
+<p>Immediately after the declaration of <code class="docutils literal"><span class="pre">Tock()</span></code>, add the following:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span></span><span class="cp">#pragma cyclus var { \</span>
 <span class="cp">  &quot;doc&quot;: &quot;Maximum amount of material that can be transferred in or out each time step&quot;, \</span>
 <span class="cp">  &quot;tooltip&quot;: &quot;Maximum amount of material that can be transferred in or out each time step&quot;, \</span>
 <span class="cp">  &quot;units&quot;: &quot;kg&quot;, \</span>
@@ -108,7 +108,7 @@ Open the file <tt class="docutils literal"><span class="pre">src/storage.h</span
 </div>
 <p>Now, we&#8217;ll add variables for the minimum amount of time that material is
 stored and the input/output commodity names.</p>
-<div class="highlight-c++"><div class="highlight"><pre><span class="cp">#pragma cyclus var { \</span>
+<div class="highlight-c++"><div class="highlight"><pre><span></span><span class="cp">#pragma cyclus var { \</span>
 <span class="cp">  &quot;doc&quot;: &quot;Minimum amount of time material must be stored&quot;, \</span>
 <span class="cp">  &quot;tooltip&quot;: &quot;Minimum amount of time material must be stored&quot;, \</span>
 <span class="cp">  &quot;units&quot;: &quot;months&quot;, \</span>
@@ -137,7 +137,7 @@ stored and the input/output commodity names.</p>
 <div class="section" id="build-and-install-the-modified-module">
 <h2>Build and Install the Modified Module<a class="headerlink" href="#build-and-install-the-modified-module" title="Permalink to this headline">¶</a></h2>
 <p>To rebuild, reinstall, and test this module, just issue the same command as before:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> ./install.py
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> ./install.py
 <span class="gp">$</span> Storage_unit_tests
 </pre></div>
 </div>
@@ -147,7 +147,7 @@ stored and the input/output commodity names.</p>
 <p>If you try to run the same input file with your modified module, you will get
 errors because the sample input file no longer includes the necessary pieces
 to define your module.  It is missing the new variables.  Try it:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> cyclus -v <span class="m">2</span> input/storage.xml
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> cyclus -v <span class="m">2</span> input/storage.xml
 <span class="go">              :</span>
 <span class="go">          .CL:CC CC             _Q     _Q  _Q_Q    _Q    _Q              _Q</span>
 <span class="go">        CC;CCCCCCCC:C;         /_\)   /_\)/_/\\)  /_\)  /_\)            /_\)</span>
@@ -182,18 +182,18 @@ to define your module.  It is missing the new variables.  Try it:</p>
 </pre></div>
 </div>
 <p>The simulation now fails because it does not match the schema. You can view the schema with</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> cyclus --agent-schema tutorial:Storage:Storage
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> cyclus --agent-schema tutorial:Storage:Storage
 </pre></div>
 </div>
-<p>Notice that you were able to take advantage of the input file validation simply by using the <tt class="docutils literal"><span class="pre">#pragma</span></tt>.</p>
+<p>Notice that you were able to take advantage of the input file validation simply by using the <code class="docutils literal"><span class="pre">#pragma</span></code>.</p>
 <p>Our failed cyclus simulation produced an output file that will need to be deleted.</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> rm cyclus.sqlite
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> rm cyclus.sqlite
 </pre></div>
 </div>
-<p>Now, we&#8217;ll change that input file.  Open the file <tt class="docutils literal"><span class="pre">input/storage.xml</span></tt> in
+<p>Now, we&#8217;ll change that input file.  Open the file <code class="docutils literal"><span class="pre">input/storage.xml</span></code> in
 your text editor, and find the prototype configuration for the single facility
 named &#8220;OneFacility&#8221; that looks like this.</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;facility&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;facility&gt;</span>
   <span class="nt">&lt;name&gt;</span>OneFacility<span class="nt">&lt;/name&gt;</span>
   <span class="nt">&lt;config&gt;</span>
     <span class="nt">&lt;Storage</span> <span class="nt">/&gt;</span>
@@ -201,8 +201,8 @@ named &#8220;OneFacility&#8221; that looks like this.</p>
 <span class="nt">&lt;/facility&gt;</span>
 </pre></div>
 </div>
-<p>We need to replace the <tt class="docutils literal"><span class="pre">&lt;config&gt;</span></tt> element with this:</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;config&gt;</span>
+<p>We need to replace the <code class="docutils literal"><span class="pre">&lt;config&gt;</span></code> element with this:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;config&gt;</span>
   <span class="nt">&lt;Storage&gt;</span>
     <span class="nt">&lt;throughput&gt;</span>10<span class="nt">&lt;/throughput&gt;</span>
     <span class="nt">&lt;storage_time&gt;</span>1<span class="nt">&lt;/storage_time&gt;</span>
@@ -213,7 +213,7 @@ named &#8220;OneFacility&#8221; that looks like this.</p>
 </pre></div>
 </div>
 <p>Now we can try it again:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> cyclus -v <span class="m">2</span> input/storage.xml
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> cyclus -v <span class="m">2</span> input/storage.xml
 <span class="go">              :</span>
 <span class="go">          .CL:CC CC             _Q     _Q  _Q_Q    _Q    _Q              _Q</span>
 <span class="go">        CC;CCCCCCCC:C;         /_\)   /_\)/_/\\)  /_\)  /_\)            /_\)</span>
@@ -276,7 +276,7 @@ named &#8220;OneFacility&#8221; that looks like this.</p>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
         <p class="logo"><a href="../../index.html" title="index">
           <img class="logo" src="../../_static/big_c.png" alt="Logo"/>
@@ -317,7 +317,7 @@ named &#8220;OneFacility&#8221; that looks like this.</p>
     </ul></li></ul>
   </div>
     
-<div id="searchbox" style="display: none">
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../../search.html" method="get">
       <input type="text" name="q" />
@@ -325,9 +325,6 @@ named &#8220;OneFacility&#8221; that looks like this.</p>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
     <h3>Get Cyclus</h3>
@@ -367,7 +364,7 @@ named &#8220;OneFacility&#8221; that looks like this.</p>
     </div>
     <div class="relbar-bottom">
         
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -384,15 +381,15 @@ named &#8220;OneFacility&#8221; that looks like this.</p>
              >previous</a> &nbsp; &nbsp;</li>
     <li><a href="../../index.html">Home</a> &raquo;</li>
 
-          <li><a href="../index.html" ><span style="font-variant:small-caps;">Cyclus</span> Archetype Developer Guide</a> &raquo;</li>
-          <li><a href="index.html" >Archetype Development Tutorial</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../index.html" ><span style="font-variant:small-caps;">Cyclus</span> Archetype Developer Guide</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >Archetype Development Tutorial</a> &raquo;</li> 
       </ul>
     </div>
     </div>
 
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Jan 29, 2016.
+      Last updated on Apr 07, 2016.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");

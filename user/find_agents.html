@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '(1.3.1-153-gb86cf92)',
+        VERSION:     'b&#39;(1.3.0-rc4-52-gb86cf92)&#39;',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -49,10 +49,10 @@ if(ga_enabled){
 }
 </script>
   </head>
-  <body>
+  <body role="document">
     <div class="relbar-top">
         
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -69,7 +69,7 @@ if(ga_enabled){
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
     <li><a href="../index.html">Home</a> &raquo;</li>
 
-          <li><a href="index.html" accesskey="U"><span style="font-variant:small-caps;">Cyclus</span> User Guide</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U"><span style="font-variant:small-caps;">Cyclus</span> User Guide</a> &raquo;</li> 
       </ul>
     </div>
     </div>
@@ -78,11 +78,11 @@ if(ga_enabled){
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="archetype-identification-and-discovery">
 <h1>Archetype Identification and Discovery<a class="headerlink" href="#archetype-identification-and-discovery" title="Permalink to this headline">¶</a></h1>
-<p><span style="font-variant:small-caps;">Cyclus</span> <a class="reference internal" href="../basics/glossary.html#term-archetype"><em class="xref std std-term">archetypes</em></a> are uniquely identified by a 3-part
+<p><span style="font-variant:small-caps;">Cyclus</span> <a class="reference internal" href="../basics/glossary.html#term-archetype"><span class="xref std std-term">archetypes</span></a> are uniquely identified by a 3-part
 specification that includes:</p>
 <ul class="simple">
 <li>a slash separated path,</li>
@@ -99,9 +99,9 @@ named &#8220;agents&#8221; containing a few simple archetypes</p>
 <li>KFacility</li>
 <li>...and others...</li>
 </ul>
-<p>All archetypes used in a simulation must be defined in the <tt class="docutils literal"><span class="pre">archetypes</span></tt>
+<p>All archetypes used in a simulation must be defined in the <code class="docutils literal"><span class="pre">archetypes</span></code>
 section in the input file:</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;simulation&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;simulation&gt;</span>
 ...
 
   <span class="nt">&lt;archetypes&gt;</span>
@@ -122,10 +122,24 @@ section in the input file:</p>
 <span class="nt">&lt;/simulation&gt;</span>
 </pre></div>
 </div>
-<p>The <tt class="docutils literal"><span class="pre">path</span></tt> tag can be omitted if it is empty (as in the case of <span style="font-variant:small-caps;">Cyclus</span>&#8216;
-default agents library).  If the <tt class="docutils literal"><span class="pre">lib</span></tt> tag is omitted, it defaults to the
-value of the <tt class="docutils literal"><span class="pre">name</span></tt> tag. The <tt class="docutils literal"><span class="pre">alias</span></tt> tag may also be omitted, in which case
-it defaults to the value in the <tt class="docutils literal"><span class="pre">name</span></tt> tag.  If multiple archetypes have the
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;simulation&quot;</span><span class="p">:</span> <span class="p">{</span>
+   <span class="nt">&quot;archetypes&quot;</span><span class="p">:</span> <span class="p">{</span>
+     <span class="nt">&quot;spec&quot;</span><span class="p">:</span> <span class="p">{</span>
+       <span class="nt">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;lib&quot;</span><span class="p">:</span> <span class="s2">&quot;agents&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;KFacility&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;alias&quot;</span><span class="p">:</span> <span class="s2">&quot;myfac1&quot;</span> <span class="p">},</span>
+     <span class="nt">&quot;spec&quot;</span><span class="p">:</span> <span class="p">{</span>
+     <span class="p">}</span>
+   <span class="p">}</span>
+  <span class="p">}</span>
+ <span class="p">}</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">path</span></code> tag can be omitted if it is empty (as in the case of <span style="font-variant:small-caps;">Cyclus</span>&#8216;
+default agents library).  If the <code class="docutils literal"><span class="pre">lib</span></code> tag is omitted, it defaults to the
+value of the <code class="docutils literal"><span class="pre">name</span></code> tag. The <code class="docutils literal"><span class="pre">alias</span></code> tag may also be omitted, in which case
+it defaults to the value in the <code class="docutils literal"><span class="pre">name</span></code> tag.  If multiple archetypes have the
 same name, then aliases <em>must</em> be specified - no two aliases may have the same
 value (including defaults).  The values of the aliases are referenced later in
 the input file when defining facility prototypes, institutions, and regions.</p>
@@ -134,10 +148,10 @@ are separated by colons.  This form is used in places such as in the database
 and on the command line. For example, to print out the schema for an agent
 archetype on the command line (note the starting colon indicating an empty
 path):</p>
-<div class="highlight-bash"><div class="highlight"><pre>cyclus --agent-schema :agents:KFacility
+<div class="highlight-bash"><div class="highlight"><pre><span></span>cyclus --agent-schema :agents:KFacility
 </pre></div>
 </div>
-<p>For more details, you can read <a class="reference internal" href="../cep/cep21.html"><em>CEP 21 - Agent Identification and Discovery</em></a></p>
+<p>For more details, you can read <a class="reference internal" href="../cep/cep21.html"><span class="doc">CEP 21 - Agent Identification and Discovery</span></a></p>
 <div class="section" id="cyclus-path">
 <h2>Cyclus Path<a class="headerlink" href="#cyclus-path" title="Permalink to this headline">¶</a></h2>
 <p>When running a simulation, <span style="font-variant:small-caps;">Cyclus</span> searches your system for the archetypes
@@ -145,15 +159,15 @@ specified in the input file.  In addition to searching a few default install
 directories, it is possible to manually specify other directories for <span style="font-variant:small-caps;">Cyclus</span>
 to search by adding them as colon-separated entries to the CYCLUS_PATH
 environment variable.  For example:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nb">export </span><span class="nv">CYCLUS_PATH</span><span class="o">=</span>my/agent/lib/dir:/my/other/agent/dir
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">CYCLUS_PATH</span><span class="o">=</span>my/agent/lib/dir:/my/other/agent/dir
 </pre></div>
 </div>
-<p>Directories specified in your <tt class="docutils literal"><span class="pre">CYCLUS_PATH</span></tt> are searched <em>before</em> <span style="font-variant:small-caps;">Cyclus</span>&#8216;
-default search directories. <tt class="docutils literal"><span class="pre">CYCLUS_PATH</span></tt> directories mark the <em>starting
+<p>Directories specified in your <code class="docutils literal"><span class="pre">CYCLUS_PATH</span></code> are searched <em>before</em> <span style="font-variant:small-caps;">Cyclus</span>&#8216;
+default search directories. <code class="docutils literal"><span class="pre">CYCLUS_PATH</span></code> directories mark the <em>starting
 points</em> for archetype specifications.  This meaning that the path portion of an
 agent specification is appended to the CYCLUS_PATH directories.  For example
-using the above defined <tt class="docutils literal"><span class="pre">CYCLUS_PATH</span></tt>, <span style="font-variant:small-caps;">Cyclus</span> would search for:</p>
-<div class="highlight-python"><div class="highlight"><pre>my/path:myagentlib:MyAgent
+using the above defined <code class="docutils literal"><span class="pre">CYCLUS_PATH</span></code>, <span style="font-variant:small-caps;">Cyclus</span> would search for:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">my</span><span class="o">/</span><span class="n">path</span><span class="p">:</span><span class="n">myagentlib</span><span class="p">:</span><span class="n">MyAgent</span>
 </pre></div>
 </div>
 <p>In the following directories in order:</p>
@@ -162,7 +176,7 @@ using the above defined <tt class="docutils literal"><span class="pre">CYCLUS_PA
 <li>/my/other/agent/dir/agent/path/</li>
 <li>[default-locations]/agent/path/</li>
 </ul>
-<p>For more details, you can read <a class="reference internal" href="../cep/cep21.html"><em>CEP 21 - Agent Identification and Discovery</em></a></p>
+<p>For more details, you can read <a class="reference internal" href="../cep/cep21.html"><span class="doc">CEP 21 - Agent Identification and Discovery</span></a></p>
 </div>
 </div>
 
@@ -170,7 +184,7 @@ using the above defined <tt class="docutils literal"><span class="pre">CYCLUS_PA
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
         <p class="logo"><a href="../index.html" title="index">
           <img class="logo" src="../_static/big_c.png" alt="Logo"/>
@@ -187,7 +201,7 @@ using the above defined <tt class="docutils literal"><span class="pre">CYCLUS_PA
   <div class="sphinxprev">
     <h4>Previous page</h4>
     <p class="topless"><a href="input_specs/recipe.html"
-                          title="Previous page">&larr; <tt class="docutils literal"><span class="pre">Recipe</span></tt> - Recipe Definition (optional, may appear multiple times)</a></p>
+                          title="Previous page">&larr; <code class="docutils literal"><span class="pre">Recipe</span></code> - Recipe Definition (optional, may appear multiple times)</a></p>
   </div>
   <div class="sphinxnext">
     <h4>Next page</h4>
@@ -209,7 +223,7 @@ using the above defined <tt class="docutils literal"><span class="pre">CYCLUS_PA
     </ul></li></ul>
   </div>
     
-<div id="searchbox" style="display: none">
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
@@ -217,9 +231,6 @@ using the above defined <tt class="docutils literal"><span class="pre">CYCLUS_PA
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
     <h3>Get Cyclus</h3>
@@ -259,7 +270,7 @@ using the above defined <tt class="docutils literal"><span class="pre">CYCLUS_PA
     </div>
     <div class="relbar-bottom">
         
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -276,14 +287,14 @@ using the above defined <tt class="docutils literal"><span class="pre">CYCLUS_PA
              >previous</a> &nbsp; &nbsp;</li>
     <li><a href="../index.html">Home</a> &raquo;</li>
 
-          <li><a href="index.html" ><span style="font-variant:small-caps;">Cyclus</span> User Guide</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="index.html" ><span style="font-variant:small-caps;">Cyclus</span> User Guide</a> &raquo;</li> 
       </ul>
     </div>
     </div>
 
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Jan 29, 2016.
+      Last updated on Apr 07, 2016.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");

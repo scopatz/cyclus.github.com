@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '(1.3.1-153-gb86cf92)',
+        VERSION:     'b&#39;(1.3.0-rc4-52-gb86cf92)&#39;',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -49,10 +49,10 @@ if(ga_enabled){
 }
 </script>
   </head>
-  <body>
+  <body role="document">
     <div class="relbar-top">
         
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -69,7 +69,7 @@ if(ga_enabled){
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
     <li><a href="../index.html">Home</a> &raquo;</li>
 
-          <li><a href="index.html" accesskey="U"><span style="font-variant:small-caps;">Cyclus</span> Archetype Developer Guide</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U"><span style="font-variant:small-caps;">Cyclus</span> Archetype Developer Guide</a> &raquo;</li> 
       </ul>
     </div>
     </div>
@@ -78,7 +78,7 @@ if(ga_enabled){
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="errors-and-warnings">
 <h1>Errors and Warnings<a class="headerlink" href="#errors-and-warnings" title="Permalink to this headline">¶</a></h1>
@@ -89,12 +89,12 @@ development.</p>
 <div class="section" id="errors">
 <h2>Errors<a class="headerlink" href="#errors" title="Permalink to this headline">¶</a></h2>
 <p><span style="font-variant:small-caps;">Cyclus</span> uses <a class="reference external" href="http://www.cplusplus.com/doc/tutorial/exceptions/">standard C++ execptions</a> to throw and catch
-errors. However, whenever you <tt class="docutils literal"><span class="pre">#include</span> <span class="pre">&quot;cyclus.h&quot;</span></tt> or <tt class="docutils literal"><span class="pre">#include</span>
-<span class="pre">&quot;error.h&quot;</span></tt> you have access to a suite of exceptions that the kernel itself
-knows about.  <a class="reference internal" href="#errors-table-1"><em>Table I. Cyclus Error Classes</em></a> displays all of the <span style="font-variant:small-caps;">Cyclus</span> errors which
-live within the <tt class="docutils literal"><span class="pre">cyclus</span></tt> namespace and subclass from <tt class="docutils literal"><span class="pre">std::exception</span></tt>.</p>
-<table border="1" class="styled-table centered docutils" id="errors-table-1">
-<caption><strong>Table I.</strong> Cyclus Error Classes</caption>
+errors. However, whenever you <code class="docutils literal"><span class="pre">#include</span> <span class="pre">&quot;cyclus.h&quot;</span></code> or <code class="docutils literal"><span class="pre">#include</span>
+<span class="pre">&quot;error.h&quot;</span></code> you have access to a suite of exceptions that the kernel itself
+knows about.  <a class="reference internal" href="#errors-table-1"><span class="std std-ref">Table I. Cyclus Error Classes</span></a> displays all of the <span style="font-variant:small-caps;">Cyclus</span> errors which
+live within the <code class="docutils literal"><span class="pre">cyclus</span></code> namespace and subclass from <code class="docutils literal"><span class="pre">std::exception</span></code>.</p>
+<table border="1" class="styled-table centered docutils" id="id1">
+<span id="errors-table-1"></span><caption><span class="caption-text"><strong>Table I.</strong> Cyclus Error Classes</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col width="10%" />
 <col width="90%" />
@@ -130,12 +130,12 @@ the software has not been properly benchmarked.</td>
 </tr>
 </tbody>
 </table>
-<br /><p>For example, if a reactor finds itself with a negative flux in its <tt class="docutils literal"><span class="pre">Tock()</span></tt>
+<br /><p>For example, if a reactor finds itself with a negative flux in its <code class="docutils literal"><span class="pre">Tock()</span></code>
 function then it could choose to throw either a ValueError or a StateError.
 If the flux happened to be a state variable a StateError would be more
 appropriate. This would be implemented as follows:</p>
 <p><strong>Error example:</strong></p>
-<div class="highlight-c++"><div class="highlight"><pre><span class="kt">void</span> <span class="n">Reactor</span><span class="o">::</span><span class="n">Tock</span><span class="p">(</span><span class="kt">int</span> <span class="n">time</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight-c++"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">Reactor</span><span class="o">::</span><span class="n">Tock</span><span class="p">(</span><span class="kt">int</span> <span class="n">time</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">if</span> <span class="p">(</span><span class="n">flux</span> <span class="o">&lt;</span> <span class="mf">0.0</span><span class="p">)</span>
     <span class="k">throw</span> <span class="n">cyclus</span><span class="o">::</span><span class="n">StateError</span><span class="p">(</span><span class="s">&quot;negative fluxes are impossible!&quot;</span><span class="p">);</span>
 <span class="p">}</span>
@@ -145,13 +145,13 @@ appropriate. This would be implemented as follows:</p>
 <div class="section" id="warnings">
 <h2>Warnings<a class="headerlink" href="#warnings" title="Permalink to this headline">¶</a></h2>
 <p>Along with errors, there are corresponding non-terminal warning messages that
-modules may issue. These print messages to <tt class="docutils literal"><span class="pre">sdterr</span></tt> along with the kind of
+modules may issue. These print messages to <code class="docutils literal"><span class="pre">sdterr</span></code> along with the kind of
 warning that was given.  All warnings are issued through the
-<tt class="docutils literal"><span class="pre">cyclus::Warn&lt;T&gt;()</span></tt> function.  This functions is templated on the
-<tt class="docutils literal"><span class="pre">cyclus::Warnings</span></tt> enum whose values and meanings may be seen in
-<a class="reference internal" href="#errors-table-2"><em>Table II. Cyclus Warnings</em></a>.</p>
-<table border="1" class="styled-table centered docutils" id="errors-table-2">
-<caption><strong>Table II.</strong> Cyclus Warnings</caption>
+<code class="docutils literal"><span class="pre">cyclus::Warn&lt;T&gt;()</span></code> function.  This functions is templated on the
+<code class="docutils literal"><span class="pre">cyclus::Warnings</span></code> enum whose values and meanings may be seen in
+<a class="reference internal" href="#errors-table-2"><span class="std std-ref">Table II. Cyclus Warnings</span></a>.</p>
+<table border="1" class="styled-table centered docutils" id="id2">
+<span id="errors-table-2"></span><caption><span class="caption-text"><strong>Table II.</strong> Cyclus Warnings</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col width="30%" />
 <col width="70%" />
@@ -207,7 +207,7 @@ future needs, or known future API changes.</td>
 <br /><p>Revisiting the reactor error example from above, we could have issued a
 warning instead.</p>
 <p><strong>Warning example:</strong></p>
-<div class="highlight-c++"><div class="highlight"><pre><span class="kt">void</span> <span class="n">Reactor</span><span class="o">::</span><span class="n">Tock</span><span class="p">(</span><span class="kt">int</span> <span class="n">time</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight-c++"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">Reactor</span><span class="o">::</span><span class="n">Tock</span><span class="p">(</span><span class="kt">int</span> <span class="n">time</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">if</span> <span class="p">(</span><span class="n">flux</span> <span class="o">&lt;</span> <span class="mf">0.0</span><span class="p">)</span>
     <span class="n">cyclus</span><span class="o">::</span><span class="n">Warn</span><span class="o">&lt;</span><span class="n">cyclus</span><span class="o">::</span><span class="n">STATE_WARNING</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;negative fluxes are impossible!&quot;</span><span class="p">);</span>
 <span class="p">}</span>
@@ -217,21 +217,21 @@ warning instead.</p>
 they do not stop the process they are fast to issue. They are also a great way
 for communicating with users the expectations of using your module.</p>
 <p>Warnings also have two command line options that users can provide which
-modify their behavior.  The first is <tt class="docutils literal"><span class="pre">--warn-limit</span></tt>.  This changes the
+modify their behavior.  The first is <code class="docutils literal"><span class="pre">--warn-limit</span></code>.  This changes the
 maximum number of times a warning of each kind will be issued before further
 warnings are suppressed.  This defaults to 1.  A value of zero means to
 suppress all warnings and a very large number will print them all.  For
 example, if the user wished to print the first 42 warnings of each kind they
 would call <span style="font-variant:small-caps;">Cyclus</span> as follows:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>cyclus --warn-limit <span class="m">42</span> ...
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ cyclus --warn-limit <span class="m">42</span> ...
 </pre></div>
 </div>
 <p>The second command line argument that alters warning behavior is
-<tt class="docutils literal"><span class="pre">--warn-as-error</span></tt>.  This turns all warnings into corresponding error types
+<code class="docutils literal"><span class="pre">--warn-as-error</span></code>.  This turns all warnings into corresponding error types
 and throws the error.  This is useful for ensuring that only stable code is
 executed or to help uncover what is causing a warning to be thrown.  It takes
 no arguments:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>cyclus --warn-as-error ...
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ cyclus --warn-as-error ...
 </pre></div>
 </div>
 </div>
@@ -241,7 +241,7 @@ no arguments:</p>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
         <p class="logo"><a href="../index.html" title="index">
           <img class="logo" src="../_static/big_c.png" alt="Logo"/>
@@ -281,7 +281,7 @@ no arguments:</p>
     </ul></li></ul>
   </div>
     
-<div id="searchbox" style="display: none">
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
@@ -289,9 +289,6 @@ no arguments:</p>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
     <h3>Get Cyclus</h3>
@@ -331,7 +328,7 @@ no arguments:</p>
     </div>
     <div class="relbar-bottom">
         
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -348,14 +345,14 @@ no arguments:</p>
              >previous</a> &nbsp; &nbsp;</li>
     <li><a href="../index.html">Home</a> &raquo;</li>
 
-          <li><a href="index.html" ><span style="font-variant:small-caps;">Cyclus</span> Archetype Developer Guide</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="index.html" ><span style="font-variant:small-caps;">Cyclus</span> Archetype Developer Guide</a> &raquo;</li> 
       </ul>
     </div>
     </div>
 
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Jan 29, 2016.
+      Last updated on Apr 07, 2016.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");

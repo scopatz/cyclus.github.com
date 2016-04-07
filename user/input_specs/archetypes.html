@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '(1.3.1-153-gb86cf92)',
+        VERSION:     'b&#39;(1.3.0-rc4-52-gb86cf92)&#39;',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -49,10 +49,10 @@ if(ga_enabled){
 }
 </script>
   </head>
-  <body>
+  <body role="document">
     <div class="relbar-top">
         
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -69,8 +69,8 @@ if(ga_enabled){
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
     <li><a href="../../index.html">Home</a> &raquo;</li>
 
-          <li><a href="../index.html" ><span style="font-variant:small-caps;">Cyclus</span> User Guide</a> &raquo;</li>
-          <li><a href="../writing_input.html" accesskey="U">Writing a <span style="font-variant:small-caps;">Cyclus</span> Input File</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../index.html" ><span style="font-variant:small-caps;">Cyclus</span> User Guide</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="../writing_input.html" accesskey="U">Writing a <span style="font-variant:small-caps;">Cyclus</span> Input File</a> &raquo;</li> 
       </ul>
     </div>
     </div>
@@ -79,30 +79,30 @@ if(ga_enabled){
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="archetypes-list-of-available-agent-archetypes-required-once">
-<h1><tt class="docutils literal"><span class="pre">Archetypes</span></tt> - List of available agent archetypes (required once)<a class="headerlink" href="#archetypes-list-of-available-agent-archetypes-required-once" title="Permalink to this headline">¶</a></h1>
+<h1><code class="docutils literal"><span class="pre">Archetypes</span></code> - List of available agent archetypes (required once)<a class="headerlink" href="#archetypes-list-of-available-agent-archetypes-required-once" title="Permalink to this headline">¶</a></h1>
 <p>Every agent that participates in a <span style="font-variant:small-caps;">Cyclus</span> simulation is based on a
-<a class="reference internal" href="../../basics/glossary.html#term-prototype"><em class="xref std std-term">prototype</em></a> that is formed by configuring an <a class="reference internal" href="../../basics/glossary.html#term-archetype"><em class="xref std std-term">archetype</em></a>.  The
-<tt class="docutils literal"><span class="pre">archetypes</span></tt> block defines the set of archetypes that are available to a
+<a class="reference internal" href="../../basics/glossary.html#term-prototype"><span class="xref std std-term">prototype</span></a> that is formed by configuring an <a class="reference internal" href="../../basics/glossary.html#term-archetype"><span class="xref std std-term">archetype</span></a>.  The
+<code class="docutils literal"><span class="pre">archetypes</span></code> block defines the set of archetypes that are available to a
 simulation, and provides specifications that uniquely identify each archetype.</p>
-<p>A single <tt class="docutils literal"><span class="pre">archetypes</span></tt> block is required, and contains one or more <tt class="docutils literal"><span class="pre">spec</span></tt>
-blocks.  Each <tt class="docutils literal"><span class="pre">spec</span></tt> block has these blocks in the following order:</p>
+<p>A single <code class="docutils literal"><span class="pre">archetypes</span></code> block is required, and contains one or more <code class="docutils literal"><span class="pre">spec</span></code>
+blocks.  Each <code class="docutils literal"><span class="pre">spec</span></code> block has these blocks in the following order:</p>
 <ul class="simple">
-<li><tt class="docutils literal"><span class="pre">path</span></tt> (optional) - a slash-separated path</li>
-<li><tt class="docutils literal"><span class="pre">lib</span></tt> (optional) - a library name</li>
-<li><tt class="docutils literal"><span class="pre">name</span></tt> (required) - a name</li>
-<li><tt class="docutils literal"><span class="pre">alias</span></tt> (optional) - a alternative name for the archetype</li>
+<li><code class="docutils literal"><span class="pre">path</span></code> (optional) - a slash-separated path</li>
+<li><code class="docutils literal"><span class="pre">lib</span></code> (optional) - a library name</li>
+<li><code class="docutils literal"><span class="pre">name</span></code> (required) - a name</li>
+<li><code class="docutils literal"><span class="pre">alias</span></code> (optional) - a alternative name for the archetype</li>
 </ul>
 <p>In addition to the unambiguous specification (as defined in
-<a class="reference internal" href="../find_agents.html"><em>Archetype Identification and Discovery</em></a>) formed by the <tt class="docutils literal"><span class="pre">path</span></tt>, <tt class="docutils literal"><span class="pre">lib</span></tt>, and <tt class="docutils literal"><span class="pre">name</span></tt>, the
-<tt class="docutils literal"><span class="pre">alias</span></tt> provides an alternative name by which to refer to the archetype
+<a class="reference internal" href="../find_agents.html"><span class="doc">Archetype Identification and Discovery</span></a>) formed by the <code class="docutils literal"><span class="pre">path</span></code>, <code class="docutils literal"><span class="pre">lib</span></code>, and <code class="docutils literal"><span class="pre">name</span></code>, the
+<code class="docutils literal"><span class="pre">alias</span></code> provides an alternative name by which to refer to the archetype
 elsewhere in the file.  If an alias is defined, it is the <strong>only way</strong> to
 refer to that archetype in other locations.</p>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;archetypes&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;archetypes&gt;</span>
    <span class="nt">&lt;spec&gt;</span>
      <span class="nt">&lt;path&gt;</span>my/custom/path<span class="nt">&lt;/path&gt;</span>
      <span class="nt">&lt;lib&gt;</span>myAgentCollection<span class="nt">&lt;/lib&gt;</span>
@@ -128,10 +128,10 @@ used elsewhere when defining agent prototypes.  The first archetype is named
 <cite>my/custom/path</cite>.  All references to this archetype will use the alias
 <cite>ReactorAgent</cite>.  The other archetypes are named <cite>simpleSource</cite>,
 <cite>simpleRegion</cite>, and <cite>simpleInst</cite>, all of which are found in standard locations
-defined in <a class="reference internal" href="../find_agents.html"><em>Archetype Identification and Discovery</em></a>.  For example, <cite>simpleSource</cite> will be found
+defined in <a class="reference internal" href="../find_agents.html"><span class="doc">Archetype Identification and Discovery</span></a>.  For example, <cite>simpleSource</cite> will be found
 in a library file with a name such as <cite>libsimpleSource.so</cite>, in the standard
 <span style="font-variant:small-caps;">Cyclus</span> archetype path.</p>
-<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="nt">&quot;archetypes&quot;</span><span class="p">:</span> <span class="p">{</span>
   <span class="nt">&quot;spec&quot;</span><span class="p">:</span> <span class="p">{</span>
     <span class="nt">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;my/custom/path&quot;</span><span class="p">,</span>
@@ -148,7 +148,7 @@ in a library file with a name such as <cite>libsimpleSource.so</cite>, in the st
 </div>
 <div class="html-toggle section" id="grammar-definition">
 <h2>Grammar Definition<a class="headerlink" href="#grammar-definition" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;archetypes&quot;</span><span class="nt">&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;archetypes&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;oneOrMore&gt;</span>
     <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;spec&quot;</span><span class="nt">&gt;</span>
       <span class="nt">&lt;optional&gt;&lt;element</span> <span class="na">name=</span><span class="s">&quot;path&quot;</span><span class="nt">&gt;&lt;text/&gt;&lt;/element&gt;&lt;/optional&gt;</span>
@@ -167,14 +167,14 @@ in a library file with a name such as <cite>libsimpleSource.so</cite>, in the st
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
         <p class="logo"><a href="../../index.html" title="index">
           <img class="logo" src="../../_static/big_c.png" alt="Logo"/>
         </a></p><div class="sphinxlocaltoc">
     <h3><a href="../../index.html">Page contents</a></h3>
     <ul>
-<li><a class="reference internal" href="#"><tt class="docutils literal"><span class="pre">Archetypes</span></tt> - List of available agent archetypes (required once)</a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal"><span class="pre">Archetypes</span></code> - List of available agent archetypes (required once)</a><ul>
 <li><a class="reference internal" href="#example">Example</a></li>
 <li><a class="reference internal" href="#grammar-definition">Grammar Definition</a></li>
 </ul>
@@ -185,12 +185,12 @@ in a library file with a name such as <cite>libsimpleSource.so</cite>, in the st
   <div class="sphinxprev">
     <h4>Previous page</h4>
     <p class="topless"><a href="commodity.html"
-                          title="Previous page">&larr; <tt class="docutils literal"><span class="pre">Commodity</span></tt> - Commodity Priority  (optional, may appear multiple times)</a></p>
+                          title="Previous page">&larr; <code class="docutils literal"><span class="pre">Commodity</span></code> - Commodity Priority  (optional, may appear multiple times)</a></p>
   </div>
   <div class="sphinxnext">
     <h4>Next page</h4>
     <p class="topless"><a href="facility.html"
-                          title="Next page">&rarr; <tt class="docutils literal"><span class="pre">Facility</span></tt> - Facility Prototypes (at least one required)</a></p>
+                          title="Next page">&rarr; <code class="docutils literal"><span class="pre">Facility</span></code> - Facility Prototypes (at least one required)</a></p>
   </div>
   <div class="sphinxlocaltoc">
   <h3>Useful Pages</h3>
@@ -207,7 +207,7 @@ in a library file with a name such as <cite>libsimpleSource.so</cite>, in the st
     </ul></li></ul>
   </div>
     
-<div id="searchbox" style="display: none">
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../../search.html" method="get">
       <input type="text" name="q" />
@@ -215,9 +215,6 @@ in a library file with a name such as <cite>libsimpleSource.so</cite>, in the st
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
     <h3>Get Cyclus</h3>
@@ -257,7 +254,7 @@ in a library file with a name such as <cite>libsimpleSource.so</cite>, in the st
     </div>
     <div class="relbar-bottom">
         
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -274,15 +271,15 @@ in a library file with a name such as <cite>libsimpleSource.so</cite>, in the st
              >previous</a> &nbsp; &nbsp;</li>
     <li><a href="../../index.html">Home</a> &raquo;</li>
 
-          <li><a href="../index.html" ><span style="font-variant:small-caps;">Cyclus</span> User Guide</a> &raquo;</li>
-          <li><a href="../writing_input.html" >Writing a <span style="font-variant:small-caps;">Cyclus</span> Input File</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../index.html" ><span style="font-variant:small-caps;">Cyclus</span> User Guide</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="../writing_input.html" >Writing a <span style="font-variant:small-caps;">Cyclus</span> Input File</a> &raquo;</li> 
       </ul>
     </div>
     </div>
 
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Jan 29, 2016.
+      Last updated on Apr 07, 2016.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");

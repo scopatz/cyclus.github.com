@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '(1.3.1-153-gb86cf92)',
+        VERSION:     'b&#39;(1.3.0-rc4-52-gb86cf92)&#39;',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -49,10 +49,10 @@ if(ga_enabled){
 }
 </script>
   </head>
-  <body>
+  <body role="document">
     <div class="relbar-top">
         
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -69,7 +69,7 @@ if(ga_enabled){
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
     <li><a href="../index.html">Home</a> &raquo;</li>
 
-          <li><a href="index.html" accesskey="U"><span style="font-variant:small-caps;">Cyclus</span> User Guide</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U"><span style="font-variant:small-caps;">Cyclus</span> User Guide</a> &raquo;</li> 
       </ul>
     </div>
     </div>
@@ -78,12 +78,12 @@ if(ga_enabled){
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="writing-a-cyclus-input-file">
 <h1>Writing a <span style="font-variant:small-caps;">Cyclus</span> Input File<a class="headerlink" href="#writing-a-cyclus-input-file" title="Permalink to this headline">¶</a></h1>
 <p>This section will provide an introduction to creating a valid input file for
-<span style="font-variant:small-caps;">Cyclus</span> by hand.  Because <span style="font-variant:small-caps;">Cyclus</span> uses XML, input files have clearly defined
+<span style="font-variant:small-caps;">Cyclus</span> by hand.  Because <span style="font-variant:small-caps;">Cyclus</span> uses both XML and JSON, input files have clearly defined
 sections, or blocks, that can be automatically validated for correctness.</p>
 <p>Work is underway to provide a drag-and-drop graphical user interface to
 facilitate building <span style="font-variant:small-caps;">Cyclus</span> input files in the future.</p>
@@ -95,9 +95,8 @@ ending &#8220;tags&#8221;.  The tags used to provide that structure are not defi
 universally, but each project can invent their own language for those tags.
 The data that lies between a pair starting and ending tags may be additional
 sections defined by other tags.</p>
-<p>Here is a simple example of an XML section for the common concept of a
-message between people:</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;note&gt;</span>
+<p>Here is an example of a XML code block.</p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;note&gt;</span>
    <span class="nt">&lt;to&gt;</span>Matt<span class="nt">&lt;/to&gt;</span>          <span class="c">&lt;!-- message recipient --&gt;</span>
    <span class="nt">&lt;from&gt;</span>Anthony<span class="nt">&lt;/from&gt;</span>   <span class="c">&lt;!-- message sender --&gt;</span>
    <span class="nt">&lt;heading&gt;</span>Cyclus released today<span class="nt">&lt;/heading&gt;</span>
@@ -105,37 +104,60 @@ message between people:</p>
 <span class="nt">&lt;/note&gt;</span>
 </pre></div>
 </div>
-<p>In this example, a section named <tt class="docutils literal"><span class="pre">note</span></tt> includes four other sections named
-<tt class="docutils literal"><span class="pre">to</span></tt>, <tt class="docutils literal"><span class="pre">from</span></tt>, <tt class="docutils literal"><span class="pre">heading</span></tt>, and <tt class="docutils literal"><span class="pre">body</span></tt>, respectively.</p>
+</div>
+<div class="section" id="a-brief-introduction-to-json">
+<h2>A Brief Introduction to JSON<a class="headerlink" href="#a-brief-introduction-to-json" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://www.json.org/">JSON</a> stands for JavaScript Object Notation, and is similar in many ways to XML. JSON was created to replace XML with a more user friendly language. It was designed to be a simpler and easier to use markup language. It does this by cutting out unnecessary parts of the XML language, such as closing tags. One area where JSON excels is that it is a data-oriented language, compared to XML, which is document-oriented.</p>
+<p>Here is the same code block using JSON.</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;note&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;to&quot;</span><span class="p">:</span> <span class="s2">&quot;Matt&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;from&quot;</span><span class="p">:</span> <span class="s2">&quot;Anthony&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;heading&quot;</span><span class="p">:</span> <span class="s2">&quot;Cyclus released today&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;body&quot;</span><span class="p">:</span> <span class="s2">&quot;We have released Cyclus v1.0 for everyone to use.&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In this example, a section named <code class="docutils literal"><span class="pre">note</span></code> includes four other sections named
+<code class="docutils literal"><span class="pre">to</span></code>, <code class="docutils literal"><span class="pre">from</span></code>, <code class="docutils literal"><span class="pre">heading</span></code>, and <code class="docutils literal"><span class="pre">body</span></code>, respectively.</p>
 <p>The set of tags for any given project, and their relationship to each other in
 the hierarchy, is referred to as a grammar.  In addition to defining which
 tags exist, the grammar defines how many times each tag must or may exist
 in a given section.  A tag may be completely optional, required one or more
 times, or allowed to appear as many times as the user desires.</p>
 <p>Although XML grammars are designed to be self-documenting, comments can be
-inserted into XML files anywhere using the <tt class="docutils literal"><span class="pre">&lt;!--</span> <span class="pre">comment</span> <span class="pre">here</span> <span class="pre">--&gt;</span></tt> syntax,
+inserted into XML files anywhere using the <code class="docutils literal"><span class="pre">&lt;!--</span> <span class="pre">comment</span> <span class="pre">here</span> <span class="pre">--&gt;</span></code> syntax,
 as shown above.</p>
 </div>
 <div class="section" id="the-cyclus-input-file">
 <h2>The <span style="font-variant:small-caps;">Cyclus</span> Input File<a class="headerlink" href="#the-cyclus-input-file" title="Permalink to this headline">¶</a></h2>
-<p>Every <span style="font-variant:small-caps;">Cyclus</span> input file must have exactly one <tt class="docutils literal"><span class="pre">simulation</span></tt> section that
+<p>Every <span style="font-variant:small-caps;">Cyclus</span> input file must have exactly one <code class="docutils literal"><span class="pre">simulation</span></code> section that
 contains all data for a simulation.</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;simulation&gt;</span>
+<p><strong>XML:</strong></p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;simulation&gt;</span>
   ... simulation data will go here ...
 <span class="nt">&lt;/simulation&gt;</span>
+</pre></div>
+</div>
+<p><strong>JSON:</strong></p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;simulation&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;… simulation data will go here …&quot;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>Although not all sections are required, the following sections may appear in
 any order in the input file:</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="input_specs/control.html"><tt class="docutils literal"><span class="pre">Control</span></tt> - Simulation Control (required once)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="input_specs/commodity.html"><tt class="docutils literal"><span class="pre">Commodity</span></tt> - Commodity Priority  (optional, may appear multiple times)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="input_specs/archetypes.html"><tt class="docutils literal"><span class="pre">Archetypes</span></tt> - List of available agent archetypes (required once)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="input_specs/facility.html"><tt class="docutils literal"><span class="pre">Facility</span></tt> - Facility Prototypes (at least one required)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="input_specs/region.html"><tt class="docutils literal"><span class="pre">Region</span></tt> - Region agents (at least one required)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="input_specs/inst.html"><tt class="docutils literal"><span class="pre">Institution</span></tt> - Institution agents (at least one required in each <tt class="docutils literal"><span class="pre">Region</span></tt>)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="input_specs/recipe.html"><tt class="docutils literal"><span class="pre">Recipe</span></tt> - Recipe Definition (optional, may appear multiple times)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="input_specs/control.html"><code class="docutils literal"><span class="pre">Control</span></code> - Simulation Control (required once)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="input_specs/commodity.html"><code class="docutils literal"><span class="pre">Commodity</span></code> - Commodity Priority  (optional, may appear multiple times)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="input_specs/archetypes.html"><code class="docutils literal"><span class="pre">Archetypes</span></code> - List of available agent archetypes (required once)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="input_specs/facility.html"><code class="docutils literal"><span class="pre">Facility</span></code> - Facility Prototypes (at least one required)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="input_specs/region.html"><code class="docutils literal"><span class="pre">Region</span></code> - Region agents (at least one required)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="input_specs/inst.html"><code class="docutils literal"><span class="pre">Institution</span></code> - Institution agents (at least one required in each <code class="docutils literal"><span class="pre">Region</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="input_specs/recipe.html"><code class="docutils literal"><span class="pre">Recipe</span></code> - Recipe Definition (optional, may appear multiple times)</a></li>
 </ul>
 </div>
 </div>
@@ -144,14 +166,14 @@ any order in the input file:</p>
 <p>One feature of XML is that you are able to include external XML files inside of
 your current document. This lets you reuse common parts of your input file that
 do not change across multiple simulations. To enable XML include semantics
-the attribute <tt class="docutils literal"><span class="pre">xmlns:xi=&quot;http://www.w3.org/2001/XInclude&quot;</span></tt> <em>must</em> be added to the
-<tt class="docutils literal"><span class="pre">&lt;simulation&gt;</span></tt> tag. Then to include an external
-file use the <tt class="docutils literal"><span class="pre">&lt;xi:include</span> <span class="pre">href=&quot;path/to/file&quot;</span> <span class="pre">/&gt;</span></tt> tag where you want the included
+the attribute <code class="docutils literal"><span class="pre">xmlns:xi=&quot;http://www.w3.org/2001/XInclude&quot;</span></code> <em>must</em> be added to the
+<code class="docutils literal"><span class="pre">&lt;simulation&gt;</span></code> tag. Then to include an external
+file use the <code class="docutils literal"><span class="pre">&lt;xi:include</span> <span class="pre">href=&quot;path/to/file&quot;</span> <span class="pre">/&gt;</span></code> tag where you want the included
 file to go.</p>
 <p>A common inclusion pattern is to have a recipe book of materials in one file
 and then include this in your simulation.</p>
 <p><strong>input.xml:</strong></p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;simulation</span> <span class="na">xmlns:xi=</span><span class="s">&quot;http://www.w3.org/2001/XInclude&quot;</span><span class="nt">&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;simulation</span> <span class="na">xmlns:xi=</span><span class="s">&quot;http://www.w3.org/2001/XInclude&quot;</span><span class="nt">&gt;</span>
   ...
   <span class="nt">&lt;xi:include</span> <span class="na">href=</span><span class="s">&quot;recipebook.xml&quot;</span> <span class="nt">/&gt;</span>
   ...
@@ -159,7 +181,7 @@ and then include this in your simulation.</p>
 </pre></div>
 </div>
 <p><strong>recipebook.xml:</strong></p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;recipe&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;recipe&gt;</span>
   <span class="nt">&lt;name&gt;</span>proton_recipe<span class="nt">&lt;/name&gt;</span>
   <span class="nt">&lt;basis&gt;</span>mass<span class="nt">&lt;/basis&gt;</span>
   <span class="nt">&lt;nuclide&gt;</span>
@@ -187,7 +209,7 @@ and then include this in your simulation.</p>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
         <p class="logo"><a href="../index.html" title="index">
           <img class="logo" src="../_static/big_c.png" alt="Logo"/>
@@ -196,6 +218,7 @@ and then include this in your simulation.</p>
     <ul>
 <li><a class="reference internal" href="#">Writing a <span style="font-variant:small-caps;">Cyclus</span> Input File</a><ul>
 <li><a class="reference internal" href="#a-brief-introduction-to-xml">A Brief Introduction to XML</a></li>
+<li><a class="reference internal" href="#a-brief-introduction-to-json">A Brief Introduction to JSON</a></li>
 <li><a class="reference internal" href="#the-cyclus-input-file">The <span style="font-variant:small-caps;">Cyclus</span> Input File</a></li>
 <li><a class="reference internal" href="#including-xml-files">Including XML Files</a></li>
 </ul>
@@ -211,7 +234,7 @@ and then include this in your simulation.</p>
   <div class="sphinxnext">
     <h4>Next page</h4>
     <p class="topless"><a href="input_specs/control.html"
-                          title="Next page">&rarr; <tt class="docutils literal"><span class="pre">Control</span></tt> - Simulation Control (required once)</a></p>
+                          title="Next page">&rarr; <code class="docutils literal"><span class="pre">Control</span></code> - Simulation Control (required once)</a></p>
   </div>
   <div class="sphinxlocaltoc">
   <h3>Useful Pages</h3>
@@ -228,7 +251,7 @@ and then include this in your simulation.</p>
     </ul></li></ul>
   </div>
     
-<div id="searchbox" style="display: none">
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
@@ -236,9 +259,6 @@ and then include this in your simulation.</p>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
     <h3>Get Cyclus</h3>
@@ -278,7 +298,7 @@ and then include this in your simulation.</p>
     </div>
     <div class="relbar-bottom">
         
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -295,14 +315,14 @@ and then include this in your simulation.</p>
              >previous</a> &nbsp; &nbsp;</li>
     <li><a href="../index.html">Home</a> &raquo;</li>
 
-          <li><a href="index.html" ><span style="font-variant:small-caps;">Cyclus</span> User Guide</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="index.html" ><span style="font-variant:small-caps;">Cyclus</span> User Guide</a> &raquo;</li> 
       </ul>
     </div>
     </div>
 
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Jan 29, 2016.
+      Last updated on Apr 07, 2016.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");

@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '(1.3.1-153-gb86cf92)',
+        VERSION:     'b&#39;(1.3.0-rc4-52-gb86cf92)&#39;',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -48,10 +48,10 @@ if(ga_enabled){
 }
 </script>
   </head>
-  <body>
+  <body role="document">
     <div class="relbar-top">
         
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -76,7 +76,7 @@ if(ga_enabled){
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="cyclus-archetype-developer-guide">
 <h1><span style="font-variant:small-caps;">Cyclus</span> Archetype Developer Guide<a class="headerlink" href="#cyclus-archetype-developer-guide" title="Permalink to this headline">¶</a></h1>
@@ -91,7 +91,7 @@ are a devilishly handsome thrill-seeker.  Whatever your reasons, you have come
 to the right place!</p>
 <p>This guide assumes that you have <span style="font-variant:small-caps;">Cyclus</span> installed, are familiar with running
 simulations and understand user-level concepts.</p>
-<p>To get started please follow the instructions in <a class="reference internal" href="hello_world.html"><em>Hello, Cyclus!</em></a>.</p>
+<p>To get started please follow the instructions in <a class="reference internal" href="hello_world.html"><span class="doc">Hello, Cyclus!</span></a>.</p>
 </td></tr>
 </table><div class="section" id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
@@ -148,7 +148,7 @@ guide encapsulated in <a class="reference external" href="http://legacy.python.o
 our code base is mostly C++, the kernel development team follows the <a class="reference external" href="http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml">Google C++
 Style Guide</a>
 (GCSG) as closely as possible, and we invite you to as well! A notable (and
-required) exception to the GCSG used in <span style="font-variant:small-caps;">Cyclus</span> and Cycamore <a class="reference internal" href="../basics/glossary.html#term-archetype"><em class="xref std std-term">archetypes</em></a> is the use of preprocessor-aware private member variables without a
+required) exception to the GCSG used in <span style="font-variant:small-caps;">Cyclus</span> and Cycamore <a class="reference internal" href="../basics/glossary.html#term-archetype"><span class="xref std std-term">archetypes</span></a> is the use of preprocessor-aware private member variables without a
 trailing underscore, due to consistency requirements across input files,
 implementation, and databases. Happy (well-styled) coding!</p>
 </div>
@@ -177,7 +177,7 @@ implementation, and databases. Happy (well-styled) coding!</p>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
         <p class="logo"><a href="../index.html" title="index">
           <img class="logo" src="../_static/big_c.png" alt="Logo"/>
@@ -226,7 +226,7 @@ implementation, and databases. Happy (well-styled) coding!</p>
     </ul></li></ul>
   </div>
     
-<div id="searchbox" style="display: none">
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
@@ -234,9 +234,6 @@ implementation, and databases. Happy (well-styled) coding!</p>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
     <h3>Get Cyclus</h3>
@@ -276,7 +273,7 @@ implementation, and databases. Happy (well-styled) coding!</p>
     </div>
     <div class="relbar-bottom">
         
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -297,9 +294,9 @@ implementation, and databases. Happy (well-styled) coding!</p>
     </div>
     </div>
 
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Jan 29, 2016.
+      Last updated on Apr 07, 2016.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");
