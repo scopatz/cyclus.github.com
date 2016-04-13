@@ -97,162 +97,165 @@ can print this schema from the command line with the <code class="docutils liter
 </div>
 <p>This returns the following:</p>
 <div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;grammar</span> <span class="na">xmlns=</span><span class="s">&quot;http://relaxng.org/ns/structure/1.0&quot;</span>
-<span class="na">datatypeLibrary=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-datatypes&quot;</span><span class="nt">&gt;</span>
-<span class="nt">&lt;start&gt;</span>
+    <span class="na">datatypeLibrary=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-datatypes&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;start&gt;</span>
 
-<span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;simulation&quot;</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;optional&gt;&lt;element</span> <span class="na">name=</span><span class="s">&quot;schematype&quot;</span><span class="nt">&gt;&lt;text/&gt;&lt;/element&gt;&lt;/optional&gt;</span>
-<span class="nt">&lt;interleave&gt;</span>
-
-  <span class="nt">&lt;optional&gt;&lt;element</span> <span class="na">name=</span><span class="s">&quot;ui&quot;</span><span class="nt">&gt;&lt;text/&gt;&lt;/element&gt;&lt;/optional&gt;</span>
-
-  <span class="nt">&lt;element</span> <span class="na">name =</span><span class="s">&quot;control&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;simulation&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;optional&gt;&lt;element</span> <span class="na">name=</span><span class="s">&quot;schematype&quot;</span><span class="nt">&gt;&lt;text/&gt;&lt;/element&gt;&lt;/optional&gt;</span>
     <span class="nt">&lt;interleave&gt;</span>
-      <span class="nt">&lt;optional&gt;</span>
-        <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;simhandle&quot;</span><span class="nt">&gt;</span> <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span><span class="nt">/&gt;</span> <span class="nt">&lt;/element&gt;</span>
-      <span class="nt">&lt;/optional&gt;</span>
-      <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;duration&quot;</span><span class="nt">&gt;</span> <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;nonNegativeInteger&quot;</span><span class="nt">/&gt;</span> <span class="nt">&lt;/element&gt;</span>
-      <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;startmonth&quot;</span><span class="nt">&gt;</span> <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;nonNegativeInteger&quot;</span><span class="nt">/&gt;</span> <span class="nt">&lt;/element&gt;</span>
-      <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;startyear&quot;</span><span class="nt">&gt;</span> <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;nonNegativeInteger&quot;</span><span class="nt">/&gt;</span> <span class="nt">&lt;/element&gt;</span>
-      <span class="nt">&lt;optional&gt;</span>
-        <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;decay&quot;</span><span class="nt">&gt;</span> <span class="nt">&lt;text/&gt;</span> <span class="nt">&lt;/element&gt;</span>
-      <span class="nt">&lt;/optional&gt;</span>
-      <span class="nt">&lt;optional&gt;</span>
-        <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;dt&quot;</span><span class="nt">&gt;&lt;data</span> <span class="na">type=</span><span class="s">&quot;nonNegativeInteger&quot;</span><span class="nt">/&gt;&lt;/element&gt;</span>
-      <span class="nt">&lt;/optional&gt;</span>
-      <span class="nt">&lt;optional&gt;</span>
-        <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;solver&quot;</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;interleave&gt;</span>
-            <span class="nt">&lt;optional&gt;</span>
-              <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;</span> <span class="nt">&lt;text/&gt;</span> <span class="nt">&lt;/element&gt;</span>
-            <span class="nt">&lt;/optional&gt;</span>
-            <span class="nt">&lt;optional&gt;</span>
-              <span class="nt">&lt;choice&gt;</span>
-                <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;greedy&quot;</span><span class="nt">&gt;</span>
-                  <span class="nt">&lt;interleave&gt;</span>
-                    <span class="nt">&lt;optional&gt;</span>
-                      <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;preconditioner&quot;</span><span class="nt">&gt;</span> <span class="nt">&lt;text/&gt;</span> <span class="nt">&lt;/element&gt;</span>
-                    <span class="nt">&lt;/optional&gt;</span>
-                  <span class="nt">&lt;/interleave&gt;</span>
-                <span class="nt">&lt;/element&gt;</span>
-              <span class="nt">&lt;/choice&gt;</span>
-            <span class="nt">&lt;/optional&gt;</span>
-            <span class="nt">&lt;optional&gt;</span>
-              <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;exclusive_orders_only&quot;</span><span class="nt">&gt;</span>
-                <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;boolean&quot;</span> <span class="nt">/&gt;</span>
-              <span class="nt">&lt;/element&gt;</span>
-            <span class="nt">&lt;/optional&gt;</span>
-          <span class="nt">&lt;/interleave&gt;</span>
-        <span class="nt">&lt;/element&gt;</span>
-      <span class="nt">&lt;/optional&gt;</span>
-    <span class="nt">&lt;/interleave&gt;</span>
-  <span class="nt">&lt;/element&gt;</span>
 
-  <span class="nt">&lt;zeroOrMore&gt;</span>
-    <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;commodity&quot;</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;interleave&gt;</span>
-        <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;</span> <span class="nt">&lt;text/&gt;</span> <span class="nt">&lt;/element&gt;</span>
-        <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;solution_priority&quot;</span><span class="nt">&gt;</span> <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;double&quot;</span><span class="nt">/&gt;</span> <span class="nt">&lt;/element&gt;</span>
-      <span class="nt">&lt;/interleave&gt;</span>
-    <span class="nt">&lt;/element&gt;</span>
-  <span class="nt">&lt;/zeroOrMore&gt;</span>
+      <span class="nt">&lt;optional&gt;&lt;element</span> <span class="na">name=</span><span class="s">&quot;ui&quot;</span><span class="nt">&gt;&lt;text/&gt;&lt;/element&gt;&lt;/optional&gt;</span>
 
-  <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;archetypes&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;oneOrMore&gt;</span>
-      <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;spec&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;interleave&gt;</span>
-          <span class="nt">&lt;optional&gt;&lt;element</span> <span class="na">name=</span><span class="s">&quot;path&quot;</span><span class="nt">&gt;&lt;text/&gt;&lt;/element&gt;&lt;/optional&gt;</span>
-          <span class="nt">&lt;optional&gt;&lt;element</span> <span class="na">name=</span><span class="s">&quot;lib&quot;</span><span class="nt">&gt;&lt;text/&gt;&lt;/element&gt;&lt;/optional&gt;</span>
-          <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;&lt;text/&gt;&lt;/element&gt;</span>
-          <span class="nt">&lt;optional&gt;&lt;element</span> <span class="na">name=</span><span class="s">&quot;alias&quot;</span><span class="nt">&gt;&lt;text/&gt;&lt;/element&gt;&lt;/optional&gt;</span>
-        <span class="nt">&lt;/interleave&gt;</span>
+      <span class="nt">&lt;element</span> <span class="na">name =</span><span class="s">&quot;control&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;interleave&gt;</span>
+              <span class="nt">&lt;optional&gt;</span>
+                    <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;simhandle&quot;</span><span class="nt">&gt;</span> <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span><span class="nt">/&gt;</span> <span class="nt">&lt;/element&gt;</span>
+              <span class="nt">&lt;/optional&gt;</span>
+              <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;duration&quot;</span><span class="nt">&gt;</span> <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;nonNegativeInteger&quot;</span><span class="nt">/&gt;</span> <span class="nt">&lt;/element&gt;</span>
+              <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;startmonth&quot;</span><span class="nt">&gt;</span> <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;nonNegativeInteger&quot;</span><span class="nt">/&gt;</span> <span class="nt">&lt;/element&gt;</span>
+              <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;startyear&quot;</span><span class="nt">&gt;</span> <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;nonNegativeInteger&quot;</span><span class="nt">/&gt;</span> <span class="nt">&lt;/element&gt;</span>
+              <span class="nt">&lt;optional&gt;</span>
+                    <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;decay&quot;</span><span class="nt">&gt;</span> <span class="nt">&lt;text/&gt;</span> <span class="nt">&lt;/element&gt;</span>
+              <span class="nt">&lt;/optional&gt;</span>
+              <span class="nt">&lt;optional&gt;</span>
+                    <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;solver&quot;</span><span class="nt">&gt;</span>
+                      <span class="nt">&lt;interleave&gt;</span>
+                            <span class="nt">&lt;optional&gt;&lt;element</span> <span class="na">name=</span><span class="s">&quot;config&quot;</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;choice&gt;</span>
+                              <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;greedy&quot;</span><span class="nt">&gt;</span>
+                                    <span class="nt">&lt;interleave&gt;</span>
+                                      <span class="nt">&lt;optional&gt;</span>
+                                            <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;preconditioner&quot;</span><span class="nt">&gt;</span> <span class="nt">&lt;text/&gt;</span> <span class="nt">&lt;/element&gt;</span>
+                                      <span class="nt">&lt;/optional&gt;</span>
+                                    <span class="nt">&lt;/interleave&gt;</span>
+                              <span class="nt">&lt;/element&gt;</span>
+                              <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;coin-or&quot;</span><span class="nt">&gt;</span>
+                                    <span class="nt">&lt;interleave&gt;</span>
+                                      <span class="nt">&lt;optional&gt;</span>
+                                            <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;timeout&quot;</span><span class="nt">&gt;</span>  <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;positiveInteger&quot;</span><span class="nt">/&gt;</span>  <span class="nt">&lt;/element&gt;</span>
+                                      <span class="nt">&lt;/optional&gt;</span>
+                                      <span class="nt">&lt;optional&gt;&lt;element</span> <span class="na">name=</span><span class="s">&quot;verbose&quot;</span><span class="nt">&gt;&lt;data</span> <span class="na">type=</span><span class="s">&quot;boolean&quot;</span><span class="nt">/&gt;&lt;/element&gt;&lt;/optional&gt;</span>
+                                      <span class="nt">&lt;optional&gt;&lt;element</span> <span class="na">name=</span><span class="s">&quot;mps&quot;</span><span class="nt">&gt;&lt;data</span> <span class="na">type=</span><span class="s">&quot;boolean&quot;</span><span class="nt">/&gt;&lt;/element&gt;&lt;/optional&gt;</span>
+                                    <span class="nt">&lt;/interleave&gt;</span>
+                              <span class="nt">&lt;/element&gt;</span>
+                            <span class="nt">&lt;/choice&gt;</span>
+                            <span class="nt">&lt;/element&gt;&lt;/optional&gt;</span>
+                            <span class="nt">&lt;optional&gt;</span>
+                              <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;allow_exclusive_orders&quot;</span><span class="nt">&gt;</span>
+                                    <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;boolean&quot;</span> <span class="nt">/&gt;</span>
+                              <span class="nt">&lt;/element&gt;</span>
+                            <span class="nt">&lt;/optional&gt;</span>
+                      <span class="nt">&lt;/interleave&gt;</span>
+                    <span class="nt">&lt;/element&gt;</span>
+              <span class="nt">&lt;/optional&gt;</span>
+            <span class="nt">&lt;/interleave&gt;</span>
       <span class="nt">&lt;/element&gt;</span>
-    <span class="nt">&lt;/oneOrMore&gt;</span>
-  <span class="nt">&lt;/element&gt;</span>
 
-  <span class="nt">&lt;oneOrMore&gt;</span>
-    <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;facility&quot;</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;interleave&gt;</span>
-        <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;</span> <span class="nt">&lt;text/&gt;</span> <span class="nt">&lt;/element&gt;</span>
-        <span class="nt">&lt;optional&gt;</span>
-          <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;lifetime&quot;</span><span class="nt">&gt;</span> <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;nonNegativeInteger&quot;</span><span class="nt">/&gt;</span> <span class="nt">&lt;/element&gt;</span>
-        <span class="nt">&lt;/optional&gt;</span>
+      <span class="nt">&lt;zeroOrMore&gt;</span>
+            <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;commodity&quot;</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;interleave&gt;</span>
+                    <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;</span> <span class="nt">&lt;text/&gt;</span> <span class="nt">&lt;/element&gt;</span>
+                    <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;solution_priority&quot;</span><span class="nt">&gt;</span> <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;double&quot;</span><span class="nt">/&gt;</span> <span class="nt">&lt;/element&gt;</span>
+              <span class="nt">&lt;/interleave&gt;</span>
+            <span class="nt">&lt;/element&gt;</span>
+      <span class="nt">&lt;/zeroOrMore&gt;</span>
 
-        <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;config&quot;</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;choice&gt;</span>
-          @Facility_REFS@
-          <span class="nt">&lt;/choice&gt;</span>
-        <span class="nt">&lt;/element&gt;</span>
-      <span class="nt">&lt;/interleave&gt;</span>
-    <span class="nt">&lt;/element&gt;</span>
-  <span class="nt">&lt;/oneOrMore&gt;</span>
-
-  <span class="nt">&lt;oneOrMore&gt;</span>
-    <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;region&quot;</span><span class="nt">&gt;</span> <span class="nt">&lt;interleave&gt;</span>
-      <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;</span> <span class="nt">&lt;text/&gt;</span> <span class="nt">&lt;/element&gt;</span>
-      <span class="nt">&lt;optional&gt;</span>
-        <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;lifetime&quot;</span><span class="nt">&gt;</span> <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;nonNegativeInteger&quot;</span><span class="nt">/&gt;</span> <span class="nt">&lt;/element&gt;</span>
-      <span class="nt">&lt;/optional&gt;</span>
-
-      <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;config&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;choice&gt;</span>
-        @Region_REFS@
-        <span class="nt">&lt;/choice&gt;</span>
+      <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;archetypes&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;oneOrMore&gt;</span>
+              <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;spec&quot;</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;interleave&gt;</span>
+                      <span class="nt">&lt;optional&gt;&lt;element</span> <span class="na">name=</span><span class="s">&quot;path&quot;</span><span class="nt">&gt;&lt;text/&gt;&lt;/element&gt;&lt;/optional&gt;</span>
+                      <span class="nt">&lt;optional&gt;&lt;element</span> <span class="na">name=</span><span class="s">&quot;lib&quot;</span><span class="nt">&gt;&lt;text/&gt;&lt;/element&gt;&lt;/optional&gt;</span>
+                      <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;&lt;text/&gt;&lt;/element&gt;</span>
+                      <span class="nt">&lt;optional&gt;&lt;element</span> <span class="na">name=</span><span class="s">&quot;alias&quot;</span><span class="nt">&gt;&lt;text/&gt;&lt;/element&gt;&lt;/optional&gt;</span>
+                    <span class="nt">&lt;/interleave&gt;</span>
+              <span class="nt">&lt;/element&gt;</span>
+            <span class="nt">&lt;/oneOrMore&gt;</span>
       <span class="nt">&lt;/element&gt;</span>
 
       <span class="nt">&lt;oneOrMore&gt;</span>
-        <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;institution&quot;</span><span class="nt">&gt;</span> <span class="nt">&lt;interleave&gt;</span>
-          <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;</span> <span class="nt">&lt;text/&gt;</span> <span class="nt">&lt;/element&gt;</span>
-          <span class="nt">&lt;optional&gt;</span>
-            <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;lifetime&quot;</span><span class="nt">&gt;</span> <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;nonNegativeInteger&quot;</span><span class="nt">/&gt;</span> <span class="nt">&lt;/element&gt;</span>
-          <span class="nt">&lt;/optional&gt;</span>
+            <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;facility&quot;</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;interleave&gt;</span>
+                    <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;</span> <span class="nt">&lt;text/&gt;</span> <span class="nt">&lt;/element&gt;</span>
+                    <span class="nt">&lt;optional&gt;</span>
+                      <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;lifetime&quot;</span><span class="nt">&gt;</span> <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;nonNegativeInteger&quot;</span><span class="nt">/&gt;</span> <span class="nt">&lt;/element&gt;</span>
+                    <span class="nt">&lt;/optional&gt;</span>
 
-          <span class="nt">&lt;optional&gt;</span>
-            <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;initialfacilitylist&quot;</span><span class="nt">&gt;</span>
-              <span class="nt">&lt;oneOrMore&gt;</span>
-                <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;entry&quot;</span><span class="nt">&gt;</span>
-                  <span class="nt">&lt;interleave&gt;</span>
-                    <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;prototype&quot;</span><span class="nt">&gt;</span> <span class="nt">&lt;text/&gt;</span> <span class="nt">&lt;/element&gt;</span>
-                    <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;number&quot;</span><span class="nt">&gt;</span> <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;nonNegativeInteger&quot;</span><span class="nt">/&gt;</span> <span class="nt">&lt;/element&gt;</span>
-                  <span class="nt">&lt;/interleave&gt;</span>
-                <span class="nt">&lt;/element&gt;</span>
-              <span class="nt">&lt;/oneOrMore&gt;</span>
+                    <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;config&quot;</span><span class="nt">&gt;</span>
+                      <span class="nt">&lt;choice&gt;</span>
+                      @Facility_REFS@
+                      <span class="nt">&lt;/choice&gt;</span>
+                    <span class="nt">&lt;/element&gt;</span>
+              <span class="nt">&lt;/interleave&gt;</span>
             <span class="nt">&lt;/element&gt;</span>
-          <span class="nt">&lt;/optional&gt;</span>
-
-          <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;config&quot;</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;choice&gt;</span>
-            @Inst_REFS@
-            <span class="nt">&lt;/choice&gt;</span>
-          <span class="nt">&lt;/element&gt;</span>
-        <span class="nt">&lt;/interleave&gt;</span> <span class="nt">&lt;/element&gt;</span>
       <span class="nt">&lt;/oneOrMore&gt;</span>
 
+      <span class="nt">&lt;oneOrMore&gt;</span>
+            <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;region&quot;</span><span class="nt">&gt;</span> <span class="nt">&lt;interleave&gt;</span>
+              <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;</span> <span class="nt">&lt;text/&gt;</span> <span class="nt">&lt;/element&gt;</span>
+              <span class="nt">&lt;optional&gt;</span>
+                    <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;lifetime&quot;</span><span class="nt">&gt;</span> <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;nonNegativeInteger&quot;</span><span class="nt">/&gt;</span> <span class="nt">&lt;/element&gt;</span>
+              <span class="nt">&lt;/optional&gt;</span>
+
+              <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;config&quot;</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;choice&gt;</span>
+                    @Region_REFS@
+                    <span class="nt">&lt;/choice&gt;</span>
+              <span class="nt">&lt;/element&gt;</span>
+
+              <span class="nt">&lt;oneOrMore&gt;</span>
+                    <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;institution&quot;</span><span class="nt">&gt;</span> <span class="nt">&lt;interleave&gt;</span>
+                      <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;</span> <span class="nt">&lt;text/&gt;</span> <span class="nt">&lt;/element&gt;</span>
+                      <span class="nt">&lt;optional&gt;</span>
+                            <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;lifetime&quot;</span><span class="nt">&gt;</span> <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;nonNegativeInteger&quot;</span><span class="nt">/&gt;</span> <span class="nt">&lt;/element&gt;</span>
+                      <span class="nt">&lt;/optional&gt;</span>
+
+                      <span class="nt">&lt;optional&gt;</span>
+                            <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;initialfacilitylist&quot;</span><span class="nt">&gt;</span>
+                              <span class="nt">&lt;oneOrMore&gt;</span>
+                                    <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;entry&quot;</span><span class="nt">&gt;</span>
+                                      <span class="nt">&lt;interleave&gt;</span>
+                                            <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;prototype&quot;</span><span class="nt">&gt;</span> <span class="nt">&lt;text/&gt;</span> <span class="nt">&lt;/element&gt;</span>
+                                            <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;number&quot;</span><span class="nt">&gt;</span> <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;nonNegativeInteger&quot;</span><span class="nt">/&gt;</span> <span class="nt">&lt;/element&gt;</span>
+                                      <span class="nt">&lt;/interleave&gt;</span>
+                                    <span class="nt">&lt;/element&gt;</span>
+                              <span class="nt">&lt;/oneOrMore&gt;</span>
+                            <span class="nt">&lt;/element&gt;</span>
+                      <span class="nt">&lt;/optional&gt;</span>
+
+                      <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;config&quot;</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;choice&gt;</span>
+                            @Inst_REFS@
+                            <span class="nt">&lt;/choice&gt;</span>
+                      <span class="nt">&lt;/element&gt;</span>
+                    <span class="nt">&lt;/interleave&gt;</span> <span class="nt">&lt;/element&gt;</span>
+              <span class="nt">&lt;/oneOrMore&gt;</span>
+
+            <span class="nt">&lt;/interleave&gt;</span> <span class="nt">&lt;/element&gt;</span>
+      <span class="nt">&lt;/oneOrMore&gt;</span>
+
+      <span class="nt">&lt;zeroOrMore&gt;</span>
+            <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;recipe&quot;</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;interleave&gt;</span>
+                    <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;&lt;text/&gt;&lt;/element&gt;</span>
+                    <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;basis&quot;</span><span class="nt">&gt;&lt;text/&gt;&lt;/element&gt;</span>
+                    <span class="nt">&lt;oneOrMore&gt;</span>
+                      <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;nuclide&quot;</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;interleave&gt;</span>
+                              <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;id&quot;</span><span class="nt">&gt;&lt;data</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span><span class="nt">/&gt;&lt;/element&gt;</span>
+                              <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;comp&quot;</span><span class="nt">&gt;&lt;data</span> <span class="na">type=</span><span class="s">&quot;double&quot;</span><span class="nt">/&gt;&lt;/element&gt;</span>
+                            <span class="nt">&lt;/interleave&gt;</span>
+                      <span class="nt">&lt;/element&gt;</span>
+                    <span class="nt">&lt;/oneOrMore&gt;</span>
+              <span class="nt">&lt;/interleave&gt;</span>
+            <span class="nt">&lt;/element&gt;</span>
+      <span class="nt">&lt;/zeroOrMore&gt;</span>
+
     <span class="nt">&lt;/interleave&gt;</span> <span class="nt">&lt;/element&gt;</span>
-  <span class="nt">&lt;/oneOrMore&gt;</span>
 
-  <span class="nt">&lt;zeroOrMore&gt;</span>
-    <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;recipe&quot;</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;interleave&gt;</span>
-        <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;&lt;text/&gt;&lt;/element&gt;</span>
-        <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;basis&quot;</span><span class="nt">&gt;&lt;text/&gt;&lt;/element&gt;</span>
-        <span class="nt">&lt;oneOrMore&gt;</span>
-          <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;nuclide&quot;</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;interleave&gt;</span>
-              <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;id&quot;</span><span class="nt">&gt;&lt;data</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span><span class="nt">/&gt;&lt;/element&gt;</span>
-              <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;comp&quot;</span><span class="nt">&gt;&lt;data</span> <span class="na">type=</span><span class="s">&quot;double&quot;</span><span class="nt">/&gt;&lt;/element&gt;</span>
-            <span class="nt">&lt;/interleave&gt;</span>
-          <span class="nt">&lt;/element&gt;</span>
-        <span class="nt">&lt;/oneOrMore&gt;</span>
-      <span class="nt">&lt;/interleave&gt;</span>
-    <span class="nt">&lt;/element&gt;</span>
-  <span class="nt">&lt;/zeroOrMore&gt;</span>
+    <span class="nt">&lt;/start&gt;</span>
 
-<span class="nt">&lt;/interleave&gt;</span> <span class="nt">&lt;/element&gt;</span>
-
-<span class="nt">&lt;/start&gt;</span>
-
-<span class="nt">&lt;/grammar&gt;</span>
+    <span class="nt">&lt;/grammar&gt;</span>
 </pre></div>
 </div>
 </div>
@@ -268,128 +271,132 @@ with the combination of the <code class="docutils literal"><span class="pre">--s
 </div>
 <p>This displays the following:</p>
 <div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;grammar</span> <span class="na">xmlns=</span><span class="s">&quot;http://relaxng.org/ns/structure/1.0&quot;</span>
-<span class="na">datatypeLibrary=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-datatypes&quot;</span><span class="nt">&gt;</span>
-<span class="nt">&lt;start&gt;</span>
-<span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;simulation&quot;</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;optional&gt;&lt;element</span> <span class="na">name=</span><span class="s">&quot;schematype&quot;</span><span class="nt">&gt;&lt;text/&gt;&lt;/element&gt;&lt;/optional&gt;</span>
-<span class="nt">&lt;interleave&gt;</span>
-
-  <span class="nt">&lt;optional&gt;&lt;element</span> <span class="na">name=</span><span class="s">&quot;ui&quot;</span><span class="nt">&gt;&lt;text/&gt;&lt;/element&gt;&lt;/optional&gt;</span>
-
-  <span class="nt">&lt;element</span> <span class="na">name =</span><span class="s">&quot;control&quot;</span><span class="nt">&gt;</span>
+    <span class="na">datatypeLibrary=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-datatypes&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;start&gt;</span>
+    <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;simulation&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;optional&gt;&lt;element</span> <span class="na">name=</span><span class="s">&quot;schematype&quot;</span><span class="nt">&gt;&lt;text/&gt;&lt;/element&gt;&lt;/optional&gt;</span>
     <span class="nt">&lt;interleave&gt;</span>
-      <span class="nt">&lt;optional&gt;</span>
-        <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;simhandle&quot;</span><span class="nt">&gt;&lt;data</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span><span class="nt">/&gt;&lt;/element&gt;</span>
-      <span class="nt">&lt;/optional&gt;</span>
-      <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;duration&quot;</span><span class="nt">&gt;&lt;data</span> <span class="na">type=</span><span class="s">&quot;nonNegativeInteger&quot;</span><span class="nt">/&gt;&lt;/element&gt;</span>
-      <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;startmonth&quot;</span><span class="nt">&gt;&lt;data</span> <span class="na">type=</span><span class="s">&quot;nonNegativeInteger&quot;</span><span class="nt">/&gt;&lt;/element&gt;</span>
-      <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;startyear&quot;</span><span class="nt">&gt;&lt;data</span> <span class="na">type=</span><span class="s">&quot;nonNegativeInteger&quot;</span><span class="nt">/&gt;&lt;/element&gt;</span>
-      <span class="nt">&lt;optional&gt;</span>
-        <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;decay&quot;</span><span class="nt">&gt;&lt;text/&gt;&lt;/element&gt;</span>
-      <span class="nt">&lt;/optional&gt;</span>
-      <span class="nt">&lt;optional&gt;</span>
-        <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;dt&quot;</span><span class="nt">&gt;&lt;data</span> <span class="na">type=</span><span class="s">&quot;nonNegativeInteger&quot;</span><span class="nt">/&gt;&lt;/element&gt;</span>
-      <span class="nt">&lt;/optional&gt;</span>
-      <span class="nt">&lt;optional&gt;</span>
-        <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;solver&quot;</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;interleave&gt;</span>
-            <span class="nt">&lt;optional&gt;</span>
-              <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;config&quot;</span><span class="nt">&gt;</span>
-                <span class="nt">&lt;choice&gt;</span>
-                  <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;greedy&quot;</span><span class="nt">&gt;</span>
-                    <span class="nt">&lt;interleave&gt;</span>
-                      <span class="nt">&lt;optional&gt;</span>
-                        <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;preconditioner&quot;</span><span class="nt">&gt;</span> <span class="nt">&lt;text/&gt;</span> <span class="nt">&lt;/element&gt;</span>
-                      <span class="nt">&lt;/optional&gt;</span>
-                    <span class="nt">&lt;/interleave&gt;</span>
-                  <span class="nt">&lt;/element&gt;</span>
-                <span class="nt">&lt;/choice&gt;</span>
-              <span class="nt">&lt;/element&gt;</span>
-            <span class="nt">&lt;/optional&gt;</span>
-            <span class="nt">&lt;optional&gt;</span>
-              <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;exclusive_orders_only&quot;</span><span class="nt">&gt;</span>
-                <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;boolean&quot;</span> <span class="nt">/&gt;</span>
-              <span class="nt">&lt;/element&gt;</span>
-            <span class="nt">&lt;/optional&gt;</span>
-          <span class="nt">&lt;/interleave&gt;</span>
-        <span class="nt">&lt;/element&gt;</span>
-      <span class="nt">&lt;/optional&gt;</span>
-    <span class="nt">&lt;/interleave&gt;</span>
-  <span class="nt">&lt;/element&gt;</span>
 
-  <span class="nt">&lt;zeroOrMore&gt;</span>
-    <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;commodity&quot;</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;interleave&gt;</span>
-        <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;&lt;text/&gt;&lt;/element&gt;</span>
-        <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;solution_priority&quot;</span><span class="nt">&gt;&lt;data</span> <span class="na">type=</span><span class="s">&quot;double&quot;</span><span class="nt">/&gt;&lt;/element&gt;</span>
-      <span class="nt">&lt;/interleave&gt;</span>
-    <span class="nt">&lt;/element&gt;</span>
-  <span class="nt">&lt;/zeroOrMore&gt;</span>
+      <span class="nt">&lt;optional&gt;&lt;element</span> <span class="na">name=</span><span class="s">&quot;ui&quot;</span><span class="nt">&gt;&lt;text/&gt;&lt;/element&gt;&lt;/optional&gt;</span>
 
-  <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;archetypes&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;oneOrMore&gt;</span>
-      <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;spec&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;interleave&gt;</span>
-          <span class="nt">&lt;optional&gt;&lt;element</span> <span class="na">name=</span><span class="s">&quot;path&quot;</span><span class="nt">&gt;&lt;text/&gt;&lt;/element&gt;&lt;/optional&gt;</span>
-          <span class="nt">&lt;optional&gt;&lt;element</span> <span class="na">name=</span><span class="s">&quot;lib&quot;</span><span class="nt">&gt;&lt;text/&gt;&lt;/element&gt;&lt;/optional&gt;</span>
-          <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;&lt;text/&gt;&lt;/element&gt;</span>
-          <span class="nt">&lt;optional&gt;&lt;element</span> <span class="na">name=</span><span class="s">&quot;alias&quot;</span><span class="nt">&gt;&lt;text/&gt;&lt;/element&gt;&lt;/optional&gt;</span>
-        <span class="nt">&lt;/interleave&gt;</span>
-      <span class="nt">&lt;/element&gt;</span>
-    <span class="nt">&lt;/oneOrMore&gt;</span>
-  <span class="nt">&lt;/element&gt;</span>
-
-  <span class="nt">&lt;oneOrMore&gt;</span>
-    <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;prototype&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;interleave&gt;</span>
-      <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;&lt;text/&gt;&lt;/element&gt;</span>
-      <span class="nt">&lt;optional&gt;</span>
-        <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;lifetime&quot;</span><span class="nt">&gt;</span> <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;nonNegativeInteger&quot;</span><span class="nt">/&gt;</span> <span class="nt">&lt;/element&gt;</span>
-      <span class="nt">&lt;/optional&gt;</span>
-
-      <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;config&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;choice&gt;</span>
-          @MODEL_SCHEMAS@
-        <span class="nt">&lt;/choice&gt;</span>
-      <span class="nt">&lt;/element&gt;</span>
-
-    <span class="nt">&lt;/interleave&gt;</span>
-    <span class="nt">&lt;/element&gt;</span>
-  <span class="nt">&lt;/oneOrMore&gt;</span>
-
-  <span class="nt">&lt;oneOrMore&gt;</span>
-    <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;agent&quot;</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;interleave&gt;</span>
-        <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;&lt;text/&gt;&lt;/element&gt;</span>
-        <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;prototype&quot;</span><span class="nt">&gt;&lt;text/&gt;&lt;/element&gt;</span>
-        <span class="nt">&lt;optional&gt;</span>
-          <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;parent&quot;</span><span class="nt">&gt;&lt;text/&gt;&lt;/element&gt;</span>
-        <span class="nt">&lt;/optional&gt;</span>
-      <span class="nt">&lt;/interleave&gt;</span>
-    <span class="nt">&lt;/element&gt;</span>
-  <span class="nt">&lt;/oneOrMore&gt;</span>
-
-  <span class="nt">&lt;zeroOrMore&gt;</span>
-    <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;recipe&quot;</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;interleave&gt;</span>
-        <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;&lt;text/&gt;&lt;/element&gt;</span>
-        <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;basis&quot;</span><span class="nt">&gt;&lt;text/&gt;&lt;/element&gt;</span>
-        <span class="nt">&lt;oneOrMore&gt;</span>
-          <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;nuclide&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;element</span> <span class="na">name =</span><span class="s">&quot;control&quot;</span><span class="nt">&gt;</span>
             <span class="nt">&lt;interleave&gt;</span>
-              <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;id&quot;</span><span class="nt">&gt;&lt;data</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span><span class="nt">/&gt;&lt;/element&gt;</span>
-              <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;comp&quot;</span><span class="nt">&gt;&lt;data</span> <span class="na">type=</span><span class="s">&quot;double&quot;</span><span class="nt">/&gt;&lt;/element&gt;</span>
+              <span class="nt">&lt;optional&gt;</span>
+                    <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;simhandle&quot;</span><span class="nt">&gt;&lt;data</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span><span class="nt">/&gt;&lt;/element&gt;</span>
+              <span class="nt">&lt;/optional&gt;</span>
+              <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;duration&quot;</span><span class="nt">&gt;&lt;data</span> <span class="na">type=</span><span class="s">&quot;nonNegativeInteger&quot;</span><span class="nt">/&gt;&lt;/element&gt;</span>
+              <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;startmonth&quot;</span><span class="nt">&gt;&lt;data</span> <span class="na">type=</span><span class="s">&quot;nonNegativeInteger&quot;</span><span class="nt">/&gt;&lt;/element&gt;</span>
+              <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;startyear&quot;</span><span class="nt">&gt;&lt;data</span> <span class="na">type=</span><span class="s">&quot;nonNegativeInteger&quot;</span><span class="nt">/&gt;&lt;/element&gt;</span>
+              <span class="nt">&lt;optional&gt;</span>
+                    <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;decay&quot;</span><span class="nt">&gt;&lt;text/&gt;&lt;/element&gt;</span>
+              <span class="nt">&lt;/optional&gt;</span>
+              <span class="nt">&lt;optional&gt;</span>
+                    <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;solver&quot;</span><span class="nt">&gt;</span>
+                      <span class="nt">&lt;interleave&gt;</span>
+                            <span class="nt">&lt;optional&gt;&lt;element</span> <span class="na">name=</span><span class="s">&quot;config&quot;</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;choice&gt;</span>
+                              <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;greedy&quot;</span><span class="nt">&gt;</span>
+                                    <span class="nt">&lt;interleave&gt;</span>
+                                      <span class="nt">&lt;optional&gt;</span>
+                                            <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;preconditioner&quot;</span><span class="nt">&gt;</span> <span class="nt">&lt;text/&gt;</span> <span class="nt">&lt;/element&gt;</span>
+                                      <span class="nt">&lt;/optional&gt;</span>
+                                    <span class="nt">&lt;/interleave&gt;</span>
+                              <span class="nt">&lt;/element&gt;</span>
+                              <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;coin-or&quot;</span><span class="nt">&gt;</span>
+                                    <span class="nt">&lt;interleave&gt;</span>
+                                      <span class="nt">&lt;optional&gt;</span>
+                                            <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;timeout&quot;</span><span class="nt">&gt;</span>  <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;positiveInteger&quot;</span><span class="nt">/&gt;</span>  <span class="nt">&lt;/element&gt;</span>
+                                      <span class="nt">&lt;/optional&gt;</span>
+                                      <span class="nt">&lt;optional&gt;&lt;element</span> <span class="na">name=</span><span class="s">&quot;verbose&quot;</span><span class="nt">&gt;&lt;data</span> <span class="na">type=</span><span class="s">&quot;boolean&quot;</span><span class="nt">/&gt;&lt;/element&gt;&lt;/optional&gt;</span>
+                                      <span class="nt">&lt;optional&gt;&lt;element</span> <span class="na">name=</span><span class="s">&quot;mps&quot;</span><span class="nt">&gt;&lt;data</span> <span class="na">type=</span><span class="s">&quot;boolean&quot;</span><span class="nt">/&gt;&lt;/element&gt;&lt;/optional&gt;</span>
+                                    <span class="nt">&lt;/interleave&gt;</span>
+                              <span class="nt">&lt;/element&gt;</span>
+                            <span class="nt">&lt;/choice&gt;</span>
+                            <span class="nt">&lt;/element&gt;&lt;/optional&gt;</span>
+                            <span class="nt">&lt;optional&gt;</span>
+                              <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;allow_exclusive_orders&quot;</span><span class="nt">&gt;</span>
+                                    <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;boolean&quot;</span> <span class="nt">/&gt;</span>
+                              <span class="nt">&lt;/element&gt;</span>
+                            <span class="nt">&lt;/optional&gt;</span>
+                      <span class="nt">&lt;/interleave&gt;</span>
+                    <span class="nt">&lt;/element&gt;</span>
+              <span class="nt">&lt;/optional&gt;</span>
             <span class="nt">&lt;/interleave&gt;</span>
-          <span class="nt">&lt;/element&gt;</span>
-        <span class="nt">&lt;/oneOrMore&gt;</span>
-      <span class="nt">&lt;/interleave&gt;</span>
-    <span class="nt">&lt;/element&gt;</span>
-  <span class="nt">&lt;/zeroOrMore&gt;</span>
+      <span class="nt">&lt;/element&gt;</span>
 
-<span class="nt">&lt;/interleave&gt;</span>
-<span class="nt">&lt;/element&gt;</span><span class="c">&lt;!-- end of simulation --&gt;</span>
-<span class="nt">&lt;/start&gt;</span>
-<span class="nt">&lt;/grammar&gt;</span>
+      <span class="nt">&lt;zeroOrMore&gt;</span>
+            <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;commodity&quot;</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;interleave&gt;</span>
+                    <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;&lt;text/&gt;&lt;/element&gt;</span>
+                    <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;solution_priority&quot;</span><span class="nt">&gt;&lt;data</span> <span class="na">type=</span><span class="s">&quot;double&quot;</span><span class="nt">/&gt;&lt;/element&gt;</span>
+              <span class="nt">&lt;/interleave&gt;</span>
+            <span class="nt">&lt;/element&gt;</span>
+      <span class="nt">&lt;/zeroOrMore&gt;</span>
+
+      <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;archetypes&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;oneOrMore&gt;</span>
+              <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;spec&quot;</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;interleave&gt;</span>
+                      <span class="nt">&lt;optional&gt;&lt;element</span> <span class="na">name=</span><span class="s">&quot;path&quot;</span><span class="nt">&gt;&lt;text/&gt;&lt;/element&gt;&lt;/optional&gt;</span>
+                      <span class="nt">&lt;optional&gt;&lt;element</span> <span class="na">name=</span><span class="s">&quot;lib&quot;</span><span class="nt">&gt;&lt;text/&gt;&lt;/element&gt;&lt;/optional&gt;</span>
+                      <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;&lt;text/&gt;&lt;/element&gt;</span>
+                      <span class="nt">&lt;optional&gt;&lt;element</span> <span class="na">name=</span><span class="s">&quot;alias&quot;</span><span class="nt">&gt;&lt;text/&gt;&lt;/element&gt;&lt;/optional&gt;</span>
+                    <span class="nt">&lt;/interleave&gt;</span>
+              <span class="nt">&lt;/element&gt;</span>
+            <span class="nt">&lt;/oneOrMore&gt;</span>
+      <span class="nt">&lt;/element&gt;</span>
+
+      <span class="nt">&lt;oneOrMore&gt;</span>
+            <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;prototype&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;interleave&gt;</span>
+              <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;&lt;text/&gt;&lt;/element&gt;</span>
+              <span class="nt">&lt;optional&gt;</span>
+                    <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;lifetime&quot;</span><span class="nt">&gt;</span> <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;nonNegativeInteger&quot;</span><span class="nt">/&gt;</span> <span class="nt">&lt;/element&gt;</span>
+              <span class="nt">&lt;/optional&gt;</span>
+
+              <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;config&quot;</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;choice&gt;</span>
+                      @MODEL_SCHEMAS@
+                    <span class="nt">&lt;/choice&gt;</span>
+              <span class="nt">&lt;/element&gt;</span>
+
+            <span class="nt">&lt;/interleave&gt;</span>
+            <span class="nt">&lt;/element&gt;</span>
+      <span class="nt">&lt;/oneOrMore&gt;</span>
+
+      <span class="nt">&lt;oneOrMore&gt;</span>
+            <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;agent&quot;</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;interleave&gt;</span>
+                    <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;&lt;text/&gt;&lt;/element&gt;</span>
+                    <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;prototype&quot;</span><span class="nt">&gt;&lt;text/&gt;&lt;/element&gt;</span>
+                    <span class="nt">&lt;optional&gt;</span>
+                      <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;parent&quot;</span><span class="nt">&gt;&lt;text/&gt;&lt;/element&gt;</span>
+                    <span class="nt">&lt;/optional&gt;</span>
+              <span class="nt">&lt;/interleave&gt;</span>
+            <span class="nt">&lt;/element&gt;</span>
+      <span class="nt">&lt;/oneOrMore&gt;</span>
+
+      <span class="nt">&lt;zeroOrMore&gt;</span>
+            <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;recipe&quot;</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;interleave&gt;</span>
+                    <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;&lt;text/&gt;&lt;/element&gt;</span>
+                    <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;basis&quot;</span><span class="nt">&gt;&lt;text/&gt;&lt;/element&gt;</span>
+                    <span class="nt">&lt;oneOrMore&gt;</span>
+                      <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;nuclide&quot;</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;interleave&gt;</span>
+                              <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;id&quot;</span><span class="nt">&gt;&lt;data</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span><span class="nt">/&gt;&lt;/element&gt;</span>
+                              <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;comp&quot;</span><span class="nt">&gt;&lt;data</span> <span class="na">type=</span><span class="s">&quot;double&quot;</span><span class="nt">/&gt;&lt;/element&gt;</span>
+                            <span class="nt">&lt;/interleave&gt;</span>
+                      <span class="nt">&lt;/element&gt;</span>
+                    <span class="nt">&lt;/oneOrMore&gt;</span>
+              <span class="nt">&lt;/interleave&gt;</span>
+            <span class="nt">&lt;/element&gt;</span>
+      <span class="nt">&lt;/zeroOrMore&gt;</span>
+
+    <span class="nt">&lt;/interleave&gt;</span>
+    <span class="nt">&lt;/element&gt;</span><span class="c">&lt;!-- end of simulation --&gt;</span>
+    <span class="nt">&lt;/start&gt;</span>
+    <span class="nt">&lt;/grammar&gt;</span>
 </pre></div>
 </div>
 </div>
@@ -510,7 +517,7 @@ with the combination of the <code class="docutils literal"><span class="pre">--s
 
     <div class="footer" role="contentinfo">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Apr 07, 2016.
+      Last updated on Apr 13, 2016.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");

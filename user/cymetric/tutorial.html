@@ -85,34 +85,15 @@ if(ga_enabled){
 <span id="cym-tutorial"></span><h1>Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this headline">¶</a></h1>
 <p>This document will walk you through the basics of how to use cymetric on the
 command line, from Python, and even how to write your own metrics!</p>
+<p>Cymetric is an extension of <span style="font-variant:small-caps;">Cyclus</span>, so it is assumed that <span style="font-variant:small-caps;">Cyclus</span> is already
+installed on your system. If not, please visit here for <a class="reference external" href="http://fuelcycle.org/kernel/build_from_source.html">building it from
+source</a>. Cymetric
+installation instructions are available on <a class="reference external" href="https://github.com/cyclus/cymetric">github</a>.</p>
 <p>Cymetric operates by reading data from a <span style="font-variant:small-caps;">Cyclus</span> database, computing metrics,
 and writing those metrics back to the database. This way, previously seen
-metrics are stored for later retrieval.  The dependencies between metrics are
+metrics are stored for later retrieval. The dependencies between metrics are
 automatically computed and evaluated.</p>
 <p>Without further ado, let&#8217;s dive in!</p>
-<div class="section" id="getting-cymetric">
-<h2>Getting Cymetric<a class="headerlink" href="#getting-cymetric" title="Permalink to this headline">¶</a></h2>
-<p>Cymetric is an extension of <span style="font-variant:small-caps;">Cyclus</span>, so it is assumed that <span style="font-variant:small-caps;">Cyclus</span> is
-already installed on your system. (If not, please visit here
-for building it from source <a class="reference external" href="http://fuelcycle.org/kernel/build_from_source.html">http://fuelcycle.org/kernel/build_from_source.html</a>.)</p>
-<p>Cymetric is available on the same platforms as <span style="font-variant:small-caps;">Cyclus</span>: Ubuntu and Max OS.</p>
-<div class="section" id="building-from-source">
-<h3>Building from Source<a class="headerlink" href="#building-from-source" title="Permalink to this headline">¶</a></h3>
-<p>Cymetric can be built from source by first downloading the code by cloning the GitHub repository:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ git clone https://github.com/cyclus/cymetric
-</pre></div>
-</div>
-<p>Then build and install:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> cymetric
-$ python setup.py install --user
-</pre></div>
-</div>
-</div>
-<div class="section" id="installation-via-binary">
-<h3>Installation via Binary<a class="headerlink" href="#installation-via-binary" title="Permalink to this headline">¶</a></h3>
-<p>Cymetric will soon be available to install via Conda.</p>
-</div>
-</div>
 <div class="section" id="command-line-usage">
 <h2>Command Line Usage<a class="headerlink" href="#command-line-usage" title="Permalink to this headline">¶</a></h2>
 <p>Cymetric ships with a command line utility, just called <code class="docutils literal"><span class="pre">cymetric</span></code>. Since
@@ -398,11 +379,6 @@ accepts the name of the table.  For example,</p>
     <h3><a href="../../index.html">Page contents</a></h3>
     <ul>
 <li><a class="reference internal" href="#">Tutorial</a><ul>
-<li><a class="reference internal" href="#getting-cymetric">Getting Cymetric</a><ul>
-<li><a class="reference internal" href="#building-from-source">Building from Source</a></li>
-<li><a class="reference internal" href="#installation-via-binary">Installation via Binary</a></li>
-</ul>
-</li>
 <li><a class="reference internal" href="#command-line-usage">Command Line Usage</a><ul>
 <li><a class="reference internal" href="#table-listing-l">Table Listing: <code class="docutils literal"><span class="pre">-l</span></code></a></li>
 <li><a class="reference internal" href="#code-execution-e">Code Execution: <code class="docutils literal"><span class="pre">-e</span></code></a></li>
@@ -516,7 +492,7 @@ accepts the name of the table.  For example,</p>
 
     <div class="footer" role="contentinfo">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Apr 07, 2016.
+      Last updated on Apr 13, 2016.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");
