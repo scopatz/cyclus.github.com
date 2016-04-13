@@ -35,6 +35,7 @@ To view a JSON structured output of all the data generated and collected from
 ``#pragma cyclus`` annotations for a particular archetype:
 
   .. code-block:: bash
+
     $ cyclus --agent-annotations :cycamore:Source
     {
      "all_parents": [
@@ -53,6 +54,7 @@ To view a JSON structured output of all the data generated and collected from
 And to list all archetypes inside a particular library:
 
   .. code-block:: bash
+
     $ cyclus --agent-listing :cycamore
     :cycamore:DeployInst
     :cycamore:Enrichment

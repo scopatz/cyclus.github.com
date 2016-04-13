@@ -112,10 +112,39 @@ configuration parameters in input files:</p>
 <p>To view a JSON structured output of all the data generated and collected from
 <code class="docutils literal"><span class="pre">#pragma</span> <span class="pre">cyclus</span></code> annotations for a particular archetype:</p>
 <blockquote>
-<div></div></blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ cyclus --agent-annotations :cycamore:Source
+<span class="o">{</span>
+ <span class="s2">&quot;all_parents&quot;</span>: <span class="o">[</span>
+  <span class="s2">&quot;cyclus::Agent&quot;</span>,
+  <span class="s2">&quot;cyclus::Facility&quot;</span>,
+  <span class="s2">&quot;cyclus::Ider&quot;</span>,
+  <span class="s2">&quot;cyclus::StateWrangler&quot;</span>,
+  <span class="s2">&quot;cyclus::TimeListener&quot;</span>,
+  <span class="s2">&quot;cyclus::Trader&quot;</span>,
+  <span class="s2">&quot;cyclus::toolkit::AgentManaged&quot;</span>,
+  <span class="s2">&quot;cyclus::toolkit::CommodityProducer&quot;</span>
+ <span class="o">]</span>,
+ <span class="s2">&quot;doc&quot;</span>: <span class="s2">&quot;This facility acts as a source of material with a fixed...</span>
+<span class="s2"> ...</span>
+</pre></div>
+</div>
+</div></blockquote>
 <p>And to list all archetypes inside a particular library:</p>
 <blockquote>
-<div></div></blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ cyclus --agent-listing :cycamore
+:cycamore:DeployInst
+:cycamore:Enrichment
+:cycamore:FuelFab
+:cycamore:GrowthRegion
+:cycamore:ManagerInst
+:cycamore:Reactor
+:cycamore:Separations
+:cycamore:Sink
+:cycamore:Source
+:cycamore:Storage
+</pre></div>
+</div>
+</div></blockquote>
 <div class="section" id="archetype-versioning">
 <h2>Archetype Versioning<a class="headerlink" href="#archetype-versioning" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="docutils literal"><span class="pre">cyclus::Agent</span></code> class exposes a <code class="docutils literal"><span class="pre">version()</span></code> member function which can be
