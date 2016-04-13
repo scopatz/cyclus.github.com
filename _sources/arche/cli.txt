@@ -36,36 +36,36 @@ To view a JSON structured output of all the data generated and collected from
 
   .. code-block:: bash
 
-    $ cyclus --agent-annotations :cycamore:Source
-    {
-     "all_parents": [
-      "cyclus::Agent", 
-      "cyclus::Facility", 
-      "cyclus::Ider", 
-      "cyclus::StateWrangler", 
-      "cyclus::TimeListener", 
-      "cyclus::Trader", 
-      "cyclus::toolkit::AgentManaged", 
-      "cyclus::toolkit::CommodityProducer"
-     ], 
-     "doc": "This facility acts as a source of material with a fixed...
-     ...
+      $ cyclus --agent-annotations :cycamore:Source
+      {
+       "all_parents": [
+        "cyclus::Agent", 
+        "cyclus::Facility", 
+        "cyclus::Ider", 
+        "cyclus::StateWrangler", 
+        "cyclus::TimeListener", 
+        "cyclus::Trader", 
+        "cyclus::toolkit::AgentManaged", 
+        "cyclus::toolkit::CommodityProducer"
+       ], 
+       "doc": "This facility acts as a source of material with a fixed...
+       ...
 
 And to list all archetypes inside a particular library:
 
   .. code-block:: bash
 
-    $ cyclus --agent-listing :cycamore
-    :cycamore:DeployInst
-    :cycamore:Enrichment
-    :cycamore:FuelFab
-    :cycamore:GrowthRegion
-    :cycamore:ManagerInst
-    :cycamore:Reactor
-    :cycamore:Separations
-    :cycamore:Sink
-    :cycamore:Source
-    :cycamore:Storage
+      $ cyclus --agent-listing :cycamore
+      :cycamore:DeployInst
+      :cycamore:Enrichment
+      :cycamore:FuelFab
+      :cycamore:GrowthRegion
+      :cycamore:ManagerInst
+      :cycamore:Reactor
+      :cycamore:Separations
+      :cycamore:Sink
+      :cycamore:Source
+      :cycamore:Storage
 
 Archetype Versioning
 --------------------
