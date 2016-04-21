@@ -124,11 +124,11 @@ and running them.  If you haven&#8217;t already, you should take a look at
 <h2>Archetypes<a class="headerlink" href="#archetypes" title="Permalink to this headline">¶</a></h2>
 <p>Collections of <a class="reference internal" href="../basics/glossary.html#term-archetype"><span class="xref std std-term">archetypes</span></a> are provided by various teams
 and individuals for use by <span style="font-variant:small-caps;">Cyclus</span> users.</p>
-<dl class="docutils">
-<dt><strong>Cycamore</strong></dt>
-<dd>The Cycamore library of archetypes is provided by the <span style="font-variant:small-caps;">Cyclus</span> development
-team as a basic set of archetypes for modeling simple nuclear fuel cycles.</dd>
-</dl>
+<div class="section" id="cycamore">
+<h3>Cycamore<a class="headerlink" href="#cycamore" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div>The Cycamore library of archetypes is provided by the <span style="font-variant:small-caps;">Cyclus</span> development
+team as a basic set of archetypes for modeling simple nuclear fuel cycles.</div></blockquote>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="cycamoreagents.html">Cycamore Archetypes</a><ul>
@@ -145,20 +145,12 @@ team as a basic set of archetypes for modeling simple nuclear fuel cycles.</dd>
 </li>
 </ul>
 </div>
-<dl class="docutils">
-<dt><strong>Bright-lite</strong></dt>
-<dd>The University of Texas - Austin is developing a set of archetypes for fuel
-fabrication and reactors that rely on interpolation tables for more
-accurate prediction of fresh fuel compositions and estimates of fuel
-depletion.</dd>
-<dt><strong>Cyborg</strong></dt>
-<dd>The University of Tennessee is working with Oak Ridge National Lab to
-develop archetypes that will use ORIGEN calculations to improve the
-estimate of nuclear fuel properties.</dd>
-<dt><strong>Cyclus Testing</strong></dt>
-<dd>The <span style="font-variant:small-caps;">Cyclus</span> kernel includes some archetype for testing the basic
-functionality of the kenel.</dd>
-</dl>
+</div>
+<div class="section" id="cyclus-testing">
+<h3>Cyclus Testing<a class="headerlink" href="#cyclus-testing" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div>The <span style="font-variant:small-caps;">Cyclus</span> kernel includes some archetype for testing the basic
+functionality of the kenel.</div></blockquote>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="cyclusagents.html">Cyclus Archetypes</a><ul>
@@ -172,6 +164,41 @@ functionality of the kenel.</dd>
 </ul>
 </li>
 </ul>
+</div>
+</div>
+<div class="section" id="third-party-archetypes">
+<h3>Third-Party Archetypes<a class="headerlink" href="#third-party-archetypes" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt><strong>Bright-lite</strong></dt>
+<dd>The University of Texas - Austin is developing a set of archetypes for fuel
+fabrication and reactors that rely on interpolation tables for more
+accurate prediction of fresh fuel compositions and estimates of fuel
+depletion.</dd>
+<dt><strong>Cyborg</strong></dt>
+<dd>The University of Tennessee is working with Oak Ridge National Lab to
+develop archetypes that will use ORIGEN calculations to improve the
+estimate of nuclear fuel properties.</dd>
+<dt><strong>Mbmore</strong></dt>
+<dd><p class="first">Facility archetypes that utilize a random number generator to create
+non-deterministic behaviors.  General methods controlling the behavior
+(including random number generation and Gaussian distributions) are defined in
+the <a class="reference external" href="https://github.com/mbmcgarry/mbmore/blob/master/src/behavior_functions.h">behavior functions.</a></p>
+<ul class="last simple">
+<li><a class="reference external" href="https://github.com/mbmcgarry/mbmore">Mbmore Archetypes</a><ul>
+<li><a class="reference external" href="https://github.com/mbmcgarry/mbmore/blob/master/src/RandomEnrich.h#242">:mbmore:RandomEnrich</a> - Based on cycamore enrichment facility, it can have
+variable tails assay, and bidding behavior can be set to occur at Every X
+timestep or at Random timesteps</li>
+<li><a class="reference external" href="https://github.com/mbmcgarry/mbmore/blob/master/src/RandomSink.h#L78">:mbmore:RandomSink</a> - Based on cycamore sink facility,
+it can accept multiple recipes, has modifiable material preference,
+material request behavior can be set, trading can be suppressed before
+a specified timestep, material requests can occur at Every X timestep
+or at Random timesteps, and quantity requested can be varied using a
+Gaussian distribution function.</li>
+</ul>
+</li>
+</ul>
+</dd>
+</dl>
 </div>
 </div>
 <div class="section" id="visualization-analysis">
@@ -215,6 +242,9 @@ functionality of the kenel.</dd>
 <li><a class="reference internal" href="#running-simulations">Running Simulations</a></li>
 <li><a class="reference internal" href="#tutorials">Tutorials</a></li>
 <li><a class="reference internal" href="#archetypes">Archetypes</a><ul>
+<li><a class="reference internal" href="#cycamore">Cycamore</a></li>
+<li><a class="reference internal" href="#cyclus-testing">Cyclus Testing</a></li>
+<li><a class="reference internal" href="#third-party-archetypes">Third-Party Archetypes</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#visualization-analysis">Visualization &amp; Analysis</a></li>
@@ -318,7 +348,7 @@ functionality of the kenel.</dd>
 
     <div class="footer" role="contentinfo">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Apr 13, 2016.
+      Last updated on Apr 21, 2016.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");

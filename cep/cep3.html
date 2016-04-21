@@ -388,10 +388,11 @@ source tree located in the <code class="docutils literal"><span class="pre">test
 Gtest&#8217;s natural evolution cycle, please download the latest release of Google Tests
 and follow <a class="reference external" href="https://code.google.com/p/googletest/wiki/V1_6_AdvancedGuide#Fusing_Google_Test_Source_Files">the fused source directions here</a>.  If we go too long without doing this,
 it could be very painful to update.</p>
-<p><strong>Verify &amp; Update API Stability:</strong> Since <span style="font-variant:small-caps;">Cyclus</span> v1.0 we promise API stability.
-Luckily, we have a tool for keeping track of this mostly automatically.
-Every release please run the following command to verify that the release
-branch is stable:</p>
+<p><strong>Verify &amp; Update API Stability:</strong> Since <span style="font-variant:small-caps;">Cyclus</span> v1.0 we promise API
+stability.  Luckily, we have a tool for keeping track of this mostly
+automatically.  In order to check this correctly, you must have a <strong>RELEASE</strong>
+build of Cyclus compiled/installed.  Every release please run the following
+command to verify that the release branch is stable:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> cyclus/release
 $ ./smbchk.py --update -t HEAD --no-save --check
 </pre></div>
@@ -404,7 +405,8 @@ either the mailing list or the issue tracker and work to resolve the removed
 symbols until it this command declares that <span style="font-variant:small-caps;">Cyclus</span> is stable. It is
 probably best to do this prior to any release candidates if possible.</p>
 <p>Once stable and there are no more code changes to be made, add the symbols
-in this release to the database with the following command:</p>
+in this release to the database with the following command (again - make sure
+you are working on a RELEASE build of Cyclus):</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> cyclus/release
 $ ./smbchk.py --update -t X.X.X
 </pre></div>
@@ -565,7 +567,7 @@ Use the following BASH commands to do so:</p>
 
     <div class="footer" role="contentinfo">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Apr 13, 2016.
+      Last updated on Apr 21, 2016.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");

@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Tutorial &mdash; Home</title>
+    <title>Cymetric Tutorial &mdash; Home</title>
     
     <link rel="stylesheet" href="../../_static/cyclus.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -81,14 +81,14 @@ if(ga_enabled){
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="tutorial">
-<span id="cym-tutorial"></span><h1>Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this headline">¶</a></h1>
-<p>This document will walk you through the basics of how to use cymetric on the
-command line, from Python, and even how to write your own metrics!</p>
+  <div class="section" id="cymetric-tutorial">
+<span id="cym-tutorial"></span><h1>Cymetric Tutorial<a class="headerlink" href="#cymetric-tutorial" title="Permalink to this headline">¶</a></h1>
+<p>This tutorial will describe how to use cymetric from the command line or using
+Python. It also discusses how to write your own metrics for custom analyses.</p>
 <p>Cymetric is an extension of <span style="font-variant:small-caps;">Cyclus</span>, so it is assumed that <span style="font-variant:small-caps;">Cyclus</span> is already
-installed on your system. If not, please visit here for <a class="reference external" href="http://fuelcycle.org/kernel/build_from_source.html">building it from
-source</a>. Cymetric
-installation instructions are available on <a class="reference external" href="https://github.com/cyclus/cymetric">github</a>.</p>
+installed on your system. (If not, please visit <a class="reference external" href="http://fuelcycle.org/kernel/build_from_source.html">Getting and Building Cyclus
+from Source</a>.) Cymetric
+installation instructions are available on <a class="reference external" href="https://github.com/cyclus/cymetric">GitHub</a>.</p>
 <p>Cymetric operates by reading data from a <span style="font-variant:small-caps;">Cyclus</span> database, computing metrics,
 and writing those metrics back to the database. This way, previously seen
 metrics are stored for later retrieval. The dependencies between metrics are
@@ -96,16 +96,28 @@ automatically computed and evaluated.</p>
 <p>Without further ado, let&#8217;s dive in!</p>
 <div class="section" id="command-line-usage">
 <h2>Command Line Usage<a class="headerlink" href="#command-line-usage" title="Permalink to this headline">¶</a></h2>
-<p>Cymetric ships with a command line utility, just called <code class="docutils literal"><span class="pre">cymetric</span></code>. Since
-cymetric is wholly dependent on acting <span style="font-variant:small-caps;">Cyclus</span> database, you must supply a
-database as an argument on the command line. We&#8217;ll be using <code class="docutils literal"><span class="pre">test.h5</span></code> and
-<code class="docutils literal"><span class="pre">test.sqlite</span></code> as our example database here.</p>
+<p>Cymetric ships with a command line utility, just called <code class="docutils literal"><span class="pre">cymetric</span></code>.
+The command line tool is useful for quick feedback. It can show a list of
+tables in a database or execute some code using a database, e.g., evaluating
+a metric or quickly checking a plot.</p>
+<p>Since cymetric is wholly dependent on <span style="font-variant:small-caps;">Cyclus</span> databases, you must supply a
+database as an argument on the command line. This will look something like the
+following:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ cymetric database -flags
+</pre></div>
+</div>
+<p>We&#8217;ll be using <code class="docutils literal"><span class="pre">test.h5</span></code> and <code class="docutils literal"><span class="pre">test.sqlite</span></code> as our example databases here.
+The sections below explain the flags for use on the command line.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Please note that cymetric may not work on the command line within its own directory.</p>
+</div>
 <div class="section" id="table-listing-l">
 <h3>Table Listing: <code class="docutils literal"><span class="pre">-l</span></code><a class="headerlink" href="#table-listing-l" title="Permalink to this headline">¶</a></h3>
-<p>The first switch here, lowercase-L <code class="docutils literal"><span class="pre">-l</span></code>, simply lists the tables in the database.
-Note that this may list more tables in the database than are strictly part of the
-<span style="font-variant:small-caps;">Cyclus</span> interface, because of the need for <span style="font-variant:small-caps;">Cyclus</span> to store metadata. Don&#8217;t
-be alarmed. Listing the current tables is easy:</p>
+<p>The first switch here, lowercase-L <code class="docutils literal"><span class="pre">-l</span></code>, simply lists the tables in the
+database.  Note that this may list more tables in the database than are
+strictly part of the <span style="font-variant:small-caps;">Cyclus</span> interface, because of the need for <span style="font-variant:small-caps;">Cyclus</span> to
+store metadata. Don&#8217;t be alarmed. Listing the current tables is easy:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ cymetric test.h5 -l
 AgentEntry
 AgentStateAgent
@@ -133,17 +145,19 @@ Transactions
 XMLPPInfo
 </pre></div>
 </div>
-<p>Metrics that are generated will show up in this listing after they have been computed.</p>
+<p>Metrics that are generated will show up in this listing after they have been
+computed. All of the core <span style="font-variant:small-caps;">Cyclus</span> tables are denoted as root metrics, and they
+are listed here too. To understand the core tables included in a <span style="font-variant:small-caps;">Cyclus</span>
+database, please review the page <a class="reference external" href="http://fuelcycle.org/user/dbdoc.html">Understanding the Database</a>.</p>
 </div>
 <div class="section" id="code-execution-e">
 <h3>Code Execution: <code class="docutils literal"><span class="pre">-e</span></code><a class="headerlink" href="#code-execution-e" title="Permalink to this headline">¶</a></h3>
-<p>Cymetric allows you to execute arbitrary code on metrics from the command line with
-the <code class="docutils literal"><span class="pre">-e</span></code> flag. The code that you pass in is pure Python. Every metric and root
-<span style="font-variant:small-caps;">Cyclus</span> table (see <a class="reference external" href="http://fuelcycle.org/user/dbdoc.html">http://fuelcycle.org/user/dbdoc.html</a>) are assigned automatically
-to variable names that you can use. Indexing the table variables will return the
-metric as a pandas data frame (see <a class="reference external" href="http://pandas.pydata.org/">http://pandas.pydata.org/</a>). For example, to
-print the <code class="docutils literal"><span class="pre">AgentEntry</span></code> table, we would write <code class="docutils literal"><span class="pre">AgentEntry[:]</span></code> to get the
-table and <code class="docutils literal"><span class="pre">print(AgentEntry[:])</span></code> to display it after the <code class="docutils literal"><span class="pre">-e</span></code> flag:</p>
+<p>Cymetric allows you to execute arbitrary code on metrics from the command line
+with the <code class="docutils literal"><span class="pre">-e</span></code> flag. The code that you pass in is pure Python. Every metric
+and root <span style="font-variant:small-caps;">Cyclus</span> table are assigned automatically to variable names that you
+can use. Indexing the table variables will return the metric as a <a class="reference external" href="http://pandas.pydata.org/">pandas</a> DataFrame. For example, to print the
+<code class="docutils literal"><span class="pre">AgentEntry</span></code> table, we would write <code class="docutils literal"><span class="pre">AgentEntry[:]</span></code> to get the table and
+<code class="docutils literal"><span class="pre">print(AgentEntry[:])</span></code> to display it after the <code class="docutils literal"><span class="pre">-e</span></code> flag:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ cymetric test.h5 -e <span class="s2">&quot;print(AgentEntry[:])&quot;</span>
                                   SimId  AgentId      Kind                    Spec          Prototype  ParentId  Lifetime  EnterTime
 <span class="m">0</span>  db805939-c565-404a-9483-adfb3da8b6d2       <span class="m">11</span>    Region      :agents:NullRegion       SingleRegion        -1        -1          0
@@ -263,12 +277,35 @@ For example,</p>
 <p>Will pop up with the following figure:</p>
 <img alt="../../_images/tut_nucid_mass.png" src="../../_images/tut_nucid_mass.png" />
 </div>
+<div class="section" id="to-write-or-not-to-write-write-and-no-write">
+<h3>To write or not to write: <code class="docutils literal"><span class="pre">--write</span></code> and <code class="docutils literal"><span class="pre">--no-write</span></code><a class="headerlink" href="#to-write-or-not-to-write-write-and-no-write" title="Permalink to this headline">¶</a></h3>
+<p>Cymetric automatically writes an evaluated metric to the database. There are
+some scenarios when you may not want this to happen. For example, you might
+want your script to do many metric calculations and save the results elsewhere;
+in this case, writing to the database is unneccessary. While writing is the
+default functionality when you use the <code class="docutils literal"><span class="pre">-e</span></code> flag, the lack of writing
+can be accomplished with the <code class="docutils literal"><span class="pre">--no-write</span></code> flag. In the example below, the
+table will not be written to the database:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ cymetric test.h5 --no-write -e <span class="s2">&quot;Materials[:]&quot;</span>
+</pre></div>
+</div>
+<p>Since cymetric looks up an already evaluated metric in the database,
+overwriting an existing table with a new one might be desired. This is where
+the <code class="docutils literal"><span class="pre">--write</span></code> flag is useful:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ cymetric test.h5 --write -e <span class="s2">&quot;Materials[:]&quot;</span>
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="python-interface">
 <h2>Python Interface<a class="headerlink" href="#python-interface" title="Permalink to this headline">¶</a></h2>
-<p>Using cymetric from Python is also easy.  Typically, it is recommended that you
-alias <code class="docutils literal"><span class="pre">cymetric</span></code> as <code class="docutils literal"><span class="pre">cym</span></code>, because all of the important functionality lives here.
-To start, use the <code class="docutils literal"><span class="pre">dbopen()</span></code> function to open up a database:</p>
+<p>While quick feedback is useful, it is more likely that cymetric will be of use
+in a script.  Therefore, this section details how to employ Python to interact
+with cymetric. In addition to writing scripts to compute metrics and produce
+figures, this is essential for the development of new metrics.</p>
+<p>Typically, it is recommended that you alias <code class="docutils literal"><span class="pre">cymetric</span></code> as <code class="docutils literal"><span class="pre">cym</span></code>, because
+all of the important functionality lives here.  To start, use the <code class="docutils literal"><span class="pre">dbopen()</span></code>
+function to open up a database:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cymetric</span> <span class="kn">as</span> <span class="nn">cym</span>
 
 <span class="n">db</span> <span class="o">=</span> <span class="n">cym</span><span class="o">.</span><span class="n">dbopen</span><span class="p">(</span><span class="s1">&#39;test.sqlite&#39;</span><span class="p">)</span>
@@ -287,18 +324,25 @@ filter the metric on.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">filtered_frame</span> <span class="o">=</span> <span class="n">cym</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s1">&#39;Materials&#39;</span><span class="p">,</span> <span class="n">db</span><span class="p">,</span> <span class="n">conds</span><span class="o">=</span><span class="p">[(</span><span class="s1">&#39;NucId&#39;</span><span class="p">,</span> <span class="s1">&#39;==&#39;</span><span class="p">,</span> <span class="mi">922350000</span><span class="p">)])</span>
 </pre></div>
 </div>
-<p>Calling <code class="docutils literal"><span class="pre">eval()</span></code> sets up a new <code class="docutils literal"><span class="pre">Evaluator</span></code> object each time a metric is
-evaluated.  This can be inefficient if you computing many metrics because it will
-have to read in from the database each time.  Thus, if you are planning on computing
-many metrics, then its is better to create your own <code class="docutils literal"><span class="pre">Evaluator</span></code> and call its
-<code class="docutils literal"><span class="pre">eval()</span></code> method directly. For example,</p>
+<p>As was noted in the previous section, multiple filters can be applied at once.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">filtered_frame</span> <span class="o">=</span> <span class="n">cym</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s1">&#39;AgentEntry&#39;</span><span class="p">,</span> <span class="n">db</span><span class="p">,</span> <span class="n">conds</span><span class="o">=</span><span class="p">[(</span><span class="s1">&#39;Kind&#39;</span><span class="p">,</span> <span class="s1">&#39;==&#39;</span><span class="p">,</span><span class="s1">&#39;Facility&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;AgentId&#39;</span><span class="p">,</span> <span class="s1">&#39;&gt;&#39;</span><span class="p">,</span> <span class="mi">14</span><span class="p">)])</span>
+</pre></div>
+</div>
+<p>However, if you are evaluating many metrics, this method will be
+computationally inefficient. Calling <code class="docutils literal"><span class="pre">eval()</span></code> creates a new <code class="docutils literal"><span class="pre">Evaluator</span></code>
+object each time a metric is evaluated. Since each <code class="docutils literal"><span class="pre">Evaluator</span></code> object reads
+the database individually, this means <code class="docutils literal"><span class="pre">eval()</span></code> reads the database each time
+it is called. Alternatively, there is a way to ensure the database only gets
+read once by accessing the <code class="docutils literal"><span class="pre">eval()</span></code> functionality directly within an
+<code class="docutils literal"><span class="pre">Evaluator</span></code> object.  You can create an <code class="docutils literal"><span class="pre">Evaluator</span></code> instance with a single
+database and call <code class="docutils literal"><span class="pre">eval()</span></code> from within it. For example,</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">evaler</span> <span class="o">=</span> <span class="n">cym</span><span class="o">.</span><span class="n">Evaluator</span><span class="p">(</span><span class="n">db</span><span class="p">)</span>
 <span class="n">frame1</span> <span class="o">=</span> <span class="n">evaler</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s1">&#39;Materials&#39;</span><span class="p">)</span>
 <span class="n">frame2</span> <span class="o">=</span> <span class="n">evaler</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s1">&#39;AgentEntry&#39;</span><span class="p">,</span> <span class="n">conds</span><span class="o">=</span><span class="p">[(</span><span class="s1">&#39;Kind&#39;</span><span class="p">,</span> <span class="s1">&#39;==&#39;</span><span class="p">,</span> <span class="s1">&#39;Facility&#39;</span><span class="p">)])</span>
 </pre></div>
 </div>
-<p>And you can run with the data from there! We recommend learning pandas to get the
-most out of your analysis from this point.</p>
+<p>And you can run with the data from there! We recommend learning <a class="reference external" href="http://pandas.pydata.org/">pandas</a> to get the most out of your analysis from this
+point.</p>
 </div>
 <div class="section" id="executing-code">
 <h3>Executing Code<a class="headerlink" href="#executing-code" title="Permalink to this headline">¶</a></h3>
@@ -309,20 +353,55 @@ This function accepts the code string and the database:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">cym</span><span class="o">.</span><span class="n">exec_code</span><span class="p">(</span><span class="s2">&quot;print(AgentEntry[:])&quot;</span><span class="p">,</span> <span class="n">db</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>For more exciting capabilities, please explore the online documentation or ask
-us questions on the mailing list.</p>
+<p>For more exciting capabilities, please explore the <a class="reference external" href="https://github.com/cyclus/cymetric">examples directory</a> in the cymetric repository or ask us
+questions on the <span style="font-variant:small-caps;">Cyclus</span> users mailing list.</p>
 </div>
 </div>
 <div class="section" id="writing-metrics">
 <h2>Writing Metrics<a class="headerlink" href="#writing-metrics" title="Permalink to this headline">¶</a></h2>
-<p>Naturally, you do not want to be limited to your the metrics that come predefined
-by cymetric. You have your own data and your own analysis that you want to perform.
-Cymetric makes it easy to write your own metrics and fully hook into the cymetric
-tools.</p>
-<p>All you need to do is write a function that accepts pandas series, returns a pandas
-data frame, and decorate it by the <code class="docutils literal"><span class="pre">&#64;metric()</span></code> decorator found in cymetric.
-For example, if you wanted to square the mass of materials as your
-metric, you could write the following.  Call the new metric <code class="docutils literal"><span class="pre">MaterialsSquared</span></code>.</p>
+<p>Naturally, you do not want to be limited to the metrics that come <a class="reference external" href="http://fuelcycle.org/user/cymetric/api/metrics.html">predefined
+by cymetric</a>. You have
+your own data and your own analysis that you want to perform. It is easy to
+write metrics and fully hook into the cymetric tools.</p>
+<p>A metric is a function that accepts a pandas Series, returns a
+pandas DataFrame, and is decorated by the <code class="docutils literal"><span class="pre">&#64;metric()</span></code> decorator found in
+cymetric. The general format is as follows:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">dependencies</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s1">&#39;Table1&#39;</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;Col1&#39;</span><span class="p">,</span> <span class="s1">&#39;Col2&#39;</span><span class="p">),</span> <span class="s1">&#39;Value1&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;Table2&#39;</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;Col3&#39;</span><span class="p">,),</span> <span class="s1">&#39;Value2&#39;</span><span class="p">)</span>
+    <span class="p">]</span>
+
+<span class="n">schema</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;Id&#39;</span><span class="p">,</span> <span class="n">cym</span><span class="o">.</span><span class="n">INT</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;MetricValue&#39;</span><span class="p">,</span> <span class="n">cym</span><span class="o">.</span><span class="n">DOUBLE</span><span class="p">)]</span>
+
+<span class="nd">@cym.metric</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;MyMetric&#39;</span><span class="p">,</span> <span class="n">depends</span><span class="o">=</span><span class="n">dependencies</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="n">schema</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">my_metric</span><span class="p">(</span><span class="n">series</span><span class="p">):</span>
+    <span class="n">one</span> <span class="o">=</span> <span class="n">series</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">two</span> <span class="o">=</span> <span class="n">series</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="c1">#calculations and pandas manipulations go here</span>
+    <span class="k">return</span> <span class="n">dataframe</span>
+</pre></div>
+</div>
+<p>In the above, the <code class="docutils literal"><span class="pre">&#64;metric()</span></code> decorator takes three arguments. The first is
+the <code class="docutils literal"><span class="pre">name</span></code> of the metric (e.g., <code class="docutils literal"><span class="pre">'MyMetric'</span></code>). Note that this can be
+distinct from the function name.</p>
+<p>The second is <code class="docutils literal"><span class="pre">depends</span></code>, which represents the metric dependencies.  This is a
+list of 3-tuples that represents which <code class="docutils literal"><span class="pre">series</span></code> to pull out of the database
+and pass into the metric function (e.g., <code class="docutils literal"><span class="pre">my_metric()</span></code>).  The entries in the
+dependency list have three components. The first element is the table name as a
+string (e.g., <code class="docutils literal"><span class="pre">'Table1'</span></code>). The second element is a tuple of column names that
+become the index of the series (e.g., <code class="docutils literal"><span class="pre">('Col1',</span> <span class="pre">'Col2')</span></code>). Finally, the last
+element is the column of the table that becomes the values of the series (e.g.,
+<code class="docutils literal"><span class="pre">'Value1'</span></code>).  A metric may have as many dependencies as required. Circular
+dependencies are not allowed.</p>
+<p>Lastly, the <code class="docutils literal"><span class="pre">&#64;metric()</span></code> decorator takes a <code class="docutils literal"><span class="pre">schema</span></code> argument. The schema is
+defined by a list of 2-tuples. The first entry is the column name and the
+second is the <span style="font-variant:small-caps;">Cyclus</span> database type. This represents the structure of the
+metric table on disk and in <span style="font-variant:small-caps;">Cyclus</span>. Thus, it is highly tied to the <span style="font-variant:small-caps;">Cyclus</span>
+<a class="reference external" href="http://fuelcycle.org/arche/dbtypes.html">type system</a>, as represented in
+cymetric. The DataFrame that is returned should have column names that match
+the schema provided. It is generally a good idea to include a <code class="docutils literal"><span class="pre">SimId</span></code> column.</p>
+<p>For a more concrete example, if you wanted to square the mass of materials as a
+metric, you could write a <code class="docutils literal"><span class="pre">MaterialsSquared</span></code> metric.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">deps</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;Materials&#39;</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;SimId&#39;</span><span class="p">,</span> <span class="s1">&#39;ResourceId&#39;</span><span class="p">,</span> <span class="s1">&#39;NucId&#39;</span><span class="p">),</span> <span class="s1">&#39;Mass&#39;</span><span class="p">)]</span>
 
 <span class="n">schema</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;SimId&#39;</span><span class="p">,</span> <span class="n">cym</span><span class="o">.</span><span class="n">UUID</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;ResourceId&#39;</span><span class="p">,</span> <span class="n">cym</span><span class="o">.</span><span class="n">INT</span><span class="p">),</span>
@@ -339,27 +418,13 @@ metric, you could write the following.  Call the new metric <code class="docutil
 </div>
 <p>Note that to write this metric, no knowledge of the database or any filters is
 assumed. Cymetric handles all of these details for you!</p>
-<p>In the above, the <code class="docutils literal"><span class="pre">&#64;metric()</span></code> decorator takes three arguments. The first is
-the <code class="docutils literal"><span class="pre">name</span></code> of the metric. Note that this can be distinct from the function name.</p>
-<p>The second is <code class="docutils literal"><span class="pre">deps</span></code>, which represents the metric dependencies.  This is a list
-of 3-tuples that represents which <code class="docutils literal"><span class="pre">series</span></code> to pull out of the database and
-pass into the metric function (here <code class="docutils literal"><span class="pre">mats_sqrd()</span></code>).  The first element is
-the table name as a string (eg <code class="docutils literal"><span class="pre">'Materials'</span></code>). The second element is a tuple of
-column names that become the index of the series
-(eg <code class="docutils literal"><span class="pre">('SimId',</span> <span class="pre">'ResourceId',</span> <span class="pre">'NucId')</span></code>). Finally, the last element is the
-column of the table that becomes the values of the series.  A metric may have
-as many dependencies as required. Circular dependencies are not allowed.</p>
-<p>Lastly, the <code class="docutils literal"><span class="pre">&#64;metric()</span></code> decorator takes a <code class="docutils literal"><span class="pre">schema</span></code> argument. This represents
-the structure of the metric table on disk and in <span style="font-variant:small-caps;">Cyclus</span>. Thus, it is highly
-tied to the <span style="font-variant:small-caps;">Cyclus</span> type system (see <a class="reference external" href="http://fuelcycle.org/arche/dbtypes.html">http://fuelcycle.org/arche/dbtypes.html</a>),
-as represented in cymetric. The data frame that is returned should have column
-names that match the schema provided. It is generally a good idea to include a
-<code class="docutils literal"><span class="pre">SimId</span></code> column.</p>
+<p>If the pandas functionality seems mysterious to you, it may be beneficial to
+review a quick tutorial, <a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/10min.html">10 Minutes to pandas</a>.</p>
 <p>The above shows how easy it is to incorporate metrics that are computed via
-cymetric. However, cymetric also helps you bring in data that might come from
-custom <span style="font-variant:small-caps;">Cyclus</span> tables (see <a class="reference external" href="http://fuelcycle.org/arche/custom_tables.html">http://fuelcycle.org/arche/custom_tables.html</a>).
-All you need to do is use the <code class="docutils literal"><span class="pre">root_metric()</span></code> function somewhere. This simply
-accepts the name of the table.  For example,</p>
+cymetric. Moreover, <span style="font-variant:small-caps;">Cyclus</span> databases can be comprised of both <a class="reference external" href="http://fuelcycle.org/user/dbdoc.html#table-descriptions">default tables</a> and  <a class="reference external" href="http://fuelcycle.org/arche/custom_tables.html">custom tables</a>. Cymetric also helps you
+bring in data that might come a custom table in a <span style="font-variant:small-caps;">Cyclus</span> database.  All you
+need to do is use the <code class="docutils literal"><span class="pre">root_metric()</span></code> function somewhere. This simply accepts
+the name of the table.  For example,</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">my_table</span> <span class="o">=</span> <span class="n">cym</span><span class="o">.</span><span class="n">root_metric</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;MyTable&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -378,10 +443,11 @@ accepts the name of the table.  For example,</p>
         </a></p><div class="sphinxlocaltoc">
     <h3><a href="../../index.html">Page contents</a></h3>
     <ul>
-<li><a class="reference internal" href="#">Tutorial</a><ul>
+<li><a class="reference internal" href="#">Cymetric Tutorial</a><ul>
 <li><a class="reference internal" href="#command-line-usage">Command Line Usage</a><ul>
 <li><a class="reference internal" href="#table-listing-l">Table Listing: <code class="docutils literal"><span class="pre">-l</span></code></a></li>
 <li><a class="reference internal" href="#code-execution-e">Code Execution: <code class="docutils literal"><span class="pre">-e</span></code></a></li>
+<li><a class="reference internal" href="#to-write-or-not-to-write-write-and-no-write">To write or not to write: <code class="docutils literal"><span class="pre">--write</span></code> and <code class="docutils literal"><span class="pre">--no-write</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#python-interface">Python Interface</a><ul>
@@ -492,7 +558,7 @@ accepts the name of the table.  For example,</p>
 
     <div class="footer" role="contentinfo">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Apr 13, 2016.
+      Last updated on Apr 21, 2016.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");
