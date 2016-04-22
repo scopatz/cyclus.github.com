@@ -168,6 +168,11 @@ functionality of the kenel.</div></blockquote>
 </div>
 <div class="section" id="third-party-archetypes">
 <h3>Third-Party Archetypes<a class="headerlink" href="#third-party-archetypes" title="Permalink to this headline">¶</a></h3>
+<p>Several useful archetypes have been developed by the community outside the
+purview of the Cyclus project itself and are listed here.  These archetypes do
+not necessarily adhere to the same standards of quality (documentation,
+testint, etc.) as Cyclus and Cycamore code - users are responsible for
+evaluating their suitability.</p>
 <dl class="docutils">
 <dt><strong>Bright-lite</strong></dt>
 <dd>The University of Texas - Austin is developing a set of archetypes for fuel
@@ -178,27 +183,60 @@ depletion.</dd>
 <dd>The University of Tennessee is working with Oak Ridge National Lab to
 develop archetypes that will use ORIGEN calculations to improve the
 estimate of nuclear fuel properties.</dd>
-<dt><strong>Mbmore</strong></dt>
-<dd><p class="first">Facility archetypes that utilize a random number generator to create
+<dt><strong>Mbmore Archetypes</strong> (<a class="reference external" href="https://github.com/mbmcgarry/mbmore">https://github.com/mbmcgarry/mbmore</a>)</dt>
+<dd>Facility archetypes that utilize a random number generator to create
 non-deterministic behaviors.  General methods controlling the behavior
 (including random number generation and Gaussian distributions) are defined in
-the <a class="reference external" href="https://github.com/mbmcgarry/mbmore/blob/master/src/behavior_functions.h">behavior functions.</a></p>
-<ul class="last simple">
-<li><a class="reference external" href="https://github.com/mbmcgarry/mbmore">Mbmore Archetypes</a><ul>
-<li><a class="reference external" href="https://github.com/mbmcgarry/mbmore/blob/master/src/RandomEnrich.h#242">:mbmore:RandomEnrich</a> - Based on cycamore enrichment facility, it can have
-variable tails assay, and bidding behavior can be set to occur at Every X
-timestep or at Random timesteps</li>
-<li><a class="reference external" href="https://github.com/mbmcgarry/mbmore/blob/master/src/RandomSink.h#L78">:mbmore:RandomSink</a> - Based on cycamore sink facility,
-it can accept multiple recipes, has modifiable material preference,
-material request behavior can be set, trading can be suppressed before
-a specified timestep, material requests can occur at Every X timestep
-or at Random timesteps, and quantity requested can be varied using a
-Gaussian distribution function.</li>
-</ul>
-</li>
-</ul>
-</dd>
+the <a class="reference external" href="https://github.com/mbmcgarry/mbmore/blob/master/src/behavior_functions.h">behavior functions</a>.</dd>
 </dl>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/mbmcgarry/mbmore/blob/master/src/RandomEnrich.h#242">:mbmore:RandomEnrich</a>
+Based on cycamore enrichment facility, it can have variable tails assay,
+and bidding behavior can be set to occur at Every X timestep or at Random
+timesteps.</li>
+<li><a class="reference external" href="https://github.com/mbmcgarry/mbmore/blob/master/src/RandomSink.h#L78">:mbmore:RandomSink</a>
+Based on cycamore sink facility, it can accept multiple recipes, has
+modifiable material preference, material request behavior can be set,
+trading can be suppressed before a specified timestep, material requests
+can occur at Every X timestep or at Random timesteps, and quantity
+requested can be varied using a Gaussian distribution function.</li>
+</ul>
+<dl class="docutils">
+<dt><strong>rwc Archetypes</strong> (<a class="reference external" href="https://github.com/rwcarlsen/rwc-archetypes">https://github.com/rwcarlsen/rwc-archetypes</a>)</dt>
+<dd>This is a collection of miscellaneous archetypes made by Robert Carlsen to
+support optimization work and other side projects:</dd>
+</dl>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/rwcarlsen/rwc-archetypes/blob/master/look_inst.h">:rwc:LookInst</a>
+This archetype allows the user to specify an arbitrary power capacity
+time series that the institution will automatically deploy power
+generating facilities (of multiple types) to match. It uses a look-ahead
+mechanism to see if its chosen deployments were not &#8220;good&#8221; and adjusts
+its deployment decisions accordingly. This archetype currently requires
+rwcarlsen/cyclus#restart branch of Cyclus to work.</li>
+<li><a class="reference external" href="https://github.com/rwcarlsen/rwc-archetypes/blob/master/fleet_reactor.h">:rwc:FleetReactor</a>
+This reactor models an entire reactor fleet as a single, homogenous
+unit.  Like the Cycamore reactor, it just uses static, user-specified
+compositions for fresh and spent fuel. Refueling is incremental -
+occuring every time step. It is approximately a continuous flow fleet
+model much like the way system-dynamics simulators represent facilities.
+It &#8220;pretends&#8221; to be many reactors to the Cyclus kernel - allowing other
+agents to deploy/decommission single-reactor units, but these
+single-reactors just adjust the size/capacity of the homogenous fleet.</li>
+<li><a class="reference external" href="https://github.com/rwcarlsen/rwc-archetypes/blob/master/pattern_sink.h">:rwc:PatternSink</a>
+Pattern sink is identical to the Cycamore sink facility except it has an
+additional parameter that allows the user to control the frequency with
+which the facility requests material - i.e. the user can tell the
+facility to only request material every Nth time step.</li>
+<li><a class="reference external" href="https://github.com/rwcarlsen/rwc-archetypes/blob/master/storage.h">:rwc:Storage</a>
+This facility is very similar to the Cycamore storage facility, and was
+originally created before Cycamore&#8217;s existed. It has slightly more
+careful handling of discrete material objects (e.g. not ever splitting
+them) and is a bit more sophisticated with respect to resource exchange
+for offering/bidding its inventory. It would be good to use
+implementation details from this archetype to improve the Cycamore
+storage archetype.</li>
+</ul>
 </div>
 </div>
 <div class="section" id="visualization-analysis">
@@ -348,7 +386,7 @@ Gaussian distribution function.</li>
 
     <div class="footer" role="contentinfo">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Apr 21, 2016.
+      Last updated on Apr 22, 2016.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");
