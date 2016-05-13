@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     'b&#39;(1.3.0-rc4-52-gb86cf92)&#39;',
+        VERSION:     '(1.3.1-210-g9065eea)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -83,14 +83,14 @@ if(ga_enabled){
   <div class="section" id="running-simulations">
 <h1>Running Simulations<a class="headerlink" href="#running-simulations" title="Permalink to this headline">¶</a></h1>
 <p>To run a simulation you must use the <span style="font-variant:small-caps;">Cyclus</span> command line utility:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ ./path/to/cyclus <span class="o">[</span>options<span class="o">]</span> <span class="o">[</span>input-file<span class="o">]</span>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>./path/to/cyclus <span class="o">[</span>options<span class="o">]</span> <span class="o">[</span>input-file<span class="o">]</span>
 </pre></div>
 </div>
 <p>For more information, please refer to the help:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ cyclus -h
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>cyclus -h
 Usage:   cyclus <span class="o">[</span>opts<span class="o">]</span> <span class="o">[</span>input-file<span class="o">]</span>
 
-  -h <span class="o">[</span> --help <span class="o">]</span>            produce <span class="nb">help</span> message
+  -h <span class="o">[</span> --help <span class="o">]</span>            produce <span class="nb">help </span>message
   -V <span class="o">[</span> --version <span class="o">]</span>         print cyclus core and dependency versions and quit
   --restart arg            restart from the specified simulation snapshot
                            <span class="o">[</span>db-file<span class="o">]</span>:<span class="o">[</span>sim-id<span class="o">]</span>:<span class="o">[</span>timestep<span class="o">]</span>
@@ -127,13 +127,13 @@ Usage:   cyclus <span class="o">[</span>opts<span class="o">]</span> <span class
 </div>
 <div class="section" id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ cyclus ./path/to/myinput.xml
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>cyclus ./path/to/myinput.xml
 
-$ cyclus -v LEV_DEBUG5 myinput.xml
+<span class="nv">$ </span>cyclus -v LEV_DEBUG5 myinput.xml
 
-$ cyclus -v LEV_INFO3 myinput.xml
+<span class="nv">$ </span>cyclus -v LEV_INFO3 myinput.xml
 
-$ cyclus -v <span class="m">4</span> myinput.xml
+<span class="nv">$ </span>cyclus -v <span class="m">4</span> myinput.xml
 </pre></div>
 </div>
 </div>
@@ -190,6 +190,9 @@ $ cyclus -v <span class="m">4</span> myinput.xml
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
     <h3>Get Cyclus</h3>
@@ -253,7 +256,7 @@ $ cyclus -v <span class="m">4</span> myinput.xml
 
     <div class="footer" role="contentinfo">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on May 04, 2016.
+      Last updated on May 13, 2016.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");

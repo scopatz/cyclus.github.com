@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     'b&#39;(1.3.0-rc4-52-gb86cf92)&#39;',
+        VERSION:     '(1.3.1-210-g9065eea)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -90,7 +90,7 @@ if(ga_enabled){
 </tr>
 <tr class="field-even field"><th class="field-name">Title:</th><td class="field-body"><span style="font-variant:small-caps;">Cyclus</span> Release Procedure</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Last-Modified:</th><td class="field-body">2015-05-01</td>
+<tr class="field-odd field"><th class="field-name">Last-Modified:</th><td class="field-body">2016-05-04</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Author:</th><td class="field-body">Anthony Scopatz and Matthew Gidden</td>
 </tr>
@@ -119,7 +119,6 @@ stable.)  The projects that are under the release manager&#8217;s purview are:</
 <ul class="simple">
 <li><a class="reference external" href="https://github.com/cyclus/cyclus">Cyclus</a></li>
 <li><a class="reference external" href="https://github.com/cyclus/cycamore">Cycamore</a></li>
-<li><a class="reference external" href="https://github.com/cyclus/cycstub">Cycstub</a></li>
 <li><a class="reference external" href="https://github.com/cyclus/cymetric">Cymetric</a></li>
 </ul>
 <p>The projects which are not yet under the release managers purview are:</p>
@@ -150,7 +149,7 @@ wait until post-release to be merged into <code class="docutils literal"><span c
 accidentally getting released early.</p>
 <p>Everything that is in the release branch must also be part of <code class="docutils literal"><span class="pre">develop</span></code>.
 Graphically,</p>
-<div class="figure align-center" id="id5">
+<div class="figure align-center" id="id4">
 <img src="../_images/cep-0003-1.svg" /><p class="caption"><span class="caption-text"><strong>Figure 1:</strong> Branch hierarchy under release.</span></p>
 </div>
 <div class="admonition note">
@@ -219,40 +218,39 @@ completing this milestone.</p>
 in <code class="docutils literal"><span class="pre">release/utils</span></code> will do this automatically for you</li>
 <li>make sure to have your <code class="docutils literal"><span class="pre">rs.cred</span></code> file (see <code class="docutils literal"><span class="pre">maintenence.sh</span></code>&#8216;s help)</li>
 </ul>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /path/to/release/utils
-$ <span class="nb">export</span> <span class="nv">CYCLUS_DIR</span><span class="o">=</span>/path/to/cyclus
-$ <span class="nb">export</span> <span class="nv">CYCAMORE_DIR</span><span class="o">=</span>/path/to/cycamore
-$ <span class="nb">export</span> <span class="nv">CYCSTUB_DIR</span><span class="o">=</span>/path/to/cycstub
-$ ./maintenence.sh -r -v X.X.X <span class="c1"># X.X.X is *this* version</span>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd</span> /path/to/release/utils
+<span class="nv">$ </span><span class="nb">export </span><span class="nv">CYCLUS_DIR</span><span class="o">=</span>/path/to/cyclus
+<span class="nv">$ </span><span class="nb">export </span><span class="nv">CYCAMORE_DIR</span><span class="o">=</span>/path/to/cycamore
+<span class="nv">$ </span>./maintenence.sh -r -v X.X.X <span class="c"># X.X.X is *this* version</span>
 </pre></div>
 </div>
 </div></blockquote>
 </li>
 <li><p class="first">Commit all changes for all projects</p>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /path/to/project
-$ git checkout vX.X.X-release
-$ git commit -am <span class="s2">&quot;final release commit after maintenence&quot;</span>
+<div><div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd</span> /path/to/project
+<span class="nv">$ </span>git checkout vX.X.X-release
+<span class="nv">$ </span>git commit -am <span class="s2">&quot;final release commit after maintenence&quot;</span>
 </pre></div>
 </div>
 </div></blockquote>
 </li>
 <li><p class="first">Update all develop branches</p>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /path/to/project
-$ git checkout develop
-$ git merge --no-ff vX.X.X-release
-$ git push upstream develop
+<div><div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd</span> /path/to/project
+<span class="nv">$ </span>git checkout develop
+<span class="nv">$ </span>git merge --no-ff vX.X.X-release
+<span class="nv">$ </span>git push upstream develop
 </pre></div>
 </div>
 </div></blockquote>
 </li>
 <li><p class="first"><em>Locally</em> tag the repository for <em>each</em> of the projects</p>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /path/to/project
-$ git checkout master
-$ git merge --no-ff vX.X.X-release
-$ git tag -a -m <span class="s2">&quot;Cyclus project release X.X.X, see http://fuelcycle.org/previous/vX.X.X.html for release notes&quot;</span> X.X.X
+<div><div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd</span> /path/to/project
+<span class="nv">$ </span>git checkout master
+<span class="nv">$ </span>git merge --no-ff vX.X.X-release
+<span class="nv">$ </span>git tag -a -m <span class="s2">&quot;Cyclus project release X.X.X, see http://fuelcycle.org/previous/vX.X.X.html for release notes&quot;</span> X.X.X
 </pre></div>
 </div>
 </div></blockquote>
@@ -263,11 +261,11 @@ $ git tag -a -m <span class="s2">&quot;Cyclus project release X.X.X, see http://
 <li>the <code class="docutils literal"><span class="pre">make_release_notes.sh</span></code> utility in <code class="docutils literal"><span class="pre">release/utils</span></code> will help
 provide a template</li>
 </ul>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /path/to/release/utils
-$ <span class="nb">export</span> <span class="nv">CYCLUS_DIR</span><span class="o">=</span>/path/to/cyclus
-$ <span class="nb">export</span> <span class="nv">CYCAMORE_DIR</span><span class="o">=</span>/path/to/cycamore
-$ <span class="nb">export</span> <span class="nv">CYMETRIC_DIR</span><span class="o">=</span>/path/to/cymetric
-$ ./make_release_notes.sh W.W.W X.X.X <span class="c1"># W.W.W is the previous version, X.X.X is *this* version</span>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd</span> /path/to/release/utils
+<span class="nv">$ </span><span class="nb">export </span><span class="nv">CYCLUS_DIR</span><span class="o">=</span>/path/to/cyclus
+<span class="nv">$ </span><span class="nb">export </span><span class="nv">CYCAMORE_DIR</span><span class="o">=</span>/path/to/cycamore
+<span class="nv">$ </span><span class="nb">export </span><span class="nv">CYMETRIC_DIR</span><span class="o">=</span>/path/to/cymetric
+<span class="nv">$ </span>./make_release_notes.sh W.W.W X.X.X <span class="c"># W.W.W is the previous version, X.X.X is *this* version</span>
 </pre></div>
 </div>
 <ul class="simple">
@@ -282,10 +280,10 @@ with appropriate updates to <code class="docutils literal"><span class="pre">ind
 <li>the <code class="docutils literal"><span class="pre">api_docs.sh</span></code> utility in <code class="docutils literal"><span class="pre">release/utils</span></code> will do this
 automatically for you</li>
 </ul>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /path/to/release/utils
-$ <span class="nb">export</span> <span class="nv">CYCLUS_DIR</span><span class="o">=</span>/path/to/cyclus
-$ <span class="nb">export</span> <span class="nv">CYCAMORE_DIR</span><span class="o">=</span>/path/to/cycamore
-$ ./api_docs.sh X.X.X <span class="c1"># X.X.X is *this* version</span>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd</span> /path/to/release/utils
+<span class="nv">$ </span><span class="nb">export </span><span class="nv">CYCLUS_DIR</span><span class="o">=</span>/path/to/cyclus
+<span class="nv">$ </span><span class="nb">export </span><span class="nv">CYCAMORE_DIR</span><span class="o">=</span>/path/to/cycamore
+<span class="nv">$ </span>./api_docs.sh X.X.X <span class="c"># X.X.X is *this* version</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -304,20 +302,20 @@ automatically for you</li>
 <p class="first admonition-title">Note</p>
 <p class="last">You may be prompted for your binstar user name and password.</p>
 </div>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /path/to/release/utils
-$ <span class="nb">export</span> <span class="nv">CYCLUS_DIR</span><span class="o">=</span>/path/to/cyclus
-$ <span class="nb">export</span> <span class="nv">CYCAMORE_DIR</span><span class="o">=</span>/path/to/cycamore
-$ <span class="nb">export</span> <span class="nv">CYMETRIC_DIR</span><span class="o">=</span>/path/to/cymetric
-$ ./conda_upload.sh X.X.X <span class="c1"># X.X.X is *this* version</span>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd</span> /path/to/release/utils
+<span class="nv">$ </span><span class="nb">export </span><span class="nv">CYCLUS_DIR</span><span class="o">=</span>/path/to/cyclus
+<span class="nv">$ </span><span class="nb">export </span><span class="nv">CYCAMORE_DIR</span><span class="o">=</span>/path/to/cycamore
+<span class="nv">$ </span><span class="nb">export </span><span class="nv">CYMETRIC_DIR</span><span class="o">=</span>/path/to/cymetric
+<span class="nv">$ </span>./conda_upload.sh X.X.X <span class="c"># X.X.X is *this* version</span>
 </pre></div>
 </div>
 </div></blockquote>
 </li>
 <li><p class="first">Update the <code class="docutils literal"><span class="pre">master</span></code> branch of all projects and clean up</p>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /path/to/project
-$ git push upstream X.X.X master
-$ git push upstream --delete vX.X.X-release
+<div><div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd</span> /path/to/project
+<span class="nv">$ </span>git push upstream X.X.X master
+<span class="nv">$ </span>git push upstream --delete vX.X.X-release
 </pre></div>
 </div>
 </div></blockquote>
@@ -329,7 +327,7 @@ $ git push upstream --delete vX.X.X-release
 </ul>
 </div></blockquote>
 </li>
-<li><p class="first">Create a DOI. See <a class="reference internal" href="cep4.html"><span class="doc">CEP4</span></a> for details.</p>
+<li><p class="first">Create a DOI. See <a class="reference internal" href="cep4.html"><em>CEP4</em></a> for details.</p>
 <blockquote>
 <div><ul class="simple">
 <li>This can be updated one day to use the Figshare <a class="reference external" href="http://api.figshare.com/docs/intro.html">API</a></li>
@@ -369,16 +367,16 @@ at least as often as every micro release.</p>
 evolves, we&#8217;ll want to have our version evolve as well. Here are the steps to do so.
 These assume that in your HOME dir there are both the pyne and <span style="font-variant:small-caps;">Cyclus</span> repos.  Remember
 to check in the changes afterwards.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> ~/pyne
-$ ./amalgamate.py -s pyne.cc -i pyne.h
-$ cp pyne.* ~/cyclus/src
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd</span> ~/pyne
+<span class="nv">$ </span>./amalgamate.py -s pyne.cc -i pyne.h
+<span class="nv">$ </span>cp pyne.* ~/cyclus/src
 </pre></div>
 </div>
 <p><strong>Update Nuclear Data:</strong> PyNE also provides a nuclear data library generator which we use for
 our source data.  Occassionally, this needs to be updated as updates to pyne itself come out.
 The command for generating <span style="font-variant:small-caps;">Cyclus</span> specific nuclear data is as follows:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> ~/pyne
-$ nuc_data_make -o cyclus_nuc_data.h5 <span class="se">\</span>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd</span> ~/pyne
+<span class="nv">$ </span>nuc_data_make -o cyclus_nuc_data.h5 <span class="se">\</span>
  -m atomic_mass,scattering_lengths,decay,simple_xs,materials,eaf,wimsd_fpy,nds_fpy
 </pre></div>
 </div>
@@ -393,8 +391,8 @@ stability.  Luckily, we have a tool for keeping track of this mostly
 automatically.  In order to check this correctly, you must have a <strong>RELEASE</strong>
 build of Cyclus compiled/installed.  Every release please run the following
 command to verify that the release branch is stable:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> cyclus/release
-$ ./smbchk.py --update -t HEAD --no-save --check
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd </span>cyclus/release
+<span class="nv">$ </span>./smbchk.py --update -t HEAD --no-save --check
 </pre></div>
 </div>
 <p>If <span style="font-variant:small-caps;">Cyclus</span> only has API additions, it is considered stable and the command will
@@ -407,8 +405,8 @@ probably best to do this prior to any release candidates if possible.</p>
 <p>Once stable and there are no more code changes to be made, add the symbols
 in this release to the database with the following command (again - make sure
 you are working on a RELEASE build of Cyclus):</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> cyclus/release
-$ ./smbchk.py --update -t X.X.X
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd </span>cyclus/release
+<span class="nv">$ </span>./smbchk.py --update -t X.X.X
 </pre></div>
 </div>
 <p>where <code class="docutils literal"><span class="pre">X.X.X</span></code> is the version tag. This should alter the <code class="docutils literal"><span class="pre">symbols.json</span></code>
@@ -417,15 +415,6 @@ file.  Commit this and add it to the repo.</p>
 <div class="section" id="cycamore">
 <h3>Cycamore<a class="headerlink" href="#cycamore" title="Permalink to this headline">¶</a></h3>
 <p>No maintenence required.</p>
-</div>
-<div class="section" id="cycstub">
-<h3>Cycstub<a class="headerlink" href="#cycstub" title="Permalink to this headline">¶</a></h3>
-<p>Every release the relevant files from <span style="font-variant:small-caps;">Cyclus</span> should be copied over to <span style="font-variant:small-caps;">Cyclus</span>.
-Use the following BASH commands to do so:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ cp ~/cyclus/tests/input/stub_example.xml ~/cycstub/input/example.xml <span class="o">&amp;&amp;</span> <span class="se">\</span>
-  cp ~/cyclus/stubs/stub_* ~/cycstub/src/
-</pre></div>
-</div>
 </div>
 <div class="section" id="cymetric">
 <h3>Cymetric<a class="headerlink" href="#cymetric" title="Permalink to this headline">¶</a></h3>
@@ -461,7 +450,6 @@ Use the following BASH commands to do so:</p>
 <li><a class="reference internal" href="#maintainence-tasks">Maintainence Tasks</a><ul>
 <li><a class="reference internal" href="#cyclus"><span style="font-variant:small-caps;">Cyclus</span></a></li>
 <li><a class="reference internal" href="#cycamore">Cycamore</a></li>
-<li><a class="reference internal" href="#cycstub">Cycstub</a></li>
 <li><a class="reference internal" href="#cymetric">Cymetric</a></li>
 </ul>
 </li>
@@ -504,6 +492,9 @@ Use the following BASH commands to do so:</p>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
     <h3>Get Cyclus</h3>
@@ -567,7 +558,7 @@ Use the following BASH commands to do so:</p>
 
     <div class="footer" role="contentinfo">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on May 04, 2016.
+      Last updated on May 13, 2016.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");

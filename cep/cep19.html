@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     'b&#39;(1.3.0-rc4-52-gb86cf92)&#39;',
+        VERSION:     '(1.3.1-210-g9065eea)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -130,7 +130,7 @@ many elements of the pattern will also be useful for parametric sweeps.</p>
 <h3>Tooltip<a class="headerlink" href="#tooltip" title="Permalink to this headline">¶</a></h3>
 <p>Tooltip elements is a short string of text that the developer can add to an input field that will
 show when a user scrolls over this field in the graphical user interface. This is an optional field.</p>
-<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;define</span> <span class="na">name=</span><span class="s">&quot;tooltip&quot;</span><span class="nt">&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;define</span> <span class="na">name=</span><span class="s">&quot;tooltip&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;tooltip&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span> <span class="nt">/&gt;</span>
    <span class="nt">&lt;/element&gt;</span>
@@ -142,7 +142,7 @@ show when a user scrolls over this field in the graphical user interface. This i
 <h3>Help<a class="headerlink" href="#help" title="Permalink to this headline">¶</a></h3>
 <p>Help elements will provide a more thorough explaination of the input field, it can be accessed through the
 graphical user interface. This is an optional field.</p>
-<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;define</span> <span class="na">name=</span><span class="s">&quot;help&quot;</span><span class="nt">&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;define</span> <span class="na">name=</span><span class="s">&quot;help&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;help&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span> <span class="nt">/&gt;</span>
   <span class="nt">&lt;/element&gt;</span>
@@ -154,7 +154,7 @@ graphical user interface. This is an optional field.</p>
 <h3>Units<a class="headerlink" href="#units" title="Permalink to this headline">¶</a></h3>
 <p>Units elements apply information to an input field that indicate to the user what units are attached to the
 value in this field.</p>
-<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;define</span> <span class="na">name=</span><span class="s">&quot;units&quot;</span><span class="nt">&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;define</span> <span class="na">name=</span><span class="s">&quot;units&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;units&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span> <span class="nt">/&gt;</span>
   <span class="nt">&lt;/element&gt;</span>
@@ -167,7 +167,7 @@ value in this field.</p>
 <p>User level elements allow developers to set the user level of a specific input field. This value ranges
 from 0 to 10 with 0 being simple inputs and 10 being very advanced inputs. This is an optional field
 and if left blank the value will be set to zero by the graphical user interface.</p>
-<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;define</span> <span class="na">name=</span><span class="s">&quot;userLevel&quot;</span><span class="nt">&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;define</span> <span class="na">name=</span><span class="s">&quot;userLevel&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;userLevel&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;choice&gt;</span>
       <span class="nt">&lt;value&gt;</span>0<span class="nt">&lt;/value&gt;</span>
@@ -192,7 +192,7 @@ and if left blank the value will be set to zero by the graphical user interface.
 <p>The &#8216;vary&#8217; element is a special boolean element that allows a <span style="font-variant:small-caps;">Cyclus</span> user to set wether the input
 field it is attached to can be varied for a parametric study. This flag is optional and can take
 the values &#8220;true&#8221;, &#8220;false&#8221;, &#8220;1&#8221;, &#8220;0&#8221;.</p>
-<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;define</span> <span class="na">name=</span><span class="s">&quot;vary&quot;</span><span class="nt">&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;define</span> <span class="na">name=</span><span class="s">&quot;vary&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;vary&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;boolean&quot;</span> <span class="nt">/&gt;</span>
   <span class="nt">&lt;/element&gt;</span>
@@ -205,7 +205,7 @@ the values &#8220;true&#8221;, &#8220;false&#8221;, &#8220;1&#8221;, &#8220;0&#8
 <p>Sampling function is an element that goes with the vary element. If the vary element is set to true
 a sampling function is required to provide the sampling behavior for the element. This is a string
 input that represents the mathematical expression of the sampling function. This is an optional flag.</p>
-<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;define</span> <span class="na">name=</span><span class="s">&quot;samplingFunction&quot;</span><span class="nt">&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;define</span> <span class="na">name=</span><span class="s">&quot;samplingFunction&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;samplingFunction&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span> <span class="nt">/&gt;</span>
   <span class="nt">&lt;/element&gt;</span>
@@ -218,7 +218,7 @@ input that represents the mathematical expression of the sampling function. This
 <p>The field types used for input fields are listed below. In general they are associated with a
 specific data type. In addition there are several field types that are categorical. This
 implies that the field has discrete values for which it can take.</p>
-<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;define</span> <span class="na">name=</span><span class="s">&quot;floatField&quot;</span><span class="nt">&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;define</span> <span class="na">name=</span><span class="s">&quot;floatField&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;floatField&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;interleave&gt;</span>
       <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;value&quot;</span><span class="nt">&gt;</span>
@@ -542,7 +542,7 @@ the <span style="font-variant:small-caps;">Cyclus</span> core code.</p>
 <h3>Top level Information<a class="headerlink" href="#top-level-information" title="Permalink to this headline">¶</a></h3>
 <p>Here the name of the CycIC simulation, a description, and some comments about it
 can be saved.</p>
-<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;define</span> <span class="na">name=</span><span class="s">&quot;cycicSimulation&quot;</span><span class="nt">&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;define</span> <span class="na">name=</span><span class="s">&quot;cycicSimulation&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;cycicSimulation&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;</span>
       <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span> <span class="nt">/&gt;</span>
@@ -574,7 +574,7 @@ can be saved.</p>
 <h3>Facility Circles<a class="headerlink" href="#facility-circles" title="Permalink to this headline">¶</a></h3>
 <p>Here the initital proposal is to save the x and y locations of the facilities so that
 they may be loaded in the proper place.</p>
-<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;define</span> <span class="na">name=</span><span class="s">&quot;facilityCircle&quot;</span><span class="nt">&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;define</span> <span class="na">name=</span><span class="s">&quot;facilityCircle&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;facilityCircle&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;</span>
       <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span> <span class="nt">/&gt;</span>
@@ -594,7 +594,7 @@ they may be loaded in the proper place.</p>
 <h3>Market Circles<a class="headerlink" href="#market-circles" title="Permalink to this headline">¶</a></h3>
 <p>Here the initital proposal is to save the x and y locations of the markets so that
 they may be loaded in the proper place.</p>
-<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;define</span> <span class="na">name=</span><span class="s">&quot;marketCircle&quot;</span><span class="nt">&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;define</span> <span class="na">name=</span><span class="s">&quot;marketCircle&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;marketCircle&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;</span>
       <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span> <span class="nt">/&gt;</span>
@@ -614,7 +614,7 @@ they may be loaded in the proper place.</p>
 <h3>Region Shapes<a class="headerlink" href="#region-shapes" title="Permalink to this headline">¶</a></h3>
 <p>Here the initital proposal is to save the x and y locations of the region nodes so that
 they may be loaded in the proper place.</p>
-<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;define</span> <span class="na">name=</span><span class="s">&quot;regionShape&quot;</span><span class="nt">&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;define</span> <span class="na">name=</span><span class="s">&quot;regionShape&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;regionShape&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;</span>
       <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span> <span class="nt">/&gt;</span>
@@ -634,7 +634,7 @@ they may be loaded in the proper place.</p>
 <h3>Institution Shapes<a class="headerlink" href="#institution-shapes" title="Permalink to this headline">¶</a></h3>
 <p>Here the initital proposal is to save the x and y locations of the institution
 nodes so that they may be loaded in the proper place.</p>
-<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;define</span> <span class="na">name=</span><span class="s">&quot;regionShape&quot;</span><span class="nt">&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;define</span> <span class="na">name=</span><span class="s">&quot;regionShape&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;regionShape&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;</span>
       <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span> <span class="nt">/&gt;</span>
@@ -733,6 +733,9 @@ nodes so that they may be loaded in the proper place.</p>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
     <h3>Get Cyclus</h3>
@@ -796,7 +799,7 @@ nodes so that they may be loaded in the proper place.</p>
 
     <div class="footer" role="contentinfo">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on May 04, 2016.
+      Last updated on May 13, 2016.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");

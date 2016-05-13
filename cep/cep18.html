@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     'b&#39;(1.3.0-rc4-52-gb86cf92)&#39;',
+        VERSION:     '(1.3.1-210-g9065eea)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -205,17 +205,17 @@ material, including depleted uranium from enrichment or reprocessed uranium from
 separations. Accordingly, it could demand both commodities as long as it
 provides a corresponding constraint with respect to total consumption.</p>
 <p>At the completion of the RFB phase, the market exchange will have a set of
-consumption portfolios, <span class="math">P</span>, for each requester in the exchange, shown as
+consumption portfolios, <img class="math" src="../_images/math/f48b617185733d8dd6712643f1ab17c736661a06.png" alt="P"/>, for each requester in the exchange, shown as
 the orange box in Figure 1. Each portfolio consists of a set of requests,
-<span class="math">R</span>, a cardinal preferential ordering over the requests, <span class="math">\alpha_R</span>,
-and possibly a set of constraints over the requests, <span class="math">c_R</span>. A constraint
+<img class="math" src="../_images/math/9d86170e7de539c0ff999de09621ee0c7b6c8ed0.png" alt="R"/>, a cardinal preferential ordering over the requests, <img class="math" src="../_images/math/a70bbd811ec701ca47ecdd95636100e4851c023d.png" alt="\alpha_R"/>,
+and possibly a set of constraints over the requests, <img class="math" src="../_images/math/c4428a54b0e184e3ceed64207cc5b35e8e78c360.png" alt="c_R"/>. A constraint
 can be associated with more than one request. Take the previous example of MOX
 and UOX for an LWR. Each is a separate request, but a constraint may be
 concerned with the combination of the two. Another example is a repository that
 may request many commodities, but has a radiotoxicity constraint over any
 commodities it receives for a given time step.</p>
-<p>A request consists of a quantity, <span class="math">q_r</span>, and a target isotopic vector,
-<span class="math">I_r</span>. Consumers are allowed to offer the null set of isotopics as their
+<p>A request consists of a quantity, <img class="math" src="../_images/math/41739637485ccd50d37e4d8a798236a150448ebf.png" alt="q_r"/>, and a target isotopic vector,
+<img class="math" src="../_images/math/f176bdfcd10183d5f9222c468778a237d5293a9f.png" alt="I_r"/>. Consumers are allowed to offer the null set of isotopics as their
 profile, effectively providing no information. In general, a requester may have
 more than one request (nodes in Figure 1) per commodity. A prime example is a
 reactor that chooses to requests fuel assemblies, of which they request many.</p>
@@ -441,7 +441,7 @@ for a specific commodity</li>
 <li>For each Requester and each parent in the Model child-parent tree of that
 Requester, preferences are allowed to be perturbed, which looks nominally like:</li>
 </ul>
-<div class="highlight-c++"><div class="highlight"><pre><span></span><span class="c1">/// @brief allows a trader and its parents to adjust any preferences in the</span>
+<div class="highlight-c++"><div class="highlight"><pre><span class="c1">/// @brief allows a trader and its parents to adjust any preferences in the</span>
 <span class="c1">/// system</span>
 <span class="kt">void</span> <span class="nf">DoAdjustment</span><span class="p">(</span><span class="n">Trader</span><span class="o">*</span> <span class="n">t</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">typename</span> <span class="n">PrefMap</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">type</span><span class="o">&amp;</span> <span class="n">prefs</span> <span class="o">=</span> <span class="n">ex_ctx_</span><span class="p">.</span><span class="n">Prefs</span><span class="p">(</span><span class="n">t</span><span class="p">);</span>
@@ -474,7 +474,7 @@ with a constraining value. Preferences are also defined along arcs.</p>
 <h3>ExchangeTranslator<a class="headerlink" href="#exchangetranslator" title="Permalink to this headline">¶</a></h3>
 <p>The ExchangeTranslator is an object responsible for translating a given
 ExchangeContext into an ExchangeGraph, and has a pretty simple interface:</p>
-<div class="highlight-c++"><div class="highlight"><pre><span></span><span class="k">template</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span>
+<div class="highlight-c++"><div class="highlight"><pre><span class="k">template</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span>
 <span class="k">struct</span> <span class="n">ExchangePair</span> <span class="p">{</span>
    <span class="n">Request</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">Ptr</span> <span class="n">r</span><span class="p">;</span> <span class="c1">// request</span>
    <span class="n">Bid</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">Ptr</span> <span class="n">b</span><span class="p">;</span> <span class="c1">// bid</span>
@@ -502,7 +502,7 @@ ExchangeContext into an ExchangeGraph, and has a pretty simple interface:</p>
 constrained ExchangeGraph is provided as input, and a solution ExchangeGraph is
 provided as output, which satisfies the provided constraints. It too, has a
 pretty simple interface</p>
-<div class="highlight-c++"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">ExchangeSolver</span> <span class="p">{</span>
+<div class="highlight-c++"><div class="highlight"><pre><span class="k">class</span> <span class="nc">ExchangeSolver</span> <span class="p">{</span>
  <span class="k">public</span><span class="o">:</span>
   <span class="k">virtual</span> <span class="kt">void</span> <span class="n">Solve</span><span class="p">(</span><span class="k">const</span> <span class="n">ExchangeGraph</span><span class="o">&amp;</span> <span class="n">g</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 <span class="p">};</span>
@@ -531,13 +531,13 @@ requests</li>
 <p id="bibtex-bibliography-cep/cep18-0"><table class="docutils citation" frame="void" id="julka-agent-based-2002" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[JSK02]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> N.&nbsp;Julka, R.&nbsp;Srinivasan, and I.&nbsp;Karimi. Agent-based supply chain management-1: framework. <em>Computers &amp; Chemical Engineering</em>, 26(12):1755–1769, 2002. URL: <a class="reference external" href="http://www.sciencedirect.com/science/article/pii/S0098135402001503">http://www.sciencedirect.com/science/article/pii/S0098135402001503</a>.</td></tr>
+<tr><td class="label">[JSK02]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> N.&nbsp;Julka, R.&nbsp;Srinivasan, and I.&nbsp;Karimi. Agent-based supply chain management-1: framework. <em>Computers &amp; Chemical Engineering</em>, 26(12):1755–1769, 2002. <a class="reference external" href="http://www.sciencedirect.com/science/article/pii/S0098135402001503">URL: http://www.sciencedirect.com/science/article/pii/S0098135402001503</a>.</td></tr>
 </tbody>
 </table>
 <table class="docutils citation" frame="void" id="vlissides-design-1995" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id3">[VHJG95]</a></td><td>John Vlissides, R&nbsp;Helm, R&nbsp;Johnson, and E&nbsp;Gamma. Design patterns: elements of reusable object-oriented software. <em>Reading: Addison-Wesley</em>, 1995.</td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id3">[VHJG95]</a></td><td>John Vlissides, R&nbsp;Helm, R&nbsp;Johnson, and E&nbsp;Gamma. Design patterns: Elements of reusable object-oriented software. <em>Reading: Addison-Wesley</em>, 1995.</td></tr>
 </tbody>
 </table>
 </p>
@@ -622,6 +622,9 @@ requests</li>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
     <h3>Get Cyclus</h3>
@@ -685,7 +688,7 @@ requests</li>
 
     <div class="footer" role="contentinfo">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on May 04, 2016.
+      Last updated on May 13, 2016.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");

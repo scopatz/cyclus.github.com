@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     'b&#39;(1.3.0-rc4-52-gb86cf92)&#39;',
+        VERSION:     '(1.3.1-210-g9065eea)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -107,7 +107,7 @@ each contain the following sections, in the following order:</p>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
 <p><strong>XML:</strong></p>
-<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;institution&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;institution&gt;</span>
   <span class="nt">&lt;name&gt;</span>SingleInstitution<span class="nt">&lt;/name&gt;</span>
   <span class="nt">&lt;initialfacilitylist&gt;</span>
     <span class="nt">&lt;entry&gt;</span>
@@ -129,7 +129,7 @@ each contain the following sections, in the following order:</p>
 </pre></div>
 </div>
 <p><strong>JSON:</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;institution&quot;</span><span class="p">:</span> <span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span><span class="nt">&quot;institution&quot;</span><span class="p">:</span> <span class="p">{</span>
  <span class="nt">&quot;config&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;NullInst&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">},</span>
  <span class="nt">&quot;initialfacilitylist&quot;</span><span class="p">:</span> <span class="p">{</span>
   <span class="nt">&quot;entry&quot;</span><span class="p">:</span> <span class="p">[</span>
@@ -157,7 +157,7 @@ facility agents, one based on the <code class="docutils literal"><span class="pr
 the <code class="docutils literal"><span class="pre">FacilityB</span></code> prototype.  The second institution has the name
 <cite>AnotherInstitution</cite>, is also configured from the archetype with the name (or
 alias) <code class="docutils literal"><span class="pre">NullInst</span></code>.  This institution has no initial facilities.</p>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
  <span class="nt">&quot;institution&quot;</span><span class="p">:</span> <span class="p">{</span>
    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;SingleInstitution&quot;</span><span class="p">,</span>
    <span class="nt">&quot;initialfacilitylist&quot;</span><span class="p">:</span> <span class="p">[{</span>
@@ -181,7 +181,7 @@ alias) <code class="docutils literal"><span class="pre">NullInst</span></code>. 
 </div>
 <div class="html-toggle section" id="grammar-definition">
 <h2>Grammar Definition<a class="headerlink" href="#grammar-definition" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;institution&quot;</span><span class="nt">&gt;</span> <span class="nt">&lt;interleave&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;institution&quot;</span><span class="nt">&gt;</span> <span class="nt">&lt;interleave&gt;</span>
   <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;</span> <span class="nt">&lt;text/&gt;</span> <span class="nt">&lt;/element&gt;</span>
   <span class="nt">&lt;optional&gt;</span>
     <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;lifetime&quot;</span><span class="nt">&gt;</span> <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;nonNegativeInteger&quot;</span><span class="nt">/&gt;</span> <span class="nt">&lt;/element&gt;</span>
@@ -261,6 +261,9 @@ alias) <code class="docutils literal"><span class="pre">NullInst</span></code>. 
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
     <h3>Get Cyclus</h3>
@@ -325,7 +328,7 @@ alias) <code class="docutils literal"><span class="pre">NullInst</span></code>. 
 
     <div class="footer" role="contentinfo">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on May 04, 2016.
+      Last updated on May 13, 2016.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");

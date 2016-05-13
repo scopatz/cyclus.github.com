@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     'b&#39;(1.3.0-rc4-52-gb86cf92)&#39;',
+        VERSION:     '(1.3.1-210-g9065eea)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -108,29 +108,29 @@ tests for any class that inherits from one of:</p>
 <a class="reference internal" href="../basics/glossary.html#term-agent"><span class="xref std std-term">agent</span></a> in the simulation, so every archetype can invoke those unit tests.</p>
 <p>In order to get the provided unit tests in your archetype&#8217;s tests, a few extra
 lines must be added to your <code class="docutils literal"><span class="pre">*_tests.cc</span></code> file. For instance, the
-<code class="docutils literal"><span class="pre">TutorialFacility</span></code> in the <a class="reference internal" href="hello_world.html#hello-world"><span class="std std-ref">Hello, Cyclus!</span></a> example with the file structure
-outline in <a class="reference internal" href="cmake.html#cmake-build"><span class="std std-ref">Building Modules with CMake</span></a> adds the following lines to
+<code class="docutils literal"><span class="pre">TutorialFacility</span></code> in the <a class="reference internal" href="hello_world.html#hello-world"><span>Hello, Cyclus!</span></a> example with the file structure
+outline in <a class="reference internal" href="cmake.html#cmake-build"><span>Building Modules with CMake</span></a> adds the following lines to
 <code class="docutils literal"><span class="pre">tutorial_facility_tests.cc</span></code> to get all of the free <code class="docutils literal"><span class="pre">cyclus::Agent</span></code> and
 <code class="docutils literal"><span class="pre">cyclus::Facility</span></code> unit tests:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#include &quot;tutorial_facility.h&quot;</span>
-<span class="c1">#include &quot;facility_tests.h&quot;</span>
-<span class="c1">#include &quot;agent_tests.h&quot;</span>
+<div class="highlight-python"><div class="highlight"><pre>#include &quot;tutorial_facility.h&quot;
+#include &quot;facility_tests.h&quot;
+#include &quot;agent_tests.h&quot;
 
-<span class="c1">#ifndef CYCLUS_AGENT_TESTS_CONNECTED</span>
-<span class="nb">int</span> <span class="n">ConnectAgentTests</span><span class="p">();</span>
-<span class="n">static</span> <span class="nb">int</span> <span class="n">cyclus_agent_tests_connected</span> <span class="o">=</span> <span class="n">ConnectAgentTests</span><span class="p">();</span>
-<span class="c1">#define CYCLUS_AGENT_TESTS_CONNECTED cyclus_agent_tests_connected</span>
-<span class="c1">#endif // CYCLUS_AGENT_TESTS_CONNECTED</span>
+#ifndef CYCLUS_AGENT_TESTS_CONNECTED
+int ConnectAgentTests();
+static int cyclus_agent_tests_connected = ConnectAgentTests();
+#define CYCLUS_AGENT_TESTS_CONNECTED cyclus_agent_tests_connected
+#endif // CYCLUS_AGENT_TESTS_CONNECTED
 
-<span class="n">cyclus</span><span class="p">::</span><span class="n">Agent</span><span class="o">*</span> <span class="n">TutorialFacilityConstructor</span><span class="p">(</span><span class="n">cyclus</span><span class="p">::</span><span class="n">Context</span><span class="o">*</span> <span class="n">ctx</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="n">new</span> <span class="n">TutorialFacility</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
-<span class="p">}</span>
+cyclus::Agent* TutorialFacilityConstructor(cyclus::Context* ctx) {
+  return new TutorialFacility(ctx);
+}
 
-<span class="n">INSTANTIATE_TEST_CASE_P</span><span class="p">(</span><span class="n">TutorialFac</span><span class="p">,</span> <span class="n">FacilityTests</span><span class="p">,</span>
-                        <span class="p">::</span><span class="n">testing</span><span class="p">::</span><span class="n">Values</span><span class="p">(</span><span class="o">&amp;</span><span class="n">TutorialFacilityConstructor</span><span class="p">));</span>
+INSTANTIATE_TEST_CASE_P(TutorialFac, FacilityTests,
+                        ::testing::Values(&amp;TutorialFacilityConstructor));
 
-<span class="n">INSTANTIATE_TEST_CASE_P</span><span class="p">(</span><span class="n">TutorialFac</span><span class="p">,</span> <span class="n">AgentTests</span><span class="p">,</span>
-                        <span class="p">::</span><span class="n">testing</span><span class="p">::</span><span class="n">Values</span><span class="p">(</span><span class="o">&amp;</span><span class="n">TutorialFacilityConstructor</span><span class="p">));</span>
+INSTANTIATE_TEST_CASE_P(TutorialFac, AgentTests,
+                        ::testing::Values(&amp;TutorialFacilityConstructor));
 </pre></div>
 </div>
 <p>The above lines can be specialized to your case by replacing <code class="docutils literal"><span class="pre">TutorialFac</span></code> with
@@ -145,12 +145,12 @@ the institution or region, respectively.</p>
 track of how many <a class="reference internal" href="../basics/glossary.html#term-tick"><span class="xref std std-term">ticks</span></a> it has experienced. We&#8217;ll call it
 <code class="docutils literal"><span class="pre">TickTracker</span></code>.</p>
 <p>This tutorial assumes that you have a directory setup like that described in
-<a class="reference internal" href="hello_world.html#hello-world"><span class="std std-ref">Hello, Cyclus!</span></a>, namely that there is a <cite>src</cite> directory in which
+<a class="reference internal" href="hello_world.html#hello-world"><span>Hello, Cyclus!</span></a>, namely that there is a <cite>src</cite> directory in which
 <a class="reference internal" href="../basics/glossary.html#term-archetype"><span class="xref std std-term">archetype</span></a> source files are housed and a <cite>install.py</cite> file that will
 install them on your system.</p>
 <p>Make a file called <code class="docutils literal"><span class="pre">tick_tracker.h</span></code> in the <code class="docutils literal"><span class="pre">src</span></code> directory that has the
 following lines:</p>
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;cyclus.h&quot;</span><span class="cp"></span>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="cp">#include &quot;cyclus.h&quot;</span>
 
 <span class="k">class</span> <span class="nc">TickTracker</span> <span class="o">:</span> <span class="k">public</span> <span class="n">cyclus</span><span class="o">::</span><span class="n">Facility</span> <span class="p">{</span>
  <span class="k">public</span><span class="o">:</span>
@@ -165,7 +165,7 @@ following lines:</p>
   <span class="k">virtual</span> <span class="kt">void</span> <span class="nf">Tock</span><span class="p">()</span> <span class="p">{};</span>
 
   <span class="c1">/// query now many ticks the agent has experienced</span>
-  <span class="kr">inline</span> <span class="kt">int</span> <span class="nf">n_ticks</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span><span class="k">return</span> <span class="n">n_ticks_</span><span class="p">;}</span>
+  <span class="kr">inline</span> <span class="kt">int</span> <span class="n">n_ticks</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span><span class="k">return</span> <span class="n">n_ticks_</span><span class="p">;}</span>
 
  <span class="k">private</span><span class="o">:</span>
   <span class="kt">int</span> <span class="n">n_ticks_</span><span class="p">;</span>
@@ -174,7 +174,7 @@ following lines:</p>
 </div>
 <p>Next, make a file called <code class="docutils literal"><span class="pre">tick_tracker.cc</span></code> in the <code class="docutils literal"><span class="pre">src</span></code> directory that has the
 following lines:</p>
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;tick_tracker.h&quot;</span><span class="cp"></span>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="cp">#include &quot;tick_tracker.h&quot;</span>
 
 <span class="c1">// we have to call the base cyclus::Facility class&#39; constructor</span>
 <span class="c1">// with a context argument</span>
@@ -186,16 +186,16 @@ following lines:</p>
 </div>
 <p>Now, make a file called <code class="docutils literal"><span class="pre">tick_tracker_tests.cc</span></code> in the <code class="docutils literal"><span class="pre">src</span></code> directory that
 has the following lines:</p>
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="c1">// gtest deps</span>
-<span class="cp">#include</span> <span class="cpf">&lt;gtest/gtest.h&gt;</span><span class="cp"></span>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="c1">// gtest deps</span>
+<span class="cp">#include &lt;gtest/gtest.h&gt;</span>
 
 <span class="c1">// cyclus deps</span>
-<span class="cp">#include</span> <span class="cpf">&quot;facility_tests.h&quot;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&quot;agent_tests.h&quot;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&quot;test_context.h&quot;</span><span class="cp"></span>
+<span class="cp">#include &quot;facility_tests.h&quot;</span>
+<span class="cp">#include &quot;agent_tests.h&quot;</span>
+<span class="cp">#include &quot;test_context.h&quot;</span>
 
 <span class="c1">// our deps</span>
-<span class="cp">#include</span> <span class="cpf">&quot;tick_tracker.h&quot;</span><span class="cp"></span>
+<span class="cp">#include &quot;tick_tracker.h&quot;</span>
 
 <span class="c1">// write a unit test of our own</span>
 <span class="n">TEST</span><span class="p">(</span><span class="n">TickTracker</span><span class="p">,</span> <span class="n">track_ticks</span><span class="p">)</span> <span class="p">{</span>
@@ -227,7 +227,7 @@ has the following lines:</p>
 </pre></div>
 </div>
 <p>Add the following lines to the <code class="docutils literal"><span class="pre">src/CMakeLists.txt</span></code> file:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">INSTALL_CYCLUS_STANDALONE</span><span class="p">(</span><span class="s2">&quot;TickTracker&quot;</span> <span class="s2">&quot;tick_tracker&quot;</span> <span class="s2">&quot;tutorial&quot;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">INSTALL_CYCLUS_STANDALONE</span><span class="p">(</span><span class="s">&quot;TickTracker&quot;</span> <span class="s">&quot;tick_tracker&quot;</span> <span class="s">&quot;tutorial&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Now we&#8217;re ready to install the <code class="docutils literal"><span class="pre">TickTracker</span></code> module and run its tests. If you
@@ -235,41 +235,41 @@ haven&#8217;t already, now is a good time to add the <code class="docutils liter
 <code class="docutils literal"><span class="pre">PATH</span></code> environment variable (<span style="font-variant:small-caps;">Cyclus</span>&#8216; <code class="docutils literal"><span class="pre">install.py</span></code> defaults to
 <code class="docutils literal"><span class="pre">~/.local</span></code>). Next, from your top level directory (where your <code class="docutils literal"><span class="pre">install.py</span></code>
 file is), run:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ ./install.py
-$ TickTracker_unit_tests
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>./install.py
+<span class="nv">$ </span>TickTracker_unit_tests
 </pre></div>
 </div>
 <p>Which results in:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="o">==========</span><span class="p">]</span> <span class="n">Running</span> <span class="mi">8</span> <span class="n">tests</span> <span class="kn">from</span> <span class="mi">3</span> <span class="n">test</span> <span class="n">cases</span><span class="o">.</span>
-<span class="p">[</span><span class="o">----------</span><span class="p">]</span> <span class="n">Global</span> <span class="n">test</span> <span class="n">environment</span> <span class="nb">set</span><span class="o">-</span><span class="n">up</span><span class="o">.</span>
-<span class="p">[</span><span class="o">----------</span><span class="p">]</span> <span class="mi">1</span> <span class="n">test</span> <span class="kn">from</span> <span class="nn">TickTracker</span>
-<span class="p">[</span> <span class="n">RUN</span>      <span class="p">]</span> <span class="n">TickTracker</span><span class="o">.</span><span class="n">track_ticks</span>
-<span class="p">[</span>       <span class="n">OK</span> <span class="p">]</span> <span class="n">TickTracker</span><span class="o">.</span><span class="n">track_ticks</span> <span class="p">(</span><span class="mi">19</span> <span class="n">ms</span><span class="p">)</span>
-<span class="p">[</span><span class="o">----------</span><span class="p">]</span> <span class="mi">1</span> <span class="n">test</span> <span class="kn">from</span> <span class="nn">TickTracker</span> <span class="p">(</span><span class="mi">20</span> <span class="n">ms</span> <span class="n">total</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre>[==========] Running 8 tests from 3 test cases.
+[----------] Global test environment set-up.
+[----------] 1 test from TickTracker
+[ RUN      ] TickTracker.track_ticks
+[       OK ] TickTracker.track_ticks (19 ms)
+[----------] 1 test from TickTracker (20 ms total)
 
-<span class="p">[</span><span class="o">----------</span><span class="p">]</span> <span class="mi">5</span> <span class="n">tests</span> <span class="kn">from</span> <span class="nn">TicTrac</span><span class="o">/</span><span class="n">AgentTests</span>
-<span class="p">[</span> <span class="n">RUN</span>      <span class="p">]</span> <span class="n">TicTrac</span><span class="o">/</span><span class="n">AgentTests</span><span class="o">.</span><span class="n">Clone</span><span class="o">/</span><span class="mi">0</span>
-<span class="p">[</span>       <span class="n">OK</span> <span class="p">]</span> <span class="n">TicTrac</span><span class="o">/</span><span class="n">AgentTests</span><span class="o">.</span><span class="n">Clone</span><span class="o">/</span><span class="mi">0</span> <span class="p">(</span><span class="mi">8</span> <span class="n">ms</span><span class="p">)</span>
-<span class="p">[</span> <span class="n">RUN</span>      <span class="p">]</span> <span class="n">TicTrac</span><span class="o">/</span><span class="n">AgentTests</span><span class="o">.</span><span class="n">Print</span><span class="o">/</span><span class="mi">0</span>
-<span class="p">[</span>       <span class="n">OK</span> <span class="p">]</span> <span class="n">TicTrac</span><span class="o">/</span><span class="n">AgentTests</span><span class="o">.</span><span class="n">Print</span><span class="o">/</span><span class="mi">0</span> <span class="p">(</span><span class="mi">9</span> <span class="n">ms</span><span class="p">)</span>
-<span class="p">[</span> <span class="n">RUN</span>      <span class="p">]</span> <span class="n">TicTrac</span><span class="o">/</span><span class="n">AgentTests</span><span class="o">.</span><span class="n">Schema</span><span class="o">/</span><span class="mi">0</span>
-<span class="p">[</span>       <span class="n">OK</span> <span class="p">]</span> <span class="n">TicTrac</span><span class="o">/</span><span class="n">AgentTests</span><span class="o">.</span><span class="n">Schema</span><span class="o">/</span><span class="mi">0</span> <span class="p">(</span><span class="mi">9</span> <span class="n">ms</span><span class="p">)</span>
-<span class="p">[</span> <span class="n">RUN</span>      <span class="p">]</span> <span class="n">TicTrac</span><span class="o">/</span><span class="n">AgentTests</span><span class="o">.</span><span class="n">Annotations</span><span class="o">/</span><span class="mi">0</span>
-<span class="p">[</span>       <span class="n">OK</span> <span class="p">]</span> <span class="n">TicTrac</span><span class="o">/</span><span class="n">AgentTests</span><span class="o">.</span><span class="n">Annotations</span><span class="o">/</span><span class="mi">0</span> <span class="p">(</span><span class="mi">15</span> <span class="n">ms</span><span class="p">)</span>
-<span class="p">[</span> <span class="n">RUN</span>      <span class="p">]</span> <span class="n">TicTrac</span><span class="o">/</span><span class="n">AgentTests</span><span class="o">.</span><span class="n">GetAgentType</span><span class="o">/</span><span class="mi">0</span>
-<span class="p">[</span>       <span class="n">OK</span> <span class="p">]</span> <span class="n">TicTrac</span><span class="o">/</span><span class="n">AgentTests</span><span class="o">.</span><span class="n">GetAgentType</span><span class="o">/</span><span class="mi">0</span> <span class="p">(</span><span class="mi">8</span> <span class="n">ms</span><span class="p">)</span>
-<span class="p">[</span><span class="o">----------</span><span class="p">]</span> <span class="mi">5</span> <span class="n">tests</span> <span class="kn">from</span> <span class="nn">TicTrac</span><span class="o">/</span><span class="n">AgentTests</span> <span class="p">(</span><span class="mi">49</span> <span class="n">ms</span> <span class="n">total</span><span class="p">)</span>
+[----------] 5 tests from TicTrac/AgentTests
+[ RUN      ] TicTrac/AgentTests.Clone/0
+[       OK ] TicTrac/AgentTests.Clone/0 (8 ms)
+[ RUN      ] TicTrac/AgentTests.Print/0
+[       OK ] TicTrac/AgentTests.Print/0 (9 ms)
+[ RUN      ] TicTrac/AgentTests.Schema/0
+[       OK ] TicTrac/AgentTests.Schema/0 (9 ms)
+[ RUN      ] TicTrac/AgentTests.Annotations/0
+[       OK ] TicTrac/AgentTests.Annotations/0 (15 ms)
+[ RUN      ] TicTrac/AgentTests.GetAgentType/0
+[       OK ] TicTrac/AgentTests.GetAgentType/0 (8 ms)
+[----------] 5 tests from TicTrac/AgentTests (49 ms total)
 
-<span class="p">[</span><span class="o">----------</span><span class="p">]</span> <span class="mi">2</span> <span class="n">tests</span> <span class="kn">from</span> <span class="nn">TicTrac</span><span class="o">/</span><span class="n">FacilityTests</span>
-<span class="p">[</span> <span class="n">RUN</span>      <span class="p">]</span> <span class="n">TicTrac</span><span class="o">/</span><span class="n">FacilityTests</span><span class="o">.</span><span class="n">Tick</span><span class="o">/</span><span class="mi">0</span>
-<span class="p">[</span>       <span class="n">OK</span> <span class="p">]</span> <span class="n">TicTrac</span><span class="o">/</span><span class="n">FacilityTests</span><span class="o">.</span><span class="n">Tick</span><span class="o">/</span><span class="mi">0</span> <span class="p">(</span><span class="mi">9</span> <span class="n">ms</span><span class="p">)</span>
-<span class="p">[</span> <span class="n">RUN</span>      <span class="p">]</span> <span class="n">TicTrac</span><span class="o">/</span><span class="n">FacilityTests</span><span class="o">.</span><span class="n">Tock</span><span class="o">/</span><span class="mi">0</span>
-<span class="p">[</span>       <span class="n">OK</span> <span class="p">]</span> <span class="n">TicTrac</span><span class="o">/</span><span class="n">FacilityTests</span><span class="o">.</span><span class="n">Tock</span><span class="o">/</span><span class="mi">0</span> <span class="p">(</span><span class="mi">8</span> <span class="n">ms</span><span class="p">)</span>
-<span class="p">[</span><span class="o">----------</span><span class="p">]</span> <span class="mi">2</span> <span class="n">tests</span> <span class="kn">from</span> <span class="nn">TicTrac</span><span class="o">/</span><span class="n">FacilityTests</span> <span class="p">(</span><span class="mi">17</span> <span class="n">ms</span> <span class="n">total</span><span class="p">)</span>
+[----------] 2 tests from TicTrac/FacilityTests
+[ RUN      ] TicTrac/FacilityTests.Tick/0
+[       OK ] TicTrac/FacilityTests.Tick/0 (9 ms)
+[ RUN      ] TicTrac/FacilityTests.Tock/0
+[       OK ] TicTrac/FacilityTests.Tock/0 (8 ms)
+[----------] 2 tests from TicTrac/FacilityTests (17 ms total)
 
-<span class="p">[</span><span class="o">----------</span><span class="p">]</span> <span class="n">Global</span> <span class="n">test</span> <span class="n">environment</span> <span class="n">tear</span><span class="o">-</span><span class="n">down</span>
-<span class="p">[</span><span class="o">==========</span><span class="p">]</span> <span class="mi">8</span> <span class="n">tests</span> <span class="kn">from</span> <span class="mi">3</span> <span class="n">test</span> <span class="n">cases</span> <span class="n">ran</span><span class="o">.</span> <span class="p">(</span><span class="mi">86</span> <span class="n">ms</span> <span class="n">total</span><span class="p">)</span>
-<span class="p">[</span>  <span class="n">PASSED</span>  <span class="p">]</span> <span class="mi">8</span> <span class="n">tests</span><span class="o">.</span>
+[----------] Global test environment tear-down
+[==========] 8 tests from 3 test cases ran. (86 ms total)
+[  PASSED  ] 8 tests.
 </pre></div>
 </div>
 </div>
@@ -289,7 +289,7 @@ number of sources and/or sinks to transact with your agent.  They can have
 specific recipes (or not) and their deployment and lifetime (before
 decommissioning) can be specified too.  Here is an example using the
 agents:Source archetype in Cyclus as the tested agent:</p>
-<div class="highlight-c++"><div class="highlight"><pre><span></span><span class="c1">// Define a composition to use as a simulation recipe.</span>
+<div class="highlight-c++"><div class="highlight"><pre><span class="c1">// Define a composition to use as a simulation recipe.</span>
 <span class="n">cyclus</span><span class="o">::</span><span class="n">CompMap</span> <span class="n">m</span><span class="p">;</span>
 <span class="n">m</span><span class="p">[</span><span class="mi">922350000</span><span class="p">]</span> <span class="o">=</span> <span class="mf">.05</span><span class="p">;</span>
 <span class="n">m</span><span class="p">[</span><span class="mi">922380000</span><span class="p">]</span> <span class="o">=</span> <span class="mf">.95</span><span class="p">;</span>
@@ -340,7 +340,7 @@ fully available.  Namely the Transactions, Composition, Resources,
 ResCreators, AgentEntry, and AgentExit tables are available.  Any
 custom-tables created by the tested archetype will also be available.  Here is
 a sample query and test you might write using the gtest framework:</p>
-<div class="highlight-c++"><div class="highlight"><pre><span></span><span class="c1">// return all transactions where our source facility is the sender</span>
+<div class="highlight-c++"><div class="highlight"><pre><span class="c1">// return all transactions where our source facility is the sender</span>
 <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">cyclus</span><span class="o">::</span><span class="n">Cond</span><span class="o">&gt;</span> <span class="n">conds</span><span class="p">;</span>
 <span class="n">conds</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="s">&quot;SenderId&quot;</span><span class="p">,</span> <span class="s">&quot;==&quot;</span><span class="p">,</span> <span class="n">agent_id</span><span class="p">);</span>
 <span class="n">cyclus</span><span class="o">::</span><span class="n">QueryResult</span> <span class="n">qr</span> <span class="o">=</span> <span class="n">sim</span><span class="p">.</span><span class="n">db</span><span class="p">().</span><span class="n">Query</span><span class="p">(</span><span class="s">&quot;Transactions&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">conds</span><span class="p">);</span>
@@ -370,7 +370,7 @@ particularly helpful for debugging and verifying your archetype&#8217;s behavior
 with respect to resource exchange.  To turn on this debugging, simply run
 cyclus with the environment variable <code class="docutils literal"><span class="pre">CYCLUS_DEBUG_DRE</span></code> set to any non-empty
 value:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nv">CYCLUS_DEBUG_DRE</span><span class="o">=</span><span class="m">1</span> cyclus my-sim.xml
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ CYCLUS_DEBUG_DRE</span><span class="o">=</span><span class="m">1</span> cyclus my-sim.xml
 </pre></div>
 </div>
 <p>The database will then contain two extra tables with several columns each:</p>
@@ -458,6 +458,9 @@ to those of the corresponding request.</p>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
     <h3>Get Cyclus</h3>
@@ -521,7 +524,7 @@ to those of the corresponding request.</p>
 
     <div class="footer" role="contentinfo">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on May 04, 2016.
+      Last updated on May 13, 2016.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");

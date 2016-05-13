@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     'b&#39;(1.3.0-rc4-52-gb86cf92)&#39;',
+        VERSION:     '(1.3.1-210-g9065eea)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -156,7 +156,7 @@ the DRE.</p>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
 <p><strong>XML:</strong></p>
-<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;control&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;control&gt;</span>
   <span class="nt">&lt;startyear&gt;</span>2007<span class="nt">&lt;/startyear&gt;</span>   <span class="c">&lt;!-- start in 2007 --&gt;</span>
   <span class="nt">&lt;startmonth&gt;</span>11<span class="nt">&lt;/startmonth&gt;</span>   <span class="c">&lt;!-- start in november --&gt;</span>
   <span class="nt">&lt;duration&gt;</span>1200<span class="nt">&lt;/duration&gt;</span>     <span class="c">&lt;!-- run for 100 years --&gt;</span>
@@ -166,7 +166,7 @@ the DRE.</p>
 </pre></div>
 </div>
 <p><strong>JSON:</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
  <span class="nt">&quot;control&quot;</span><span class="p">:</span> <span class="p">{</span>
    <span class="nt">&quot;startyear&quot;</span><span class="p">:</span> <span class="mi">2007</span><span class="p">,</span>
    <span class="nt">&quot;startmonth&quot;</span><span class="p">:</span> <span class="mi">11</span><span class="p">,</span>
@@ -180,7 +180,7 @@ the DRE.</p>
 </div>
 <div class="html-toggle section" id="grammar-definition">
 <h2>Grammar Definition<a class="headerlink" href="#grammar-definition" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;element</span> <span class="na">name =</span><span class="s">&quot;control&quot;</span><span class="nt">&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;element</span> <span class="na">name =</span><span class="s">&quot;control&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;interleave&gt;</span>
     <span class="nt">&lt;optional&gt;</span>
       <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;simhandle&quot;</span><span class="nt">&gt;</span> <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span><span class="nt">/&gt;</span> <span class="nt">&lt;/element&gt;</span>
@@ -281,6 +281,9 @@ the DRE.</p>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
     <h3>Get Cyclus</h3>
@@ -345,7 +348,7 @@ the DRE.</p>
 
     <div class="footer" role="contentinfo">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on May 04, 2016.
+      Last updated on May 13, 2016.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");

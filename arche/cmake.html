@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     'b&#39;(1.3.0-rc4-52-gb86cf92)&#39;',
+        VERSION:     '(1.3.1-210-g9065eea)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -82,11 +82,11 @@ if(ga_enabled){
             
   <div class="section" id="building-modules-with-cmake">
 <span id="cmake-build"></span><h1>Building Modules with CMake<a class="headerlink" href="#building-modules-with-cmake" title="Permalink to this headline">¶</a></h1>
-<p>If you haven&#8217;t follow the initial example in <a class="reference internal" href="hello_world.html#hello-world"><span class="std std-ref">Hello, Cyclus!</span></a>, you should get
+<p>If you haven&#8217;t follow the initial example in <a class="reference internal" href="hello_world.html#hello-world"><span>Hello, Cyclus!</span></a>, you should get
 the <a class="reference external" href="https://github.com/cyclus/cycstub">Cycstub repo</a> by either <a class="reference external" href="https://github.com/cyclus/cycstub.git">cloning the
 repository</a> or by <a class="reference external" href="https://github.com/cyclus/cycstub/archive/develop.zip">downloading the zip
 file</a> (see
-<a class="reference internal" href="hello_world.html#hello-world"><span class="std std-ref">Hello, Cyclus!</span></a> for further instructions).</p>
+<a class="reference internal" href="hello_world.html#hello-world"><span>Hello, Cyclus!</span></a> for further instructions).</p>
 <p>The Cycstub repo provides a number of critical tools for building your own
 module:</p>
 <ul class="simple">
@@ -137,7 +137,7 @@ installed in <code class="docutils literal"><span class="pre">$CYCLUS_INSTALL_PR
 something else, e.g. <code class="docutils literal"><span class="pre">my_module_dir</span></code>, the module will be installed in
 <code class="docutils literal"><span class="pre">$CYCLUS_INSTALL_PREFIX/lib/cyclus/my_module_dir/</span></code>. The value of
 <code class="docutils literal"><span class="pre">$CYCLUS_INSTALL_PREFIX</span></code> can be queried by</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ cyclus --install-path
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>cyclus --install-path
 </pre></div>
 </div>
 </li>
@@ -152,17 +152,17 @@ feature which will not be needed by most archetype developers.</p>
 listing:</p>
 <ul>
 <li><p class="first"><code class="docutils literal"><span class="pre">USE_CYCLUS</span></code>:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">USE_CYCLUS</span><span class="p">(</span><span class="n">lib_root</span> <span class="n">src_root</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre>USE_CYCLUS(lib_root src_root)
 </pre></div>
 </div>
 </li>
 <li><p class="first"><code class="docutils literal"><span class="pre">INSTALL_CYCLUS_STANDALONE</span></code>:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">INSTALL_CYCLUS_STANDALONE</span><span class="p">(</span><span class="n">lib_root</span> <span class="n">src_root</span> <span class="n">lib_dir</span> <span class="p">[</span><span class="n">test_driver</span><span class="p">])</span>
+<div class="highlight-python"><div class="highlight"><pre>INSTALL_CYCLUS_STANDALONE(lib_root src_root lib_dir [test_driver])
 </pre></div>
 </div>
 </li>
 <li><p class="first"><code class="docutils literal"><span class="pre">INSTALL_CYCLUS_MODULE</span></code>:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">INSTALL_CYCLUS_MODULE</span><span class="p">(</span><span class="n">lib_root</span> <span class="n">lib_dir</span> <span class="p">[</span><span class="n">test_driver</span><span class="p">])</span>
+<div class="highlight-python"><div class="highlight"><pre>INSTALL_CYCLUS_MODULE(lib_root lib_dir [test_driver])
 </pre></div>
 </div>
 </li>
@@ -173,11 +173,11 @@ listing:</p>
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="standalone-installation">
 <h3>Standalone Installation<a class="headerlink" href="#standalone-installation" title="Permalink to this headline">¶</a></h3>
-<p>Through the <a class="reference internal" href="hello_world.html#hello-world"><span class="std std-ref">Hello, Cyclus!</span></a> example, three standalone modules are installed
+<p>Through the <a class="reference internal" href="hello_world.html#hello-world"><span>Hello, Cyclus!</span></a> example, three standalone modules are installed
 using a <code class="docutils literal"><span class="pre">src/CMakeLists.txt</span></code> file that looks something like</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">INSTALL_CYCLUS_STANDALONE</span><span class="p">(</span><span class="s2">&quot;TutorialFacility&quot;</span> <span class="s2">&quot;tutorial_facility&quot;</span> <span class="s2">&quot;tutorial&quot;</span><span class="p">)</span>
-<span class="n">INSTALL_CYCLUS_STANDALONE</span><span class="p">(</span><span class="s2">&quot;TutorialInst&quot;</span> <span class="s2">&quot;tutorial_inst&quot;</span> <span class="s2">&quot;tutorial&quot;</span><span class="p">)</span>
-<span class="n">INSTALL_CYCLUS_STANDALONE</span><span class="p">(</span><span class="s2">&quot;TutorialRegion&quot;</span> <span class="s2">&quot;tutorial_region&quot;</span> <span class="s2">&quot;tutorial&quot;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">INSTALL_CYCLUS_STANDALONE</span><span class="p">(</span><span class="s">&quot;TutorialFacility&quot;</span> <span class="s">&quot;tutorial_facility&quot;</span> <span class="s">&quot;tutorial&quot;</span><span class="p">)</span>
+<span class="n">INSTALL_CYCLUS_STANDALONE</span><span class="p">(</span><span class="s">&quot;TutorialInst&quot;</span> <span class="s">&quot;tutorial_inst&quot;</span> <span class="s">&quot;tutorial&quot;</span><span class="p">)</span>
+<span class="n">INSTALL_CYCLUS_STANDALONE</span><span class="p">(</span><span class="s">&quot;TutorialRegion&quot;</span> <span class="s">&quot;tutorial_region&quot;</span> <span class="s">&quot;tutorial&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>This setup will install three shared object libraries in
@@ -212,10 +212,10 @@ named <code class="docutils literal"><span class="pre">libhelloworld.so</span></
 <p>Such behavior is pretty simple to achieve. We first must call <code class="docutils literal"><span class="pre">UseCyclus</span></code> on
 each of our source file roots to inform the build system of their presence and
 follow up with a call to <code class="docutils literal"><span class="pre">INSTALL_CYCLUS_MODULE</span></code>:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">USE_CYCLUS</span><span class="p">(</span><span class="s2">&quot;helloworld&quot;</span> <span class="s2">&quot;tutorial_facility&quot;</span><span class="p">)</span>
-<span class="n">USE_CYCLUS</span><span class="p">(</span><span class="s2">&quot;helloworld&quot;</span> <span class="s2">&quot;tutorial_inst&quot;</span><span class="p">)</span>
-<span class="n">USE_CYCLUS</span><span class="p">(</span><span class="s2">&quot;helloworld&quot;</span> <span class="s2">&quot;tutorial_region&quot;</span><span class="p">)</span>
-<span class="n">INSTALL_CYCLUS_MODULE</span><span class="p">(</span><span class="s2">&quot;helloworld&quot;</span> <span class="s2">&quot;tutorial&quot;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">USE_CYCLUS</span><span class="p">(</span><span class="s">&quot;helloworld&quot;</span> <span class="s">&quot;tutorial_facility&quot;</span><span class="p">)</span>
+<span class="n">USE_CYCLUS</span><span class="p">(</span><span class="s">&quot;helloworld&quot;</span> <span class="s">&quot;tutorial_inst&quot;</span><span class="p">)</span>
+<span class="n">USE_CYCLUS</span><span class="p">(</span><span class="s">&quot;helloworld&quot;</span> <span class="s">&quot;tutorial_region&quot;</span><span class="p">)</span>
+<span class="n">INSTALL_CYCLUS_MODULE</span><span class="p">(</span><span class="s">&quot;helloworld&quot;</span> <span class="s">&quot;tutorial&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -282,6 +282,9 @@ follow up with a call to <code class="docutils literal"><span class="pre">INSTAL
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
     <h3>Get Cyclus</h3>
@@ -345,7 +348,7 @@ follow up with a call to <code class="docutils literal"><span class="pre">INSTAL
 
     <div class="footer" role="contentinfo">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on May 04, 2016.
+      Last updated on May 13, 2016.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");

@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     'b&#39;(1.3.0-rc4-52-gb86cf92)&#39;',
+        VERSION:     '(1.3.1-210-g9065eea)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -93,15 +93,15 @@ three stub archetypes:</p>
 most complicated of the three. Before we begin, though, let&#8217;s get a fresh copy
 of Cycstub (or follow along on the <a class="reference external" href="https://github.com/cyclus/cycstub">website</a>).</p>
 <p><strong>Getting cycstub via git:</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ git clone https://github.com/cyclus/cycstub.git
-$ <span class="nb">cd</span> cycstub
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>git clone https://github.com/cyclus/cycstub.git
+<span class="nv">$ </span><span class="nb">cd </span>cycstub
 </pre></div>
 </div>
 <p><strong>Getting cycstub via zip:</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -L https://api.github.com/repos/cyclus/cycstub/zipball &gt; cycstub.zip
-$ unzip cycstub.zip
-$ mv cyclus-cycstub-* cycstub
-$ <span class="nb">cd</span> cycstub
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -L https://api.github.com/repos/cyclus/cycstub/zipball &gt; cycstub.zip
+<span class="nv">$ </span>unzip cycstub.zip
+<span class="nv">$ </span>mv cyclus-cycstub-* cycstub
+<span class="nv">$ </span><span class="nb">cd </span>cycstub
 </pre></div>
 </div>
 <p>Feel free to <code class="docutils literal"><span class="pre">rm</span></code> the cycstub directory when we&#8217;re done (you can always get it
@@ -113,7 +113,7 @@ that derives from <code class="docutils literal"><span class="pre">cyclus::Facil
 header (<code class="docutils literal"><span class="pre">h</span></code>) and implementation (<code class="docutils literal"><span class="pre">cc</span></code>) files in conjunction, starting at the
 top.</p>
 <p><code class="docutils literal"><span class="pre">stub_facility.h</span></code> has a single <span style="font-variant:small-caps;">Cyclus</span>-based include</p>
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;cyclus.h&quot;</span><span class="cp"></span>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="cp">#include &quot;cyclus.h&quot;</span>
 </pre></div>
 </div>
 <p>which includes most <a class="reference internal" href="../basics/glossary.html#term-cyclus-kernel"><span class="xref std std-term">cyclus kernel</span></a> headers as a convenience for new
@@ -121,16 +121,16 @@ top.</p>
 include the specific kernel headers you need if you require a smaller
 executable.</p>
 <p>Moving on in the header file we come to the class declaration</p>
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">StubFacility</span> <span class="o">:</span> <span class="k">public</span> <span class="n">cyclus</span><span class="o">::</span><span class="n">Facility</span>  <span class="p">{</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="k">class</span> <span class="nc">StubFacility</span> <span class="o">:</span> <span class="k">public</span> <span class="n">cyclus</span><span class="o">::</span><span class="n">Facility</span>  <span class="p">{</span>
 </pre></div>
 </div>
 <p>which simply states that the <code class="docutils literal"><span class="pre">StubFacility</span></code> inherits from <code class="docutils literal"><span class="pre">cyclus::Facility</span></code>.</p>
 <p>We then come to the constructor declaration</p>
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="k">explicit</span> <span class="nf">StubFacility</span><span class="p">(</span><span class="n">cyclus</span><span class="o">::</span><span class="n">Context</span><span class="o">*</span> <span class="n">ctx</span><span class="p">);</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="k">explicit</span> <span class="nf">StubFacility</span><span class="p">(</span><span class="n">cyclus</span><span class="o">::</span><span class="n">Context</span><span class="o">*</span> <span class="n">ctx</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>and implementation</p>
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">StubFacility</span><span class="o">::</span><span class="n">StubFacility</span><span class="p">(</span><span class="n">cyclus</span><span class="o">::</span><span class="n">Context</span><span class="o">*</span> <span class="n">ctx</span><span class="p">)</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="n">StubFacility</span><span class="o">::</span><span class="n">StubFacility</span><span class="p">(</span><span class="n">cyclus</span><span class="o">::</span><span class="n">Context</span><span class="o">*</span> <span class="n">ctx</span><span class="p">)</span>
     <span class="o">:</span> <span class="n">cyclus</span><span class="o">::</span><span class="n">Facility</span><span class="p">(</span><span class="n">ctx</span><span class="p">)</span> <span class="p">{};</span>
 </pre></div>
 </div>
@@ -141,47 +141,47 @@ class requires a <code class="docutils literal"><span class="pre">cyclus::Contex
 classes must pass the argument down its constructor chain, as <code class="docutils literal"><span class="pre">StubFacility</span></code>
 does with its <code class="docutils literal"><span class="pre">cyclus::Facility</span></code> constructor above.</p>
 <p>Continuing with the header file, we next come to <strong>the prime directive</strong></p>
-<div class="highlight-c++"><div class="highlight"><pre><span></span><span class="cp">#pragma cyclus</span>
+<div class="highlight-c++"><div class="highlight"><pre><span class="cp">#pragma cyclus</span>
 </pre></div>
 </div>
 <p>In short, the prime directive allows an archetype developer to use the <span style="font-variant:small-caps;">Cyclus</span>
 preprocessor to autogenerate many member functions that are required for
 <span style="font-variant:small-caps;">Cyclus</span> features related to initialization and restart capabilities. For a
-further explanation, see <a class="reference internal" href="cycpp.html#cycpp"><span class="std std-ref">Using the Cyclus Preprocessor</span></a>.</p>
+further explanation, see <a class="reference internal" href="cycpp.html#cycpp"><span>Using the Cyclus Preprocessor</span></a>.</p>
 <p>The next line in <code class="docutils literal"><span class="pre">stub_facility.h</span></code> is also related to the preprocessor&#8217;s
 ability to help automate some documentation:</p>
-<div class="highlight-c++"><div class="highlight"><pre><span></span><span class="cp">#pragma cyclus note {&quot;doc&quot;: &quot;A stub facility is provided as a skeleton &quot; \</span>
+<div class="highlight-c++"><div class="highlight"><pre><span class="cp">#pragma cyclus note {&quot;doc&quot;: &quot;A stub facility is provided as a skeleton &quot; \</span>
 <span class="cp">                            &quot;for the design of new facility agents.&quot;}</span>
 </pre></div>
 </div>
-<p>Again, <code class="docutils literal"><span class="pre">#pragma</span> <span class="pre">cyclus</span> <span class="pre">note</span></code> is explained further in <a class="reference internal" href="cycpp.html#cycpp"><span class="std std-ref">Using the Cyclus Preprocessor</span></a>.</p>
+<p>Again, <code class="docutils literal"><span class="pre">#pragma</span> <span class="pre">cyclus</span> <span class="pre">note</span></code> is explained further in <a class="reference internal" href="cycpp.html#cycpp"><span>Using the Cyclus Preprocessor</span></a>.</p>
 <p>Continuing along, we reach the final three member functions, each of which are
 defined on the base <code class="docutils literal"><span class="pre">cyclus::Agent</span></code> class and are overrode by the
 <code class="docutils literal"><span class="pre">StubFacility</span></code>.</p>
 <div class="section" id="str">
 <h3>str<a class="headerlink" href="#str" title="Permalink to this headline">¶</a></h3>
 <p>The declaration</p>
-<div class="highlight-c++"><div class="highlight"><pre><span></span><span class="k">virtual</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">str</span><span class="p">();</span>
+<div class="highlight-c++"><div class="highlight"><pre><span class="k">virtual</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">str</span><span class="p">();</span>
 </pre></div>
 </div>
 <p>and implementation</p>
-<div class="highlight-c++"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">StubFacility</span><span class="o">::</span><span class="n">str</span><span class="p">()</span> <span class="p">{</span>
+<div class="highlight-c++"><div class="highlight"><pre><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">StubFacility</span><span class="o">::</span><span class="n">str</span><span class="p">()</span> <span class="p">{</span>
   <span class="k">return</span> <span class="n">Facility</span><span class="o">::</span><span class="n">str</span><span class="p">();</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <p>of the <code class="docutils literal"><span class="pre">str</span></code> method allows the <code class="docutils literal"><span class="pre">StubFacility</span></code> to customize its string
 representation, which is printed at a variety of <code class="docutils literal"><span class="pre">cyclus::Logger</span></code> logging
-levels, which is explained further in <a class="reference internal" href="logger.html"><span class="doc">Logging</span></a>.</p>
+levels, which is explained further in <a class="reference internal" href="logger.html"><em>Logging</em></a>.</p>
 </div>
 <div class="section" id="tick">
 <h3>Tick<a class="headerlink" href="#tick" title="Permalink to this headline">¶</a></h3>
 <p>The declaration</p>
-<div class="highlight-c++"><div class="highlight"><pre><span></span><span class="k">virtual</span> <span class="kt">void</span> <span class="nf">Tick</span><span class="p">();</span>
+<div class="highlight-c++"><div class="highlight"><pre><span class="k">virtual</span> <span class="kt">void</span> <span class="nf">Tick</span><span class="p">();</span>
 </pre></div>
 </div>
 <p>and implementation</p>
-<div class="highlight-c++"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">StubFacility</span><span class="o">::</span><span class="n">Tick</span><span class="p">()</span> <span class="p">{}</span>
+<div class="highlight-c++"><div class="highlight"><pre><span class="kt">void</span> <span class="n">StubFacility</span><span class="o">::</span><span class="n">Tick</span><span class="p">()</span> <span class="p">{}</span>
 </pre></div>
 </div>
 <p>of the <code class="docutils literal"><span class="pre">Tick</span></code> member function allows the <code class="docutils literal"><span class="pre">StubFacility</span></code> to act during the
@@ -190,11 +190,11 @@ levels, which is explained further in <a class="reference internal" href="logger
 <div class="section" id="tock">
 <h3>Tock<a class="headerlink" href="#tock" title="Permalink to this headline">¶</a></h3>
 <p>The declaration</p>
-<div class="highlight-c++"><div class="highlight"><pre><span></span><span class="k">virtual</span> <span class="kt">void</span> <span class="nf">Tock</span><span class="p">();</span>
+<div class="highlight-c++"><div class="highlight"><pre><span class="k">virtual</span> <span class="kt">void</span> <span class="nf">Tock</span><span class="p">();</span>
 </pre></div>
 </div>
 <p>and implementation</p>
-<div class="highlight-c++"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">StubFacility</span><span class="o">::</span><span class="n">Tock</span><span class="p">()</span> <span class="p">{}</span>
+<div class="highlight-c++"><div class="highlight"><pre><span class="kt">void</span> <span class="n">StubFacility</span><span class="o">::</span><span class="n">Tock</span><span class="p">()</span> <span class="p">{}</span>
 </pre></div>
 </div>
 <p>of the <code class="docutils literal"><span class="pre">Tock</span></code> member function allows the <code class="docutils literal"><span class="pre">StubFacility</span></code> to act during the
@@ -259,6 +259,9 @@ levels, which is explained further in <a class="reference internal" href="logger
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
     <h3>Get Cyclus</h3>
@@ -322,7 +325,7 @@ levels, which is explained further in <a class="reference internal" href="logger
 
     <div class="footer" role="contentinfo">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on May 04, 2016.
+      Last updated on May 13, 2016.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");

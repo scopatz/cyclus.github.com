@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     'b&#39;(1.3.0-rc4-52-gb86cf92)&#39;',
+        VERSION:     '(1.3.1-210-g9065eea)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -258,7 +258,7 @@ its public interfaces are described below.</p>
 <h4>Resource class<a class="headerlink" href="#resource-class" title="Permalink to this headline">¶</a></h4>
 <p>Resource class provides an abstract interface allowing different types of
 resources to be transacted in a simulation.</p>
-<div class="highlight-c++"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="n">cyclus</span> <span class="p">{</span>
+<div class="highlight-c++"><div class="highlight"><pre><span class="k">namespace</span> <span class="n">cyclus</span> <span class="p">{</span>
 
 <span class="k">typedef</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">ResourceType</span><span class="p">;</span>
 
@@ -270,7 +270,7 @@ resources to be transacted in a simulation.</p>
 
   <span class="c1">/// returns the unique id corresponding to this resource and its current</span>
   <span class="c1">/// state.</span>
-  <span class="k">const</span> <span class="kt">int</span> <span class="nf">id</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+  <span class="k">const</span> <span class="kt">int</span> <span class="n">id</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
 
   <span class="c1">/// assigns a new, unique id to this resource and its state.</span>
   <span class="kt">void</span> <span class="nf">BumpId</span><span class="p">();</span>
@@ -278,30 +278,30 @@ resources to be transacted in a simulation.</p>
   <span class="c1">/// returns an id representing the specific resource implementation&#39;s</span>
   <span class="c1">/// internal state.  Any change to the state_id should be accompanied by a</span>
   <span class="c1">/// call to BumpId.</span>
-  <span class="k">virtual</span> <span class="kt">int</span> <span class="nf">state_id</span><span class="p">()</span> <span class="k">const</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="k">virtual</span> <span class="kt">int</span> <span class="n">state_id</span><span class="p">()</span> <span class="k">const</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 
-  <span class="k">virtual</span> <span class="k">const</span> <span class="n">ResourceType</span> <span class="nf">type</span><span class="p">()</span> <span class="k">const</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="k">virtual</span> <span class="k">const</span> <span class="n">ResourceType</span> <span class="n">type</span><span class="p">()</span> <span class="k">const</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 
   <span class="c1">/// returns an untracked (not part of the simulation) copy of the resource.</span>
-  <span class="k">virtual</span> <span class="n">Ptr</span> <span class="nf">Clone</span><span class="p">()</span> <span class="k">const</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="k">virtual</span> <span class="n">Ptr</span> <span class="n">Clone</span><span class="p">()</span> <span class="k">const</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
   <span class="c1">// the clone method implementations should set tracked_ = false.</span>
 
   <span class="c1">/// records the resource&#39;s state to the output database.  This method should</span>
   <span class="c1">/// generally / NOT record data accessible via the Resource class public</span>
   <span class="c1">/// methods (e.g.  / state_id, units, type, quantity)</span>
-  <span class="k">virtual</span> <span class="kt">void</span> <span class="nf">Record</span><span class="p">()</span> <span class="k">const</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="k">virtual</span> <span class="kt">void</span> <span class="n">Record</span><span class="p">()</span> <span class="k">const</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 
   <span class="c1">/// Returns the units this resource is based in.</span>
   <span class="k">virtual</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">units</span><span class="p">()</span> <span class="k">const</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 
   <span class="c1">/// returns the quantity of this resource with dimensions as specified by</span>
   <span class="c1">/// units().</span>
-  <span class="k">virtual</span> <span class="kt">double</span> <span class="nf">quantity</span><span class="p">()</span> <span class="k">const</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="k">virtual</span> <span class="kt">double</span> <span class="n">quantity</span><span class="p">()</span> <span class="k">const</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 
   <span class="c1">/// splits the resource and returns the extracted portion as a new resource</span>
   <span class="c1">/// object.  Allows for things like ResourceBuff and market matching to</span>
   <span class="c1">/// split offers/requests of arbitrary resource implementation type.</span>
-  <span class="k">virtual</span> <span class="n">Ptr</span> <span class="nf">ExtractRes</span><span class="p">(</span><span class="kt">double</span> <span class="n">quantity</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="k">virtual</span> <span class="n">Ptr</span> <span class="n">ExtractRes</span><span class="p">(</span><span class="kt">double</span> <span class="n">quantity</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 
 <span class="p">};</span>
 
@@ -323,7 +323,7 @@ operations performed will be recorded. Usage examples:</p>
 <ul class="simple">
 <li>A mining facility that &#8220;creates&#8221; new material</li>
 </ul>
-<div class="highlight-c++"><div class="highlight"><pre><span></span><span class="n">Composition</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">nat_u</span> <span class="o">=</span> <span class="p">...</span>
+<div class="highlight-c++"><div class="highlight"><pre><span class="n">Composition</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">nat_u</span> <span class="o">=</span> <span class="p">...</span>
 <span class="kt">double</span> <span class="n">qty</span> <span class="o">=</span> <span class="mf">10.0</span><span class="p">;</span>
 
 <span class="n">Material</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">m</span> <span class="o">=</span> <span class="n">Material</span><span class="o">::</span><span class="n">Create</span><span class="p">(</span><span class="n">qty</span><span class="p">,</span> <span class="n">nat_u</span><span class="p">);</span>
@@ -332,7 +332,7 @@ operations performed will be recorded. Usage examples:</p>
 <ul class="simple">
 <li>A conversion facility mixing uranium and flourine:</li>
 </ul>
-<div class="highlight-c++"><div class="highlight"><pre><span></span><span class="n">Material</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">uf6</span> <span class="o">=</span> <span class="n">uranium_buf</span><span class="p">.</span><span class="n">PopOne</span><span class="p">();</span>
+<div class="highlight-c++"><div class="highlight"><pre><span class="n">Material</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">uf6</span> <span class="o">=</span> <span class="n">uranium_buf</span><span class="p">.</span><span class="n">PopOne</span><span class="p">();</span>
 <span class="n">Material</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">f</span> <span class="o">=</span> <span class="n">flourine_buf</span><span class="p">.</span><span class="n">PopOne</span><span class="p">();</span>
 
 <span class="n">uf6</span><span class="p">.</span><span class="n">Absorb</span><span class="p">(</span><span class="n">f</span><span class="p">);</span>
@@ -341,7 +341,7 @@ operations performed will be recorded. Usage examples:</p>
 <ul class="simple">
 <li>A reactor transmuting fuel:</li>
 </ul>
-<div class="highlight-c++"><div class="highlight"><pre><span></span><span class="n">Composition</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">burned_comp</span> <span class="o">=</span> <span class="p">...</span> <span class="c1">// fancy code to calculate burned isotopics</span>
+<div class="highlight-c++"><div class="highlight"><pre><span class="n">Composition</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">burned_comp</span> <span class="o">=</span> <span class="p">...</span> <span class="c1">// fancy code to calculate burned isotopics</span>
 <span class="n">Material</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">assembly</span> <span class="o">=</span> <span class="n">core_fuel</span><span class="p">.</span><span class="n">PopOne</span><span class="p">();</span>
 
 <span class="n">assembly</span><span class="p">.</span><span class="n">Transmute</span><span class="p">(</span><span class="n">burned_comp</span><span class="p">);</span>
@@ -350,7 +350,7 @@ operations performed will be recorded. Usage examples:</p>
 <ul class="simple">
 <li>A separations plant extracting stuff from spent fuel:</li>
 </ul>
-<div class="highlight-c++"><div class="highlight"><pre><span></span><span class="n">Composition</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">comp</span> <span class="o">=</span> <span class="p">...</span> <span class="c1">// fancy code to calculate extraction isotopics</span>
+<div class="highlight-c++"><div class="highlight"><pre><span class="n">Composition</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">comp</span> <span class="o">=</span> <span class="p">...</span> <span class="c1">// fancy code to calculate extraction isotopics</span>
 <span class="n">Material</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">bucket</span> <span class="o">=</span> <span class="n">spent_fuel</span><span class="p">.</span><span class="n">PopOne</span><span class="p">();</span>
 <span class="kt">double</span> <span class="n">qty</span> <span class="o">=</span> <span class="mf">3.0</span><span class="p">;</span>
 
@@ -358,7 +358,7 @@ operations performed will be recorded. Usage examples:</p>
 </pre></div>
 </div>
 <p>Proposed material class interface:</p>
-<div class="highlight-c++"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Material</span><span class="o">:</span> <span class="k">public</span> <span class="n">Resource</span> <span class="p">{</span>
+<div class="highlight-c++"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Material</span><span class="o">:</span> <span class="k">public</span> <span class="n">Resource</span> <span class="p">{</span>
  <span class="k">public</span><span class="o">:</span>
   <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">Material</span><span class="o">&gt;</span> <span class="n">Ptr</span><span class="p">;</span>
   <span class="k">static</span> <span class="k">const</span> <span class="n">ResourceType</span> <span class="n">kType</span><span class="p">;</span>
@@ -368,19 +368,19 @@ operations performed will be recorded. Usage examples:</p>
   <span class="k">static</span> <span class="n">Ptr</span> <span class="nf">Create</span><span class="p">(</span><span class="kt">double</span> <span class="n">quantity</span><span class="p">,</span> <span class="n">Composition</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">c</span><span class="p">);</span>
   <span class="k">static</span> <span class="n">Ptr</span> <span class="nf">CreateUntracked</span><span class="p">(</span><span class="kt">double</span> <span class="n">quantity</span><span class="p">,</span> <span class="n">Composition</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">c</span><span class="p">);</span>
 
-  <span class="k">virtual</span> <span class="kt">int</span> <span class="nf">state_id</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+  <span class="k">virtual</span> <span class="kt">int</span> <span class="n">state_id</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
 
-  <span class="k">virtual</span> <span class="k">const</span> <span class="n">ResourceType</span> <span class="nf">type</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+  <span class="k">virtual</span> <span class="k">const</span> <span class="n">ResourceType</span> <span class="n">type</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
 
   <span class="k">virtual</span> <span class="n">Resource</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">Clone</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
 
-  <span class="k">virtual</span> <span class="kt">void</span> <span class="nf">Record</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+  <span class="k">virtual</span> <span class="kt">void</span> <span class="n">Record</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
 
   <span class="c1">/// returns &quot;kg&quot;</span>
   <span class="k">virtual</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">units</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
 
   <span class="c1">/// returns the mass of this material in kg.</span>
-  <span class="k">virtual</span> <span class="kt">double</span> <span class="nf">quantity</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+  <span class="k">virtual</span> <span class="kt">double</span> <span class="n">quantity</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
 
   <span class="k">virtual</span> <span class="n">Resource</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">ExtractRes</span><span class="p">(</span><span class="kt">double</span> <span class="n">qty</span><span class="p">);</span>
 
@@ -407,7 +407,7 @@ operations performed will be recorded. Usage examples:</p>
 <h4>GenericResource class<a class="headerlink" href="#genericresource-class" title="Permalink to this headline">¶</a></h4>
 <p>Implements the Resource class interface in a simple way usable for things
 like: bananas, man-hours, water, buying power, etc.</p>
-<div class="highlight-c++"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">GenericResource</span> <span class="o">:</span> <span class="k">public</span> <span class="n">Resource</span> <span class="p">{</span>
+<div class="highlight-c++"><div class="highlight"><pre><span class="k">class</span> <span class="nc">GenericResource</span> <span class="o">:</span> <span class="k">public</span> <span class="n">Resource</span> <span class="p">{</span>
  <span class="k">public</span><span class="o">:</span>
   <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">GenericResource</span><span class="o">&gt;</span> <span class="n">Ptr</span><span class="p">;</span>
   <span class="k">static</span> <span class="k">const</span> <span class="n">ResourceType</span> <span class="n">kType</span><span class="p">;</span>
@@ -417,19 +417,19 @@ like: bananas, man-hours, water, buying power, etc.</p>
                              <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">units</span><span class="p">);</span>
 
   <span class="c1">/// not needed/no meaning for generic resources</span>
-  <span class="k">virtual</span> <span class="kt">int</span> <span class="nf">state_id</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+  <span class="k">virtual</span> <span class="kt">int</span> <span class="n">state_id</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
   <span class="p">};</span>
 
   <span class="c1">/// Returns the concrete type of this resource</span>
-  <span class="k">virtual</span> <span class="k">const</span> <span class="n">ResourceType</span> <span class="nf">type</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+  <span class="k">virtual</span> <span class="k">const</span> <span class="n">ResourceType</span> <span class="n">type</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
     <span class="k">return</span> <span class="n">kType</span><span class="p">;</span>
   <span class="p">};</span>
 
   <span class="c1">/// Returns a reference to a newly allocated copy of this resource</span>
   <span class="k">virtual</span> <span class="n">Resource</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">Clone</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
 
-  <span class="k">virtual</span> <span class="kt">void</span> <span class="nf">Record</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="p">};</span>
+  <span class="k">virtual</span> <span class="kt">void</span> <span class="n">Record</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="p">};</span>
 
   <span class="c1">/// Returns the total quantity of this resource in its base unit</span>
   <span class="k">virtual</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">units</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
@@ -437,7 +437,7 @@ like: bananas, man-hours, water, buying power, etc.</p>
   <span class="p">};</span>
 
   <span class="c1">/// Returns the total quantity of this resource in its base unit</span>
-  <span class="k">virtual</span> <span class="kt">double</span> <span class="nf">quantity</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+  <span class="k">virtual</span> <span class="kt">double</span> <span class="n">quantity</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
     <span class="k">return</span> <span class="n">quantity_</span><span class="p">;</span>
   <span class="p">};</span>
 
@@ -477,16 +477,16 @@ defining equivalence trivially as &#8220;the same object in memory&#8221; or poi
 equality.  Some discussion regarding this can be found in comments here:
 <a class="reference external" href="https://github.com/cyclus/cyclus/issues/484">https://github.com/cyclus/cyclus/issues/484</a>.  Of particular concern w.r.t.
 the previous equivalence notion is this:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Also</span> <span class="o">-</span> <span class="n">another</span> <span class="n">potential</span> <span class="n">issue</span> <span class="n">I</span> <span class="n">thought</span> <span class="n">of</span><span class="p">:</span> <span class="n">Repeatedly</span> <span class="n">calling</span> <span class="n">multiple</span>
-<span class="n">consecutive</span> <span class="n">small</span> <span class="n">differences</span> <span class="n">negligible</span> <span class="n">could</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">compositions</span>
-<span class="n">staying</span> <span class="n">the</span> <span class="n">same</span> <span class="n">that</span> <span class="n">would</span> <span class="n">have</span> <span class="n">otherwise</span> <span class="n">been</span> <span class="n">appreciably</span> <span class="n">different</span> <span class="k">if</span>
-<span class="n">each</span> <span class="n">small</span> <span class="n">change</span> <span class="n">were</span> <span class="n">allowed</span> <span class="n">to</span> <span class="n">propogate</span> <span class="k">as</span> <span class="n">a</span> <span class="n">new</span> <span class="n">composition</span><span class="o">.</span>
+<div class="highlight-python"><div class="highlight"><pre>Also - another potential issue I thought of: Repeatedly calling multiple
+consecutive small differences negligible could result in compositions
+staying the same that would have otherwise been appreciably different if
+each small change were allowed to propogate as a new composition.
 </pre></div>
 </div>
 <p>While there are definitely uses for material/composition equivalence, they
 should/will not be used by the core (for now) and best belong in MatQuery
 or other places.</p>
-<div class="highlight-c++"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="n">cyclus</span> <span class="p">{</span>
+<div class="highlight-c++"><div class="highlight"><pre><span class="k">namespace</span> <span class="n">cyclus</span> <span class="p">{</span>
 
 <span class="k">typedef</span> <span class="kt">int</span> <span class="n">Iso</span><span class="p">;</span>
 <span class="k">typedef</span> <span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">Iso</span><span class="p">,</span> <span class="kt">double</span><span class="o">&gt;</span> <span class="n">CompMap</span><span class="p">;</span>
@@ -524,7 +524,7 @@ CompMap&#8217;s because Composition&#8217;s themselves are immutable.  Resource
 and Composition classes will use these methods where appropriate instead of
 their own, internal versions. This namespace is intended to grow organically as
 needed.</p>
-<div class="highlight-c++"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="n">cyclus</span> <span class="p">{</span>
+<div class="highlight-c++"><div class="highlight"><pre><span class="k">namespace</span> <span class="n">cyclus</span> <span class="p">{</span>
 <span class="k">namespace</span> <span class="n">compmath</span> <span class="p">{</span>
 
 <span class="n">CompMap</span> <span class="n">Add</span><span class="p">(</span><span class="k">const</span> <span class="n">CompMap</span><span class="o">&amp;</span> <span class="n">v1</span><span class="p">,</span> <span class="kt">double</span> <span class="n">qty1</span><span class="p">,</span>
@@ -557,7 +557,7 @@ needed.</p>
 <p>This is intended to allow user-developers to <em>easily</em> retrieve any kind of
 information about a material they could ever reasonably need. The interface is
 designed to grow organically as needed.</p>
-<div class="highlight-c++"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MatQuery</span> <span class="p">{</span>
+<div class="highlight-c++"><div class="highlight"><pre><span class="k">class</span> <span class="nc">MatQuery</span> <span class="p">{</span>
   <span class="k">public</span><span class="o">:</span>
     <span class="n">MatQuery</span><span class="p">(</span><span class="n">Material</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">m</span><span class="p">);</span>
 
@@ -589,7 +589,7 @@ Matt Gidden has been effectively preserved.</em>  RecipeLibrary now is only
 responsible for loading recipes from xml input and serving them up simulation
 wide.  Agents are also allowed to register their own compositions manually.
 RecipeLibrary interface becomes:</p>
-<div class="highlight-c++"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">RecipeLibrary</span> <span class="p">{</span>
+<div class="highlight-c++"><div class="highlight"><pre><span class="k">class</span> <span class="nc">RecipeLibrary</span> <span class="p">{</span>
  <span class="k">public</span><span class="o">:</span>
   <span class="cm">/**</span>
 <span class="cm">     Gives all simulation objects global access to the RecipeLibrary by</span>
@@ -829,6 +829,9 @@ here <a class="reference external" href="https://github.com/cyclus/cyclus/issues
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
     <h3>Get Cyclus</h3>
@@ -892,7 +895,7 @@ here <a class="reference external" href="https://github.com/cyclus/cyclus/issues
 
     <div class="footer" role="contentinfo">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on May 04, 2016.
+      Last updated on May 13, 2016.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");
