@@ -246,9 +246,6 @@ $(document).ready(function (){
 
   doc.append(holder);
 
-  if (typeof state === "undefined") {
-	var state = "uncollapsed";
-  };
   if (state == "collapsed"){
     doc.addClass("collapsed-sidebar");
     show_btn.show();
