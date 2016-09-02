@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '(1.3.1-210-g9065eea)',
+        VERSION:     'b&#39;(1.4.0-rc1-123-gd233d22)&#39;',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -100,13 +100,13 @@ and get the version approriate to your system.</p>
 </li>
 <li><p class="first">Install this to the <code class="docutils literal"><span class="pre">~/miniconda</span></code> directory.  For example, you would
 use a command similar the following:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>bash Miniconda-3.5.2-Linux-x86_64.sh -b -p ~/miniconda
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ bash Miniconda-Latest-Linux-x86_64.sh -b -p ~/miniconda
 </pre></div>
 </div>
 </li>
 <li><p class="first">Finally, add the <code class="docutils literal"><span class="pre">~/miniconda/bin</span></code> directory to your <code class="docutils literal"><span class="pre">PATH</span></code> either
 in your current environment or in your <code class="docutils literal"><span class="pre">.bashrc</span></code> or both.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span><span class="s2">/miniconda/bin:</span><span class="si">${</span><span class="nv">PATH</span><span class="si">}</span><span class="s2">&quot;</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span><span class="s2">/miniconda/bin:</span><span class="si">${</span><span class="nv">PATH</span><span class="si">}</span><span class="s2">&quot;</span>
 </pre></div>
 </div>
 </li>
@@ -116,9 +116,9 @@ in your current environment or in your <code class="docutils literal"><span clas
 <li><p class="first">Configure conda to look for <span style="font-variant:small-caps;">Cyclus</span></p>
 <blockquote>
 <div><ul>
-<li><p class="first">Download this <a class="reference download internal" href="../_downloads/condarc"><code class="xref download docutils literal"><span class="pre">condarc</span></code></a> file and save it as <code class="docutils literal"><span class="pre">~/.condarc</span></code>.  If
+<li><p class="first">Download this <a class="reference download internal" href="../_downloads/condarc" download=""><code class="xref download docutils literal"><span class="pre">condarc</span></code></a> file and save it as <code class="docutils literal"><span class="pre">~/.condarc</span></code>.  If
 you&#8217;d prefer to do this from the command line, type:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -L http://fuelcycle.org/_downloads/condarc &gt;&gt; ~/.condarc
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -L http://fuelcycle.org/_downloads/condarc &gt;&gt; ~/.condarc
 </pre></div>
 </div>
 </li>
@@ -129,21 +129,7 @@ you&#8217;d prefer to do this from the command line, type:</p>
 <blockquote>
 <div><ul>
 <li><p class="first">Now that conda is installed and ready, installing <span style="font-variant:small-caps;">Cyclus</span> is as simple as:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>conda install cycamore --yes
-</pre></div>
-</div>
-<p>Note that installing cycamore will also install cyclus since cyclus is one
-of cycamore&#8217;s dependencies.</p>
-</li>
-</ul>
-</div></blockquote>
-</li>
-<li><p class="first">Install Cyclist (optional)</p>
-<blockquote>
-<div><ul>
-<li><p class="first">Now that cyclus is installed and ready, installing the graphical user interface is
-simple as:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>conda install cyclist --yes
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ conda install --yes cyclus cycamore
 </pre></div>
 </div>
 </li>
@@ -156,23 +142,16 @@ simple as:</p>
 <div class="section" id="already-have-conda">
 <h2>Already Have Conda?<a class="headerlink" href="#already-have-conda" title="Permalink to this headline">¶</a></h2>
 <p>If you already have conda installed, installing <span style="font-variant:small-caps;">Cyclus</span> is even easier.
-You simply need to make sure that the <span style="font-variant:small-caps;">Cyclus</span> binstar organization is part of
+You simply need to make sure that conda-forge is part of
 your channels.  Please edit the <code class="docutils literal"><span class="pre">channels</span></code> section of your <code class="file docutils literal"><span class="pre">~/.condarc</span></code>
-to include the URL <code class="docutils literal"><span class="pre">https://conda.binstar.org/cyclus</span></code>.  For example,</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">channels</span><span class="p-Indicator">:</span>
-  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">https://conda.binstar.org/cyclus</span>
-  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">defaults</span>
+to include the <code class="docutils literal"><span class="pre">conda-forge</span></code> channel.  For example,</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span>  <span class="l l-Scalar l-Scalar-Plain">channels</span><span class="p p-Indicator">:</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">conda-forge</span>
+    <span class="l l-Scalar l-Scalar-Plain">- defaults</span>
 </pre></div>
 </div>
 <p>Once this is done, install <span style="font-variant:small-caps;">Cyclus</span> with the following comand.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>conda install cycamore --yes
-</pre></div>
-</div>
-<p>Note that installing cycamore will also install cyclus since cyclus is one
-of cycamore&#8217;s dependencies.  Furthermore, you may also optionally install Cyclist,
-the graphical user interface tool for cyclus databases. This can be done
-with the following:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>conda install cyclist --yes
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ conda install --yes cyclus cycamore
 </pre></div>
 </div>
 <p>Happy simulating!</p>
@@ -226,14 +205,11 @@ with the following:</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
     <h3>Get Cyclus</h3>
@@ -297,7 +273,7 @@ with the following:</p>
 
     <div class="footer" role="contentinfo">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on May 13, 2016.
+      Last updated on Sep 02, 2016.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");

@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '(1.3.1-210-g9065eea)',
+        VERSION:     'b&#39;(1.4.0-rc1-123-gd233d22)&#39;',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -131,13 +131,13 @@ applies to the next member variable declaration that it sees. This directive
 not only defines the annotations for a variable, but also declares it as being
 a state variable.  It has the following signature:</p>
 <p><strong>State variable annotation signature:</strong></p>
-<div class="highlight-c++"><div class="highlight"><pre><span class="cp">#pragma cyclus var &lt;dict&gt;</span>
+<div class="highlight-c++"><div class="highlight"><pre><span></span><span class="cp">#pragma cyclus var &lt;dict&gt;</span>
 </pre></div>
 </div>
 <p>Here, the <code class="docutils literal"><span class="pre">&lt;dict&gt;</span></code> argument must evaluate to a Python dictionary (or other mapping).
 For example,</p>
 <p><strong>State variable annotation example:</strong></p>
-<div class="highlight-c++"><div class="highlight"><pre><span class="cp">#pragma cyclus var {&quot;default&quot;: 42.0, &quot;units&quot;: &quot;n/cm2/s&quot;}</span>
+<div class="highlight-c++"><div class="highlight"><pre><span></span><span class="cp">#pragma cyclus var {&quot;default&quot;: 42.0, &quot;units&quot;: &quot;n/cm2/s&quot;}</span>
 <span class="kt">double</span> <span class="n">flux</span><span class="p">;</span>
 </pre></div>
 </div>
@@ -148,7 +148,7 @@ JSON the keys must be strings. Certain keys have special semantic
 meaning. Furthermore, there are two keys - <code class="docutils literal"><span class="pre">type</span></code> and <code class="docutils literal"><span class="pre">index</span></code> - that are set by
 <code class="docutils literal"><span class="pre">cycpp</span></code> itself and should not be specified explicitly. State variables may have any
 C++ type that is allowed by the database backend that is being used.  For a listing of
-valid types please refer to the <a class="reference internal" href="dbtypes.html"><em>Database Types</em></a> page. <a class="reference internal" href="#cycpp-table-1"><span>Table I. Special State Variable Annotations</span></a>
+valid types please refer to the <a class="reference internal" href="dbtypes.html"><span class="doc">Database Types</span></a> page. <a class="reference internal" href="#cycpp-table-1"><span class="std std-ref">Table I. Special State Variable Annotations</span></a>
 contains a listing of all special keys and their meanings.</p>
 <table border="1" class="styled-table centered docutils" id="id1">
 <span id="cycpp-table-1"></span><caption><span class="caption-text"><strong>Table I.</strong> Special State Variable Annotations</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
@@ -163,7 +163,7 @@ contains a listing of all special keys and their meanings.</p>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td class="left-align no-left-divider single-right-divider">type</td>
-<td class="left-align single-left-divider no-right-divider">The C++ type.  Valid types may be found on the <a class="reference internal" href="dbtypes.html"><em>Database Types</em></a>
+<td class="left-align single-left-divider no-right-divider">The C++ type.  Valid types may be found on the <a class="reference internal" href="dbtypes.html"><span class="doc">Database Types</span></a>
 page. <strong>READ ONLY:</strong> Do not set this key in
 <code class="docutils literal"><span class="pre">#pragma</span> <span class="pre">cyclus</span> <span class="pre">var</span> <span class="pre">{...}</span></code> as it is set automatically by
 cycpp. Feel free to use this downstream in your class or in a
@@ -299,18 +299,18 @@ specified by the <strong>note directive</strong>. Similarly to the state variabl
 annotations, agent annotations must be given inside of the class declaration.
 They also have a very similar signature:</p>
 <p><strong>Note (agent annotation) signature:</strong></p>
-<div class="highlight-c++"><div class="highlight"><pre><span class="cp">#pragma cyclus note &lt;dict&gt;</span>
+<div class="highlight-c++"><div class="highlight"><pre><span></span><span class="cp">#pragma cyclus note &lt;dict&gt;</span>
 </pre></div>
 </div>
 <p>Again, the <code class="docutils literal"><span class="pre">&lt;dict&gt;</span></code> argument here must evaluate to a Python dictionary.
 For example,</p>
 <p><strong>Note (agent annotation) example:</strong></p>
-<div class="highlight-c++"><div class="highlight"><pre><span class="cp">#pragma cyclus note {&quot;doc&quot;: &quot;If I wanna be rich, I’ve got to find myself&quot;}</span>
+<div class="highlight-c++"><div class="highlight"><pre><span></span><span class="cp">#pragma cyclus note {&quot;doc&quot;: &quot;If I wanna be rich, I’ve got to find myself&quot;}</span>
 </pre></div>
 </div>
 <p>Unlike state variables, agent annotations only have a few special members.  One of
 this is <code class="docutils literal"><span class="pre">vars</span></code> which contains the state variable annotations!
-<a class="reference internal" href="#cycpp-table-2"><span>Table II. Special Agent Annotations</span></a> contains a listing of all special keys and their meaning.</p>
+<a class="reference internal" href="#cycpp-table-2"><span class="std std-ref">Table II. Special Agent Annotations</span></a> contains a listing of all special keys and their meaning.</p>
 <table border="1" class="styled-table centered docutils" id="id2">
 <span id="cycpp-table-2"></span><caption><span class="caption-text"><strong>Table II.</strong> Special Agent Annotations</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
 <colgroup>
@@ -378,12 +378,12 @@ directive may be placed anywhere and is not confined to the class declaration,
 like above.  However, it is only executed during the annotations phase of
 preprocessing.  The signature for this directive is:</p>
 <p><strong>Exec signature:</strong></p>
-<div class="highlight-c++"><div class="highlight"><pre><span class="cp">#pragma cyclus exec &lt;code&gt;</span>
+<div class="highlight-c++"><div class="highlight"><pre><span></span><span class="cp">#pragma cyclus exec &lt;code&gt;</span>
 </pre></div>
 </div>
 <p>The <code class="docutils literal"><span class="pre">&lt;code&gt;</span></code> argument may be any valid Python code. A non-trivial example,</p>
 <p><strong>Exec example:</strong></p>
-<div class="highlight-c++"><div class="highlight"><pre><span class="cp">#pragma cyclus exec from math import pi</span>
+<div class="highlight-c++"><div class="highlight"><pre><span></span><span class="cp">#pragma cyclus exec from math import pi</span>
 <span class="cp">#pragma cyclus exec r = 10</span>
 
 <span class="cp">#pragma cyclus var {&quot;default&quot;: 2*pi*r}</span>
@@ -405,7 +405,7 @@ directive.</p>
 directive</strong>. This engages all possible code generation routines and must live
 within the public part of the class declaration.</p>
 <p><strong>The prime directive:</strong></p>
-<div class="highlight-c++"><div class="highlight"><pre><span class="cp">#pragma cyclus</span>
+<div class="highlight-c++"><div class="highlight"><pre><span></span><span class="cp">#pragma cyclus</span>
 </pre></div>
 </div>
 <p>Unless you are doing something fancy such as manually writing any of the agent
@@ -413,7 +413,7 @@ member functions that <code class="docutils literal"><span class="pre">cycpp</sp
 you ever need.  For example, an agent that does nothing and has no state variables
 would be completely defined by the following thanks to the prime directive:</p>
 <p><strong>The prime directive example:</strong></p>
-<div class="highlight-c++"><div class="highlight"><pre><span class="k">class</span> <span class="nc">DoNothingCongress</span> <span class="o">:</span> <span class="k">public</span> <span class="n">cyclus</span><span class="o">::</span><span class="n">Institution</span> <span class="p">{</span>
+<div class="highlight-c++"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">DoNothingCongress</span> <span class="o">:</span> <span class="k">public</span> <span class="n">cyclus</span><span class="o">::</span><span class="n">Institution</span> <span class="p">{</span>
  <span class="k">public</span><span class="o">:</span>
   <span class="n">DoNothingCongress</span><span class="p">(</span><span class="n">cyclus</span><span class="o">::</span><span class="n">Context</span><span class="o">*</span> <span class="n">ctx</span><span class="p">)</span> <span class="p">{};</span>
   <span class="k">virtual</span> <span class="o">~</span><span class="n">DoNothingCongress</span><span class="p">()</span> <span class="p">{};</span>
@@ -442,7 +442,7 @@ code generation.  These must be called from with the appropriate function
 body.</p>
 <p>The signature for the targeted code generation directives is as follows:</p>
 <p><strong>Targeted code generation directive signatures:</strong></p>
-<div class="highlight-c++"><div class="highlight"><pre><span class="cp">#pragma cyclus &lt;decl|def|impl&gt; [&lt;func&gt; [&lt;agent&gt;]]</span>
+<div class="highlight-c++"><div class="highlight"><pre><span></span><span class="cp">#pragma cyclus &lt;decl|def|impl&gt; [&lt;func&gt; [&lt;agent&gt;]]</span>
 </pre></div>
 </div>
 <p>The first argument must be one of <code class="docutils literal"><span class="pre">decl</span></code>, <code class="docutils literal"><span class="pre">def</span></code>, or <code class="docutils literal"><span class="pre">impl</span></code>, which
@@ -453,7 +453,7 @@ agent name to code generate for. This argument is useful in the face of
 ambiguous or absent C++ scope.  The <code class="docutils literal"><span class="pre">&lt;func&gt;</span></code> argument must be present if
 <code class="docutils literal"><span class="pre">&lt;agent&gt;</span></code> needs to be specified.</p>
 <p>In the absence of optional arguments there are only:</p>
-<div class="highlight-c++"><div class="highlight"><pre><span class="cp">#pragma cyclus decl</span>
+<div class="highlight-c++"><div class="highlight"><pre><span></span><span class="cp">#pragma cyclus decl</span>
 <span class="cp">#pragma cyclus def</span>
 </pre></div>
 </div>
@@ -465,10 +465,10 @@ signatures encapsulating them.</p>
 definition, declaration, or implementation for the given agent API function.
 For example the following would generate the definition for the <code class="docutils literal"><span class="pre">schema()</span></code>
 function.</p>
-<div class="highlight-c++"><div class="highlight"><pre><span class="cp">#pragma cyclus def schema</span>
+<div class="highlight-c++"><div class="highlight"><pre><span></span><span class="cp">#pragma cyclus def schema</span>
 </pre></div>
 </div>
-<p><a class="reference internal" href="#cycpp-table-3"><span>Table III. Member Function Flags and Their C++ Signatures</span></a> contains a listing of all available function flags and their
+<p><a class="reference internal" href="#cycpp-table-3"><span class="std std-ref">Table III. Member Function Flags and Their C++ Signatures</span></a> contains a listing of all available function flags and their
 associated C++ information.</p>
 <table border="1" class="styled-table centered docutils" id="id3">
 <span id="cycpp-table-3"></span><caption><span class="caption-text"><strong>Table III.</strong> Member Function Flags and Their C++ Signatures</span><a class="headerlink" href="#id3" title="Permalink to this table">¶</a></caption>
@@ -529,7 +529,7 @@ This is most useful in source files for the definition directives. This is
 because such directives typically lack the needed class scope.  For example,
 for the snapshot definition of <code class="docutils literal"><span class="pre">MyAgent</span></code> living in <code class="docutils literal"><span class="pre">mynamespace</span></code> we would
 use:</p>
-<div class="highlight-c++"><div class="highlight"><pre><span class="cp">#pragma cyclus def snapshot mynamespace::MyAgent</span>
+<div class="highlight-c++"><div class="highlight"><pre><span></span><span class="cp">#pragma cyclus def snapshot mynamespace::MyAgent</span>
 </pre></div>
 </div>
 </div>
@@ -546,7 +546,7 @@ prime directive.</p>
 <p>As a simple example, consider a reactor model that has three state variables:
 a flux, a power level, and a flag for whether it is shutdown or not.
 This could be implemented as follows:</p>
-<div class="highlight-c++"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Reactor</span> <span class="o">:</span> <span class="k">public</span> <span class="n">cyclus</span><span class="o">::</span><span class="n">Facility</span> <span class="p">{</span>
+<div class="highlight-c++"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Reactor</span> <span class="o">:</span> <span class="k">public</span> <span class="n">cyclus</span><span class="o">::</span><span class="n">Facility</span> <span class="p">{</span>
  <span class="k">public</span><span class="o">:</span>
   <span class="n">Reactor</span><span class="p">(</span><span class="n">cyclus</span><span class="o">::</span><span class="n">Context</span><span class="o">*</span> <span class="n">ctx</span><span class="p">)</span> <span class="p">{};</span>
   <span class="k">virtual</span> <span class="o">~</span><span class="n">Reactor</span><span class="p">()</span> <span class="p">{};</span>
@@ -594,7 +594,7 @@ Furthermore, somewhere out in global scope lives the Spy&#8217;s arch-nemesis cl
 <code class="docutils literal"><span class="pre">Enemy</span></code>.</p>
 <p>The first rule of scoping is that two state variables on the same class
 share the same scope.  Thus they can directly refer to each other.</p>
-<div class="highlight-c++"><div class="highlight"><pre><span class="k">namespace</span> <span class="n">mi6</span> <span class="p">{</span>
+<div class="highlight-c++"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="n">mi6</span> <span class="p">{</span>
 <span class="k">class</span> <span class="nc">Spy</span> <span class="p">{</span>
   <span class="cp">#pragma cyclus var {&quot;default&quot;: 7}</span>
   <span class="kt">int</span> <span class="n">id</span><span class="p">;</span>
@@ -612,7 +612,7 @@ This is why we could look up <code class="docutils literal"><span class="pre">id
 <p>The second rule of scoping is that you are allowed to look into the annotations
 of other classes.  However, to do so you must specifiy the class you are looking
 into.  Looking at our spy&#8217;s friend</p>
-<div class="highlight-c++"><div class="highlight"><pre><span class="k">namespace</span> <span class="n">mi6</span> <span class="p">{</span>
+<div class="highlight-c++"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="n">mi6</span> <span class="p">{</span>
 <span class="k">class</span> <span class="nc">Friend</span> <span class="p">{</span>
   <span class="cp">#pragma cyclus var {&quot;doc&quot;: &quot;Normally helps {0}&quot;.format(Spy.name[&#39;default&#39;])}</span>
   <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">help_first</span><span class="p">;</span>
@@ -627,7 +627,7 @@ access control (public, private, or protected).</p>
 namespace, we must first drill into that namespace. For example, the spy&#8217;s
 main enemy is not part of <code class="docutils literal"><span class="pre">mi6</span></code>.  Thus to access the spy&#8217;s name annotations,
 the enemy must write <code class="docutils literal"><span class="pre">mi6.Spy.name</span></code>. For example:</p>
-<div class="highlight-c++"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Enemy</span> <span class="p">{</span>
+<div class="highlight-c++"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Enemy</span> <span class="p">{</span>
     <span class="cp">#pragma cyclus var {&#39;default&#39;: mi6.Spy.name[&#39;default&#39;]}</span>
     <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">nemesis</span><span class="p">;</span>
 <span class="p">};</span>
@@ -636,7 +636,7 @@ the enemy must write <code class="docutils literal"><span class="pre">mi6.Spy.na
 </div>
 <div class="section" id="inventories">
 <h2>Inventories<a class="headerlink" href="#inventories" title="Permalink to this headline">¶</a></h2>
-<p>In addition to the normal <a class="reference internal" href="dbtypes.html"><em>Database Types</em></a>, state variables may also be declared
+<p>In addition to the normal <a class="reference internal" href="dbtypes.html"><span class="doc">Database Types</span></a>, state variables may also be declared
 with the <code class="docutils literal"><span class="pre">cyclus::Inventories</span></code> type.  This is a special <span style="font-variant:small-caps;">Cyclus</span> typedef
 of <code class="docutils literal"><span class="pre">std::map&lt;std::string,</span> <span class="pre">std::vector&lt;Resource::Ptr&gt;</span> <span class="pre">&gt;</span></code> that enables the
 storing of an arbitrary of resources (map values) by the associated commodity
@@ -644,7 +644,7 @@ storing of an arbitrary of resources (map values) by the associated commodity
 ways, the advantage in using the <code class="docutils literal"><span class="pre">cyclus::Inventories</span></code> is that the <span style="font-variant:small-caps;">Cyclus</span>
 kernel knows how to save and load this type as well as represent it in RNG.
 Inventories may be used as normal state variables.  For example:</p>
-<div class="highlight-c++"><div class="highlight"><pre><span class="cp">#pragma cyclus var {&#39;doc&#39;: &#39;my stocks&#39;}</span>
+<div class="highlight-c++"><div class="highlight"><pre><span></span><span class="cp">#pragma cyclus var {&#39;doc&#39;: &#39;my stocks&#39;}</span>
 <span class="n">cyclus</span><span class="o">::</span><span class="n">Inventories</span> <span class="n">invs</span><span class="p">;</span>
 </pre></div>
 </div>
@@ -659,13 +659,13 @@ code snippet writing in the annotations. This allows you to selectively
 define the C++ behavior without the need to fully rewrite the member function.</p>
 <p>A potential use case is to provide a custom schema while still utilizing all other
 parts of <code class="docutils literal"><span class="pre">cycpp</span></code>.  For example:</p>
-<div class="highlight-c++"><div class="highlight"><pre><span class="cp">#pragma cyclus var {&#39;schema&#39;: &#39;&lt;my&gt;Famcy RNG here&lt;/my&gt;&#39;}</span>
+<div class="highlight-c++"><div class="highlight"><pre><span></span><span class="cp">#pragma cyclus var {&#39;schema&#39;: &#39;&lt;my&gt;Famcy RNG here&lt;/my&gt;&#39;}</span>
 <span class="n">std</span><span class="o">::</span><span class="n">set</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">fibonacci</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>This will override the schema only for the Fibonacci state variable.  For a
 listing of all code generation functions that may be overridden, please see
-<a class="reference internal" href="#cycpp-table-1"><span>Table I. Special State Variable Annotations</span></a>.</p>
+<a class="reference internal" href="#cycpp-table-1"><span class="std std-ref">Table I. Special State Variable Annotations</span></a>.</p>
 </div>
 <div class="section" id="implementation-hacks">
 <h2>Implementation Hacks<a class="headerlink" href="#implementation-hacks" title="Permalink to this headline">¶</a></h2>
@@ -678,7 +678,7 @@ that you may perform any operation before &amp; after the directive!</p>
 on the Reactor agent is always snapshotted to the database as the value 42.
 However, we did not want to permanently alter the value of this variable.
 This could be achieved through the following pattern:</p>
-<div class="highlight-c++"><div class="highlight"><pre><span class="kt">void</span> <span class="n">Reactor</span><span class="o">::</span><span class="n">Snapshot</span><span class="p">(</span><span class="n">cyclus</span><span class="o">::</span><span class="n">DbInit</span> <span class="n">di</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight-c++"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">Reactor</span><span class="o">::</span><span class="n">Snapshot</span><span class="p">(</span><span class="n">cyclus</span><span class="o">::</span><span class="n">DbInit</span> <span class="n">di</span><span class="p">)</span> <span class="p">{</span>
   <span class="kt">double</span> <span class="n">real_flux</span> <span class="o">=</span> <span class="n">flux</span><span class="p">;</span>  <span class="c1">// copy the existing flux value.</span>
   <span class="n">flux</span> <span class="o">=</span> <span class="mi">42</span><span class="p">;</span>  <span class="c1">// set the value to wat we want temporarily</span>
 
@@ -690,7 +690,7 @@ This could be achieved through the following pattern:</p>
 </pre></div>
 </div>
 <p>There are likely much more legitimate uses for this feature. For a complete
-listing of the member function information, please see <a class="reference internal" href="#cycpp-table-3"><span>Table III. Member Function Flags and Their C++ Signatures</span></a>.</p>
+listing of the member function information, please see <a class="reference internal" href="#cycpp-table-3"><span class="std std-ref">Table III. Member Function Flags and Their C++ Signatures</span></a>.</p>
 </div>
 <div class="section" id="custom-schema-initialization">
 <h2>Custom Schema &amp; Initialization<a class="headerlink" href="#custom-schema-initialization" title="Permalink to this headline">¶</a></h2>
@@ -706,9 +706,9 @@ code generation.</p>
 a bit long to make users type in, so we would prefer to expose this in the
 input file as <code class="docutils literal"><span class="pre">matid</span></code>.  The RNG snippet that you would use for the <code class="docutils literal"><span class="pre">schema</span></code>
 is thus:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span><span class="s">&#39;schema&#39;</span><span class="p">:</span> <span class="s">&#39;&lt;element name=&quot;matid&quot;&gt;&#39;</span> \
-           <span class="s">&#39;  &lt;data type=&quot;int&quot; /&gt;&#39;</span> \
-           <span class="s">&#39;&lt;/element&gt;&#39;</span><span class="p">}</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;schema&#39;</span><span class="p">:</span> <span class="s1">&#39;&lt;element name=&quot;matid&quot;&gt;&#39;</span> \
+           <span class="s1">&#39;  &lt;data type=&quot;int&quot; /&gt;&#39;</span> \
+           <span class="s1">&#39;&lt;/element&gt;&#39;</span><span class="p">}</span>
 </pre></div>
 </div>
 <p>You can change the data type or any other valid RNG here.</p>
@@ -724,11 +724,11 @@ but a dict that has <code class="docutils literal"><span class="pre">read</span>
 example we can ensure that <code class="docutils literal"><span class="pre">matid</span></code> is even after it has been read in.
 Here, we do not change the name of the state variable on the agent in
 memory or in the database.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span><span class="s">&#39;infiletodb&#39;</span><span class="p">:</span> <span class="p">{</span> \
-    <span class="s">&#39;read&#39;</span><span class="p">:</span> <span class="s">&#39;material_identifier = cyclus::Query&lt;int&gt;(tree, &quot;matid&quot;);</span><span class="se">\n</span><span class="s">&#39;</span> \
-            <span class="s">&#39;if (material_identifier%2 == 1)</span><span class="se">\n</span><span class="s">&#39;</span> \
-            <span class="s">&#39;  material_identifier++;</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">,</span> \
-    <span class="s">&#39;write&#39;</span><span class="p">:</span> <span class="s">&#39;-&gt;AddVal(&quot;material_identifier&quot;, material_identifier)</span><span class="se">\n</span><span class="s">&#39;</span> \
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;infiletodb&#39;</span><span class="p">:</span> <span class="p">{</span> \
+    <span class="s1">&#39;read&#39;</span><span class="p">:</span> <span class="s1">&#39;material_identifier = cyclus::Query&lt;int&gt;(tree, &quot;matid&quot;);</span><span class="se">\n</span><span class="s1">&#39;</span> \
+            <span class="s1">&#39;if (material_identifier%2 == 1)</span><span class="se">\n</span><span class="s1">&#39;</span> \
+            <span class="s1">&#39;  material_identifier++;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> \
+    <span class="s1">&#39;write&#39;</span><span class="p">:</span> <span class="s1">&#39;-&gt;AddVal(&quot;material_identifier&quot;, material_identifier)</span><span class="se">\n</span><span class="s1">&#39;</span> \
 <span class="p">}}</span>
 </pre></div>
 </div>
@@ -737,7 +737,7 @@ does please refer to other code generated samples and refer to other parts
 of the documentation.
 Pulling this all together, we can write our custom schema and initialization
 as follows:</p>
-<div class="highlight-c++"><div class="highlight"><pre><span class="cp">#pragma cyclus var {&#39;schema&#39;: &#39;&lt;element name=&quot;matid&quot;&gt;&#39; \</span>
+<div class="highlight-c++"><div class="highlight"><pre><span></span><span class="cp">#pragma cyclus var {&#39;schema&#39;: &#39;&lt;element name=&quot;matid&quot;&gt;&#39; \</span>
 <span class="cp">                              &#39;  &lt;data type=&quot;int&quot; /&gt;&#39; \</span>
 <span class="cp">                              &#39;&lt;/element&gt;&#39;, \</span>
 <span class="cp">                    &#39;infiletodb&#39;: { \</span>
@@ -812,14 +812,11 @@ in much the same way.</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
     <h3>Get Cyclus</h3>
@@ -883,7 +880,7 @@ in much the same way.</p>
 
     <div class="footer" role="contentinfo">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on May 13, 2016.
+      Last updated on Sep 02, 2016.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");

@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '(1.3.1-210-g9065eea)',
+        VERSION:     'b&#39;(1.4.0-rc1-123-gd233d22)&#39;',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -93,8 +93,8 @@ projects found at <a class="reference external" href="http://github.com/cyclus">
 <p>Although you do not have to register with GitHub to download and edit the
 code, if you desire your work to be integrated into the <span style="font-variant:small-caps;">Cyclus</span> mainline of
 development <em>you must fork the cyclus core repository into your own GitHub
-account and submit &#8216;Pull Requests&#8217;</em>. <a class="reference internal" href="build_from_source.html"><em>Here is a tutorial on getting and
-building cyclus.</em></a></p>
+account and submit &#8216;Pull Requests&#8217;</em>. <a class="reference internal" href="build_from_source.html"><span class="doc">Here is a tutorial on getting and
+building cyclus.</span></a></p>
 <div class="section" id="working-on-a-topic">
 <h2>Working on a Topic<a class="headerlink" href="#working-on-a-topic" title="Permalink to this headline">¶</a></h2>
 <p><em>Note that &#8220;upstream&#8221; repository refers to the primary `cyclus/cyclus`
@@ -137,8 +137,8 @@ always be the &#8216;stable&#8217; or &#8216;production&#8217; release of <span 
 and/or &#8220;develop&#8221; branches before you merge changes into your
 corresponding local branch. Consider doing a rebase pull instead of
 a regular pull or &#8216;fetch and merge&#8217;.  For example:</p>
-<div class="highlight-python"><div class="highlight"><pre>git checkout develop
-git pull --rebase upstream develop
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="n">develop</span>
+<span class="n">git</span> <span class="n">pull</span> <span class="o">--</span><span class="n">rebase</span> <span class="n">upstream</span> <span class="n">develop</span>
 </pre></div>
 </div>
 </li>
@@ -150,8 +150,8 @@ rebasing the topic branch onto the &#8220;master&#8221; and/or &#8220;develop&#8
 after <em>pulls</em> from the upstream repository rather than merging the pulled
 changes into your branch.  This will help maintain a more linear (and clean)
 history.  <em>Please see caution about rebasing below</em>.  For example:</p>
-<div class="highlight-python"><div class="highlight"><pre>git checkout [your topic branch]
-git rebase develop
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="p">[</span><span class="n">your</span> <span class="n">topic</span> <span class="n">branch</span><span class="p">]</span>
+<span class="n">git</span> <span class="n">rebase</span> <span class="n">develop</span>
 </pre></div>
 </div>
 </li>
@@ -164,24 +164,24 @@ git rebase develop
 branch and then run the tests built during that process.</p>
 <p>For the <span style="font-variant:small-caps;">Cyclus</span> core, the tests are run using the CyclusUnitTestDriver (at
 the moment, <code class="docutils literal"><span class="pre">`make</span> <span class="pre">test`</span></code> is insufficient). For example</p>
-<div class="highlight-python"><div class="highlight"><pre>mkdir build
-mkdir install
-cd build
-cmake ../src -DCMAKE_INSTALL_PREFIX=../install
-make
-make install
-../install/cyclus/bin/CyclusUnitTestDriver
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="n">build</span>
+<span class="n">mkdir</span> <span class="n">install</span>
+<span class="n">cd</span> <span class="n">build</span>
+<span class="n">cmake</span> <span class="o">../</span><span class="n">src</span> <span class="o">-</span><span class="n">DCMAKE_INSTALL_PREFIX</span><span class="o">=../</span><span class="n">install</span>
+<span class="n">make</span>
+<span class="n">make</span> <span class="n">install</span>
+<span class="o">../</span><span class="n">install</span><span class="o">/</span><span class="n">cyclus</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">CyclusUnitTestDriver</span>
 </pre></div>
 </div>
 <p>In Cycamore, the additional module repository, the tests are run in an exactly
 analogous way, but using the CycamoreUnitTestDriver. For example</p>
-<div class="highlight-python"><div class="highlight"><pre>mkdir build
-mkdir install
-cd build
-cmake ../src -DCMAKE_INSTALL_PREFIX=../install
-make
-make install
-../install/cycamore/bin/CycamoreUnitTestDriver
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="n">build</span>
+<span class="n">mkdir</span> <span class="n">install</span>
+<span class="n">cd</span> <span class="n">build</span>
+<span class="n">cmake</span> <span class="o">../</span><span class="n">src</span> <span class="o">-</span><span class="n">DCMAKE_INSTALL_PREFIX</span><span class="o">=../</span><span class="n">install</span>
+<span class="n">make</span>
+<span class="n">make</span> <span class="n">install</span>
+<span class="o">../</span><span class="n">install</span><span class="o">/</span><span class="n">cycamore</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">CycamoreUnitTestDriver</span>
 </pre></div>
 </div>
 <p>In addition to the CycamoreUnitTestDriver, a suite of input files can be run and
@@ -190,7 +190,7 @@ with Cycamore. It relies on the input files that are part of your Cycamore
 repository, and only succeeds for input files that are correct (some may have
 known issues. See the issue list in Cycamore for details.) To run the example
 input files,</p>
-<div class="highlight-python"><div class="highlight"><pre>python ../install/cycamore/bin/run_inputs.py
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">../</span><span class="n">install</span><span class="o">/</span><span class="n">cycamore</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">run_inputs</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
 </div>
@@ -220,14 +220,14 @@ you can reopen the review yourself with the button made available to you.</p>
 <li><p class="first">Build, install, and test it. If you have added the remote repository as
 a remote you can check it out and merge it with the current develop
 branch thusly,</p>
-<div class="highlight-python"><div class="highlight"><pre>git checkout -b remote_name/branch_name
-git merge develop
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="o">-</span><span class="n">b</span> <span class="n">remote_name</span><span class="o">/</span><span class="n">branch_name</span>
+<span class="n">git</span> <span class="n">merge</span> <span class="n">develop</span>
 </pre></div>
 </div>
 </li>
 <li><p class="first">Look over the code. The <cite>next page &lt;pr_review&gt;</cite> details what to look for while reviewing.)</p>
 <ul class="simple">
-<li>Check that it meets <a class="reference internal" href="style_guide.html"><em>our style guidelines</em></a>.</li>
+<li>Check that it meets <a class="reference internal" href="style_guide.html"><span class="doc">our style guidelines</span></a>.</li>
 <li>Make inline review comments concerning improvements.</li>
 </ul>
 </li>
@@ -242,8 +242,8 @@ acceptance process.</p>
 default. However, if that button is unavailable, you&#8217;ve made minor
 local changes to the pulled branch, or you just want to do it from the
 command line, make sure your merge is a non-fast-forward merge. For example:</p>
-<div class="highlight-python"><div class="highlight"><pre>git checkout develop
-git merge --no-ff remote_name/branch_name -m &quot;A message&quot;&quot;
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="n">develop</span>
+<span class="n">git</span> <span class="n">merge</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">ff</span> <span class="n">remote_name</span><span class="o">/</span><span class="n">branch_name</span> <span class="o">-</span><span class="n">m</span> <span class="s2">&quot;A message&quot;&quot;</span>
 </pre></div>
 </div>
 </li>
@@ -257,8 +257,8 @@ git merge --no-ff remote_name/branch_name -m &quot;A message&quot;&quot;
 <p>A goal of cyclus is to keep the API stable for every major version.
 If you ever need to check whether the curent cyclus is stable or not
 simply go into the release directory and run the following command.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd </span>cyclus/release
-<span class="nv">$ </span>./smbchk.py --update -t HEAD --no-save --check
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> cyclus/release
+$ ./smbchk.py --update -t HEAD --no-save --check
 </pre></div>
 </div>
 <p>If cyclus is stable, it will tell you so. If cyclus is not stable
@@ -327,14 +327,11 @@ is only availble on posix platforms.</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
     <h3>Get Cyclus</h3>
@@ -398,7 +395,7 @@ is only availble on posix platforms.</p>
 
     <div class="footer" role="contentinfo">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on May 13, 2016.
+      Last updated on Sep 02, 2016.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");

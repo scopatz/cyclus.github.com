@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '(1.3.1-210-g9065eea)',
+        VERSION:     'b&#39;(1.4.0-rc1-123-gd233d22)&#39;',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -82,73 +82,8 @@ if(ga_enabled){
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="module-cymetric.tools">
-<span id="cymetric-tools-tools"></span><span id="cym-tools"></span><h1><a class="reference internal" href="#module-cymetric.tools" title="cymetric.tools"><code class="xref py py-mod docutils literal"><span class="pre">cymetric.tools</span></code></a> - Tools<a class="headerlink" href="#module-cymetric.tools" title="Permalink to this headline">¶</a></h1>
-<p>General cymetric tools.</p>
-<dl class="function">
-<dt id="cymetric.tools.dbopen">
-<code class="descclassname">cymetric.tools.</code><code class="descname">dbopen</code><span class="sig-paren">(</span><em>fname</em><span class="sig-paren">)</span><a class="headerlink" href="#cymetric.tools.dbopen" title="Permalink to this definition">¶</a></dt>
-<dd><p>Opens a Cyclus database.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="cymetric.tools.ensure_dt_bytes">
-<code class="descclassname">cymetric.tools.</code><code class="descname">ensure_dt_bytes</code><span class="sig-paren">(</span><em>dt</em><span class="sig-paren">)</span><a class="headerlink" href="#cymetric.tools.ensure_dt_bytes" title="Permalink to this definition">¶</a></dt>
-<dd><p>Ensures that a structured numpy dtype is given in a Python 2 &amp; 3
-compatible way.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="cymetric.tools.merge_and_fillna_col">
-<code class="descclassname">cymetric.tools.</code><code class="descname">merge_and_fillna_col</code><span class="sig-paren">(</span><em>left</em>, <em>right</em>, <em>lcol</em>, <em>rcol</em>, <em>how=u'inner'</em>, <em>on=None</em><span class="sig-paren">)</span><a class="headerlink" href="#cymetric.tools.merge_and_fillna_col" title="Permalink to this definition">¶</a></dt>
-<dd><p>Merges two dataframes and fills the values of the left column
-with the values from the right column. A copy of left is returned.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>left</strong> : pd.DataFrame</p>
-<blockquote>
-<div><p>The left data frame</p>
-</div></blockquote>
-<p><strong>right</strong> : pd.DataFrame</p>
-<blockquote>
-<div><p>The right data frame</p>
-</div></blockquote>
-<p><strong>lcol</strong> : str</p>
-<blockquote>
-<div><p>The left column name</p>
-</div></blockquote>
-<p><strong>rcol</strong> : str</p>
-<blockquote>
-<div><p>The right column name</p>
-</div></blockquote>
-<p><strong>how</strong> : str, optional</p>
-<blockquote>
-<div><p>How to perform merge, same as in pd.merge()</p>
-</div></blockquote>
-<p><strong>on</strong> : list of str, optional</p>
-<blockquote class="last">
-<div><p>Which columns to merge on, same as in pd.merge()</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
-<dt id="cymetric.tools.raise_no_pyne">
-<code class="descclassname">cymetric.tools.</code><code class="descname">raise_no_pyne</code><span class="sig-paren">(</span><em>msg</em>, <em>have_pyne=False</em><span class="sig-paren">)</span><a class="headerlink" href="#cymetric.tools.raise_no_pyne" title="Permalink to this definition">¶</a></dt>
-<dd><p>Raise an error when PyNE cannot be found.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="cymetric.tools.raw_to_series">
-<code class="descclassname">cymetric.tools.</code><code class="descname">raw_to_series</code><span class="sig-paren">(</span><em>df</em>, <em>idx</em>, <em>val</em><span class="sig-paren">)</span><a class="headerlink" href="#cymetric.tools.raw_to_series" title="Permalink to this definition">¶</a></dt>
-<dd><p>Convert data frame to series with multi-index.</p>
-</dd></dl>
-
+  <div class="section" id="cymetric-tools-tools">
+<span id="cym-tools"></span><h1><code class="xref py py-mod docutils literal"><span class="pre">cymetric.tools</span></code> - Tools<a class="headerlink" href="#cymetric-tools-tools" title="Permalink to this headline">¶</a></h1>
 </div>
 
 
@@ -188,14 +123,11 @@ with the values from the right column. A copy of left is returned.</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../../../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
     <h3>Get Cyclus</h3>
@@ -261,7 +193,7 @@ with the values from the right column. A copy of left is returned.</p>
 
     <div class="footer" role="contentinfo">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on May 13, 2016.
+      Last updated on Sep 02, 2016.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");

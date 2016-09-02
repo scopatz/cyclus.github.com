@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '(1.3.1-210-g9065eea)',
+        VERSION:     'b&#39;(1.4.0-rc1-123-gd233d22)&#39;',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -101,7 +101,7 @@ named &#8220;agents&#8221; containing a few simple archetypes</p>
 </ul>
 <p>All archetypes used in a simulation must be defined in the <code class="docutils literal"><span class="pre">archetypes</span></code>
 section in the input file:</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;simulation&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;simulation&gt;</span>
 ...
 
   <span class="nt">&lt;archetypes&gt;</span>
@@ -122,7 +122,7 @@ section in the input file:</p>
 <span class="nt">&lt;/simulation&gt;</span>
 </pre></div>
 </div>
-<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span><span class="nt">&quot;simulation&quot;</span><span class="p">:</span> <span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;simulation&quot;</span><span class="p">:</span> <span class="p">{</span>
    <span class="nt">&quot;archetypes&quot;</span><span class="p">:</span> <span class="p">{</span>
      <span class="nt">&quot;spec&quot;</span><span class="p">:</span> <span class="p">{</span>
        <span class="nt">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
@@ -148,10 +148,10 @@ are separated by colons.  This form is used in places such as in the database
 and on the command line. For example, to print out the schema for an agent
 archetype on the command line (note the starting colon indicating an empty
 path):</p>
-<div class="highlight-bash"><div class="highlight"><pre>cyclus --agent-schema :agents:KFacility
+<div class="highlight-bash"><div class="highlight"><pre><span></span>cyclus --agent-schema :agents:KFacility
 </pre></div>
 </div>
-<p>For more details, you can read <a class="reference internal" href="../cep/cep21.html"><em>CEP 21 - Agent Identification and Discovery</em></a></p>
+<p>For more details, you can read <a class="reference internal" href="../cep/cep21.html"><span class="doc">CEP 21 - Agent Identification and Discovery</span></a></p>
 <div class="section" id="cyclus-path">
 <h2>Cyclus Path<a class="headerlink" href="#cyclus-path" title="Permalink to this headline">¶</a></h2>
 <p>When running a simulation, <span style="font-variant:small-caps;">Cyclus</span> searches your system for the archetypes
@@ -159,7 +159,7 @@ specified in the input file.  In addition to searching a few default install
 directories, it is possible to manually specify other directories for <span style="font-variant:small-caps;">Cyclus</span>
 to search by adding them as colon-separated entries to the CYCLUS_PATH
 environment variable.  For example:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nb">export </span><span class="nv">CYCLUS_PATH</span><span class="o">=</span>my/agent/lib/dir:/my/other/agent/dir
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">CYCLUS_PATH</span><span class="o">=</span>my/agent/lib/dir:/my/other/agent/dir
 </pre></div>
 </div>
 <p>Directories specified in your <code class="docutils literal"><span class="pre">CYCLUS_PATH</span></code> are searched <em>before</em> <span style="font-variant:small-caps;">Cyclus</span>&#8216;
@@ -167,7 +167,7 @@ default search directories. <code class="docutils literal"><span class="pre">CYC
 points</em> for archetype specifications.  This meaning that the path portion of an
 agent specification is appended to the CYCLUS_PATH directories.  For example
 using the above defined <code class="docutils literal"><span class="pre">CYCLUS_PATH</span></code>, <span style="font-variant:small-caps;">Cyclus</span> would search for:</p>
-<div class="highlight-python"><div class="highlight"><pre>my/path:myagentlib:MyAgent
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">my</span><span class="o">/</span><span class="n">path</span><span class="p">:</span><span class="n">myagentlib</span><span class="p">:</span><span class="n">MyAgent</span>
 </pre></div>
 </div>
 <p>In the following directories in order:</p>
@@ -176,7 +176,7 @@ using the above defined <code class="docutils literal"><span class="pre">CYCLUS_
 <li>/my/other/agent/dir/agent/path/</li>
 <li>[default-locations]/agent/path/</li>
 </ul>
-<p>For more details, you can read <a class="reference internal" href="../cep/cep21.html"><em>CEP 21 - Agent Identification and Discovery</em></a></p>
+<p>For more details, you can read <a class="reference internal" href="../cep/cep21.html"><span class="doc">CEP 21 - Agent Identification and Discovery</span></a></p>
 </div>
 </div>
 
@@ -226,14 +226,11 @@ using the above defined <code class="docutils literal"><span class="pre">CYCLUS_
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
     <h3>Get Cyclus</h3>
@@ -297,7 +294,7 @@ using the above defined <code class="docutils literal"><span class="pre">CYCLUS_
 
     <div class="footer" role="contentinfo">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on May 13, 2016.
+      Last updated on Sep 02, 2016.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");

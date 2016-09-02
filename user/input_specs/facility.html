@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '(1.3.1-210-g9065eea)',
+        VERSION:     'b&#39;(1.4.0-rc1-123-gd233d22)&#39;',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -97,7 +97,7 @@ simulation</li>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
 <p><strong>XML:</strong></p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;facility&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;facility&gt;</span>
   <span class="nt">&lt;name&gt;</span>LongTermStorage<span class="nt">&lt;/name&gt;</span>
   <span class="nt">&lt;config&gt;</span>
     <span class="nt">&lt;Sink&gt;</span>
@@ -118,7 +118,7 @@ simulation</li>
 </pre></div>
 </div>
 <p><strong>JSON:</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span><span class="nt">&quot;facility&quot;</span><span class="p">:</span> <span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;facility&quot;</span><span class="p">:</span> <span class="p">{</span>
   <span class="nt">&quot;config&quot;</span><span class="p">:</span> <span class="p">{</span>
    <span class="nt">&quot;Sink&quot;</span><span class="p">:</span> <span class="s2">&quot;(... archetype-specific input for a `Sink` archetype)&quot;</span><span class="p">},</span>
   <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;LongTermStorage&quot;</span>
@@ -141,7 +141,7 @@ author of the <cite>Sink</cite> archetype.  The second has the name <code class=
 lifetime of 720 time steps (60 years) and is based on the archetype with the
 name (or alias) <cite>RecipeReactor</cite>.  The contents of the <code class="docutils literal"><span class="pre">RecipeReactor</span></code>
 section are defined by the author of the <cite>RecipeReactor</cite> archetype.</p>
-<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
  <span class="nt">&quot;facility&quot;</span><span class="p">:</span> <span class="p">{</span>
    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;LongTermStorage&quot;</span><span class="p">,</span>
    <span class="nt">&quot;config&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -164,7 +164,7 @@ section are defined by the author of the <cite>RecipeReactor</cite> archetype.</
 </div>
 <div class="html-toggle section" id="grammar-definition">
 <h2>Grammar Definition<a class="headerlink" href="#grammar-definition" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;facility&quot;</span><span class="nt">&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;facility&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;</span> <span class="nt">&lt;text/&gt;</span> <span class="nt">&lt;/element&gt;</span>
   <span class="nt">&lt;optional&gt;</span>
     <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;lifetime&quot;</span><span class="nt">&gt;</span> <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;nonNegativeInteger&quot;</span><span class="nt">/&gt;</span> <span class="nt">&lt;/element&gt;</span>
@@ -228,14 +228,11 @@ section are defined by the author of the <cite>RecipeReactor</cite> archetype.</
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
     <h3>Get Cyclus</h3>
@@ -300,7 +297,7 @@ section are defined by the author of the <cite>RecipeReactor</cite> archetype.</
 
     <div class="footer" role="contentinfo">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on May 13, 2016.
+      Last updated on Sep 02, 2016.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");

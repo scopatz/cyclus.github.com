@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '(1.3.1-210-g9065eea)',
+        VERSION:     'b&#39;(1.4.0-rc1-123-gd233d22)&#39;',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -98,9 +98,9 @@ class.  <code class="docutils literal"><span class="pre">ResourceBuff</span></co
 archetypes.  The Cyclus preprocessor has special handling for <code class="docutils literal"><span class="pre">ResourceBuff</span></code>
 - it can generate all needed code for proper persistence and intiialization
 of the buffer.  For this to work, you must annotate the buffer member variable
-with a Cyclus pre-processor <a class="reference internal" href="cycpp.html#pragma-cyclus-var"><span>pragma</span></a> in one of the
+with a Cyclus pre-processor <a class="reference internal" href="cycpp.html#pragma-cyclus-var"><span class="std std-ref">pragma</span></a> in one of the
 following ways:</p>
-<div class="highlight-c++"><div class="highlight"><pre><span class="c1">// Option 1: minimum required annotation</span>
+<div class="highlight-c++"><div class="highlight"><pre><span></span><span class="c1">// Option 1: minimum required annotation</span>
 <span class="cp">#pragma cyclus var {}</span>
 <span class="n">cyclus</span><span class="o">::</span><span class="n">toolkit</span><span class="o">::</span><span class="n">ResourceBuff</span> <span class="n">mybuf</span><span class="p">;</span>
 
@@ -127,8 +127,8 @@ are usually used as member variables of archetypes.  The Cyclus preprocessor
 has special handling for <code class="docutils literal"><span class="pre">ResBuf</span></code> - it can generate all needed code
 for proper persistence and intiialization of the buffer.  For this to work,
 you must annotate the buffer member variable with a Cyclus pre-processor
-<a class="reference internal" href="cycpp.html#pragma-cyclus-var"><span>pragma</span></a> in one of the following ways:</p>
-<div class="highlight-c++"><div class="highlight"><pre><span class="c1">// Option 1: minimum required annotation</span>
+<a class="reference internal" href="cycpp.html#pragma-cyclus-var"><span class="std std-ref">pragma</span></a> in one of the following ways:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span></span><span class="c1">// Option 1: minimum required annotation</span>
 <span class="cp">#pragma cyclus var {}</span>
 <span class="n">cyclus</span><span class="o">::</span><span class="n">toolkit</span><span class="o">::</span><span class="n">ResBuf</span><span class="o">&lt;</span><span class="n">cyclus</span><span class="o">::</span><span class="n">Material</span><span class="o">&gt;</span> <span class="n">mybuf</span><span class="p">;</span>
 
@@ -243,14 +243,11 @@ and demand on commodities</li>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
     <h3>Get Cyclus</h3>
@@ -314,7 +311,7 @@ and demand on commodities</li>
 
     <div class="footer" role="contentinfo">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on May 13, 2016.
+      Last updated on Sep 02, 2016.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");

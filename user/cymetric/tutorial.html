@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '(1.3.1-210-g9065eea)',
+        VERSION:     'b&#39;(1.4.0-rc1-123-gd233d22)&#39;',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -103,7 +103,7 @@ a metric or quickly checking a plot.</p>
 <p>Since cymetric is wholly dependent on <span style="font-variant:small-caps;">Cyclus</span> databases, you must supply a
 database as an argument on the command line. This will look something like the
 following:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>cymetric database -flags
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ cymetric database -flags
 </pre></div>
 </div>
 <p>We&#8217;ll be using <code class="docutils literal"><span class="pre">test.h5</span></code> and <code class="docutils literal"><span class="pre">test.sqlite</span></code> as our example databases here.
@@ -118,7 +118,7 @@ The sections below explain the flags for use on the command line.</p>
 database.  Note that this may list more tables in the database than are
 strictly part of the <span style="font-variant:small-caps;">Cyclus</span> interface, because of the need for <span style="font-variant:small-caps;">Cyclus</span> to
 store metadata. Don&#8217;t be alarmed. Listing the current tables is easy:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>cymetric test.h5 -l
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ cymetric test.h5 -l
 AgentEntry
 AgentStateAgent
 AgentStateInventories
@@ -158,7 +158,7 @@ and root <span style="font-variant:small-caps;">Cyclus</span> table are assigned
 can use. Indexing the table variables will return the metric as a <a class="reference external" href="http://pandas.pydata.org/">pandas</a> DataFrame. For example, to print the
 <code class="docutils literal"><span class="pre">AgentEntry</span></code> table, we would write <code class="docutils literal"><span class="pre">AgentEntry[:]</span></code> to get the table and
 <code class="docutils literal"><span class="pre">print(AgentEntry[:])</span></code> to display it after the <code class="docutils literal"><span class="pre">-e</span></code> flag:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>cymetric test.h5 -e <span class="s2">&quot;print(AgentEntry[:])&quot;</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ cymetric test.h5 -e <span class="s2">&quot;print(AgentEntry[:])&quot;</span>
                                   SimId  AgentId      Kind                    Spec          Prototype  ParentId  Lifetime  EnterTime
 <span class="m">0</span>  db805939-c565-404a-9483-adfb3da8b6d2       <span class="m">11</span>    Region      :agents:NullRegion       SingleRegion        -1        -1          0
 <span class="m">1</span>  db805939-c565-404a-9483-adfb3da8b6d2       <span class="m">12</span>      Inst    :cycamore:DeployInst  SingleInstitution        <span class="m">11</span>        -1          0
@@ -175,7 +175,7 @@ can use. Indexing the table variables will return the metric as a <a class="refe
 (<code class="docutils literal"><span class="pre">[...]</span></code>) will return the full metric. However, you can also index by condition
 filters on the column names. The column names of the metric are thus also available for
 use.  For example, let&#8217;s just grab all of the facilities out of the entry table:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>cymetric test.h5 -e <span class="s2">&quot;print(AgentEntry[Kind == &#39;Facility&#39;])&quot;</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ cymetric test.h5 -e <span class="s2">&quot;print(AgentEntry[Kind == &#39;Facility&#39;])&quot;</span>
                                   SimId  AgentId      Kind                    Spec   Prototype  ParentId  Lifetime  EnterTime
 <span class="m">0</span>  db805939-c565-404a-9483-adfb3da8b6d2       <span class="m">13</span>  Facility        :cycamore:Source  UOX_Source        <span class="m">12</span>        -1          1
 <span class="m">1</span>  db805939-c565-404a-9483-adfb3da8b6d2       <span class="m">14</span>  Facility        :cycamore:Source  MOX_Source        <span class="m">12</span>        -1          1
@@ -188,7 +188,7 @@ use.  For example, let&#8217;s just grab all of the facilities out of the entry 
 </div>
 <p>Separate the conditions by commas (<code class="docutils literal"><span class="pre">,</span></code>) to apply multiple filters at the same
 time:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>cymetric test.h5 -e <span class="s2">&quot;print(AgentEntry[Kind == &#39;Facility&#39;, AgentId &gt; 14])&quot;</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ cymetric test.h5 -e <span class="s2">&quot;print(AgentEntry[Kind == &#39;Facility&#39;, AgentId &gt; 14])&quot;</span>
                                   SimId  AgentId      Kind                    Spec Prototype  ParentId  Lifetime  EnterTime
 <span class="m">0</span>  db805939-c565-404a-9483-adfb3da8b6d2       <span class="m">15</span>  Facility  :cycamore:BatchReactor  Reactor1        <span class="m">12</span>        -1          1
 <span class="m">1</span>  db805939-c565-404a-9483-adfb3da8b6d2       <span class="m">16</span>  Facility  :cycamore:BatchReactor  Reactor2        <span class="m">12</span>        -1          2
@@ -201,7 +201,7 @@ time:</p>
 able to do in Python. Suppose that we have a <code class="docutils literal"><span class="pre">Materials</span></code> metric with a <code class="docutils literal"><span class="pre">Mass</span></code>
 column. We can compute this metric, pull the column out, multiply it by 42,
 save the result to a variable, and then print this variable all via the following.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>cymetric test.h5 -e <span class="s2">&quot;mass = Materials[:][&#39;Mass&#39;] * 42; print(mass)&quot;</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ cymetric test.h5 -e <span class="s2">&quot;mass = Materials[:][&#39;Mass&#39;] * 42; print(mass)&quot;</span>
 <span class="m">0</span>      0.000000
 <span class="m">1</span>      0.000000
 <span class="m">2</span>      0.000000
@@ -271,7 +271,7 @@ under standard aliases. This prevents you from having to import them manually yo
 </table>
 <p>This let&#8217;s you do neat things such as plot the metrics right from the command line.
 For example,</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>cymetric test.h5 -e <span class="s2">&quot;Materials[ResourceId == 15].plot(x=&#39;NucId&#39;, y=&#39;Mass&#39;, kind=&#39;bar&#39;); plt.show()&quot;</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ cymetric test.h5 -e <span class="s2">&quot;Materials[ResourceId == 15].plot(x=&#39;NucId&#39;, y=&#39;Mass&#39;, kind=&#39;bar&#39;); plt.show()&quot;</span>
 </pre></div>
 </div>
 <p>Will pop up with the following figure:</p>
@@ -286,13 +286,13 @@ in this case, writing to the database is unneccessary. While writing is the
 default functionality when you use the <code class="docutils literal"><span class="pre">-e</span></code> flag, the lack of writing
 can be accomplished with the <code class="docutils literal"><span class="pre">--no-write</span></code> flag. In the example below, the
 table will not be written to the database:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>cymetric test.h5 --no-write -e <span class="s2">&quot;Materials[:]&quot;</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ cymetric test.h5 --no-write -e <span class="s2">&quot;Materials[:]&quot;</span>
 </pre></div>
 </div>
 <p>Since cymetric looks up an already evaluated metric in the database,
 overwriting an existing table with a new one might be desired. This is where
 the <code class="docutils literal"><span class="pre">--write</span></code> flag is useful:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>cymetric test.h5 --write -e <span class="s2">&quot;Materials[:]&quot;</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ cymetric test.h5 --write -e <span class="s2">&quot;Materials[:]&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -306,9 +306,9 @@ figures, this is essential for the development of new metrics.</p>
 <p>Typically, it is recommended that you alias <code class="docutils literal"><span class="pre">cymetric</span></code> as <code class="docutils literal"><span class="pre">cym</span></code>, because
 all of the important functionality lives here.  To start, use the <code class="docutils literal"><span class="pre">dbopen()</span></code>
 function to open up a database:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">cymetric</span> <span class="kn">as</span> <span class="nn">cym</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cymetric</span> <span class="kn">as</span> <span class="nn">cym</span>
 
-<span class="n">db</span> <span class="o">=</span> <span class="n">cym</span><span class="o">.</span><span class="n">dbopen</span><span class="p">(</span><span class="s">&#39;test.sqlite&#39;</span><span class="p">)</span>
+<span class="n">db</span> <span class="o">=</span> <span class="n">cym</span><span class="o">.</span><span class="n">dbopen</span><span class="p">(</span><span class="s1">&#39;test.sqlite&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="section" id="evaluating-metrics">
@@ -316,16 +316,16 @@ function to open up a database:</p>
 <p>The main purpose of cymetric is to evaluate metrics. The easiest way to do this
 is via the <code class="docutils literal"><span class="pre">eval()</span></code> function. This accepts a metric name and a database and
 returns a pandas DataFrame:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">frame</span> <span class="o">=</span> <span class="n">cym</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s">&#39;Materials&#39;</span><span class="p">,</span> <span class="n">db</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">frame</span> <span class="o">=</span> <span class="n">cym</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s1">&#39;Materials&#39;</span><span class="p">,</span> <span class="n">db</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>You may also optionally supply a list of 3-tuples representing the conditions to
 filter the metric on.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">filtered_frame</span> <span class="o">=</span> <span class="n">cym</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s">&#39;Materials&#39;</span><span class="p">,</span> <span class="n">db</span><span class="p">,</span> <span class="n">conds</span><span class="o">=</span><span class="p">[(</span><span class="s">&#39;NucId&#39;</span><span class="p">,</span> <span class="s">&#39;==&#39;</span><span class="p">,</span> <span class="mi">922350000</span><span class="p">)])</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">filtered_frame</span> <span class="o">=</span> <span class="n">cym</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s1">&#39;Materials&#39;</span><span class="p">,</span> <span class="n">db</span><span class="p">,</span> <span class="n">conds</span><span class="o">=</span><span class="p">[(</span><span class="s1">&#39;NucId&#39;</span><span class="p">,</span> <span class="s1">&#39;==&#39;</span><span class="p">,</span> <span class="mi">922350000</span><span class="p">)])</span>
 </pre></div>
 </div>
 <p>As was noted in the previous section, multiple filters can be applied at once.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">filtered_frame</span> <span class="o">=</span> <span class="n">cym</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s">&#39;AgentEntry&#39;</span><span class="p">,</span> <span class="n">db</span><span class="p">,</span> <span class="n">conds</span><span class="o">=</span><span class="p">[(</span><span class="s">&#39;Kind&#39;</span><span class="p">,</span> <span class="s">&#39;==&#39;</span><span class="p">,</span><span class="s">&#39;Facility&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;AgentId&#39;</span><span class="p">,</span> <span class="s">&#39;&gt;&#39;</span><span class="p">,</span> <span class="mi">14</span><span class="p">)])</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">filtered_frame</span> <span class="o">=</span> <span class="n">cym</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s1">&#39;AgentEntry&#39;</span><span class="p">,</span> <span class="n">db</span><span class="p">,</span> <span class="n">conds</span><span class="o">=</span><span class="p">[(</span><span class="s1">&#39;Kind&#39;</span><span class="p">,</span> <span class="s1">&#39;==&#39;</span><span class="p">,</span><span class="s1">&#39;Facility&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;AgentId&#39;</span><span class="p">,</span> <span class="s1">&#39;&gt;&#39;</span><span class="p">,</span> <span class="mi">14</span><span class="p">)])</span>
 </pre></div>
 </div>
 <p>However, if you are evaluating many metrics, this method will be
@@ -336,9 +336,9 @@ it is called. Alternatively, there is a way to ensure the database only gets
 read once by accessing the <code class="docutils literal"><span class="pre">eval()</span></code> functionality directly within an
 <code class="docutils literal"><span class="pre">Evaluator</span></code> object.  You can create an <code class="docutils literal"><span class="pre">Evaluator</span></code> instance with a single
 database and call <code class="docutils literal"><span class="pre">eval()</span></code> from within it. For example,</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">evaler</span> <span class="o">=</span> <span class="n">cym</span><span class="o">.</span><span class="n">Evaluator</span><span class="p">(</span><span class="n">db</span><span class="p">)</span>
-<span class="n">frame1</span> <span class="o">=</span> <span class="n">evaler</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s">&#39;Materials&#39;</span><span class="p">)</span>
-<span class="n">frame2</span> <span class="o">=</span> <span class="n">evaler</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s">&#39;AgentEntry&#39;</span><span class="p">,</span> <span class="n">conds</span><span class="o">=</span><span class="p">[(</span><span class="s">&#39;Kind&#39;</span><span class="p">,</span> <span class="s">&#39;==&#39;</span><span class="p">,</span> <span class="s">&#39;Facility&#39;</span><span class="p">)])</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">evaler</span> <span class="o">=</span> <span class="n">cym</span><span class="o">.</span><span class="n">Evaluator</span><span class="p">(</span><span class="n">db</span><span class="p">)</span>
+<span class="n">frame1</span> <span class="o">=</span> <span class="n">evaler</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s1">&#39;Materials&#39;</span><span class="p">)</span>
+<span class="n">frame2</span> <span class="o">=</span> <span class="n">evaler</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s1">&#39;AgentEntry&#39;</span><span class="p">,</span> <span class="n">conds</span><span class="o">=</span><span class="p">[(</span><span class="s1">&#39;Kind&#39;</span><span class="p">,</span> <span class="s1">&#39;==&#39;</span><span class="p">,</span> <span class="s1">&#39;Facility&#39;</span><span class="p">)])</span>
 </pre></div>
 </div>
 <p>And you can run with the data from there! We recommend learning <a class="reference external" href="http://pandas.pydata.org/">pandas</a> to get the most out of your analysis from this
@@ -350,7 +350,7 @@ point.</p>
 command line, even though you are in Python. The <code class="docutils literal"><span class="pre">exec_code()</span></code> function gives
 you easy access to the exact same capabilities that you have on the command line.
 This function accepts the code string and the database:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">cym</span><span class="o">.</span><span class="n">exec_code</span><span class="p">(</span><span class="s">&quot;print(AgentEntry[:])&quot;</span><span class="p">,</span> <span class="n">db</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">cym</span><span class="o">.</span><span class="n">exec_code</span><span class="p">(</span><span class="s2">&quot;print(AgentEntry[:])&quot;</span><span class="p">,</span> <span class="n">db</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>For more exciting capabilities, please explore the <a class="reference external" href="https://github.com/cyclus/cymetric">examples directory</a> in the cymetric repository or ask us
@@ -366,18 +366,18 @@ write metrics and fully hook into the cymetric tools.</p>
 <p>A metric is a function that accepts a pandas Series, returns a
 pandas DataFrame, and is decorated by the <code class="docutils literal"><span class="pre">&#64;metric()</span></code> decorator found in
 cymetric. The general format is as follows:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">dependencies</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="p">(</span><span class="s">&#39;Table1&#39;</span><span class="p">,</span> <span class="p">(</span><span class="s">&#39;Col1&#39;</span><span class="p">,</span> <span class="s">&#39;Col2&#39;</span><span class="p">),</span> <span class="s">&#39;Value1&#39;</span><span class="p">),</span>
-    <span class="p">(</span><span class="s">&#39;Table2&#39;</span><span class="p">,</span> <span class="p">(</span><span class="s">&#39;Col3&#39;</span><span class="p">,),</span> <span class="s">&#39;Value2&#39;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">dependencies</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s1">&#39;Table1&#39;</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;Col1&#39;</span><span class="p">,</span> <span class="s1">&#39;Col2&#39;</span><span class="p">),</span> <span class="s1">&#39;Value1&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;Table2&#39;</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;Col3&#39;</span><span class="p">,),</span> <span class="s1">&#39;Value2&#39;</span><span class="p">)</span>
     <span class="p">]</span>
 
-<span class="n">schema</span> <span class="o">=</span> <span class="p">[(</span><span class="s">&#39;Id&#39;</span><span class="p">,</span> <span class="n">cym</span><span class="o">.</span><span class="n">INT</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;MetricValue&#39;</span><span class="p">,</span> <span class="n">cym</span><span class="o">.</span><span class="n">DOUBLE</span><span class="p">)]</span>
+<span class="n">schema</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;Id&#39;</span><span class="p">,</span> <span class="n">cym</span><span class="o">.</span><span class="n">INT</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;MetricValue&#39;</span><span class="p">,</span> <span class="n">cym</span><span class="o">.</span><span class="n">DOUBLE</span><span class="p">)]</span>
 
-<span class="nd">@cym.metric</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&#39;MyMetric&#39;</span><span class="p">,</span> <span class="n">depends</span><span class="o">=</span><span class="n">dependencies</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="n">schema</span><span class="p">)</span>
+<span class="nd">@cym.metric</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;MyMetric&#39;</span><span class="p">,</span> <span class="n">depends</span><span class="o">=</span><span class="n">dependencies</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="n">schema</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">my_metric</span><span class="p">(</span><span class="n">series</span><span class="p">):</span>
     <span class="n">one</span> <span class="o">=</span> <span class="n">series</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">two</span> <span class="o">=</span> <span class="n">series</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-    <span class="c">#calculations and pandas manipulations go here</span>
+    <span class="c1">#calculations and pandas manipulations go here</span>
     <span class="k">return</span> <span class="n">dataframe</span>
 </pre></div>
 </div>
@@ -402,16 +402,16 @@ cymetric. The DataFrame that is returned should have column names that match
 the schema provided. It is generally a good idea to include a <code class="docutils literal"><span class="pre">SimId</span></code> column.</p>
 <p>For a more concrete example, if you wanted to square the mass of materials as a
 metric, you could write a <code class="docutils literal"><span class="pre">MaterialsSquared</span></code> metric.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">deps</span> <span class="o">=</span> <span class="p">[(</span><span class="s">&#39;Materials&#39;</span><span class="p">,</span> <span class="p">(</span><span class="s">&#39;SimId&#39;</span><span class="p">,</span> <span class="s">&#39;ResourceId&#39;</span><span class="p">,</span> <span class="s">&#39;NucId&#39;</span><span class="p">),</span> <span class="s">&#39;Mass&#39;</span><span class="p">)]</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">deps</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;Materials&#39;</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;SimId&#39;</span><span class="p">,</span> <span class="s1">&#39;ResourceId&#39;</span><span class="p">,</span> <span class="s1">&#39;NucId&#39;</span><span class="p">),</span> <span class="s1">&#39;Mass&#39;</span><span class="p">)]</span>
 
-<span class="n">schema</span> <span class="o">=</span> <span class="p">[(</span><span class="s">&#39;SimId&#39;</span><span class="p">,</span> <span class="n">cym</span><span class="o">.</span><span class="n">UUID</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;ResourceId&#39;</span><span class="p">,</span> <span class="n">cym</span><span class="o">.</span><span class="n">INT</span><span class="p">),</span>
-          <span class="p">(</span><span class="s">&#39;NucId&#39;</span><span class="p">,</span> <span class="n">cym</span><span class="o">.</span><span class="n">INT</span><span class="p">),</span>  <span class="p">(</span><span class="s">&#39;MassSquared&#39;</span><span class="p">,</span> <span class="n">cym</span><span class="o">.</span><span class="n">DOUBLE</span><span class="p">)]</span>
+<span class="n">schema</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;SimId&#39;</span><span class="p">,</span> <span class="n">cym</span><span class="o">.</span><span class="n">UUID</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;ResourceId&#39;</span><span class="p">,</span> <span class="n">cym</span><span class="o">.</span><span class="n">INT</span><span class="p">),</span>
+          <span class="p">(</span><span class="s1">&#39;NucId&#39;</span><span class="p">,</span> <span class="n">cym</span><span class="o">.</span><span class="n">INT</span><span class="p">),</span>  <span class="p">(</span><span class="s1">&#39;MassSquared&#39;</span><span class="p">,</span> <span class="n">cym</span><span class="o">.</span><span class="n">DOUBLE</span><span class="p">)]</span>
 
-<span class="nd">@cym.metric</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&#39;MaterialsSquared&#39;</span><span class="p">,</span> <span class="n">depends</span><span class="o">=</span><span class="n">deps</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="n">schema</span><span class="p">)</span>
+<span class="nd">@cym.metric</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;MaterialsSquared&#39;</span><span class="p">,</span> <span class="n">depends</span><span class="o">=</span><span class="n">deps</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="n">schema</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">mats_sqrd</span><span class="p">(</span><span class="n">series</span><span class="p">):</span>
     <span class="n">mats</span> <span class="o">=</span> <span class="n">series</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">rtn</span> <span class="o">=</span> <span class="n">mats</span><span class="o">**</span><span class="mi">2</span>
-    <span class="n">rtn</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#39;MaterialsSquared&#39;</span>
+    <span class="n">rtn</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;MaterialsSquared&#39;</span>
     <span class="n">rtn</span> <span class="o">=</span> <span class="n">rtn</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">rtn</span>
 </pre></div>
@@ -425,7 +425,7 @@ cymetric. Moreover, <span style="font-variant:small-caps;">Cyclus</span> databas
 bring in data that might come a custom table in a <span style="font-variant:small-caps;">Cyclus</span> database.  All you
 need to do is use the <code class="docutils literal"><span class="pre">root_metric()</span></code> function somewhere. This simply accepts
 the name of the table.  For example,</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">my_table</span> <span class="o">=</span> <span class="n">cym</span><span class="o">.</span><span class="n">root_metric</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&#39;MyTable&#39;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">my_table</span> <span class="o">=</span> <span class="n">cym</span><span class="o">.</span><span class="n">root_metric</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;MyTable&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>And that is all!</p>
@@ -489,14 +489,11 @@ the name of the table.  For example,</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
     <h3>Get Cyclus</h3>
@@ -561,7 +558,7 @@ the name of the table.  For example,</p>
 
     <div class="footer" role="contentinfo">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on May 13, 2016.
+      Last updated on Sep 02, 2016.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");

@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '(1.3.1-210-g9065eea)',
+        VERSION:     'b&#39;(1.4.0-rc1-123-gd233d22)&#39;',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -97,7 +97,7 @@ be part of the set of state variables and allows convenient annotations.</p>
 <p>First, we&#8217;ll add the maximum monthly transfer capacity, called <code class="docutils literal"><span class="pre">throughput</span></code>.
 Open the file <code class="docutils literal"><span class="pre">src/storage.h</span></code> in your text editor.</p>
 <p>Immediately after the declaration of <code class="docutils literal"><span class="pre">Tock()</span></code>, add the following:</p>
-<div class="highlight-c++"><div class="highlight"><pre><span class="cp">#pragma cyclus var { \</span>
+<div class="highlight-c++"><div class="highlight"><pre><span></span><span class="cp">#pragma cyclus var { \</span>
 <span class="cp">  &quot;doc&quot;: &quot;Maximum amount of material that can be transferred in or out each time step&quot;, \</span>
 <span class="cp">  &quot;tooltip&quot;: &quot;Maximum amount of material that can be transferred in or out each time step&quot;, \</span>
 <span class="cp">  &quot;units&quot;: &quot;kg&quot;, \</span>
@@ -108,7 +108,7 @@ Open the file <code class="docutils literal"><span class="pre">src/storage.h</sp
 </div>
 <p>Now, we&#8217;ll add variables for the minimum amount of time that material is
 stored and the input/output commodity names.</p>
-<div class="highlight-c++"><div class="highlight"><pre><span class="cp">#pragma cyclus var { \</span>
+<div class="highlight-c++"><div class="highlight"><pre><span></span><span class="cp">#pragma cyclus var { \</span>
 <span class="cp">  &quot;doc&quot;: &quot;Minimum amount of time material must be stored&quot;, \</span>
 <span class="cp">  &quot;tooltip&quot;: &quot;Minimum amount of time material must be stored&quot;, \</span>
 <span class="cp">  &quot;units&quot;: &quot;months&quot;, \</span>
@@ -137,7 +137,7 @@ stored and the input/output commodity names.</p>
 <div class="section" id="build-and-install-the-modified-module">
 <h2>Build and Install the Modified Module<a class="headerlink" href="#build-and-install-the-modified-module" title="Permalink to this headline">¶</a></h2>
 <p>To rebuild, reinstall, and test this module, just issue the same command as before:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> ./install.py
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> ./install.py
 <span class="gp">$</span> Storage_unit_tests
 </pre></div>
 </div>
@@ -147,7 +147,7 @@ stored and the input/output commodity names.</p>
 <p>If you try to run the same input file with your modified module, you will get
 errors because the sample input file no longer includes the necessary pieces
 to define your module.  It is missing the new variables.  Try it:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> cyclus -v <span class="m">2</span> input/storage.xml
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> cyclus -v <span class="m">2</span> input/storage.xml
 <span class="go">              :</span>
 <span class="go">          .CL:CC CC             _Q     _Q  _Q_Q    _Q    _Q              _Q</span>
 <span class="go">        CC;CCCCCCCC:C;         /_\)   /_\)/_/\\)  /_\)  /_\)            /_\)</span>
@@ -182,18 +182,18 @@ to define your module.  It is missing the new variables.  Try it:</p>
 </pre></div>
 </div>
 <p>The simulation now fails because it does not match the schema. You can view the schema with</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> cyclus --agent-schema tutorial:Storage:Storage
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> cyclus --agent-schema tutorial:Storage:Storage
 </pre></div>
 </div>
 <p>Notice that you were able to take advantage of the input file validation simply by using the <code class="docutils literal"><span class="pre">#pragma</span></code>.</p>
 <p>Our failed cyclus simulation produced an output file that will need to be deleted.</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> rm cyclus.sqlite
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> rm cyclus.sqlite
 </pre></div>
 </div>
 <p>Now, we&#8217;ll change that input file.  Open the file <code class="docutils literal"><span class="pre">input/storage.xml</span></code> in
 your text editor, and find the prototype configuration for the single facility
 named &#8220;OneFacility&#8221; that looks like this.</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;facility&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;facility&gt;</span>
   <span class="nt">&lt;name&gt;</span>OneFacility<span class="nt">&lt;/name&gt;</span>
   <span class="nt">&lt;config&gt;</span>
     <span class="nt">&lt;Storage</span> <span class="nt">/&gt;</span>
@@ -202,7 +202,7 @@ named &#8220;OneFacility&#8221; that looks like this.</p>
 </pre></div>
 </div>
 <p>We need to replace the <code class="docutils literal"><span class="pre">&lt;config&gt;</span></code> element with this:</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;config&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;config&gt;</span>
   <span class="nt">&lt;Storage&gt;</span>
     <span class="nt">&lt;throughput&gt;</span>10<span class="nt">&lt;/throughput&gt;</span>
     <span class="nt">&lt;storage_time&gt;</span>1<span class="nt">&lt;/storage_time&gt;</span>
@@ -213,7 +213,7 @@ named &#8220;OneFacility&#8221; that looks like this.</p>
 </pre></div>
 </div>
 <p>Now we can try it again:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> cyclus -v <span class="m">2</span> input/storage.xml
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> cyclus -v <span class="m">2</span> input/storage.xml
 <span class="go">              :</span>
 <span class="go">          .CL:CC CC             _Q     _Q  _Q_Q    _Q    _Q              _Q</span>
 <span class="go">        CC;CCCCCCCC:C;         /_\)   /_\)/_/\\)  /_\)  /_\)            /_\)</span>
@@ -320,14 +320,11 @@ named &#8220;OneFacility&#8221; that looks like this.</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
     <h3>Get Cyclus</h3>
@@ -392,7 +389,7 @@ named &#8220;OneFacility&#8221; that looks like this.</p>
 
     <div class="footer" role="contentinfo">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on May 13, 2016.
+      Last updated on Sep 02, 2016.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");

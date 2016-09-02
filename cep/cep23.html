@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '(1.3.1-210-g9065eea)',
+        VERSION:     'b&#39;(1.4.0-rc1-123-gd233d22)&#39;',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -140,10 +140,10 @@ have an equal <img class="math" src="../_images/math/6c030557cb024cfac6faf1fe597
 <p>This CEP defines the default time step as the average length of a Julian
 month as measured in seconds, the proper unit for time:</p>
 <div class="math">
-<p><img src="../_images/math/32c522eac7949f6b4afa5667eb3f4016851acc6e.png" alt="\delta t = \frac{365.25 [d]}{12} = \frac{31557600 [s]}{12} = 2629800 [s/m]"/></p>
+<p><img src="../_images/math/5aeb65be257c04016a3eb2a7c3d290ffa7f730b0.png" alt="\delta t = \frac{365.25 [d]}{12} = \frac{31557600 [s]}{12} = 2629800 [s/m]"/></p>
 </div><p>Furthermore, this actual time step should be able to be set by the user in the
 input file. The following changes to the master schema(s) are thus needed:</p>
-<div class="highlight-xml"><div class="highlight"><pre>&lt;element name =&quot;control&quot;&gt;
+<div class="highlight-xml"><div class="highlight"><pre><span></span>&lt;element name =&quot;control&quot;&gt;
   &lt;interleave&gt;
     . . .
     &lt;optional&gt;
@@ -157,7 +157,7 @@ input file. The following changes to the master schema(s) are thus needed:</p>
 </pre></div>
 </div>
 <p>This information would be added to the context with the following members:</p>
-<div class="highlight-c++"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Context</span> <span class="p">{</span>
+<div class="highlight-c++"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Context</span> <span class="p">{</span>
  <span class="k">public</span><span class="o">:</span>
   <span class="c1">// Returns the time step in seconds</span>
   <span class="kr">inline</span> <span class="kt">uint64_t</span> <span class="n">dt</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="n">dt_</span><span class="p">;</span> <span class="p">};</span>
@@ -196,7 +196,7 @@ This validation check maybe performed in any of the archetype&#8217;s member fun
 If a static range is known ahead of time, then this check is most appropriate in
 the constructor. If the time step length is outside of the valid range of the agent,
 then an exception should be raised.  We recommend something along the lines of:</p>
-<div class="highlight-c++"><div class="highlight"><pre><span class="k">if</span> <span class="p">(</span><span class="n">context</span><span class="p">().</span><span class="n">dt</span><span class="p">()</span> <span class="o">&gt;</span> <span class="n">max_dt</span><span class="p">)</span>
+<div class="highlight-c++"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">context</span><span class="p">().</span><span class="n">dt</span><span class="p">()</span> <span class="o">&gt;</span> <span class="n">max_dt</span><span class="p">)</span>
   <span class="k">throw</span> <span class="n">cyclus</span><span class="o">::</span><span class="n">ValidationError</span><span class="p">(</span><span class="s">&quot;time step exceeds valid range!&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -271,14 +271,11 @@ itself, there is no funny business here.</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
     <h3>Get Cyclus</h3>
@@ -342,7 +339,7 @@ itself, there is no funny business here.</p>
 
     <div class="footer" role="contentinfo">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on May 13, 2016.
+      Last updated on Sep 02, 2016.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");

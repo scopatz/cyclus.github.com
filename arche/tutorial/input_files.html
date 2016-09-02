@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '(1.3.1-210-g9065eea)',
+        VERSION:     'b&#39;(1.4.0-rc1-123-gd233d22)&#39;',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -108,7 +108,7 @@ minimum information needed to get up and running with the Storage archetype.</p>
 fuel per time step, the <code class="docutils literal"><span class="pre">Sink</span></code> can take one unit of fuel per time step, and
 the <code class="docutils literal"><span class="pre">Storage</span></code> stores fuel for one time step.</p>
 <p>First, make a new input file</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> cp input/storage.xml input/basic.xml
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> cp input/storage.xml input/basic.xml
 </pre></div>
 </div>
 <p>and open it with your favorite text editor.</p>
@@ -119,7 +119,7 @@ life, in Cyclus, material must have some composition. For this example, we can
 use an LEU-like composition.</p>
 <p>Add the following lines to the bottom of the input file (but before the close
 tag &lt;/simulation&gt; )</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;recipe&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;recipe&gt;</span>
   <span class="nt">&lt;name&gt;</span>LEU<span class="nt">&lt;/name&gt;</span>
   <span class="nt">&lt;basis&gt;</span>mass<span class="nt">&lt;/basis&gt;</span>
   <span class="nt">&lt;nuclide&gt;</span>
@@ -139,12 +139,12 @@ tag &lt;/simulation&gt; )</p>
 <p>We need to add a <code class="docutils literal"><span class="pre">Source</span></code> archetype and a <code class="docutils literal"><span class="pre">Sink</span></code> archetype, which we can
 find in the <code class="docutils literal"><span class="pre">agents</span></code> library of Cyclus. To do so, add the following lines to
 the <code class="docutils literal"><span class="pre">&lt;archetypes/&gt;</span></code> block of your input file.</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;spec&gt;&lt;lib&gt;</span>agents<span class="nt">&lt;/lib&gt;&lt;name&gt;</span>Source<span class="nt">&lt;/name&gt;&lt;/spec&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;spec&gt;&lt;lib&gt;</span>agents<span class="nt">&lt;/lib&gt;&lt;name&gt;</span>Source<span class="nt">&lt;/name&gt;&lt;/spec&gt;</span>
 <span class="nt">&lt;spec&gt;&lt;lib&gt;</span>agents<span class="nt">&lt;/lib&gt;&lt;name&gt;</span>Sink<span class="nt">&lt;/name&gt;&lt;/spec&gt;</span>
 </pre></div>
 </div>
 <p>The full block should now look like</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;archetypes&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;archetypes&gt;</span>
   <span class="nt">&lt;spec&gt;&lt;path&gt;</span>tutorial<span class="nt">&lt;/path&gt;&lt;lib&gt;</span>Storage<span class="nt">&lt;/lib&gt;&lt;name&gt;</span>Storage<span class="nt">&lt;/name&gt;&lt;/spec&gt;</span>
   <span class="nt">&lt;spec&gt;&lt;path&gt;</span>tutorial<span class="nt">&lt;/path&gt;&lt;lib&gt;</span>TutorialRegion<span class="nt">&lt;/lib&gt;&lt;name&gt;</span>TutorialRegion<span class="nt">&lt;/name&gt;&lt;/spec&gt;</span>
   <span class="nt">&lt;spec&gt;&lt;path&gt;</span>tutorial<span class="nt">&lt;/path&gt;&lt;lib&gt;</span>TutorialInst<span class="nt">&lt;/lib&gt;&lt;name&gt;</span>TutorialInst<span class="nt">&lt;/name&gt;&lt;/spec&gt;</span>
@@ -157,7 +157,7 @@ the <code class="docutils literal"><span class="pre">&lt;archetypes/&gt;</span><
 <div class="section" id="adding-prototypes">
 <h3>Adding Prototypes<a class="headerlink" href="#adding-prototypes" title="Permalink to this headline">¶</a></h3>
 <p>A configured archetype is called a <em>prototype</em> in Cyclus parlance. You can read
-how to on the <a class="reference internal" href="../../user/cyclusagents.html#cyclus-archetypes"><span>Cyclus Archetypes</span></a> and <a class="reference internal" href="../../user/cycamoreagents.html#cycamore-archetypes"><span>Cycamore Archetypes</span></a>
+how to on the <a class="reference internal" href="../../user/cyclusagents.html#cyclus-archetypes"><span class="std std-ref">Cyclus Archetypes</span></a> and <a class="reference internal" href="../../user/cycamoreagents.html#cycamore-archetypes"><span class="std std-ref">Cycamore Archetypes</span></a>
 pages.</p>
 <div class="section" id="source">
 <h4>Source<a class="headerlink" href="#source" title="Permalink to this headline">¶</a></h4>
@@ -168,7 +168,7 @@ source facility to supply one unit of fuel per time step and you want it to be
 connected to the <code class="docutils literal"><span class="pre">incommod</span></code> of the Storage prototype. Finally, let&#8217;s name the
 Source &#8220;FuelSource&#8221;.</p>
 <p>Accordingly, add the following lines after the Storage prototype</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;facility&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;facility&gt;</span>
   <span class="nt">&lt;name&gt;</span>FuelSource<span class="nt">&lt;/name&gt;</span>
   <span class="nt">&lt;config&gt;</span>
     <span class="nt">&lt;Source&gt;</span>
@@ -189,7 +189,7 @@ want a similar structure to the Source prototype, i.e., connection to the
 Storage prototype and a demand for one unit of fuel per time step. We can also
 name this Sink prototype &#8220;FuelSink&#8221;.</p>
 <p>Accordingly, add the following lines after the Storage prototype</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;facility&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;facility&gt;</span>
   <span class="nt">&lt;name&gt;</span>FuelSink<span class="nt">&lt;/name&gt;</span>
   <span class="nt">&lt;config&gt;</span>
     <span class="nt">&lt;Sink&gt;</span>
@@ -219,7 +219,7 @@ like <code class="docutils literal"><span class="pre">FuelStorage</span></code>.
 our source and sink to be deployed at the beginning of the simulation, they must
 be added to the <code class="docutils literal"><span class="pre">&lt;initialfacilitylist/&gt;</span></code>. Accordingly, add the following lines
 below the <code class="docutils literal"><span class="pre">OneFacility</span></code> entry. Note that order here does not matter.</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;entry&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;entry&gt;</span>
   <span class="nt">&lt;prototype&gt;</span>FuelSink<span class="nt">&lt;/prototype&gt;</span>
   <span class="nt">&lt;number&gt;</span>1<span class="nt">&lt;/number&gt;</span>
 <span class="nt">&lt;/entry&gt;</span>
@@ -230,7 +230,7 @@ below the <code class="docutils literal"><span class="pre">OneFacility</span></c
 </pre></div>
 </div>
 <p>So now, the full region and institution configuration should look something like</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;region&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;region&gt;</span>
   <span class="nt">&lt;name&gt;</span>OneRegion<span class="nt">&lt;/name&gt;</span>
   <span class="nt">&lt;config&gt;</span>
     <span class="nt">&lt;TutorialRegion</span> <span class="nt">/&gt;</span>
@@ -264,7 +264,7 @@ below the <code class="docutils literal"><span class="pre">OneFacility</span></c
 <div class="section" id="run-the-basic-file">
 <h2>Run the Basic File<a class="headerlink" href="#run-the-basic-file" title="Permalink to this headline">¶</a></h2>
 <p>Run the file with a slightly higher verbosity</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> cyclus -v <span class="m">4</span> input/basic.xml
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> cyclus -v <span class="m">4</span> input/basic.xml
 </pre></div>
 </div>
 <div class="admonition note">
@@ -274,7 +274,7 @@ from <code class="docutils literal"><span class="pre">3</span></code> to <code c
 </div>
 <p>What output do you see? Are things working as expected?</p>
 <p>You should see something like the following for a single time step</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">INFO1(core  ):Current time: 5</span>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">INFO1(core  ):Current time: 5</span>
 <span class="go">INFO2(core  ):  Beginning Tick for time: 5</span>
 <span class="go">INFO2(Storag):  Quantity to be requested: 7 kg.</span>
 <span class="go">INFO2(Storag):  Quantity to be offered: 1 kg.</span>
@@ -302,15 +302,15 @@ stored for the interim period.</p>
 <p>This consistent flow occurred because, given the storage time <img class="math" src="../../_images/math/06c98a74678de6921268572c006c72f536ee2788.png" alt="t_s"/>,
 capacity <img class="math" src="../../_images/math/65868d23a5bfe5b3b2d819386b19c14fa36af134.png" alt="c"/>, and throughput <img class="math" src="../../_images/math/d9e99c35d3632bb156b7aca0e93cd78a148a10e8.png" alt="\tau"/>, the following relation is true</p>
 <div class="math">
-<p><img src="../../_images/math/40f77bfa5bb77d4fbefd480e50d6dacf7c0a4c5c.png" alt="t_s &lt; min(c, \tau)"/></p>
+<p><img src="../../_images/math/c49d925ddab5490f6b3df33b057cb355f6b400a0.png" alt="t_s &lt; min(c, \tau)"/></p>
 </div><p>What happens when <img class="math" src="../../_images/math/b546302042aec4ac0b7ceabaec825dff432d78c9.png" alt="t_s &gt; min(c, \tau)"/>? Let&#8217;s find out!</p>
 <p>First, make a new input file</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> cp input/basic.xml input/interesting.xml
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> cp input/basic.xml input/interesting.xml
 </pre></div>
 </div>
 <p>and open it with your favorite text editor.</p>
 <p>Update the Storage config block to look like</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;config&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;config&gt;</span>
   <span class="nt">&lt;Storage&gt;</span>
     <span class="nt">&lt;throughput&gt;</span>10<span class="nt">&lt;/throughput&gt;</span>
     <span class="nt">&lt;storage_time&gt;</span>5<span class="nt">&lt;/storage_time&gt;</span>
@@ -326,7 +326,7 @@ capacity <img class="math" src="../../_images/math/65868d23a5bfe5b3b2d819386b19c
 <div class="section" id="run-the-interesting-file">
 <h2>Run the Interesting File<a class="headerlink" href="#run-the-interesting-file" title="Permalink to this headline">¶</a></h2>
 <p>Run the file</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> cyclus -v <span class="m">4</span> input/interesting.xml
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> cyclus -v <span class="m">4</span> input/interesting.xml
 </pre></div>
 </div>
 <div class="section" id="exercise">
@@ -410,14 +410,11 @@ dynamics of this scenario.</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
     <h3>Get Cyclus</h3>
@@ -482,7 +479,7 @@ dynamics of this scenario.</p>
 
     <div class="footer" role="contentinfo">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on May 13, 2016.
+      Last updated on Sep 02, 2016.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");

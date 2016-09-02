@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '(1.3.1-210-g9065eea)',
+        VERSION:     'b&#39;(1.4.0-rc1-123-gd233d22)&#39;',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -104,11 +104,11 @@ if(ga_enabled){
 </tbody>
 </table>
 <p><strong>XML:</strong></p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;commod&gt;</span>[outcommodity]<span class="nt">&lt;/commod&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;commod&gt;</span>[outcommodity]<span class="nt">&lt;/commod&gt;</span>
 </pre></div>
 </div>
 <p><strong>JSON:</strong></p>
-<div class="highlight-yaml"><div class="highlight"><pre><span class="p-Indicator">{</span><span class="s">&quot;commod&quot;</span><span class="p-Indicator">:</span> <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p-Indicator">}</span>  <span class="c1"># outcommodity</span>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;commod&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">}</span>  <span class="c1"># outcommodity</span>
 </pre></div>
 </div>
 </td>
@@ -124,11 +124,11 @@ if(ga_enabled){
 </tbody>
 </table>
 <p><strong>XML:</strong></p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;recipe_name&gt;</span>[recipe]<span class="nt">&lt;/recipe_name&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;recipe_name&gt;</span>[recipe]<span class="nt">&lt;/recipe_name&gt;</span>
 </pre></div>
 </div>
 <p><strong>JSON:</strong></p>
-<div class="highlight-yaml"><div class="highlight"><pre><span class="p-Indicator">{</span><span class="s">&quot;recipe_name&quot;</span><span class="p-Indicator">:</span> <span class="s">&quot;&quot;</span><span class="p-Indicator">}</span>  <span class="c1"># recipe</span>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;recipe_name&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;&quot;</span><span class="p p-Indicator">}</span>  <span class="c1"># recipe</span>
 </pre></div>
 </div>
 </td>
@@ -136,11 +136,11 @@ if(ga_enabled){
 <tr class="field-even field"><th class="field-name">capacity:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">double</span></code></p>
 <p>amount of commodity that can be supplied at each time step</p>
 <p><strong>XML:</strong></p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;capacity&gt;</span>[double]<span class="nt">&lt;/capacity&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;capacity&gt;</span>[double]<span class="nt">&lt;/capacity&gt;</span>
 </pre></div>
 </div>
 <p><strong>JSON:</strong></p>
-<div class="last highlight-yaml"><div class="highlight"><pre><span class="p-Indicator">{</span><span class="s">&quot;capacity&quot;</span><span class="p-Indicator">:</span> <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p-Indicator">}</span>  <span class="c1"># double</span>
+<div class="last highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;capacity&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">}</span>  <span class="c1"># double</span>
 </pre></div>
 </div>
 </td>
@@ -153,13 +153,13 @@ if(ga_enabled){
 <ul class="simple">
 <li><strong>Full Archetype Name</strong>: cyclus::Source</li>
 <li><strong>Simulation Entity Type</strong>: facility</li>
-<li><strong>Interfaces</strong>: [cyclus::Facility]</li>
-<li><strong>All Interfaces</strong>: [cyclus::Agent, cyclus::Facility, cyclus::Ider, cyclus::StateWrangler, cyclus::TimeListener, cyclus::Trader]</li>
+<li><strong>Interfaces</strong>: [&#8216;cyclus::Facility&#8217;]</li>
+<li><strong>All Interfaces</strong>: [&#8216;cyclus::Agent&#8217;, &#8216;cyclus::Facility&#8217;, &#8216;cyclus::Ider&#8217;, &#8216;cyclus::StateWrangler&#8217;, &#8216;cyclus::TimeListener&#8217;, &#8216;cyclus::Trader&#8217;]</li>
 </ul>
 </div>
 <div class="section" id="xml-input-schema">
 <h3>XML Input Schema<a class="headerlink" href="#xml-input-schema" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;interleave&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;interleave&gt;</span>
     <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;commod&quot;</span><span class="nt">&gt;</span>
         <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;token&quot;</span><span class="nt">/&gt;</span>
     <span class="nt">&lt;/element&gt;</span>
@@ -189,7 +189,7 @@ if(ga_enabled){
 <tr class="field-odd field"><th class="field-name">in_commods:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">std::vector&lt;std::string&gt;</span></code></p>
 <p>commodities that the sink facility accepts</p>
 <p><strong>XML:</strong></p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;in_commods&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;in_commods&gt;</span>
   <span class="nt">&lt;val&gt;</span>[incommodity]<span class="nt">&lt;/val&gt;</span>
   <span class="nt">&lt;val&gt;</span>[incommodity]<span class="nt">&lt;/val&gt;</span>
   ...
@@ -197,11 +197,11 @@ if(ga_enabled){
 </pre></div>
 </div>
 <p><strong>JSON:</strong></p>
-<div class="highlight-yaml"><div class="highlight"><pre><span class="p-Indicator">{</span><span class="s">&quot;in_commods&quot;</span><span class="p-Indicator">:</span>  <span class="p-Indicator">{</span><span class="s">&quot;val&quot;</span><span class="p-Indicator">:</span> <span class="p-Indicator">[</span>
-   <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p-Indicator">,</span>
-   <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p-Indicator">,</span>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;in_commods&quot;</span><span class="p p-Indicator">:</span>  <span class="p p-Indicator">{</span><span class="s">&quot;val&quot;</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span>
+   <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">,</span>
+   <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">,</span>
    <span class="nv">...</span>
-<span class="p-Indicator">]}}</span>
+<span class="p p-Indicator">]}}</span>
 </pre></div>
 </div>
 </td>
@@ -209,11 +209,11 @@ if(ga_enabled){
 <tr class="field-even field"><th class="field-name">recipe_name:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">std::string</span></code>, optional (default=&#8221;&#8221;)</p>
 <p>Name of recipe to request.If empty, sink requests material no particular composition.</p>
 <p><strong>XML:</strong></p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;recipe_name&gt;</span>[recipe]<span class="nt">&lt;/recipe_name&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;recipe_name&gt;</span>[recipe]<span class="nt">&lt;/recipe_name&gt;</span>
 </pre></div>
 </div>
 <p><strong>JSON:</strong></p>
-<div class="highlight-yaml"><div class="highlight"><pre><span class="p-Indicator">{</span><span class="s">&quot;recipe_name&quot;</span><span class="p-Indicator">:</span> <span class="s">&quot;&quot;</span><span class="p-Indicator">}</span>  <span class="c1"># recipe</span>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;recipe_name&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;&quot;</span><span class="p p-Indicator">}</span>  <span class="c1"># recipe</span>
 </pre></div>
 </div>
 </td>
@@ -221,11 +221,11 @@ if(ga_enabled){
 <tr class="field-odd field"><th class="field-name">max_inv_size:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">double</span></code>, optional (default=1e+299)</p>
 <p>total maximum inventory size of sink facility</p>
 <p><strong>XML:</strong></p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;max_inv_size&gt;</span>[double]<span class="nt">&lt;/max_inv_size&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;max_inv_size&gt;</span>[double]<span class="nt">&lt;/max_inv_size&gt;</span>
 </pre></div>
 </div>
 <p><strong>JSON:</strong></p>
-<div class="highlight-yaml"><div class="highlight"><pre><span class="p-Indicator">{</span><span class="s">&quot;max_inv_size&quot;</span><span class="p-Indicator">:</span> <span class="nv">1e+299</span><span class="p-Indicator">}</span>  <span class="c1"># double</span>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;max_inv_size&quot;</span><span class="p p-Indicator">:</span> <span class="nv">1e+299</span><span class="p p-Indicator">}</span>  <span class="c1"># double</span>
 </pre></div>
 </div>
 </td>
@@ -233,11 +233,11 @@ if(ga_enabled){
 <tr class="field-even field"><th class="field-name">capacity:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">double</span></code></p>
 <p>capacity the sink facility can accept at each time step</p>
 <p><strong>XML:</strong></p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;capacity&gt;</span>[double]<span class="nt">&lt;/capacity&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;capacity&gt;</span>[double]<span class="nt">&lt;/capacity&gt;</span>
 </pre></div>
 </div>
 <p><strong>JSON:</strong></p>
-<div class="last highlight-yaml"><div class="highlight"><pre><span class="p-Indicator">{</span><span class="s">&quot;capacity&quot;</span><span class="p-Indicator">:</span> <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p-Indicator">}</span>  <span class="c1"># double</span>
+<div class="last highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;capacity&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">}</span>  <span class="c1"># double</span>
 </pre></div>
 </div>
 </td>
@@ -250,13 +250,13 @@ if(ga_enabled){
 <ul class="simple">
 <li><strong>Full Archetype Name</strong>: cyclus::Sink</li>
 <li><strong>Simulation Entity Type</strong>: facility</li>
-<li><strong>Interfaces</strong>: [cyclus::Facility]</li>
-<li><strong>All Interfaces</strong>: [cyclus::Agent, cyclus::Facility, cyclus::Ider, cyclus::StateWrangler, cyclus::TimeListener, cyclus::Trader]</li>
+<li><strong>Interfaces</strong>: [&#8216;cyclus::Facility&#8217;]</li>
+<li><strong>All Interfaces</strong>: [&#8216;cyclus::Agent&#8217;, &#8216;cyclus::Facility&#8217;, &#8216;cyclus::Ider&#8217;, &#8216;cyclus::StateWrangler&#8217;, &#8216;cyclus::TimeListener&#8217;, &#8216;cyclus::Trader&#8217;]</li>
 </ul>
 </div>
 <div class="section" id="id4">
 <h3>XML Input Schema<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;interleave&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;interleave&gt;</span>
     <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;in_commods&quot;</span><span class="nt">&gt;</span>
         <span class="nt">&lt;oneOrMore&gt;</span>
             <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;val&quot;</span><span class="nt">&gt;</span>
@@ -291,13 +291,13 @@ if(ga_enabled){
 <ul class="simple">
 <li><strong>Full Archetype Name</strong>: cyclus::NullRegion</li>
 <li><strong>Simulation Entity Type</strong>: region</li>
-<li><strong>Interfaces</strong>: [cyclus::Region]</li>
-<li><strong>All Interfaces</strong>: [cyclus::Agent, cyclus::Ider, cyclus::Region, cyclus::StateWrangler, cyclus::TimeListener]</li>
+<li><strong>Interfaces</strong>: [&#8216;cyclus::Region&#8217;]</li>
+<li><strong>All Interfaces</strong>: [&#8216;cyclus::Agent&#8217;, &#8216;cyclus::Ider&#8217;, &#8216;cyclus::Region&#8217;, &#8216;cyclus::StateWrangler&#8217;, &#8216;cyclus::TimeListener&#8217;]</li>
 </ul>
 </div>
 <div class="section" id="id6">
 <h3>XML Input Schema<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;text/&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;text/&gt;</span>
 </pre></div>
 </div>
 </div>
@@ -311,13 +311,13 @@ if(ga_enabled){
 <ul class="simple">
 <li><strong>Full Archetype Name</strong>: cyclus::NullInst</li>
 <li><strong>Simulation Entity Type</strong>: institution</li>
-<li><strong>Interfaces</strong>: [cyclus::Institution]</li>
-<li><strong>All Interfaces</strong>: [cyclus::Agent, cyclus::Ider, cyclus::Institution, cyclus::StateWrangler, cyclus::TimeListener]</li>
+<li><strong>Interfaces</strong>: [&#8216;cyclus::Institution&#8217;]</li>
+<li><strong>All Interfaces</strong>: [&#8216;cyclus::Agent&#8217;, &#8216;cyclus::Ider&#8217;, &#8216;cyclus::Institution&#8217;, &#8216;cyclus::StateWrangler&#8217;, &#8216;cyclus::TimeListener&#8217;]</li>
 </ul>
 </div>
 <div class="section" id="id8">
 <h3>XML Input Schema<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;text/&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;text/&gt;</span>
 </pre></div>
 </div>
 </div>
@@ -343,11 +343,11 @@ if(ga_enabled){
 </tbody>
 </table>
 <p><strong>XML:</strong></p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;in_commod&gt;</span>[incommodity]<span class="nt">&lt;/in_commod&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;in_commod&gt;</span>[incommodity]<span class="nt">&lt;/in_commod&gt;</span>
 </pre></div>
 </div>
 <p><strong>JSON:</strong></p>
-<div class="highlight-yaml"><div class="highlight"><pre><span class="p-Indicator">{</span><span class="s">&quot;in_commod&quot;</span><span class="p-Indicator">:</span> <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p-Indicator">}</span>  <span class="c1"># incommodity</span>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;in_commod&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">}</span>  <span class="c1"># incommodity</span>
 </pre></div>
 </div>
 </td>
@@ -363,11 +363,11 @@ if(ga_enabled){
 </tbody>
 </table>
 <p><strong>XML:</strong></p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;recipe_name&gt;</span>[recipe]<span class="nt">&lt;/recipe_name&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;recipe_name&gt;</span>[recipe]<span class="nt">&lt;/recipe_name&gt;</span>
 </pre></div>
 </div>
 <p><strong>JSON:</strong></p>
-<div class="highlight-yaml"><div class="highlight"><pre><span class="p-Indicator">{</span><span class="s">&quot;recipe_name&quot;</span><span class="p-Indicator">:</span> <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p-Indicator">}</span>  <span class="c1"># recipe</span>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;recipe_name&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">}</span>  <span class="c1"># recipe</span>
 </pre></div>
 </div>
 </td>
@@ -383,11 +383,11 @@ if(ga_enabled){
 </tbody>
 </table>
 <p><strong>XML:</strong></p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;out_commod&gt;</span>[outcommodity]<span class="nt">&lt;/out_commod&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;out_commod&gt;</span>[outcommodity]<span class="nt">&lt;/out_commod&gt;</span>
 </pre></div>
 </div>
 <p><strong>JSON:</strong></p>
-<div class="highlight-yaml"><div class="highlight"><pre><span class="p-Indicator">{</span><span class="s">&quot;out_commod&quot;</span><span class="p-Indicator">:</span> <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p-Indicator">}</span>  <span class="c1"># outcommodity</span>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;out_commod&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">}</span>  <span class="c1"># outcommodity</span>
 </pre></div>
 </div>
 </td>
@@ -395,11 +395,11 @@ if(ga_enabled){
 <tr class="field-even field"><th class="field-name">in_capacity:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">double</span></code></p>
 <p>number of commodity units that can be taken at each timestep (infinite capacity can be represented by a very large number)</p>
 <p><strong>XML:</strong></p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;in_capacity&gt;</span>[double]<span class="nt">&lt;/in_capacity&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;in_capacity&gt;</span>[double]<span class="nt">&lt;/in_capacity&gt;</span>
 </pre></div>
 </div>
 <p><strong>JSON:</strong></p>
-<div class="highlight-yaml"><div class="highlight"><pre><span class="p-Indicator">{</span><span class="s">&quot;in_capacity&quot;</span><span class="p-Indicator">:</span> <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p-Indicator">}</span>  <span class="c1"># double</span>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;in_capacity&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">}</span>  <span class="c1"># double</span>
 </pre></div>
 </div>
 </td>
@@ -407,11 +407,11 @@ if(ga_enabled){
 <tr class="field-odd field"><th class="field-name">out_capacity:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">double</span></code></p>
 <p>number of commodity units that can be supplied at each timestep (infinite capacity can be represented by a very large number)</p>
 <p><strong>XML:</strong></p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;out_capacity&gt;</span>[double]<span class="nt">&lt;/out_capacity&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;out_capacity&gt;</span>[double]<span class="nt">&lt;/out_capacity&gt;</span>
 </pre></div>
 </div>
 <p><strong>JSON:</strong></p>
-<div class="highlight-yaml"><div class="highlight"><pre><span class="p-Indicator">{</span><span class="s">&quot;out_capacity&quot;</span><span class="p-Indicator">:</span> <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p-Indicator">}</span>  <span class="c1"># double</span>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;out_capacity&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">}</span>  <span class="c1"># double</span>
 </pre></div>
 </div>
 </td>
@@ -420,11 +420,11 @@ if(ga_enabled){
 <tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">double</span></code>, optional (default=0)</p>
 <p>number of output commodity units that can be supplied at the current time step (infinite capacity can be represented by a very large number )</p>
 <p><strong>XML:</strong></p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;current_capacity&gt;</span>[double]<span class="nt">&lt;/current_capacity&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;current_capacity&gt;</span>[double]<span class="nt">&lt;/current_capacity&gt;</span>
 </pre></div>
 </div>
 <p><strong>JSON:</strong></p>
-<div class="highlight-yaml"><div class="highlight"><pre><span class="p-Indicator">{</span><span class="s">&quot;current_capacity&quot;</span><span class="p-Indicator">:</span> <span class="nv">0</span><span class="p-Indicator">}</span>  <span class="c1"># double</span>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;current_capacity&quot;</span><span class="p p-Indicator">:</span> <span class="nv">0</span><span class="p p-Indicator">}</span>  <span class="c1"># double</span>
 </pre></div>
 </div>
 </td>
@@ -432,11 +432,11 @@ if(ga_enabled){
 <tr class="field-odd field"><th class="field-name">max_inv_size:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">double</span></code>, optional (default=1e+299)</p>
 <p>total maximum inventory size of the k-facility</p>
 <p><strong>XML:</strong></p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;max_inv_size&gt;</span>[double]<span class="nt">&lt;/max_inv_size&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;max_inv_size&gt;</span>[double]<span class="nt">&lt;/max_inv_size&gt;</span>
 </pre></div>
 </div>
 <p><strong>JSON:</strong></p>
-<div class="highlight-yaml"><div class="highlight"><pre><span class="p-Indicator">{</span><span class="s">&quot;max_inv_size&quot;</span><span class="p-Indicator">:</span> <span class="nv">1e+299</span><span class="p-Indicator">}</span>  <span class="c1"># double</span>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;max_inv_size&quot;</span><span class="p p-Indicator">:</span> <span class="nv">1e+299</span><span class="p p-Indicator">}</span>  <span class="c1"># double</span>
 </pre></div>
 </div>
 </td>
@@ -444,11 +444,11 @@ if(ga_enabled){
 <tr class="field-even field"><th class="field-name">k_factor_in:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">double</span></code></p>
 <p>conversion factor that governs the behavior of the k-facility&#8217;s input commodity capacity</p>
 <p><strong>XML:</strong></p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;k_factor_in&gt;</span>[double]<span class="nt">&lt;/k_factor_in&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;k_factor_in&gt;</span>[double]<span class="nt">&lt;/k_factor_in&gt;</span>
 </pre></div>
 </div>
 <p><strong>JSON:</strong></p>
-<div class="highlight-yaml"><div class="highlight"><pre><span class="p-Indicator">{</span><span class="s">&quot;k_factor_in&quot;</span><span class="p-Indicator">:</span> <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p-Indicator">}</span>  <span class="c1"># double</span>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;k_factor_in&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">}</span>  <span class="c1"># double</span>
 </pre></div>
 </div>
 </td>
@@ -456,11 +456,11 @@ if(ga_enabled){
 <tr class="field-odd field"><th class="field-name">k_factor_out:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">double</span></code></p>
 <p>conversion factor that governs the behavior of the k-facility&#8217;s output commodity capacity</p>
 <p><strong>XML:</strong></p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;k_factor_out&gt;</span>[double]<span class="nt">&lt;/k_factor_out&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;k_factor_out&gt;</span>[double]<span class="nt">&lt;/k_factor_out&gt;</span>
 </pre></div>
 </div>
 <p><strong>JSON:</strong></p>
-<div class="last highlight-yaml"><div class="highlight"><pre><span class="p-Indicator">{</span><span class="s">&quot;k_factor_out&quot;</span><span class="p-Indicator">:</span> <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p-Indicator">}</span>  <span class="c1"># double</span>
+<div class="last highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;k_factor_out&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">}</span>  <span class="c1"># double</span>
 </pre></div>
 </div>
 </td>
@@ -473,13 +473,13 @@ if(ga_enabled){
 <ul class="simple">
 <li><strong>Full Archetype Name</strong>: cyclus::KFacility</li>
 <li><strong>Simulation Entity Type</strong>: facility</li>
-<li><strong>Interfaces</strong>: [cyclus::Facility]</li>
-<li><strong>All Interfaces</strong>: [cyclus::Agent, cyclus::Facility, cyclus::Ider, cyclus::StateWrangler, cyclus::TimeListener, cyclus::Trader]</li>
+<li><strong>Interfaces</strong>: [&#8216;cyclus::Facility&#8217;]</li>
+<li><strong>All Interfaces</strong>: [&#8216;cyclus::Agent&#8217;, &#8216;cyclus::Facility&#8217;, &#8216;cyclus::Ider&#8217;, &#8216;cyclus::StateWrangler&#8217;, &#8216;cyclus::TimeListener&#8217;, &#8216;cyclus::Trader&#8217;]</li>
 </ul>
 </div>
 <div class="section" id="id11">
 <h3>XML Input Schema<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;interleave&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;interleave&gt;</span>
     <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;in_commod&quot;</span><span class="nt">&gt;</span>
         <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;token&quot;</span><span class="nt">/&gt;</span>
     <span class="nt">&lt;/element&gt;</span>
@@ -537,11 +537,11 @@ if(ga_enabled){
 </tbody>
 </table>
 <p><strong>XML:</strong></p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;commod&gt;</span>[outcommodity]<span class="nt">&lt;/commod&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;commod&gt;</span>[outcommodity]<span class="nt">&lt;/commod&gt;</span>
 </pre></div>
 </div>
 <p><strong>JSON:</strong></p>
-<div class="highlight-yaml"><div class="highlight"><pre><span class="p-Indicator">{</span><span class="s">&quot;commod&quot;</span><span class="p-Indicator">:</span> <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p-Indicator">}</span>  <span class="c1"># outcommodity</span>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;commod&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">}</span>  <span class="c1"># outcommodity</span>
 </pre></div>
 </div>
 </td>
@@ -557,11 +557,11 @@ if(ga_enabled){
 </tbody>
 </table>
 <p><strong>XML:</strong></p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;prey&gt;</span>[incommodity]<span class="nt">&lt;/prey&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;prey&gt;</span>[incommodity]<span class="nt">&lt;/prey&gt;</span>
 </pre></div>
 </div>
 <p><strong>JSON:</strong></p>
-<div class="highlight-yaml"><div class="highlight"><pre><span class="p-Indicator">{</span><span class="s">&quot;prey&quot;</span><span class="p-Indicator">:</span> <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p-Indicator">}</span>  <span class="c1"># incommodity</span>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;prey&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">}</span>  <span class="c1"># incommodity</span>
 </pre></div>
 </div>
 </td>
@@ -569,11 +569,11 @@ if(ga_enabled){
 <tr class="field-even field"><th class="field-name">full:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">double</span></code>, optional (default=1)</p>
 <p>how many units of prey a predator consumes until it is satisfied</p>
 <p><strong>XML:</strong></p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;full&gt;</span>[double]<span class="nt">&lt;/full&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;full&gt;</span>[double]<span class="nt">&lt;/full&gt;</span>
 </pre></div>
 </div>
 <p><strong>JSON:</strong></p>
-<div class="highlight-yaml"><div class="highlight"><pre><span class="p-Indicator">{</span><span class="s">&quot;full&quot;</span><span class="p-Indicator">:</span> <span class="nv">1</span><span class="p-Indicator">}</span>  <span class="c1"># double</span>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;full&quot;</span><span class="p p-Indicator">:</span> <span class="nv">1</span><span class="p p-Indicator">}</span>  <span class="c1"># double</span>
 </pre></div>
 </div>
 </td>
@@ -581,11 +581,11 @@ if(ga_enabled){
 <tr class="field-odd field"><th class="field-name">hunt_freq:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">int</span></code>, optional (default=1)</p>
 <p>how often a predator needs to hunt</p>
 <p><strong>XML:</strong></p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;hunt_freq&gt;</span>[int]<span class="nt">&lt;/hunt_freq&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;hunt_freq&gt;</span>[int]<span class="nt">&lt;/hunt_freq&gt;</span>
 </pre></div>
 </div>
 <p><strong>JSON:</strong></p>
-<div class="highlight-yaml"><div class="highlight"><pre><span class="p-Indicator">{</span><span class="s">&quot;hunt_freq&quot;</span><span class="p-Indicator">:</span> <span class="nv">1</span><span class="p-Indicator">}</span>  <span class="c1"># int</span>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;hunt_freq&quot;</span><span class="p p-Indicator">:</span> <span class="nv">1</span><span class="p p-Indicator">}</span>  <span class="c1"># int</span>
 </pre></div>
 </div>
 </td>
@@ -593,11 +593,11 @@ if(ga_enabled){
 <tr class="field-even field"><th class="field-name">hunt_cap:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">double</span></code>, optional (default=1)</p>
 <p>how many units of prey a predator can catch during a hunt</p>
 <p><strong>XML:</strong></p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;hunt_cap&gt;</span>[double]<span class="nt">&lt;/hunt_cap&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;hunt_cap&gt;</span>[double]<span class="nt">&lt;/hunt_cap&gt;</span>
 </pre></div>
 </div>
 <p><strong>JSON:</strong></p>
-<div class="highlight-yaml"><div class="highlight"><pre><span class="p-Indicator">{</span><span class="s">&quot;hunt_cap&quot;</span><span class="p-Indicator">:</span> <span class="nv">1</span><span class="p-Indicator">}</span>  <span class="c1"># double</span>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;hunt_cap&quot;</span><span class="p p-Indicator">:</span> <span class="nv">1</span><span class="p p-Indicator">}</span>  <span class="c1"># double</span>
 </pre></div>
 </div>
 </td>
@@ -605,11 +605,11 @@ if(ga_enabled){
 <tr class="field-odd field"><th class="field-name">success:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">double</span></code>, optional (default=1)</p>
 <p>fraction of hunting success on a scale from 0 to 1</p>
 <p><strong>XML:</strong></p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;success&gt;</span>[double]<span class="nt">&lt;/success&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;success&gt;</span>[double]<span class="nt">&lt;/success&gt;</span>
 </pre></div>
 </div>
 <p><strong>JSON:</strong></p>
-<div class="highlight-yaml"><div class="highlight"><pre><span class="p-Indicator">{</span><span class="s">&quot;success&quot;</span><span class="p-Indicator">:</span> <span class="nv">1</span><span class="p-Indicator">}</span>  <span class="c1"># double</span>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;success&quot;</span><span class="p p-Indicator">:</span> <span class="nv">1</span><span class="p p-Indicator">}</span>  <span class="c1"># double</span>
 </pre></div>
 </div>
 </td>
@@ -617,11 +617,11 @@ if(ga_enabled){
 <tr class="field-even field"><th class="field-name">consumed:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">double</span></code>, optional (default=0)</p>
 <p>how many units of prey consumed per time step</p>
 <p><strong>XML:</strong></p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;consumed&gt;</span>[double]<span class="nt">&lt;/consumed&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;consumed&gt;</span>[double]<span class="nt">&lt;/consumed&gt;</span>
 </pre></div>
 </div>
 <p><strong>JSON:</strong></p>
-<div class="highlight-yaml"><div class="highlight"><pre><span class="p-Indicator">{</span><span class="s">&quot;consumed&quot;</span><span class="p-Indicator">:</span> <span class="nv">0</span><span class="p-Indicator">}</span>  <span class="c1"># double</span>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;consumed&quot;</span><span class="p p-Indicator">:</span> <span class="nv">0</span><span class="p p-Indicator">}</span>  <span class="c1"># double</span>
 </pre></div>
 </div>
 </td>
@@ -629,11 +629,11 @@ if(ga_enabled){
 <tr class="field-odd field"><th class="field-name">hunt_factor:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">bool</span></code>, optional (default=0)</p>
 <p>whether or not to base hunting success on relative predator/prey populations</p>
 <p><strong>XML:</strong></p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;hunt_factor&gt;</span>[boolean]<span class="nt">&lt;/hunt_factor&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;hunt_factor&gt;</span>[boolean]<span class="nt">&lt;/hunt_factor&gt;</span>
 </pre></div>
 </div>
 <p><strong>JSON:</strong></p>
-<div class="highlight-yaml"><div class="highlight"><pre><span class="p-Indicator">{</span><span class="s">&quot;hunt_factor&quot;</span><span class="p-Indicator">:</span> <span class="nv">0</span><span class="p-Indicator">}</span>  <span class="c1"># boolean</span>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;hunt_factor&quot;</span><span class="p p-Indicator">:</span> <span class="nv">0</span><span class="p p-Indicator">}</span>  <span class="c1"># boolean</span>
 </pre></div>
 </div>
 </td>
@@ -641,11 +641,11 @@ if(ga_enabled){
 <tr class="field-even field"><th class="field-name">age:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">int</span></code>, optional (default=0)</p>
 <p>age of predator at beginning of simulation</p>
 <p><strong>XML:</strong></p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;age&gt;</span>[int]<span class="nt">&lt;/age&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;age&gt;</span>[int]<span class="nt">&lt;/age&gt;</span>
 </pre></div>
 </div>
 <p><strong>JSON:</strong></p>
-<div class="highlight-yaml"><div class="highlight"><pre><span class="p-Indicator">{</span><span class="s">&quot;age&quot;</span><span class="p-Indicator">:</span> <span class="nv">0</span><span class="p-Indicator">}</span>  <span class="c1"># int</span>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;age&quot;</span><span class="p p-Indicator">:</span> <span class="nv">0</span><span class="p p-Indicator">}</span>  <span class="c1"># int</span>
 </pre></div>
 </div>
 </td>
@@ -653,11 +653,11 @@ if(ga_enabled){
 <tr class="field-odd field"><th class="field-name">lifespan:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">int</span></code>, optional (default=1)</p>
 <p>how long a predator lives</p>
 <p><strong>XML:</strong></p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;lifespan&gt;</span>[int]<span class="nt">&lt;/lifespan&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;lifespan&gt;</span>[int]<span class="nt">&lt;/lifespan&gt;</span>
 </pre></div>
 </div>
 <p><strong>JSON:</strong></p>
-<div class="highlight-yaml"><div class="highlight"><pre><span class="p-Indicator">{</span><span class="s">&quot;lifespan&quot;</span><span class="p-Indicator">:</span> <span class="nv">1</span><span class="p-Indicator">}</span>  <span class="c1"># int</span>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;lifespan&quot;</span><span class="p p-Indicator">:</span> <span class="nv">1</span><span class="p p-Indicator">}</span>  <span class="c1"># int</span>
 </pre></div>
 </div>
 </td>
@@ -665,11 +665,11 @@ if(ga_enabled){
 <tr class="field-even field"><th class="field-name">dead:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">bool</span></code>, optional (default=0)</p>
 <p>flag for whether predator is currently dead</p>
 <p><strong>XML:</strong></p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;dead&gt;</span>[boolean]<span class="nt">&lt;/dead&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;dead&gt;</span>[boolean]<span class="nt">&lt;/dead&gt;</span>
 </pre></div>
 </div>
 <p><strong>JSON:</strong></p>
-<div class="highlight-yaml"><div class="highlight"><pre><span class="p-Indicator">{</span><span class="s">&quot;dead&quot;</span><span class="p-Indicator">:</span> <span class="nv">0</span><span class="p-Indicator">}</span>  <span class="c1"># boolean</span>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;dead&quot;</span><span class="p p-Indicator">:</span> <span class="nv">0</span><span class="p p-Indicator">}</span>  <span class="c1"># boolean</span>
 </pre></div>
 </div>
 </td>
@@ -677,11 +677,11 @@ if(ga_enabled){
 <tr class="field-odd field"><th class="field-name">nchildren:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">double</span></code>, optional (default=1)</p>
 <p>number of predator children born at each birthing instance</p>
 <p><strong>XML:</strong></p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;nchildren&gt;</span>[double]<span class="nt">&lt;/nchildren&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;nchildren&gt;</span>[double]<span class="nt">&lt;/nchildren&gt;</span>
 </pre></div>
 </div>
 <p><strong>JSON:</strong></p>
-<div class="highlight-yaml"><div class="highlight"><pre><span class="p-Indicator">{</span><span class="s">&quot;nchildren&quot;</span><span class="p-Indicator">:</span> <span class="nv">1</span><span class="p-Indicator">}</span>  <span class="c1"># double</span>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;nchildren&quot;</span><span class="p p-Indicator">:</span> <span class="nv">1</span><span class="p p-Indicator">}</span>  <span class="c1"># double</span>
 </pre></div>
 </div>
 </td>
@@ -690,11 +690,11 @@ if(ga_enabled){
 <tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">bool</span></code>, optional (default=0)</p>
 <p>whether or not simultaneous birth and death are allowed (i.e., can a facility give birth and die in the same time step?)</p>
 <p><strong>XML:</strong></p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;birth_and_death&gt;</span>[boolean]<span class="nt">&lt;/birth_and_death&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;birth_and_death&gt;</span>[boolean]<span class="nt">&lt;/birth_and_death&gt;</span>
 </pre></div>
 </div>
 <p><strong>JSON:</strong></p>
-<div class="last highlight-yaml"><div class="highlight"><pre><span class="p-Indicator">{</span><span class="s">&quot;birth_and_death&quot;</span><span class="p-Indicator">:</span> <span class="nv">0</span><span class="p-Indicator">}</span>  <span class="c1"># boolean</span>
+<div class="last highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;birth_and_death&quot;</span><span class="p p-Indicator">:</span> <span class="nv">0</span><span class="p p-Indicator">}</span>  <span class="c1"># boolean</span>
 </pre></div>
 </div>
 </td>
@@ -707,13 +707,13 @@ if(ga_enabled){
 <ul class="simple">
 <li><strong>Full Archetype Name</strong>: cyclus::Predator</li>
 <li><strong>Simulation Entity Type</strong>: facility</li>
-<li><strong>Interfaces</strong>: [cyclus::Facility]</li>
-<li><strong>All Interfaces</strong>: [cyclus::Agent, cyclus::Facility, cyclus::Ider, cyclus::StateWrangler, cyclus::TimeListener, cyclus::Trader]</li>
+<li><strong>Interfaces</strong>: [&#8216;cyclus::Facility&#8217;]</li>
+<li><strong>All Interfaces</strong>: [&#8216;cyclus::Agent&#8217;, &#8216;cyclus::Facility&#8217;, &#8216;cyclus::Ider&#8217;, &#8216;cyclus::StateWrangler&#8217;, &#8216;cyclus::TimeListener&#8217;, &#8216;cyclus::Trader&#8217;]</li>
 </ul>
 </div>
 <div class="section" id="id14">
 <h3>XML Input Schema<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;interleave&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;interleave&gt;</span>
     <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;commod&quot;</span><span class="nt">&gt;</span>
         <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;token&quot;</span><span class="nt">/&gt;</span>
     <span class="nt">&lt;/element&gt;</span>
@@ -800,11 +800,11 @@ if(ga_enabled){
 </tbody>
 </table>
 <p><strong>XML:</strong></p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;commod&gt;</span>[outcommodity]<span class="nt">&lt;/commod&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;commod&gt;</span>[outcommodity]<span class="nt">&lt;/commod&gt;</span>
 </pre></div>
 </div>
 <p><strong>JSON:</strong></p>
-<div class="highlight-yaml"><div class="highlight"><pre><span class="p-Indicator">{</span><span class="s">&quot;commod&quot;</span><span class="p-Indicator">:</span> <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p-Indicator">}</span>  <span class="c1"># outcommodity</span>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;commod&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;&lt;required&gt;&quot;</span><span class="p p-Indicator">}</span>  <span class="c1"># outcommodity</span>
 </pre></div>
 </div>
 </td>
@@ -812,11 +812,11 @@ if(ga_enabled){
 <tr class="field-even field"><th class="field-name">age:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">int</span></code>, optional (default=0)</p>
 <p>age of prey at start of simulation</p>
 <p><strong>XML:</strong></p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;age&gt;</span>[int]<span class="nt">&lt;/age&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;age&gt;</span>[int]<span class="nt">&lt;/age&gt;</span>
 </pre></div>
 </div>
 <p><strong>JSON:</strong></p>
-<div class="highlight-yaml"><div class="highlight"><pre><span class="p-Indicator">{</span><span class="s">&quot;age&quot;</span><span class="p-Indicator">:</span> <span class="nv">0</span><span class="p-Indicator">}</span>  <span class="c1"># int</span>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;age&quot;</span><span class="p p-Indicator">:</span> <span class="nv">0</span><span class="p p-Indicator">}</span>  <span class="c1"># int</span>
 </pre></div>
 </div>
 </td>
@@ -824,11 +824,11 @@ if(ga_enabled){
 <tr class="field-odd field"><th class="field-name">dead:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">bool</span></code>, optional (default=0)</p>
 <p>flag for whether prey is currently dead</p>
 <p><strong>XML:</strong></p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;dead&gt;</span>[boolean]<span class="nt">&lt;/dead&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;dead&gt;</span>[boolean]<span class="nt">&lt;/dead&gt;</span>
 </pre></div>
 </div>
 <p><strong>JSON:</strong></p>
-<div class="highlight-yaml"><div class="highlight"><pre><span class="p-Indicator">{</span><span class="s">&quot;dead&quot;</span><span class="p-Indicator">:</span> <span class="nv">0</span><span class="p-Indicator">}</span>  <span class="c1"># boolean</span>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;dead&quot;</span><span class="p p-Indicator">:</span> <span class="nv">0</span><span class="p p-Indicator">}</span>  <span class="c1"># boolean</span>
 </pre></div>
 </div>
 </td>
@@ -836,11 +836,11 @@ if(ga_enabled){
 <tr class="field-even field"><th class="field-name">nchildren:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">int</span></code>, optional (default=1)</p>
 <p>number of children born at each birthing instance</p>
 <p><strong>XML:</strong></p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;nchildren&gt;</span>[int]<span class="nt">&lt;/nchildren&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;nchildren&gt;</span>[int]<span class="nt">&lt;/nchildren&gt;</span>
 </pre></div>
 </div>
 <p><strong>JSON:</strong></p>
-<div class="highlight-yaml"><div class="highlight"><pre><span class="p-Indicator">{</span><span class="s">&quot;nchildren&quot;</span><span class="p-Indicator">:</span> <span class="nv">1</span><span class="p-Indicator">}</span>  <span class="c1"># int</span>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;nchildren&quot;</span><span class="p p-Indicator">:</span> <span class="nv">1</span><span class="p p-Indicator">}</span>  <span class="c1"># int</span>
 </pre></div>
 </div>
 </td>
@@ -848,11 +848,11 @@ if(ga_enabled){
 <tr class="field-odd field"><th class="field-name">birth_freq:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">int</span></code>, optional (default=1)</p>
 <p>number of time steps between birth of children</p>
 <p><strong>XML:</strong></p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;birth_freq&gt;</span>[int]<span class="nt">&lt;/birth_freq&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;birth_freq&gt;</span>[int]<span class="nt">&lt;/birth_freq&gt;</span>
 </pre></div>
 </div>
 <p><strong>JSON:</strong></p>
-<div class="highlight-yaml"><div class="highlight"><pre><span class="p-Indicator">{</span><span class="s">&quot;birth_freq&quot;</span><span class="p-Indicator">:</span> <span class="nv">1</span><span class="p-Indicator">}</span>  <span class="c1"># int</span>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;birth_freq&quot;</span><span class="p p-Indicator">:</span> <span class="nv">1</span><span class="p p-Indicator">}</span>  <span class="c1"># int</span>
 </pre></div>
 </div>
 </td>
@@ -861,11 +861,11 @@ if(ga_enabled){
 <tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">bool</span></code>, optional (default=1)</p>
 <p>whether or not simultaneous birth and death are allowed (i.e., can a facility give birth and die in the same time step?)</p>
 <p><strong>XML:</strong></p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;birth_and_death&gt;</span>[boolean]<span class="nt">&lt;/birth_and_death&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;birth_and_death&gt;</span>[boolean]<span class="nt">&lt;/birth_and_death&gt;</span>
 </pre></div>
 </div>
 <p><strong>JSON:</strong></p>
-<div class="last highlight-yaml"><div class="highlight"><pre><span class="p-Indicator">{</span><span class="s">&quot;birth_and_death&quot;</span><span class="p-Indicator">:</span> <span class="nv">1</span><span class="p-Indicator">}</span>  <span class="c1"># boolean</span>
+<div class="last highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="s">&quot;birth_and_death&quot;</span><span class="p p-Indicator">:</span> <span class="nv">1</span><span class="p p-Indicator">}</span>  <span class="c1"># boolean</span>
 </pre></div>
 </div>
 </td>
@@ -878,13 +878,13 @@ if(ga_enabled){
 <ul class="simple">
 <li><strong>Full Archetype Name</strong>: cyclus::Prey</li>
 <li><strong>Simulation Entity Type</strong>: facility</li>
-<li><strong>Interfaces</strong>: [cyclus::Facility]</li>
-<li><strong>All Interfaces</strong>: [cyclus::Agent, cyclus::Facility, cyclus::Ider, cyclus::StateWrangler, cyclus::TimeListener, cyclus::Trader]</li>
+<li><strong>Interfaces</strong>: [&#8216;cyclus::Facility&#8217;]</li>
+<li><strong>All Interfaces</strong>: [&#8216;cyclus::Agent&#8217;, &#8216;cyclus::Facility&#8217;, &#8216;cyclus::Ider&#8217;, &#8216;cyclus::StateWrangler&#8217;, &#8216;cyclus::TimeListener&#8217;, &#8216;cyclus::Trader&#8217;]</li>
 </ul>
 </div>
 <div class="section" id="id17">
 <h3>XML Input Schema<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;interleave&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;interleave&gt;</span>
     <span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;commod&quot;</span><span class="nt">&gt;</span>
         <span class="nt">&lt;data</span> <span class="na">type=</span><span class="s">&quot;token&quot;</span><span class="nt">/&gt;</span>
     <span class="nt">&lt;/element&gt;</span>
@@ -1005,14 +1005,11 @@ if(ga_enabled){
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
     <h3>Get Cyclus</h3>
@@ -1076,7 +1073,7 @@ if(ga_enabled){
 
     <div class="footer" role="contentinfo">
         &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on May 13, 2016.
+      Last updated on Sep 02, 2016.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");
