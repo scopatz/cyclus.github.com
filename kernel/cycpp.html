@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>cycpp &mdash; Home</title>
+    <title>cycpp &#8212; Home</title>
     
     <link rel="stylesheet" href="../_static/cyclus.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,10 +17,11 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     'b&#39;(1.4.0-rc1-123-gd233d22)&#39;',
+        VERSION:     'b&#39;(1.5.0-rc1-2-gd70ae7a)&#39;',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
@@ -29,8 +30,8 @@
     <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
     <script type="text/javascript" src="../_static/cloud.js"></script>
     <link rel="shortcut icon" href="../_static/big_c.ico"/>
-    <link rel="top" title="Home" href="../index.html" />
-    <link rel="up" title="Cyclus Kernel Developer Guide" href="index.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Guide for Contributing to Cyclus" href="contributing_to_cyclus.html" />
     <link rel="prev" title="Getting and Building Cyclus From Source" href="build_from_source.html" /> 
         <meta name="viewport" content="width=device-width, initial-scale=1"><script type="text/javascript">
@@ -67,9 +68,9 @@ if(ga_enabled){
         <li class="right" >
           <a href="build_from_source.html" title="Getting and Building Cyclus From Source"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">Home</a> &raquo;</li>
+    <li><a href="../index.html">Home</a> &#187;</li>
 
-          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U"><span style="font-variant:small-caps;">Cyclus</span> Kernel Developer Guide</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U"><span style="font-variant:small-caps;">Cyclus</span> Kernel Developer Guide</a> &#187;</li> 
       </ul>
     </div>
     </div>
@@ -388,6 +389,15 @@ The name argument here is provided for debugging &amp; reporting purposes.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="cycpp.StateAccumulator.canonize_shape">
+<code class="descname">canonize_shape</code><span class="sig-paren">(</span><em>ann_dict</em><span class="sig-paren">)</span><a class="headerlink" href="#cycpp.StateAccumulator.canonize_shape" title="Permalink to this definition">¶</a></dt>
+<dd><p>This canonizes a shape. We take a look at the current shape, and 
+standardize its format if necessary. We append -1&#8217;s to the shape if 
+its length does not match our expected length. Returns the new shape
+or raises an error if the given shape was longer than expected.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="cycpp.StateAccumulator.canonize_class">
 <code class="descname">canonize_class</code><span class="sig-paren">(</span><em>cls</em>, <em>_usens=True</em><span class="sig-paren">)</span><a class="headerlink" href="#cycpp.StateAccumulator.canonize_class" title="Permalink to this definition">¶</a></dt>
 <dd><p>This canonizes a classname.  The class name need not be the current
@@ -601,9 +611,12 @@ parents of any other class in query_set</p>
   <div class="sphinxlocaltoc">
   <h3>Useful Pages</h3>
     <ul><li><ul>
+    <li><a href="/user/install.html">Install Cyclus</a></li>
     <li><a href="/user/index.html">User Guide</a></li>
+    <li><a href="/user/tutorial/index.html">User Tutorial</a></li>
     <li><a href="/arche/index.html">Archetype Developer Guide</a></li>
-    <li><a href="http://fuelcycle.org/cyclus/api/">Cyclus API Documentation</a></li>
+    <li><a href="/arche/tutorial/index.html">Archetype Developer Tutorial</a></li>
+     <li><a href="http://fuelcycle.org/cyclus/api/">Cyclus API Documentation</a></li>
     <li><a href="http://fuelcycle.org/cycamore/api/">Cycamore API Documentation</a></li>
     <li><a href="/basics/glossary.html">Glossary</a></li>
     <li><a href="mailto:cyclus-users+subscribe@googlegroups.com?subject=Subscribe&body=Send this message to subscribe to the list">Join</a> the 
@@ -625,7 +638,7 @@ parents of any other class in query_set</p>
 <script type="text/javascript">$('#searchbox').show(0);</script>
     <h3>Get Cyclus</h3>
     <br>
-    Current version: <b>1.3.0</b>
+    Current version: <b>1.5.0</b>
     <br><br>
     Install:
     <div class="highlight-bash" style="width:97.5%"><div class="highlight"><pre><span class="nv">$ </span>conda install cyclus cycamore</pre></div></div>
@@ -656,6 +669,23 @@ parents of any other class in query_set</p>
 
         </div>
       </div>
+    
+    
+        <div class="sidebar-toggle-group no-js">
+            
+            <button class="sidebar-toggle" id="sidebar-hide" title="Hide the sidebar menu">
+                 «
+                <span class="show-for-small">hide menu</span>
+                
+            </button>
+            <button class="sidebar-toggle" id="sidebar-show" title="Show the sidebar menu">
+                
+                <span class="show-for-small">menu</span>
+                <span class="hide-for-small">sidebar</span>
+                 »
+            </button>
+        </div>
+    
       <div class="clearer"></div>
     </div>
     <div class="relbar-bottom">
@@ -675,16 +705,16 @@ parents of any other class in query_set</p>
         <li class="right" >
           <a href="build_from_source.html" title="Getting and Building Cyclus From Source"
              >previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">Home</a> &raquo;</li>
+    <li><a href="../index.html">Home</a> &#187;</li>
 
-          <li class="nav-item nav-item-1"><a href="index.html" ><span style="font-variant:small-caps;">Cyclus</span> Kernel Developer Guide</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="index.html" ><span style="font-variant:small-caps;">Cyclus</span> Kernel Developer Guide</a> &#187;</li> 
       </ul>
     </div>
     </div>
 
     <div class="footer" role="contentinfo">
-        &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Sep 02, 2016.
+        &#169; Copyright 2012-2016, University of Wisconsin Computational Nuclear Engineering Research Group.
+      Last updated on Dec 13, 2016.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");

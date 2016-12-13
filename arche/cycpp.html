@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Using the Cyclus Preprocessor &mdash; Home</title>
+    <title>Using the Cyclus Preprocessor &#8212; Home</title>
     
     <link rel="stylesheet" href="../_static/cyclus.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,10 +17,11 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     'b&#39;(1.4.0-rc1-123-gd233d22)&#39;',
+        VERSION:     'b&#39;(1.5.0-rc1-2-gd70ae7a)&#39;',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
@@ -29,9 +30,9 @@
     <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
     <script type="text/javascript" src="../_static/cloud.js"></script>
     <link rel="shortcut icon" href="../_static/big_c.ico"/>
-    <link rel="top" title="Home" href="../index.html" />
-    <link rel="up" title="Cyclus Archetype Developer Guide" href="index.html" />
-    <link rel="next" title="Testing Agents and Modules" href="testing.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Testing and Debugging Archetypes" href="testing.html" />
     <link rel="prev" title="Building Modules with CMake" href="cmake.html" /> 
         <meta name="viewport" content="width=device-width, initial-scale=1"><script type="text/javascript">
 var ga_enabled = !$.cookie('disable-ga');
@@ -62,14 +63,14 @@ if(ga_enabled){
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> &nbsp; &nbsp;</li>
         <li class="right" >
-          <a href="testing.html" title="Testing Agents and Modules"
+          <a href="testing.html" title="Testing and Debugging Archetypes"
              accesskey="N">next</a> &nbsp; &nbsp;</li>
         <li class="right" >
           <a href="cmake.html" title="Building Modules with CMake"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">Home</a> &raquo;</li>
+    <li><a href="../index.html">Home</a> &#187;</li>
 
-          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U"><span style="font-variant:small-caps;">Cyclus</span> Archetype Developer Guide</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U"><span style="font-variant:small-caps;">Cyclus</span> Archetype Developer Guide</a> &#187;</li> 
       </ul>
     </div>
     </div>
@@ -150,7 +151,7 @@ meaning. Furthermore, there are two keys - <code class="docutils literal"><span 
 C++ type that is allowed by the database backend that is being used.  For a listing of
 valid types please refer to the <a class="reference internal" href="dbtypes.html"><span class="doc">Database Types</span></a> page. <a class="reference internal" href="#cycpp-table-1"><span class="std std-ref">Table I. Special State Variable Annotations</span></a>
 contains a listing of all special keys and their meanings.</p>
-<table border="1" class="styled-table centered docutils" id="id1">
+<table border="1" class="colwidths-given styled-table centered docutils" id="id1">
 <span id="cycpp-table-1"></span><caption><span class="caption-text"><strong>Table I.</strong> Special State Variable Annotations</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col width="10%" />
@@ -180,7 +181,14 @@ post-process.</td>
 <td class="left-align single-left-divider no-right-divider">The default value for this variable that is used if otherwise
 unspecified. The value must match the type of the variable.</td>
 </tr>
-<tr class="row-odd"><td class="left-align no-left-divider single-right-divider">shape</td>
+<tr class="row-odd"><td class="left-align no-left-divider single-right-divider">internal</td>
+<td class="left-align single-left-divider no-right-divider"><code class="docutils literal"><span class="pre">True</span></code> if this state variable is only for
+archetype-internal usage.  Although the variable will still
+be persisted in the database and initialized normally (e.g.
+with any default), it will not be included in the XML schema
+or input file.</td>
+</tr>
+<tr class="row-even"><td class="left-align no-left-divider single-right-divider">shape</td>
 <td class="left-align single-left-divider no-right-divider">The shape of a variable length datatypes. If present this must
 be a list of integers whose length (rank) makes sense for this
 type. Specifying positive values will (depending on the
@@ -193,20 +201,20 @@ example, a length-5 string would have a shape of <code class="docutils literal">
 a length-10 vector of variable length strings would have a
 shape of <code class="docutils literal"><span class="pre">[10,</span> <span class="pre">-1]</span></code>.</td>
 </tr>
-<tr class="row-even"><td class="left-align no-left-divider single-right-divider">doc</td>
+<tr class="row-odd"><td class="left-align no-left-divider single-right-divider">doc</td>
 <td class="left-align single-left-divider no-right-divider">Documentation string.</td>
 </tr>
-<tr class="row-odd"><td class="left-align no-left-divider single-right-divider">tooltip</td>
+<tr class="row-even"><td class="left-align no-left-divider single-right-divider">tooltip</td>
 <td class="left-align single-left-divider no-right-divider">Brief documentation string for user interfaces.</td>
 </tr>
-<tr class="row-even"><td class="left-align no-left-divider single-right-divider">units</td>
+<tr class="row-odd"><td class="left-align no-left-divider single-right-divider">units</td>
 <td class="left-align single-left-divider no-right-divider">The physical units, if any.</td>
 </tr>
-<tr class="row-odd"><td class="left-align no-left-divider single-right-divider">userlevel</td>
+<tr class="row-even"><td class="left-align no-left-divider single-right-divider">userlevel</td>
 <td class="left-align single-left-divider no-right-divider">Integer from 0 - 10 for representing ease (0) or difficulty (10)
 in using this variable, default 0.</td>
 </tr>
-<tr class="row-even"><td class="left-align no-left-divider single-right-divider">alias</td>
+<tr class="row-odd"><td class="left-align no-left-divider single-right-divider">alias</td>
 <td class="left-align single-left-divider no-right-divider">The name of the state variable in the schema and input file.
 If this is not present it defaults to the C++ variable name.
 The alias may also be a nested list of strings that matches
@@ -219,11 +227,11 @@ alias into a 2-element list, whose first string represents
 the map and whose second string is the item alias, e.g.
 <code class="docutils literal"><span class="pre">[['recipe',</span> <span class="pre">'entry'],</span> <span class="pre">'id',</span> <span class="pre">'mass']</span></code></td>
 </tr>
-<tr class="row-odd"><td class="left-align no-left-divider single-right-divider">uilabel</td>
+<tr class="row-even"><td class="left-align no-left-divider single-right-divider">uilabel</td>
 <td class="left-align single-left-divider no-right-divider">The text string a UI will display as the name of this input on
 the UI input form.</td>
 </tr>
-<tr class="row-even"><td class="left-align no-left-divider single-right-divider">uitype</td>
+<tr class="row-odd"><td class="left-align no-left-divider single-right-divider">uitype</td>
 <td class="left-align single-left-divider no-right-divider">The type of the input field in reference in a UI,
 currently supported types are; incommodity, outcommodity,
 commodity, range, combobox, facility, prototype, recipe, nuclide,
@@ -233,16 +241,16 @@ from the input file in human readable string format (&#8216;U-235&#8217;) and
 automatically converted to results of <code class="docutils literal"><span class="pre">pyne::nucname::id()</span></code>
 (922350000) in the database and on the archetype.</td>
 </tr>
-<tr class="row-odd"><td class="left-align no-left-divider single-right-divider">range</td>
+<tr class="row-even"><td class="left-align no-left-divider single-right-divider">range</td>
 <td class="left-align single-left-divider no-right-divider">This indicates the range associated with a range type.
 It must take the form of <code class="docutils literal"><span class="pre">[min,</span> <span class="pre">max]</span></code> or
 <code class="docutils literal"><span class="pre">[min,</span> <span class="pre">max,</span> <span class="pre">(optional)</span> <span class="pre">step</span> <span class="pre">size]</span></code>.</td>
 </tr>
-<tr class="row-even"><td class="left-align no-left-divider single-right-divider">categorical</td>
+<tr class="row-odd"><td class="left-align no-left-divider single-right-divider">categorical</td>
 <td class="left-align single-left-divider no-right-divider">This indicates the decrete values a combobox Type can take. It
 must take the form of <code class="docutils literal"><span class="pre">[value1,</span> <span class="pre">value2,</span> <span class="pre">value3,</span> <span class="pre">etc]</span></code>.</td>
 </tr>
-<tr class="row-odd"><td class="left-align no-left-divider single-right-divider">schematype</td>
+<tr class="row-even"><td class="left-align no-left-divider single-right-divider">schematype</td>
 <td class="left-align single-left-divider no-right-divider">This is the data type that is used in the schema for input file
 validation. This enables you to supply just the data type
 rather than having to overwrite the full schema for this state
@@ -252,41 +260,41 @@ where the rank is 2+ this is a list of strings. Please refer to
 the <a class="reference external" href="http://www.w3.org/TR/xmlschema-2/">XML Schema Datatypes</a>
 page for more information. <em>New in v1.1.</em></td>
 </tr>
-<tr class="row-even"><td class="left-align no-left-divider single-right-divider">initfromcopy</td>
+<tr class="row-odd"><td class="left-align no-left-divider single-right-divider">initfromcopy</td>
 <td class="left-align single-left-divider no-right-divider">Code snippet to use in the <code class="docutils literal"><span class="pre">InitFrom(Agent*</span> <span class="pre">m)</span></code> function for
 this state variable instead of using code generation.
 This is a string.</td>
 </tr>
-<tr class="row-odd"><td class="left-align no-left-divider single-right-divider">initfromdb</td>
+<tr class="row-even"><td class="left-align no-left-divider single-right-divider">initfromdb</td>
 <td class="left-align single-left-divider no-right-divider">Code snippet to use in the <code class="docutils literal"><span class="pre">InitFrom(QueryableBackend*</span> <span class="pre">b)</span></code>
 function for this state variable instead of using code generation.
 This is a string.</td>
 </tr>
-<tr class="row-even"><td class="left-align no-left-divider single-right-divider">infiletodb</td>
+<tr class="row-odd"><td class="left-align no-left-divider single-right-divider">infiletodb</td>
 <td class="left-align single-left-divider no-right-divider">Code snippets to use in the <code class="docutils literal"><span class="pre">InfileToDb()</span></code> function
 for this state variable instead of using code generation.
 This is a dictionary of string values with the two keys &#8216;read&#8217;
 and &#8216;write&#8217; which represent reading values from the input file
 writing them out to the database respectively.</td>
 </tr>
-<tr class="row-odd"><td class="left-align no-left-divider single-right-divider">schema</td>
+<tr class="row-even"><td class="left-align no-left-divider single-right-divider">schema</td>
 <td class="left-align single-left-divider no-right-divider">Code snippet to use in the <code class="docutils literal"><span class="pre">schema()</span></code> function for
 this state variable instead of using code generation.
 This is an RNG string. If you supply this then you likely need
 to supply <code class="docutils literal"><span class="pre">infiletodb</span></code> as well to ensure that your custom
 schema is read into the database correctly.</td>
 </tr>
-<tr class="row-even"><td class="left-align no-left-divider single-right-divider">snapshot</td>
+<tr class="row-odd"><td class="left-align no-left-divider single-right-divider">snapshot</td>
 <td class="left-align single-left-divider no-right-divider">Code snippet to use in the <code class="docutils literal"><span class="pre">Snapshot()</span></code> function for
 this state variable instead of using code generation.
 This is a string.</td>
 </tr>
-<tr class="row-odd"><td class="left-align no-left-divider single-right-divider">snapshotinv</td>
+<tr class="row-even"><td class="left-align no-left-divider single-right-divider">snapshotinv</td>
 <td class="left-align single-left-divider no-right-divider">Code snippet to use in the <code class="docutils literal"><span class="pre">SnapshotInv()</span></code> function for
 this state variable instead of using code generation.
 This is a string.</td>
 </tr>
-<tr class="row-even"><td class="left-align no-left-divider single-right-divider">initinv</td>
+<tr class="row-odd"><td class="left-align no-left-divider single-right-divider">initinv</td>
 <td class="left-align single-left-divider no-right-divider">Code snippet to use in the <code class="docutils literal"><span class="pre">InitInv()</span></code> function for
 this state variable instead of using code generation.
 This is a string.</td>
@@ -311,7 +319,7 @@ For example,</p>
 <p>Unlike state variables, agent annotations only have a few special members.  One of
 this is <code class="docutils literal"><span class="pre">vars</span></code> which contains the state variable annotations!
 <a class="reference internal" href="#cycpp-table-2"><span class="std std-ref">Table II. Special Agent Annotations</span></a> contains a listing of all special keys and their meaning.</p>
-<table border="1" class="styled-table centered docutils" id="id2">
+<table border="1" class="colwidths-given styled-table centered docutils" id="id2">
 <span id="cycpp-table-2"></span><caption><span class="caption-text"><strong>Table II.</strong> Special Agent Annotations</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col width="10%" />
@@ -470,7 +478,7 @@ function.</p>
 </div>
 <p><a class="reference internal" href="#cycpp-table-3"><span class="std std-ref">Table III. Member Function Flags and Their C++ Signatures</span></a> contains a listing of all available function flags and their
 associated C++ information.</p>
-<table border="1" class="styled-table centered docutils" id="id3">
+<table border="1" class="colwidths-given styled-table centered docutils" id="id3">
 <span id="cycpp-table-3"></span><caption><span class="caption-text"><strong>Table III.</strong> Member Function Flags and Their C++ Signatures</span><a class="headerlink" href="#id3" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col width="10%" />
@@ -763,7 +771,7 @@ in much the same way.</p>
         <div class="sphinxsidebarwrapper">
         <p class="logo"><a href="../index.html" title="index">
           <img class="logo" src="../_static/big_c.png" alt="Logo"/>
-        </a></p><div class="sphinxlocaltoc">
+        </a></p><div class="sphinx-toc sphinxlocaltoc">
     <h3><a href="../index.html">Page contents</a></h3>
     <ul>
 <li><a class="reference internal" href="#">Using the Cyclus Preprocessor</a><ul>
@@ -792,14 +800,17 @@ in much the same way.</p>
   <div class="sphinxnext">
     <h4>Next page</h4>
     <p class="topless"><a href="testing.html"
-                          title="Next page">&rarr; Testing Agents and Modules</a></p>
+                          title="Next page">&rarr; Testing and Debugging Archetypes</a></p>
   </div>
   <div class="sphinxlocaltoc">
   <h3>Useful Pages</h3>
     <ul><li><ul>
+    <li><a href="/user/install.html">Install Cyclus</a></li>
     <li><a href="/user/index.html">User Guide</a></li>
+    <li><a href="/user/tutorial/index.html">User Tutorial</a></li>
     <li><a href="/arche/index.html">Archetype Developer Guide</a></li>
-    <li><a href="http://fuelcycle.org/cyclus/api/">Cyclus API Documentation</a></li>
+    <li><a href="/arche/tutorial/index.html">Archetype Developer Tutorial</a></li>
+     <li><a href="http://fuelcycle.org/cyclus/api/">Cyclus API Documentation</a></li>
     <li><a href="http://fuelcycle.org/cycamore/api/">Cycamore API Documentation</a></li>
     <li><a href="/basics/glossary.html">Glossary</a></li>
     <li><a href="mailto:cyclus-users+subscribe@googlegroups.com?subject=Subscribe&body=Send this message to subscribe to the list">Join</a> the 
@@ -821,7 +832,7 @@ in much the same way.</p>
 <script type="text/javascript">$('#searchbox').show(0);</script>
     <h3>Get Cyclus</h3>
     <br>
-    Current version: <b>1.3.0</b>
+    Current version: <b>1.5.0</b>
     <br><br>
     Install:
     <div class="highlight-bash" style="width:97.5%"><div class="highlight"><pre><span class="nv">$ </span>conda install cyclus cycamore</pre></div></div>
@@ -852,6 +863,23 @@ in much the same way.</p>
 
         </div>
       </div>
+    
+    
+        <div class="sidebar-toggle-group no-js">
+            
+            <button class="sidebar-toggle" id="sidebar-hide" title="Hide the sidebar menu">
+                 «
+                <span class="show-for-small">hide menu</span>
+                
+            </button>
+            <button class="sidebar-toggle" id="sidebar-show" title="Show the sidebar menu">
+                
+                <span class="show-for-small">menu</span>
+                <span class="hide-for-small">sidebar</span>
+                 »
+            </button>
+        </div>
+    
       <div class="clearer"></div>
     </div>
     <div class="relbar-bottom">
@@ -866,21 +894,21 @@ in much the same way.</p>
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> &nbsp; &nbsp;</li>
         <li class="right" >
-          <a href="testing.html" title="Testing Agents and Modules"
+          <a href="testing.html" title="Testing and Debugging Archetypes"
              >next</a> &nbsp; &nbsp;</li>
         <li class="right" >
           <a href="cmake.html" title="Building Modules with CMake"
              >previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">Home</a> &raquo;</li>
+    <li><a href="../index.html">Home</a> &#187;</li>
 
-          <li class="nav-item nav-item-1"><a href="index.html" ><span style="font-variant:small-caps;">Cyclus</span> Archetype Developer Guide</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="index.html" ><span style="font-variant:small-caps;">Cyclus</span> Archetype Developer Guide</a> &#187;</li> 
       </ul>
     </div>
     </div>
 
     <div class="footer" role="contentinfo">
-        &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Sep 02, 2016.
+        &#169; Copyright 2012-2016, University of Wisconsin Computational Nuclear Engineering Research Group.
+      Last updated on Dec 13, 2016.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");

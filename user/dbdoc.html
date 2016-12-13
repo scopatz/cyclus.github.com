@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Understanding the Database &mdash; Home</title>
+    <title>Understanding the Database &#8212; Home</title>
     
     <link rel="stylesheet" href="../_static/cyclus.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,10 +17,11 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     'b&#39;(1.4.0-rc1-123-gd233d22)&#39;',
+        VERSION:     'b&#39;(1.5.0-rc1-2-gd70ae7a)&#39;',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
@@ -29,8 +30,8 @@
     <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
     <script type="text/javascript" src="../_static/cloud.js"></script>
     <link rel="shortcut icon" href="../_static/big_c.ico"/>
-    <link rel="top" title="Home" href="../index.html" />
-    <link rel="up" title="Cyclus User Guide" href="index.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Use Cases for Cyclus Data Analysis" href="analysis_usecases.html" />
     <link rel="prev" title="cymetric.tools - Tools" href="cymetric/api/tools.html" /> 
         <meta name="viewport" content="width=device-width, initial-scale=1"><script type="text/javascript">
@@ -67,9 +68,9 @@ if(ga_enabled){
         <li class="right" >
           <a href="cymetric/api/tools.html" title="cymetric.tools - Tools"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">Home</a> &raquo;</li>
+    <li><a href="../index.html">Home</a> &#187;</li>
 
-          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U"><span style="font-variant:small-caps;">Cyclus</span> User Guide</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U"><span style="font-variant:small-caps;">Cyclus</span> User Guide</a> &#187;</li> 
       </ul>
     </div>
     </div>
@@ -156,6 +157,55 @@ is also zero. If the resource came from another via combining this is the
 second parent&#8217;s ResourceId.</li>
 </ul>
 </div>
+<div class="section" id="explicitinventory-table">
+<span id="explicit-inv-table"></span><h3>ExplicitInventory Table<a class="headerlink" href="#explicitinventory-table" title="Permalink to this headline">¶</a></h3>
+<p>This is an optional table that can be activated by setting
+<code class="docutils literal"><span class="pre">&lt;explicit_inventory&gt;true&lt;/explicit_inventory&gt;</span></code> in the <code class="docutils literal"><span class="pre">&lt;control&gt;</span></code> section
+of the input file.  By default, it is disabled and will not be created in the
+database.  Note there is a significant runtime performance penalty for
+activating this table.  This table provides the material inventory of each
+agent at each time step subdivided by internal buffers (e.g.
+<code class="docutils literal"><span class="pre">cyclus::toolkit::ResBuf</span></code>).  There is one row for each agent on each time
+step for each sub-buffer for each nuclide.</p>
+<ul class="simple">
+<li><strong>SimId</strong> (uuid)</li>
+<li><strong>AgentId</strong> (int): ID of the agent holding the inventory</li>
+<li><strong>Time</strong> (int): Time Step this inventory was in the given agent.</li>
+<li><strong>InventoryName</strong> (string): Name of the internal sub inventory/buffer of
+this material.  This (usually) corresponds to the archetype state variable
+names for each ResBuf.</li>
+<li><strong>NucId</strong> (int): Nuclide identifier in <code class="docutils literal"><span class="pre">zzzaaammmm</span></code> form.</li>
+<li><strong>Quantity</strong> (double): Amount in kg of the given nuclide in the specified
+sub-inventory for the given agent on the given time step.</li>
+</ul>
+</div>
+<div class="section" id="explicitinventorycompact-table">
+<span id="explicit-inv-compact-table"></span><h3>ExplicitInventoryCompact Table<a class="headerlink" href="#explicitinventorycompact-table" title="Permalink to this headline">¶</a></h3>
+<p>This is an optional table that can be activated by setting
+<code class="docutils literal"><span class="pre">&lt;explicit_inventory_compact&gt;true&lt;/explicit_inventory_compact&gt;</span></code> in the
+<code class="docutils literal"><span class="pre">&lt;control&gt;</span></code> section of the input file.  By default, it is disabled and will
+not be created in the database.  Note there is a significant runtime
+performance penalty for activating this table.  This table provides the
+material inventory of each agent at each time step subdivided by internal
+buffers (e.g.  <code class="docutils literal"><span class="pre">cyclus::toolkit::ResBuf</span></code>).  There is one row for each agent
+on each time step for each sub-buffer.  The fractional composition for each
+nuclide are stored as a single value in the native format of the Cyclus
+backend used to create the database.  The sqlite backend, for example, stores
+this data as an xml string from a boost-serialized <code class="docutils literal"><span class="pre">std::map&lt;int,</span> <span class="pre">double&gt;</span></code>
+(i.e. NucId-frac pairs).</p>
+<ul class="simple">
+<li><strong>SimId</strong> (uuid)</li>
+<li><strong>AgentId</strong> (int): ID of the agent holding the inventory</li>
+<li><strong>Time</strong> (int): time step this inventory was in the given agent.</li>
+<li><strong>InventoryName</strong> (string): Name of the internal sub inventory/buffer of
+this material.  This (usually) corresponds to the archetype state variable
+names for each ResBuf.</li>
+<li><strong>Quantity</strong> (double): Amount in kg of the given material composition in
+this sub-inventory for the given agent on the given time step.</li>
+<li><strong>Composition</strong> (int): Cyclus backend-specific format for a <code class="docutils literal"><span class="pre">std::map&lt;int,</span>
+<span class="pre">double&gt;</span></code> object.</li>
+</ul>
+</div>
 <div class="section" id="compositions-table">
 <h3>Compositions Table<a class="headerlink" href="#compositions-table" title="Permalink to this headline">¶</a></h3>
 <p>A composition consists of one or more nuclides and their respective mass
@@ -233,6 +283,19 @@ were decommissioned in the simulation.</p>
 exited the simulation.</li>
 </ul>
 </div>
+<div class="section" id="agentversion-table">
+<span id="agent-version-table"></span><h3>AgentVersion Table<a class="headerlink" href="#agentversion-table" title="Permalink to this headline">¶</a></h3>
+<p>This lists the version of each agent/archetype used in the simulation. Due to
+backwards compatibility, this is in its own, new table instead of the
+AgentEntry table.  There is one entry in this table for each archetype used in
+each simulation.</p>
+<ul class="simple">
+<li><strong>SimId</strong> (uuid)</li>
+<li><strong>Spec</strong> (string): Archetype spec - same as the Spec field in the AgentEntry
+table.</li>
+<li><strong>Version</strong> (string): The version string provided by the archetype.</li>
+</ul>
+</div>
 <div class="section" id="transactions-table">
 <h3>Transactions Table<a class="headerlink" href="#transactions-table" title="Permalink to this headline">¶</a></h3>
 <p>Every single resource transfer between two agents is recorded as a row
@@ -300,6 +363,18 @@ restart/branch occurred.</p>
 </li>
 <li><p class="first"><strong>CoinCBCVersion</strong> (string)</p>
 </li>
+</ul>
+</div>
+<div class="section" id="infoexplicitinv-table">
+<h3>InfoExplicitInv Table<a class="headerlink" href="#infoexplicitinv-table" title="Permalink to this headline">¶</a></h3>
+<p>Each simulation gets one row in this table.</p>
+<ul class="simple">
+<li><strong>SimId</strong> (uuid)</li>
+<li><strong>RecordInventory</strong> (bool): True (or 1) if the ExplicitInventory table was
+or should be activated for the simulation.</li>
+<li><strong>RecordInventoryCompact</strong> (bool): True (or 1) if the
+ExplicitInventoryCompact table was or should be activated for the
+simulation.</li>
 </ul>
 </div>
 <div class="section" id="finish-table">
@@ -409,20 +484,24 @@ Below is a summary of them.</p>
         <div class="sphinxsidebarwrapper">
         <p class="logo"><a href="../index.html" title="index">
           <img class="logo" src="../_static/big_c.png" alt="Logo"/>
-        </a></p><div class="sphinxlocaltoc">
+        </a></p><div class="sphinx-toc sphinxlocaltoc">
     <h3><a href="../index.html">Page contents</a></h3>
     <ul>
 <li><a class="reference internal" href="#">Understanding the Database</a><ul>
 <li><a class="reference internal" href="#table-descriptions">Table Descriptions</a><ul>
 <li><a class="reference internal" href="#resources-table">Resources Table</a></li>
+<li><a class="reference internal" href="#explicitinventory-table">ExplicitInventory Table</a></li>
+<li><a class="reference internal" href="#explicitinventorycompact-table">ExplicitInventoryCompact Table</a></li>
 <li><a class="reference internal" href="#compositions-table">Compositions Table</a></li>
 <li><a class="reference internal" href="#recipes-table">Recipes Table</a></li>
 <li><a class="reference internal" href="#products-table">Products Table</a></li>
 <li><a class="reference internal" href="#rescreators-table">ResCreators Table</a></li>
 <li><a class="reference internal" href="#agententry-table">AgentEntry Table</a></li>
 <li><a class="reference internal" href="#agentexit-table">AgentExit Table</a></li>
+<li><a class="reference internal" href="#agentversion-table">AgentVersion Table</a></li>
 <li><a class="reference internal" href="#transactions-table">Transactions Table</a></li>
 <li><a class="reference internal" href="#info-table">Info Table</a></li>
+<li><a class="reference internal" href="#infoexplicitinv-table">InfoExplicitInv Table</a></li>
 <li><a class="reference internal" href="#finish-table">Finish Table</a></li>
 <li><a class="reference internal" href="#inputfiles-table">InputFiles Table</a></li>
 <li><a class="reference internal" href="#decomschedule-table">DecomSchedule Table</a></li>
@@ -450,9 +529,12 @@ Below is a summary of them.</p>
   <div class="sphinxlocaltoc">
   <h3>Useful Pages</h3>
     <ul><li><ul>
+    <li><a href="/user/install.html">Install Cyclus</a></li>
     <li><a href="/user/index.html">User Guide</a></li>
+    <li><a href="/user/tutorial/index.html">User Tutorial</a></li>
     <li><a href="/arche/index.html">Archetype Developer Guide</a></li>
-    <li><a href="http://fuelcycle.org/cyclus/api/">Cyclus API Documentation</a></li>
+    <li><a href="/arche/tutorial/index.html">Archetype Developer Tutorial</a></li>
+     <li><a href="http://fuelcycle.org/cyclus/api/">Cyclus API Documentation</a></li>
     <li><a href="http://fuelcycle.org/cycamore/api/">Cycamore API Documentation</a></li>
     <li><a href="/basics/glossary.html">Glossary</a></li>
     <li><a href="mailto:cyclus-users+subscribe@googlegroups.com?subject=Subscribe&body=Send this message to subscribe to the list">Join</a> the 
@@ -474,7 +556,7 @@ Below is a summary of them.</p>
 <script type="text/javascript">$('#searchbox').show(0);</script>
     <h3>Get Cyclus</h3>
     <br>
-    Current version: <b>1.3.0</b>
+    Current version: <b>1.5.0</b>
     <br><br>
     Install:
     <div class="highlight-bash" style="width:97.5%"><div class="highlight"><pre><span class="nv">$ </span>conda install cyclus cycamore</pre></div></div>
@@ -505,6 +587,23 @@ Below is a summary of them.</p>
 
         </div>
       </div>
+    
+    
+        <div class="sidebar-toggle-group no-js">
+            
+            <button class="sidebar-toggle" id="sidebar-hide" title="Hide the sidebar menu">
+                 «
+                <span class="show-for-small">hide menu</span>
+                
+            </button>
+            <button class="sidebar-toggle" id="sidebar-show" title="Show the sidebar menu">
+                
+                <span class="show-for-small">menu</span>
+                <span class="hide-for-small">sidebar</span>
+                 »
+            </button>
+        </div>
+    
       <div class="clearer"></div>
     </div>
     <div class="relbar-bottom">
@@ -524,16 +623,16 @@ Below is a summary of them.</p>
         <li class="right" >
           <a href="cymetric/api/tools.html" title="cymetric.tools - Tools"
              >previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">Home</a> &raquo;</li>
+    <li><a href="../index.html">Home</a> &#187;</li>
 
-          <li class="nav-item nav-item-1"><a href="index.html" ><span style="font-variant:small-caps;">Cyclus</span> User Guide</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="index.html" ><span style="font-variant:small-caps;">Cyclus</span> User Guide</a> &#187;</li> 
       </ul>
     </div>
     </div>
 
     <div class="footer" role="contentinfo">
-        &copy; Copyright 2012-2014, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Sep 02, 2016.
+        &#169; Copyright 2012-2016, University of Wisconsin Computational Nuclear Engineering Research Group.
+      Last updated on Dec 13, 2016.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");
