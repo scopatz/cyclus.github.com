@@ -104,13 +104,21 @@ item (e.g., electricity, money, or workers).  By default, all changes to
 resource objects (including creation) are tracked and recorded in the
 database.  Because of this, agents should handle resources carefully.  For
 more details about this, see <a class="reference internal" href="#tracked-untracked"><span class="std std-ref">Tracked and Untracked Resources</span></a>.</p>
-<p>All resource objects are created and managed as pointer types. For
+<p>In C++, all resource objects are created and managed as pointer types. For
 convenience, each of the classes related to resources have a special pointer
-type defined:</p>
+type defined. In Python, they each have their own class that this available
+in the <code class="docutils literal"><span class="pre">cyclus.typesystem</span></code> module.</p>
+<p><strong>C++:</strong></p>
 <div class="highlight-c++"><div class="highlight"><pre><span></span><span class="n">cyclus</span><span class="o">::</span><span class="n">Resource</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">r</span><span class="p">;</span>
 <span class="n">cyclus</span><span class="o">::</span><span class="n">Product</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">p</span><span class="p">;</span>
 <span class="n">cyclus</span><span class="o">::</span><span class="n">Material</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">m</span><span class="p">;</span>
-<span class="n">cyclus</span><span class="o">::</span><span class="n">Composition</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">c</span><span class="p">;</span>
+</pre></div>
+</div>
+<p><strong>Python:</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cyclus.typesystem</span> <span class="kn">as</span> <span class="nn">ts</span>
+<span class="n">ts</span><span class="o">.</span><span class="n">Resource</span>
+<span class="n">ts</span><span class="o">.</span><span class="n">Product</span>
+<span class="n">ts</span><span class="o">.</span><span class="n">Material</span>
 </pre></div>
 </div>
 <p>These pointer types should be always be used instead of plain class instances
@@ -119,6 +127,7 @@ manipulation of resource objects.  The <span style="font-variant:small-caps;">Cy
 terms of the <code class="docutils literal"><span class="pre">cyclus::Resource</span></code> superclass.  So it will sometimes be
 necessary to cast down to the appropriate resource subclass.  <span style="font-variant:small-caps;">Cyclus</span> provides
 an overloaded ResCast function for casting convenience:</p>
+<p><a href="#id1"><span class="problematic" id="id2">**</span></a>C++*:*</p>
 <div class="highlight-c++"><div class="highlight"><pre><span></span><span class="c1">// r is a Material object stored in a cyclus::Resource::Ptr var</span>
 <span class="n">cyclus</span><span class="o">::</span><span class="n">Material</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">m</span> <span class="o">=</span> <span class="n">cyclus</span><span class="o">::</span><span class="n">ResCast</span><span class="o">&lt;</span><span class="n">Material</span><span class="o">&gt;</span><span class="p">(</span><span class="n">r</span><span class="p">);</span>
 
@@ -128,11 +137,13 @@ an overloaded ResCast function for casting convenience:</p>
 <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">cyclus</span><span class="o">::</span><span class="n">Product</span><span class="o">::</span><span class="n">Ptr</span><span class="o">&gt;</span> <span class="n">ps</span> <span class="o">=</span> <span class="n">cyclus</span><span class="o">::</span><span class="n">ResCast</span><span class="o">&lt;</span><span class="n">Product</span><span class="o">&gt;</span><span class="p">(</span><span class="n">rs</span><span class="p">);</span>
 </pre></div>
 </div>
+<p>In Python, the situation is much simpler and you should only need to use <code class="docutils literal"><span class="pre">Product</span></code> and
+<code class="docutils literal"><span class="pre">Material</span></code> directly. They both inherit from <code class="docutils literal"><span class="pre">Resource</span></code>.</p>
 <div class="section" id="product-resources">
 <h2>Product Resources<a class="headerlink" href="#product-resources" title="Permalink to this headline">¶</a></h2>
 <p>Products in <span style="font-variant:small-caps;">Cyclus</span> have a quantity (no particular units) and a quality.
-The quality is a <code class="docutils literal"><span class="pre">std::string</span></code> that describes what the product is.  A
-product&#8217;s quality might be &#8220;apples&#8221;, &#8220;kg apples&#8221;, &#8220;man-hours&#8221;, etc.  Product
+The quality is a <code class="docutils literal"><span class="pre">std::string</span></code> (C++) or <code class="docutils literal"><span class="pre">str</span></code> (Python) that describes what
+the product is. A product&#8217;s quality might be &#8220;apples&#8221;, &#8220;kg apples&#8221;, etc. Product
 resources with different qualities may NOT be combined together.</p>
 <p>There are 3 basic operations that can be performed on product resources
 (examples follow):</p>
@@ -141,6 +152,7 @@ resources with different qualities may NOT be combined together.</p>
 <li>Extract</li>
 <li>Absorb</li>
 </ul>
+<p><strong>C++:</strong></p>
 <div class="highlight-c++"><div class="highlight"><pre><span></span><span class="c1">// create a &quot;grapes&quot; product holding 100 grapes.</span>
 <span class="n">cyclus</span><span class="o">::</span><span class="n">Product</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">p1</span> <span class="o">=</span> <span class="n">cyclus</span><span class="o">::</span><span class="n">Product</span><span class="o">::</span><span class="n">Create</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="s">&quot;grapes&quot;</span><span class="p">);</span>
 
@@ -153,14 +165,28 @@ resources with different qualities may NOT be combined together.</p>
 <span class="c1">// p2 now has 0 grapes. p1 has 100 grapes.</span>
 </pre></div>
 </div>
+<p><strong>Python:</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># create a &quot;grapes&quot; product holding 100 grapes.</span>
+<span class="n">p1</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">Product</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="s2">&quot;grapes&quot;</span><span class="p">)</span>
+
+<span class="c1"># extract 7 grapes from p1</span>
+<span class="n">p2</span> <span class="o">=</span> <span class="n">p1</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+<span class="c1"># p1 now has 93 grapes</span>
+
+<span class="c1"># combine p2 back into p1</span>
+<span class="n">p1</span><span class="o">.</span><span class="n">absorb</span><span class="p">(</span><span class="n">p2</span><span class="p">)</span>
+<span class="c1"># p2 now has 0 grapes. p1 has 100 grapes.</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="material-resources">
 <h2>Material Resources<a class="headerlink" href="#material-resources" title="Permalink to this headline">¶</a></h2>
 <p>Materials in <span style="font-variant:small-caps;">Cyclus</span> have a mass and an associated nuclide composition.  The
-composition is represented by a  <code class="docutils literal"><span class="pre">cyclus::Composition</span></code> object.  Material
+composition is represented by a  <code class="docutils literal"><span class="pre">cyclus::Composition</span></code> object (C++) or dict of
+nuclide keys (str or int), float values (Python).  Material
 quantity is always represented in units of kg. Agents can either create a
 composition manually (see the <em>Compositions</em> section below) or acquire one from
-their <code class="docutils literal"><span class="pre">cyclus::Context</span></code> which holds all recipes defined as part of the
+their Context which holds all recipes defined as part of the
 simulation input.</p>
 <p>There are 4 basic operations that can be performed on material resources
 (examples follow):</p>
@@ -171,6 +197,7 @@ simulation input.</p>
 <li>Transmute</li>
 <li>Decay (EXPERIMENTAL) - which is a special case of the Transmute operation</li>
 </ul>
+<p><strong>C++:</strong></p>
 <div class="highlight-c++"><div class="highlight"><pre><span></span><span class="n">cyclus</span><span class="o">::</span><span class="n">Composition</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">c1</span> <span class="o">=</span> <span class="n">context</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">GetRecipe</span><span class="p">(</span><span class="s">&quot;nat_u&quot;</span><span class="p">);</span>
 <span class="n">cyclus</span><span class="o">::</span><span class="n">Composition</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">c2</span> <span class="o">=</span> <span class="n">context</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">GetRecipe</span><span class="p">(</span><span class="s">&quot;enriched_u&quot;</span><span class="p">);</span>
 
@@ -194,16 +221,41 @@ simulation input.</p>
 <span class="n">m1</span><span class="o">-&gt;</span><span class="n">Decay</span><span class="p">();</span> <span class="c1">// EXPERIMENTAL</span>
 </pre></div>
 </div>
+<p><strong>Python:</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">c1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">get_recipe</span><span class="p">(</span><span class="s2">&quot;nat_u&quot;</span><span class="p">)</span>
+<span class="n">c2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">get_recipe</span><span class="p">(</span><span class="s2">&quot;enriched_u&quot;</span><span class="p">)</span>
+
+<span class="c1"># create a 100 kg material from the nat_u recipe defined in the input file</span>
+<span class="n">m1</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">Material</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">c1</span><span class="p">)</span>
+
+<span class="c1"># extract 1 kg of enriched U from m1</span>
+<span class="n">m2</span> <span class="o">=</span> <span class="n">m1</span><span class="o">.</span><span class="n">extract_comp</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">c2</span><span class="p">)</span>
+<span class="c1"># mass of m1 is now 99 kg and its composition has changed</span>
+
+<span class="c1"># extract 1 kg from m1 of whatever composition it is</span>
+<span class="n">m3</span> <span class="o">=</span> <span class="n">m1</span><span class="o">.</span><span class="n">ExtractQty</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="c1"># mass of m1 is now 98 kg and its composition. m1 and m3 have the same composition</span>
+
+<span class="c1"># combine m2 and m3 back into m1</span>
+<span class="n">m1</span><span class="o">.</span><span class="n">absorb</span><span class="p">(</span><span class="n">m2</span><span class="p">)</span>
+<span class="n">m1</span><span class="o">.</span><span class="n">absorb</span><span class="p">(</span><span class="n">m3</span><span class="p">)</span>
+<span class="c1"># m2 and m3 now have mass 0 kg. m1 has mass 100 kg with its original nat_u composition</span>
+
+<span class="c1"># decay composition m1 up to the current time step (EXPERIMENTAL)</span>
+<span class="n">m1</span><span class="o">.</span><span class="n">decay</span><span class="p">()</span>  <span class="c1"># EXPERIMENTAL</span>
+</pre></div>
+</div>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p class="last">Decay functionality as currently implemented is experimental and may not
 be correct.</p>
 </div>
-<div class="section" id="compositions">
-<h3>Compositions<a class="headerlink" href="#compositions" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="compositions-in-c">
+<h3>Compositions in C++<a class="headerlink" href="#compositions-in-c" title="Permalink to this headline">¶</a></h3>
 <p>A <code class="docutils literal"><span class="pre">cyclus::Composition</span></code> is a massless, immutable nuclide composition.
 Because it is immutable, a mutable <code class="docutils literal"><span class="pre">cyclus::CompMap</span></code> must be populated in
 order to create a composition:</p>
+<p><strong>C++:</strong></p>
 <div class="highlight-c++"><div class="highlight"><pre><span></span><span class="n">cyclus</span><span class="o">::</span><span class="n">CompMap</span> <span class="n">m</span><span class="p">;</span>
 <span class="n">m</span><span class="p">[</span><span class="mi">922350000</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
 <span class="n">m</span><span class="p">[</span><span class="mi">922380000</span><span class="p">]</span> <span class="o">=</span> <span class="mi">95</span><span class="p">;</span>
@@ -224,9 +276,26 @@ compositions from equivalent <code class="docutils literal"><span class="pre">cy
 <code class="docutils literal"><span class="pre">cyclus::Composition</span></code> objects helps avoid duplicate records in the
 database and redundant decay calculations.</p>
 </div>
+<div class="section" id="compositions-in-python">
+<h3>Compositions in Python<a class="headerlink" href="#compositions-in-python" title="Permalink to this headline">¶</a></h3>
+<p>Compositions in Python are much simplier than in C++. They are represented by a simple
+dict of nuclides to values. When a Material is created, you have to declare whether
+the composition has a mass or atom basis.  By default it has a mass basis, though
+you may pass in the string <code class="docutils literal"><span class="pre">&quot;atom&quot;</span></code> to obtain an atom basis.</p>
+<p><strong>Python:</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># 5% U235, 95% U238 by mass</span>
+<span class="n">m</span> <span class="o">=</span> <span class="p">{</span><span class="mi">922350000</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">922380000</span><span class="p">:</span> <span class="mi">95</span><span class="p">}</span>
+<span class="n">mat_mass</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">Material</span><span class="o">.</span><span class="n">create_untracked</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
+
+<span class="c1"># 5% U235, 95% U238 by atom fraction</span>
+<span class="n">a</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;U235&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s2">&quot;U238&quot;</span><span class="p">:</span> <span class="mi">95</span><span class="p">}</span>
+<span class="n">mat_atom</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">Material</span><span class="o">.</span><span class="n">create_untracked</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">basis</span><span class="o">=</span><span class="s2">&quot;atom&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="resource-ids">
-<span id="id1"></span><h2>Resource IDs<a class="headerlink" href="#resource-ids" title="Permalink to this headline">¶</a></h2>
+<span id="id3"></span><h2>Resource IDs<a class="headerlink" href="#resource-ids" title="Permalink to this headline">¶</a></h2>
 <p>Every resource object has 3 different IDs.  One of them, the <code class="docutils literal"><span class="pre">qual_id</span></code>, is
 generally not of use to agent developers and can be ignored.  The other two
 serve two different purposes, and it is important to understand their
@@ -244,6 +313,7 @@ used when using resources as std::map keys and in other data structures when
 resource objects need to be associated with some other information.</li>
 </ul>
 <p>Here are some examples of how these IDs work:</p>
+<p><strong>C++:</strong></p>
 <div class="highlight-c++"><div class="highlight"><pre><span></span><span class="n">cyclus</span><span class="o">::</span><span class="n">Product</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">p1</span> <span class="o">=</span> <span class="n">cyclus</span><span class="o">::</span><span class="n">Product</span><span class="o">::</span><span class="n">Create</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s">&quot;bananas&quot;</span><span class="p">);</span>
 <span class="c1">// p1 gets new separate state_id and obj_id</span>
 
@@ -266,6 +336,32 @@ resource objects need to be associated with some other information.</li>
 <span class="n">rsrc_labels</span><span class="p">[</span><span class="n">p1</span><span class="o">-&gt;</span><span class="n">obj_id</span><span class="p">()]</span> <span class="o">=</span> <span class="s">&quot;fruit&quot;</span><span class="p">;</span>
 <span class="n">rsrc_labels</span><span class="p">[</span><span class="n">p2</span><span class="o">-&gt;</span><span class="n">obj_id</span><span class="p">()]</span> <span class="o">=</span> <span class="s">&quot;fruit&quot;</span><span class="p">;</span>
 <span class="p">...</span>
+</pre></div>
+</div>
+<p><strong>Python:</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># p1 gets new separate state_id and obj_id</span>
+<span class="n">p1</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">Product</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;bananas&quot;</span><span class="p">)</span>
+
+<span class="c1"># p1 gets new state_id and keeps same obj_id</span>
+<span class="c1"># p2 gets new separate state_id and obj_id</span>
+<span class="n">p2</span> <span class="o">=</span> <span class="n">p1</span><span class="o">.</span><span class="n">extract_qty</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="c1"># p1 gets new state_id and keeps same obj_id</span>
+<span class="c1"># p2 gets new state_id and keeps same obj_id</span>
+<span class="n">p1</span><span class="o">.</span><span class="n">absorb</span><span class="p">(</span><span class="n">p2</span><span class="p">)</span>
+
+<span class="c1"># no new resource object is created, p1 and p1_dup point to same resource object.</span>
+<span class="c1"># In Python this is just an increase in the refcount anyway.</span>
+<span class="c1"># p1 keeps same state_id and same obj_id</span>
+<span class="c1"># p1 and p1_dup have idential state_id&#39;s</span>
+<span class="c1"># p1 and p1_dup have idential obj_id&#39;s</span>
+<span class="n">p1_dup</span> <span class="o">=</span> <span class="n">p1</span>
+
+<span class="c1"># want to associate some label with resource objects? Use the obj_id.</span>
+<span class="n">rsrc_labels</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">rsrc_labels</span><span class="p">[</span><span class="n">p1</span><span class="o">.</span><span class="n">obj_id</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;fruit&quot;</span>
+<span class="n">rsrc_labels</span><span class="p">[</span><span class="n">p2</span><span class="o">.</span><span class="n">obj_id</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;fruit&quot;</span>
+<span class="o">...</span>
 </pre></div>
 </div>
 <div class="admonition warning">
@@ -294,6 +390,7 @@ exchange.  Here untracked resources fulfill a communication roll only.</p>
 <p>Just like the functions for creating trakced resources, there are
 corresponding function for creating both untracked materials and untracked
 products:</p>
+<p><strong>C++:</strong></p>
 <div class="highlight-c++"><div class="highlight"><pre><span></span><span class="n">cyclus</span><span class="o">::</span><span class="n">Composition</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">c</span> <span class="o">=</span> <span class="n">context</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">GetRecipe</span><span class="p">(</span><span class="s">&quot;enriched_u&quot;</span><span class="p">);</span>
 
 <span class="c1">// create an untracked 100 kg material from c (the enriched_u recipe)</span>
@@ -303,6 +400,18 @@ products:</p>
 <span class="n">cyclus</span><span class="o">::</span><span class="n">Product</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">p1</span> <span class="o">=</span> <span class="n">cyclus</span><span class="o">::</span><span class="n">Product</span><span class="o">::</span><span class="n">CreateUntracked</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="s">&quot;grapes&quot;</span><span class="p">);</span>
 
 <span class="c1">// nothing about m1 and p1 will ever be recorded in the output data.</span>
+</pre></div>
+</div>
+<p><strong>Python:</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">get_recipe</span><span class="p">(</span><span class="s2">&quot;enriched_u&quot;</span><span class="p">)</span>
+
+<span class="c1"># create an untracked 100 kg material from c (the enriched_u recipe)</span>
+<span class="n">m1</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">Material</span><span class="o">.</span><span class="n">create_untracked</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+
+<span class="c1"># create an untracked &quot;grapes&quot; product holding 100 grapes.</span>
+<span class="n">p1</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">Product</span><span class="o">.</span><span class="n">create_untracked</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="s2">&quot;grapes&quot;</span><span class="p">)</span>
+
+<span class="c1"># nothing about m1 and p1 will ever be recorded in the output data.</span>
 </pre></div>
 </div>
 <div class="admonition warning">
@@ -328,7 +437,8 @@ resources to use in resource exchange requests and bids.</p>
 <li><a class="reference internal" href="#">Resources</a><ul>
 <li><a class="reference internal" href="#product-resources">Product Resources</a></li>
 <li><a class="reference internal" href="#material-resources">Material Resources</a><ul>
-<li><a class="reference internal" href="#compositions">Compositions</a></li>
+<li><a class="reference internal" href="#compositions-in-c">Compositions in C++</a></li>
+<li><a class="reference internal" href="#compositions-in-python">Compositions in Python</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#resource-ids">Resource IDs</a></li>
@@ -454,7 +564,7 @@ resources to use in resource exchange requests and bids.</p>
 
     <div class="footer" role="contentinfo">
         &#169; Copyright 2012-2016, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Jan 31, 2017.
+      Last updated on Feb 09, 2017.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");

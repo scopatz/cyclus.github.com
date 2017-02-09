@@ -107,6 +107,15 @@ each contain the following sections, in the following order:</p>
 </ul>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<p>This example introduces two institution agents (the region section that
+encloses them is not shown).  The first institution has the name
+<cite>SingleInstitution</cite>, and is configured from the <a class="reference internal" href="../../basics/glossary.html#term-archetype"><span class="xref std std-term">archetype</span></a> with the
+name (or alias) <cite>NullInst</cite>.  The author of the <code class="docutils literal"><span class="pre">NullInst</span></code> archetype has
+defined no archetype-specific data. This agent begins the simulation with two
+facility agents, one based on the <code class="docutils literal"><span class="pre">FacilityA</span></code> prototype and another based on
+the <code class="docutils literal"><span class="pre">FacilityB</span></code> prototype.  The second institution has the name
+<cite>AnotherInstitution</cite>, is also configured from the archetype with the name (or
+alias) <code class="docutils literal"><span class="pre">NullInst</span></code>.  This institution has no initial facilities.</p>
 <p><strong>XML:</strong></p>
 <div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;institution&gt;</span>
   <span class="nt">&lt;name&gt;</span>SingleInstitution<span class="nt">&lt;/name&gt;</span>
@@ -130,55 +139,41 @@ each contain the following sections, in the following order:</p>
 </pre></div>
 </div>
 <p><strong>JSON:</strong></p>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;institution&quot;</span><span class="p">:</span> <span class="p">{</span>
- <span class="nt">&quot;config&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;NullInst&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">},</span>
- <span class="nt">&quot;initialfacilitylist&quot;</span><span class="p">:</span> <span class="p">{</span>
-  <span class="nt">&quot;entry&quot;</span><span class="p">:</span> <span class="p">[</span>
-   <span class="p">{</span><span class="nt">&quot;number&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nt">&quot;prototype&quot;</span><span class="p">:</span> <span class="s2">&quot;FacilityA&quot;</span><span class="p">},</span>
-   <span class="p">{</span><span class="nt">&quot;number&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nt">&quot;prototype&quot;</span><span class="p">:</span> <span class="s2">&quot;FacilityB&quot;</span><span class="p">}</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;institution&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span><span class="nt">&quot;config&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;NullInst&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">},</span>
+     <span class="nt">&quot;initialfacilitylist&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;entry&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span><span class="nt">&quot;number&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nt">&quot;prototype&quot;</span><span class="p">:</span> <span class="s2">&quot;FacilityA&quot;</span><span class="p">},</span>
+            <span class="p">{</span><span class="nt">&quot;number&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nt">&quot;prototype&quot;</span><span class="p">:</span> <span class="s2">&quot;FacilityB&quot;</span><span class="p">}</span>
+            <span class="p">]</span>
+        <span class="p">},</span>
+     <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;SingleInstitution&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span><span class="nt">&quot;config&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;NullInst&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">},</span>
+     <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;AnotherInstitution&quot;</span>
+     <span class="p">}</span>
     <span class="p">]</span>
-   <span class="p">},</span>
- <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;SingleInstitution&quot;</span>
-  <span class="p">}</span>
- <span class="p">}</span>
-
-<span class="p">{</span><span class="nt">&quot;institution&quot;</span><span class="p">:</span> <span class="p">{</span>
- <span class="nt">&quot;config&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;NullInst&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">},</span>
- <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;AnotherInstitution&quot;</span>
- <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>This example introduces two institution agents (the region section that
-encloses them is not shown).  The first institution has the name
-<cite>SingleInstitution</cite>, and is configured from the <a class="reference internal" href="../../basics/glossary.html#term-archetype"><span class="xref std std-term">archetype</span></a> with the
-name (or alias) <cite>NullInst</cite>.  The author of the <code class="docutils literal"><span class="pre">NullInst</span></code> archetype has
-defined no archetype-specific data. This agent begins the simulation with two
-facility agents, one based on the <code class="docutils literal"><span class="pre">FacilityA</span></code> prototype and another based on
-the <code class="docutils literal"><span class="pre">FacilityB</span></code> prototype.  The second institution has the name
-<cite>AnotherInstitution</cite>, is also configured from the archetype with the name (or
-alias) <code class="docutils literal"><span class="pre">NullInst</span></code>.  This institution has no initial facilities.</p>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
- <span class="nt">&quot;institution&quot;</span><span class="p">:</span> <span class="p">{</span>
-   <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;SingleInstitution&quot;</span><span class="p">,</span>
-   <span class="nt">&quot;initialfacilitylist&quot;</span><span class="p">:</span> <span class="p">[{</span>
-     <span class="nt">&quot;entry&quot;</span><span class="p">:</span> <span class="p">{</span>
-       <span class="nt">&quot;prototype&quot;</span><span class="p">:</span> <span class="s2">&quot;FacilityA&quot;</span><span class="p">,</span>
-       <span class="nt">&quot;number&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}},</span>
-     <span class="p">{</span><span class="nt">&quot;entry&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;prototype&quot;</span><span class="p">:</span> <span class="s2">&quot;FacilityB&quot;</span><span class="p">}}],</span>
-   <span class="nt">&quot;config&quot;</span><span class="p">:</span> <span class="p">{}</span>
-   <span class="p">}</span>
- <span class="p">}</span>
-
-<span class="p">{</span>
- <span class="nt">&quot;institution&quot;</span><span class="p">:</span> <span class="p">{</span>
-   <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;AnotherInstitution&quot;</span><span class="p">,</span>
-   <span class="nt">&quot;config&quot;</span><span class="p">:</span> <span class="p">{}</span>
-   <span class="p">}</span>
- <span class="p">}</span>
+<p><strong>Python:</strong></p>
+<div class="highlight-Python"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;institution&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;config&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;NullInst&quot;</span><span class="p">:</span> <span class="bp">None</span><span class="p">},</span>
+     <span class="s2">&quot;initialfacilitylist&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;entry&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span><span class="s2">&quot;number&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;prototype&quot;</span><span class="p">:</span> <span class="s2">&quot;FacilityA&quot;</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">&quot;number&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;prototype&quot;</span><span class="p">:</span> <span class="s2">&quot;FacilityB&quot;</span><span class="p">},</span>
+            <span class="p">],</span>
+        <span class="p">},</span>
+     <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;SingleInstitution&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;config&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;NullInst&quot;</span><span class="p">:</span> <span class="bp">None</span><span class="p">},</span>
+     <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;AnotherInstitution&quot;</span><span class="p">,</span>
+     <span class="p">},</span>
+    <span class="p">],</span>
+<span class="p">}</span>
 </pre></div>
 </div>
-<p>This is what the example above would look like if written in JSON.</p>
 </div>
 <div class="html-toggle section" id="grammar-definition">
 <h2>Grammar Definition<a class="headerlink" href="#grammar-definition" title="Permalink to this headline">¶</a></h2>
@@ -346,7 +341,7 @@ alias) <code class="docutils literal"><span class="pre">NullInst</span></code>. 
 
     <div class="footer" role="contentinfo">
         &#169; Copyright 2012-2016, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Jan 31, 2017.
+      Last updated on Feb 09, 2017.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");

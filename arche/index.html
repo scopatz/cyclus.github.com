@@ -32,7 +32,7 @@
     <link rel="shortcut icon" href="../_static/big_c.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Hello, Cyclus!" href="hello_world.html" />
+    <link rel="next" title="Hello, Cyclus! [C++]" href="hello_world_cpp.html" />
     <link rel="prev" title="Use Cases for Cyclus Data Analysis" href="../user/analysis_usecases.html" /> 
         <meta name="viewport" content="width=device-width, initial-scale=1"><script type="text/javascript">
 var ga_enabled = !$.cookie('disable-ga');
@@ -63,7 +63,7 @@ if(ga_enabled){
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> &nbsp; &nbsp;</li>
         <li class="right" >
-          <a href="hello_world.html" title="Hello, Cyclus!"
+          <a href="hello_world_cpp.html" title="Hello, Cyclus! [C++]"
              accesskey="N">next</a> &nbsp; &nbsp;</li>
         <li class="right" >
           <a href="../user/analysis_usecases.html" title="Use Cases for Cyclus Data Analysis"
@@ -93,7 +93,7 @@ are a devilishly handsome thrill-seeker.  Whatever your reasons, you have come
 to the right place!</p>
 <p>This guide assumes that you have <span style="font-variant:small-caps;">Cyclus</span> installed, are familiar with running
 simulations and understand user-level concepts.</p>
-<p>To get started please follow the instructions in <a class="reference internal" href="hello_world.html"><span class="doc">Hello, Cyclus!</span></a>.</p>
+<p>To get started please follow the instructions in <span class="xref doc">hello_world</span>.</p>
 </td></tr>
 </table><div class="section" id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
@@ -107,8 +107,9 @@ simulations and understand user-level concepts.</p>
 <h2>Hello World<a class="headerlink" href="#hello-world" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="hello_world.html">Hello, Cyclus!</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tour.html">A Tour of Cycstub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hello_world_cpp.html">Hello, Cyclus! [C++]</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tour_cpp.html">A Tour of Cycstub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hello_world_py.html">Hello, Cyclus! [Python]</a></li>
 </ul>
 </div>
 </div>
@@ -118,12 +119,13 @@ simulations and understand user-level concepts.</p>
 <h3>Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this headline">¶</a></h3>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="tutorial/index.html">Archetype Development Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_cpp/index.html">Archetype Development Tutorial [C++]</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_py/index.html">Archetype Development Tutorial [Python]</a></li>
 </ul>
 </div>
 </div>
-<div class="section" id="building-installing-and-testing">
-<h3>Building, Installing and Testing<a class="headerlink" href="#building-installing-and-testing" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="building-installing-and-testing-c">
+<h3>Building, Installing and Testing [C++]<a class="headerlink" href="#building-installing-and-testing-c" title="Permalink to this headline">¶</a></h3>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="cmake.html">Building Modules with CMake</a></li>
@@ -142,7 +144,7 @@ simulations and understand user-level concepts.</p>
 <li class="toctree-l1"><a class="reference internal" href="dre.html">Dynamic Resource Exchange</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dbtypes.html">Database Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="custom_tables.html">Custom Database Tables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="errors.html">Errors and Warnings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="errors.html">Errors and Warnings [C++]</a></li>
 <li class="toctree-l1"><a class="reference internal" href="logger.html">Logging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cli.html">Archetype Command Line Interface</a></li>
 </ul>
@@ -165,7 +167,6 @@ implementation, and databases. Happy (well-styled) coding!</p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="sim_init.html">Initialization and Restart</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dynamic_loading.html">Dynamic Loading Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="decay.html">Radioactive Decay in <span style="font-variant:small-caps;">Cyclus</span></a></li>
 </ul>
 </div>
@@ -196,7 +197,7 @@ implementation, and databases. Happy (well-styled) coding!</p>
 <li><a class="reference internal" href="#hello-world">Hello World</a></li>
 <li><a class="reference internal" href="#writing-agents-modules">Writing Agents &amp; Modules</a><ul>
 <li><a class="reference internal" href="#tutorial">Tutorial</a></li>
-<li><a class="reference internal" href="#building-installing-and-testing">Building, Installing and Testing</a></li>
+<li><a class="reference internal" href="#building-installing-and-testing-c">Building, Installing and Testing [C++]</a></li>
 <li><a class="reference internal" href="#interfacing-with-the-cyclus-kernel">Interfacing with the <span style="font-variant:small-caps;">Cyclus</span> Kernel</a></li>
 <li><a class="reference internal" href="#a-word-about-style">A Word About Style</a></li>
 </ul>
@@ -215,8 +216,8 @@ implementation, and databases. Happy (well-styled) coding!</p>
   </div>
   <div class="sphinxnext">
     <h4>Next page</h4>
-    <p class="topless"><a href="hello_world.html"
-                          title="Next page">&rarr; Hello, Cyclus!</a></p>
+    <p class="topless"><a href="hello_world_cpp.html"
+                          title="Next page">&rarr; Hello, Cyclus! [C++]</a></p>
   </div>
   <div class="sphinxlocaltoc">
   <h3>Useful Pages</h3>
@@ -310,7 +311,7 @@ implementation, and databases. Happy (well-styled) coding!</p>
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> &nbsp; &nbsp;</li>
         <li class="right" >
-          <a href="hello_world.html" title="Hello, Cyclus!"
+          <a href="hello_world_cpp.html" title="Hello, Cyclus! [C++]"
              >next</a> &nbsp; &nbsp;</li>
         <li class="right" >
           <a href="../user/analysis_usecases.html" title="Use Cases for Cyclus Data Analysis"
@@ -323,7 +324,7 @@ implementation, and databases. Happy (well-styled) coding!</p>
 
     <div class="footer" role="contentinfo">
         &#169; Copyright 2012-2016, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Jan 31, 2017.
+      Last updated on Feb 09, 2017.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");

@@ -32,7 +32,7 @@
     <link rel="shortcut icon" href="../_static/big_c.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Errors and Warnings" href="errors.html" />
+    <link rel="next" title="Errors and Warnings [C++]" href="errors.html" />
     <link rel="prev" title="Database Types" href="dbtypes.html" /> 
         <meta name="viewport" content="width=device-width, initial-scale=1"><script type="text/javascript">
 var ga_enabled = !$.cookie('disable-ga');
@@ -63,7 +63,7 @@ if(ga_enabled){
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> &nbsp; &nbsp;</li>
         <li class="right" >
-          <a href="errors.html" title="Errors and Warnings"
+          <a href="errors.html" title="Errors and Warnings [C++]"
              accesskey="N">next</a> &nbsp; &nbsp;</li>
         <li class="right" >
           <a href="dbtypes.html" title="Database Types"
@@ -86,6 +86,7 @@ if(ga_enabled){
 <p>Agents are allowed to write their own custom output into the database during
 simulations.  The interface for recording this data is accessible through the
 agent&#8217;s <a class="reference internal" href="../basics/glossary.html#term-context"><span class="xref std std-term">context</span></a>.  Data may be logged via the Context::NewDatum function:</p>
+<p><strong>C++:</strong></p>
 <div class="highlight-c++"><div class="highlight"><pre><span></span><span class="n">MyReactor</span><span class="o">::</span><span class="n">Tick</span><span class="p">()</span> <span class="p">{</span>
   <span class="p">...</span>
   <span class="kt">double</span> <span class="n">monthly_water</span> <span class="o">=</span> <span class="p">...;</span>
@@ -101,21 +102,47 @@ agent&#8217;s <a class="reference internal" href="../basics/glossary.html#term-c
 <span class="p">}</span>
 </pre></div>
 </div>
+<p><strong>Python:</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cyclus.agents</span> <span class="kn">import</span> <span class="n">Facility</span>
+<span class="kn">import</span> <span class="nn">cyclus.typesystem</span> <span class="kn">as</span> <span class="nn">ts</span>
+
+<span class="k">class</span> <span class="nc">MyReactor</span><span class="p">(</span><span class="n">Facility</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">tick</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="o">...</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">new_datum</span><span class="p">(</span><span class="s2">&quot;MyReactorData&quot;</span><span class="p">)</span>
+        <span class="n">d</span><span class="o">.</span><span class="n">add_val</span><span class="p">(</span><span class="s2">&quot;AgentID&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="n">ts</span><span class="o">.</span><span class="n">INT</span><span class="p">)</span>
+        <span class="n">d</span><span class="o">.</span><span class="n">add_val</span><span class="p">(</span><span class="s2">&quot;Time&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">time</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="n">ts</span><span class="o">.</span><span class="n">INT</span><span class="p">)</span>
+        <span class="n">d</span><span class="o">.</span><span class="n">add_val</span><span class="p">(</span><span class="s2">&quot;WaterUsage&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">monthl_water</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="n">ts</span><span class="o">.</span><span class="n">DOUBLE</span><span class="p">)</span>
+        <span class="n">d</span><span class="o">.</span><span class="n">add_val</span><span class="p">(</span><span class="s2">&quot;OperatingCost&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">monthly_op_cost</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="n">ts</span><span class="o">.</span><span class="n">DOUBLE</span><span class="p">)</span>
+        <span class="n">d</span><span class="o">.</span><span class="n">record</span><span class="p">()</span>
+        <span class="o">...</span>
+</pre></div>
+</div>
 <p>This would create a table in the output database named &#8220;MyReactorData&#8221;. The
 table would get a new row entry every time step with four columns named
-&#8220;AgentID&#8221;, &#8220;Time&#8221;, &#8220;WaterUsage&#8221; and &#8220;OperatingCost&#8221;.  <code class="docutils literal"><span class="pre">AddVal</span></code> calls can be chained
-any number of times for an arbitrary number of columns.  <code class="docutils literal"><span class="pre">Record</span></code> must be
+&#8220;AgentID&#8221;, &#8220;Time&#8221;, &#8220;WaterUsage&#8221; and &#8220;OperatingCost&#8221;.  &#8220;Add value&#8221; calls can be chained
+any number of times for an arbitrary number of columns.  Record must be
 called once for each datum after all values have been added.  Any custom
 tables created in this manner will appear in the output database alongside the
 <span style="font-variant:small-caps;">Cyclus</span> core tables.  Because there may be several agent instances of a
 single agent class, tables should generally include a column that adds their
 ID; and for similar reasons, it is often desirable to include the simulation
 time as a column in these tables:</p>
+<p><strong>C++:</strong></p>
 <div class="highlight-c++"><div class="highlight"><pre><span></span><span class="n">context</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">NewDatum</span><span class="p">(</span><span class="s">&quot;MyReactorData&quot;</span><span class="p">)</span>
          <span class="o">-&gt;</span><span class="n">AddVal</span><span class="p">(</span><span class="s">&quot;AgentID&quot;</span><span class="p">,</span> <span class="n">id</span><span class="p">())</span>
          <span class="o">-&gt;</span><span class="n">AddVal</span><span class="p">(</span><span class="s">&quot;Time&quot;</span><span class="p">,</span> <span class="n">context</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">time</span><span class="p">())</span>
          <span class="o">-&gt;</span><span class="n">AddVal</span><span class="p">(...</span>
          <span class="p">...</span>
+</pre></div>
+</div>
+<p><strong>Python:</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">new_datum</span><span class="p">(</span><span class="s2">&quot;MyReactorData&quot;</span><span class="p">)</span>
+<span class="n">d</span><span class="o">.</span><span class="n">add_val</span><span class="p">(</span><span class="s2">&quot;AgentID&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="n">ts</span><span class="o">.</span><span class="n">INT</span><span class="p">)</span>
+<span class="n">d</span><span class="o">.</span><span class="n">add_val</span><span class="p">(</span><span class="s2">&quot;Time&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">time</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="n">ts</span><span class="o">.</span><span class="n">INT</span><span class="p">)</span>
+<span class="n">d</span><span class="o">.</span><span class="n">add_val</span><span class="p">(</span><span class="o">...</span>
+<span class="o">...</span>
 </pre></div>
 </div>
 <p>Datums with the same table name must have the same schema (e.g. same field
@@ -145,6 +172,7 @@ elements in the value as variable-length.  An entry of <cite>-1</cite> in the sh
 vector indicates variable length also.  It is an error to pass in a shape
 vector with the wrong rank (number of elements) for that type.  An example of
 using the shape vector follows:</p>
+<p><strong>C++:</strong></p>
 <div class="highlight-c++"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">colors</span><span class="p">;</span>
 <span class="n">colors</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="s">&quot;green&quot;</span><span class="p">);</span>
 <span class="n">colors</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="s">&quot;blue&quot;</span><span class="p">);</span>
@@ -157,8 +185,18 @@ using the shape vector follows:</p>
 <span class="n">context</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">NewDatum</span><span class="p">(</span><span class="s">&quot;DecorPreferences&quot;</span><span class="p">)</span>
          <span class="o">-&gt;</span><span class="n">AddVal</span><span class="p">(</span><span class="s">&quot;AgentID&quot;</span><span class="p">,</span> <span class="n">id</span><span class="p">())</span>
          <span class="o">-&gt;</span><span class="n">AddVal</span><span class="p">(</span><span class="s">&quot;Time&quot;</span><span class="p">,</span> <span class="n">context</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">time</span><span class="p">())</span>
-         <span class="o">-&gt;</span><span class="n">AddVal</span><span class="p">(</span><span class="s">&quot;FavoritColors&quot;</span><span class="p">,</span> <span class="n">colors</span><span class="p">,</span> <span class="n">shape</span><span class="p">)</span>
+         <span class="o">-&gt;</span><span class="n">AddVal</span><span class="p">(</span><span class="s">&quot;FavoriteColors&quot;</span><span class="p">,</span> <span class="n">colors</span><span class="p">,</span> <span class="n">shape</span><span class="p">)</span>
          <span class="o">-&gt;</span><span class="n">Record</span><span class="p">();</span>
+</pre></div>
+</div>
+<p><strong>Python:</strong></p>
+<div class="highlight-c++"><div class="highlight"><pre><span></span><span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;green&quot;</span><span class="p">,</span> <span class="s">&quot;blue&quot;</span><span class="p">,</span> <span class="s">&quot;chartreuse&quot;</span><span class="p">]</span>
+<span class="n">shape</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">context</span><span class="p">.</span><span class="n">new_datum</span><span class="p">(</span><span class="s">&quot;DecorPreferences&quot;</span><span class="p">)</span>
+<span class="n">d</span><span class="p">.</span><span class="n">add_val</span><span class="p">(</span><span class="s">&quot;AgentID&quot;</span><span class="p">,</span> <span class="n">self</span><span class="p">.</span><span class="n">id</span><span class="p">,</span> <span class="n">type</span><span class="o">=</span><span class="n">ts</span><span class="p">.</span><span class="n">INT</span><span class="p">)</span>
+<span class="n">d</span><span class="p">.</span><span class="n">add_val</span><span class="p">(</span><span class="s">&quot;Time&quot;</span><span class="p">,</span> <span class="n">self</span><span class="p">.</span><span class="n">context</span><span class="p">.</span><span class="n">time</span><span class="p">,</span> <span class="n">type</span><span class="o">=</span><span class="n">ts</span><span class="p">.</span><span class="n">INT</span><span class="p">)</span>
+<span class="n">d</span><span class="p">.</span><span class="n">add_val</span><span class="p">(</span><span class="s">&quot;FavoriteColors&quot;</span><span class="p">,</span> <span class="n">colors</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">ts</span><span class="p">.</span><span class="n">VECTOR_STRING</span><span class="p">)</span>
+<span class="n">d</span><span class="p">.</span><span class="n">record</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>In the example above, the &#8220;chartreuse&#8221; color is longer than the 8 characters
@@ -253,7 +291,7 @@ must not start with a number.</p>
   <div class="sphinxnext">
     <h4>Next page</h4>
     <p class="topless"><a href="errors.html"
-                          title="Next page">&rarr; Errors and Warnings</a></p>
+                          title="Next page">&rarr; Errors and Warnings [C++]</a></p>
   </div>
   <div class="sphinxlocaltoc">
   <h3>Useful Pages</h3>
@@ -347,7 +385,7 @@ must not start with a number.</p>
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> &nbsp; &nbsp;</li>
         <li class="right" >
-          <a href="errors.html" title="Errors and Warnings"
+          <a href="errors.html" title="Errors and Warnings [C++]"
              >next</a> &nbsp; &nbsp;</li>
         <li class="right" >
           <a href="dbtypes.html" title="Database Types"
@@ -361,7 +399,7 @@ must not start with a number.</p>
 
     <div class="footer" role="contentinfo">
         &#169; Copyright 2012-2016, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Jan 31, 2017.
+      Last updated on Feb 09, 2017.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");

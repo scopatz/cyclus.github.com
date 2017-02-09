@@ -100,9 +100,15 @@ agent to be built or scheduling a current agent to be decommissioned.</p>
 <li><a class="reference internal" href="#decom"><span class="std std-ref">Decommission Phase</span></a> (kernel)</li>
 </ul>
 <p>Agent phases are invoked using a method call of the same name, e.g.,</p>
+<p><strong>C++:</strong></p>
 <div class="highlight-c++"><div class="highlight"><pre><span></span><span class="k">virtual</span> <span class="kt">void</span> <span class="n">MyAgent</span><span class="o">::</span><span class="n">Tick</span><span class="p">()</span> <span class="p">{</span>
   <span class="c1">// perform agent-phase Tick&#39;s work</span>
 <span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Python:</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">tick</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="c1"># perform agent-phase tick&#39;s work, no return value</span>
 </pre></div>
 </div>
 <p>Importantly, the order in which agents&#8217; agent-phase methods are invoked is <em>not
@@ -117,11 +123,19 @@ archetypes do have constraints on the time step duration (e.g. they only
 support approximately 1-month time steps), then they should throw an
 exception as early as possible (i.e. in their constructor).  The time step
 duration can be queried from an the simulation context:</p>
+<p><strong>C++:</strong></p>
 <div class="highlight-c++"><div class="highlight"><pre><span></span><span class="k">virtual</span> <span class="kt">void</span> <span class="n">MyAgent</span><span class="o">::</span><span class="n">Tick</span><span class="p">()</span> <span class="p">{</span>
     <span class="p">...</span>
     <span class="kt">double</span> <span class="n">discharge_qty</span> <span class="o">=</span> <span class="n">discharge_rate</span> <span class="o">*</span> <span class="n">context</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">dt</span><span class="p">();</span>
     <span class="p">...</span>
 <span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Python:</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">tick</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="o">...</span>
+    <span class="n">discharge_qty</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">discharge_rate</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">dt</span>
+    <span class="o">...</span>
 </pre></div>
 </div>
 <div class="section" id="build-phase">
@@ -318,7 +332,7 @@ scheduled for the current time step or any future time step.</p>
 
     <div class="footer" role="contentinfo">
         &#169; Copyright 2012-2016, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Jan 31, 2017.
+      Last updated on Feb 09, 2017.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");

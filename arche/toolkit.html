@@ -87,20 +87,24 @@ if(ga_enabled){
 functionality relevant to a variety of <a class="reference internal" href="../basics/glossary.html#term-archetype"><span class="xref std std-term">archetypes</span></a> that do
 not belong strictly in the <a class="reference internal" href="../basics/glossary.html#term-cyclus-kernel"><span class="xref std std-term">cyclus kernel</span></a>.</p>
 <div class="section" id="resourcebuff">
-<h2>Resourcebuff<a class="headerlink" href="#resourcebuff" title="Permalink to this headline">¶</a></h2>
+<h2>ResourceBuff<a class="headerlink" href="#resourcebuff" title="Permalink to this headline">¶</a></h2>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p class="last">ResourceBuff will soon be deprecated in favor of <code class="docutils literal"><span class="pre">ResBuf</span></code>.</p>
 </div>
-<p>The <code class="docutils literal"><span class="pre">cyclus::toolkit::ResourceBuff</span></code> class provides provides a canonical
-methodology for dealing with collections of <code class="docutils literal"><span class="pre">cyclus::Resources</span></code>.
+<p>The <code class="docutils literal"><span class="pre">cyclus::toolkit::ResourceBuff</span></code> (C++) or <code class="docutils literal"><span class="pre">cyclus.typesystem.ResourceBuff</span></code> (Python)
+class provides provides a canonical
+methodology for dealing with collections of <code class="docutils literal"><span class="pre">Resources</span></code>.
 <a class="reference internal" href="../basics/glossary.html#term-archetype"><span class="xref std std-term">Archetypes</span></a> in both <span style="font-variant:small-caps;">Cyclus</span> and Cycamore make use of this
-class.  <code class="docutils literal"><span class="pre">ResourceBuff</span></code>s are usually used as member variables of
-archetypes.  The Cyclus preprocessor has special handling for <code class="docutils literal"><span class="pre">ResourceBuff</span></code>
-- it can generate all needed code for proper persistence and intiialization
-of the buffer.  For this to work, you must annotate the buffer member variable
-with a Cyclus pre-processor <a class="reference internal" href="cycpp.html#pragma-cyclus-var"><span class="std std-ref">pragma</span></a> in one of the
+class.  <code class="docutils literal"><span class="pre">ResourceBuffs</span></code> are usually used as member variables of
+archetypes.  The <span style="font-variant:small-caps;">Cyclus</span> preprocessor (C++) or <span style="font-variant:small-caps;">Cyclus</span> agents (Python) have special
+handling for <code class="docutils literal"><span class="pre">ResourceBuff</span></code>
+as it can generate all needed code for proper persistence and intiialization
+of the buffer. For this to work, you must annotate the buffer member variable
+with a Cyclus pre-processor <a class="reference internal" href="cycpp.html#pragma-cyclus-var"><span class="std std-ref">pragma</span></a> (C++) or have a
+special <code class="docutils literal"><span class="pre">ResourceBuffInv</span></code> class attribute (Python) in one of the
 following ways:</p>
+<p><strong>C++:</strong></p>
 <div class="highlight-c++"><div class="highlight"><pre><span></span><span class="c1">// Option 1: minimum required annotation</span>
 <span class="cp">#pragma cyclus var {}</span>
 <span class="n">cyclus</span><span class="o">::</span><span class="n">toolkit</span><span class="o">::</span><span class="n">ResourceBuff</span> <span class="n">mybuf</span><span class="p">;</span>
@@ -115,6 +119,23 @@ following ways:</p>
 <span class="kt">double</span> <span class="n">buf_cap</span><span class="p">;</span>
 <span class="cp">#pragma cyclus var {&#39;capacity&#39;: &#39;buf_cap&#39;}</span>
 <span class="n">cyclus</span><span class="o">::</span><span class="n">toolkit</span><span class="o">::</span><span class="n">ResourceBuff</span> <span class="n">mybuf</span><span class="p">;</span>
+</pre></div>
+</div>
+<p><strong>Python:</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cyclus.agents</span> <span class="kn">import</span> <span class="n">Facility</span>
+<span class="kn">import</span> <span class="nn">cyclus.typesystem</span> <span class="kn">as</span> <span class="nn">ts</span>
+
+<span class="k">class</span> <span class="nc">MyFacility</span><span class="p">(</span><span class="n">Facility</span><span class="p">):</span>
+    <span class="c1"># Option 1: minimum required class attribute</span>
+    <span class="n">mybuf</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">ResourceBuffInv</span><span class="p">()</span>
+
+    <span class="c1"># Option 2: you can set a specify buffer capacity</span>
+    <span class="n">mybuf</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">ResourceBuffInv</span><span class="p">(</span><span class="n">capacity</span><span class="o">=</span><span class="mf">245.6</span><span class="p">)</span>
+
+    <span class="c1"># Option 3: you can reference another annotated member variable&#39;s value</span>
+    <span class="c1"># as the capacity</span>
+    <span class="n">buf_cap</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">Double</span><span class="p">()</span>
+    <span class="n">mybuf</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">ResourceBuffInv</span><span class="p">(</span><span class="n">capacity</span><span class="o">=</span><span class="s1">&#39;buf_cap&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>You can read the <a class="reference external" href="http://fuelcycle.org/cyclus/api/classcyclus_1_1toolkit_1_1ResourceBuff.html">ResourceBuff API documentation</a> for
@@ -122,13 +143,16 @@ more details on how to use the buffer.</p>
 </div>
 <div class="section" id="resbuf">
 <h2>ResBuf<a class="headerlink" href="#resbuf" title="Permalink to this headline">¶</a></h2>
-<p>The <code class="docutils literal"><span class="pre">cyclus::toolkit::ResBuf</span></code> class provides provides a canonical
-methodology for dealing with collections of Resources.  <code class="docutils literal"><span class="pre">ResBuf</span></code>s
+<p>The <code class="docutils literal"><span class="pre">cyclus::toolkit::ResBuf</span></code> (C++) or <code class="docutils literal"><span class="pre">cyclus.typesystem.ResBuf</span></code> (Python) class
+provides provides a canonical
+methodology for dealing with collections of Resources.  <code class="docutils literal"><span class="pre">ResBufs</span></code>
 are usually used as member variables of archetypes.  The Cyclus preprocessor
-has special handling for <code class="docutils literal"><span class="pre">ResBuf</span></code> - it can generate all needed code
+has special handling for <code class="docutils literal"><span class="pre">ResBuf</span></code> as it can generate all needed code
 for proper persistence and intiialization of the buffer.  For this to work,
 you must annotate the buffer member variable with a Cyclus pre-processor
-<a class="reference internal" href="cycpp.html#pragma-cyclus-var"><span class="std std-ref">pragma</span></a> in one of the following ways:</p>
+<a class="reference internal" href="cycpp.html#pragma-cyclus-var"><span class="std std-ref">pragma</span></a> (C++) or set a class attribute (Python)
+in one of the following ways:</p>
+<p><strong>C++:</strong></p>
 <div class="highlight-c++"><div class="highlight"><pre><span></span><span class="c1">// Option 1: minimum required annotation</span>
 <span class="cp">#pragma cyclus var {}</span>
 <span class="n">cyclus</span><span class="o">::</span><span class="n">toolkit</span><span class="o">::</span><span class="n">ResBuf</span><span class="o">&lt;</span><span class="n">cyclus</span><span class="o">::</span><span class="n">Material</span><span class="o">&gt;</span> <span class="n">mybuf</span><span class="p">;</span>
@@ -145,35 +169,52 @@ you must annotate the buffer member variable with a Cyclus pre-processor
 <span class="n">cyclus</span><span class="o">::</span><span class="n">toolkit</span><span class="o">::</span><span class="n">ResBuf</span><span class="o">&lt;</span><span class="n">cyclus</span><span class="o">::</span><span class="n">Material</span><span class="o">&gt;</span> <span class="n">mybuf</span><span class="p">;</span>
 </pre></div>
 </div>
+<p><strong>Python:</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cyclus.agents</span> <span class="kn">import</span> <span class="n">Facility</span>
+<span class="kn">import</span> <span class="nn">cyclus.typesystem</span> <span class="kn">as</span> <span class="nn">ts</span>
+
+<span class="k">class</span> <span class="nc">MyFacility</span><span class="p">(</span><span class="n">Facility</span><span class="p">):</span>
+    <span class="c1"># Option 1: minimum required annotation</span>
+    <span class="n">mybuf</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">ResBufMaterialInv</span><span class="p">()</span>
+
+    <span class="c1"># Option 2: you can set a specify buffer capacity</span>
+    <span class="n">mybuf</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">ResBufMaterialInv</span><span class="p">(</span><span class="n">capacity</span><span class="o">=</span><span class="mf">245.6</span><span class="p">)</span>
+
+    <span class="c1"># Option 3: you can reference another annotated member variable&#39;s value</span>
+    <span class="c1"># as the capacity</span>
+    <span class="n">buf_cap</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">Double</span><span class="p">()</span>
+    <span class="n">mybuf</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">ResBufMaterialInv</span><span class="p">(</span><span class="n">capacity</span><span class="o">=</span><span class="s1">&#39;buf_cap&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
 <p>You can read the <a class="reference external" href="http://fuelcycle.org/cyclus/api/classcyclus_1_1toolkit_1_1ResBuf.html">ResBuf API documentation</a> for
 more details on how to use the buffer.</p>
 </div>
-<div class="section" id="matquery">
-<h2>MatQuery<a class="headerlink" href="#matquery" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="matquery-c">
+<h2>MatQuery [C++]<a class="headerlink" href="#matquery-c" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="docutils literal"><span class="pre">cyclus::toolkit::MatQuery</span></code> class provides some easy-to-use functions that
 interrogate the <code class="docutils literal"><span class="pre">cyclus::Material</span></code> object. For example, one can query the mass
 or number of moles of a given nuclide.</p>
 </div>
-<div class="section" id="enrichment">
-<h2>Enrichment<a class="headerlink" href="#enrichment" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="enrichment-c">
+<h2>Enrichment [C++]<a class="headerlink" href="#enrichment-c" title="Permalink to this headline">¶</a></h2>
 <p>A number of functions are provided in <code class="docutils literal"><span class="pre">toolkit/enrichment.h</span></code> that assist in
 enrichment-related calculations. Some highlights include a representation of
 uranium assays in <code class="docutils literal"><span class="pre">cyclus::toolkit::Assays</span></code>, as well as functions to calculate
 feed, tails, and SWU quantity requirements.</p>
 </div>
-<div class="section" id="commodity-recipe-context">
-<h2>Commodity Recipe Context<a class="headerlink" href="#commodity-recipe-context" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="commodity-recipe-context-c">
+<h2>Commodity Recipe Context [C++]<a class="headerlink" href="#commodity-recipe-context-c" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="docutils literal"><span class="pre">cyclus::toolkit::CommodityRecipeContext</span></code> class provides a mapping between
 commodities and recipes that can be updated as a simulation progresses.</p>
 </div>
-<div class="section" id="symbolic-functions">
-<h2>Symbolic Functions<a class="headerlink" href="#symbolic-functions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="symbolic-functions-c">
+<h2>Symbolic Functions [C++]<a class="headerlink" href="#symbolic-functions-c" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="docutils literal"><span class="pre">cyclus::toolkit::SymbolicFunction</span></code> class and its derivatives provide an
 object-oriented hierarchy to represent symbolic functions. Factory methods are
 provided by the <code class="docutils literal"><span class="pre">cyclus::toolkit::SymbFunctionFactory</span></code> class.</p>
 </div>
-<div class="section" id="agent-managed-classes">
-<h2>Agent Managed Classes<a class="headerlink" href="#agent-managed-classes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="agent-managed-classes-c">
+<h2>Agent Managed Classes [C++]<a class="headerlink" href="#agent-managed-classes-c" title="Permalink to this headline">¶</a></h2>
 <p>There are a number of interfaces provided in the <span style="font-variant:small-caps;">Cyclus</span> toolkit that can be
 used as either as <a class="reference external" href="http://en.wikipedia.org/wiki/Mixin">mixins</a> or as
 composable, agent-managed state variables:</p>
@@ -185,7 +226,7 @@ based on supply, demand, and agents that can be built</li>
 <li><code class="docutils literal"><span class="pre">cyclus::toolkit::CommodityProducer</span></code>: an interface for adding information
 about commodities that can be produced by the manager</li>
 <li><code class="docutils literal"><span class="pre">cyclus::toolkit::CommodityProducerManager</span></code>: an interface that allows an
-agent to query a collection of <code class="docutils literal"><span class="pre">cyclus::toolkit::CommodityProducer</span></code>s</li>
+agent to query a collection of <code class="docutils literal"><span class="pre">cyclus::toolkit::CommodityProducers</span></code></li>
 <li><code class="docutils literal"><span class="pre">cyclus::toolkit::SupplyDemandManager</span></code>: an interface for querying the supply
 and demand on commodities</li>
 </ul>
@@ -204,13 +245,13 @@ and demand on commodities</li>
     <h3><a href="../index.html">Page contents</a></h3>
     <ul>
 <li><a class="reference internal" href="#">The (Experimental) Cyclus Toolkit</a><ul>
-<li><a class="reference internal" href="#resourcebuff">Resourcebuff</a></li>
+<li><a class="reference internal" href="#resourcebuff">ResourceBuff</a></li>
 <li><a class="reference internal" href="#resbuf">ResBuf</a></li>
-<li><a class="reference internal" href="#matquery">MatQuery</a></li>
-<li><a class="reference internal" href="#enrichment">Enrichment</a></li>
-<li><a class="reference internal" href="#commodity-recipe-context">Commodity Recipe Context</a></li>
-<li><a class="reference internal" href="#symbolic-functions">Symbolic Functions</a></li>
-<li><a class="reference internal" href="#agent-managed-classes">Agent Managed Classes</a></li>
+<li><a class="reference internal" href="#matquery-c">MatQuery [C++]</a></li>
+<li><a class="reference internal" href="#enrichment-c">Enrichment [C++]</a></li>
+<li><a class="reference internal" href="#commodity-recipe-context-c">Commodity Recipe Context [C++]</a></li>
+<li><a class="reference internal" href="#symbolic-functions-c">Symbolic Functions [C++]</a></li>
+<li><a class="reference internal" href="#agent-managed-classes-c">Agent Managed Classes [C++]</a></li>
 </ul>
 </li>
 </ul>
@@ -332,7 +373,7 @@ and demand on commodities</li>
 
     <div class="footer" role="contentinfo">
         &#169; Copyright 2012-2016, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Jan 31, 2017.
+      Last updated on Feb 09, 2017.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");

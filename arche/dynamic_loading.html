@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Dynamic Loading Overview &#8212; Home</title>
+    <title>&lt;no title&gt; &#8212; Home</title>
     
     <link rel="stylesheet" href="../_static/cyclus.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -81,19 +81,18 @@ if(ga_enabled){
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="dynamic-loading-overview">
-<h1>Dynamic Loading Overview<a class="headerlink" href="#dynamic-loading-overview" title="Permalink to this headline">¶</a></h1>
+  <p>Dynamic Loading Overview========================</p>
 <p><em>Dynamic loading</em> is a term used to describe the action of loading
 libraries at run time. This implies that knowledge of the structure
 of the classes in these libraries is not known at compile time to
 the executing program. In Linux, these libraries are denoted by the
 suffix &#8216;.so&#8217;, in Windows, &#8216;.dll&#8217;, and in OSX, &#8216;.dylib&#8217;.</p>
 <p>In <span style="font-variant:small-caps;">Cyclus</span>, every <em>module</em> is dynamically loaded. Modules include one or more
-<em>agents</em>.</p>
+<em>agents</em>.  Python moduels that contain archetypes are loaded dynamically by
+<span style="font-variant:small-caps;">Cyclus</span>&#8216;s loading system, which itself call out to Python&#8217;s import mechanism.</p>
 <p>The internal process used by the <span style="font-variant:small-caps;">Cyclus</span> core is very close to that
 described in this
 <a class="reference external" href="http://www.linuxjournal.com/article/3687">article</a>.</p>
-</div>
 
 
           </div>
@@ -220,7 +219,7 @@ described in this
 
     <div class="footer" role="contentinfo">
         &#169; Copyright 2012-2016, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Jan 31, 2017.
+      Last updated on Feb 09, 2017.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");

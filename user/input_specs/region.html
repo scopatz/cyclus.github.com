@@ -98,6 +98,13 @@ of time steps that this region agent will be active in the simulation</li>
 </ul>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<p>This example introduces two region agents.  The first has the name
+<cite>MyHomeRegion</cite>, and is configured from the <a class="reference internal" href="../../basics/glossary.html#term-archetype"><span class="xref std std-term">archetype</span></a> with the name (or
+alias) <cite>NullRegion</cite>.  The author of the <code class="docutils literal"><span class="pre">NullRegion</span></code> archetype has defined
+no archetype-specific data.  The second has the name <code class="docutils literal"><span class="pre">MyNeighborRegion</span></code> and
+is based on the archetype with the name (or alias) <cite>GrowthRegion</cite>.  The
+contents of the <code class="docutils literal"><span class="pre">GrowthRegion</span></code> section are defined by the author of the
+<cite>GrowthRegion</cite> archetype.</p>
 <p><strong>XML:</strong></p>
 <div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;region&gt;</span>
   <span class="nt">&lt;name&gt;</span>MyHomeRegion<span class="nt">&lt;/name&gt;</span>
@@ -122,37 +129,32 @@ of time steps that this region agent will be active in the simulation</li>
 </pre></div>
 </div>
 <p><strong>JSON:</strong></p>
-<p>This example introduces two region agents.  The first has the name
-<cite>MyHomeRegion</cite>, and is configured from the <a class="reference internal" href="../../basics/glossary.html#term-archetype"><span class="xref std std-term">archetype</span></a> with the name (or
-alias) <cite>NullRegion</cite>.  The author of the <code class="docutils literal"><span class="pre">NullRegion</span></code> archetype has defined
-no archetype-specific data.  The second has the name <code class="docutils literal"><span class="pre">MyNeighborRegion</span></code> and
-is based on the archetype with the name (or alias) <cite>GrowthRegion</cite>.  The
-contents of the <code class="docutils literal"><span class="pre">GrowthRegion</span></code> section are defined by the author of the
-<cite>GrowthRegion</cite> archetype.</p>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
- <span class="nt">&quot;region&quot;</span><span class="p">:</span> <span class="p">{</span>
-   <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;MyHomeRegion&quot;</span><span class="p">,</span>
-   <span class="nt">&quot;config&quot;</span><span class="p">:</span> <span class="p">{</span> <span class="p">},</span>
-   <span class="nt">&quot;institution&quot;</span><span class="p">:</span> <span class="s2">&quot;... data for this institution goes here&quot;</span> <span class="p">}</span>
- <span class="p">}</span>
-
-
-<span class="p">{</span>
- <span class="nt">&quot;region&quot;</span><span class="p">:</span> <span class="p">{</span>
-   <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;MyNeighborRegion&quot;</span><span class="p">,</span>
-   <span class="nt">&quot;config&quot;</span><span class="p">:</span> <span class="p">{</span>
-     <span class="nt">&quot;GrowthRegion&quot;</span><span class="p">:</span> <span class="s2">&quot;... archetype-specific input for a `GrowthRegion` archetype&quot;</span> <span class="p">},</span>
-   <span class="nt">&quot;institution&quot;</span><span class="p">:</span> <span class="s2">&quot;... data for this institution goes here&quot;</span> <span class="p">}</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span>{
+ &quot;region&quot;: [
+   {&quot;name&quot;: &quot;MyHomeRegion&quot;,
+    &quot;config&quot;: { },
+    &quot;institution&quot;: &quot;... data for this institution goes here&quot;}
+    },
+   {&quot;name&quot;: &quot;MyNeighborRegion&quot;,
+    &quot;config&quot;: {&quot;GrowthRegion&quot;: &quot;... archetype-specific input for a GrowthRegion archetype&quot;},
+    &quot;institution&quot;: &quot;... data for this institution goes here&quot;}
+   ]
+ }
+</pre></div>
+</div>
+<p><strong>Python:</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;region&quot;</span><span class="p">:</span> <span class="p">[</span>
+   <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;MyHomeRegion&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;config&quot;</span><span class="p">:</span> <span class="p">{</span> <span class="p">},</span>
+    <span class="s2">&quot;institution&quot;</span><span class="p">:</span> <span class="s2">&quot;... data for this institution goes here&quot;</span><span class="p">},</span>
+    <span class="p">},</span>
+   <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;MyNeighborRegion&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;config&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;GrowthRegion&quot;</span><span class="p">:</span> <span class="s2">&quot;... archetype-specific input for a GrowthRegion archetype&quot;</span><span class="p">},</span>
+    <span class="s2">&quot;institution&quot;</span><span class="p">:</span> <span class="s2">&quot;... data for this institution goes here&quot;</span><span class="p">},</span>
+   <span class="p">],</span>
  <span class="p">}</span>
 </pre></div>
 </div>
-<p>This example introduces two region agents.  The first has the name
-<cite>MyHomeRegion</cite>, and is configured from the <a class="reference internal" href="../../basics/glossary.html#term-archetype"><span class="xref std std-term">archetype</span></a> with the name (or
-alias) <cite>NullRegion</cite>.  The author of the <code class="docutils literal"><span class="pre">NullRegion</span></code> archetype has defined
-no archetype-specific data.  The second has the name <code class="docutils literal"><span class="pre">MyNeighborRegion</span></code> and
-is based on the archetype with the name (or alias) <cite>GrowthRegion</cite>.  The
-contents of the <code class="docutils literal"><span class="pre">GrowthRegion</span></code> section are defined by the author of the
-<cite>GrowthRegion</cite> archetype.</p>
 </div>
 <div class="html-toggle section" id="grammar-definition">
 <h2>Grammar Definition<a class="headerlink" href="#grammar-definition" title="Permalink to this headline">¶</a></h2>
@@ -314,7 +316,7 @@ contents of the <code class="docutils literal"><span class="pre">GrowthRegion</s
 
     <div class="footer" role="contentinfo">
         &#169; Copyright 2012-2016, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Jan 31, 2017.
+      Last updated on Feb 09, 2017.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");
