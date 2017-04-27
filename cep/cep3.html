@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '(1.5.0-162-gf18c1af)',
+        VERSION:     '(1.5.0-17-g9a707ee)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -91,9 +91,9 @@ if(ga_enabled){
 </tr>
 <tr class="field-even field"><th class="field-name">Title:</th><td class="field-body"><span style="font-variant:small-caps;">Cyclus</span> Release Procedure</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Last-Modified:</th><td class="field-body">2016-05-04</td>
+<tr class="field-odd field"><th class="field-name">Last-Modified:</th><td class="field-body">2017-02-13</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Author:</th><td class="field-body">Anthony Scopatz and Matthew Gidden</td>
+<tr class="field-even field"><th class="field-name">Author:</th><td class="field-body">Anthony Scopatz and Matthew Gidden and Baptiste Mouginot</td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Status:</th><td class="field-body">Accepted</td>
 </tr>
@@ -150,7 +150,7 @@ wait until post-release to be merged into <code class="docutils literal"><span c
 accidentally getting released early.</p>
 <p>Everything that is in the release branch must also be part of <code class="docutils literal"><span class="pre">develop</span></code>.
 Graphically,</p>
-<div class="figure align-center" id="id6">
+<div class="figure align-center" id="id4">
 <img alt="../_images/cep-0003-1.svg" src="../_images/cep-0003-1.svg" /><p class="caption"><span class="caption-text"><strong>Figure 1:</strong> Branch hierarchy under release.</span></p>
 </div>
 <div class="admonition note">
@@ -211,8 +211,7 @@ completing this milestone.</p>
 <code class="docutils literal"><span class="pre">cycamore/src/cycamore_version.h.in</span></code>, and
 <code class="docutils literal"><span class="pre">cymetric/setup.py</span></code>; commit the changes</p>
 </li>
-<li><p class="first">Perform maintenance tasks for all projects. The maintenance depends on <a href="#id1"><span class="problematic" id="id2">`</span></a>PyNE
-&lt;<a class="reference external" href="https://github.com/pyne/pyne.git">https://github.com/pyne/pyne.git</a>&gt;`_and Doxygen.</p>
+<li><p class="first">Perform maintenance tasks for all projects. The maintenance depends on <a class="reference external" href="https://github.com/pyne/pyne.git">PyNE</a> and Doxygen.</p>
 <blockquote>
 <div><ul class="simple">
 <li>they are described in detail below, <em>but</em> the <code class="docutils literal"><span class="pre">maintenence.sh</span></code> utility
@@ -327,16 +326,10 @@ $ git push upstream --delete vX.X.X-release
 </li>
 <li><p class="first">Update Conda-forge</p>
 <blockquote>
-<div><blockquote>
 <div><ul class="simple">
 <li>For each project, find the corresponding feedstock repository in the
-conda-forge organization on github. For example, cyclus&#8217; feedstock is at</li>
-</ul>
-<blockquote>
-<div><p><a class="reference external" href="https://github.com/conda-forge/cyclus-feedstock">https://github.com/conda-forge/cyclus-feedstock</a></p>
-</div></blockquote>
-</div></blockquote>
-<ul class="simple">
+conda-forge organization on github. For example, cyclus&#8217; feedstock is at
+<a class="reference external" href="https://github.com/conda-forge/cyclus-feedstock">https://github.com/conda-forge/cyclus-feedstock</a></li>
 <li>In each project&#8217;s feedstok, open up a PR which updates the
 <cite>recipe/meta.yaml</cite> file with the new version number and the new SHA-256
 value of the new version&#8217;s tarball. See conda-forge documentation for more
@@ -457,7 +450,7 @@ file.  Commit this and add it to the repo.</p>
         <div class="sphinxsidebarwrapper">
         <p class="logo"><a href="../index.html" title="index">
           <img class="logo" src="../_static/big_c.png" alt="Logo"/>
-        </a></p><div class="sphinx-toc sphinxlocaltoc">
+        </a></p><div class="sphinxlocaltoc">
     <h3><a href="../index.html">Page contents</a></h3>
     <ul>
 <li><a class="reference internal" href="#">CEP 3 - <span style="font-variant:small-caps;">Cyclus</span> Release Procedure</a><ul>
@@ -552,23 +545,6 @@ file.  Commit this and add it to the repo.</p>
 
         </div>
       </div>
-    
-    
-        <div class="sidebar-toggle-group no-js">
-            
-            <button class="sidebar-toggle" id="sidebar-hide" title="Hide the sidebar menu">
-                 «
-                <span class="show-for-small">hide menu</span>
-                
-            </button>
-            <button class="sidebar-toggle" id="sidebar-show" title="Show the sidebar menu">
-                
-                <span class="show-for-small">menu</span>
-                <span class="hide-for-small">sidebar</span>
-                 »
-            </button>
-        </div>
-    
       <div class="clearer"></div>
     </div>
     <div class="relbar-bottom">
@@ -597,7 +573,7 @@ file.  Commit this and add it to the repo.</p>
 
     <div class="footer" role="contentinfo">
         &#169; Copyright 2012-2016, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Feb 13, 2017.
+      Last updated on Apr 27, 2017.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");

@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '(1.5.0-162-gf18c1af)',
+        VERSION:     '(1.5.0-17-g9a707ee)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -109,7 +109,7 @@ if(ga_enabled){
 <h2>Motivation<a class="headerlink" href="#motivation" title="Permalink to this headline">¶</a></h2>
 <p>Cyclus is a discrete time simulator whose assumed default time step is
 months. Months are the worst unit ever. This proposal adds precision and
-flexibility to what we mean by <img class="math" src="../_images/math/d1d0c5bda433e26438f8a8dc129047eafde47723.png" alt="\delta t"/>. Namely, this CEP moves from
+flexibility to what we mean by <span class="math">\delta t</span>. Namely, this CEP moves from
 months to seconds and allows the user to set the time step length, preserving
 a default length of a Julian month.</p>
 </div>
@@ -119,7 +119,7 @@ a default length of a Julian month.</p>
 the seconds as the default time unit.  This allows agents to unambiguously
 communicate with each other and to determine their own time scales internally.
 This CEP also adds the capability for users to specify a time step length
-(<img class="math" src="../_images/math/d1d0c5bda433e26438f8a8dc129047eafde47723.png" alt="\delta t"/>) of their choosing. The default time step, if unspecified,
+(<span class="math">\delta t</span>) of their choosing. The default time step, if unspecified,
 will be a well-defined month, improving on the historically nebulous month.</p>
 <p>This CEP is motivated by our past woes with months.
 Months are an awful time step because there is no single definition for what a
@@ -134,14 +134,14 @@ or to have non-month days between years.</p>
 it is an even worse idea to implement a full Gregorian calendar. Like with
 time zones, the opportunities for failure are nearly endless. Furthermore,
 going with a real calendar breaks with the current notion that all time steps
-have an equal <img class="math" src="../_images/math/d1d0c5bda433e26438f8a8dc129047eafde47723.png" alt="\delta t"/>.</p>
+have an equal <span class="math">\delta t</span>.</p>
 </div>
 <div class="section" id="specification">
 <h2>Specification<a class="headerlink" href="#specification" title="Permalink to this headline">¶</a></h2>
 <p>This CEP defines the default time step as the average length of a Julian
 month as measured in seconds, the proper unit for time:</p>
 <div class="math">
-<p><img src="../_images/math/8e98802356d488654c16da081679922649baf25c.png" alt="\delta t = \frac{365.25 [d]}{12} = \frac{31557600 [s]}{12} = 2629800 [s/m]"/></p>
+<p><span class="math">\delta t = \frac{365.25 [d]}{12} = \frac{31557600 [s]}{12} = 2629800 [s/m]</span></p>
 </div><p>Furthermore, this actual time step should be able to be set by the user in the
 input file. The following changes to the master schema(s) are thus needed:</p>
 <div class="highlight-xml"><div class="highlight"><pre><span></span>&lt;element name =&quot;control&quot;&gt;
@@ -191,7 +191,7 @@ per prototype.</p>
 about actual real physical time and those which simply function per
 simulation time step.</p>
 <p>When an archetype uses real time, due to physics calculations or other needs,
-the archetype should now check that <img class="math" src="../_images/math/d1d0c5bda433e26438f8a8dc129047eafde47723.png" alt="\delta t"/> is within a valid range
+the archetype should now check that <span class="math">\delta t</span> is within a valid range
 that they define. This is because users will now be able to set the time step.
 This validation check maybe performed in any of the archetype&#8217;s member functions.
 If a static range is known ahead of time, then this check is most appropriate in
@@ -227,7 +227,7 @@ itself, there is no funny business here.</p>
         <div class="sphinxsidebarwrapper">
         <p class="logo"><a href="../index.html" title="index">
           <img class="logo" src="../_static/big_c.png" alt="Logo"/>
-        </a></p><div class="sphinx-toc sphinxlocaltoc">
+        </a></p><div class="sphinxlocaltoc">
     <h3><a href="../index.html">Page contents</a></h3>
     <ul>
 <li><a class="reference internal" href="#">CEP 23 - Defining Time Step Length, High Noon for Blue Moon</a><ul>
@@ -315,23 +315,6 @@ itself, there is no funny business here.</p>
 
         </div>
       </div>
-    
-    
-        <div class="sidebar-toggle-group no-js">
-            
-            <button class="sidebar-toggle" id="sidebar-hide" title="Hide the sidebar menu">
-                 «
-                <span class="show-for-small">hide menu</span>
-                
-            </button>
-            <button class="sidebar-toggle" id="sidebar-show" title="Show the sidebar menu">
-                
-                <span class="show-for-small">menu</span>
-                <span class="hide-for-small">sidebar</span>
-                 »
-            </button>
-        </div>
-    
       <div class="clearer"></div>
     </div>
     <div class="relbar-bottom">
@@ -360,7 +343,7 @@ itself, there is no funny business here.</p>
 
     <div class="footer" role="contentinfo">
         &#169; Copyright 2012-2016, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Feb 13, 2017.
+      Last updated on Apr 27, 2017.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");

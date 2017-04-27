@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '(1.5.0-162-gf18c1af)',
+        VERSION:     '(1.5.0-17-g9a707ee)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -32,8 +32,8 @@
     <link rel="shortcut icon" href="../_static/big_c.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Cyclus Enhancement Proposals" href="../cep/cep0.html" />
-    <link rel="prev" title="Event Loop (cyclus.events)" href="events.html" /> 
+    <link rel="next" title="Lazy and Self-destructive Python Tools (cyclus.lazyasd)" href="lazyasd.html" />
+    <link rel="prev" title="Type System Code Generator (cyclus.gentypesystem)" href="gentypesystem.html" /> 
         <meta name="viewport" content="width=device-width, initial-scale=1"><script type="text/javascript">
 var ga_enabled = !$.cookie('disable-ga');
 if(ga_enabled){
@@ -63,10 +63,10 @@ if(ga_enabled){
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> &nbsp; &nbsp;</li>
         <li class="right" >
-          <a href="../cep/cep0.html" title="Cyclus Enhancement Proposals"
+          <a href="lazyasd.html" title="Lazy and Self-destructive Python Tools (cyclus.lazyasd)"
              accesskey="N">next</a> &nbsp; &nbsp;</li>
         <li class="right" >
-          <a href="events.html" title="Event Loop (cyclus.events)"
+          <a href="gentypesystem.html" title="Type System Code Generator (cyclus.gentypesystem)"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
     <li><a href="../index.html">Home</a> &#187;</li>
 
@@ -81,285 +81,8 @@ if(ga_enabled){
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="module-cyclus.jsoncpp">
-<span id="json-c-cyclus-jsoncpp"></span><span id="cyclus-pyapi-jsoncpp"></span><h1>JSON C++ (<code class="docutils literal"><span class="pre">cyclus.jsoncpp</span></code>)<a class="headerlink" href="#module-cyclus.jsoncpp" title="Permalink to this headline">¶</a></h1>
-<p>Python wrapper for jsoncpp.</p>
-<dl class="class">
-<dt id="cyclus.jsoncpp.CustomWriter">
-<em class="property">class </em><code class="descclassname">cyclus.jsoncpp.</code><code class="descname">CustomWriter</code><a class="headerlink" href="#cyclus.jsoncpp.CustomWriter" title="Permalink to this definition">¶</a></dt>
-<dd><p>A class to convert values in memory to expanded strings with a custom
-formtting.</p>
-<dl class="method">
-<dt id="cyclus.jsoncpp.CustomWriter.write">
-<code class="descname">write</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cyclus.jsoncpp.CustomWriter.write" title="Permalink to this definition">¶</a></dt>
-<dd><p>Writes a value out to a custom human-readable JSON string.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>value</strong> : Value or anything Value-convertable</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>s</strong> : str</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="cyclus.jsoncpp.FastWriter">
-<em class="property">class </em><code class="descclassname">cyclus.jsoncpp.</code><code class="descname">FastWriter</code><a class="headerlink" href="#cyclus.jsoncpp.FastWriter" title="Permalink to this definition">¶</a></dt>
-<dd><p>A class to convert values in memory to minified strings.</p>
-<dl class="method">
-<dt id="cyclus.jsoncpp.FastWriter.enable_yaml_compatibility">
-<code class="descname">enable_yaml_compatibility</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cyclus.jsoncpp.FastWriter.enable_yaml_compatibility" title="Permalink to this definition">¶</a></dt>
-<dd><p>Enables YAML compatability for output.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="cyclus.jsoncpp.FastWriter.write">
-<code class="descname">write</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cyclus.jsoncpp.FastWriter.write" title="Permalink to this definition">¶</a></dt>
-<dd><p>Writes a value out to a compact, not human-readable JSON string.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>value</strong> : Value or anything Value-convertable</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>s</strong> : str</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="cyclus.jsoncpp.Reader">
-<em class="property">class </em><code class="descclassname">cyclus.jsoncpp.</code><code class="descname">Reader</code><a class="headerlink" href="#cyclus.jsoncpp.Reader" title="Permalink to this definition">¶</a></dt>
-<dd><p>A class to convert strings and files to values in memory.</p>
-<dl class="method">
-<dt id="cyclus.jsoncpp.Reader.parse">
-<code class="descname">parse</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cyclus.jsoncpp.Reader.parse" title="Permalink to this definition">¶</a></dt>
-<dd><p>Read a Value from a JSON document.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>document</strong> : string or file-like object</p>
-<blockquote>
-<div><p>Any JSON formatted string</p>
-</div></blockquote>
-<p><strong>collect_comments</strong> : bool, optional</p>
-<blockquote>
-<div><p>True to collect comment and allow writing them back during
-serialization, and False to discard comments.</p>
-</div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>root</strong> : Value</p>
-<blockquote class="last">
-<div><p>The root value of the document if it was successfully parsed.</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="cyclus.jsoncpp.StyledWriter">
-<em class="property">class </em><code class="descclassname">cyclus.jsoncpp.</code><code class="descname">StyledWriter</code><a class="headerlink" href="#cyclus.jsoncpp.StyledWriter" title="Permalink to this definition">¶</a></dt>
-<dd><p>A class to convert values in memory to expanded strings.</p>
-<dl class="method">
-<dt id="cyclus.jsoncpp.StyledWriter.write">
-<code class="descname">write</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cyclus.jsoncpp.StyledWriter.write" title="Permalink to this definition">¶</a></dt>
-<dd><p>Writes a value out to a human-readable JSON string.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>value</strong> : Value or anything Value-convertable</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>s</strong> : str</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="cyclus.jsoncpp.Value">
-<em class="property">class </em><code class="descclassname">cyclus.jsoncpp.</code><code class="descname">Value</code><span class="sig-paren">(</span><em>document=None</em>, <em>view=False</em><span class="sig-paren">)</span><a class="headerlink" href="#cyclus.jsoncpp.Value" title="Permalink to this definition">¶</a></dt>
-<dd><p>An in-memory JSON value.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>document</strong> : object, optional</p>
-<blockquote>
-<div><p>Python value to convert to a JSONic form.</p>
-</div></blockquote>
-<p><strong>view</strong> : bool, optional</p>
-<blockquote class="last">
-<div><p>Flag for whether this is a view or a copy of its underlying value.</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
-<dl class="method">
-<dt id="cyclus.jsoncpp.Value.append">
-<code class="descname">append</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cyclus.jsoncpp.Value.append" title="Permalink to this definition">¶</a></dt>
-<dd><p>Adds the value to the end of the array.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="cyclus.jsoncpp.Value.clear">
-<code class="descname">clear</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cyclus.jsoncpp.Value.clear" title="Permalink to this definition">¶</a></dt>
-<dd><p>Removes all elements of JSON value.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="cyclus.jsoncpp.Value.count">
-<code class="descname">count</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cyclus.jsoncpp.Value.count" title="Permalink to this definition">¶</a></dt>
-<dd><p>Counts the number of instances of value.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="cyclus.jsoncpp.Value.extend">
-<code class="descname">extend</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cyclus.jsoncpp.Value.extend" title="Permalink to this definition">¶</a></dt>
-<dd><p>Exetend the array by adding elements from the iterable to the end.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="cyclus.jsoncpp.Value.get">
-<code class="descname">get</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cyclus.jsoncpp.Value.get" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns key if present, or default otherwise.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="cyclus.jsoncpp.Value.index">
-<code class="descname">index</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cyclus.jsoncpp.Value.index" title="Permalink to this definition">¶</a></dt>
-<dd><p>Finds the first index of value on range from start to stop.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="cyclus.jsoncpp.Value.insert">
-<code class="descname">insert</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cyclus.jsoncpp.Value.insert" title="Permalink to this definition">¶</a></dt>
-<dd><p>Inserts the value at position ind.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="cyclus.jsoncpp.Value.isarray">
-<code class="descname">isarray</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cyclus.jsoncpp.Value.isarray" title="Permalink to this definition">¶</a></dt>
-<dd><p>True if JSON array or null, False otherwise.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="cyclus.jsoncpp.Value.isbool">
-<code class="descname">isbool</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cyclus.jsoncpp.Value.isbool" title="Permalink to this definition">¶</a></dt>
-<dd><p>True if JSON boolean, False otherwise.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="cyclus.jsoncpp.Value.isfloat">
-<code class="descname">isfloat</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cyclus.jsoncpp.Value.isfloat" title="Permalink to this definition">¶</a></dt>
-<dd><p>True if is any JSON float or double type, False otherwise.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="cyclus.jsoncpp.Value.isint">
-<code class="descname">isint</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cyclus.jsoncpp.Value.isint" title="Permalink to this definition">¶</a></dt>
-<dd><p>True if is any JSON integer type, False otherwise.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="cyclus.jsoncpp.Value.isnull">
-<code class="descname">isnull</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cyclus.jsoncpp.Value.isnull" title="Permalink to this definition">¶</a></dt>
-<dd><p>True if JSON null, False otherwise.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="cyclus.jsoncpp.Value.isobject">
-<code class="descname">isobject</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cyclus.jsoncpp.Value.isobject" title="Permalink to this definition">¶</a></dt>
-<dd><p>True if JSON object or null, False otherwise.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="cyclus.jsoncpp.Value.isstring">
-<code class="descname">isstring</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cyclus.jsoncpp.Value.isstring" title="Permalink to this definition">¶</a></dt>
-<dd><p>True if JSON string, False otherwise.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="cyclus.jsoncpp.Value.items">
-<code class="descname">items</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cyclus.jsoncpp.Value.items" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns a list of items in JSON object.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="cyclus.jsoncpp.Value.keys">
-<code class="descname">keys</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cyclus.jsoncpp.Value.keys" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns a list of keys in JSON object.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="cyclus.jsoncpp.Value.pop">
-<code class="descname">pop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cyclus.jsoncpp.Value.pop" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="cyclus.jsoncpp.Value.popitem">
-<code class="descname">popitem</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cyclus.jsoncpp.Value.popitem" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="cyclus.jsoncpp.Value.remove">
-<code class="descname">remove</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cyclus.jsoncpp.Value.remove" title="Permalink to this definition">¶</a></dt>
-<dd><p>Removes the first instance of value from the array.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="cyclus.jsoncpp.Value.reverse">
-<code class="descname">reverse</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cyclus.jsoncpp.Value.reverse" title="Permalink to this definition">¶</a></dt>
-<dd><p>Reverses the array in place.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="cyclus.jsoncpp.Value.setdefault">
-<code class="descname">setdefault</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cyclus.jsoncpp.Value.setdefault" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="cyclus.jsoncpp.Value.type">
-<code class="descname">type</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cyclus.jsoncpp.Value.type" title="Permalink to this definition">¶</a></dt>
-<dd><p>The type number of this JSON value.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="cyclus.jsoncpp.Value.type_name">
-<code class="descname">type_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cyclus.jsoncpp.Value.type_name" title="Permalink to this definition">¶</a></dt>
-<dd><p>The type name of this JSON value.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="cyclus.jsoncpp.Value.update">
-<code class="descname">update</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cyclus.jsoncpp.Value.update" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="cyclus.jsoncpp.Value.values">
-<code class="descname">values</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cyclus.jsoncpp.Value.values" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns a list of values in JSON object.</p>
-</dd></dl>
-
-</dd></dl>
-
+  <div class="section" id="json-c-cyclus-jsoncpp">
+<span id="cyclus-pyapi-jsoncpp"></span><h1>JSON C++ (<code class="docutils literal"><span class="pre">cyclus.jsoncpp</span></code>)<a class="headerlink" href="#json-c-cyclus-jsoncpp" title="Permalink to this headline">¶</a></h1>
 </div>
 
 
@@ -373,13 +96,13 @@ serialization, and False to discard comments.</p>
         </a></p>
   <div class="sphinxprev">
     <h4>Previous page</h4>
-    <p class="topless"><a href="events.html"
-                          title="Previous page">&larr; Event Loop (<code class="docutils literal"><span class="pre">cyclus.events</span></code>)</a></p>
+    <p class="topless"><a href="gentypesystem.html"
+                          title="Previous page">&larr; Type System Code Generator (<code class="docutils literal"><span class="pre">cyclus.gentypesystem</span></code>)</a></p>
   </div>
   <div class="sphinxnext">
     <h4>Next page</h4>
-    <p class="topless"><a href="../cep/cep0.html"
-                          title="Next page">&rarr; <span style="font-variant:small-caps;">Cyclus</span> Enhancement Proposals</a></p>
+    <p class="topless"><a href="lazyasd.html"
+                          title="Next page">&rarr; Lazy and Self-destructive Python Tools (<code class="docutils literal"><span class="pre">cyclus.lazyasd</span></code>)</a></p>
   </div>
   <div class="sphinxlocaltoc">
   <h3>Useful Pages</h3>
@@ -442,23 +165,6 @@ serialization, and False to discard comments.</p>
 
         </div>
       </div>
-    
-    
-        <div class="sidebar-toggle-group no-js">
-            
-            <button class="sidebar-toggle" id="sidebar-hide" title="Hide the sidebar menu">
-                 «
-                <span class="show-for-small">hide menu</span>
-                
-            </button>
-            <button class="sidebar-toggle" id="sidebar-show" title="Show the sidebar menu">
-                
-                <span class="show-for-small">menu</span>
-                <span class="hide-for-small">sidebar</span>
-                 »
-            </button>
-        </div>
-    
       <div class="clearer"></div>
     </div>
     <div class="relbar-bottom">
@@ -473,10 +179,10 @@ serialization, and False to discard comments.</p>
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> &nbsp; &nbsp;</li>
         <li class="right" >
-          <a href="../cep/cep0.html" title="Cyclus Enhancement Proposals"
+          <a href="lazyasd.html" title="Lazy and Self-destructive Python Tools (cyclus.lazyasd)"
              >next</a> &nbsp; &nbsp;</li>
         <li class="right" >
-          <a href="events.html" title="Event Loop (cyclus.events)"
+          <a href="gentypesystem.html" title="Type System Code Generator (cyclus.gentypesystem)"
              >previous</a> &nbsp; &nbsp;</li>
     <li><a href="../index.html">Home</a> &#187;</li>
 
@@ -487,7 +193,7 @@ serialization, and False to discard comments.</p>
 
     <div class="footer" role="contentinfo">
         &#169; Copyright 2012-2016, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Feb 13, 2017.
+      Last updated on Apr 27, 2017.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");

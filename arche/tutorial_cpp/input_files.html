@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '(1.5.0-162-gf18c1af)',
+        VERSION:     '(1.5.0-17-g9a707ee)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -300,11 +300,11 @@ from <code class="docutils literal"><span class="pre">3</span></code> to <code c
 from the Source to Storage every time step. After the first time step, a unit of
 material was also sent from Storage to the Sink every time step, having been
 stored for the interim period.</p>
-<p>This consistent flow occurred because, given the storage time <img class="math" src="../../_images/math/2f8665a2cb06d035e069b6472a88989d912e41da.png" alt="t_s"/>,
-capacity <img class="math" src="../../_images/math/ae12a24f88803b5895632e4848d87d46483c492c.png" alt="c"/>, and throughput <img class="math" src="../../_images/math/557d5fad862c9046d26e1a930f45a550c146d592.png" alt="\tau"/>, the following relation is true</p>
+<p>This consistent flow occurred because, given the storage time <span class="math">t_s</span>,
+capacity <span class="math">c</span>, and throughput <span class="math">\tau</span>, the following relation is true</p>
 <div class="math">
-<p><img src="../../_images/math/51d8b431aafc0c12bd0afafa28836a7303928eb9.png" alt="t_s &lt; min(c, \tau)"/></p>
-</div><p>What happens when <img class="math" src="../../_images/math/c837b95069b16512f329e17a7d31684a0ef39ae6.png" alt="t_s &gt; min(c, \tau)"/>? Let&#8217;s find out!</p>
+<p><span class="math">t_s &lt; min(c, \tau)</span></p>
+</div><p>What happens when <span class="math">t_s &gt; min(c, \tau)</span>? Let&#8217;s find out!</p>
 <p>First, make a new input file</p>
 <div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> cp input/basic.xml input/interesting.xml
 </pre></div>
@@ -322,7 +322,7 @@ capacity <img class="math" src="../../_images/math/ae12a24f88803b5895632e4848d87
 <span class="nt">&lt;/config&gt;</span>
 </pre></div>
 </div>
-<p>Note that now we have <img class="math" src="../../_images/math/120ca60e0366995696fd4a76336f89f18eadbc2f.png" alt="t_s = 5"/> and <img class="math" src="../../_images/math/69153c04c5b0056c0b61c940360fa7bf9fbfe698.png" alt="c = 2"/>.</p>
+<p>Note that now we have <span class="math">t_s = 5</span> and <span class="math">c = 2</span>.</p>
 </div>
 <div class="section" id="run-the-interesting-file">
 <h2>Run the Interesting File<a class="headerlink" href="#run-the-interesting-file" title="Permalink to this headline">¶</a></h2>
@@ -354,7 +354,7 @@ dynamics of this scenario.</p>
         <div class="sphinxsidebarwrapper">
         <p class="logo"><a href="../../index.html" title="index">
           <img class="logo" src="../../_static/big_c.png" alt="Logo"/>
-        </a></p><div class="sphinx-toc sphinxlocaltoc">
+        </a></p><div class="sphinxlocaltoc">
     <h3><a href="../../index.html">Page contents</a></h3>
     <ul>
 <li><a class="reference internal" href="#">Making Input Files</a><ul>
@@ -454,23 +454,6 @@ dynamics of this scenario.</p>
 
         </div>
       </div>
-    
-    
-        <div class="sidebar-toggle-group no-js">
-            
-            <button class="sidebar-toggle" id="sidebar-hide" title="Hide the sidebar menu">
-                 «
-                <span class="show-for-small">hide menu</span>
-                
-            </button>
-            <button class="sidebar-toggle" id="sidebar-show" title="Show the sidebar menu">
-                
-                <span class="show-for-small">menu</span>
-                <span class="hide-for-small">sidebar</span>
-                 »
-            </button>
-        </div>
-    
       <div class="clearer"></div>
     </div>
     <div class="relbar-bottom">
@@ -500,7 +483,7 @@ dynamics of this scenario.</p>
 
     <div class="footer" role="contentinfo">
         &#169; Copyright 2012-2016, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Feb 13, 2017.
+      Last updated on Apr 27, 2017.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");

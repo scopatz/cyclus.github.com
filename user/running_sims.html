@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '(1.5.0-162-gf18c1af)',
+        VERSION:     '(1.5.0-17-g9a707ee)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -32,7 +32,7 @@
     <link rel="shortcut icon" href="../_static/big_c.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Cyclus User Tutorial" href="tutorial/index.html" />
+    <link rel="next" title="Cyclus Server" href="server.html" />
     <link rel="prev" title="Simulation Schema" href="sim_schema.html" /> 
         <meta name="viewport" content="width=device-width, initial-scale=1"><script type="text/javascript">
 var ga_enabled = !$.cookie('disable-ga');
@@ -63,7 +63,7 @@ if(ga_enabled){
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> &nbsp; &nbsp;</li>
         <li class="right" >
-          <a href="tutorial/index.html" title="Cyclus User Tutorial"
+          <a href="server.html" title="Cyclus Server"
              accesskey="N">next</a> &nbsp; &nbsp;</li>
         <li class="right" >
           <a href="sim_schema.html" title="Simulation Schema"
@@ -87,6 +87,10 @@ if(ga_enabled){
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ ./path/to/cyclus <span class="o">[</span>options<span class="o">]</span> <span class="o">[</span>input-file<span class="o">]</span>
 </pre></div>
 </div>
+<p>Or you may run directly through Python:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ python -m cyclus <span class="o">[</span>options<span class="o">]</span> <span class="o">[</span>input-file<span class="o">]</span>
+</pre></div>
+</div>
 <p>For more information, please refer to the help:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ cyclus -h
 Usage:   cyclus <span class="o">[</span>opts<span class="o">]</span> <span class="o">[</span>input-file<span class="o">]</span>
@@ -107,8 +111,8 @@ Usage:   cyclus <span class="o">[</span>opts<span class="o">]</span> <span class
   -v <span class="o">[</span> --verb <span class="o">]</span> arg        output log verbosity. Can be text:
 
                               LEV_ERROR <span class="o">(</span>least verbose, default<span class="o">)</span>, LEV_WARN,
-                              LEV_INFO1 <span class="o">(</span>through <span class="m">5</span><span class="o">)</span>, and LEV_DEBUG1 <span class="o">(</span>through
-                           <span class="m">5</span><span class="o">)</span>.
+                              LEV_INFO1 <span class="o">(</span>through 5<span class="o">)</span>, and LEV_DEBUG1 <span class="o">(</span>through
+                           5<span class="o">)</span>.
 
                            Or an integer:
 
@@ -116,7 +120,7 @@ Usage:   cyclus <span class="o">[</span>opts<span class="o">]</span> <span class
 
   -o <span class="o">[</span> --output-path <span class="o">]</span> arg output path
   --input-file arg         input file
-  --warn-limit arg         number of warnings to issue per kind, defaults to <span class="m">1</span>
+  --warn-limit arg         number of warnings to issue per kind, defaults to 1
   --warn-as-error          throw errors when warnings are issued
   -p <span class="o">[</span> --path <span class="o">]</span>            print the CYCLUS_PATH
   --include                print the cyclus include directory
@@ -130,9 +134,9 @@ Usage:   cyclus <span class="o">[</span>opts<span class="o">]</span> <span class
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ cyclus ./path/to/myinput.xml
 
-$ cyclus -v LEV_DEBUG5 myinput.xml
+$ cyclus -v LEV_DEBUG5 myinput.py
 
-$ cyclus -v LEV_INFO3 myinput.xml
+$ python -m cyclus -v LEV_INFO3 myinput.json
 
 $ cyclus -v <span class="m">4</span> myinput.xml
 </pre></div>
@@ -148,7 +152,7 @@ $ cyclus -v <span class="m">4</span> myinput.xml
         <div class="sphinxsidebarwrapper">
         <p class="logo"><a href="../index.html" title="index">
           <img class="logo" src="../_static/big_c.png" alt="Logo"/>
-        </a></p><div class="sphinx-toc sphinxlocaltoc">
+        </a></p><div class="sphinxlocaltoc">
     <h3><a href="../index.html">Page contents</a></h3>
     <ul>
 <li><a class="reference internal" href="#">Running Simulations</a><ul>
@@ -165,8 +169,8 @@ $ cyclus -v <span class="m">4</span> myinput.xml
   </div>
   <div class="sphinxnext">
     <h4>Next page</h4>
-    <p class="topless"><a href="tutorial/index.html"
-                          title="Next page">&rarr; <span style="font-variant:small-caps;">Cyclus</span> User Tutorial</a></p>
+    <p class="topless"><a href="server.html"
+                          title="Next page">&rarr; Cyclus Server</a></p>
   </div>
   <div class="sphinxlocaltoc">
   <h3>Useful Pages</h3>
@@ -229,23 +233,6 @@ $ cyclus -v <span class="m">4</span> myinput.xml
 
         </div>
       </div>
-    
-    
-        <div class="sidebar-toggle-group no-js">
-            
-            <button class="sidebar-toggle" id="sidebar-hide" title="Hide the sidebar menu">
-                 «
-                <span class="show-for-small">hide menu</span>
-                
-            </button>
-            <button class="sidebar-toggle" id="sidebar-show" title="Show the sidebar menu">
-                
-                <span class="show-for-small">menu</span>
-                <span class="hide-for-small">sidebar</span>
-                 »
-            </button>
-        </div>
-    
       <div class="clearer"></div>
     </div>
     <div class="relbar-bottom">
@@ -260,7 +247,7 @@ $ cyclus -v <span class="m">4</span> myinput.xml
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> &nbsp; &nbsp;</li>
         <li class="right" >
-          <a href="tutorial/index.html" title="Cyclus User Tutorial"
+          <a href="server.html" title="Cyclus Server"
              >next</a> &nbsp; &nbsp;</li>
         <li class="right" >
           <a href="sim_schema.html" title="Simulation Schema"
@@ -274,7 +261,7 @@ $ cyclus -v <span class="m">4</span> myinput.xml
 
     <div class="footer" role="contentinfo">
         &#169; Copyright 2012-2016, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Feb 13, 2017.
+      Last updated on Apr 27, 2017.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");

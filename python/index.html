@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '(1.5.0-162-gf18c1af)',
+        VERSION:     '(1.5.0-17-g9a707ee)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -32,7 +32,7 @@
     <link rel="shortcut icon" href="../_static/big_c.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Cyclus Type System (cyclus.typesystem)" href="typesystem.html" />
+    <link rel="next" title="(cyclus.agents)" href="agents.html" />
     <link rel="prev" title="Style Guidelines for Developers" href="../kernel/style_guide.html" /> 
         <meta name="viewport" content="width=device-width, initial-scale=1"><script type="text/javascript">
 var ga_enabled = !$.cookie('disable-ga');
@@ -63,7 +63,7 @@ if(ga_enabled){
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> &nbsp; &nbsp;</li>
         <li class="right" >
-          <a href="typesystem.html" title="Cyclus Type System (cyclus.typesystem)"
+          <a href="agents.html" title="(cyclus.agents)"
              accesskey="N">next</a> &nbsp; &nbsp;</li>
         <li class="right" >
           <a href="../kernel/style_guide.html" title="Style Guidelines for Developers"
@@ -83,13 +83,34 @@ if(ga_enabled){
   <div class="section" id="cyclus-python-interface">
 <h1><span style="font-variant:small-caps;">Cyclus</span> Python Interface<a class="headerlink" href="#cyclus-python-interface" title="Permalink to this headline">¶</a></h1>
 <p>This covers the Python bindings for <span style="font-variant:small-caps;">Cyclus</span> and related utilities.</p>
+<div class="section" id="high-level-python-interface">
+<h2>High-level Python Interface<a class="headerlink" href="#high-level-python-interface" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="agents.html">(<code class="docutils literal"><span class="pre">cyclus.agents</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simstate.html">Simulation State (<code class="docutils literal"><span class="pre">cyclus.simstate</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pyagents.html">Agent Archetypes implemented in Python (<code class="docutils literal"><span class="pre">cyclus.pyagents</span></code>)</a></li>
+</ul>
+</div>
+</div>
 <div class="section" id="low-level-python-wrappers">
 <h2>Low-level Python Wrappers<a class="headerlink" href="#low-level-python-wrappers" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="typesystem.html">Cyclus Type System (<code class="docutils literal"><span class="pre">cyclus.typesystem</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lib.html">Cyclus Library Bindings (<code class="docutils literal"><span class="pre">cyclus.lib</span></code>)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="main.html">Main Command Lin Interface (<code class="docutils literal"><span class="pre">cyclus.main</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="main.html">Main Command Line Interface (<code class="docutils literal"><span class="pre">cyclus.main</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nucname.html">Nuclide Naming Functions (<code class="docutils literal"><span class="pre">cyclus.nucname</span></code>)</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="cyclus-server-interface">
+<h2>Cyclus Server Interface<a class="headerlink" href="#cyclus-server-interface" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="server.html">Cyclus Server (<code class="docutils literal"><span class="pre">cyclus.server</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="actions.html">Asynchronous Actions (<code class="docutils literal"><span class="pre">cyclus.actions</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="webapp.html">Client Web Application (<code class="docutils literal"><span class="pre">cyclus.webapp</span></code>)</a></li>
 </ul>
 </div>
 </div>
@@ -98,6 +119,7 @@ if(ga_enabled){
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="events.html">Event Loop (<code class="docutils literal"><span class="pre">cyclus.events</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="memback.html">In-memory Backend (<code class="docutils literal"><span class="pre">cyclus.memback</span></code>)</a></li>
 </ul>
 </div>
 </div>
@@ -105,7 +127,11 @@ if(ga_enabled){
 <h2>Helpers &amp; Utilities<a class="headerlink" href="#helpers-utilities" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="cycpp.html">Cyclus Preprocessor (<code class="docutils literal"><span class="pre">cyclus.cycpp</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gentypesystem.html">Type System Code Generator (<code class="docutils literal"><span class="pre">cyclus.gentypesystem</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="jsoncpp.html">JSON C++ (<code class="docutils literal"><span class="pre">cyclus.jsoncpp</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lazyasd.html">Lazy and Self-destructive Python Tools (<code class="docutils literal"><span class="pre">cyclus.lazyasd</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="system.html">System and Platform Specific Tools (<code class="docutils literal"><span class="pre">cyclus.system</span></code>)</a></li>
 </ul>
 </div>
 </div>
@@ -119,11 +145,13 @@ if(ga_enabled){
         <div class="sphinxsidebarwrapper">
         <p class="logo"><a href="../index.html" title="index">
           <img class="logo" src="../_static/big_c.png" alt="Logo"/>
-        </a></p><div class="sphinx-toc sphinxlocaltoc">
+        </a></p><div class="sphinxlocaltoc">
     <h3><a href="../index.html">Page contents</a></h3>
     <ul>
 <li><a class="reference internal" href="#"><span style="font-variant:small-caps;">Cyclus</span> Python Interface</a><ul>
+<li><a class="reference internal" href="#high-level-python-interface">High-level Python Interface</a></li>
 <li><a class="reference internal" href="#low-level-python-wrappers">Low-level Python Wrappers</a></li>
+<li><a class="reference internal" href="#cyclus-server-interface">Cyclus Server Interface</a></li>
 <li><a class="reference internal" href="#python-c-interop-modules">Python &amp; C++ Interop Modules</a></li>
 <li><a class="reference internal" href="#helpers-utilities">Helpers &amp; Utilities</a></li>
 </ul>
@@ -138,8 +166,8 @@ if(ga_enabled){
   </div>
   <div class="sphinxnext">
     <h4>Next page</h4>
-    <p class="topless"><a href="typesystem.html"
-                          title="Next page">&rarr; Cyclus Type System (<code class="docutils literal"><span class="pre">cyclus.typesystem</span></code>)</a></p>
+    <p class="topless"><a href="agents.html"
+                          title="Next page">&rarr; (<code class="docutils literal"><span class="pre">cyclus.agents</span></code>)</a></p>
   </div>
   <div class="sphinxlocaltoc">
   <h3>Useful Pages</h3>
@@ -202,23 +230,6 @@ if(ga_enabled){
 
         </div>
       </div>
-    
-    
-        <div class="sidebar-toggle-group no-js">
-            
-            <button class="sidebar-toggle" id="sidebar-hide" title="Hide the sidebar menu">
-                 «
-                <span class="show-for-small">hide menu</span>
-                
-            </button>
-            <button class="sidebar-toggle" id="sidebar-show" title="Show the sidebar menu">
-                
-                <span class="show-for-small">menu</span>
-                <span class="hide-for-small">sidebar</span>
-                 »
-            </button>
-        </div>
-    
       <div class="clearer"></div>
     </div>
     <div class="relbar-bottom">
@@ -233,7 +244,7 @@ if(ga_enabled){
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> &nbsp; &nbsp;</li>
         <li class="right" >
-          <a href="typesystem.html" title="Cyclus Type System (cyclus.typesystem)"
+          <a href="agents.html" title="(cyclus.agents)"
              >next</a> &nbsp; &nbsp;</li>
         <li class="right" >
           <a href="../kernel/style_guide.html" title="Style Guidelines for Developers"
@@ -246,7 +257,7 @@ if(ga_enabled){
 
     <div class="footer" role="contentinfo">
         &#169; Copyright 2012-2016, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Feb 13, 2017.
+      Last updated on Apr 27, 2017.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");

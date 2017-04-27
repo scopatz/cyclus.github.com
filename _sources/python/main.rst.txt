@@ -1,7 +1,7 @@
 .. _cyclus_pyapi_main:
 
 ********************************************************************************
-Main Command Lin Interface (``cyclus.main``)
+Main Command Line Interface (``cyclus.main``)
 ********************************************************************************
 
 .. automodule:: cyclus.main

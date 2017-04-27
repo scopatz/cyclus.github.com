@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '(1.5.0-162-gf18c1af)',
+        VERSION:     '(1.5.0-17-g9a707ee)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -90,13 +90,13 @@ if(ga_enabled){
 <p>Radioactive decay of a group of isotopes over time can be described by the
 following first order differential equation:</p>
 <div class="math">
-<p><img src="../_images/math/f4bc2bac06061df67fa2947cb281dcb2083c7fec.png" alt="\frac{d}{dt}\mathbf{N(\mathit{t})}=\textrm{A}\: \mathbf{N(\mathit{t})}"/></p>
+<p><span class="math">\frac{d}{dt}\mathbf{N(\mathit{t})}=\textrm{A}\: \mathbf{N(\mathit{t})}</span></p>
 </div><p>where the vector <cite>N(t)</cite> contains the number density of all the
 isotopes being considered at time <cite>t</cite>, and A is called the decay
 matrix.  The solution to this differential equation can be expressed in terms
 of a matrix exponential:</p>
 <div class="math">
-<p><img src="../_images/math/1d2e20cec8d73f838d921fc76cae41a1faa1b13d.png" alt="\mathbf{N(\mathit{to+\Delta t})}=e^{\Delta t \textrm{A}}\: \mathbf{N(\mathit{to})}"/></p>
+<p><span class="math">\mathbf{N(\mathit{to+\Delta t})}=e^{\Delta t \textrm{A}}\: \mathbf{N(\mathit{to})}</span></p>
 </div><p>The decay method currently implemented in <span style="font-variant:small-caps;">Cyclus</span> computes this matrix
 exponential solution at any given time using a series approximation known as
 the Uniformization Method.  This implementation was written by Kerry Dunn, and
@@ -107,7 +107,7 @@ is explained in more detail below.</p>
 Series expansion of the matrix exponential solution, which can be described by
 the following summation:</p>
 <div class="math">
-<p><img src="../_images/math/09181cc753465aaea9a324c1fa73dc2c5da08ed7.png" alt="\mathbf{N(\mathit{to+\Delta t})}\approx \sum_{k=0}^{p}\frac{\left (\Delta t \right )^k}{k!}\: \textrm{A}^k\: \mathbf{N(\mathit{to})}"/></p>
+<p><span class="math">\mathbf{N(\mathit{to+\Delta t})}\approx \sum_{k=0}^{p}\frac{\left (\Delta t \right )^k}{k!}\: \textrm{A}^k\: \mathbf{N(\mathit{to})}</span></p>
 </div><p>The primary disadvantage of using this Taylor Series expansion to compute the
 matrix exponential solution is that it can be subject to cancellation error as
 a result of summing terms with alternating signs.  These terms with alternating
@@ -120,22 +120,22 @@ as the uniformization technique.</p>
 <cite>alpha</cite> to be equal to the absolute value of the maximum diagonal
 element of <cite>A</cite>:</p>
 <div class="math">
-<p><img src="../_images/math/5a44f2c9c9b3214666de57bc026c5f02bdcca10c.png" alt="\alpha=max_i\left | {a_i}_i \right |"/></p>
+<p><span class="math">\alpha=max_i\left | {a_i}_i \right |</span></p>
 </div><p>Then, given <cite>alpha</cite>, the next step is to redefine the matrix
 exponential solution using a different matrix <cite>P</cite>:</p>
 <div class="math">
-<p><img src="../_images/math/5ae5824e2a8f67a1180b1188687353b0aeb81254.png" alt="\textrm{P}=\frac{1}{\alpha}\textrm{A}+\textrm{I}"/></p>
+<p><span class="math">\textrm{P}=\frac{1}{\alpha}\textrm{A}+\textrm{I}</span></p>
 </div><p>where I is the identity matrix.  Note that <cite>P</cite> is completely non-negative, so a
 Taylor Series expansion of this matrix exponential is not subject to the same
 cancellation error that occurs with the original decay matrix.  By replacing <cite>A</cite>
 with <cite>P</cite>, the matrix exponential solution can now be expressed by the following
 summation:</p>
 <div class="math">
-<p><img src="../_images/math/b723b015a0e4a01ce4ace116df6416f9cc0a4a22.png" alt="\mathbf{N(\mathit{to+\Delta t})}=e^{-\alpha \Delta t}\: e^{\Delta t (\alpha \textrm{P})}\: \mathbf{N(\mathit{to})}\approx e^{-\alpha \Delta t}\sum_{k=0}^{p}\frac{\left (\Delta t \right )^k}{k!}\: (\alpha \textrm{P})^k\: \mathbf{N(\mathit{to})}"/></p>
+<p><span class="math">\mathbf{N(\mathit{to+\Delta t})}=e^{-\alpha \Delta t}\: e^{\Delta t (\alpha \textrm{P})}\: \mathbf{N(\mathit{to})}\approx e^{-\alpha \Delta t}\sum_{k=0}^{p}\frac{\left (\Delta t \right )^k}{k!}\: (\alpha \textrm{P})^k\: \mathbf{N(\mathit{to})}</span></p>
 </div><p>Note that this modified Taylor Series expansion can also be expressed in terms
 of the original matrix A by substituting the definition for <cite>P</cite>:</p>
 <div class="math">
-<p><img src="../_images/math/304832b0bf587ef86ae7e151607f9f82fc92349f.png" alt="\mathbf{N(\mathit{to+\Delta t})}\approx e^{-\alpha\Delta t}\sum_{k=0}^{p}\frac{\left (\Delta t \right )^k}{k!}\: (\textrm{A}+\alpha \textrm{I})^k\: \mathbf{N(\mathit{to})}"/></p>
+<p><span class="math">\mathbf{N(\mathit{to+\Delta t})}\approx e^{-\alpha\Delta t}\sum_{k=0}^{p}\frac{\left (\Delta t \right )^k}{k!}\: (\textrm{A}+\alpha \textrm{I})^k\: \mathbf{N(\mathit{to})}</span></p>
 </div></div>
 <div class="section" id="implementation-in-cyclus">
 <h2>Implementation in <span style="font-variant:small-caps;">Cyclus</span><a class="headerlink" href="#implementation-in-cyclus" title="Permalink to this headline">¶</a></h2>
@@ -153,8 +153,8 @@ limited by the size of a long double on the system being used to run <span style
 To determine the maximum time scale that will be valid for a particular group
 of isotopes, the following equation can be used:</p>
 <div class="math">
-<p><img src="../_images/math/0744e52e00bd31848cbcccd89081833aee7e21e2.png" alt="{t_{max} = \frac{ln(\textrm{LDBL\_MAX})}{min(\lambda)}}"/></p>
-</div><p>where <cite>LDBL_MAX</cite> is the size of a long double and <img class="math" src="../_images/math/76f1d8ace30435987c01a00ca53a71cba1f40e6c.png" alt="\lambda"/> is the
+<p><span class="math">{t_{max} = \frac{ln(\textrm{LDBL\_MAX})}{min(\lambda)}}</span></p>
+</div><p>where <cite>LDBL_MAX</cite> is the size of a long double and <span class="math">\lambda</span> is the
 largest decay constant of the group of isotopes being considered.</p>
 <p>As an example, suppose that the isotope with the smallest half-life being
 considered is Cm-232.  This particular isotope has a decay constant of 1.5532
@@ -188,7 +188,7 @@ Analysis</em>, <em>29</em>, 345-368 (1999)</li>
         <div class="sphinxsidebarwrapper">
         <p class="logo"><a href="../index.html" title="index">
           <img class="logo" src="../_static/big_c.png" alt="Logo"/>
-        </a></p><div class="sphinx-toc sphinxlocaltoc">
+        </a></p><div class="sphinxlocaltoc">
     <h3><a href="../index.html">Page contents</a></h3>
     <ul>
 <li><a class="reference internal" href="#">Radioactive Decay in <span style="font-variant:small-caps;">Cyclus</span></a><ul>
@@ -275,23 +275,6 @@ Analysis</em>, <em>29</em>, 345-368 (1999)</li>
 
         </div>
       </div>
-    
-    
-        <div class="sidebar-toggle-group no-js">
-            
-            <button class="sidebar-toggle" id="sidebar-hide" title="Hide the sidebar menu">
-                 «
-                <span class="show-for-small">hide menu</span>
-                
-            </button>
-            <button class="sidebar-toggle" id="sidebar-show" title="Show the sidebar menu">
-                
-                <span class="show-for-small">menu</span>
-                <span class="hide-for-small">sidebar</span>
-                 »
-            </button>
-        </div>
-    
       <div class="clearer"></div>
     </div>
     <div class="relbar-bottom">
@@ -320,7 +303,7 @@ Analysis</em>, <em>29</em>, 345-368 (1999)</li>
 
     <div class="footer" role="contentinfo">
         &#169; Copyright 2012-2016, University of Wisconsin Computational Nuclear Engineering Research Group.
-      Last updated on Feb 13, 2017.
+      Last updated on Apr 27, 2017.
     </div><script type="text/javascript">
     if(ga_enabled){
         document.write("<div class=\"footer\">This page uses <a href=\"http://analytics.google.com\">Google Analytics</a> to collect statistics. ");
